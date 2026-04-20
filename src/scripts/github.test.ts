@@ -1,0 +1,298 @@
+import { describe, expect, it, vi } from 'vitest';
+
+import {
+  extractSamplesFromPullRequest,
+  fetchGithubSamples,
+  type GraphqlClient,
+  type PullRequestData,
+} from './github';
+
+const pr = (overrides: Partial<PullRequestData> = {}): PullRequestData => ({
+  number: 42,
+  isDraft: false,
+  author: { login: 'author-user' },
+  timeline: [],
+  ...overrides,
+});
+
+describe('extractSamplesFromPullRequest', () => {
+  it('returns no samples for a draft PR', () => {
+    const data = pr({
+      isDraft: true,
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
+
+  it('emits a sample for a review requested then submitted', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      source: 'github',
+      id: 42,
+      reviewer: 'alice',
+      requestedAt: '2026-04-19T14:00:00Z',
+      firstActionAt: '2026-04-19T16:00:00Z',
+    });
+  });
+
+  it('ignores reviews from bot accounts', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['dependabot[bot]'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'dependabot[bot]',
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
+
+  it('ignores self-reviews (author reviewing own PR)', () => {
+    const data = pr({
+      author: { login: 'alice' },
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
+
+  it('uses the earliest review action after the request', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'alice',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T17:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples[0]?.firstActionAt).toBe('2026-04-19T15:00:00Z');
+  });
+
+  it('emits one sample per reviewer when multiple reviewers are requested', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice', 'bob'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'alice',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'bob',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
+  });
+
+  it('does not emit a sample for a reviewer who has not submitted', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice', 'bob'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
+  });
+
+  it('ignores reviews submitted before the review request', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T13:00:00Z',
+          authorLogin: 'alice',
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
+});
+
+describe('fetchGithubSamples', () => {
+  it('fetches pull requests, paginates, and extracts samples', async () => {
+    const request = vi.fn();
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+    request.mockResolvedValueOnce({
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
+          nodes: [
+            {
+              number: 1,
+              isDraft: false,
+              updatedAt: '2026-04-19T20:00:00Z',
+              author: { login: 'author1' },
+              timelineItems: {
+                nodes: [
+                  {
+                    __typename: 'ReviewRequestedEvent',
+                    createdAt: '2026-04-19T14:00:00Z',
+                    requestedReviewer: { __typename: 'User', login: 'alice' },
+                  },
+                  {
+                    __typename: 'PullRequestReview',
+                    submittedAt: '2026-04-19T16:00:00Z',
+                    author: { login: 'alice' },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    });
+    request.mockResolvedValueOnce({
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: false, endCursor: null },
+          nodes: [
+            {
+              number: 2,
+              isDraft: false,
+              updatedAt: '2026-04-10T20:00:00Z',
+              author: { login: 'author2' },
+              timelineItems: {
+                nodes: [
+                  {
+                    __typename: 'ReviewRequestedEvent',
+                    createdAt: '2026-04-05T14:00:00Z',
+                    requestedReviewer: { __typename: 'User', login: 'bob' },
+                  },
+                  {
+                    __typename: 'PullRequestReview',
+                    submittedAt: '2026-04-05T15:30:00Z',
+                    author: { login: 'bob' },
+                  },
+                ],
+              },
+            },
+            {
+              number: 3,
+              isDraft: false,
+              updatedAt: '2026-03-10T12:00:00Z',
+              author: { login: 'author3' },
+              timelineItems: { nodes: [] },
+            },
+          ],
+        },
+      },
+    });
+
+    const samples = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(request).toHaveBeenCalledTimes(2);
+    expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
+  });
+
+  it('stops paginating once PRs are older than the lookback window', async () => {
+    const request = vi.fn();
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+    request.mockResolvedValueOnce({
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
+          nodes: [
+            {
+              number: 1,
+              isDraft: false,
+              updatedAt: '2026-01-01T12:00:00Z',
+              author: { login: 'author1' },
+              timelineItems: { nodes: [] },
+            },
+          ],
+        },
+      },
+    });
+    const samples = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(samples).toEqual([]);
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+});
