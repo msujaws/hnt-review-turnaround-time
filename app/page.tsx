@@ -21,10 +21,10 @@ const Page: FC = async () => {
         <Image
           src="/hnt-logo.webp"
           alt=""
-          width={1022}
-          height={842}
+          width={1024}
+          height={1024}
           priority
-          className="h-20 w-auto"
+          className="size-20"
         />
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-bold text-neutral-100">HNT Review Turnaround</h1>
