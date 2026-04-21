@@ -1,15 +1,28 @@
-import type { FC } from 'react';
+import type { CSSProperties, FC } from 'react';
 
 import { isSampleInWindow, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
 import { asMaterialSymbolName, Icon } from './Icon';
+import {
+  TIER_CARD_CLASSES,
+  TIER_TEXT_CLASSES,
+  TIER_VALUE_TEXT_CLASSES,
+  tierForHours,
+  tierForPctUnderSla,
+  type SlaTier,
+} from './slaTier';
 
 const SCHEDULE_ICON = asMaterialSymbolName('schedule');
 const EXPAND_ICON = asMaterialSymbolName('expand_more');
 
 const GITHUB_OWNER = 'Pocket';
 const GITHUB_REPO = 'content-monorepo';
+
+const CARD_BASE_CLASSES =
+  'flex flex-col gap-1 rounded-md p-4 animate-pop-in transition-transform duration-200 ease-bouncy hover:scale-[1.03]';
+const CARD_NEUTRAL_CLASSES = 'bg-neutral-900 ring-1 ring-neutral-800';
+const VALUE_NEUTRAL_CLASSES = 'text-neutral-100';
 
 const formatHours = (value: number): string => {
   const rounded = Math.round(value * 10) / 10;
@@ -27,17 +40,24 @@ const formatTimestamp = (value: string): string => {
 interface StatCellProps {
   readonly label: string;
   readonly value: string;
-  readonly accent?: boolean;
+  readonly tier?: SlaTier | undefined;
+  readonly animationDelayMs?: number | undefined;
 }
 
-const StatCell: FC<StatCellProps> = ({ label, value, accent }) => (
-  <div
-    className={`flex flex-col gap-1 rounded-md p-4 ${accent === true ? 'bg-neutral-800' : 'bg-neutral-900'}`}
-  >
-    <span className="text-xs uppercase tracking-wide text-neutral-400">{label}</span>
-    <span className="text-2xl font-semibold text-neutral-100">{value}</span>
-  </div>
-);
+const StatCell: FC<StatCellProps> = ({ label, value, tier, animationDelayMs }) => {
+  const cardTone = tier === undefined ? CARD_NEUTRAL_CLASSES : TIER_CARD_CLASSES[tier];
+  const valueTone = tier === undefined ? VALUE_NEUTRAL_CLASSES : TIER_VALUE_TEXT_CLASSES[tier];
+  const style: CSSProperties | undefined =
+    animationDelayMs === undefined
+      ? undefined
+      : { animationDelay: `${animationDelayMs.toString()}ms` };
+  return (
+    <div className={`${CARD_BASE_CLASSES} ${cardTone}`} style={style}>
+      <span className="text-xs uppercase tracking-wide text-neutral-400">{label}</span>
+      <span className={`text-2xl font-semibold ${valueTone}`}>{value}</span>
+    </div>
+  );
+};
 
 const windowDaysFor = (label: '7-day' | '14-day' | '30-day'): number => {
   if (label === '7-day') return 7;
@@ -70,7 +90,12 @@ const SampleIdentifier: FC<SampleRowProps> = ({ sample }) => {
   return <span className="font-mono text-neutral-300">{String(sample.id)}</span>;
 };
 
-const SampleList: FC<{ readonly samples: readonly Sample[] }> = ({ samples }) => (
+interface SampleListProps {
+  readonly samples: readonly Sample[];
+  readonly slaHours: number;
+}
+
+const SampleList: FC<SampleListProps> = ({ samples, slaHours }) => (
   <div className="mt-2 overflow-x-auto rounded-md border border-neutral-800 bg-neutral-950">
     <table className="w-full text-left text-xs text-neutral-300">
       <thead className="bg-neutral-900 text-neutral-400">
@@ -83,22 +108,27 @@ const SampleList: FC<{ readonly samples: readonly Sample[] }> = ({ samples }) =>
         </tr>
       </thead>
       <tbody>
-        {samples.map((sample) => (
-          <tr
-            key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
-            className="border-t border-neutral-800"
-          >
-            <td className="px-3 py-2">
-              <SampleIdentifier sample={sample} />
-            </td>
-            <td className="px-3 py-2 text-neutral-200">{sample.reviewer}</td>
-            <td className="px-3 py-2 text-neutral-400">{formatTimestamp(sample.requestedAt)}</td>
-            <td className="px-3 py-2 text-neutral-400">{formatTimestamp(sample.firstActionAt)}</td>
-            <td className="px-3 py-2 text-right font-medium text-neutral-100">
-              {formatHours(sample.tatBusinessHours)}
-            </td>
-          </tr>
-        ))}
+        {samples.map((sample) => {
+          const tier = tierForHours(sample.tatBusinessHours, slaHours);
+          return (
+            <tr
+              key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
+              className="border-t border-neutral-800"
+            >
+              <td className="px-3 py-2">
+                <SampleIdentifier sample={sample} />
+              </td>
+              <td className="px-3 py-2 text-neutral-200">{sample.reviewer}</td>
+              <td className="px-3 py-2 text-neutral-400">{formatTimestamp(sample.requestedAt)}</td>
+              <td className="px-3 py-2 text-neutral-400">
+                {formatTimestamp(sample.firstActionAt)}
+              </td>
+              <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
+                {formatHours(sample.tatBusinessHours)}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -108,12 +138,49 @@ interface WindowRowProps {
   readonly label: '7-day' | '14-day' | '30-day';
   readonly stats: WindowStats;
   readonly slaHours: number;
-  readonly accent?: boolean;
   readonly samples: readonly Sample[];
   readonly now: Date;
 }
 
-const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours, accent }) => (
+const statsTier = (value: number, stats: WindowStats, slaHours: number): SlaTier | undefined =>
+  stats.n === 0 ? undefined : tierForHours(value, slaHours);
+
+const pctTier = (stats: WindowStats): SlaTier | undefined =>
+  stats.n === 0 ? undefined : tierForPctUnderSla(stats.pctUnderSLA);
+
+const StatGrid: FC<{ readonly stats: WindowStats; readonly slaHours: number }> = ({
+  stats,
+  slaHours,
+}) => (
+  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+    <StatCell
+      label="Median"
+      value={formatStatHours(stats.median, stats.n > 0)}
+      tier={statsTier(stats.median, stats, slaHours)}
+      animationDelayMs={0}
+    />
+    <StatCell
+      label="Mean"
+      value={formatStatHours(stats.mean, stats.n > 0)}
+      tier={statsTier(stats.mean, stats, slaHours)}
+      animationDelayMs={70}
+    />
+    <StatCell
+      label="p90"
+      value={formatStatHours(stats.p90, stats.n > 0)}
+      tier={statsTier(stats.p90, stats, slaHours)}
+      animationDelayMs={140}
+    />
+    <StatCell
+      label={`Under ${slaHours.toString()}h SLA`}
+      value={formatPercent(stats.pctUnderSLA)}
+      tier={pctTier(stats)}
+      animationDelayMs={210}
+    />
+  </div>
+);
+
+const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours }) => (
   <>
     <div className="flex items-center gap-2 text-sm font-medium text-neutral-300">
       <span>{label}</span>
@@ -124,28 +191,7 @@ const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours, accent }) => (
           : `${stats.n.toString()} ${stats.n === 1 ? 'review' : 'reviews'}`}
       </span>
     </div>
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-      <StatCell
-        label="Median"
-        value={formatStatHours(stats.median, stats.n > 0)}
-        accent={accent ?? false}
-      />
-      <StatCell
-        label="Mean"
-        value={formatStatHours(stats.mean, stats.n > 0)}
-        accent={accent ?? false}
-      />
-      <StatCell
-        label="p90"
-        value={formatStatHours(stats.p90, stats.n > 0)}
-        accent={accent ?? false}
-      />
-      <StatCell
-        label={`Under ${slaHours.toString()}h SLA`}
-        value={formatPercent(stats.pctUnderSLA)}
-        accent={accent ?? false}
-      />
-    </div>
+    <StatGrid stats={stats} slaHours={slaHours} />
   </>
 );
 
@@ -179,30 +225,9 @@ const WindowRow: FC<WindowRowProps> = (props) => {
             className="text-base text-neutral-500 transition-transform group-open:rotate-180"
           />
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <StatCell
-            label="Median"
-            value={formatStatHours(props.stats.median, props.stats.n > 0)}
-            accent={props.accent ?? false}
-          />
-          <StatCell
-            label="Mean"
-            value={formatStatHours(props.stats.mean, props.stats.n > 0)}
-            accent={props.accent ?? false}
-          />
-          <StatCell
-            label="p90"
-            value={formatStatHours(props.stats.p90, props.stats.n > 0)}
-            accent={props.accent ?? false}
-          />
-          <StatCell
-            label={`Under ${props.slaHours.toString()}h SLA`}
-            value={formatPercent(props.stats.pctUnderSLA)}
-            accent={props.accent ?? false}
-          />
-        </div>
+        <StatGrid stats={props.stats} slaHours={props.slaHours} />
       </summary>
-      <SampleList samples={windowSamples} />
+      <SampleList samples={windowSamples} slaHours={props.slaHours} />
     </details>
   );
 };
@@ -237,14 +262,7 @@ export const Headline: FC<HeadlineProps> = ({
       </span>
     </header>
     <WindowRow label="7-day" stats={window7d} slaHours={slaHours} samples={samples} now={now} />
-    <WindowRow
-      label="14-day"
-      stats={window14d}
-      slaHours={slaHours}
-      accent
-      samples={samples}
-      now={now}
-    />
+    <WindowRow label="14-day" stats={window14d} slaHours={slaHours} samples={samples} now={now} />
     <WindowRow label="30-day" stats={window30d} slaHours={slaHours} samples={samples} now={now} />
   </section>
 );

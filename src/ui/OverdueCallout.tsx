@@ -14,6 +14,7 @@ const GITHUB_REPO = 'content-monorepo';
 const PHAB_ORIGIN = 'https://phabricator.services.mozilla.com';
 
 const OVERDUE_MULTIPLIER = 10;
+const SEVERE_MULTIPLIER = 20;
 
 const waitingHoursFor = (sample: PendingSample, now: Date, peopleMap: PeopleMap): number =>
   businessHoursBetween(
@@ -68,10 +69,10 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
   return (
     <section
       aria-labelledby="overdue-heading"
-      className="flex flex-col gap-3 rounded-md border border-red-900/50 bg-red-950/30 p-4"
+      className="flex animate-pop-in flex-col gap-3 rounded-md border border-red-900/50 bg-red-950/30 p-4"
     >
       <header className="flex items-center gap-2">
-        <Icon name={WARNING_ICON} className="text-xl text-red-400" />
+        <Icon name={WARNING_ICON} className="animate-soft-pulse text-xl text-red-400" />
         <h2 id="overdue-heading" className="text-lg font-semibold text-red-200">
           Overdue ({overdue.length.toString()}) · waiting{' '}
           {(slaHours * OVERDUE_MULTIPLIER).toString()}
@@ -112,7 +113,13 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
                   {formatTimestamp(sample.requestedAt)}
                 </td>
                 <td className="px-3 py-2 text-right font-medium text-red-200">
-                  {formatHours(hours)}
+                  <span
+                    className={`inline-block ${
+                      hours >= slaHours * SEVERE_MULTIPLIER ? 'animate-wiggle' : ''
+                    }`}
+                  >
+                    {formatHours(hours)}
+                  </span>
                 </td>
               </tr>
             ))}
