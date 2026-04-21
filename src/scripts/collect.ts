@@ -2,8 +2,16 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 import { DateTime } from 'luxon';
+import { z } from 'zod';
 
-import { asBusinessHours, type BusinessHours } from '../types/brand';
+import {
+  asBusinessHours,
+  asIsoTimestamp,
+  asPrNumber,
+  asReviewerLogin,
+  asRevisionPhid,
+  type BusinessHours,
+} from '../types/brand';
 
 import { businessHoursBetween } from './businessHours';
 import { createGithubClient, fetchGithubSamples, type GithubSample } from './github';
@@ -24,19 +32,57 @@ export type Sample =
   | (PhabSample & { readonly tatBusinessHours: BusinessHours })
   | (GithubSample & { readonly tatBusinessHours: BusinessHours });
 
+export interface SourceWindows {
+  readonly window7d: WindowStats;
+  readonly window14d: WindowStats;
+  readonly window30d: WindowStats;
+}
+
 export interface HistoryRow {
   readonly date: string;
-  readonly phab: {
-    readonly window7d: WindowStats;
-    readonly window14d: WindowStats;
-    readonly window30d: WindowStats;
-  };
-  readonly github: {
-    readonly window7d: WindowStats;
-    readonly window14d: WindowStats;
-    readonly window30d: WindowStats;
-  };
+  readonly phab: SourceWindows;
+  readonly github: SourceWindows;
 }
+
+const phabSampleSchema = z.object({
+  source: z.literal('phab'),
+  id: z.string().transform((v) => asRevisionPhid(v)),
+  reviewer: z.string().transform((v) => asReviewerLogin(v)),
+  requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
+  firstActionAt: z.string().transform((v) => asIsoTimestamp(v)),
+  tatBusinessHours: z.number().transform((v) => asBusinessHours(v)),
+});
+
+const githubSampleSchema = z.object({
+  source: z.literal('github'),
+  id: z.number().transform((v) => asPrNumber(v)),
+  reviewer: z.string().transform((v) => asReviewerLogin(v)),
+  requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
+  firstActionAt: z.string().transform((v) => asIsoTimestamp(v)),
+  tatBusinessHours: z.number().transform((v) => asBusinessHours(v)),
+});
+
+export const sampleSchema = z.discriminatedUnion('source', [phabSampleSchema, githubSampleSchema]);
+
+const windowStatsSchema = z.object({
+  n: z.number().int().nonnegative(),
+  median: z.number().nonnegative(),
+  mean: z.number().nonnegative(),
+  p90: z.number().nonnegative(),
+  pctUnderSLA: z.number().min(0).max(100),
+});
+
+const sourceWindowsSchema = z.object({
+  window7d: windowStatsSchema,
+  window14d: windowStatsSchema,
+  window30d: windowStatsSchema,
+});
+
+export const historyRowSchema = z.object({
+  date: z.string(),
+  phab: sourceWindowsSchema,
+  github: sourceWindowsSchema,
+});
 
 const sampleKey = (sample: { source: string; id: unknown; reviewer: string }): string =>
   `${sample.source}:${String(sample.id)}:${sample.reviewer}`;
@@ -53,16 +99,23 @@ const withTat = <T extends PhabSample | GithubSample>(
   ),
 });
 
-const filterWithin = (
-  samples: readonly Sample[],
-  windowDays: number,
-  now: Date,
-): BusinessHours[] => {
-  const cutoffMs = now.getTime() - windowDays * 86_400 * 1000;
-  return samples
-    .filter((s) => Date.parse(s.requestedAt) >= cutoffMs)
-    .map((s) => s.tatBusinessHours);
-};
+// Anchor windows on ET calendar-day boundaries. "N-day window" means N distinct
+// ET calendar days ending with today, so a 7-day window includes today plus the
+// 6 prior ET days. Cutoff = start of (today minus N-1 days).
+export const etWindowCutoffMs = (now: Date, windowDays: number): number =>
+  DateTime.fromJSDate(now, { zone: ET_ZONE })
+    .startOf('day')
+    .minus({ days: windowDays - 1 })
+    .toMillis();
+
+// Shared predicate: is this sample inside the N-day ET window anchored on `now`?
+// Both collect.ts's window stats and Headline.tsx's sample list rely on this,
+// so there's exactly one notion of "in window."
+export const isSampleInWindow = (sample: Sample, windowDays: number, now: Date): boolean =>
+  Date.parse(sample.requestedAt) >= etWindowCutoffMs(now, windowDays);
+
+const filterWithin = (samples: readonly Sample[], windowDays: number, now: Date): BusinessHours[] =>
+  samples.filter((s) => isSampleInWindow(s, windowDays, now)).map((s) => s.tatBusinessHours);
 
 export const collect = async (options: {
   readonly existingSamples: readonly Sample[];
@@ -88,18 +141,23 @@ export const collect = async (options: {
     options.fetchGithub(lookbackDays),
   ]);
 
+  // Fresh extraction wins for keys touched by this run's fetch — so extractor
+  // bug fixes heal samples inside the current follow-up / backfill window.
+  // Anything older than the fetch window is kept as-is from existingSamples
+  // (long tail of persisted data), and its tatBusinessHours is recomputed via
+  // withTat so peopleMap edits still propagate retroactively.
   const merged = new Map<string, Sample>();
+  for (const existing of options.existingSamples) {
+    merged.set(sampleKey(existing), withTat(existing, peopleMap));
+  }
   for (const fresh of phabSamples) {
     merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
   for (const fresh of ghSamples) {
     merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
-  for (const existing of options.existingSamples) {
-    merged.set(sampleKey(existing), existing);
-  }
 
-  const retentionCutoff = now.getTime() - RETENTION_DAYS * 86_400 * 1000;
+  const retentionCutoff = etWindowCutoffMs(now, RETENTION_DAYS);
   const samples = [...merged.values()].filter((s) => Date.parse(s.requestedAt) >= retentionCutoff);
 
   const phabSeries = samples.filter(
@@ -113,32 +171,14 @@ export const collect = async (options: {
   const todayRow: HistoryRow = {
     date: todayEt,
     phab: {
-      window7d: computeStats(
-        filterWithin(phabSeries, WINDOW_7_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
-      window14d: computeStats(
-        filterWithin(phabSeries, WINDOW_14_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
-      window30d: computeStats(
-        filterWithin(phabSeries, WINDOW_30_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
+      window7d: computeStats(filterWithin(phabSeries, WINDOW_7_DAYS, now), slaHours),
+      window14d: computeStats(filterWithin(phabSeries, WINDOW_14_DAYS, now), slaHours),
+      window30d: computeStats(filterWithin(phabSeries, WINDOW_30_DAYS, now), slaHours),
     },
     github: {
-      window7d: computeStats(
-        filterWithin(ghSeries, WINDOW_7_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
-      window14d: computeStats(
-        filterWithin(ghSeries, WINDOW_14_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
-      window30d: computeStats(
-        filterWithin(ghSeries, WINDOW_30_DAYS, now).map((value) => asBusinessHours(value)),
-        slaHours,
-      ),
+      window7d: computeStats(filterWithin(ghSeries, WINDOW_7_DAYS, now), slaHours),
+      window14d: computeStats(filterWithin(ghSeries, WINDOW_14_DAYS, now), slaHours),
+      window30d: computeStats(filterWithin(ghSeries, WINDOW_30_DAYS, now), slaHours),
     },
   };
 
@@ -180,8 +220,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
 
-  const existingSamples = await readJsonFile<Sample[]>(samplesPath, []);
-  const existingHistory = await readJsonFile<HistoryRow[]>(historyPath, []);
+  const existingSamplesRaw = await readJsonFile<unknown>(samplesPath, []);
+  const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
+  const existingSamples = z.array(sampleSchema).parse(existingSamplesRaw);
+  const existingHistory = z.array(historyRowSchema).parse(existingHistoryRaw);
   const peopleMap = await loadPeopleMap(dataDirectory);
 
   const conduit = createConduitClient({
