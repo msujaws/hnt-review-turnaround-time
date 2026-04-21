@@ -22,7 +22,14 @@ const row: HistoryRow = {
 
 describe('Dashboard', () => {
   it('renders a Headline and Trendline for each source when history has data', () => {
-    render(<Dashboard history={[row]} slaHours={4} />);
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
     expect(screen.getByRole('heading', { name: /^phabricator$/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /^github$/i })).toBeInTheDocument();
     expect(screen.getByTestId('trendline-phab')).toBeInTheDocument();
@@ -30,7 +37,9 @@ describe('Dashboard', () => {
   });
 
   it('shows a no-data state when history is empty', () => {
-    render(<Dashboard history={[]} slaHours={4} />);
+    render(
+      <Dashboard history={[]} samples={[]} slaHours={4} now={new Date('2026-04-21T12:00:00Z')} />,
+    );
     expect(screen.getByText(/no snapshots yet/i)).toBeInTheDocument();
   });
 });

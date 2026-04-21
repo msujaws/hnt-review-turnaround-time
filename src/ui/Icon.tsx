@@ -13,6 +13,7 @@ const ALLOWED_SYMBOLS = new Set<string>([
   'warning',
   'code',
   'merge_type',
+  'expand_more',
 ]);
 
 export const asMaterialSymbolName = (name: string): MaterialSymbolName => {

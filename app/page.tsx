@@ -4,14 +4,16 @@ import { Footer } from '../src/ui/Footer';
 
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
+import { loadSamples } from './samples';
 
 const SLA_HOURS = 4;
 
 export const revalidate = 3600;
 
 const Page: FC = async () => {
-  const history = await loadHistory();
+  const [history, samples] = await Promise.all([loadHistory(), loadSamples()]);
   const latest = history.at(-1);
+  const now = new Date();
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10">
       <header className="flex flex-col gap-1">
@@ -22,7 +24,7 @@ const Page: FC = async () => {
           {latest === undefined ? '' : ` Last snapshot: ${latest.date}.`}
         </p>
       </header>
-      <Dashboard history={history} slaHours={SLA_HOURS} />
+      <Dashboard history={history} samples={samples} slaHours={SLA_HOURS} now={now} />
       <Footer />
     </main>
   );
