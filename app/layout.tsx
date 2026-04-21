@@ -1,15 +1,28 @@
+import path from 'node:path';
+
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
+
+import { loadPeopleMap } from '../src/scripts/people';
 
 import './globals.css';
 import { loadHistory } from './history';
 import { buildMetadataSummary } from './metadata';
+import { loadPending } from './pending';
 
 const SLA_HOURS = 4;
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const history = await loadHistory();
-  const summary = buildMetadataSummary(history, SLA_HOURS);
+  const [history, pending, peopleMap] = await Promise.all([
+    loadHistory(),
+    loadPending(),
+    loadPeopleMap(path.join(process.cwd(), 'data')),
+  ]);
+  const summary = buildMetadataSummary(history, SLA_HOURS, {
+    pending,
+    now: new Date(),
+    peopleMap,
+  });
   return {
     title: summary.title,
     description: summary.description,

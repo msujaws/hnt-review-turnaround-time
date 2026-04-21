@@ -1,5 +1,7 @@
-import type { HistoryRow, SourceWindows } from '../src/scripts/collect';
+import type { HistoryRow, PendingSample, SourceWindows } from '../src/scripts/collect';
+import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import type { WindowStats } from '../src/scripts/stats';
+import { isOverduePending } from '../src/ui/OverdueCallout';
 
 export interface MetadataSummary {
   readonly title: string;
@@ -24,15 +26,35 @@ const pickHeadlineWindow = (row: SourceWindows): Headline => {
   return { label: '30d', stats: row.window30d };
 };
 
+export interface MetadataOptions {
+  readonly pending?: readonly PendingSample[];
+  readonly now?: Date;
+  readonly peopleMap?: PeopleMap;
+}
+
+const countOverdue = (
+  pending: readonly PendingSample[],
+  now: Date,
+  peopleMap: PeopleMap,
+  slaHours: number,
+): number => pending.filter((p) => isOverduePending(p, now, peopleMap, slaHours)).length;
+
 export const buildMetadataSummary = (
   history: readonly HistoryRow[],
   slaHours: number,
+  options: MetadataOptions = {},
 ): MetadataSummary => {
+  const pending = options.pending ?? [];
+  const now = options.now ?? new Date();
+  const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
+  const overdueCount = countOverdue(pending, now, peopleMap, slaHours);
+  const overduePrefix = overdueCount > 0 ? `⚠ ${overdueCount.toString()} overdue · ` : '';
+
   const latest = history.at(-1);
   if (latest === undefined) {
     return {
-      title: 'HNT Review TAT',
-      description: 'No snapshots yet.',
+      title: `${overduePrefix}HNT Review TAT`,
+      description: overdueCount > 0 ? `${overduePrefix}No snapshots yet.` : 'No snapshots yet.',
     };
   }
   const phab = pickHeadlineWindow(latest.phab);
@@ -41,14 +63,17 @@ export const buildMetadataSummary = (
   const ghHas = github.stats.n > 0;
   if (!phabHas && !ghHas) {
     return {
-      title: 'HNT Review TAT · awaiting first reviews',
-      description: 'No reviews yet in the 7/14/30-day windows.',
+      title: `${overduePrefix}HNT Review TAT · awaiting first reviews`,
+      description: `${overduePrefix}No reviews yet in the 7/14/30-day windows.`,
     };
   }
-  const title = `HNT Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label}) · GH ${formatHours(github.stats.median, ghHas)} (${github.label}) · goal ${slaHours.toString()}h`;
-  const description = [
+  const baseTitle = `HNT Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label}) · GH ${formatHours(github.stats.median, ghHas)} (${github.label}) · goal ${slaHours.toString()}h`;
+  const baseDescription = [
     `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})`,
     `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})`,
   ].join(' · ');
-  return { title, description };
+  return {
+    title: `${overduePrefix}${baseTitle}`,
+    description: `${overduePrefix}${baseDescription}`,
+  };
 };
