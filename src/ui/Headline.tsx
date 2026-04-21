@@ -60,19 +60,29 @@ export interface HeadlineProps {
   readonly title: string;
   readonly window7d: WindowStats;
   readonly window14d: WindowStats;
+  readonly window30d: WindowStats;
   readonly slaHours: number;
 }
 
-export const Headline: FC<HeadlineProps> = ({ title, window7d, window14d, slaHours }) => (
+export const Headline: FC<HeadlineProps> = ({
+  title,
+  window7d,
+  window14d,
+  window30d,
+  slaHours,
+}) => (
   <section className="flex flex-col gap-4">
     <header className="flex items-baseline justify-between">
       <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
       <span className="flex items-center gap-2 text-sm text-neutral-400">
         <Icon name={SCHEDULE_ICON} className="text-base" />
-        {window7d.n + window14d.n === 0 ? 'awaiting first reviews' : 'rolling windows'}
+        {window7d.n + window14d.n + window30d.n === 0
+          ? 'awaiting first reviews'
+          : 'rolling windows'}
       </span>
     </header>
     <WindowRow label="7-day" stats={window7d} slaHours={slaHours} />
     <WindowRow label="14-day" stats={window14d} slaHours={slaHours} accent />
+    <WindowRow label="30-day" stats={window30d} slaHours={slaHours} />
   </section>
 );

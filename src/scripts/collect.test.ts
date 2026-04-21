@@ -130,7 +130,7 @@ describe('collect', () => {
     expect(result.samples).toEqual([]);
   });
 
-  it('appends today history row with 7d and 14d windows per source', async () => {
+  it('appends today history row with 7d, 14d, and 30d windows per source', async () => {
     const fetchPhab = vi.fn(async () => [
       makePhabSample({
         requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
@@ -150,7 +150,33 @@ describe('collect', () => {
     expect(result.history).toHaveLength(1);
     expect(result.history[0]?.date).toBe('2026-04-20');
     expect(result.history[0]?.phab.window7d.n).toBe(1);
+    expect(result.history[0]?.phab.window14d.n).toBe(1);
+    expect(result.history[0]?.phab.window30d.n).toBe(1);
     expect(result.history[0]?.github.window7d.n).toBe(1);
+    expect(result.history[0]?.github.window14d.n).toBe(1);
+    expect(result.history[0]?.github.window30d.n).toBe(1);
+  });
+
+  it('includes samples up to 30 days old in the 30-day window but not in 14d', async () => {
+    // Requested 20 business-weekdays earlier: inside 30d, outside 14d.
+    const fetchPhab = vi.fn(async () => [
+      makePhabSample({
+        requestedAt: asIsoTimestamp('2026-03-25T14:00:00Z'),
+        firstActionAt: asIsoTimestamp('2026-03-25T16:00:00Z'),
+      }),
+    ]);
+    const fetchGithub = vi.fn(async () => []);
+
+    const result = await collect({
+      existingSamples: [],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      now: new Date('2026-04-20T13:00:00Z'),
+    });
+
+    expect(result.history[0]?.phab.window14d.n).toBe(0);
+    expect(result.history[0]?.phab.window30d.n).toBe(1);
   });
 
   it('replaces an existing row for the same date (idempotent)', async () => {
@@ -160,10 +186,12 @@ describe('collect', () => {
         phab: {
           window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
           window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+          window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         },
         github: {
           window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
           window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+          window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         },
       },
     ];
@@ -188,10 +216,12 @@ describe('collect', () => {
       phab: {
         window7d: { n: 5, median: 2, mean: 2, p90: 3, pctUnderSLA: 80 },
         window14d: { n: 5, median: 2, mean: 2, p90: 3, pctUnderSLA: 80 },
+        window30d: { n: 5, median: 2, mean: 2, p90: 3, pctUnderSLA: 80 },
       },
       github: {
         window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
       },
     };
     const fetchPhab = vi.fn(async () => []);

@@ -10,10 +10,12 @@ const row = (date: string, medianHours: number, pctUnderSLA: number): HistoryRow
   phab: {
     window7d: { n: 1, median: medianHours, mean: medianHours, p90: medianHours, pctUnderSLA },
     window14d: { n: 1, median: medianHours, mean: medianHours, p90: medianHours, pctUnderSLA },
+    window30d: { n: 1, median: medianHours, mean: medianHours, p90: medianHours, pctUnderSLA },
   },
   github: {
     window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
     window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+    window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
   },
 });
 

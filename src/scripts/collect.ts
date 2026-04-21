@@ -16,6 +16,7 @@ const FOLLOWUP_LOOKBACK_DAYS = 3;
 const BACKFILL_LOOKBACK_DAYS = 45;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
+const WINDOW_30_DAYS = 30;
 const ET_ZONE = 'America/New_York';
 
 export type Sample =
@@ -24,8 +25,16 @@ export type Sample =
 
 export interface HistoryRow {
   readonly date: string;
-  readonly phab: { readonly window7d: WindowStats; readonly window14d: WindowStats };
-  readonly github: { readonly window7d: WindowStats; readonly window14d: WindowStats };
+  readonly phab: {
+    readonly window7d: WindowStats;
+    readonly window14d: WindowStats;
+    readonly window30d: WindowStats;
+  };
+  readonly github: {
+    readonly window7d: WindowStats;
+    readonly window14d: WindowStats;
+    readonly window30d: WindowStats;
+  };
 }
 
 const sampleKey = (sample: { source: string; id: unknown; reviewer: string }): string =>
@@ -104,6 +113,10 @@ export const collect = async (options: {
         filterWithin(phabSeries, WINDOW_14_DAYS, now).map((value) => asBusinessHours(value)),
         slaHours,
       ),
+      window30d: computeStats(
+        filterWithin(phabSeries, WINDOW_30_DAYS, now).map((value) => asBusinessHours(value)),
+        slaHours,
+      ),
     },
     github: {
       window7d: computeStats(
@@ -112,6 +125,10 @@ export const collect = async (options: {
       ),
       window14d: computeStats(
         filterWithin(ghSeries, WINDOW_14_DAYS, now).map((value) => asBusinessHours(value)),
+        slaHours,
+      ),
+      window30d: computeStats(
+        filterWithin(ghSeries, WINDOW_30_DAYS, now).map((value) => asBusinessHours(value)),
         slaHours,
       ),
     },

@@ -17,10 +17,11 @@ interface Headline {
   readonly stats: WindowStats;
 }
 
-const pickHeadlineWindow = (row: HistoryRow['phab']): Headline =>
-  row.window7d.n > 0
-    ? { label: '7d', stats: row.window7d }
-    : { label: '14d', stats: row.window14d };
+const pickHeadlineWindow = (row: HistoryRow['phab']): Headline => {
+  if (row.window7d.n > 0) return { label: '7d', stats: row.window7d };
+  if (row.window14d.n > 0) return { label: '14d', stats: row.window14d };
+  return { label: '30d', stats: row.window30d };
+};
 
 export const buildMetadataSummary = (
   history: readonly HistoryRow[],

@@ -25,6 +25,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, slaHours }) => {
           title="Phabricator"
           window7d={latest.phab.window7d}
           window14d={latest.phab.window14d}
+          window30d={latest.phab.window30d}
           slaHours={slaHours}
         />
         <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
@@ -34,6 +35,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, slaHours }) => {
           title="GitHub"
           window7d={latest.github.window7d}
           window14d={latest.github.window14d}
+          window30d={latest.github.window30d}
           slaHours={slaHours}
         />
         <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />

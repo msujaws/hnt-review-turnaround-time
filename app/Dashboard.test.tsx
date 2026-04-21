@@ -11,10 +11,12 @@ const row: HistoryRow = {
   phab: {
     window7d: { n: 23, median: 2.4, mean: 3.1, p90: 7.8, pctUnderSLA: 87 },
     window14d: { n: 47, median: 2.6, mean: 3.4, p90: 8.1, pctUnderSLA: 85 },
+    window30d: { n: 95, median: 2.7, mean: 3.6, p90: 8.3, pctUnderSLA: 83 },
   },
   github: {
     window7d: { n: 12, median: 1.8, mean: 2.2, p90: 4.5, pctUnderSLA: 92 },
     window14d: { n: 23, median: 1.9, mean: 2.3, p90: 5, pctUnderSLA: 90 },
+    window30d: { n: 45, median: 2, mean: 2.4, p90: 5.3, pctUnderSLA: 88 },
   },
 };
 
@@ -49,10 +51,12 @@ describe('buildMetadataSummary', () => {
       phab: {
         window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         window14d: { n: 5, median: 3.2, mean: 3.4, p90: 6, pctUnderSLA: 80 },
+        window30d: { n: 9, median: 3.3, mean: 3.6, p90: 6.5, pctUnderSLA: 78 },
       },
       github: {
         window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         window14d: { n: 3, median: 1.1, mean: 1.5, p90: 2.4, pctUnderSLA: 100 },
+        window30d: { n: 6, median: 1.2, mean: 1.6, p90: 2.6, pctUnderSLA: 100 },
       },
     };
     const summary = buildMetadataSummary([sparseRow], 4);
@@ -74,10 +78,12 @@ describe('buildMetadataSummary', () => {
       phab: {
         window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
       },
       github: {
         window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
         window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
       },
     };
     const summary = buildMetadataSummary([emptyRow], 4);
