@@ -75,8 +75,14 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
 
   const samples: GithubSample[] = [];
   for (const [reviewer, reviewAt] of earliestReviewByReviewer) {
-    const requestAt = explicitRequestAt.get(reviewer) ?? earliestRequestAt;
-    if (reviewAt < requestAt) continue;
+    const explicitAt = explicitRequestAt.get(reviewer);
+    let requestAt: string | undefined;
+    if (explicitAt !== undefined && explicitAt <= reviewAt) {
+      requestAt = explicitAt;
+    } else if (earliestRequestAt <= reviewAt) {
+      requestAt = earliestRequestAt;
+    }
+    if (requestAt === undefined) continue;
     samples.push({
       source: 'github',
       id: asPrNumber(data.number),

@@ -233,6 +233,37 @@ describe('extractSamplesFromPullRequest', () => {
     expect(samples[0]?.requestedAt).toBe('2026-04-19T14:00:00Z');
   });
 
+  it('falls back to an earlier team request when the explicit re-request comes after the review', () => {
+    // PR #373-style: team request at T1 (null reviewer), reviewer acts at T2, then
+    // explicit re-request at T3 > T2. Review was a response to T1, not T3.
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-03-09T19:47:04Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-03-10T22:06:31Z',
+          authorLogin: 'jpetto',
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-03-11T18:43:39Z',
+          reviewerLogins: ['jpetto'],
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      reviewer: 'jpetto',
+      requestedAt: '2026-03-09T19:47:04Z',
+      firstActionAt: '2026-03-10T22:06:31Z',
+    });
+  });
+
   it('emits no sample when there is no ReviewRequestedEvent at all', () => {
     const data = pr({
       timeline: [
