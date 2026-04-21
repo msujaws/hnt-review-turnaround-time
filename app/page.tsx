@@ -46,11 +46,22 @@ const Page: FC = async () => {
           priority
           className="size-60 object-contain"
         />
-        <div className="flex flex-col gap-1 pt-3.5">
+        <div className="flex flex-col gap-2 pt-3.5">
           <h1 className="text-2xl font-bold text-neutral-100">HNT Review Turnaround</h1>
           <p className="text-sm text-neutral-400">
-            Time from review request to first reviewer action, in business hours (Mon&ndash;Fri
-            9am&ndash;5pm ET). Goal: {SLA_HOURS}h.
+            How long the Home-NewTab team takes to give first feedback on code reviews, measured
+            from the moment a reviewer is requested to their first accept, comment, or
+            request-changes. Clock is in business hours only (Mon&ndash;Fri 9am&ndash;5pm in each
+            reviewer&apos;s local timezone). Goal: {SLA_HOURS}h per review.
+          </p>
+          <p className="text-sm text-neutral-400">
+            Each tile shows median, mean, p90, and the percentage of reviews under the {SLA_HOURS}h
+            SLA for rolling 7-, 14-, and 30-day windows. Tiles are tinted{' '}
+            <span className="text-emerald-300">green</span> when well inside target,{' '}
+            <span className="text-amber-300">amber</span> when slipping, and{' '}
+            <span className="text-rose-300">rose</span> when well over &mdash; expand a row to see
+            the individual reviews behind it. The callout at the top surfaces pending reviews that
+            have been waiting 10&times; the SLA or longer.
             {latest === undefined ? '' : ` Last snapshot: ${latest.date}.`}
           </p>
         </div>

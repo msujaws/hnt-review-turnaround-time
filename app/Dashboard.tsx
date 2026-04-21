@@ -31,6 +31,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now 
       <div className="flex flex-col gap-6">
         <Headline
           title="Phabricator"
+          description="Revisions on mozilla-central where a team member is a requested reviewer. Time is measured from the request until that reviewer first accepts, comments, or requests changes."
           window7d={latest.phab.window7d}
           window14d={latest.phab.window14d}
           window30d={latest.phab.window30d}
@@ -43,6 +44,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now 
       <div className="flex flex-col gap-6">
         <Headline
           title="GitHub"
+          description="Pull requests in Pocket/content-monorepo where a team member is a requested reviewer. Time stops at that reviewer's first review or review comment."
           window7d={latest.github.window7d}
           window14d={latest.github.window14d}
           window30d={latest.github.window30d}

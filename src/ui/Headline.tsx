@@ -18,10 +18,12 @@ const EXPAND_ICON = asMaterialSymbolName('expand_more');
 
 const GITHUB_OWNER = 'Pocket';
 const GITHUB_REPO = 'content-monorepo';
+const PHAB_ORIGIN = 'https://phabricator.services.mozilla.com';
 
 const CARD_BASE_CLASSES =
-  'flex flex-col gap-1 rounded-md p-4 animate-pop-in transition-transform duration-200 ease-bouncy hover:scale-[1.03]';
-const CARD_NEUTRAL_CLASSES = 'bg-neutral-900 ring-1 ring-neutral-800';
+  'flex flex-col gap-1 rounded-md p-4 animate-pop-in transition-all duration-200 ease-bouncy hover:-translate-y-0.5 hover:scale-[1.03]';
+const CARD_NEUTRAL_CLASSES =
+  'bg-neutral-900 ring-1 ring-neutral-800 hover:bg-neutral-800 hover:ring-neutral-700';
 const VALUE_NEUTRAL_CLASSES = 'text-neutral-100';
 
 const formatHours = (value: number): string => {
@@ -84,6 +86,19 @@ const SampleIdentifier: FC<SampleRowProps> = ({ sample }) => {
         target="_blank"
       >
         #{String(sample.id)}
+      </a>
+    );
+  }
+  if (sample.revisionId !== undefined) {
+    const label = `D${sample.revisionId.toString()}`;
+    return (
+      <a
+        href={`${PHAB_ORIGIN}/${label}`}
+        className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {label}
       </a>
     );
   }
@@ -234,6 +249,7 @@ const WindowRow: FC<WindowRowProps> = (props) => {
 
 export interface HeadlineProps {
   readonly title: string;
+  readonly description?: string;
   readonly window7d: WindowStats;
   readonly window14d: WindowStats;
   readonly window30d: WindowStats;
@@ -244,6 +260,7 @@ export interface HeadlineProps {
 
 export const Headline: FC<HeadlineProps> = ({
   title,
+  description,
   window7d,
   window14d,
   window30d,
@@ -252,14 +269,17 @@ export const Headline: FC<HeadlineProps> = ({
   now,
 }) => (
   <section className="flex flex-col gap-4">
-    <header className="flex items-baseline justify-between">
-      <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
-      <span className="flex items-center gap-2 text-sm text-neutral-400">
-        <Icon name={SCHEDULE_ICON} className="text-base" />
-        {window7d.n + window14d.n + window30d.n === 0
-          ? 'awaiting first reviews'
-          : 'rolling windows'}
-      </span>
+    <header className="flex flex-col gap-2">
+      <div className="flex items-baseline justify-between">
+        <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
+        <span className="flex items-center gap-2 text-sm text-neutral-400">
+          <Icon name={SCHEDULE_ICON} className="text-base" />
+          {window7d.n + window14d.n + window30d.n === 0
+            ? 'awaiting first reviews'
+            : 'rolling windows'}
+        </span>
+      </div>
+      {description === undefined ? null : <p className="text-sm text-neutral-400">{description}</p>}
     </header>
     <WindowRow label="7-day" stats={window7d} slaHours={slaHours} samples={samples} now={now} />
     <WindowRow label="14-day" stats={window14d} slaHours={slaHours} samples={samples} now={now} />

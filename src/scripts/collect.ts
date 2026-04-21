@@ -59,6 +59,7 @@ export interface HistoryRow {
 const phabSampleSchema = z.object({
   source: z.literal('phab'),
   id: z.string().transform((v) => asRevisionPhid(v)),
+  revisionId: z.number().int().positive().optional(),
   reviewer: z.string().transform((v) => asReviewerLogin(v)),
   requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
   firstActionAt: z.string().transform((v) => asIsoTimestamp(v)),

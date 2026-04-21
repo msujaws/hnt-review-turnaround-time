@@ -12,6 +12,7 @@ import {
 export interface PhabSample {
   readonly source: 'phab';
   readonly id: RevisionPhid;
+  readonly revisionId?: number | undefined;
   readonly reviewer: ReviewerLogin;
   readonly requestedAt: IsoTimestamp;
   readonly firstActionAt: IsoTimestamp;
@@ -106,6 +107,7 @@ export const extractSamplesFromTransactions = (
     samples.push({
       source: 'phab',
       id: asRevisionPhid(revision.phid),
+      revisionId: revision.id,
       reviewer: asReviewerLogin(login),
       requestedAt: toIso(requestedAt),
       firstActionAt: toIso(firstActionAt),

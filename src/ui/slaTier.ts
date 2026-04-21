@@ -17,9 +17,9 @@ export const tierForPctUnderSla = (pct: number): SlaTier => {
 };
 
 export const TIER_CARD_CLASSES: Record<SlaTier, string> = {
-  good: 'bg-emerald-400/10 ring-1 ring-emerald-400/30',
-  warn: 'bg-amber-400/10 ring-1 ring-amber-400/30',
-  bad: 'bg-rose-400/10 ring-1 ring-rose-400/30',
+  good: 'bg-emerald-400/10 ring-1 ring-emerald-400/30 hover:bg-emerald-400/25 hover:ring-emerald-400/60',
+  warn: 'bg-amber-400/10 ring-1 ring-amber-400/30 hover:bg-amber-400/25 hover:ring-amber-400/60',
+  bad: 'bg-rose-400/10 ring-1 ring-rose-400/30 hover:bg-rose-400/25 hover:ring-rose-400/60',
 };
 
 export const TIER_VALUE_TEXT_CLASSES: Record<SlaTier, string> = {
