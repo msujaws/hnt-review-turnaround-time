@@ -234,6 +234,135 @@ describe('extractSamplesFromPullRequest', () => {
     expect(samples[0]?.requestedAt).toBe('2026-04-19T14:00:00Z');
   });
 
+  it('uses the earliest of concurrent team + explicit requests (team before explicit)', () => {
+    // Team request at T1, explicit user request at T2, review at T3.
+    // Reviewer was on the hook from T1 (via the team), not T2.
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T10:00:00Z',
+          reviewerLogins: [],
+          teamSlug: 'team-a',
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T11:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-10T13:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe('2026-04-10T10:00:00Z');
+  });
+
+  it('disambiguates multiple unknown-slug team requests so a remove does not wipe the other', () => {
+    // Two unknown-slug team requests; one removal (we don't know which team);
+    // reviewer acts. The first add should be paired with the first remove (FIFO),
+    // leaving the second team request active, so the sample uses the second add's time.
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T10:00:00Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T11:00:00Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'ReviewRequestRemovedEvent',
+          createdAt: '2026-04-10T12:00:00Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-10T14:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe('2026-04-10T11:00:00Z');
+  });
+
+  it("keeps another team's active request when one team is removed", () => {
+    // Team A requested at T1, Team B requested at T2, Team A removed at T3.
+    // Alice reviews at T4. Team B is still active; sample should use T2 (earliest
+    // still-active team request at or before the review).
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T10:00:00Z',
+          reviewerLogins: [],
+          teamSlug: 'team-a',
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T11:00:00Z',
+          reviewerLogins: [],
+          teamSlug: 'team-b',
+        },
+        {
+          kind: 'ReviewRequestRemovedEvent',
+          createdAt: '2026-04-10T12:00:00Z',
+          reviewerLogins: [],
+          teamSlug: 'team-a',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-10T14:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe('2026-04-10T11:00:00Z');
+  });
+
+  it('uses the latest request after a remove/re-request cycle, not the first one', () => {
+    // Requested T1, removed T2, re-requested T3, reviewed T4. Sample = (T3, T4).
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'ReviewRequestRemovedEvent',
+          createdAt: '2026-04-10T15:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-10T16:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-10T18:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe('2026-04-10T16:00:00Z');
+    expect(samples[0]?.firstActionAt).toBe('2026-04-10T18:00:00Z');
+  });
+
   it('falls back to an earlier team request when the explicit re-request comes after the review', () => {
     // PR #373-style: team request at T1 (null reviewer), reviewer acts at T2, then
     // explicit re-request at T3 > T2. Review was a response to T1, not T3.
@@ -287,6 +416,27 @@ describe('extractSamplesFromPullRequest', () => {
     });
   });
 
+  it('does NOT fall back to createdAt for a reviewer who was never on the hook (request was for someone else)', () => {
+    // bob is requested, alice leaves a drive-by review. alice was never requested
+    // (explicitly or via team), so she shouldn't get a sample anchored on createdAt.
+    const data = pr({
+      createdAt: '2026-04-19T12:00:00Z',
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['bob'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
+
   it('still emits no sample when a review is submitted before the PR was created (data anomaly)', () => {
     const data = pr({
       createdAt: '2026-04-19T18:00:00Z',
@@ -318,6 +468,7 @@ describe('fetchGithubSamples', () => {
               updatedAt: '2026-04-19T20:00:00Z',
               author: { login: 'author1' },
               timelineItems: {
+                pageInfo: { hasNextPage: false, endCursor: null },
                 nodes: [
                   {
                     __typename: 'ReviewRequestedEvent',
@@ -348,6 +499,7 @@ describe('fetchGithubSamples', () => {
               updatedAt: '2026-04-10T20:00:00Z',
               author: { login: 'author2' },
               timelineItems: {
+                pageInfo: { hasNextPage: false, endCursor: null },
                 nodes: [
                   {
                     __typename: 'ReviewRequestedEvent',
@@ -368,7 +520,7 @@ describe('fetchGithubSamples', () => {
               createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-03-10T12:00:00Z',
               author: { login: 'author3' },
-              timelineItems: { nodes: [] },
+              timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
             },
           ],
         },
@@ -387,6 +539,83 @@ describe('fetchGithubSamples', () => {
     expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
   });
 
+  it('paginates timeline items for a PR with more than 100 events', async () => {
+    const request = vi.fn();
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+
+    // Page 1: one PR with a truncated timeline (request at T1, many noisy events; hasNextPage=true).
+    request.mockResolvedValueOnce({
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: false, endCursor: null },
+          nodes: [
+            {
+              number: 500,
+              isDraft: false,
+              createdAt: '2026-04-18T12:00:00Z',
+              updatedAt: '2026-04-20T20:00:00Z',
+              author: { login: 'author-500' },
+              timelineItems: {
+                pageInfo: { hasNextPage: true, endCursor: 'timeline-cursor-1' },
+                nodes: [
+                  {
+                    __typename: 'ReviewRequestedEvent',
+                    createdAt: '2026-04-18T14:00:00Z',
+                    requestedReviewer: { __typename: 'User', login: 'alice' },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    });
+    // Timeline tail: the review event for alice (missed by the 100-item cap on page 1).
+    request.mockResolvedValueOnce({
+      repository: {
+        pullRequest: {
+          timelineItems: {
+            pageInfo: { hasNextPage: false, endCursor: null },
+            nodes: [
+              {
+                __typename: 'PullRequestReview',
+                submittedAt: '2026-04-18T16:00:00Z',
+                author: { login: 'alice' },
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    const samples = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      source: 'github',
+      id: 500,
+      reviewer: 'alice',
+      requestedAt: '2026-04-18T14:00:00Z',
+      firstActionAt: '2026-04-18T16:00:00Z',
+    });
+    expect(request).toHaveBeenCalledTimes(2);
+    // The tail call must target THIS PR with THIS cursor — otherwise a bug
+    // swapping variables would still satisfy "2 calls, 1 sample".
+    const tailCallVariables = request.mock.calls[1]?.[1] as Record<string, unknown> | undefined;
+    expect(tailCallVariables).toMatchObject({
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      number: 500,
+      cursor: 'timeline-cursor-1',
+    });
+  });
+
   it('stops paginating once PRs are older than the lookback window', async () => {
     const request = vi.fn();
     const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
@@ -401,7 +630,7 @@ describe('fetchGithubSamples', () => {
               createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-01-01T12:00:00Z',
               author: { login: 'author1' },
-              timelineItems: { nodes: [] },
+              timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
             },
           ],
         },
