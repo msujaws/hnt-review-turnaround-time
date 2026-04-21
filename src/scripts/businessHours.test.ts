@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { asIsoTimestamp } from '../types/brand';
+import { asIanaTimezone, asIsoTimestamp } from '../types/brand';
 
 import { businessHoursBetween } from './businessHours';
 
 const ts = (value: string): ReturnType<typeof asIsoTimestamp> => asIsoTimestamp(value);
+const tz = (value: string): ReturnType<typeof asIanaTimezone> => asIanaTimezone(value);
 
 describe('businessHoursBetween', () => {
   it('returns 0 for identical timestamps', () => {
@@ -69,6 +70,39 @@ describe('businessHoursBetween', () => {
     expect(
       businessHoursBetween(ts('2026-10-30T13:00:00Z'), ts('2026-11-02T16:00:00Z')),
     ).toBeCloseTo(10, 5);
+  });
+
+  it('respects a non-ET timezone for the business-hour window', () => {
+    // Melbourne in June is AEST (UTC+10), no DST.
+    // Request at 2026-06-01T00:00:00Z = Mon 10:00 AEST (inside 9-17)
+    // First action at 2026-06-01T02:00:00Z = Mon 12:00 AEST → 2h
+    expect(
+      businessHoursBetween(
+        ts('2026-06-01T00:00:00Z'),
+        ts('2026-06-01T02:00:00Z'),
+        tz('Australia/Melbourne'),
+      ),
+    ).toBeCloseTo(2, 5);
+  });
+
+  it('treats the same wall-clock span as outside business hours in ET and inside in Melbourne', () => {
+    // 2026-06-01T01:00:00Z → 03:00:00Z
+    // ET: 21:00 → 23:00 Sun (weekend, 0 business hours)
+    // Melbourne: 11:00 → 13:00 Mon (inside business hours, 2h)
+    expect(
+      businessHoursBetween(
+        ts('2026-06-01T01:00:00Z'),
+        ts('2026-06-01T03:00:00Z'),
+        tz('America/New_York'),
+      ),
+    ).toBe(0);
+    expect(
+      businessHoursBetween(
+        ts('2026-06-01T01:00:00Z'),
+        ts('2026-06-01T03:00:00Z'),
+        tz('Australia/Melbourne'),
+      ),
+    ).toBeCloseTo(2, 5);
   });
 
   it('handles multiple full weeks', () => {

@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import {
   asBusinessHours,
+  asIanaTimezone,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
@@ -10,6 +11,7 @@ import {
 
 import { collect, type HistoryRow, type Sample } from './collect';
 import type { GithubSample } from './github';
+import type { PeopleMap } from './people';
 import type { PhabSample } from './phabricator';
 
 const makePhabSample = (overrides: Partial<PhabSample> = {}): PhabSample => ({
@@ -155,6 +157,56 @@ describe('collect', () => {
     expect(result.history[0]?.github.window7d.n).toBe(1);
     expect(result.history[0]?.github.window14d.n).toBe(1);
     expect(result.history[0]?.github.window30d.n).toBe(1);
+  });
+
+  it('computes tatBusinessHours in the reviewer’s local timezone when a people map is provided', async () => {
+    // Request at 2026-06-01T00:00:00Z, first action at +2h.
+    // ET interprets this as Sun 20:00 → 22:00 (outside business hours → 0h).
+    // Melbourne interprets it as Mon 10:00 → 12:00 (inside business hours → 2h).
+    const peopleMap: PeopleMap = {
+      github: { 'mel-reviewer': asIanaTimezone('Australia/Melbourne') },
+      phab: {},
+    };
+    const fetchPhab = vi.fn(async () => []);
+    const fetchGithub = vi.fn(async () => [
+      makeGhSample({
+        reviewer: asReviewerLogin('mel-reviewer'),
+        requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
+        firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
+      }),
+    ]);
+
+    const result = await collect({
+      existingSamples: [],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      peopleMap,
+      now: new Date('2026-06-01T12:00:00Z'),
+    });
+
+    expect(result.samples[0]?.tatBusinessHours).toBeCloseTo(2, 5);
+  });
+
+  it('falls back to ET when no peopleMap is supplied (backwards-compat)', async () => {
+    const fetchPhab = vi.fn(async () => []);
+    const fetchGithub = vi.fn(async () => [
+      makeGhSample({
+        requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
+        firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
+      }),
+    ]);
+
+    const result = await collect({
+      existingSamples: [],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      now: new Date('2026-06-01T12:00:00Z'),
+    });
+
+    // ET: Sun 20:00 → 22:00 = 0 business hours.
+    expect(result.samples[0]?.tatBusinessHours).toBe(0);
   });
 
   it('includes samples up to 30 days old in the 30-day window but not in 14d', async () => {

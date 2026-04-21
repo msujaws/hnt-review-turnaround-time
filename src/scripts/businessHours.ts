@@ -1,8 +1,13 @@
 import { DateTime, type DateTime as LuxonDateTime, Interval } from 'luxon';
 
-import { asBusinessHours, type BusinessHours, type IsoTimestamp } from '../types/brand';
+import {
+  asBusinessHours,
+  type BusinessHours,
+  type IanaTimezone,
+  type IsoTimestamp,
+} from '../types/brand';
 
-const ZONE = 'America/New_York';
+const DEFAULT_ZONE = 'America/New_York';
 const WORK_START_HOUR = 9;
 const WORK_END_HOUR = 17;
 
@@ -16,9 +21,14 @@ const workingWindowForDay = (day: LuxonDateTime): Interval | null => {
   return Interval.fromDateTimes(open, close);
 };
 
-export const businessHoursBetween = (start: IsoTimestamp, end: IsoTimestamp): BusinessHours => {
-  const startDateTime = DateTime.fromISO(start, { zone: ZONE });
-  const endDateTime = DateTime.fromISO(end, { zone: ZONE });
+export const businessHoursBetween = (
+  start: IsoTimestamp,
+  end: IsoTimestamp,
+  timezone?: IanaTimezone,
+): BusinessHours => {
+  const zone = timezone ?? DEFAULT_ZONE;
+  const startDateTime = DateTime.fromISO(start, { zone });
+  const endDateTime = DateTime.fromISO(end, { zone });
 
   if (!startDateTime.isValid || !endDateTime.isValid || endDateTime <= startDateTime) {
     return asBusinessHours(0);

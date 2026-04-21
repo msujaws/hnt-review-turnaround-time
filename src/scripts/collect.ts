@@ -7,6 +7,7 @@ import { asBusinessHours, type BusinessHours } from '../types/brand';
 
 import { businessHoursBetween } from './businessHours';
 import { createGithubClient, fetchGithubSamples, type GithubSample } from './github';
+import { EMPTY_PEOPLE_MAP, loadPeopleMap, type PeopleMap, timezoneForReviewer } from './people';
 import { createConduitClient, fetchPhabSamples, type PhabSample } from './phabricator';
 import { computeStats, type WindowStats } from './stats';
 
@@ -42,9 +43,14 @@ const sampleKey = (sample: { source: string; id: unknown; reviewer: string }): s
 
 const withTat = <T extends PhabSample | GithubSample>(
   sample: T,
+  peopleMap: PeopleMap,
 ): T & { tatBusinessHours: BusinessHours } => ({
   ...sample,
-  tatBusinessHours: businessHoursBetween(sample.requestedAt, sample.firstActionAt),
+  tatBusinessHours: businessHoursBetween(
+    sample.requestedAt,
+    sample.firstActionAt,
+    timezoneForReviewer(peopleMap, sample.source, sample.reviewer),
+  ),
 });
 
 const filterWithin = (
@@ -63,6 +69,7 @@ export const collect = async (options: {
   readonly existingHistory: readonly HistoryRow[];
   readonly fetchPhab: (lookbackDays: number) => Promise<readonly PhabSample[]>;
   readonly fetchGithub: (lookbackDays: number) => Promise<readonly GithubSample[]>;
+  readonly peopleMap?: PeopleMap;
   readonly now?: Date;
   readonly slaHours?: number;
 }): Promise<{
@@ -72,6 +79,7 @@ export const collect = async (options: {
 }> => {
   const now = options.now ?? new Date();
   const slaHours = options.slaHours ?? SLA_HOURS;
+  const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
   const lookbackDays =
     options.existingSamples.length === 0 ? BACKFILL_LOOKBACK_DAYS : FOLLOWUP_LOOKBACK_DAYS;
 
@@ -82,10 +90,10 @@ export const collect = async (options: {
 
   const merged = new Map<string, Sample>();
   for (const fresh of phabSamples) {
-    merged.set(sampleKey(fresh), withTat(fresh));
+    merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
   for (const fresh of ghSamples) {
-    merged.set(sampleKey(fresh), withTat(fresh));
+    merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
   for (const existing of options.existingSamples) {
     merged.set(sampleKey(existing), existing);
@@ -174,6 +182,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
 
   const existingSamples = await readJsonFile<Sample[]>(samplesPath, []);
   const existingHistory = await readJsonFile<HistoryRow[]>(historyPath, []);
+  const peopleMap = await loadPeopleMap(dataDirectory);
 
   const conduit = createConduitClient({
     endpoint: 'https://phabricator.services.mozilla.com/api',
@@ -184,6 +193,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const { samples, history } = await collect({
     existingSamples,
     existingHistory,
+    peopleMap,
     fetchPhab: (lookbackDays) =>
       fetchPhabSamples({
         client: conduit,
