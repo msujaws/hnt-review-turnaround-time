@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "date": "2026-04-21",
+    "phab": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 1,
+        "median": 2.4338888888888888,
+        "mean": 2.4338888888888888,
+        "p90": 2.4338888888888888,
+        "pctUnderSLA": 100
+      }
+    }
+  }
+]
