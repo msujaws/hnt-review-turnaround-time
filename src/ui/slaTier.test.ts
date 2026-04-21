@@ -63,4 +63,10 @@ describe('tier class maps', () => {
     expect(TIER_TEXT_CLASSES.warn).toMatch(/amber/);
     expect(TIER_TEXT_CLASSES.bad).toMatch(/rose/);
   });
+
+  it('each tier card class includes a hover bg intensification', () => {
+    expect(TIER_CARD_CLASSES.good).toMatch(/hover:bg-emerald/);
+    expect(TIER_CARD_CLASSES.warn).toMatch(/hover:bg-amber/);
+    expect(TIER_CARD_CLASSES.bad).toMatch(/hover:bg-rose/);
+  });
 });

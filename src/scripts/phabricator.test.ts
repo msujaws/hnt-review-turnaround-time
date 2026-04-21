@@ -86,6 +86,7 @@ describe('extractSamplesFromTransactions', () => {
     expect(samples[0]).toMatchObject({
       source: 'phab',
       id: 'PHID-DREV-abcdefghijklmnopqrst',
+      revisionId: 234_567,
       reviewer: 'alice',
     });
     expect(pending).toEqual([]);

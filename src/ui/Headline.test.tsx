@@ -45,6 +45,24 @@ describe('Headline', () => {
     expect(screen.getByRole('heading', { name: /phabricator/i })).toBeInTheDocument();
   });
 
+  it('renders an optional description paragraph under the title', () => {
+    render(
+      <Headline
+        title="Phabricator"
+        description="Reviews on mozilla-central where the team is requested."
+        window7d={window14d}
+        window14d={window14d}
+        window30d={window14d}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    expect(
+      screen.getByText(/reviews on mozilla-central where the team is requested/i),
+    ).toBeInTheDocument();
+  });
+
   it('renders 7-day, 14-day, and 30-day rows with their counts', () => {
     render(
       <Headline
@@ -211,7 +229,33 @@ describe('Headline', () => {
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo/pull/382');
   });
 
-  it('renders the PHID as plain text for Phabricator samples', () => {
+  it('renders a Phabricator sample as a D<revisionId> link when revisionId is present', () => {
+    const sample: Sample = {
+      source: 'phab',
+      id: asRevisionPhid('PHID-DREV-abcdefghijklmnopqrst'),
+      revisionId: 287_177,
+      reviewer: asReviewerLogin('maxx'),
+      requestedAt: asIsoTimestamp('2026-04-18T18:00:00Z'),
+      firstActionAt: asIsoTimestamp('2026-04-18T20:00:00Z'),
+      tatBusinessHours: asBusinessHours(2),
+    };
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window14d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window30d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        slaHours={4}
+        samples={[sample]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    const row7 = screen.getByTestId('window-7d-details');
+    const link = within(row7).getByRole('link', { name: /D287177/ });
+    expect(link).toHaveAttribute('href', 'https://phabricator.services.mozilla.com/D287177');
+  });
+
+  it('falls back to the PHID as plain text when a legacy Phab sample lacks revisionId', () => {
     const sample: Sample = {
       source: 'phab',
       id: asRevisionPhid('PHID-DREV-abcdefghijklmnopqrst'),
@@ -233,6 +277,7 @@ describe('Headline', () => {
     );
     const row7 = screen.getByTestId('window-7d-details');
     expect(within(row7).getByText(/PHID-DREV-abcdefghij/)).toBeInTheDocument();
+    expect(within(row7).queryByRole('link', { name: /^D/ })).not.toBeInTheDocument();
   });
 
   it('still renders 0.0h for a populated window whose stats happen to round to 0', () => {
