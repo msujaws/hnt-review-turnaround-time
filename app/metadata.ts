@@ -1,4 +1,5 @@
 import type { HistoryRow } from '../src/scripts/collect';
+import type { WindowStats } from '../src/scripts/stats';
 
 export interface MetadataSummary {
   readonly title: string;
@@ -7,6 +8,16 @@ export interface MetadataSummary {
 
 const formatHours = (value: number): string => `${(Math.round(value * 10) / 10).toFixed(1)}h`;
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
+
+interface Headline {
+  readonly label: string;
+  readonly stats: WindowStats;
+}
+
+const pickHeadlineWindow = (row: HistoryRow['phab']): Headline =>
+  row.window7d.n > 0
+    ? { label: '7d', stats: row.window7d }
+    : { label: '14d', stats: row.window14d };
 
 export const buildMetadataSummary = (
   history: readonly HistoryRow[],
@@ -19,10 +30,12 @@ export const buildMetadataSummary = (
       description: 'No snapshots yet.',
     };
   }
-  const title = `HNT Review TAT · Phab ${formatHours(latest.phab.window7d.median)} (7d) · GH ${formatHours(latest.github.window7d.median)} (7d) · goal ${slaHours.toString()}h`;
+  const phab = pickHeadlineWindow(latest.phab);
+  const github = pickHeadlineWindow(latest.github);
+  const title = `HNT Review TAT · Phab ${formatHours(phab.stats.median)} (${phab.label}) · GH ${formatHours(github.stats.median)} (${github.label}) · goal ${slaHours.toString()}h`;
   const description = [
-    `Phab 7d: median ${formatHours(latest.phab.window7d.median)}, ${formatPercent(latest.phab.window7d.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${latest.phab.window7d.n.toString()})`,
-    `GH 7d: median ${formatHours(latest.github.window7d.median)}, ${formatPercent(latest.github.window7d.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${latest.github.window7d.n.toString()})`,
+    `Phab ${phab.label}: median ${formatHours(phab.stats.median)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})`,
+    `GH ${github.label}: median ${formatHours(github.stats.median)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})`,
   ].join(' · ');
   return { title, description };
 };

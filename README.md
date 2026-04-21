@@ -109,11 +109,12 @@ bun run verify         # runs lint + stylelint + format:check + typecheck + test
 
 See `src/scripts/collect.ts`. `data/history.json` is an append-only list of
 daily snapshots; `data/samples.json` retains individual per-review samples for
-60 days (so window recomputes stay cheap and auditable in git history).
+90 days (so window recomputes stay cheap and auditable in git history).
+First run backfills the last 45 days; subsequent runs only query 3 days back.
 
 ## Out of scope (v1)
 
 - US federal holidays in business-hour math
 - Per-reviewer breakdowns
 - Alerting when SLA drops below a threshold
-- Backfill of samples older than 21 days on first run
+- Backfill of samples older than 45 days on first run
