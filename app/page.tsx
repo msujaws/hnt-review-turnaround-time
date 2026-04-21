@@ -17,7 +17,7 @@ const Page: FC = async () => {
   const now = new Date();
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10">
-      <header className="flex items-center gap-4">
+      <header className="flex items-start gap-4">
         <Image
           src="/hnt-logo.webp"
           alt=""
@@ -26,7 +26,7 @@ const Page: FC = async () => {
           priority
           className="size-60 object-contain"
         />
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 pt-3.5">
           <h1 className="text-2xl font-bold text-neutral-100">HNT Review Turnaround</h1>
           <p className="text-sm text-neutral-400">
             Time from review request to first reviewer action, in business hours (Mon&ndash;Fri
