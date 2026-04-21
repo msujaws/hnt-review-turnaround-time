@@ -137,32 +137,39 @@ const userSearchSchema = z.object({
   ),
 });
 
-const lookupProjectPhid = async (client: ConduitClient, slug: string): Promise<string> => {
-  const raw = await client.call('project.search', { constraints: { slugs: [slug] } });
+const lookupProjectPhids = async (
+  client: ConduitClient,
+  slugs: readonly string[],
+): Promise<{ phids: string[]; missing: string[] }> => {
+  const raw = await client.call('project.search', { constraints: { slugs: [...slugs] } });
   const parsed = projectSearchSchema.parse(raw);
-  const entry = parsed.data[0];
-  if (entry === undefined) {
-    throw new Error(`project slug not found: ${slug}`);
-  }
-  return entry.phid;
+  const phids = parsed.data.map((entry) => entry.phid);
+  const missing =
+    parsed.data.length === slugs.length
+      ? []
+      : slugs.filter((_, index) => parsed.data[index] === undefined);
+  return { phids, missing };
 };
 
 const fetchRevisions = async (
   client: ConduitClient,
-  projectPhid: string,
+  projectPhids: readonly string[],
   modifiedStart: number,
 ): Promise<PhabRevision[]> => {
   const revisions: PhabRevision[] = [];
+  const seen = new Set<string>();
   let after: string | null = null;
   do {
     const params: Record<string, unknown> = {
-      constraints: { projects: [projectPhid], modifiedStart },
+      constraints: { projects: [...projectPhids], modifiedStart },
       order: 'newest',
     };
     if (after !== null) params.after = after;
     const raw = await client.call('differential.revision.search', params);
     const parsed = revisionSearchSchema.parse(raw);
     for (const item of parsed.data) {
+      if (seen.has(item.phid)) continue;
+      seen.add(item.phid);
       revisions.push({ id: item.id, phid: item.phid, authorPhid: item.fields.authorPHID });
     }
     after = parsed.cursor.after;
@@ -212,16 +219,22 @@ const resolveLogins = async (
 
 export const fetchPhabSamples = async (params: {
   readonly client: ConduitClient;
-  readonly projectSlug: string;
+  readonly projectSlugs: readonly string[];
   readonly lookbackDays: number;
   readonly now?: Date;
 }): Promise<PhabSample[]> => {
-  const { client, projectSlug, lookbackDays } = params;
+  const { client, projectSlugs, lookbackDays } = params;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
 
-  const projectPhid = await lookupProjectPhid(client, projectSlug);
-  const revisions = await fetchRevisions(client, projectPhid, modifiedStart);
+  if (projectSlugs.length === 0) {
+    throw new Error('at least one project slug is required');
+  }
+  const { phids: projectPhids, missing } = await lookupProjectPhids(client, projectSlugs);
+  if (missing.length === projectSlugs.length) {
+    throw new Error(`no project slugs resolved: ${missing.join(', ')}`);
+  }
+  const revisions = await fetchRevisions(client, projectPhids, modifiedStart);
 
   const transactionsByRevision = new Map<string, PhabTransaction[]>();
   const userPhids = new Set<string>();

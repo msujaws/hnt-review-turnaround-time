@@ -42,12 +42,15 @@ is needed for the collector script.
 
 Used by the collector (only needed when running the fetch script):
 
-| Variable            | Purpose                                                            |
-| ------------------- | ------------------------------------------------------------------ |
-| `PHABRICATOR_TOKEN` | Conduit API token from Phabricator → Settings → Conduit API Tokens |
-| `GH_PAT`            | GitHub personal access token with `repo` + `read:org` scopes       |
+| Variable             | Purpose                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| `PHABRICATOR_TOKEN`  | Conduit API token from Phabricator → Settings → Conduit API Tokens                             |
+| `GH_PAT`             | GitHub personal access token with `repo` + `read:org` scopes                                   |
+| `PHAB_PROJECT_SLUGS` | Optional, comma-separated list of Phabricator project slugs (default: `home-newtab-reviewers`) |
 
-Stored as GitHub Actions secrets (`PHABRICATOR_TOKEN`, `GH_PAT`) for the daily workflow.
+Stored as GitHub Actions secrets (`PHABRICATOR_TOKEN`, `GH_PAT`) for the daily
+workflow. If the team uses multiple Phabricator tags, configure
+`PHAB_PROJECT_SLUGS="slug-a,slug-b"`.
 
 ## Common commands
 

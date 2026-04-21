@@ -258,7 +258,7 @@ describe('fetchPhabSamples', () => {
 
     const samples = await fetchPhabSamples({
       client,
-      projectSlug: 'home-newtab-reviewers',
+      projectSlugs: ['home-newtab-reviewers'],
       lookbackDays: 21,
       now: new Date('2026-04-20T12:00:00Z'),
     });
@@ -271,7 +271,7 @@ describe('fetchPhabSamples', () => {
     );
   });
 
-  it('throws when the project slug cannot be resolved', async () => {
+  it('throws when no project slug resolves', async () => {
     const call = vi.fn(async (method: string): Promise<unknown> => {
       if (method === 'project.search') return { data: [] };
       throw new Error(`unexpected method ${method}`);
@@ -279,11 +279,44 @@ describe('fetchPhabSamples', () => {
     await expect(
       fetchPhabSamples({
         client: { call },
-        projectSlug: 'nonexistent',
+        projectSlugs: ['nonexistent'],
         lookbackDays: 21,
         now: new Date('2026-04-20T12:00:00Z'),
       }),
     ).rejects.toThrow(/nonexistent/);
+  });
+
+  it('unions revisions across multiple project slugs', async () => {
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            { phid: 'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa' },
+            { phid: 'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb' },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        const p = params as { constraints: { projects: string[] } };
+        expect(p.constraints.projects).toEqual([
+          'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
+          'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb',
+        ]);
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['slug-a', 'slug-b'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(call).toHaveBeenCalledWith(
+      'project.search',
+      expect.objectContaining({ constraints: { slugs: ['slug-a', 'slug-b'] } }),
+    );
   });
 });
 
