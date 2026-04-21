@@ -18,7 +18,7 @@ const row = (date: string, medianHours: number, pctUnderSLA: number): HistoryRow
 });
 
 describe('buildChartData', () => {
-  it('extracts the 7d window stats for the requested source', () => {
+  it('extracts the 14d window stats for the requested source', () => {
     const history = [row('2026-04-19', 2, 85), row('2026-04-20', 3, 90)];
     const data = buildChartData(history, 'phab');
     expect(data).toEqual([

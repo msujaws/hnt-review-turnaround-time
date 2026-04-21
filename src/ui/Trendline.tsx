@@ -29,7 +29,7 @@ export interface ChartPoint {
 
 export const buildChartData = (history: readonly HistoryRow[], source: ChartSource): ChartPoint[] =>
   history.map((row) => {
-    const window = row[source].window7d;
+    const window = row[source].window14d;
     return {
       date: row.date,
       median: Math.round(window.median * 100) / 100,

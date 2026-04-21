@@ -21,11 +21,21 @@ export const Dashboard: FC<DashboardProps> = ({ history, slaHours }) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
-        <Headline title="Phabricator" stats={latest.phab.window7d} slaHours={slaHours} />
+        <Headline
+          title="Phabricator"
+          window7d={latest.phab.window7d}
+          window14d={latest.phab.window14d}
+          slaHours={slaHours}
+        />
         <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
       </div>
       <div className="flex flex-col gap-6">
-        <Headline title="GitHub" stats={latest.github.window7d} slaHours={slaHours} />
+        <Headline
+          title="GitHub"
+          window7d={latest.github.window7d}
+          window14d={latest.github.window14d}
+          slaHours={slaHours}
+        />
         <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
       </div>
     </div>
