@@ -21,7 +21,7 @@ jobs:
       - run: npm run collect
         env:
           PHABRICATOR_TOKEN: ${{ secrets.PHABRICATOR_TOKEN }}
-          GITHUB_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
       - name: Commit snapshot
         run: |
           git config user.name  "hnt-tat-bot"

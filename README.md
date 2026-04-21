@@ -44,7 +44,7 @@ Used by the collector (only needed when running the fetch script):
 | Variable            | Purpose                                                            |
 | ------------------- | ------------------------------------------------------------------ |
 | `PHABRICATOR_TOKEN` | Conduit API token from Phabricator → Settings → Conduit API Tokens |
-| `GITHUB_PAT`        | GitHub personal access token with `repo` + `read:org` scopes       |
+| `GH_PAT`            | GitHub personal access token with `repo` + `read:org` scopes       |
 
 Stored as GitHub Actions secrets (`PHABRICATOR_TOKEN`, `GH_PAT`) for the daily workflow.
 

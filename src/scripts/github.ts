@@ -83,7 +83,7 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
 const PR_QUERY = `
   query PullRequestPage($owner: String!, $repo: String!, $cursor: String) {
     repository(owner: $owner, name: $repo) {
-      pullRequests(first: 50, after: $cursor, orderBy: { field: UPDATED_AT, direction: DESC }) {
+      pullRequests(first: 25, after: $cursor, orderBy: { field: UPDATED_AT, direction: DESC }) {
         pageInfo { hasNextPage endCursor }
         nodes {
           number
@@ -98,10 +98,7 @@ const PR_QUERY = `
                 requestedReviewer {
                   __typename
                   ... on User { login }
-                  ... on Team {
-                    slug
-                    members(first: 100) { nodes { login } }
-                  }
+                  ... on Team { slug }
                 }
               }
               ... on PullRequestReview {
@@ -120,7 +117,6 @@ const userReviewerSchema = z.object({ __typename: z.literal('User'), login: z.st
 const teamReviewerSchema = z.object({
   __typename: z.literal('Team'),
   slug: z.string(),
-  members: z.object({ nodes: z.array(z.object({ login: z.string() })) }),
 });
 
 const timelineNodeSchema = z.discriminatedUnion('__typename', [
@@ -159,14 +155,11 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
     if (item.__typename === 'ReviewRequestedEvent') {
       const reviewer = item.requestedReviewer;
       if (reviewer === null) continue;
-      const reviewerLogins =
-        reviewer.__typename === 'User'
-          ? [reviewer.login]
-          : reviewer.members.nodes.map((m) => m.login);
+      if (reviewer.__typename !== 'User') continue;
       timeline.push({
         kind: 'ReviewRequestedEvent',
         createdAt: item.createdAt,
-        reviewerLogins,
+        reviewerLogins: [reviewer.login],
       });
     } else {
       if (item.submittedAt === null || item.author === null) continue;

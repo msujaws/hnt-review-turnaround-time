@@ -162,7 +162,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     endpoint: 'https://phabricator.services.mozilla.com/api',
     apiToken: requireEnv('PHABRICATOR_TOKEN'),
   });
-  const gh = createGithubClient(requireEnv('GITHUB_PAT'));
+  const gh = createGithubClient(requireEnv('GH_PAT'));
 
   const { samples, history } = await collect({
     existingSamples,
