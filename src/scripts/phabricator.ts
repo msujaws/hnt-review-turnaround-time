@@ -56,30 +56,38 @@ export const extractSamplesFromTransactions = (
   options: { readonly allowedReviewerPhids?: ReadonlySet<string> } = {},
 ): PhabSample[] => {
   const { allowedReviewerPhids } = options;
-  const requestedAtByReviewer = new Map<string, number>();
-  for (const tx of transactions) {
-    if (tx.type !== 'reviewers') continue;
-    for (const op of tx.fields.operations ?? []) {
-      if (!REVIEWER_ADD_OPS.has(op.operation)) continue;
-      if (op.phid === revision.authorPhid) continue;
-      if (allowedReviewerPhids !== undefined && !allowedReviewerPhids.has(op.phid)) continue;
-      if (!requestedAtByReviewer.has(op.phid)) {
-        requestedAtByReviewer.set(op.phid, tx.dateCreated);
+  // Process transactions chronologically, tracking per-reviewer request windows.
+  // A reviewer's "active request" starts on add/request and ends on remove. The
+  // sample is the first action that falls inside any active window; a later
+  // remove/re-add after that action doesn't produce a second sample.
+  const ordered = [...transactions].sort((a, b) => a.dateCreated - b.dateCreated);
+
+  const currentRequestAt = new Map<string, number>();
+  const emitted = new Map<string, { requestedAt: number; firstActionAt: number }>();
+
+  for (const tx of ordered) {
+    if (tx.type === 'reviewers') {
+      for (const op of tx.fields.operations ?? []) {
+        if (op.phid === revision.authorPhid) continue;
+        if (allowedReviewerPhids !== undefined && !allowedReviewerPhids.has(op.phid)) continue;
+        if (REVIEWER_ADD_OPS.has(op.operation)) {
+          currentRequestAt.set(op.phid, tx.dateCreated);
+        } else if (op.operation === 'remove') {
+          currentRequestAt.delete(op.phid);
+        }
       }
+      continue;
     }
+    if (!REVIEWER_ACTION_TYPES.has(tx.type)) continue;
+    if (tx.authorPhid === revision.authorPhid) continue;
+    if (emitted.has(tx.authorPhid)) continue;
+    const requestedAt = currentRequestAt.get(tx.authorPhid);
+    if (requestedAt === undefined) continue;
+    emitted.set(tx.authorPhid, { requestedAt, firstActionAt: tx.dateCreated });
   }
 
   const samples: PhabSample[] = [];
-  for (const [reviewerPhid, requestedAt] of requestedAtByReviewer) {
-    const firstAction = transactions
-      .filter(
-        (tx) =>
-          tx.authorPhid === reviewerPhid &&
-          REVIEWER_ACTION_TYPES.has(tx.type) &&
-          tx.dateCreated >= requestedAt,
-      )
-      .sort((a, b) => a.dateCreated - b.dateCreated)[0];
-    if (firstAction === undefined) continue;
+  for (const [reviewerPhid, { requestedAt, firstActionAt }] of emitted) {
     const login = loginByPhid.get(reviewerPhid);
     if (login === undefined) continue;
     samples.push({
@@ -87,7 +95,7 @@ export const extractSamplesFromTransactions = (
       id: asRevisionPhid(revision.phid),
       reviewer: asReviewerLogin(login),
       requestedAt: toIso(requestedAt),
-      firstActionAt: toIso(firstAction.dateCreated),
+      firstActionAt: toIso(firstActionAt),
     });
   }
   return samples;

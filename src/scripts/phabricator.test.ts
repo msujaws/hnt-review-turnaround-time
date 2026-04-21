@@ -233,6 +233,93 @@ describe('extractSamplesFromTransactions', () => {
     });
     expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
   });
+
+  it('uses the latest request after a remove/re-request cycle, not the first one', () => {
+    // Reviewer added at T1, removed at T2, re-added at T3, acts at T4.
+    // The sample's requestedAt should be T3 (latest active request), not T1.
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_003_600,
+        fields: {
+          operations: [{ operation: 'remove', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_007_200,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 4,
+        type: 'accept',
+        authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+        dateCreated: 1_761_010_800,
+      }),
+    ];
+    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe(new Date(1_761_007_200 * 1000).toISOString());
+  });
+
+  it('pairs the reviewer action with the request that immediately preceded it when there are multiple cycles', () => {
+    // Request T1 → review T2 → remove T3 → re-request T4 → (no further action).
+    // Only the first completed cycle should produce a sample (T1, T2).
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+        dateCreated: 1_761_003_600,
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_007_200,
+        fields: {
+          operations: [{ operation: 'remove', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 4,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_010_800,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+    ];
+    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.requestedAt).toBe(new Date(1_761_000_000 * 1000).toISOString());
+    expect(samples[0]?.firstActionAt).toBe(new Date(1_761_003_600 * 1000).toISOString());
+  });
 });
 
 describe('fetchPhabSamples', () => {
