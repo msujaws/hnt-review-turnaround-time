@@ -34,6 +34,7 @@ export interface PullRequestData {
   readonly number: number;
   readonly isDraft: boolean;
   readonly author: { readonly login: string };
+  readonly createdAt: string;
   readonly timeline: readonly TimelineEvent[];
 }
 
@@ -61,7 +62,7 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
     }
   }
 
-  if (earliestRequestAt === undefined) return [];
+  const fallbackRequestAt = earliestRequestAt ?? data.createdAt;
 
   const earliestReviewByReviewer = new Map<string, string>();
   for (const event of data.timeline) {
@@ -79,8 +80,8 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
     let requestAt: string | undefined;
     if (explicitAt !== undefined && explicitAt <= reviewAt) {
       requestAt = explicitAt;
-    } else if (earliestRequestAt <= reviewAt) {
-      requestAt = earliestRequestAt;
+    } else if (fallbackRequestAt <= reviewAt) {
+      requestAt = fallbackRequestAt;
     }
     if (requestAt === undefined) continue;
     samples.push({
@@ -102,6 +103,7 @@ const PR_QUERY = `
         nodes {
           number
           isDraft
+          createdAt
           updatedAt
           author { login }
           timelineItems(first: 100, itemTypes: [REVIEW_REQUESTED_EVENT, PULL_REQUEST_REVIEW]) {
@@ -148,6 +150,7 @@ const timelineNodeSchema = z.discriminatedUnion('__typename', [
 const pullRequestNodeSchema = z.object({
   number: z.number(),
   isDraft: z.boolean(),
+  createdAt: z.string(),
   updatedAt: z.string(),
   author: z.object({ login: z.string() }).nullable(),
   timelineItems: z.object({ nodes: z.array(timelineNodeSchema) }),
@@ -189,6 +192,7 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
     number: node.number,
     isDraft: node.isDraft,
     author: { login: node.author?.login ?? '' },
+    createdAt: node.createdAt,
     timeline,
   };
 };

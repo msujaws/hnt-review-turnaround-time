@@ -11,6 +11,7 @@ const pr = (overrides: Partial<PullRequestData> = {}): PullRequestData => ({
   number: 42,
   isDraft: false,
   author: { login: 'author-user' },
+  createdAt: '2026-04-19T12:00:00Z',
   timeline: [],
   ...overrides,
 });
@@ -264,8 +265,31 @@ describe('extractSamplesFromPullRequest', () => {
     });
   });
 
-  it('emits no sample when there is no ReviewRequestedEvent at all', () => {
+  it('falls back to the PR creation time when a review happens without any ReviewRequestedEvent', () => {
+    // PR #378 case: reviewer was set at PR creation so GitHub never emitted a
+    // standalone ReviewRequestedEvent. Without a fallback the sample would be lost.
     const data = pr({
+      createdAt: '2026-03-16T20:00:00Z',
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-03-16T20:40:19Z',
+          authorLogin: 'Herraj',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      reviewer: 'Herraj',
+      requestedAt: '2026-03-16T20:00:00Z',
+      firstActionAt: '2026-03-16T20:40:19Z',
+    });
+  });
+
+  it('still emits no sample when a review is submitted before the PR was created (data anomaly)', () => {
+    const data = pr({
+      createdAt: '2026-04-19T18:00:00Z',
       timeline: [
         {
           kind: 'PullRequestReview',
@@ -290,6 +314,7 @@ describe('fetchGithubSamples', () => {
             {
               number: 1,
               isDraft: false,
+              createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-04-19T20:00:00Z',
               author: { login: 'author1' },
               timelineItems: {
@@ -319,6 +344,7 @@ describe('fetchGithubSamples', () => {
             {
               number: 2,
               isDraft: false,
+              createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-04-10T20:00:00Z',
               author: { login: 'author2' },
               timelineItems: {
@@ -339,6 +365,7 @@ describe('fetchGithubSamples', () => {
             {
               number: 3,
               isDraft: false,
+              createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-03-10T12:00:00Z',
               author: { login: 'author3' },
               timelineItems: { nodes: [] },
@@ -371,6 +398,7 @@ describe('fetchGithubSamples', () => {
             {
               number: 1,
               isDraft: false,
+              createdAt: '2026-01-01T10:00:00Z',
               updatedAt: '2026-01-01T12:00:00Z',
               author: { login: 'author1' },
               timelineItems: { nodes: [] },
