@@ -276,4 +276,96 @@ describe('Headline', () => {
     // three stat cells per row (median/mean/p90) × 3 rows = 9 N/A cells
     expect(screen.getAllByText('N/A')).toHaveLength(9);
   });
+
+  it('tints stat cells by SLA tier (good/warn/bad)', () => {
+    // 7d: clearly good (well under 4h, 100% under SLA)
+    const good: WindowStats = { n: 5, median: 1.2, mean: 1.5, p90: 2.1, pctUnderSLA: 100 };
+    // 14d: clearly warn (between 4h and 8h, 75% under SLA)
+    const warn: WindowStats = { n: 5, median: 5, mean: 6, p90: 7.5, pctUnderSLA: 75 };
+    // 30d: clearly bad (>8h, 60% under SLA)
+    const bad: WindowStats = { n: 5, median: 12, mean: 14, p90: 20, pctUnderSLA: 60 };
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={good}
+        window14d={warn}
+        window30d={bad}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    // Each StatCell's value span has the label span as a sibling inside the
+    // card div; the card div is the value span's parent.
+    const goodCard = screen.getByText('1.2h').parentElement;
+    expect(goodCard?.className).toMatch(/emerald/);
+    const warnMedianCard = screen.getByText('5.0h').parentElement;
+    expect(warnMedianCard?.className).toMatch(/amber/);
+    const badP90Card = screen.getByText('20.0h').parentElement;
+    expect(badP90Card?.className).toMatch(/rose/);
+    // % under SLA also tiered: 100% → good, 75% → warn, 60% → bad.
+    expect(screen.getByText('100%').parentElement?.className).toMatch(/emerald/);
+    expect(screen.getByText('75%').parentElement?.className).toMatch(/amber/);
+    expect(screen.getByText('60%').parentElement?.className).toMatch(/rose/);
+  });
+
+  it('does not apply a tier tint to N/A cells (no data)', () => {
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={window7d}
+        window14d={window7d}
+        window30d={window7d}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    for (const cell of screen.getAllByText('N/A')) {
+      const card = cell.parentElement;
+      expect(card?.className).not.toMatch(/emerald|amber|rose/);
+    }
+  });
+
+  it('tints the per-sample TAT text by tier', () => {
+    const sample = (
+      id: number,
+      reviewer: string,
+      requestedAt: string,
+      firstActionAt: string,
+      tat: number,
+    ): Sample => ({
+      source: 'github',
+      id: asPrNumber(id),
+      reviewer: asReviewerLogin(reviewer),
+      requestedAt: asIsoTimestamp(requestedAt),
+      firstActionAt: asIsoTimestamp(firstActionAt),
+      tatBusinessHours: asBusinessHours(tat),
+    });
+    const samples: Sample[] = [
+      sample(1, 'alice', '2026-04-18T18:00:00Z', '2026-04-18T20:00:00Z', 1.2), // good
+      sample(2, 'bob', '2026-04-18T18:00:00Z', '2026-04-18T20:00:00Z', 5.5), // warn
+      sample(3, 'carol', '2026-04-18T18:00:00Z', '2026-04-18T20:00:00Z', 14.2), // bad
+    ];
+    // Pick stat values that don't collide with any sample TAT (1.2, 5.5, 14.2)
+    // so we can unambiguously locate TAT-cell spans via getByText.
+    render(
+      <Headline
+        title="GitHub"
+        window7d={{ n: 3, median: 8.1, mean: 9.2, p90: 12.3, pctUnderSLA: 33 }}
+        window14d={{ n: 3, median: 8.1, mean: 9.2, p90: 12.3, pctUnderSLA: 33 }}
+        window30d={{ n: 3, median: 8.1, mean: 9.2, p90: 12.3, pctUnderSLA: 33 }}
+        slaHours={4}
+        samples={samples}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    const row7 = screen.getByTestId('window-7d-details');
+    const goodTat = within(row7).getByText('1.2h');
+    const warnTat = within(row7).getByText('5.5h');
+    const badTat = within(row7).getByText('14.2h');
+    expect(goodTat.className).toMatch(/emerald/);
+    expect(warnTat.className).toMatch(/amber/);
+    expect(badTat.className).toMatch(/rose/);
+  });
 });

@@ -174,4 +174,33 @@ describe('OverdueCallout', () => {
     const heading = screen.getByRole('heading', { name: /overdue/i });
     expect(heading).toHaveTextContent('3');
   });
+
+  it('applies a soft-pulse animation to the warning icon', () => {
+    const pending = [pendingGh()];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    const icon = region.querySelector('.material-symbols-outlined');
+    expect(icon?.className).toMatch(/animate-soft-pulse/);
+  });
+
+  it('animates the section mount with pop-in', () => {
+    const pending = [pendingGh()];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    expect(region.className).toMatch(/animate-pop-in/);
+  });
 });
