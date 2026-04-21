@@ -6,7 +6,10 @@ import { asMaterialSymbolName, Icon } from './Icon';
 
 const SCHEDULE_ICON = asMaterialSymbolName('schedule');
 
-const formatHours = (value: number): string => `${(Math.round(value * 10) / 10).toFixed(1)}h`;
+const formatHours = (value: number): string => {
+  const rounded = Math.round(value * 10) / 10;
+  return rounded === 0 ? 'N/A' : `${rounded.toFixed(1)}h`;
+};
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
 
 interface StatCellProps {

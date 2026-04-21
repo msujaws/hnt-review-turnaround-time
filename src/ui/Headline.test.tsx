@@ -47,4 +47,11 @@ describe('Headline', () => {
     render(<Headline title="GitHub" window7d={window7d} window14d={window7d} slaHours={4} />);
     expect(screen.getByText(/awaiting first reviews/i)).toBeInTheDocument();
   });
+
+  it('renders N/A instead of 0.0h when hour values round to zero', () => {
+    render(<Headline title="Phabricator" window7d={window7d} window14d={window7d} slaHours={4} />);
+    expect(screen.queryByText(/0\.0h/)).not.toBeInTheDocument();
+    // three stat cells per row (median/mean/p90) × 2 rows = 6 N/A cells
+    expect(screen.getAllByText('N/A')).toHaveLength(6);
+  });
 });

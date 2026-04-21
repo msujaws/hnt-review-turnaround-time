@@ -67,4 +67,24 @@ describe('buildMetadataSummary', () => {
     expect(summary.title).toBe('HNT Review TAT');
     expect(summary.description).toMatch(/no snapshots/i);
   });
+
+  it('renders N/A instead of 0.0h when both windows are empty', () => {
+    const emptyRow: HistoryRow = {
+      date: '2026-04-21',
+      phab: {
+        window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      },
+      github: {
+        window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      },
+    };
+    const summary = buildMetadataSummary([emptyRow], 4);
+    expect(summary.title).not.toMatch(/0\.0h/);
+    expect(summary.title).toMatch(/Phab N\/A/);
+    expect(summary.title).toMatch(/GH N\/A/);
+    expect(summary.description).not.toMatch(/0\.0h/);
+    expect(summary.description).toMatch(/median N\/A/);
+  });
 });
