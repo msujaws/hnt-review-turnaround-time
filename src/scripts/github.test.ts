@@ -33,7 +33,9 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const result = extractSamplesFromPullRequest(data);
+    expect(result.samples).toEqual([]);
+    expect(result.pending).toEqual([]);
   });
 
   it('emits a sample for a review requested then submitted', () => {
@@ -51,7 +53,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({
       source: 'github',
@@ -60,6 +62,7 @@ describe('extractSamplesFromPullRequest', () => {
       requestedAt: '2026-04-19T14:00:00Z',
       firstActionAt: '2026-04-19T16:00:00Z',
     });
+    expect(pending).toEqual([]);
   });
 
   it('ignores reviews from bot accounts', () => {
@@ -77,7 +80,9 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
+    expect(samples).toEqual([]);
+    expect(pending).toEqual([]);
   });
 
   it('ignores self-reviews (author reviewing own PR)', () => {
@@ -96,7 +101,9 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
+    expect(samples).toEqual([]);
+    expect(pending).toEqual([]);
   });
 
   it('uses the earliest review action after the request', () => {
@@ -119,7 +126,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples[0]?.firstActionAt).toBe('2026-04-19T15:00:00Z');
   });
 
@@ -143,11 +150,11 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
   });
 
-  it('does not emit a sample for a reviewer who has not submitted', () => {
+  it('does not emit a sample for a reviewer who has not submitted; emits pending instead', () => {
     const data = pr({
       timeline: [
         {
@@ -162,8 +169,15 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
     expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      source: 'github',
+      id: 42,
+      reviewer: 'bob',
+      requestedAt: '2026-04-19T14:00:00Z',
+    });
   });
 
   it('ignores reviews submitted before the review request', () => {
@@ -181,7 +195,15 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
+    expect(samples).toEqual([]);
+    // Alice was requested at 14:00 and never acted after that (the 13:00 review
+    // predates the request) → she's still pending.
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      reviewer: 'alice',
+      requestedAt: '2026-04-19T14:00:00Z',
+    });
   });
 
   it('falls back to the earliest ReviewRequestedEvent when the reviewer was not explicitly requested (team request)', () => {
@@ -201,7 +223,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({
       reviewer: 'alice',
@@ -230,7 +252,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples[0]?.requestedAt).toBe('2026-04-19T14:00:00Z');
   });
 
@@ -257,7 +279,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe('2026-04-10T10:00:00Z');
   });
@@ -290,7 +312,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe('2026-04-10T11:00:00Z');
   });
@@ -326,7 +348,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe('2026-04-10T11:00:00Z');
   });
@@ -357,7 +379,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe('2026-04-10T16:00:00Z');
     expect(samples[0]?.firstActionAt).toBe('2026-04-10T18:00:00Z');
@@ -385,7 +407,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({
       reviewer: 'jpetto',
@@ -407,7 +429,7 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    const samples = extractSamplesFromPullRequest(data);
+    const { samples } = extractSamplesFromPullRequest(data);
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({
       reviewer: 'Herraj',
@@ -419,6 +441,7 @@ describe('extractSamplesFromPullRequest', () => {
   it('does NOT fall back to createdAt for a reviewer who was never on the hook (request was for someone else)', () => {
     // bob is requested, alice leaves a drive-by review. alice was never requested
     // (explicitly or via team), so she shouldn't get a sample anchored on createdAt.
+    // bob never acted → bob is pending.
     const data = pr({
       createdAt: '2026-04-19T12:00:00Z',
       timeline: [
@@ -434,7 +457,9 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
+    expect(samples).toEqual([]);
+    expect(pending.map((p) => p.reviewer)).toEqual(['bob']);
   });
 
   it('still emits no sample when a review is submitted before the PR was created (data anomaly)', () => {
@@ -448,7 +473,165 @@ describe('extractSamplesFromPullRequest', () => {
         },
       ],
     });
-    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+    const { samples, pending } = extractSamplesFromPullRequest(data);
+    expect(samples).toEqual([]);
+    expect(pending).toEqual([]);
+  });
+
+  describe('pending extraction', () => {
+    it('emits a pending entry when a reviewer is requested and never acts', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toEqual([]);
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        source: 'github',
+        id: 42,
+        reviewer: 'alice',
+        requestedAt: '2026-04-19T14:00:00Z',
+      });
+    });
+
+    it('does not emit pending when a request is followed by a removal', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'ReviewRequestRemovedEvent',
+            createdAt: '2026-04-19T15:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('does not emit pending after the reviewer has already acted, even if a later re-request came in', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T15:00:00Z',
+            authorLogin: 'alice',
+          },
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T16:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toHaveLength(1);
+      expect(pending).toEqual([]);
+    });
+
+    it('uses the latest active request for a reviewer who was requested, removed, and re-requested without acting', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-10T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'ReviewRequestRemovedEvent',
+            createdAt: '2026-04-10T15:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-10T16:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toEqual([]);
+      expect(pending).toHaveLength(1);
+      expect(pending[0]?.requestedAt).toBe('2026-04-10T16:00:00Z');
+    });
+
+    it('skips team-only requests (no named reviewer) from pending', () => {
+      // Team request came in but no specific user was named. We can't attribute
+      // the pending request to a person, so skip it (matches the "only surface
+      // things we can blame on a reviewer" rule).
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: [],
+            teamSlug: 'team-a',
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('skips bot reviewers from pending', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['dependabot[bot]'],
+          },
+        ],
+      });
+      const { pending } = extractSamplesFromPullRequest(data);
+      expect(pending).toEqual([]);
+    });
+
+    it('skips self-pending for the PR author', () => {
+      const data = pr({
+        author: { login: 'alice' },
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { pending } = extractSamplesFromPullRequest(data);
+      expect(pending).toEqual([]);
+    });
+
+    it('emits separate pending entries for multiple unacted-on reviewers', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice', 'bob'],
+          },
+        ],
+      });
+      const { pending } = extractSamplesFromPullRequest(data);
+      expect(pending.map((p) => p.reviewer).sort()).toEqual(['alice', 'bob']);
+    });
   });
 });
 

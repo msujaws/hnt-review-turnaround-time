@@ -34,10 +34,12 @@ const loginByPhid = new Map<string, string>([
 
 describe('extractSamplesFromTransactions', () => {
   it('returns no samples when there are no transactions', () => {
-    expect(extractSamplesFromTransactions(revision(), [], loginByPhid)).toEqual([]);
+    const result = extractSamplesFromTransactions(revision(), [], loginByPhid);
+    expect(result.samples).toEqual([]);
+    expect(result.pending).toEqual([]);
   });
 
-  it('returns no sample when a reviewer is added but never acts', () => {
+  it('returns no sample but emits pending when a reviewer is added and never acts', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
@@ -49,7 +51,16 @@ describe('extractSamplesFromTransactions', () => {
         },
       }),
     ];
-    expect(extractSamplesFromTransactions(revision(), txs, loginByPhid)).toEqual([]);
+    const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    expect(samples).toEqual([]);
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-abcdefghijklmnopqrst',
+      revisionId: 234_567,
+      reviewer: 'alice',
+      requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
+    });
   });
 
   it('emits a sample when a reviewer is added and later comments', () => {
@@ -70,13 +81,14 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_003_600,
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({
       source: 'phab',
       id: 'PHID-DREV-abcdefghijklmnopqrst',
       reviewer: 'alice',
     });
+    expect(pending).toEqual([]);
   });
 
   it('treats accept as a reviewer action', () => {
@@ -97,7 +109,7 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_007_200,
       }),
     ];
-    expect(extractSamplesFromTransactions(revision(), txs, loginByPhid)).toHaveLength(1);
+    expect(extractSamplesFromTransactions(revision(), txs, loginByPhid).samples).toHaveLength(1);
   });
 
   it('ignores comments by the revision author', () => {
@@ -118,7 +130,8 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_003_600,
       }),
     ];
-    expect(extractSamplesFromTransactions(revision(), txs, loginByPhid)).toEqual([]);
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    expect(samples).toEqual([]);
   });
 
   it('emits one sample per reviewer', () => {
@@ -148,7 +161,7 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_010_800,
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
     expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
   });
 
@@ -176,7 +189,7 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_010_800,
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
     expect(samples[0]?.firstActionAt).toBe(new Date(1_761_007_200 * 1000).toISOString());
   });
 
@@ -198,7 +211,11 @@ describe('extractSamplesFromTransactions', () => {
         },
       }),
     ];
-    expect(extractSamplesFromTransactions(revision(), txs, loginByPhid)).toEqual([]);
+    // The pre-request comment doesn't count; alice is now pending because the
+    // post-request request never had a follow-up action.
+    const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    expect(samples).toEqual([]);
+    expect(pending.map((p) => p.reviewer)).toEqual(['alice']);
   });
 
   it('filters samples to the allowed reviewer phids when provided', () => {
@@ -228,7 +245,7 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_003_600,
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
       allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa']),
     });
     expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
@@ -272,14 +289,15 @@ describe('extractSamplesFromTransactions', () => {
         dateCreated: 1_761_010_800,
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe(new Date(1_761_007_200 * 1000).toISOString());
   });
 
   it('pairs the reviewer action with the request that immediately preceded it when there are multiple cycles', () => {
     // Request T1 → review T2 → remove T3 → re-request T4 → (no further action).
-    // Only the first completed cycle should produce a sample (T1, T2).
+    // Only the first completed cycle should produce a sample (T1, T2). No pending
+    // re-opens once the reviewer has already acted — they're not "still waiting."
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
@@ -315,10 +333,146 @@ describe('extractSamplesFromTransactions', () => {
         },
       }),
     ];
-    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+    const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
     expect(samples).toHaveLength(1);
     expect(samples[0]?.requestedAt).toBe(new Date(1_761_000_000 * 1000).toISOString());
     expect(samples[0]?.firstActionAt).toBe(new Date(1_761_003_600 * 1000).toISOString());
+    expect(pending).toEqual([]);
+  });
+
+  describe('pending extraction', () => {
+    it('does not emit pending when add is followed by remove', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_003_600,
+          fields: {
+            operations: [{ operation: 'remove', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('skips pending for reviewers outside the allowed set', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [
+              { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+              { operation: 'add', phid: 'PHID-USER-outsidereviewerccccc' },
+            ],
+          },
+        }),
+      ];
+      const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+        allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa']),
+      });
+      expect(pending.map((p) => p.reviewer)).toEqual(['alice']);
+    });
+
+    it('uses the latest active request timestamp for a pending reviewer after a remove/re-add cycle', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_003_600,
+          fields: {
+            operations: [{ operation: 'remove', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+        mkTransaction({
+          id: 3,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_007_200,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+      ];
+      const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+      expect(pending).toHaveLength(1);
+      expect(pending[0]?.requestedAt).toBe(new Date(1_761_007_200 * 1000).toISOString());
+    });
+
+    it('skips pending for the revision author (self-pending)', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-authoraaaaaaaaaaaaaa' }],
+          },
+        }),
+      ];
+      const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+      expect(pending).toEqual([]);
+    });
+
+    it('drops pending for reviewers whose phid has no login mapping', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-unknownxxxxxxxxxxxxx' }],
+          },
+        }),
+      ];
+      const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+      expect(pending).toEqual([]);
+    });
+
+    it('emits separate pending entries for multiple unacted-on reviewers', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [
+              { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+              { operation: 'add', phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+            ],
+          },
+        }),
+      ];
+      const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
+      expect(pending.map((p) => p.reviewer).sort()).toEqual(['alice', 'bob']);
+    });
   });
 });
 

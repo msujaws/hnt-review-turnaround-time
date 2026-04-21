@@ -18,6 +18,18 @@ export interface GithubSample {
   readonly firstActionAt: IsoTimestamp;
 }
 
+export interface GithubPendingSample {
+  readonly source: 'github';
+  readonly id: PrNumber;
+  readonly reviewer: ReviewerLogin;
+  readonly requestedAt: IsoTimestamp;
+}
+
+export interface ExtractedPullRequest {
+  readonly samples: readonly GithubSample[];
+  readonly pending: readonly GithubPendingSample[];
+}
+
 export type TimelineEvent =
   | {
       readonly kind: 'ReviewRequestedEvent';
@@ -64,8 +76,8 @@ const earliest = (values: readonly string[]): string | undefined => {
   return min;
 };
 
-export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSample[] => {
-  if (data.isDraft) return [];
+export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedPullRequest => {
+  if (data.isDraft) return { samples: [], pending: [] };
 
   const hasAnyRequestEvent = data.timeline.some((event) => event.kind === 'ReviewRequestedEvent');
   const ordered = [...data.timeline].sort((a, b) => eventTime(a).localeCompare(eventTime(b)));
@@ -140,7 +152,22 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
       firstActionAt: asIsoTimestamp(firstActionAt),
     });
   }
-  return samples;
+
+  // Pending = explicit per-reviewer requests still active at the end of the
+  // timeline for reviewers who never produced a sample. Team-only requests are
+  // skipped: we can't attribute them to a named reviewer.
+  const pending: GithubPendingSample[] = [];
+  for (const [reviewer, requestedAt] of explicitRequestAt) {
+    if (emitted.has(reviewer)) continue;
+    pending.push({
+      source: 'github',
+      id: asPrNumber(data.number),
+      reviewer: asReviewerLogin(reviewer),
+      requestedAt: asIsoTimestamp(requestedAt),
+    });
+  }
+
+  return { samples, pending };
 };
 
 const TIMELINE_FIELDS = `
@@ -370,7 +397,7 @@ export const fetchGithubSamples = async (params: {
         ...node,
         timelineItems: { pageInfo: node.timelineItems.pageInfo, nodes: combinedNodes },
       };
-      samples.push(...extractSamplesFromPullRequest(toPullRequestData(hydrated)));
+      samples.push(...extractSamplesFromPullRequest(toPullRequestData(hydrated)).samples);
     }
     if (!page.pageInfo.hasNextPage || page.pageInfo.endCursor === null) {
       stop = true;

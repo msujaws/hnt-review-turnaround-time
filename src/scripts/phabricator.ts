@@ -17,6 +17,19 @@ export interface PhabSample {
   readonly firstActionAt: IsoTimestamp;
 }
 
+export interface PhabPendingSample {
+  readonly source: 'phab';
+  readonly id: RevisionPhid;
+  readonly revisionId: number;
+  readonly reviewer: ReviewerLogin;
+  readonly requestedAt: IsoTimestamp;
+}
+
+export interface ExtractedTransactions {
+  readonly samples: readonly PhabSample[];
+  readonly pending: readonly PhabPendingSample[];
+}
+
 export interface PhabRevision {
   readonly id: number;
   readonly phid: string;
@@ -54,7 +67,7 @@ export const extractSamplesFromTransactions = (
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
   options: { readonly allowedReviewerPhids?: ReadonlySet<string> } = {},
-): PhabSample[] => {
+): ExtractedTransactions => {
   const { allowedReviewerPhids } = options;
   // Process transactions chronologically, tracking per-reviewer request windows.
   // A reviewer's "active request" starts on add/request and ends on remove. The
@@ -98,7 +111,25 @@ export const extractSamplesFromTransactions = (
       firstActionAt: toIso(firstActionAt),
     });
   }
-  return samples;
+
+  // Pending = reviewers still in an active request window at end of timeline
+  // who didn't emit a completed sample. Reviewers whose phid has no login
+  // mapping are dropped (same rule applied to completed samples above).
+  const pending: PhabPendingSample[] = [];
+  for (const [reviewerPhid, requestedAt] of currentRequestAt) {
+    if (emitted.has(reviewerPhid)) continue;
+    const login = loginByPhid.get(reviewerPhid);
+    if (login === undefined) continue;
+    pending.push({
+      source: 'phab',
+      id: asRevisionPhid(revision.phid),
+      revisionId: revision.id,
+      reviewer: asReviewerLogin(login),
+      requestedAt: toIso(requestedAt),
+    });
+  }
+
+  return { samples, pending };
 };
 
 const projectSearchSchema = z.object({
@@ -297,7 +328,7 @@ export const fetchPhabSamples = async (params: {
   for (const rev of revisions) {
     const txs = transactionsByRevision.get(rev.phid) ?? [];
     samples.push(
-      ...extractSamplesFromTransactions(rev, txs, loginByPhid, { allowedReviewerPhids }),
+      ...extractSamplesFromTransactions(rev, txs, loginByPhid, { allowedReviewerPhids }).samples,
     );
   }
   return samples;
