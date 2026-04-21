@@ -182,6 +182,69 @@ describe('extractSamplesFromPullRequest', () => {
     });
     expect(extractSamplesFromPullRequest(data)).toEqual([]);
   });
+
+  it('falls back to the earliest ReviewRequestedEvent when the reviewer was not explicitly requested (team request)', () => {
+    // Team was requested (reviewerLogins empty because the team wasn't visible to the PAT);
+    // alice reviewed. The request timestamp for alice should be the team-request time.
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T17:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      reviewer: 'alice',
+      requestedAt: '2026-04-19T14:00:00Z',
+      firstActionAt: '2026-04-19T17:00:00Z',
+    });
+  });
+
+  it('prefers an explicit per-reviewer request when one exists, even if a later team request happened', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T15:00:00Z',
+          reviewerLogins: [],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    const samples = extractSamplesFromPullRequest(data);
+    expect(samples[0]?.requestedAt).toBe('2026-04-19T14:00:00Z');
+  });
+
+  it('emits no sample when there is no ReviewRequestedEvent at all', () => {
+    const data = pr({
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T17:00:00Z',
+          authorLogin: 'alice',
+        },
+      ],
+    });
+    expect(extractSamplesFromPullRequest(data)).toEqual([]);
+  });
 });
 
 describe('fetchGithubSamples', () => {

@@ -46,35 +46,43 @@ const isBot = (login: string): boolean => login.endsWith('[bot]');
 export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSample[] => {
   if (data.isDraft) return [];
 
-  const requestedAtByReviewer = new Map<string, string>();
+  let earliestRequestAt: string | undefined;
+  const explicitRequestAt = new Map<string, string>();
   for (const event of data.timeline) {
     if (event.kind !== 'ReviewRequestedEvent') continue;
+    if (earliestRequestAt === undefined || event.createdAt < earliestRequestAt) {
+      earliestRequestAt = event.createdAt;
+    }
     for (const login of event.reviewerLogins) {
-      if (isBot(login)) continue;
-      if (login === data.author.login) continue;
-      if (!requestedAtByReviewer.has(login)) {
-        requestedAtByReviewer.set(login, event.createdAt);
+      if (isBot(login) || login === data.author.login) continue;
+      if (!explicitRequestAt.has(login)) {
+        explicitRequestAt.set(login, event.createdAt);
       }
     }
   }
 
+  if (earliestRequestAt === undefined) return [];
+
+  const earliestReviewByReviewer = new Map<string, string>();
+  for (const event of data.timeline) {
+    if (event.kind !== 'PullRequestReview') continue;
+    if (isBot(event.authorLogin) || event.authorLogin === data.author.login) continue;
+    const prior = earliestReviewByReviewer.get(event.authorLogin);
+    if (prior === undefined || event.submittedAt < prior) {
+      earliestReviewByReviewer.set(event.authorLogin, event.submittedAt);
+    }
+  }
+
   const samples: GithubSample[] = [];
-  for (const [reviewer, requestedAt] of requestedAtByReviewer) {
-    const firstAction = data.timeline
-      .filter(
-        (event): event is Extract<TimelineEvent, { kind: 'PullRequestReview' }> =>
-          event.kind === 'PullRequestReview' &&
-          event.authorLogin === reviewer &&
-          event.submittedAt >= requestedAt,
-      )
-      .sort((a, b) => a.submittedAt.localeCompare(b.submittedAt))[0];
-    if (firstAction === undefined) continue;
+  for (const [reviewer, reviewAt] of earliestReviewByReviewer) {
+    const requestAt = explicitRequestAt.get(reviewer) ?? earliestRequestAt;
+    if (reviewAt < requestAt) continue;
     samples.push({
       source: 'github',
       id: asPrNumber(data.number),
       reviewer: asReviewerLogin(reviewer),
-      requestedAt: asIsoTimestamp(requestedAt),
-      firstActionAt: asIsoTimestamp(firstAction.submittedAt),
+      requestedAt: asIsoTimestamp(requestAt),
+      firstActionAt: asIsoTimestamp(reviewAt),
     });
   }
   return samples;
@@ -113,17 +121,16 @@ const PR_QUERY = `
   }
 `;
 
-const userReviewerSchema = z.object({ __typename: z.literal('User'), login: z.string() });
-const teamReviewerSchema = z.object({
-  __typename: z.literal('Team'),
-  slug: z.string(),
-});
+const requestedReviewerSchema = z
+  .object({ __typename: z.string(), login: z.string().optional() })
+  .passthrough()
+  .nullable();
 
 const timelineNodeSchema = z.discriminatedUnion('__typename', [
   z.object({
     __typename: z.literal('ReviewRequestedEvent'),
     createdAt: z.string(),
-    requestedReviewer: z.union([userReviewerSchema, teamReviewerSchema]).nullable(),
+    requestedReviewer: requestedReviewerSchema,
   }),
   z.object({
     __typename: z.literal('PullRequestReview'),
@@ -154,12 +161,14 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
   for (const item of node.timelineItems.nodes) {
     if (item.__typename === 'ReviewRequestedEvent') {
       const reviewer = item.requestedReviewer;
-      if (reviewer === null) continue;
-      if (reviewer.__typename !== 'User') continue;
+      const reviewerLogins =
+        reviewer !== null && reviewer.__typename === 'User' && reviewer.login !== undefined
+          ? [reviewer.login]
+          : [];
       timeline.push({
         kind: 'ReviewRequestedEvent',
         createdAt: item.createdAt,
-        reviewerLogins: [reviewer.login],
+        reviewerLogins,
       });
     } else {
       if (item.submittedAt === null || item.author === null) continue;
