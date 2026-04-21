@@ -24,7 +24,7 @@ const Page: FC = async () => {
           width={1024}
           height={1024}
           priority
-          className="size-20"
+          className="size-30"
         />
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-bold text-neutral-100">HNT Review Turnaround</h1>
