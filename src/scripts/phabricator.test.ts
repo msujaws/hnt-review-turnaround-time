@@ -569,4 +569,100 @@ describe('createConduitClient', () => {
 
     await expect(client.call('project.search', {})).rejects.toThrow(/Session key is not present/);
   });
+
+  it('retries on HTTP 429 with Retry-After before giving up', async () => {
+    const sleeps: number[] = [];
+    const sleepFn = vi.fn(async (ms: number) => {
+      sleeps.push(ms);
+    });
+    let attempt = 0;
+    const fetchFn = vi.fn(async () => {
+      attempt += 1;
+      if (attempt < 3) {
+        return new Response('Too Many Requests', {
+          status: 429,
+          headers: { 'Retry-After': '1' },
+        });
+      }
+      return jsonResponse({ result: { data: [] } });
+    });
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn,
+    });
+
+    await client.call('project.search', {});
+    expect(attempt).toBe(3);
+    expect(sleeps).toEqual([1000, 1000]);
+  });
+
+  it('throttles successive calls to stay under the min interval', async () => {
+    const sleeps: number[] = [];
+    const sleepFn = vi.fn(async (ms: number) => {
+      sleeps.push(ms);
+    });
+    let nowMs = 0;
+    const nowFn = vi.fn(() => nowMs);
+    const fetchFn = vi.fn(async () => jsonResponse({ result: { data: [] } }));
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn,
+      nowFn,
+      minIntervalMs: 500,
+    });
+
+    await client.call('project.search', {});
+    nowMs = 100;
+    await client.call('project.search', {});
+    expect(sleeps).toEqual([400]);
+  });
+
+  it('does not throttle when the min interval has already elapsed', async () => {
+    const sleeps: number[] = [];
+    const sleepFn = vi.fn(async (ms: number) => {
+      sleeps.push(ms);
+    });
+    let nowMs = 0;
+    const nowFn = vi.fn(() => nowMs);
+    const fetchFn = vi.fn(async () => jsonResponse({ result: { data: [] } }));
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn,
+      nowFn,
+      minIntervalMs: 500,
+    });
+
+    await client.call('project.search', {});
+    nowMs = 2000;
+    await client.call('project.search', {});
+    expect(sleeps).toEqual([]);
+  });
+
+  it('gives up after the configured max number of 429 retries', async () => {
+    const fetchFn = vi.fn(
+      async () =>
+        new Response('Too Many Requests', {
+          status: 429,
+          headers: { 'Retry-After': '0' },
+        }),
+    );
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn: async () => {
+        return;
+      },
+      maxRetries: 2,
+    });
+
+    await expect(client.call('project.search', {})).rejects.toThrow(/429/);
+    expect(fetchFn).toHaveBeenCalledTimes(3);
+  });
 });

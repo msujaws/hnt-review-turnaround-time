@@ -317,31 +317,72 @@ const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): v
   }
 };
 
+const DEFAULT_MAX_RETRIES = 8;
+const DEFAULT_BACKOFF_MS = 2000;
+const MAX_BACKOFF_MS = 120_000;
+const DEFAULT_MIN_INTERVAL_MS = 600;
+
+const parseRetryAfter = (header: string | null): number | null => {
+  if (header === null) return null;
+  const seconds = Number(header);
+  if (Number.isFinite(seconds) && seconds >= 0) return Math.round(seconds * 1000);
+  const dateMs = Date.parse(header);
+  if (Number.isFinite(dateMs)) return Math.max(0, dateMs - Date.now());
+  return null;
+};
+
 export const createConduitClient = (options: {
   readonly endpoint: string;
   readonly apiToken: string;
   readonly fetchFn?: typeof fetch;
+  readonly sleepFn?: (ms: number) => Promise<void>;
+  readonly maxRetries?: number;
+  readonly minIntervalMs?: number;
+  readonly nowFn?: () => number;
 }): ConduitClient => {
   const { endpoint, apiToken } = options;
   const fetchFn = options.fetchFn ?? fetch;
+  const sleepFn =
+    options.sleepFn ??
+    ((ms: number): Promise<void> =>
+      new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      }));
+  const maxRetries = options.maxRetries ?? DEFAULT_MAX_RETRIES;
+  const minIntervalMs = options.minIntervalMs ?? DEFAULT_MIN_INTERVAL_MS;
+  const nowFn = options.nowFn ?? Date.now;
+  let lastCallAt = Number.NEGATIVE_INFINITY;
   return {
     call: async (method, params) => {
       const body = new URLSearchParams();
       body.set('api.token', apiToken);
       flattenParams(params, '', body);
-      const response = await fetchFn(`${endpoint}/${method}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
-      });
-      if (!response.ok) {
-        throw new Error(`Conduit ${method} failed with status ${String(response.status)}`);
+      const sinceLast = nowFn() - lastCallAt;
+      if (sinceLast < minIntervalMs) {
+        await sleepFn(minIntervalMs - sinceLast);
       }
-      const json = (await response.json()) as { result?: unknown; error_info?: string | null };
-      if (json.error_info !== undefined && json.error_info !== null) {
-        throw new Error(`Conduit ${method} error: ${json.error_info}`);
+      for (let attempt = 0; ; attempt += 1) {
+        lastCallAt = nowFn();
+        const response = await fetchFn(`${endpoint}/${method}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (response.status === 429 && attempt < maxRetries) {
+          const retryAfter = parseRetryAfter(response.headers.get('Retry-After'));
+          const fallback = Math.min(DEFAULT_BACKOFF_MS * 2 ** attempt, MAX_BACKOFF_MS);
+          await sleepFn(retryAfter ?? fallback);
+          continue;
+        }
+        if (!response.ok) {
+          throw new Error(`Conduit ${method} failed with status ${String(response.status)}`);
+        }
+        const json = (await response.json()) as { result?: unknown; error_info?: string | null };
+        if (json.error_info !== undefined && json.error_info !== null) {
+          throw new Error(`Conduit ${method} error: ${json.error_info}`);
+        }
+        return json.result;
       }
-      return json.result;
     },
   };
 };
