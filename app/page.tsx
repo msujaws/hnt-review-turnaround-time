@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import Image from 'next/image';
 import type { FC } from 'react';
 
@@ -8,13 +9,19 @@ import { loadHistory } from './history';
 import { loadSamples } from './samples';
 
 const SLA_HOURS = 4;
+const ET_ZONE = 'America/New_York';
 
 export const revalidate = 3600;
 
 const Page: FC = async () => {
   const [history, samples] = await Promise.all([loadHistory(), loadSamples()]);
   const latest = history.at(-1);
-  const now = new Date();
+  // Anchor sample-list filtering on the latest snapshot's ET day so stats.n
+  // (captured when the cron ran) agrees with what the expanded row renders.
+  const now =
+    latest === undefined
+      ? new Date()
+      : DateTime.fromISO(latest.date, { zone: ET_ZONE }).endOf('day').toJSDate();
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10">
       <header className="flex items-start gap-4">

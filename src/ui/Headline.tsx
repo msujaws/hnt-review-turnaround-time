@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import type { Sample } from '../scripts/collect';
+import { isSampleInWindow, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
 import { asMaterialSymbolName, Icon } from './Icon';
@@ -13,8 +13,11 @@ const GITHUB_REPO = 'content-monorepo';
 
 const formatHours = (value: number): string => {
   const rounded = Math.round(value * 10) / 10;
-  return rounded === 0 ? 'N/A' : `${rounded.toFixed(1)}h`;
+  return `${rounded.toFixed(1)}h`;
 };
+
+const formatStatHours = (value: number, hasData: boolean): string =>
+  hasData ? formatHours(value) : 'N/A';
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
 const formatTimestamp = (value: string): string => {
   const date = new Date(value);
@@ -42,12 +45,10 @@ const windowDaysFor = (label: '7-day' | '14-day' | '30-day'): number => {
   return 30;
 };
 
-const filterSamplesForWindow = (samples: readonly Sample[], days: number, now: Date): Sample[] => {
-  const cutoffMs = now.getTime() - days * 86_400 * 1000;
-  return samples
-    .filter((s) => Date.parse(s.requestedAt) >= cutoffMs)
+const filterSamplesForWindow = (samples: readonly Sample[], days: number, now: Date): Sample[] =>
+  samples
+    .filter((s) => isSampleInWindow(s, days, now))
     .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
-};
 
 interface SampleRowProps {
   readonly sample: Sample;
@@ -118,13 +119,27 @@ const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours, accent }) => (
       <span>{label}</span>
       <span className="text-neutral-500">·</span>
       <span className="text-neutral-500">
-        {stats.n === 0 ? 'no reviews in window' : `${stats.n.toString()} reviews`}
+        {stats.n === 0
+          ? 'no reviews in window'
+          : `${stats.n.toString()} ${stats.n === 1 ? 'review' : 'reviews'}`}
       </span>
     </div>
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-      <StatCell label="Median" value={formatHours(stats.median)} accent={accent ?? false} />
-      <StatCell label="Mean" value={formatHours(stats.mean)} accent={accent ?? false} />
-      <StatCell label="p90" value={formatHours(stats.p90)} accent={accent ?? false} />
+      <StatCell
+        label="Median"
+        value={formatStatHours(stats.median, stats.n > 0)}
+        accent={accent ?? false}
+      />
+      <StatCell
+        label="Mean"
+        value={formatStatHours(stats.mean, stats.n > 0)}
+        accent={accent ?? false}
+      />
+      <StatCell
+        label="p90"
+        value={formatStatHours(stats.p90, stats.n > 0)}
+        accent={accent ?? false}
+      />
       <StatCell
         label={`Under ${slaHours.toString()}h SLA`}
         value={formatPercent(stats.pctUnderSLA)}
@@ -157,7 +172,7 @@ const WindowRow: FC<WindowRowProps> = (props) => {
           <div className="flex items-center gap-2 text-sm font-medium text-neutral-300">
             <span>{props.label}</span>
             <span className="text-neutral-500">·</span>
-            <span className="text-neutral-500">{`${props.stats.n.toString()} reviews`}</span>
+            <span className="text-neutral-500">{`${props.stats.n.toString()} ${props.stats.n === 1 ? 'review' : 'reviews'}`}</span>
           </div>
           <Icon
             name={EXPAND_ICON}
@@ -167,17 +182,17 @@ const WindowRow: FC<WindowRowProps> = (props) => {
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <StatCell
             label="Median"
-            value={formatHours(props.stats.median)}
+            value={formatStatHours(props.stats.median, props.stats.n > 0)}
             accent={props.accent ?? false}
           />
           <StatCell
             label="Mean"
-            value={formatHours(props.stats.mean)}
+            value={formatStatHours(props.stats.mean, props.stats.n > 0)}
             accent={props.accent ?? false}
           />
           <StatCell
             label="p90"
-            value={formatHours(props.stats.p90)}
+            value={formatStatHours(props.stats.p90, props.stats.n > 0)}
             accent={props.accent ?? false}
           />
           <StatCell

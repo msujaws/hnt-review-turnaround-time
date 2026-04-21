@@ -20,8 +20,12 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now 
       </div>
     );
   }
-  const phabSamples = samples.filter((s) => s.source === 'phab');
-  const githubSamples = samples.filter((s) => s.source === 'github');
+  const phabSamples = samples.filter(
+    (s): s is Extract<Sample, { source: 'phab' }> => s.source === 'phab',
+  );
+  const githubSamples = samples.filter(
+    (s): s is Extract<Sample, { source: 'github' }> => s.source === 'github',
+  );
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">

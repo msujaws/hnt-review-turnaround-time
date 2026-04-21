@@ -81,7 +81,28 @@ describe('buildMetadataSummary', () => {
     expect(summary.description).toMatch(/no snapshots/i);
   });
 
-  it('renders N/A instead of 0.0h when both windows are empty', () => {
+  it('renders N/A instead of 0.0h for a source with no reviews while the other has data', () => {
+    const mixedRow: HistoryRow = {
+      date: '2026-04-21',
+      phab: {
+        window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      },
+      github: {
+        window7d: { n: 2, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 },
+        window14d: { n: 2, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 },
+        window30d: { n: 2, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 },
+      },
+    };
+    const summary = buildMetadataSummary([mixedRow], 4);
+    expect(summary.title).toMatch(/Phab N\/A/);
+    expect(summary.title).toMatch(/GH 2\.0h/);
+    expect(summary.description).toMatch(/Phab 30d: median N\/A/);
+    expect(summary.description).toMatch(/GH 7d: median 2\.0h/);
+  });
+
+  it('falls back to "awaiting first reviews" when every window on both sources is empty', () => {
     const emptyRow: HistoryRow = {
       date: '2026-04-21',
       phab: {
@@ -96,10 +117,7 @@ describe('buildMetadataSummary', () => {
       },
     };
     const summary = buildMetadataSummary([emptyRow], 4);
-    expect(summary.title).not.toMatch(/0\.0h/);
-    expect(summary.title).toMatch(/Phab N\/A/);
-    expect(summary.title).toMatch(/GH N\/A/);
-    expect(summary.description).not.toMatch(/0\.0h/);
-    expect(summary.description).toMatch(/median N\/A/);
+    expect(summary.title).toBe('HNT Review TAT · awaiting first reviews');
+    expect(summary.description).toMatch(/no reviews yet/i);
   });
 });

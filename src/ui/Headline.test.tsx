@@ -235,6 +235,31 @@ describe('Headline', () => {
     expect(within(row7).getByText(/PHID-DREV-abcdefghij/)).toBeInTheDocument();
   });
 
+  it('still renders 0.0h for a populated window whose stats happen to round to 0', () => {
+    // A real workday-zero case: n > 0 but all activity happened outside business hours.
+    const nonEmptyZero: WindowStats = {
+      n: 3,
+      median: 0,
+      mean: 0.02,
+      p90: 0.04,
+      pctUnderSLA: 100,
+    };
+    render(
+      <Headline
+        title="GitHub"
+        window7d={nonEmptyZero}
+        window14d={nonEmptyZero}
+        window30d={nonEmptyZero}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    // 0.0h should appear (not N/A) for every hour stat since n > 0.
+    expect(screen.queryAllByText('N/A')).toHaveLength(0);
+    expect(screen.queryAllByText('0.0h').length).toBeGreaterThan(0);
+  });
+
   it('renders N/A instead of 0.0h when hour values round to zero', () => {
     render(
       <Headline
