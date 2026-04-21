@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import {
+  createConduitClient,
   extractSamplesFromTransactions,
   fetchPhabSamples,
   type ConduitClient,
@@ -283,5 +284,69 @@ describe('fetchPhabSamples', () => {
         now: new Date('2026-04-20T12:00:00Z'),
       }),
     ).rejects.toThrow(/nonexistent/);
+  });
+});
+
+const jsonResponse = (body: unknown): Response =>
+  new Response(JSON.stringify(body), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+describe('createConduitClient', () => {
+  it('serializes nested params in PHP-bracket form alongside api.token', async () => {
+    const fetchFn = vi.fn(async () => jsonResponse({ result: { data: [] } }));
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+    });
+
+    await client.call('project.search', { constraints: { slugs: ['home-newtab-reviewers'] } });
+
+    expect(fetchFn).toHaveBeenCalledWith(
+      'https://phab.example/api/project.search',
+      expect.objectContaining({ method: 'POST' }),
+    );
+    const firstCall = fetchFn.mock.calls[0] as unknown as [string, { body: URLSearchParams }];
+    const init = firstCall[1];
+    expect(init.body.get('api.token')).toBe('cli-abc123');
+    expect(init.body.get('constraints[slugs][0]')).toBe('home-newtab-reviewers');
+    expect(init.body.get('params')).toBeNull();
+  });
+
+  it('serializes numeric params and arrays of PHIDs', async () => {
+    const fetchFn = vi.fn(async () =>
+      jsonResponse({ result: { data: [], cursor: { after: null } } }),
+    );
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+    });
+
+    await client.call('differential.revision.search', {
+      constraints: { projects: ['PHID-PROJ-aaa'], modifiedStart: 1_761_000_000 },
+      order: 'newest',
+    });
+
+    const firstCall = fetchFn.mock.calls[0] as unknown as [string, { body: URLSearchParams }];
+    const init = firstCall[1];
+    expect(init.body.get('constraints[projects][0]')).toBe('PHID-PROJ-aaa');
+    expect(init.body.get('constraints[modifiedStart]')).toBe('1761000000');
+    expect(init.body.get('order')).toBe('newest');
+  });
+
+  it('surfaces Conduit error_info as a thrown error', async () => {
+    const fetchFn = vi.fn(async () =>
+      jsonResponse({ result: null, error_info: 'Session key is not present.' }),
+    );
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-bad',
+      fetchFn: fetchFn as unknown as typeof fetch,
+    });
+
+    await expect(client.call('project.search', {})).rejects.toThrow(/Session key is not present/);
   });
 });

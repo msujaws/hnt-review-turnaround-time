@@ -247,6 +247,28 @@ export const fetchPhabSamples = async (params: {
   return samples;
 };
 
+const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): void => {
+  if (value === null || value === undefined) return;
+  if (Array.isArray(value)) {
+    for (const [index, item] of value.entries()) {
+      flattenParams(item, `${prefix}[${index.toString()}]`, body);
+    }
+    return;
+  }
+  if (typeof value === 'object') {
+    for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
+      const nextPrefix = prefix === '' ? key : `${prefix}[${key}]`;
+      flattenParams(nested, nextPrefix, body);
+    }
+    return;
+  }
+  if (typeof value === 'string') {
+    body.append(prefix, value);
+  } else if (typeof value === 'number' || typeof value === 'boolean') {
+    body.append(prefix, value.toString());
+  }
+};
+
 export const createConduitClient = (options: {
   readonly endpoint: string;
   readonly apiToken: string;
@@ -258,8 +280,7 @@ export const createConduitClient = (options: {
     call: async (method, params) => {
       const body = new URLSearchParams();
       body.set('api.token', apiToken);
-      body.set('params', JSON.stringify(params));
-      body.set('output', 'json');
+      flattenParams(params, '', body);
       const response = await fetchFn(`${endpoint}/${method}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
