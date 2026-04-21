@@ -91,7 +91,7 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): GithubSamp
 const PR_QUERY = `
   query PullRequestPage($owner: String!, $repo: String!, $cursor: String) {
     repository(owner: $owner, name: $repo) {
-      pullRequests(first: 25, after: $cursor, orderBy: { field: UPDATED_AT, direction: DESC }) {
+      pullRequests(first: 100, after: $cursor, orderBy: { field: UPDATED_AT, direction: DESC }) {
         pageInfo { hasNextPage endCursor }
         nodes {
           number

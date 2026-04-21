@@ -11,9 +11,9 @@ import { createConduitClient, fetchPhabSamples, type PhabSample } from './phabri
 import { computeStats, type WindowStats } from './stats';
 
 const SLA_HOURS = 4;
-const RETENTION_DAYS = 60;
+const RETENTION_DAYS = 90;
 const FOLLOWUP_LOOKBACK_DAYS = 3;
-const BACKFILL_LOOKBACK_DAYS = 21;
+const BACKFILL_LOOKBACK_DAYS = 45;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
 const ET_ZONE = 'America/New_York';
@@ -170,7 +170,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     fetchPhab: (lookbackDays) =>
       fetchPhabSamples({
         client: conduit,
-        projectSlug: 'home-newtab-reviewers',
+        projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? 'home-newtab-reviewers')
+          .split(',')
+          .map((slug) => slug.trim())
+          .filter((slug) => slug.length > 0),
         lookbackDays,
       }),
     fetchGithub: (lookbackDays) =>

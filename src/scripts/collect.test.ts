@@ -31,7 +31,7 @@ const makeGhSample = (overrides: Partial<GithubSample> = {}): GithubSample => ({
 });
 
 describe('collect', () => {
-  it('uses a 21-day lookback when no existing samples', async () => {
+  it('uses the backfill lookback when no existing samples', async () => {
     const fetchPhab = vi.fn(async () => []);
     const fetchGithub = vi.fn(async () => []);
 
@@ -43,9 +43,9 @@ describe('collect', () => {
       now: new Date('2026-04-20T13:00:00Z'),
     });
 
-    expect(fetchPhab).toHaveBeenCalledWith(21);
-    expect(fetchGithub).toHaveBeenCalledWith(21);
-    expect(result.lookbackDays).toBe(21);
+    expect(fetchPhab).toHaveBeenCalledWith(45);
+    expect(fetchGithub).toHaveBeenCalledWith(45);
+    expect(result.lookbackDays).toBe(45);
   });
 
   it('uses a 3-day lookback when samples already exist', async () => {
