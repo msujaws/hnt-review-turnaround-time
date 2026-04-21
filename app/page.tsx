@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 
+import { Footer } from '../src/ui/Footer';
+
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
 
@@ -21,6 +23,7 @@ const Page: FC = async () => {
         </p>
       </header>
       <Dashboard history={history} slaHours={SLA_HOURS} />
+      <Footer />
     </main>
   );
 };
