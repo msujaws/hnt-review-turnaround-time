@@ -382,10 +382,10 @@ const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): v
   }
 };
 
-const DEFAULT_MAX_RETRIES = 8;
+const DEFAULT_MAX_RETRIES = 10;
 const DEFAULT_BACKOFF_MS = 2000;
-const MAX_BACKOFF_MS = 120_000;
-const DEFAULT_MIN_INTERVAL_MS = 1100;
+const MAX_BACKOFF_MS = 180_000;
+const DEFAULT_MIN_INTERVAL_MS = 2500;
 
 const parseRetryAfter = (header: string | null): number | null => {
   if (header === null) return null;
