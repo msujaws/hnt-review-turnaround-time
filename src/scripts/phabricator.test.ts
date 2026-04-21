@@ -29,6 +29,7 @@ const loginByPhid = new Map<string, string>([
   ['PHID-USER-authoraaaaaaaaaaaaaa', 'author-user'],
   ['PHID-USER-revieweraaaaaaaaaaaaa', 'alice'],
   ['PHID-USER-reviewerbbbbbbbbbbbbb', 'bob'],
+  ['PHID-USER-outsidereviewerccccc', 'charlie'],
 ]);
 
 describe('extractSamplesFromTransactions', () => {
@@ -199,13 +200,57 @@ describe('extractSamplesFromTransactions', () => {
     ];
     expect(extractSamplesFromTransactions(revision(), txs, loginByPhid)).toEqual([]);
   });
+
+  it('filters samples to the allowed reviewer phids when provided', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [
+            { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+            { operation: 'add', phid: 'PHID-USER-outsidereviewerccccc' },
+          ],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+        dateCreated: 1_761_003_600,
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'accept',
+        authorPhid: 'PHID-USER-outsidereviewerccccc',
+        dateCreated: 1_761_003_600,
+      }),
+    ];
+    const samples = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+      allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa']),
+    });
+    expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
+  });
 });
 
 describe('fetchPhabSamples', () => {
   it('orchestrates project lookup, revision search, and transaction extraction', async () => {
     const call = vi.fn(async (method: string): Promise<unknown> => {
       if (method === 'project.search') {
-        return { data: [{ phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa' }] };
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: {
+                  members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+                },
+              },
+            },
+          ],
+        };
       }
       if (method === 'differential.revision.search') {
         return {
@@ -267,7 +312,18 @@ describe('fetchPhabSamples', () => {
     expect(samples[0]).toMatchObject({ source: 'phab', reviewer: 'alice' });
     expect(call).toHaveBeenCalledWith(
       'project.search',
-      expect.objectContaining({ constraints: { slugs: ['home-newtab-reviewers'] } }),
+      expect.objectContaining({
+        constraints: { slugs: ['home-newtab-reviewers'] },
+        attachments: { members: true },
+      }),
+    );
+    expect(call).toHaveBeenCalledWith(
+      'differential.revision.search',
+      expect.objectContaining({
+        constraints: expect.objectContaining({
+          reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
+        }) as unknown,
+      }),
     );
   });
 
@@ -286,21 +342,66 @@ describe('fetchPhabSamples', () => {
     ).rejects.toThrow(/nonexistent/);
   });
 
-  it('unions revisions across multiple project slugs', async () => {
+  it('throws when the resolved projects have no members', async () => {
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-emptyaaaaaaaaaaaaaaa',
+              attachments: { members: { members: [] } },
+            },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    await expect(
+      fetchPhabSamples({
+        client: { call },
+        projectSlugs: ['empty-group'],
+        lookbackDays: 21,
+        now: new Date('2026-04-20T12:00:00Z'),
+      }),
+    ).rejects.toThrow(/members/);
+  });
+
+  it('unions reviewer phids across multiple project slugs and dedupes', async () => {
     const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
       if (method === 'project.search') {
         return {
           data: [
-            { phid: 'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa' },
-            { phid: 'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb' },
+            {
+              phid: 'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
+              attachments: {
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+                  ],
+                },
+              },
+            },
+            {
+              phid: 'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb',
+              attachments: {
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+                    { phid: 'PHID-USER-outsidereviewerccccc' },
+                  ],
+                },
+              },
+            },
           ],
         };
       }
       if (method === 'differential.revision.search') {
-        const p = params as { constraints: { projects: string[] } };
-        expect(p.constraints.projects).toEqual([
-          'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
-          'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb',
+        const p = params as { constraints: { reviewerPHIDs: string[] } };
+        expect([...p.constraints.reviewerPHIDs].sort()).toEqual([
+          'PHID-USER-outsidereviewerccccc',
+          'PHID-USER-revieweraaaaaaaaaaaaa',
+          'PHID-USER-reviewerbbbbbbbbbbbbb',
         ]);
         return { data: [], cursor: { after: null } };
       }
@@ -315,8 +416,94 @@ describe('fetchPhabSamples', () => {
     });
     expect(call).toHaveBeenCalledWith(
       'project.search',
-      expect.objectContaining({ constraints: { slugs: ['slug-a', 'slug-b'] } }),
+      expect.objectContaining({
+        constraints: { slugs: ['slug-a', 'slug-b'] },
+        attachments: { members: true },
+      }),
     );
+  });
+
+  it('drops reviewers who are not group members', async () => {
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: {
+                  members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+                },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 2,
+              phid: 'PHID-DREV-bbbbbbbbbbbbbbbbbbbb',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-aaaaaaaaaaaaaaaaaaaa',
+              type: 'reviewers',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_761_000_000,
+              fields: {
+                operations: [
+                  { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  { operation: 'add', phid: 'PHID-USER-outsidereviewerccccc' },
+                ],
+              },
+            },
+            {
+              id: 2,
+              phid: 'PHID-XACT-bbbbbbbbbbbbbbbbbbbb',
+              type: 'accept',
+              authorPHID: 'PHID-USER-revieweraaaaaaaaaaaaa',
+              dateCreated: 1_761_003_600,
+              fields: {},
+            },
+            {
+              id: 3,
+              phid: 'PHID-XACT-ccccccccccccccccccccc',
+              type: 'accept',
+              authorPHID: 'PHID-USER-outsidereviewerccccc',
+              dateCreated: 1_761_003_600,
+              fields: {},
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } },
+            { phid: 'PHID-USER-outsidereviewerccccc', fields: { username: 'charlie' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const samples = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
   });
 });
 

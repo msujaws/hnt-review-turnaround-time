@@ -53,13 +53,16 @@ export const extractSamplesFromTransactions = (
   revision: PhabRevision,
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
+  options: { readonly allowedReviewerPhids?: ReadonlySet<string> } = {},
 ): PhabSample[] => {
+  const { allowedReviewerPhids } = options;
   const requestedAtByReviewer = new Map<string, number>();
   for (const tx of transactions) {
     if (tx.type !== 'reviewers') continue;
     for (const op of tx.fields.operations ?? []) {
       if (!REVIEWER_ADD_OPS.has(op.operation)) continue;
       if (op.phid === revision.authorPhid) continue;
+      if (allowedReviewerPhids !== undefined && !allowedReviewerPhids.has(op.phid)) continue;
       if (!requestedAtByReviewer.has(op.phid)) {
         requestedAtByReviewer.set(op.phid, tx.dateCreated);
       }
@@ -91,7 +94,20 @@ export const extractSamplesFromTransactions = (
 };
 
 const projectSearchSchema = z.object({
-  data: z.array(z.object({ phid: z.string() })),
+  data: z.array(
+    z.object({
+      phid: z.string(),
+      attachments: z
+        .object({
+          members: z
+            .object({
+              members: z.array(z.object({ phid: z.string() })),
+            })
+            .optional(),
+        })
+        .optional(),
+    }),
+  ),
 });
 
 const revisionSearchSchema = z.object({
@@ -108,8 +124,14 @@ const revisionSearchSchema = z.object({
 const transactionSchema = z.object({
   id: z.number(),
   phid: z.string(),
-  type: z.string(),
-  authorPHID: z.string(),
+  type: z
+    .string()
+    .nullable()
+    .transform((value) => value ?? ''),
+  authorPHID: z
+    .string()
+    .nullable()
+    .transform((value) => value ?? ''),
   dateCreated: z.number(),
   fields: z.object({
     operations: z
@@ -137,23 +159,28 @@ const userSearchSchema = z.object({
   ),
 });
 
-const lookupProjectPhids = async (
+const lookupProjectMembers = async (
   client: ConduitClient,
   slugs: readonly string[],
-): Promise<{ phids: string[]; missing: string[] }> => {
-  const raw = await client.call('project.search', { constraints: { slugs: [...slugs] } });
+): Promise<{ projectPhids: string[]; memberPhids: string[] }> => {
+  const raw = await client.call('project.search', {
+    constraints: { slugs: [...slugs] },
+    attachments: { members: true },
+  });
   const parsed = projectSearchSchema.parse(raw);
-  const phids = parsed.data.map((entry) => entry.phid);
-  const missing =
-    parsed.data.length === slugs.length
-      ? []
-      : slugs.filter((_, index) => parsed.data[index] === undefined);
-  return { phids, missing };
+  const projectPhids = parsed.data.map((entry) => entry.phid);
+  const uniqueMembers = new Set<string>();
+  for (const entry of parsed.data) {
+    for (const member of entry.attachments?.members?.members ?? []) {
+      uniqueMembers.add(member.phid);
+    }
+  }
+  return { projectPhids, memberPhids: [...uniqueMembers] };
 };
 
 const fetchRevisions = async (
   client: ConduitClient,
-  projectPhids: readonly string[],
+  reviewerPhids: readonly string[],
   modifiedStart: number,
 ): Promise<PhabRevision[]> => {
   const revisions: PhabRevision[] = [];
@@ -161,7 +188,7 @@ const fetchRevisions = async (
   let after: string | null = null;
   do {
     const params: Record<string, unknown> = {
-      constraints: { projects: [...projectPhids], modifiedStart },
+      constraints: { reviewerPHIDs: [...reviewerPhids], modifiedStart },
       order: 'newest',
     };
     if (after !== null) params.after = after;
@@ -230,11 +257,17 @@ export const fetchPhabSamples = async (params: {
   if (projectSlugs.length === 0) {
     throw new Error('at least one project slug is required');
   }
-  const { phids: projectPhids, missing } = await lookupProjectPhids(client, projectSlugs);
-  if (missing.length === projectSlugs.length) {
-    throw new Error(`no project slugs resolved: ${missing.join(', ')}`);
+  const { projectPhids, memberPhids } = await lookupProjectMembers(client, projectSlugs);
+  if (projectPhids.length === 0) {
+    throw new Error(`no project slugs resolved: ${projectSlugs.join(', ')}`);
   }
-  const revisions = await fetchRevisions(client, projectPhids, modifiedStart);
+  if (memberPhids.length === 0) {
+    throw new Error(
+      `resolved projects have no members: ${projectSlugs.join(', ')} — is this a reviewer group?`,
+    );
+  }
+  const revisions = await fetchRevisions(client, memberPhids, modifiedStart);
+  const allowedReviewerPhids = new Set(memberPhids);
 
   const transactionsByRevision = new Map<string, PhabTransaction[]>();
   const userPhids = new Set<string>();
@@ -255,7 +288,9 @@ export const fetchPhabSamples = async (params: {
   const samples: PhabSample[] = [];
   for (const rev of revisions) {
     const txs = transactionsByRevision.get(rev.phid) ?? [];
-    samples.push(...extractSamplesFromTransactions(rev, txs, loginByPhid));
+    samples.push(
+      ...extractSamplesFromTransactions(rev, txs, loginByPhid, { allowedReviewerPhids }),
+    );
   }
   return samples;
 };
