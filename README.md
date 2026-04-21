@@ -28,14 +28,15 @@ bot token required.
 
 ## Setup
 
-Prereqs: Node 20+, `npm`.
+Prereqs: [Bun](https://bun.sh) 1.3+.
 
 ```bash
-npm install
+bun install
 ```
 
 The `prepare` script wires up Husky on install, so the pre-commit and commit-msg
-hooks are active immediately.
+hooks are active immediately. Bun runs TypeScript natively, so no `tsx` wrapper
+is needed for the collector script.
 
 ### Environment variables
 
@@ -51,21 +52,21 @@ Stored as GitHub Actions secrets (`PHABRICATOR_TOKEN`, `GH_PAT`) for the daily w
 ## Common commands
 
 ```bash
-npm run dev            # local Next.js dev server
-npm run build          # production build
-npm run collect        # fetch + compute + write data/*.json (needs env vars)
+bun run dev            # local Next.js dev server
+bun run build          # production build
+bun run collect        # fetch + compute + write data/*.json (needs env vars)
 
-npm test               # vitest run
-npm run test:watch     # vitest watch
-npm run test:coverage  # coverage report
+bun test               # vitest run
+bun run test:watch     # vitest watch
+bun run test:coverage  # coverage report
 
-npm run lint           # ESLint (all rules, unicorn, tailwind, a11y)
-npm run stylelint      # stylelint
-npm run format         # prettier --write
-npm run format:check   # prettier --check
-npm run typecheck      # tsc --noEmit
+bun run lint           # ESLint (all rules, unicorn, tailwind, a11y)
+bun run stylelint      # stylelint
+bun run format         # prettier --write
+bun run format:check   # prettier --check
+bun run typecheck      # tsc --noEmit
 
-npm run verify         # runs lint + stylelint + format:check + typecheck + tests
+bun run verify         # runs lint + stylelint + format:check + typecheck + tests
 ```
 
 ## Engineering standards

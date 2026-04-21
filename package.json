@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "collect": "tsx src/scripts/collect.ts",
+    "collect": "bun run src/scripts/collect.ts",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --max-warnings=0 --fix",
     "stylelint": "stylelint \"**/*.{css,scss}\" --max-warnings=0",
@@ -21,7 +21,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify": "npm run lint && npm run stylelint && npm run format:check && npm run typecheck && npm run test",
+    "verify": "bun run lint && bun run stylelint && bun run format:check && bun run typecheck && bun run test",
     "prepare": "husky"
   },
   "dependencies": {
@@ -66,7 +66,6 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-tailwindcss": "^0.0.7",
     "tailwindcss": "^3.4.17",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.19.1",
     "vitest": "^2.1.8"

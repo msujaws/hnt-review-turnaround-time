@@ -13,12 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run collect
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run collect
         env:
           PHABRICATOR_TOKEN: ${{ secrets.PHABRICATOR_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
