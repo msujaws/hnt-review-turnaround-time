@@ -478,7 +478,7 @@ describe('extractSamplesFromTransactions', () => {
 
 describe('fetchPhabSamples', () => {
   it('orchestrates project lookup, revision search, and transaction extraction', async () => {
-    const call = vi.fn(async (method: string): Promise<unknown> => {
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
       if (method === 'project.search') {
         return {
           data: [
@@ -494,16 +494,22 @@ describe('fetchPhabSamples', () => {
         };
       }
       if (method === 'differential.revision.search') {
-        return {
-          data: [
-            {
-              id: 1,
-              phid: 'PHID-DREV-abcdefghijklmnopqrst',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
-            },
-          ],
-          cursor: { after: null },
-        };
+        const constraints = (params as { constraints: Record<string, unknown> }).constraints;
+        // Recent-updates query uses modifiedStart; open-state query uses statuses.
+        // Return the revision only for the recent query so we don't double-extract.
+        if ('modifiedStart' in constraints) {
+          return {
+            data: [
+              {
+                id: 1,
+                phid: 'PHID-DREV-abcdefghijklmnopqrst',
+                fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              },
+            ],
+            cursor: { after: null },
+          };
+        }
+        return { data: [], cursor: { after: null } };
       }
       if (method === 'transaction.search') {
         return {
@@ -542,7 +548,7 @@ describe('fetchPhabSamples', () => {
     });
     const client: ConduitClient = { call };
 
-    const samples = await fetchPhabSamples({
+    const { samples } = await fetchPhabSamples({
       client,
       projectSlugs: ['home-newtab-reviewers'],
       lookbackDays: 21,
@@ -563,9 +569,171 @@ describe('fetchPhabSamples', () => {
       expect.objectContaining({
         constraints: expect.objectContaining({
           reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
+          modifiedStart: expect.any(Number) as number,
         }) as unknown,
       }),
     );
+    // Open-state query runs too, constrained by status instead of modifiedStart.
+    expect(call).toHaveBeenCalledWith(
+      'differential.revision.search',
+      expect.objectContaining({
+        constraints: expect.objectContaining({
+          reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
+          statuses: expect.any(Array) as unknown,
+        }) as unknown,
+      }),
+    );
+  });
+
+  it('discovers pending requests on stale-but-open revisions via the open-state query', async () => {
+    // Revision was modified months ago (outside modifiedStart) but is still
+    // needs-review. Only the open-state query should surface it. Alice is
+    // pending because she was added as a reviewer and never acted.
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        const constraints = (params as { constraints: Record<string, unknown> }).constraints;
+        // Recent query returns nothing; open-state query returns the stale revision.
+        if ('statuses' in constraints) {
+          return {
+            data: [
+              {
+                id: 99,
+                phid: 'PHID-DREV-stalebutopenxxxxxxxx',
+                fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              },
+            ],
+            cursor: { after: null },
+          };
+        }
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-pendingxxxxxxxxxxxxx',
+              type: 'reviewers',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_750_000_000,
+              fields: {
+                operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+              },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } }],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const client: ConduitClient = { call };
+
+    const { samples, pending } = await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(samples).toEqual([]);
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-stalebutopenxxxxxxxx',
+      revisionId: 99,
+      reviewer: 'alice',
+    });
+  });
+
+  it('dedupes revisions that appear in both the recent-updates and open-state queries', async () => {
+    // The same revision shows up in both queries → transactions fetched once,
+    // sample emitted once.
+    let transactionCallCount = 0;
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 7,
+              phid: 'PHID-DREV-dupeaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        transactionCallCount += 1;
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-aaaaaaaaaaaaaaaaaaaa',
+              type: 'reviewers',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_761_000_000,
+              fields: {
+                operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+              },
+            },
+            {
+              id: 2,
+              phid: 'PHID-XACT-bbbbbbbbbbbbbbbbbbbb',
+              type: 'accept',
+              authorPHID: 'PHID-USER-revieweraaaaaaaaaaaaa',
+              dateCreated: 1_761_007_200,
+              fields: {},
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } }],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const { samples } = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(samples).toHaveLength(1);
+    expect(transactionCallCount).toBe(1);
   });
 
   it('throws when no project slug resolves', async () => {
@@ -738,7 +906,7 @@ describe('fetchPhabSamples', () => {
       }
       throw new Error(`unexpected method ${method}`);
     });
-    const samples = await fetchPhabSamples({
+    const { samples } = await fetchPhabSamples({
       client: { call },
       projectSlugs: ['home-newtab-reviewers'],
       lookbackDays: 21,

@@ -14,9 +14,19 @@ import {
 } from '../types/brand';
 
 import { businessHoursBetween } from './businessHours';
-import { createGithubClient, fetchGithubSamples, type GithubSample } from './github';
+import {
+  createGithubClient,
+  fetchGithubSamples,
+  type GithubPendingSample,
+  type GithubSample,
+} from './github';
 import { EMPTY_PEOPLE_MAP, loadPeopleMap, type PeopleMap, timezoneForReviewer } from './people';
-import { createConduitClient, fetchPhabSamples, type PhabSample } from './phabricator';
+import {
+  createConduitClient,
+  fetchPhabSamples,
+  type PhabPendingSample,
+  type PhabSample,
+} from './phabricator';
 import { computeStats, type WindowStats } from './stats';
 
 const SLA_HOURS = 4;
@@ -31,6 +41,8 @@ const ET_ZONE = 'America/New_York';
 export type Sample =
   | (PhabSample & { readonly tatBusinessHours: BusinessHours })
   | (GithubSample & { readonly tatBusinessHours: BusinessHours });
+
+export type PendingSample = PhabPendingSample | GithubPendingSample;
 
 export interface SourceWindows {
   readonly window7d: WindowStats;
@@ -63,6 +75,26 @@ const githubSampleSchema = z.object({
 });
 
 export const sampleSchema = z.discriminatedUnion('source', [phabSampleSchema, githubSampleSchema]);
+
+const phabPendingSampleSchema = z.object({
+  source: z.literal('phab'),
+  id: z.string().transform((v) => asRevisionPhid(v)),
+  revisionId: z.number().int().positive(),
+  reviewer: z.string().transform((v) => asReviewerLogin(v)),
+  requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
+});
+
+const githubPendingSampleSchema = z.object({
+  source: z.literal('github'),
+  id: z.number().transform((v) => asPrNumber(v)),
+  reviewer: z.string().transform((v) => asReviewerLogin(v)),
+  requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
+});
+
+export const pendingSampleSchema = z.discriminatedUnion('source', [
+  phabPendingSampleSchema,
+  githubPendingSampleSchema,
+]);
 
 const windowStatsSchema = z.object({
   n: z.number().int().nonnegative(),
@@ -117,16 +149,23 @@ export const isSampleInWindow = (sample: Sample, windowDays: number, now: Date):
 const filterWithin = (samples: readonly Sample[], windowDays: number, now: Date): BusinessHours[] =>
   samples.filter((s) => isSampleInWindow(s, windowDays, now)).map((s) => s.tatBusinessHours);
 
+const pendingKey = (p: PendingSample): string => `${p.source}:${String(p.id)}:${p.reviewer}`;
+
 export const collect = async (options: {
   readonly existingSamples: readonly Sample[];
   readonly existingHistory: readonly HistoryRow[];
-  readonly fetchPhab: (lookbackDays: number) => Promise<readonly PhabSample[]>;
-  readonly fetchGithub: (lookbackDays: number) => Promise<readonly GithubSample[]>;
+  readonly fetchPhab: (
+    lookbackDays: number,
+  ) => Promise<{ samples: readonly PhabSample[]; pending: readonly PhabPendingSample[] }>;
+  readonly fetchGithub: (
+    lookbackDays: number,
+  ) => Promise<{ samples: readonly GithubSample[]; pending: readonly GithubPendingSample[] }>;
   readonly peopleMap?: PeopleMap;
   readonly now?: Date;
   readonly slaHours?: number;
 }): Promise<{
   readonly samples: Sample[];
+  readonly pending: PendingSample[];
   readonly history: HistoryRow[];
   readonly lookbackDays: number;
 }> => {
@@ -136,7 +175,7 @@ export const collect = async (options: {
   const lookbackDays =
     options.existingSamples.length === 0 ? BACKFILL_LOOKBACK_DAYS : FOLLOWUP_LOOKBACK_DAYS;
 
-  const [phabSamples, ghSamples] = await Promise.all([
+  const [phabResult, ghResult] = await Promise.all([
     options.fetchPhab(lookbackDays),
     options.fetchGithub(lookbackDays),
   ]);
@@ -150,15 +189,23 @@ export const collect = async (options: {
   for (const existing of options.existingSamples) {
     merged.set(sampleKey(existing), withTat(existing, peopleMap));
   }
-  for (const fresh of phabSamples) {
+  for (const fresh of phabResult.samples) {
     merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
-  for (const fresh of ghSamples) {
+  for (const fresh of ghResult.samples) {
     merged.set(sampleKey(fresh), withTat(fresh, peopleMap));
   }
 
   const retentionCutoff = etWindowCutoffMs(now, RETENTION_DAYS);
   const samples = [...merged.values()].filter((s) => Date.parse(s.requestedAt) >= retentionCutoff);
+
+  // Pending is authoritative from the fresh open-state fetch — no merge with
+  // existing state. A pending entry that resolved to a sample simply doesn't
+  // appear in this run. Dedup by (source, id, reviewer) across the two sources.
+  const pendingMerged = new Map<string, PendingSample>();
+  for (const p of phabResult.pending) pendingMerged.set(pendingKey(p), p);
+  for (const p of ghResult.pending) pendingMerged.set(pendingKey(p), p);
+  const pending = [...pendingMerged.values()];
 
   const phabSeries = samples.filter(
     (s): s is Extract<Sample, { source: 'phab' }> => s.source === 'phab',
@@ -185,7 +232,7 @@ export const collect = async (options: {
   const historyWithoutToday = options.existingHistory.filter((row) => row.date !== todayEt);
   const history = [...historyWithoutToday, todayRow].sort((a, b) => a.date.localeCompare(b.date));
 
-  return { samples, history, lookbackDays };
+  return { samples, pending, history, lookbackDays };
 };
 
 const isNodeErrnoException = (error: unknown): error is NodeJS.ErrnoException =>
@@ -219,6 +266,7 @@ const requireEnv = (name: string): string => {
 export const runCollectionFromDisk = async (dataDirectory: string): Promise<void> => {
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
+  const pendingPath = path.join(dataDirectory, 'pending.json');
 
   const existingSamplesRaw = await readJsonFile<unknown>(samplesPath, []);
   const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
@@ -232,7 +280,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
-  const { samples, history } = await collect({
+  const { samples, pending, history } = await collect({
     existingSamples,
     existingHistory,
     peopleMap,
@@ -256,6 +304,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
 
   await writeJsonFile(samplesPath, samples);
   await writeJsonFile(historyPath, history);
+  await writeJsonFile(pendingPath, pending);
 };
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {

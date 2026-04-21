@@ -635,82 +635,124 @@ describe('extractSamplesFromPullRequest', () => {
   });
 });
 
+const emptyPage = {
+  repository: {
+    pullRequests: {
+      pageInfo: { hasNextPage: false, endCursor: null },
+      nodes: [],
+    },
+  },
+};
+
+// Drives `request` by matching the query string. Each of the two query streams
+// (recent-updates and open-state) has its own queue of pages; the handler
+// returns whichever queue matches the current query. Unrecognized queries
+// (e.g. the timeline-tail follow-up) are served from the `other` queue in FIFO
+// order. This keeps mocks oblivious to the parallel ordering of the two
+// top-level fetches.
+const mockGraphqlResponses = (
+  queues: {
+    readonly recent?: readonly unknown[];
+    readonly open?: readonly unknown[];
+    readonly other?: readonly unknown[];
+  } = {},
+): ReturnType<typeof vi.fn> => {
+  const recent = [...(queues.recent ?? [])];
+  const open = [...(queues.open ?? [])];
+  const other = [...(queues.other ?? [])];
+  return vi.fn(async (query: string): Promise<unknown> => {
+    if (query.includes('OpenPullRequestPage')) {
+      if (open.length === 0) return emptyPage;
+      return open.shift();
+    }
+    if (query.includes('PullRequestPage')) {
+      if (recent.length === 0) return emptyPage;
+      return recent.shift();
+    }
+    if (other.length === 0) throw new Error(`unmocked query: ${query.slice(0, 40)}...`);
+    return other.shift();
+  });
+};
+
 describe('fetchGithubSamples', () => {
   it('fetches pull requests, paginates, and extracts samples', async () => {
-    const request = vi.fn();
+    const request = mockGraphqlResponses({
+      recent: [
+        {
+          repository: {
+            pullRequests: {
+              pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
+              nodes: [
+                {
+                  number: 1,
+                  isDraft: false,
+                  createdAt: '2026-01-01T10:00:00Z',
+                  updatedAt: '2026-04-19T20:00:00Z',
+                  author: { login: 'author1' },
+                  timelineItems: {
+                    pageInfo: { hasNextPage: false, endCursor: null },
+                    nodes: [
+                      {
+                        __typename: 'ReviewRequestedEvent',
+                        createdAt: '2026-04-19T14:00:00Z',
+                        requestedReviewer: { __typename: 'User', login: 'alice' },
+                      },
+                      {
+                        __typename: 'PullRequestReview',
+                        submittedAt: '2026-04-19T16:00:00Z',
+                        author: { login: 'alice' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        },
+        {
+          repository: {
+            pullRequests: {
+              pageInfo: { hasNextPage: false, endCursor: null },
+              nodes: [
+                {
+                  number: 2,
+                  isDraft: false,
+                  createdAt: '2026-01-01T10:00:00Z',
+                  updatedAt: '2026-04-10T20:00:00Z',
+                  author: { login: 'author2' },
+                  timelineItems: {
+                    pageInfo: { hasNextPage: false, endCursor: null },
+                    nodes: [
+                      {
+                        __typename: 'ReviewRequestedEvent',
+                        createdAt: '2026-04-05T14:00:00Z',
+                        requestedReviewer: { __typename: 'User', login: 'bob' },
+                      },
+                      {
+                        __typename: 'PullRequestReview',
+                        submittedAt: '2026-04-05T15:30:00Z',
+                        author: { login: 'bob' },
+                      },
+                    ],
+                  },
+                },
+                {
+                  number: 3,
+                  isDraft: false,
+                  createdAt: '2026-01-01T10:00:00Z',
+                  updatedAt: '2026-03-10T12:00:00Z',
+                  author: { login: 'author3' },
+                  timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
     const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
-    request.mockResolvedValueOnce({
-      repository: {
-        pullRequests: {
-          pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
-          nodes: [
-            {
-              number: 1,
-              isDraft: false,
-              createdAt: '2026-01-01T10:00:00Z',
-              updatedAt: '2026-04-19T20:00:00Z',
-              author: { login: 'author1' },
-              timelineItems: {
-                pageInfo: { hasNextPage: false, endCursor: null },
-                nodes: [
-                  {
-                    __typename: 'ReviewRequestedEvent',
-                    createdAt: '2026-04-19T14:00:00Z',
-                    requestedReviewer: { __typename: 'User', login: 'alice' },
-                  },
-                  {
-                    __typename: 'PullRequestReview',
-                    submittedAt: '2026-04-19T16:00:00Z',
-                    author: { login: 'alice' },
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-    });
-    request.mockResolvedValueOnce({
-      repository: {
-        pullRequests: {
-          pageInfo: { hasNextPage: false, endCursor: null },
-          nodes: [
-            {
-              number: 2,
-              isDraft: false,
-              createdAt: '2026-01-01T10:00:00Z',
-              updatedAt: '2026-04-10T20:00:00Z',
-              author: { login: 'author2' },
-              timelineItems: {
-                pageInfo: { hasNextPage: false, endCursor: null },
-                nodes: [
-                  {
-                    __typename: 'ReviewRequestedEvent',
-                    createdAt: '2026-04-05T14:00:00Z',
-                    requestedReviewer: { __typename: 'User', login: 'bob' },
-                  },
-                  {
-                    __typename: 'PullRequestReview',
-                    submittedAt: '2026-04-05T15:30:00Z',
-                    author: { login: 'bob' },
-                  },
-                ],
-              },
-            },
-            {
-              number: 3,
-              isDraft: false,
-              createdAt: '2026-01-01T10:00:00Z',
-              updatedAt: '2026-03-10T12:00:00Z',
-              author: { login: 'author3' },
-              timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
-            },
-          ],
-        },
-      },
-    });
 
-    const samples = await fetchGithubSamples({
+    const { samples, pending } = await fetchGithubSamples({
       client,
       owner: 'Pocket',
       repo: 'content-monorepo',
@@ -718,60 +760,63 @@ describe('fetchGithubSamples', () => {
       now: new Date('2026-04-20T12:00:00Z'),
     });
 
-    expect(request).toHaveBeenCalledTimes(2);
     expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
+    expect(pending).toEqual([]);
   });
 
   it('paginates timeline items for a PR with more than 100 events', async () => {
-    const request = vi.fn();
-    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
-
-    // Page 1: one PR with a truncated timeline (request at T1, many noisy events; hasNextPage=true).
-    request.mockResolvedValueOnce({
-      repository: {
-        pullRequests: {
-          pageInfo: { hasNextPage: false, endCursor: null },
-          nodes: [
-            {
-              number: 500,
-              isDraft: false,
-              createdAt: '2026-04-18T12:00:00Z',
-              updatedAt: '2026-04-20T20:00:00Z',
-              author: { login: 'author-500' },
+    const request = mockGraphqlResponses({
+      recent: [
+        {
+          repository: {
+            pullRequests: {
+              pageInfo: { hasNextPage: false, endCursor: null },
+              nodes: [
+                {
+                  number: 500,
+                  isDraft: false,
+                  createdAt: '2026-04-18T12:00:00Z',
+                  updatedAt: '2026-04-20T20:00:00Z',
+                  author: { login: 'author-500' },
+                  timelineItems: {
+                    pageInfo: { hasNextPage: true, endCursor: 'timeline-cursor-1' },
+                    nodes: [
+                      {
+                        __typename: 'ReviewRequestedEvent',
+                        createdAt: '2026-04-18T14:00:00Z',
+                        requestedReviewer: { __typename: 'User', login: 'alice' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+      other: [
+        // Timeline tail: the review event for alice (missed by the 100-item cap on page 1).
+        {
+          repository: {
+            pullRequest: {
               timelineItems: {
-                pageInfo: { hasNextPage: true, endCursor: 'timeline-cursor-1' },
+                pageInfo: { hasNextPage: false, endCursor: null },
                 nodes: [
                   {
-                    __typename: 'ReviewRequestedEvent',
-                    createdAt: '2026-04-18T14:00:00Z',
-                    requestedReviewer: { __typename: 'User', login: 'alice' },
+                    __typename: 'PullRequestReview',
+                    submittedAt: '2026-04-18T16:00:00Z',
+                    author: { login: 'alice' },
                   },
                 ],
               },
             },
-          ],
-        },
-      },
-    });
-    // Timeline tail: the review event for alice (missed by the 100-item cap on page 1).
-    request.mockResolvedValueOnce({
-      repository: {
-        pullRequest: {
-          timelineItems: {
-            pageInfo: { hasNextPage: false, endCursor: null },
-            nodes: [
-              {
-                __typename: 'PullRequestReview',
-                submittedAt: '2026-04-18T16:00:00Z',
-                author: { login: 'alice' },
-              },
-            ],
           },
         },
-      },
+      ],
     });
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
 
-    const samples = await fetchGithubSamples({
+    const { samples } = await fetchGithubSamples({
       client,
       owner: 'Pocket',
       repo: 'content-monorepo',
@@ -787,11 +832,12 @@ describe('fetchGithubSamples', () => {
       requestedAt: '2026-04-18T14:00:00Z',
       firstActionAt: '2026-04-18T16:00:00Z',
     });
-    expect(request).toHaveBeenCalledTimes(2);
-    // The tail call must target THIS PR with THIS cursor — otherwise a bug
-    // swapping variables would still satisfy "2 calls, 1 sample".
-    const tailCallVariables = request.mock.calls[1]?.[1] as Record<string, unknown> | undefined;
-    expect(tailCallVariables).toMatchObject({
+    // Find the tail call — the query text identifies it — to confirm the fetcher
+    // targeted THIS PR with THIS cursor, not something scrambled.
+    const tailCall = request.mock.calls.find(([query]) =>
+      String(query).includes('PullRequestTimelineTail'),
+    );
+    expect(tailCall?.[1]).toMatchObject({
       owner: 'Pocket',
       repo: 'content-monorepo',
       number: 500,
@@ -800,26 +846,29 @@ describe('fetchGithubSamples', () => {
   });
 
   it('stops paginating once PRs are older than the lookback window', async () => {
-    const request = vi.fn();
-    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
-    request.mockResolvedValueOnce({
-      repository: {
-        pullRequests: {
-          pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
-          nodes: [
-            {
-              number: 1,
-              isDraft: false,
-              createdAt: '2026-01-01T10:00:00Z',
-              updatedAt: '2026-01-01T12:00:00Z',
-              author: { login: 'author1' },
-              timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
+    const request = mockGraphqlResponses({
+      recent: [
+        {
+          repository: {
+            pullRequests: {
+              pageInfo: { hasNextPage: true, endCursor: 'cursor-1' },
+              nodes: [
+                {
+                  number: 1,
+                  isDraft: false,
+                  createdAt: '2026-01-01T10:00:00Z',
+                  updatedAt: '2026-01-01T12:00:00Z',
+                  author: { login: 'author1' },
+                  timelineItems: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] },
+                },
+              ],
             },
-          ],
+          },
         },
-      },
+      ],
     });
-    const samples = await fetchGithubSamples({
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+    const { samples } = await fetchGithubSamples({
       client,
       owner: 'Pocket',
       repo: 'content-monorepo',
@@ -827,6 +876,116 @@ describe('fetchGithubSamples', () => {
       now: new Date('2026-04-20T12:00:00Z'),
     });
     expect(samples).toEqual([]);
-    expect(request).toHaveBeenCalledTimes(1);
+    // Recent query stops at the stale PR; open-state query runs separately and
+    // (with no mocks queued) returns empty. 2 top-level calls total.
+    const topLevelCalls = request.mock.calls.filter(
+      ([q]) => !String(q).includes('PullRequestTimelineTail'),
+    );
+    expect(topLevelCalls).toHaveLength(2);
+  });
+
+  it('discovers pending requests from old-but-still-open PRs (open-state query, not recent-updates)', async () => {
+    // PR #900 was opened 60 days ago, review was requested then, and nothing
+    // has happened since. It falls outside the 3-day follow-up lookback, so
+    // the recent-updates query misses it — but the OPEN_PR_QUERY catches it
+    // and the pending reviewer shows up in the result.
+    const request = mockGraphqlResponses({
+      recent: [emptyPage],
+      open: [
+        {
+          repository: {
+            pullRequests: {
+              pageInfo: { hasNextPage: false, endCursor: null },
+              nodes: [
+                {
+                  number: 900,
+                  isDraft: false,
+                  createdAt: '2026-02-18T10:00:00Z',
+                  updatedAt: '2026-02-18T14:00:00Z',
+                  author: { login: 'author-900' },
+                  timelineItems: {
+                    pageInfo: { hasNextPage: false, endCursor: null },
+                    nodes: [
+                      {
+                        __typename: 'ReviewRequestedEvent',
+                        createdAt: '2026-02-18T14:00:00Z',
+                        requestedReviewer: { __typename: 'User', login: 'alice' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+
+    const { samples, pending } = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(samples).toEqual([]);
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      source: 'github',
+      id: 900,
+      reviewer: 'alice',
+      requestedAt: '2026-02-18T14:00:00Z',
+    });
+  });
+
+  it('dedupes PRs that appear in both the recent-updates and open-state queries', async () => {
+    // PR #42 is both recently-updated AND open — it appears in both query
+    // streams. We should extract it exactly once, not emit two duplicate
+    // samples per reviewer.
+    const prNode = {
+      number: 42,
+      isDraft: false,
+      createdAt: '2026-04-18T10:00:00Z',
+      updatedAt: '2026-04-19T20:00:00Z',
+      author: { login: 'author-42' },
+      timelineItems: {
+        pageInfo: { hasNextPage: false, endCursor: null },
+        nodes: [
+          {
+            __typename: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            requestedReviewer: { __typename: 'User', login: 'alice' },
+          },
+          {
+            __typename: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            author: { login: 'alice' },
+          },
+        ],
+      },
+    };
+    const page = {
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: false, endCursor: null },
+          nodes: [prNode],
+        },
+      },
+    };
+    const request = mockGraphqlResponses({ recent: [page], open: [page] });
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+
+    const { samples } = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(samples).toHaveLength(1);
+    expect(samples[0]?.reviewer).toBe('alice');
   });
 });

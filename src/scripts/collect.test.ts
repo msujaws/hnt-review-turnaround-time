@@ -10,9 +10,9 @@ import {
 } from '../types/brand';
 
 import { collect, historyRowSchema, sampleSchema, type HistoryRow, type Sample } from './collect';
-import type { GithubSample } from './github';
+import type { GithubPendingSample, GithubSample } from './github';
 import type { PeopleMap } from './people';
-import type { PhabSample } from './phabricator';
+import type { PhabPendingSample, PhabSample } from './phabricator';
 
 const makePhabSample = (overrides: Partial<PhabSample> = {}): PhabSample => ({
   source: 'phab',
@@ -32,10 +32,28 @@ const makeGhSample = (overrides: Partial<GithubSample> = {}): GithubSample => ({
   ...overrides,
 });
 
+// Test helpers: wrap a bare samples array in the fetch result shape that
+// collect() now expects ({ samples, pending }). Most collect() tests don't
+// care about pending, so they pass [] for it by default.
+const phabResult = (
+  samples: readonly PhabSample[] = [],
+  pending: readonly PhabPendingSample[] = [],
+): { samples: readonly PhabSample[]; pending: readonly PhabPendingSample[] } => ({
+  samples,
+  pending,
+});
+const ghResult = (
+  samples: readonly GithubSample[] = [],
+  pending: readonly GithubPendingSample[] = [],
+): { samples: readonly GithubSample[]; pending: readonly GithubPendingSample[] } => ({
+  samples,
+  pending,
+});
+
 describe('collect', () => {
   it('uses the backfill lookback when no existing samples', async () => {
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () => ({ samples: [], pending: [] }));
+    const fetchGithub = vi.fn(async () => ({ samples: [], pending: [] }));
 
     const result = await collect({
       existingSamples: [],
@@ -52,8 +70,8 @@ describe('collect', () => {
 
   it('uses a 3-day lookback when samples already exist', async () => {
     const existing: Sample[] = [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }];
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () => ({ samples: [], pending: [] }));
+    const fetchGithub = vi.fn(async () => ({ samples: [], pending: [] }));
 
     const result = await collect({
       existingSamples: existing,
@@ -71,13 +89,15 @@ describe('collect', () => {
   it('computes tatBusinessHours on new samples', async () => {
     // Mon 2026-04-20 10:00 ET → 12:00 ET = 2 business hours
     // 10:00 ET = 14:00 UTC; 12:00 ET = 16:00 UTC
-    const fetchPhab = vi.fn(async () => [
-      makePhabSample({
-        requestedAt: asIsoTimestamp('2026-04-20T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-04-20T16:00:00Z'),
-      }),
-    ]);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () =>
+      phabResult([
+        makePhabSample({
+          requestedAt: asIsoTimestamp('2026-04-20T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-04-20T16:00:00Z'),
+        }),
+      ]),
+    );
+    const fetchGithub = vi.fn(async () => ghResult());
 
     const result = await collect({
       existingSamples: [],
@@ -104,8 +124,8 @@ describe('collect', () => {
       github: { 'mel-reviewer': asIanaTimezone('Australia/Melbourne') },
       phab: {},
     };
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () => ({ samples: [], pending: [] }));
+    const fetchGithub = vi.fn(async () => ({ samples: [], pending: [] }));
 
     const result = await collect({
       existingSamples: [existing],
@@ -132,13 +152,15 @@ describe('collect', () => {
       },
     ];
     // Re-extraction finds the correct, earlier first-action timestamp (16:00).
-    const fetchPhab = vi.fn(async () => [
-      makePhabSample({
-        requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-04-19T16:00:00Z'),
-      }),
-    ]);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () =>
+      phabResult([
+        makePhabSample({
+          requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-04-19T16:00:00Z'),
+        }),
+      ]),
+    );
+    const fetchGithub = vi.fn(async () => ghResult());
 
     const result = await collect({
       existingSamples: existing,
@@ -189,8 +211,8 @@ describe('collect', () => {
     const result = await collect({
       existingSamples: [justBeforeCutoff, atCutoff],
       existingHistory: [],
-      fetchPhab: vi.fn(async () => []),
-      fetchGithub: vi.fn(async () => []),
+      fetchPhab: vi.fn(async () => phabResult()),
+      fetchGithub: vi.fn(async () => ghResult()),
       now,
     });
 
@@ -199,13 +221,15 @@ describe('collect', () => {
   });
 
   it('appends today history row with 7d, 14d, and 30d windows per source', async () => {
-    const fetchPhab = vi.fn(async () => [
-      makePhabSample({
-        requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-04-19T16:00:00Z'),
-      }),
-    ]);
-    const fetchGithub = vi.fn(async () => [makeGhSample()]);
+    const fetchPhab = vi.fn(async () =>
+      phabResult([
+        makePhabSample({
+          requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-04-19T16:00:00Z'),
+        }),
+      ]),
+    );
+    const fetchGithub = vi.fn(async () => ghResult([makeGhSample()]));
 
     const result = await collect({
       existingSamples: [],
@@ -228,21 +252,23 @@ describe('collect', () => {
   it('anchors the 7-day window on ET calendar days: includes today and the 6 prior ET days', async () => {
     // "now" is Tue 2026-04-21 18:00 ET. The 7-day window covers
     // Tue 2026-04-21 and the 6 prior ET calendar days (Wed 2026-04-15 through today).
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => [
-      // inside: Wed 2026-04-15 14:00 UTC = Wed 10:00 ET (the oldest day in range).
-      makeGhSample({
-        id: asPrNumber(101),
-        requestedAt: asIsoTimestamp('2026-04-15T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-04-15T15:00:00Z'),
-      }),
-      // outside: Tue 2026-04-14 14:00 UTC = Tue 10:00 ET (7 days prior to today — out of range).
-      makeGhSample({
-        id: asPrNumber(102),
-        requestedAt: asIsoTimestamp('2026-04-14T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-04-14T15:00:00Z'),
-      }),
-    ]);
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () =>
+      ghResult([
+        // inside: Wed 2026-04-15 14:00 UTC = Wed 10:00 ET (the oldest day in range).
+        makeGhSample({
+          id: asPrNumber(101),
+          requestedAt: asIsoTimestamp('2026-04-15T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-04-15T15:00:00Z'),
+        }),
+        // outside: Tue 2026-04-14 14:00 UTC = Tue 10:00 ET (7 days prior to today — out of range).
+        makeGhSample({
+          id: asPrNumber(102),
+          requestedAt: asIsoTimestamp('2026-04-14T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-04-14T15:00:00Z'),
+        }),
+      ]),
+    );
 
     const result = await collect({
       existingSamples: [],
@@ -263,14 +289,16 @@ describe('collect', () => {
       github: { 'mel-reviewer': asIanaTimezone('Australia/Melbourne') },
       phab: {},
     };
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => [
-      makeGhSample({
-        reviewer: asReviewerLogin('mel-reviewer'),
-        requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
-      }),
-    ]);
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () =>
+      ghResult([
+        makeGhSample({
+          reviewer: asReviewerLogin('mel-reviewer'),
+          requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
+        }),
+      ]),
+    );
 
     const result = await collect({
       existingSamples: [],
@@ -285,13 +313,15 @@ describe('collect', () => {
   });
 
   it('falls back to ET when no peopleMap is supplied (backwards-compat)', async () => {
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => [
-      makeGhSample({
-        requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
-      }),
-    ]);
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () =>
+      ghResult([
+        makeGhSample({
+          requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
+        }),
+      ]),
+    );
 
     const result = await collect({
       existingSamples: [],
@@ -307,13 +337,15 @@ describe('collect', () => {
 
   it('includes samples up to 30 days old in the 30-day window but not in 14d', async () => {
     // Requested 20 business-weekdays earlier: inside 30d, outside 14d.
-    const fetchPhab = vi.fn(async () => [
-      makePhabSample({
-        requestedAt: asIsoTimestamp('2026-03-25T14:00:00Z'),
-        firstActionAt: asIsoTimestamp('2026-03-25T16:00:00Z'),
-      }),
-    ]);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () =>
+      phabResult([
+        makePhabSample({
+          requestedAt: asIsoTimestamp('2026-03-25T14:00:00Z'),
+          firstActionAt: asIsoTimestamp('2026-03-25T16:00:00Z'),
+        }),
+      ]),
+    );
+    const fetchGithub = vi.fn(async () => ghResult());
 
     const result = await collect({
       existingSamples: [],
@@ -343,8 +375,8 @@ describe('collect', () => {
         },
       },
     ];
-    const fetchPhab = vi.fn(async () => [makePhabSample()]);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () => phabResult([makePhabSample()]));
+    const fetchGithub = vi.fn(async () => ghResult());
 
     const result = await collect({
       existingSamples: [],
@@ -395,34 +427,36 @@ describe('collect', () => {
     // the ET calendar. Tue 2026-04-21 is "today". 7-day window = 2026-04-15
     // through 2026-04-21 ET. 14-day = 2026-04-08+. 30-day = 2026-03-23+.
     const now = new Date('2026-04-21T22:00:00Z'); // Tue 18:00 ET
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => [
-      makeGhSample({
-        id: asPrNumber(1),
-        requestedAt: asIsoTimestamp('2026-04-21T14:00:00Z'), // Tue: 7d + 14d + 30d
-        firstActionAt: asIsoTimestamp('2026-04-21T15:00:00Z'),
-      }),
-      makeGhSample({
-        id: asPrNumber(2),
-        requestedAt: asIsoTimestamp('2026-04-20T14:00:00Z'), // Mon: 7d + 14d + 30d
-        firstActionAt: asIsoTimestamp('2026-04-20T15:00:00Z'),
-      }),
-      makeGhSample({
-        id: asPrNumber(3),
-        requestedAt: asIsoTimestamp('2026-04-16T14:00:00Z'), // 7d edge (Thu): 7d + 14d + 30d
-        firstActionAt: asIsoTimestamp('2026-04-16T15:00:00Z'),
-      }),
-      makeGhSample({
-        id: asPrNumber(4),
-        requestedAt: asIsoTimestamp('2026-04-10T14:00:00Z'), // 14d + 30d only
-        firstActionAt: asIsoTimestamp('2026-04-10T15:00:00Z'),
-      }),
-      makeGhSample({
-        id: asPrNumber(5),
-        requestedAt: asIsoTimestamp('2026-04-01T14:00:00Z'), // 30d only
-        firstActionAt: asIsoTimestamp('2026-04-01T15:00:00Z'),
-      }),
-    ]);
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () =>
+      ghResult([
+        makeGhSample({
+          id: asPrNumber(1),
+          requestedAt: asIsoTimestamp('2026-04-21T14:00:00Z'), // Tue: 7d + 14d + 30d
+          firstActionAt: asIsoTimestamp('2026-04-21T15:00:00Z'),
+        }),
+        makeGhSample({
+          id: asPrNumber(2),
+          requestedAt: asIsoTimestamp('2026-04-20T14:00:00Z'), // Mon: 7d + 14d + 30d
+          firstActionAt: asIsoTimestamp('2026-04-20T15:00:00Z'),
+        }),
+        makeGhSample({
+          id: asPrNumber(3),
+          requestedAt: asIsoTimestamp('2026-04-16T14:00:00Z'), // 7d edge (Thu): 7d + 14d + 30d
+          firstActionAt: asIsoTimestamp('2026-04-16T15:00:00Z'),
+        }),
+        makeGhSample({
+          id: asPrNumber(4),
+          requestedAt: asIsoTimestamp('2026-04-10T14:00:00Z'), // 14d + 30d only
+          firstActionAt: asIsoTimestamp('2026-04-10T15:00:00Z'),
+        }),
+        makeGhSample({
+          id: asPrNumber(5),
+          requestedAt: asIsoTimestamp('2026-04-01T14:00:00Z'), // 30d only
+          firstActionAt: asIsoTimestamp('2026-04-01T15:00:00Z'),
+        }),
+      ]),
+    );
 
     const result = await collect({
       existingSamples: [],
@@ -453,8 +487,8 @@ describe('collect', () => {
         window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
       },
     };
-    const fetchPhab = vi.fn(async () => []);
-    const fetchGithub = vi.fn(async () => []);
+    const fetchPhab = vi.fn(async () => ({ samples: [], pending: [] }));
+    const fetchGithub = vi.fn(async () => ({ samples: [], pending: [] }));
 
     const result = await collect({
       existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
@@ -467,5 +501,54 @@ describe('collect', () => {
     expect(result.history).toHaveLength(2);
     expect(result.history[0]?.date).toBe('2026-04-19');
     expect(result.history[1]?.date).toBe('2026-04-20');
+  });
+
+  it('passes pending through from fresh fetches to the result', async () => {
+    const phabPending: PhabPendingSample = {
+      source: 'phab',
+      id: asRevisionPhid('PHID-DREV-pendingaaaaaaaaaaaaa'),
+      revisionId: 789,
+      reviewer: asReviewerLogin('charlie'),
+      requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+    };
+    const ghPending: GithubPendingSample = {
+      source: 'github',
+      id: asPrNumber(77),
+      reviewer: asReviewerLogin('dave'),
+      requestedAt: asIsoTimestamp('2026-04-18T14:00:00Z'),
+    };
+    const fetchPhab = vi.fn(async () => phabResult([], [phabPending]));
+    const fetchGithub = vi.fn(async () => ghResult([], [ghPending]));
+
+    const result = await collect({
+      existingSamples: [],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      now: new Date('2026-04-20T13:00:00Z'),
+    });
+
+    expect(result.pending).toHaveLength(2);
+    expect(result.pending.map((p) => p.reviewer).sort()).toEqual(['charlie', 'dave']);
+  });
+
+  it('overwrites pending wholesale from each run (no merge with prior state)', async () => {
+    // If a reviewer was pending last run but acted before this run, they drop
+    // off the fresh fetch → they should NOT appear in this run's pending.
+    // collect() has no access to a prior pending.json on disk; the overwrite
+    // semantics live in how runCollectionFromDisk writes the file. Within
+    // collect() itself, pending simply reflects the current fetch.
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () => ghResult());
+
+    const result = await collect({
+      existingSamples: [],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      now: new Date('2026-04-20T13:00:00Z'),
+    });
+
+    expect(result.pending).toEqual([]);
   });
 });

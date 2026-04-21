@@ -220,6 +220,42 @@ const PR_QUERY = `
   }
 `;
 
+// Open PRs only, regardless of last-updated time. Catches stale-but-still-open
+// PRs that the recent-updates query would miss, so pending review requests on
+// an untouched old PR are still discovered. Capped via OPEN_PR_HARD_CAP below.
+const OPEN_PR_QUERY = `
+  query OpenPullRequestPage($owner: String!, $repo: String!, $cursor: String) {
+    repository(owner: $owner, name: $repo) {
+      pullRequests(
+        first: 100
+        after: $cursor
+        states: [OPEN]
+        orderBy: { field: UPDATED_AT, direction: DESC }
+      ) {
+        pageInfo { hasNextPage endCursor }
+        nodes {
+          number
+          isDraft
+          createdAt
+          updatedAt
+          author { login }
+          timelineItems(
+            first: 100
+            itemTypes: [REVIEW_REQUESTED_EVENT, REVIEW_REQUEST_REMOVED_EVENT, PULL_REQUEST_REVIEW]
+          ) {
+            pageInfo { hasNextPage endCursor }
+            ${TIMELINE_FIELDS}
+          }
+        }
+      }
+    }
+  }
+`;
+
+// Hard cap on the open-state query to stay well inside GitHub's 500k-node
+// budget. 200 PRs × 100 timeline nodes = ~20k nodes.
+const OPEN_PR_HARD_CAP = 200;
+
 const TIMELINE_TAIL_QUERY = `
   query PullRequestTimelineTail($owner: String!, $repo: String!, $number: Int!, $cursor: String!) {
     repository(owner: $owner, name: $repo) {
@@ -362,18 +398,33 @@ const fetchRemainingTimeline = async (
   return extra;
 };
 
-export const fetchGithubSamples = async (params: {
-  readonly client: GraphqlClient;
-  readonly owner: string;
-  readonly repo: string;
-  readonly lookbackDays: number;
-  readonly now?: Date;
-}): Promise<GithubSample[]> => {
-  const { client, owner, repo, lookbackDays } = params;
-  const now = params.now ?? new Date();
-  const cutoff = new Date(now.getTime() - lookbackDays * 86_400 * 1000).toISOString();
+const hydratePullRequest = async (
+  client: GraphqlClient,
+  owner: string,
+  repo: string,
+  node: z.infer<typeof pullRequestNodeSchema>,
+): Promise<PullRequestData> => {
+  const tailCursor = node.timelineItems.pageInfo.endCursor;
+  const combinedNodes =
+    node.timelineItems.pageInfo.hasNextPage && tailCursor !== null
+      ? [
+          ...node.timelineItems.nodes,
+          ...(await fetchRemainingTimeline(client, owner, repo, node.number, tailCursor)),
+        ]
+      : node.timelineItems.nodes;
+  return toPullRequestData({
+    ...node,
+    timelineItems: { pageInfo: node.timelineItems.pageInfo, nodes: combinedNodes },
+  });
+};
 
-  const samples: GithubSample[] = [];
+const collectRecentlyUpdatedPullRequests = async (
+  client: GraphqlClient,
+  owner: string,
+  repo: string,
+  cutoffIso: string,
+): Promise<PullRequestData[]> => {
+  const results: PullRequestData[] = [];
   let cursor: string | null = null;
   let stop = false;
   while (!stop) {
@@ -381,23 +432,11 @@ export const fetchGithubSamples = async (params: {
     const parsed = pageSchema.parse(raw);
     const page = parsed.repository.pullRequests;
     for (const node of page.nodes) {
-      if (node.updatedAt < cutoff) {
+      if (node.updatedAt < cutoffIso) {
         stop = true;
         break;
       }
-      const tailCursor = node.timelineItems.pageInfo.endCursor;
-      const combinedNodes =
-        node.timelineItems.pageInfo.hasNextPage && tailCursor !== null
-          ? [
-              ...node.timelineItems.nodes,
-              ...(await fetchRemainingTimeline(client, owner, repo, node.number, tailCursor)),
-            ]
-          : node.timelineItems.nodes;
-      const hydrated = {
-        ...node,
-        timelineItems: { pageInfo: node.timelineItems.pageInfo, nodes: combinedNodes },
-      };
-      samples.push(...extractSamplesFromPullRequest(toPullRequestData(hydrated)).samples);
+      results.push(await hydratePullRequest(client, owner, repo, node));
     }
     if (!page.pageInfo.hasNextPage || page.pageInfo.endCursor === null) {
       stop = true;
@@ -405,7 +444,59 @@ export const fetchGithubSamples = async (params: {
       cursor = page.pageInfo.endCursor;
     }
   }
-  return samples;
+  return results;
+};
+
+const collectOpenPullRequests = async (
+  client: GraphqlClient,
+  owner: string,
+  repo: string,
+): Promise<PullRequestData[]> => {
+  const results: PullRequestData[] = [];
+  let cursor: string | null = null;
+  while (results.length < OPEN_PR_HARD_CAP) {
+    const raw = await client.request<unknown>(OPEN_PR_QUERY, { owner, repo, cursor });
+    const parsed = pageSchema.parse(raw);
+    const page = parsed.repository.pullRequests;
+    for (const node of page.nodes) {
+      if (results.length >= OPEN_PR_HARD_CAP) break;
+      results.push(await hydratePullRequest(client, owner, repo, node));
+    }
+    if (!page.pageInfo.hasNextPage || page.pageInfo.endCursor === null) break;
+    cursor = page.pageInfo.endCursor;
+  }
+  return results;
+};
+
+export const fetchGithubSamples = async (params: {
+  readonly client: GraphqlClient;
+  readonly owner: string;
+  readonly repo: string;
+  readonly lookbackDays: number;
+  readonly now?: Date;
+}): Promise<{ samples: GithubSample[]; pending: GithubPendingSample[] }> => {
+  const { client, owner, repo, lookbackDays } = params;
+  const now = params.now ?? new Date();
+  const cutoff = new Date(now.getTime() - lookbackDays * 86_400 * 1000).toISOString();
+
+  // Two independent PR fetches, deduped by number:
+  // 1. Recently-updated PRs (any state) — picks up newly completed reviews.
+  // 2. Open PRs (any update time) — authoritative current pending state.
+  const [recent, open] = await Promise.all([
+    collectRecentlyUpdatedPullRequests(client, owner, repo, cutoff),
+    collectOpenPullRequests(client, owner, repo),
+  ]);
+  const byNumber = new Map<number, PullRequestData>();
+  for (const pr of [...recent, ...open]) byNumber.set(pr.number, pr);
+
+  const samples: GithubSample[] = [];
+  const pending: GithubPendingSample[] = [];
+  for (const pr of byNumber.values()) {
+    const extracted = extractSamplesFromPullRequest(pr);
+    samples.push(...extracted.samples);
+    pending.push(...extracted.pending);
+  }
+  return { samples, pending };
 };
 
 export const createGithubClient = (token: string): GraphqlClient => {

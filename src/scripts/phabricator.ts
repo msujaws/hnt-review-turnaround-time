@@ -217,17 +217,21 @@ const lookupProjectMembers = async (
   return { projectPhids, memberPhids: [...uniqueMembers] };
 };
 
+// Revision statuses that still need a reviewer's attention. Fetching these
+// separately (with no modifiedStart bound) surfaces old-but-pending revisions
+// the regular follow-up window would miss.
+const OPEN_REVISION_STATUSES = ['needs-review', 'changes-planned', 'needs-revision'] as const;
+
 const fetchRevisions = async (
   client: ConduitClient,
-  reviewerPhids: readonly string[],
-  modifiedStart: number,
+  constraints: Record<string, unknown>,
 ): Promise<PhabRevision[]> => {
   const revisions: PhabRevision[] = [];
   const seen = new Set<string>();
   let after: string | null = null;
   do {
     const params: Record<string, unknown> = {
-      constraints: { reviewerPHIDs: [...reviewerPhids], modifiedStart },
+      constraints,
       order: 'newest',
     };
     if (after !== null) params.after = after;
@@ -288,7 +292,7 @@ export const fetchPhabSamples = async (params: {
   readonly projectSlugs: readonly string[];
   readonly lookbackDays: number;
   readonly now?: Date;
-}): Promise<PhabSample[]> => {
+}): Promise<{ samples: PhabSample[]; pending: PhabPendingSample[] }> => {
   const { client, projectSlugs, lookbackDays } = params;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
@@ -305,7 +309,26 @@ export const fetchPhabSamples = async (params: {
       `resolved projects have no members: ${projectSlugs.join(', ')} — is this a reviewer group?`,
     );
   }
-  const revisions = await fetchRevisions(client, memberPhids, modifiedStart);
+
+  // Two independent revision queries, deduped by PHID:
+  // 1. Recently-modified revisions (any status) — the follow-up / backfill window.
+  //    Needed to resolve stale pending entries into completed samples.
+  // 2. Open-status revisions (any modification date) — authoritative current
+  //    pending state. Catches stale-but-still-open revisions the recent query
+  //    would miss.
+  const recentRevisions = await fetchRevisions(client, {
+    reviewerPHIDs: [...memberPhids],
+    modifiedStart,
+  });
+  const openRevisions = await fetchRevisions(client, {
+    reviewerPHIDs: [...memberPhids],
+    statuses: [...OPEN_REVISION_STATUSES],
+  });
+  const revisionsByPhid = new Map<string, PhabRevision>();
+  for (const rev of [...recentRevisions, ...openRevisions]) {
+    revisionsByPhid.set(rev.phid, rev);
+  }
+  const revisions = [...revisionsByPhid.values()];
   const allowedReviewerPhids = new Set(memberPhids);
 
   const transactionsByRevision = new Map<string, PhabTransaction[]>();
@@ -325,13 +348,16 @@ export const fetchPhabSamples = async (params: {
   const loginByPhid = await resolveLogins(client, [...userPhids]);
 
   const samples: PhabSample[] = [];
+  const pending: PhabPendingSample[] = [];
   for (const rev of revisions) {
     const txs = transactionsByRevision.get(rev.phid) ?? [];
-    samples.push(
-      ...extractSamplesFromTransactions(rev, txs, loginByPhid, { allowedReviewerPhids }).samples,
-    );
+    const extracted = extractSamplesFromTransactions(rev, txs, loginByPhid, {
+      allowedReviewerPhids,
+    });
+    samples.push(...extracted.samples);
+    pending.push(...extracted.pending);
   }
-  return samples;
+  return { samples, pending };
 };
 
 const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): void => {
