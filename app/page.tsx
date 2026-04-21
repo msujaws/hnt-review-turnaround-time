@@ -6,7 +6,7 @@ import type { FC } from 'react';
 
 import { loadPeopleMap } from '../src/scripts/people';
 import { Footer } from '../src/ui/Footer';
-import { OverdueCallout } from '../src/ui/OverdueCallout';
+import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
 
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
@@ -35,6 +35,7 @@ const Page: FC = async () => {
   // Overdue calc uses real now so "hours waiting" stays fresh between the
   // hourly revalidations (the cron only runs weekday mornings).
   const realNow = new Date();
+  const hasOverdue = pending.some((s) => isOverduePending(s, realNow, peopleMap, SLA_HOURS));
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10">
       <header className="flex items-start gap-4">
@@ -61,7 +62,8 @@ const Page: FC = async () => {
             <span className="text-amber-300">amber</span> when slipping, and{' '}
             <span className="text-rose-300">rose</span> when well over &mdash; expand a row to see
             the individual reviews behind it. The callout at the top surfaces pending reviews that
-            have been waiting 10&times; the SLA or longer.
+            have been waiting 10&times; the SLA or longer
+            {hasOverdue ? '' : ' (not showing right now since there are no outliers)'}.
             {latest === undefined ? '' : ` Last snapshot: ${latest.date}.`}
           </p>
         </div>
