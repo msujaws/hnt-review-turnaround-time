@@ -26,6 +26,7 @@ import {
   fetchPhabSamples,
   type PhabPendingSample,
   type PhabSample,
+  type PhabTransaction,
 } from './phabricator';
 import { computeStats, type WindowStats } from './stats';
 
@@ -264,16 +265,109 @@ const requireEnv = (name: string): string => {
   return value;
 };
 
+// Cached phab transactions from a partial run — resumable when a collect fails
+// mid-flight (e.g. 429 on transaction.search). Gitignored; lives only on the
+// local disk between a failed attempt and its retry.
+const phabTransactionSchema = z.object({
+  id: z.number(),
+  phid: z.string(),
+  type: z.string(),
+  authorPhid: z.string(),
+  dateCreated: z.number(),
+  fields: z.object({
+    operations: z.array(z.object({ operation: z.string(), phid: z.string() })).optional(),
+  }),
+});
+
+const phabProgressSchema = z.object({
+  lookbackDays: z.number().int().positive(),
+  createdAt: z.string(),
+  transactionsByRevisionPhid: z.record(z.array(phabTransactionSchema)),
+});
+
+// 4h is enough to bridge retry-on-429 loops without serving stale transaction
+// data. Beyond that we'd risk missing new transactions on revisions cached
+// here, so we invalidate and re-fetch everything.
+const PROGRESS_TTL_MS = 4 * 3600 * 1000;
+
+interface LoadedProgress {
+  readonly transactions: Map<string, PhabTransaction[]>;
+  readonly createdAt: string;
+}
+
+const loadPhabProgress = async (
+  filePath: string,
+  currentLookbackDays: number,
+  now: Date,
+): Promise<LoadedProgress> => {
+  const fallback: LoadedProgress = { transactions: new Map(), createdAt: now.toISOString() };
+  const raw = await readJsonFile<unknown>(filePath, null);
+  if (raw === null) return fallback;
+  const parsed = phabProgressSchema.safeParse(raw);
+  if (!parsed.success) return fallback;
+  if (parsed.data.lookbackDays !== currentLookbackDays) return fallback;
+  const age = now.getTime() - Date.parse(parsed.data.createdAt);
+  if (!Number.isFinite(age) || age > PROGRESS_TTL_MS) return fallback;
+  const transactions = new Map<string, PhabTransaction[]>();
+  for (const [phid, txs] of Object.entries(parsed.data.transactionsByRevisionPhid)) {
+    transactions.set(
+      phid,
+      txs.map((tx) => ({
+        id: tx.id,
+        phid: tx.phid,
+        type: tx.type,
+        authorPhid: tx.authorPhid,
+        dateCreated: tx.dateCreated,
+        fields: tx.fields.operations === undefined ? {} : { operations: tx.fields.operations },
+      })),
+    );
+  }
+  return { transactions, createdAt: parsed.data.createdAt };
+};
+
+const removeFileIfPresent = async (filePath: string): Promise<void> => {
+  try {
+    await fs.unlink(filePath);
+  } catch (error) {
+    if (!isNodeErrnoException(error) || error.code !== 'ENOENT') throw error;
+  }
+};
+
 export const runCollectionFromDisk = async (dataDirectory: string): Promise<void> => {
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
   const pendingPath = path.join(dataDirectory, 'pending.json');
+  const progressPath = path.join(dataDirectory, '.phab-progress.json');
 
   const existingSamplesRaw = await readJsonFile<unknown>(samplesPath, []);
   const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
   const existingSamples = z.array(sampleSchema).parse(existingSamplesRaw);
   const existingHistory = z.array(historyRowSchema).parse(existingHistoryRaw);
   const peopleMap = await loadPeopleMap(dataDirectory);
+
+  const now = new Date();
+  const lookbackDays =
+    existingSamples.length === 0 ? BACKFILL_LOOKBACK_DAYS : FOLLOWUP_LOOKBACK_DAYS;
+  const { transactions: resumeCache, createdAt: progressCreatedAt } = await loadPhabProgress(
+    progressPath,
+    lookbackDays,
+    now,
+  );
+  if (resumeCache.size > 0) {
+    process.stderr.write(
+      `resuming phab collect from progress file (${resumeCache.size.toString()} revisions cached)\n`,
+    );
+  }
+
+  const writeProgress = async (
+    transactionsByRevisionPhid: ReadonlyMap<string, readonly PhabTransaction[]>,
+  ): Promise<void> => {
+    await writeJsonFile(progressPath, {
+      lookbackDays,
+      createdAt: progressCreatedAt,
+      transactionsByRevisionPhid: Object.fromEntries(transactionsByRevisionPhid),
+    });
+  };
 
   const conduit = createConduitClient({
     endpoint: 'https://phabricator.services.mozilla.com/api',
@@ -285,27 +379,33 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     existingSamples,
     existingHistory,
     peopleMap,
-    fetchPhab: (lookbackDays) =>
+    fetchPhab: (lookbackDaysArgument) =>
       fetchPhabSamples({
         client: conduit,
         projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? 'home-newtab-reviewers')
           .split(',')
           .map((slug) => slug.trim())
           .filter((slug) => slug.length > 0),
-        lookbackDays,
+        lookbackDays: lookbackDaysArgument,
+        resumeTransactionsByRevisionPhid: resumeCache,
+        onRevisionTransactions: async (phid, transactions) => {
+          resumeCache.set(phid, [...transactions]);
+          await writeProgress(resumeCache);
+        },
       }),
-    fetchGithub: (lookbackDays) =>
+    fetchGithub: (lookbackDaysArgument) =>
       fetchGithubSamples({
         client: gh,
         owner: 'Pocket',
         repo: 'content-monorepo',
-        lookbackDays,
+        lookbackDays: lookbackDaysArgument,
       }),
   });
 
   await writeJsonFile(samplesPath, samples);
   await writeJsonFile(historyPath, history);
   await writeJsonFile(pendingPath, pending);
+  await removeFileIfPresent(progressPath);
 };
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
