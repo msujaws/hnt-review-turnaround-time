@@ -1,7 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import type { HistoryRow } from '../src/scripts/collect';
+import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
+import { asIanaTimezone } from '../src/types/brand';
 
 import { Dashboard } from './Dashboard';
 import { buildMetadataSummary } from './metadata';
@@ -28,6 +30,7 @@ describe('Dashboard', () => {
         samples={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
     expect(screen.getByRole('heading', { name: /^phabricator$/i })).toBeInTheDocument();
@@ -38,9 +41,55 @@ describe('Dashboard', () => {
 
   it('shows a no-data state when history is empty', () => {
     render(
-      <Dashboard history={[]} samples={[]} slaHours={4} now={new Date('2026-04-21T12:00:00Z')} />,
+      <Dashboard
+        history={[]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
     );
     expect(screen.getByText(/no snapshots yet/i)).toBeInTheDocument();
+  });
+
+  it('lists tracked Phabricator reviewers alphabetically in the Phab description', () => {
+    const peopleMap: PeopleMap = {
+      github: {},
+      phab: {
+        maxx: asIanaTimezone('America/Chicago'),
+        reemhamz: asIanaTimezone('Australia/Melbourne'),
+        Dre: asIanaTimezone('America/Los_Angeles'),
+      },
+    };
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={peopleMap}
+      />,
+    );
+    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('section');
+    expect(phabSection).not.toBeNull();
+    // Names should appear alphabetically, case-insensitive: Dre, maxx, reemhamz.
+    expect(within(phabSection!).getByText(/Dre, maxx, reemhamz/)).toBeInTheDocument();
+  });
+
+  it('renders the GitHub repo as a lowercase link in the GitHub description', () => {
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const ghSection = screen.getByRole('heading', { name: /^github$/i }).closest('section');
+    expect(ghSection).not.toBeNull();
+    const link = within(ghSection!).getByRole('link', { name: 'pocket/content-monorepo' });
+    expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo');
   });
 });
 
