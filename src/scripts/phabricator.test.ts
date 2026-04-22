@@ -1375,6 +1375,49 @@ describe('createConduitClient', () => {
     expect(fetchFn).toHaveBeenCalledTimes(3);
   });
 
+  it('sleeps cooldownMs before the call that follows every Nth call to a configured method', async () => {
+    const sleeps: number[] = [];
+    const fetchFn = vi.fn(async () => jsonResponse({ result: { data: [] } }));
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn: async (ms: number) => {
+        sleeps.push(ms);
+      },
+      minIntervalMs: 0,
+      methodCooldowns: [{ method: 'transaction.search', every: 3, cooldownMs: 1_800_000 }],
+    });
+    for (let index = 0; index < 4; index += 1) {
+      await client.call('transaction.search', {});
+    }
+    // Calls 1-3 make it through without a cooldown. Right before call #4,
+    // because prev count hit the threshold of 3, the 30-minute cooldown fires.
+    expect(sleeps).toContain(1_800_000);
+    // Only one cooldown by call #4 — not two.
+    expect(sleeps.filter((ms) => ms === 1_800_000)).toHaveLength(1);
+  });
+
+  it('applies method cooldowns independently per method', async () => {
+    const sleeps: number[] = [];
+    const fetchFn = vi.fn(async () => jsonResponse({ result: { data: [] } }));
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn: async (ms: number) => {
+        sleeps.push(ms);
+      },
+      minIntervalMs: 0,
+      methodCooldowns: [{ method: 'transaction.search', every: 3, cooldownMs: 1_800_000 }],
+    });
+    for (let index = 0; index < 5; index += 1) {
+      await client.call('project.search', {});
+    }
+    // project.search isn't configured for a cooldown; no 30-minute sleep.
+    expect(sleeps.filter((ms) => ms === 1_800_000)).toHaveLength(0);
+  });
+
   it('includes the Retry-After header and response body when giving up on 429', async () => {
     const fetchFn = vi.fn(
       async () =>
