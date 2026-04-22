@@ -13,6 +13,7 @@ const revision = (): PhabRevision => ({
   id: 234_567,
   phid: 'PHID-DREV-abcdefghijklmnopqrst',
   authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+  dateModified: 1_761_000_000,
 });
 
 const mkTransaction = (partial: Partial<PhabTransaction>): PhabTransaction => ({
@@ -504,7 +505,10 @@ describe('fetchPhabSamples', () => {
               {
                 id: 1,
                 phid: 'PHID-DREV-abcdefghijklmnopqrst',
-                fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                fields: {
+                  authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                  dateModified: 1_761_000_000,
+                },
               },
             ],
             cursor: { after: null },
@@ -612,7 +616,10 @@ describe('fetchPhabSamples', () => {
               {
                 id: 99,
                 phid: 'PHID-DREV-stalebutopenxxxxxxxx',
-                fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                fields: {
+                  authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                  dateModified: 1_761_000_000,
+                },
               },
             ],
             cursor: { after: null },
@@ -686,7 +693,7 @@ describe('fetchPhabSamples', () => {
             {
               id: 7,
               phid: 'PHID-DREV-dupeaaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
             },
           ],
           cursor: { after: null },
@@ -853,7 +860,7 @@ describe('fetchPhabSamples', () => {
             {
               id: 1,
               phid: 'PHID-DREV-aaaaaaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
             },
           ],
           cursor: { after: null },
@@ -875,7 +882,52 @@ describe('fetchPhabSamples', () => {
     );
   });
 
-  it('skips transaction.search for revisions pre-seeded via resumeTransactionsByRevisionPhid', async () => {
+  it('scopes the open-state revision query with a modifiedStart bound', async () => {
+    const openQueryConstraints: Record<string, unknown>[] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        const constraints = (params as { constraints: Record<string, unknown> }).constraints;
+        if ('statuses' in constraints) openQueryConstraints.push(constraints);
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(openQueryConstraints).toHaveLength(1);
+    // The open-state query must now also carry modifiedStart — broader than
+    // the recent-updates query's 3-day bound, but not unbounded.
+    const openConstraints = openQueryConstraints[0]!;
+    expect(openConstraints).toHaveProperty('modifiedStart');
+    expect(typeof openConstraints.modifiedStart).toBe('number');
+    // 90-day scope: ~7.776 million seconds. Assert it's within the 90-day
+    // ballpark so we notice if the bound is silently widened or removed.
+    const recentBound = Math.floor(new Date('2026-04-20T12:00:00Z').getTime() / 1000 - 3 * 86_400);
+    expect(openConstraints.modifiedStart).toBeLessThan(recentBound);
+    const ninetyDayBound = Math.floor(
+      new Date('2026-04-20T12:00:00Z').getTime() / 1000 - 180 * 86_400,
+    );
+    expect(openConstraints.modifiedStart).toBeGreaterThan(ninetyDayBound);
+  });
+
+  it('skips transaction.search for cached revisions unchanged since cache creation', async () => {
     const transactionSearchCalls: string[] = [];
     const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
       if (method === 'project.search') {
@@ -896,12 +948,19 @@ describe('fetchPhabSamples', () => {
             {
               id: 1,
               phid: 'PHID-DREV-cachedaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                // Unchanged since cache creation (cacheCreatedAt below) → reuse.
+                dateModified: 1_760_000_000,
+              },
             },
             {
               id: 2,
               phid: 'PHID-DREV-freshaaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                dateModified: 1_760_000_000,
+              },
             },
           ],
           cursor: { after: null },
@@ -921,23 +980,84 @@ describe('fetchPhabSamples', () => {
       phid: 'PHID-XACT-cacheaaaaaaaaaaaaaa',
       type: 'comment',
       authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
-      dateCreated: 1_761_000_000,
+      dateCreated: 1_760_000_000,
       fields: {},
     };
-    const resume = new Map<string, readonly PhabTransaction[]>([
-      ['PHID-DREV-cachedaaaaaaaaaaaaaaa', [cached]],
-    ]);
-
     await fetchPhabSamples({
       client: { call },
       projectSlugs: ['home-newtab-reviewers'],
       lookbackDays: 21,
       now: new Date('2026-04-20T12:00:00Z'),
-      resumeTransactionsByRevisionPhid: resume,
+      resumeCache: {
+        createdAt: 1_761_000_000, // strictly after the revisions' dateModified
+        transactionsByRevisionPhid: new Map([['PHID-DREV-cachedaaaaaaaaaaaaaaa', [cached]]]),
+      },
     });
 
     // Only the uncached revision should have hit transaction.search.
     expect(transactionSearchCalls).toEqual(['PHID-DREV-freshaaaaaaaaaaaaaaaa']);
+  });
+
+  it('re-fetches a cached revision that has been modified since cache creation', async () => {
+    const transactionSearchCalls: string[] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-changedaaaaaaaaaaaaa',
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                // Modified AFTER cache creation → must re-fetch, not reuse.
+                dateModified: 1_762_000_000,
+              },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        const p = params as { objectIdentifier: string };
+        transactionSearchCalls.push(p.objectIdentifier);
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const staleCache: PhabTransaction = {
+      id: 1,
+      phid: 'PHID-XACT-staleaaaaaaaaaaaaaa',
+      type: 'comment',
+      authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+      dateCreated: 1_760_000_000,
+      fields: {},
+    };
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+      resumeCache: {
+        createdAt: 1_761_000_000, // BEFORE the revision's dateModified
+        transactionsByRevisionPhid: new Map([['PHID-DREV-changedaaaaaaaaaaaaa', [staleCache]]]),
+      },
+    });
+
+    expect(transactionSearchCalls).toEqual(['PHID-DREV-changedaaaaaaaaaaaaa']);
   });
 
   it('invokes onRevisionTransactions after each revision fetched from the wire', async () => {
@@ -960,12 +1080,12 @@ describe('fetchPhabSamples', () => {
             {
               id: 1,
               phid: 'PHID-DREV-oneaaaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
             },
             {
               id: 2,
               phid: 'PHID-DREV-twoaaaaaaaaaaaaaaaaa',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
             },
           ],
           cursor: { after: null },
@@ -1032,7 +1152,7 @@ describe('fetchPhabSamples', () => {
             {
               id: 2,
               phid: 'PHID-DREV-bbbbbbbbbbbbbbbbbbbb',
-              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
             },
           ],
           cursor: { after: null },
