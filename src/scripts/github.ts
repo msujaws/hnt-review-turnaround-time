@@ -24,6 +24,9 @@ export interface GithubSample {
 export interface GithubPendingSample {
   readonly source: 'github';
   readonly id: PrNumber;
+  // Patch author login. Absent on legacy rows collected before this field
+  // existed; every fresh extract populates it.
+  readonly author?: ReviewerLogin | undefined;
   readonly reviewer: ReviewerLogin;
   readonly requestedAt: IsoTimestamp;
 }
@@ -166,6 +169,7 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedP
     pending.push({
       source: 'github',
       id: asPrNumber(data.number),
+      author: asReviewerLogin(data.author.login),
       reviewer: asReviewerLogin(reviewer),
       requestedAt: asIsoTimestamp(requestedAt),
     });

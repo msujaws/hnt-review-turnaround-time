@@ -85,6 +85,7 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
             <tr>
               <th className="px-3 py-2 font-medium">Source</th>
               <th className="px-3 py-2 font-medium">Review</th>
+              <th className="px-3 py-2 font-medium">Author</th>
               <th className="px-3 py-2 font-medium">Reviewer</th>
               <th className="px-3 py-2 font-medium">Requested</th>
               <th className="px-3 py-2 text-right font-medium">Waiting</th>
@@ -107,6 +108,9 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
                   >
                     {labelFor(sample)}
                   </a>
+                </td>
+                <td className="px-3 py-2 text-neutral-200">
+                  {sample.author ?? <span className="text-neutral-500">—</span>}
                 </td>
                 <td className="px-3 py-2 text-neutral-200">{sample.reviewer}</td>
                 <td className="px-3 py-2 text-neutral-400">
