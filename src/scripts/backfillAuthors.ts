@@ -7,7 +7,7 @@ import { asReviewerLogin, type ReviewerLogin } from '../types/brand';
 
 import { pendingSampleSchema, sampleSchema, type PendingSample, type Sample } from './collect';
 import { createGithubClient, type GraphqlClient } from './github';
-import { createConduitClient, type ConduitClient } from './phabricator';
+import { createConduitClient, paginatePhidSearch, type ConduitClient } from './phabricator';
 
 export interface MergeAuthorsInput {
   readonly samples: readonly Sample[];
@@ -61,7 +61,7 @@ export const mergeAuthors = (input: MergeAuthorsInput): MergeAuthorsOutput => {
 
 // ---------- Disk-bound runner ----------
 
-const projectSearchSchema = z.object({
+const revisionAuthorSearchSchema = z.object({
   data: z.array(
     z.object({
       phid: z.string(),
@@ -78,6 +78,9 @@ const userSearchSchema = z.object({
       fields: z.object({ username: z.string() }),
     }),
   ),
+  // Phab returns a cursor on every search response; tolerate its absence for
+  // stub parity but follow `after` when present.
+  cursor: z.object({ after: z.string().nullable() }).optional(),
 });
 
 export const lookupPhabAuthors = async (
@@ -86,25 +89,27 @@ export const lookupPhabAuthors = async (
 ): Promise<Map<string, ReviewerLogin>> => {
   const authorByRev = new Map<string, ReviewerLogin>();
   if (revisionPhids.length === 0) return authorByRev;
+  const revisions = await paginatePhidSearch(
+    client,
+    'differential.revision.search',
+    revisionPhids,
+    (raw) => {
+      const parsed = revisionAuthorSearchSchema.parse(raw);
+      return { rows: parsed.data, after: parsed.cursor.after };
+    },
+  );
   const authorPhidByRevPhid = new Map<string, string>();
-  let after: string | null = null;
-  do {
-    const params: Record<string, unknown> = { constraints: { phids: [...revisionPhids] } };
-    if (after !== null) params.after = after;
-    const raw = await client.call('differential.revision.search', params);
-    const parsed = projectSearchSchema.parse(raw);
-    for (const entry of parsed.data) {
-      authorPhidByRevPhid.set(entry.phid, entry.fields.authorPHID);
-    }
-    after = parsed.cursor.after;
-  } while (after !== null);
+  for (const entry of revisions) {
+    authorPhidByRevPhid.set(entry.phid, entry.fields.authorPHID);
+  }
 
   const uniqueAuthorPhids = [...new Set(authorPhidByRevPhid.values())];
-  if (uniqueAuthorPhids.length === 0) return authorByRev;
-  const usersRaw = await client.call('user.search', { constraints: { phids: uniqueAuthorPhids } });
-  const usersParsed = userSearchSchema.parse(usersRaw);
+  const users = await paginatePhidSearch(client, 'user.search', uniqueAuthorPhids, (raw) => {
+    const parsed = userSearchSchema.parse(raw);
+    return { rows: parsed.data, after: parsed.cursor?.after ?? null };
+  });
   const loginByUserPhid = new Map<string, string>();
-  for (const user of usersParsed.data) {
+  for (const user of users) {
     loginByUserPhid.set(user.phid, user.fields.username);
   }
   for (const [revPhid, authorPhid] of authorPhidByRevPhid) {
