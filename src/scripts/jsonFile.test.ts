@@ -3,8 +3,9 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { z } from 'zod';
 
-import { readJsonFile, writeJsonFileAtomic } from './jsonFile';
+import { readJsonFile, readValidatedJsonFile, writeJsonFileAtomic } from './jsonFile';
 
 let tmpdir: string;
 
@@ -73,5 +74,28 @@ describe('readJsonFile', () => {
 
   it('rethrows errors other than ENOENT', async () => {
     await expect(readJsonFile(tmpdir, null)).rejects.toBeInstanceOf(Error);
+  });
+});
+
+describe('readValidatedJsonFile', () => {
+  const rowSchema = z.array(z.object({ id: z.number(), name: z.string() }));
+
+  it('returns the fallback when the file does not exist', async () => {
+    const missing = path.join(tmpdir, 'missing.json');
+    const result = await readValidatedJsonFile(missing, rowSchema, []);
+    expect(result).toEqual([]);
+  });
+
+  it('parses and validates the file when present', async () => {
+    const target = path.join(tmpdir, 'rows.json');
+    await fs.writeFile(target, JSON.stringify([{ id: 1, name: 'a' }]), 'utf8');
+    const result = await readValidatedJsonFile(target, rowSchema, []);
+    expect(result).toEqual([{ id: 1, name: 'a' }]);
+  });
+
+  it('throws a ZodError when the file content violates the schema', async () => {
+    const target = path.join(tmpdir, 'rows.json');
+    await fs.writeFile(target, JSON.stringify([{ id: 'not-a-number', name: 'a' }]), 'utf8');
+    await expect(readValidatedJsonFile(target, rowSchema, [])).rejects.toThrow();
   });
 });

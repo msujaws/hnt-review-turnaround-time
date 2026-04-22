@@ -1,6 +1,8 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
+import type { z, ZodTypeAny } from 'zod';
+
 const isNodeErrnoException = (error: unknown): error is NodeJS.ErrnoException =>
   error instanceof Error && 'code' in error;
 
@@ -28,4 +30,19 @@ export const writeJsonFileAtomic = async (filePath: string, data: unknown): Prom
   const temporaryPath = `${filePath}.tmp`;
   await fs.writeFile(temporaryPath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
   await fs.rename(temporaryPath, filePath);
+};
+
+// Read JSON and run it through a zod schema in one step. Same ENOENT-returns-
+// fallback rule as readJsonFile; schema failures throw a ZodError so that a
+// corrupt payload surfaces loudly instead of silently falling back. The
+// generic captures the schema's *output* type so transforms (branded types,
+// coercions) are respected at the call site.
+export const readValidatedJsonFile = async <S extends ZodTypeAny>(
+  filePath: string,
+  schema: S,
+  fallback: z.output<S>,
+): Promise<z.output<S>> => {
+  const raw = await readJsonFile<unknown>(filePath, null);
+  if (raw === null) return fallback;
+  return schema.parse(raw) as z.output<S>;
 };
