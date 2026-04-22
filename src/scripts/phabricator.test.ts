@@ -833,6 +833,183 @@ describe('fetchPhabSamples', () => {
     );
   });
 
+  it('passes limit=100 on transaction.search to max out pagination per call', async () => {
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-aaaaaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') return { data: [], cursor: { after: null } };
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(call).toHaveBeenCalledWith(
+      'transaction.search',
+      expect.objectContaining({ limit: 100 }),
+    );
+  });
+
+  it('skips transaction.search for revisions pre-seeded via resumeTransactionsByRevisionPhid', async () => {
+    const transactionSearchCalls: string[] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-cachedaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+            {
+              id: 2,
+              phid: 'PHID-DREV-freshaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        const p = params as { objectIdentifier: string };
+        transactionSearchCalls.push(p.objectIdentifier);
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const cached: PhabTransaction = {
+      id: 99,
+      phid: 'PHID-XACT-cacheaaaaaaaaaaaaaa',
+      type: 'comment',
+      authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+      dateCreated: 1_761_000_000,
+      fields: {},
+    };
+    const resume = new Map<string, readonly PhabTransaction[]>([
+      ['PHID-DREV-cachedaaaaaaaaaaaaaaa', [cached]],
+    ]);
+
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+      resumeTransactionsByRevisionPhid: resume,
+    });
+
+    // Only the uncached revision should have hit transaction.search.
+    expect(transactionSearchCalls).toEqual(['PHID-DREV-freshaaaaaaaaaaaaaaaa']);
+  });
+
+  it('invokes onRevisionTransactions after each revision fetched from the wire', async () => {
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-oneaaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+            {
+              id: 2,
+              phid: 'PHID-DREV-twoaaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        const p = params as { objectIdentifier: string };
+        return {
+          data: [
+            {
+              id: 1,
+              phid: `PHID-XACT-${p.objectIdentifier.slice(-4)}`,
+              type: 'comment',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_761_000_000,
+              fields: {},
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+    const progressSink: { phid: string; count: number }[] = [];
+    const onProgress = async (phid: string, txs: readonly PhabTransaction[]): Promise<void> => {
+      progressSink.push({ phid, count: txs.length });
+      return;
+    };
+
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+      onRevisionTransactions: onProgress,
+    });
+
+    expect(progressSink).toEqual([
+      { phid: 'PHID-DREV-oneaaaaaaaaaaaaaaaaa', count: 1 },
+      { phid: 'PHID-DREV-twoaaaaaaaaaaaaaaaaa', count: 1 },
+    ]);
+  });
+
   it('drops reviewers who are not group members', async () => {
     const call = vi.fn(async (method: string): Promise<unknown> => {
       if (method === 'project.search') {
@@ -1074,5 +1251,32 @@ describe('createConduitClient', () => {
 
     await expect(client.call('project.search', {})).rejects.toThrow(/429/);
     expect(fetchFn).toHaveBeenCalledTimes(3);
+  });
+
+  it('includes the Retry-After header and response body when giving up on 429', async () => {
+    const fetchFn = vi.fn(
+      async () =>
+        new Response('{"error_info":"rate limited by phab"}', {
+          status: 429,
+          headers: { 'Retry-After': '17' },
+        }),
+    );
+    const client = createConduitClient({
+      endpoint: 'https://phab.example/api',
+      apiToken: 'cli-abc123',
+      fetchFn: fetchFn as unknown as typeof fetch,
+      sleepFn: async () => {
+        return;
+      },
+      maxRetries: 0,
+    });
+    const error = await client
+      .call('project.search', {})
+      .then((): Error => {
+        throw new Error('expected rejection');
+      })
+      .catch((error_: unknown): Error => error_ as Error);
+    expect(error.message).toMatch(/Retry-After=17/);
+    expect(error.message).toMatch(/rate limited by phab/);
   });
 });
