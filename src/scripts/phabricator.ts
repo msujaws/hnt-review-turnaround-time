@@ -249,6 +249,8 @@ const fetchRevisions = async (
   return revisions;
 };
 
+const TRANSACTION_PAGE_LIMIT = 100;
+
 const fetchTransactions = async (
   client: ConduitClient,
   revisionPhid: string,
@@ -256,7 +258,10 @@ const fetchTransactions = async (
   const transactions: PhabTransaction[] = [];
   let after: string | null = null;
   do {
-    const params: Record<string, unknown> = { objectIdentifier: revisionPhid };
+    const params: Record<string, unknown> = {
+      objectIdentifier: revisionPhid,
+      limit: TRANSACTION_PAGE_LIMIT,
+    };
     if (after !== null) params.after = after;
     const raw = await client.call('transaction.search', params);
     const parsed = transactionSearchSchema.parse(raw);
@@ -294,8 +299,16 @@ export const fetchPhabSamples = async (params: {
   readonly projectSlugs: readonly string[];
   readonly lookbackDays: number;
   readonly now?: Date;
+  readonly resumeTransactionsByRevisionPhid?: ReadonlyMap<string, readonly PhabTransaction[]>;
+  readonly onRevisionTransactions?: (
+    phid: string,
+    transactions: readonly PhabTransaction[],
+  ) => void | Promise<void>;
 }): Promise<{ samples: PhabSample[]; pending: PhabPendingSample[] }> => {
   const { client, projectSlugs, lookbackDays } = params;
+  const resumeCache: ReadonlyMap<string, readonly PhabTransaction[]> =
+    params.resumeTransactionsByRevisionPhid ?? new Map<string, readonly PhabTransaction[]>();
+  const onRevisionTransactions = params.onRevisionTransactions;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
 
@@ -333,11 +346,20 @@ export const fetchPhabSamples = async (params: {
   const revisions = [...revisionsByPhid.values()];
   const allowedReviewerPhids = new Set(memberPhids);
 
-  const transactionsByRevision = new Map<string, PhabTransaction[]>();
+  const transactionsByRevision = new Map<string, readonly PhabTransaction[]>();
   const userPhids = new Set<string>();
   for (const rev of revisions) {
     userPhids.add(rev.authorPhid);
-    const transactions = await fetchTransactions(client, rev.phid);
+    const cached = resumeCache.get(rev.phid);
+    let transactions: readonly PhabTransaction[];
+    if (cached === undefined) {
+      transactions = await fetchTransactions(client, rev.phid);
+      if (onRevisionTransactions !== undefined) {
+        await onRevisionTransactions(rev.phid, transactions);
+      }
+    } else {
+      transactions = cached;
+    }
     transactionsByRevision.set(rev.phid, transactions);
     for (const tx of transactions) {
       userPhids.add(tx.authorPhid);
@@ -442,7 +464,19 @@ export const createConduitClient = (options: {
           continue;
         }
         if (!response.ok) {
-          throw new Error(`Conduit ${method} failed with status ${String(response.status)}`);
+          const retryAfterHeader = response.headers.get('Retry-After');
+          let bodyText = '';
+          try {
+            const rawBody = await response.text();
+            bodyText = rawBody.slice(0, 500);
+          } catch {
+            // Body already consumed or unreadable — keep empty snippet.
+          }
+          const parts = [`Conduit ${method} failed with status ${String(response.status)}`];
+          if (retryAfterHeader !== null) parts.push(`Retry-After=${retryAfterHeader}`);
+          const snippet = bodyText.replaceAll(/\s+/g, ' ').trim();
+          if (snippet.length > 0) parts.push(`body="${snippet}"`);
+          throw new Error(parts.join('; '));
         }
         const json = (await response.json()) as { result?: unknown; error_info?: string | null };
         if (json.error_info !== undefined && json.error_info !== null) {
