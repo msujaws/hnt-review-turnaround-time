@@ -285,10 +285,11 @@ const phabProgressSchema = z.object({
   transactionsByRevisionPhid: z.record(z.array(phabTransactionSchema)),
 });
 
-// 4h is enough to bridge retry-on-429 loops without serving stale transaction
-// data. Beyond that we'd risk missing new transactions on revisions cached
-// here, so we invalidate and re-fetch everything.
-const PROGRESS_TTL_MS = 4 * 3600 * 1000;
+// Cache entries are safe across arbitrary gaps now that each revision is
+// revalidated against its Phabricator dateModified on resume — we re-fetch
+// any revision modified since the cache was created. The TTL stays in place
+// as an upper bound so closed/deleted revisions don't linger forever.
+const PROGRESS_TTL_MS = 7 * 24 * 3600 * 1000;
 
 interface LoadedProgress {
   readonly transactions: Map<string, PhabTransaction[]>;
@@ -387,7 +388,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
           .map((slug) => slug.trim())
           .filter((slug) => slug.length > 0),
         lookbackDays: lookbackDaysArgument,
-        resumeTransactionsByRevisionPhid: resumeCache,
+        resumeCache: {
+          createdAt: Math.floor(Date.parse(progressCreatedAt) / 1000),
+          transactionsByRevisionPhid: resumeCache,
+        },
         onRevisionTransactions: async (phid, transactions) => {
           resumeCache.set(phid, [...transactions]);
           await writeProgress(resumeCache);

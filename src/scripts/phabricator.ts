@@ -35,6 +35,9 @@ export interface PhabRevision {
   readonly id: number;
   readonly phid: string;
   readonly authorPhid: string;
+  // Unix seconds. Compared against resumeCache.createdAt to decide whether a
+  // cached transaction list is still valid, so no stale cache is ever served.
+  readonly dateModified: number;
 }
 
 interface ReviewerOperation {
@@ -156,7 +159,7 @@ const revisionSearchSchema = z.object({
     z.object({
       id: z.number(),
       phid: z.string(),
-      fields: z.object({ authorPHID: z.string() }),
+      fields: z.object({ authorPHID: z.string(), dateModified: z.number() }),
     }),
   ),
   cursor: z.object({ after: z.string().nullable() }),
@@ -219,10 +222,12 @@ const lookupProjectMembers = async (
   return { projectPhids, memberPhids: [...uniqueMembers] };
 };
 
-// Revision statuses that still need a reviewer's attention. Fetching these
-// separately (with no modifiedStart bound) surfaces old-but-pending revisions
-// the regular follow-up window would miss.
+// Revision statuses that still need a reviewer's attention. The open-state
+// query is bounded by OPEN_REVISION_LOOKBACK_DAYS so we don't pull every
+// long-abandoned open revision on the account — each revision costs a
+// transaction.search call, which is where Phab's per-session rate limit bites.
 const OPEN_REVISION_STATUSES = ['needs-review', 'changes-planned', 'needs-revision'] as const;
+const OPEN_REVISION_LOOKBACK_DAYS = 90;
 
 const fetchRevisions = async (
   client: ConduitClient,
@@ -242,7 +247,12 @@ const fetchRevisions = async (
     for (const item of parsed.data) {
       if (seen.has(item.phid)) continue;
       seen.add(item.phid);
-      revisions.push({ id: item.id, phid: item.phid, authorPhid: item.fields.authorPHID });
+      revisions.push({
+        id: item.id,
+        phid: item.phid,
+        authorPhid: item.fields.authorPHID,
+        dateModified: item.fields.dateModified,
+      });
     }
     after = parsed.cursor.after;
   } while (after !== null);
@@ -294,23 +304,32 @@ const resolveLogins = async (
   return byPhid;
 };
 
+export interface PhabResumeCache {
+  // Unix seconds. A cached revision's transactions are reused only when the
+  // revision's dateModified is <= this value — otherwise we re-fetch.
+  readonly createdAt: number;
+  readonly transactionsByRevisionPhid: ReadonlyMap<string, readonly PhabTransaction[]>;
+}
+
 export const fetchPhabSamples = async (params: {
   readonly client: ConduitClient;
   readonly projectSlugs: readonly string[];
   readonly lookbackDays: number;
   readonly now?: Date;
-  readonly resumeTransactionsByRevisionPhid?: ReadonlyMap<string, readonly PhabTransaction[]>;
+  readonly resumeCache?: PhabResumeCache;
   readonly onRevisionTransactions?: (
     phid: string,
     transactions: readonly PhabTransaction[],
   ) => void | Promise<void>;
 }): Promise<{ samples: PhabSample[]; pending: PhabPendingSample[] }> => {
   const { client, projectSlugs, lookbackDays } = params;
-  const resumeCache: ReadonlyMap<string, readonly PhabTransaction[]> =
-    params.resumeTransactionsByRevisionPhid ?? new Map<string, readonly PhabTransaction[]>();
+  const resumeCache = params.resumeCache;
   const onRevisionTransactions = params.onRevisionTransactions;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
+  const openModifiedStart = Math.floor(
+    (now.getTime() - OPEN_REVISION_LOOKBACK_DAYS * 86_400 * 1000) / 1000,
+  );
 
   if (projectSlugs.length === 0) {
     throw new Error('at least one project slug is required');
@@ -338,6 +357,7 @@ export const fetchPhabSamples = async (params: {
   const openRevisions = await fetchRevisions(client, {
     reviewerPHIDs: [...memberPhids],
     statuses: [...OPEN_REVISION_STATUSES],
+    modifiedStart: openModifiedStart,
   });
   const revisionsByPhid = new Map<string, PhabRevision>();
   for (const rev of [...recentRevisions, ...openRevisions]) {
@@ -350,15 +370,17 @@ export const fetchPhabSamples = async (params: {
   const userPhids = new Set<string>();
   for (const rev of revisions) {
     userPhids.add(rev.authorPhid);
-    const cached = resumeCache.get(rev.phid);
+    const cached = resumeCache?.transactionsByRevisionPhid.get(rev.phid);
+    const canReuseCache =
+      cached !== undefined && rev.dateModified <= (resumeCache?.createdAt ?? -Infinity);
     let transactions: readonly PhabTransaction[];
-    if (cached === undefined) {
+    if (canReuseCache) {
+      transactions = cached;
+    } else {
       transactions = await fetchTransactions(client, rev.phid);
       if (onRevisionTransactions !== undefined) {
         await onRevisionTransactions(rev.phid, transactions);
       }
-    } else {
-      transactions = cached;
     }
     transactionsByRevision.set(rev.phid, transactions);
     for (const tx of transactions) {
