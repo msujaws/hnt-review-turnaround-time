@@ -6,9 +6,11 @@ import type { FC } from 'react';
 
 import { ET_ZONE, SLA_HOURS } from '../src/config';
 import { loadPeopleMap } from '../src/scripts/people';
+import { Backlog } from '../src/ui/Backlog';
 import { Footer } from '../src/ui/Footer';
 import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
 
+import { loadBacklog } from './backlog';
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
 import { loadPending } from './pending';
@@ -17,10 +19,11 @@ import { loadSamples } from './samples';
 export const revalidate = 3600;
 
 const Page: FC = async () => {
-  const [history, samples, pending, peopleMap] = await Promise.all([
+  const [history, samples, pending, backlog, peopleMap] = await Promise.all([
     loadHistory(),
     loadSamples(),
     loadPending(),
+    loadBacklog(),
     loadPeopleMap(path.join(process.cwd(), 'data')),
   ]);
   const latest = history.at(-1);
@@ -69,6 +72,7 @@ const Page: FC = async () => {
         </div>
       </header>
       <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
+      <Backlog snapshots={backlog} />
       <Dashboard
         history={history}
         samples={samples}

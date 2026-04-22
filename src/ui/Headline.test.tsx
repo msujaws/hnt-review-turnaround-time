@@ -116,6 +116,58 @@ describe('Headline', () => {
     expect(screen.getAllByText(/under 4h sla/i)).toHaveLength(3);
   });
 
+  it('uses the override slaLabel when provided', () => {
+    render(
+      <Headline
+        title="Rounds"
+        window7d={window14d}
+        window14d={window14d}
+        window30d={window14d}
+        slaHours={1}
+        slaLabel="One-shot"
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    expect(screen.getAllByText(/one-shot/i).length).toBeGreaterThanOrEqual(3);
+  });
+
+  it('formats values as round counts when unit=rounds', () => {
+    const rounds: WindowStats = { n: 5, median: 2, mean: 2.4, p90: 3, pctUnderSLA: 40 };
+    render(
+      <Headline
+        title="Rounds"
+        window7d={rounds}
+        window14d={rounds}
+        window30d={rounds}
+        slaHours={1}
+        unit="rounds"
+        slaLabel="One-shot"
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    // median is 2 rounds — renders without an "h" suffix.
+    expect(screen.queryByText(/2\.0h/)).toBeNull();
+    expect(screen.getAllByText(/^2$/).length).toBeGreaterThan(0);
+  });
+
+  it('uses the configured count label (e.g. "land" for landings)', () => {
+    render(
+      <Headline
+        title="Cycle"
+        window7d={window7d}
+        window14d={window14d}
+        window30d={window30d}
+        slaHours={24}
+        countLabel="land"
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    expect(screen.getByText(/23 lands/)).toBeInTheDocument();
+  });
+
   it('shows the awaiting state when all windows are empty', () => {
     render(
       <Headline

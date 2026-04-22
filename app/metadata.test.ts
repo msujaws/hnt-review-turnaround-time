@@ -87,6 +87,34 @@ describe('buildMetadataSummary', () => {
     expect(summary.title.startsWith('⚠ 1 overdue · ')).toBe(true);
   });
 
+  it('includes cycle-time median and land count in the description when present', () => {
+    const phabCycleWindows = {
+      window7d: { n: 4, median: 18.5, mean: 20, p90: 40, pctUnderSLA: 50 },
+      window14d: { n: 8, median: 20, mean: 22, p90: 42, pctUnderSLA: 45 },
+      window30d: { n: 16, median: 22, mean: 25, p90: 48, pctUnderSLA: 40 },
+    };
+    const githubCycleWindows = {
+      window7d: { n: 2, median: 9, mean: 10, p90: 14, pctUnderSLA: 75 },
+      window14d: { n: 5, median: 10, mean: 11, p90: 15, pctUnderSLA: 70 },
+      window30d: { n: 10, median: 11, mean: 12, p90: 16, pctUnderSLA: 65 },
+    };
+    const summary = buildMetadataSummary(
+      [row({ phabCycle: phabCycleWindows, githubCycle: githubCycleWindows })],
+      4,
+    );
+    // Should mention cycle figures somewhere in the description without
+    // disturbing the TAT-focused title. Format kept terse for Slack unfurl.
+    expect(summary.description).toMatch(/cycle 18\.5h.*4 land/);
+    expect(summary.description).toMatch(/cycle 9\.0h.*2 land/);
+    expect(summary.title).not.toMatch(/cycle/i);
+  });
+
+  it('omits the cycle clause entirely on historical rows without the field (back-compat)', () => {
+    const summary = buildMetadataSummary([row()], 4);
+    expect(summary.description).not.toMatch(/cycle/i);
+    expect(summary.description).not.toMatch(/land/i);
+  });
+
   it('falls back to 14d then 30d window when 7d has no reviews', () => {
     const summary = buildMetadataSummary(
       [

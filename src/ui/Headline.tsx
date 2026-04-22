@@ -28,8 +28,16 @@ const formatHours = (value: number): string => {
   return `${rounded.toFixed(1)}h`;
 };
 
-const formatStatHours = (value: number, hasData: boolean): string =>
-  hasData ? formatHours(value) : 'N/A';
+// Integer rounds; display as "1", "2", "3"… no decimal or unit suffix because
+// the header already labels the panel as "Rounds".
+const formatRounds = (value: number): string => String(Math.round(value));
+
+type MetricUnit = 'hours' | 'rounds';
+
+const formatStatValue = (value: number, hasData: boolean, unit: MetricUnit): string => {
+  if (!hasData) return 'N/A';
+  return unit === 'rounds' ? formatRounds(value) : formatHours(value);
+};
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
 const formatTimestamp = (value: string): string => {
   const date = new Date(value);
@@ -156,6 +164,9 @@ interface WindowRowProps {
   readonly slaHours: number;
   readonly samples: readonly Sample[];
   readonly now: Date;
+  readonly unit: MetricUnit;
+  readonly slaLabel: string;
+  readonly countLabel: string;
 }
 
 const statsTier = (value: number, stats: WindowStats, slaHours: number): SlaTier | undefined =>
@@ -164,31 +175,33 @@ const statsTier = (value: number, stats: WindowStats, slaHours: number): SlaTier
 const pctTier = (stats: WindowStats): SlaTier | undefined =>
   stats.n === 0 ? undefined : tierForPctUnderSla(stats.pctUnderSLA);
 
-const StatGrid: FC<{ readonly stats: WindowStats; readonly slaHours: number }> = ({
-  stats,
-  slaHours,
-}) => (
+const StatGrid: FC<{
+  readonly stats: WindowStats;
+  readonly slaHours: number;
+  readonly unit: MetricUnit;
+  readonly slaLabel: string;
+}> = ({ stats, slaHours, unit, slaLabel }) => (
   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
     <StatCell
       label="Median"
-      value={formatStatHours(stats.median, stats.n > 0)}
+      value={formatStatValue(stats.median, stats.n > 0, unit)}
       tier={statsTier(stats.median, stats, slaHours)}
       animationDelayMs={0}
     />
     <StatCell
       label="Mean"
-      value={formatStatHours(stats.mean, stats.n > 0)}
+      value={formatStatValue(stats.mean, stats.n > 0, unit)}
       tier={statsTier(stats.mean, stats, slaHours)}
       animationDelayMs={70}
     />
     <StatCell
       label="p90"
-      value={formatStatHours(stats.p90, stats.n > 0)}
+      value={formatStatValue(stats.p90, stats.n > 0, unit)}
       tier={statsTier(stats.p90, stats, slaHours)}
       animationDelayMs={140}
     />
     <StatCell
-      label={`Under ${slaHours.toString()}h SLA`}
+      label={slaLabel}
       value={formatPercent(stats.pctUnderSLA)}
       tier={pctTier(stats)}
       animationDelayMs={210}
@@ -196,18 +209,19 @@ const StatGrid: FC<{ readonly stats: WindowStats; readonly slaHours: number }> =
   </div>
 );
 
-const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours }) => (
+const formatCount = (n: number, countLabel: string): string => {
+  if (n === 0) return `no ${countLabel}s in window`;
+  return `${n.toString()} ${n === 1 ? countLabel : `${countLabel}s`}`;
+};
+
+const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours, unit, slaLabel, countLabel }) => (
   <>
     <div className="flex items-center gap-2 text-sm font-medium text-neutral-300">
       <span>{label}</span>
       <span className="text-neutral-500">·</span>
-      <span className="text-neutral-500">
-        {stats.n === 0
-          ? 'no reviews in window'
-          : `${stats.n.toString()} ${stats.n === 1 ? 'review' : 'reviews'}`}
-      </span>
+      <span className="text-neutral-500">{formatCount(stats.n, countLabel)}</span>
     </div>
-    <StatGrid stats={stats} slaHours={slaHours} />
+    <StatGrid stats={stats} slaHours={slaHours} unit={unit} slaLabel={slaLabel} />
   </>
 );
 
@@ -234,14 +248,19 @@ const WindowRow: FC<WindowRowProps> = (props) => {
           <div className="flex items-center gap-2 text-sm font-medium text-neutral-300">
             <span>{props.label}</span>
             <span className="text-neutral-500">·</span>
-            <span className="text-neutral-500">{`${props.stats.n.toString()} ${props.stats.n === 1 ? 'review' : 'reviews'}`}</span>
+            <span className="text-neutral-500">{formatCount(props.stats.n, props.countLabel)}</span>
           </div>
           <Icon
             name={EXPAND_ICON}
             className="text-base text-neutral-500 transition-transform group-open:rotate-180"
           />
         </div>
-        <StatGrid stats={props.stats} slaHours={props.slaHours} />
+        <StatGrid
+          stats={props.stats}
+          slaHours={props.slaHours}
+          unit={props.unit}
+          slaLabel={props.slaLabel}
+        />
       </summary>
       <SampleList samples={windowSamples} slaHours={props.slaHours} />
     </details>
@@ -257,6 +276,10 @@ export interface HeadlineProps {
   readonly slaHours: number;
   readonly samples: readonly Sample[];
   readonly now: Date;
+  // Metric configuration: defaults preserve the original TAT behaviour.
+  readonly unit?: MetricUnit;
+  readonly slaLabel?: string;
+  readonly countLabel?: string;
 }
 
 export const Headline: FC<HeadlineProps> = ({
@@ -268,22 +291,56 @@ export const Headline: FC<HeadlineProps> = ({
   slaHours,
   samples,
   now,
-}) => (
-  <section className="flex flex-col gap-4">
-    <header className="flex flex-col gap-2">
-      <div className="flex items-baseline justify-between">
-        <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
-        <span className="flex items-center gap-2 text-sm text-neutral-400">
-          <Icon name={SCHEDULE_ICON} className="text-base" />
-          {window7d.n + window14d.n + window30d.n === 0
-            ? 'awaiting first reviews'
-            : 'rolling windows'}
-        </span>
-      </div>
-      {description === undefined ? null : <p className="text-sm text-neutral-400">{description}</p>}
-    </header>
-    <WindowRow label="7-day" stats={window7d} slaHours={slaHours} samples={samples} now={now} />
-    <WindowRow label="14-day" stats={window14d} slaHours={slaHours} samples={samples} now={now} />
-    <WindowRow label="30-day" stats={window30d} slaHours={slaHours} samples={samples} now={now} />
-  </section>
-);
+  unit = 'hours',
+  slaLabel,
+  countLabel = 'review',
+}) => {
+  const effectiveSlaLabel = slaLabel ?? `Under ${slaHours.toString()}h SLA`;
+  const emptyState = `awaiting first ${countLabel}s`;
+  return (
+    <section className="flex flex-col gap-4">
+      <header className="flex flex-col gap-2">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
+          <span className="flex items-center gap-2 text-sm text-neutral-400">
+            <Icon name={SCHEDULE_ICON} className="text-base" />
+            {window7d.n + window14d.n + window30d.n === 0 ? emptyState : 'rolling windows'}
+          </span>
+        </div>
+        {description === undefined ? null : (
+          <p className="text-sm text-neutral-400">{description}</p>
+        )}
+      </header>
+      <WindowRow
+        label="7-day"
+        stats={window7d}
+        slaHours={slaHours}
+        samples={samples}
+        now={now}
+        unit={unit}
+        slaLabel={effectiveSlaLabel}
+        countLabel={countLabel}
+      />
+      <WindowRow
+        label="14-day"
+        stats={window14d}
+        slaHours={slaHours}
+        samples={samples}
+        now={now}
+        unit={unit}
+        slaLabel={effectiveSlaLabel}
+        countLabel={countLabel}
+      />
+      <WindowRow
+        label="30-day"
+        stats={window30d}
+        slaHours={slaHours}
+        samples={samples}
+        now={now}
+        unit={unit}
+        slaLabel={effectiveSlaLabel}
+        countLabel={countLabel}
+      />
+    </section>
+  );
+};

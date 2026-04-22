@@ -17,7 +17,18 @@ import type { HistoryRow } from '../scripts/collect';
 
 import { chartTheme } from './chartTheme';
 
-export type ChartSource = 'phab' | 'github';
+// Any HistoryRow key pointing at a SourceWindows-shaped block. `phab`/`github`
+// are always present; landing-derived keys are optional, and a zero point is
+// emitted for rows that pre-date a given metric.
+export type ChartSource =
+  | 'phab'
+  | 'github'
+  | 'phabCycle'
+  | 'githubCycle'
+  | 'phabPostReview'
+  | 'githubPostReview'
+  | 'phabRounds'
+  | 'githubRounds';
 
 export interface ChartPoint {
   readonly date: string;
@@ -27,9 +38,19 @@ export interface ChartPoint {
   readonly pctUnderSLA: number;
 }
 
+const zeroPoint = (date: string): ChartPoint => ({
+  date,
+  median: 0,
+  mean: 0,
+  p90: 0,
+  pctUnderSLA: 0,
+});
+
 export const buildChartData = (history: readonly HistoryRow[], source: ChartSource): ChartPoint[] =>
   history.map((row) => {
-    const window = row[source].window14d;
+    const block = row[source];
+    if (block === undefined) return zeroPoint(row.date);
+    const window = block.window14d;
     return {
       date: row.date,
       median: Math.round(window.median * 100) / 100,
@@ -44,9 +65,22 @@ export interface TrendlineProps {
   readonly history: readonly HistoryRow[];
   readonly source: ChartSource;
   readonly slaHours?: number;
+  // Left-axis label. Defaults to "hours"; pass "rounds" for the review-rounds
+  // trendline so the axis doesn't lie about the units.
+  readonly valueAxisLabel?: string;
+  // SLA line label. Defaults to "${sla}h SLA". For non-hour metrics, override
+  // (e.g. "one-shot" for rounds, or omit the "h").
+  readonly slaLineLabel?: string;
 }
 
-export const Trendline: FC<TrendlineProps> = ({ title, history, source, slaHours = 4 }) => {
+export const Trendline: FC<TrendlineProps> = ({
+  title,
+  history,
+  source,
+  slaHours = 4,
+  valueAxisLabel = 'hours',
+  slaLineLabel,
+}) => {
   const data = buildChartData(history, source);
   return (
     <section className="flex flex-col gap-3">
@@ -64,7 +98,7 @@ export const Trendline: FC<TrendlineProps> = ({ title, history, source, slaHours
               stroke={chartTheme.textMuted}
               tick={{ fontSize: 12 }}
               label={{
-                value: 'hours',
+                value: valueAxisLabel,
                 angle: -90,
                 position: 'insideLeft',
                 fill: chartTheme.textMuted,
@@ -97,7 +131,7 @@ export const Trendline: FC<TrendlineProps> = ({ title, history, source, slaHours
               stroke={chartTheme.slaLine}
               strokeDasharray="3 3"
               label={{
-                value: `${slaHours.toString()}h SLA`,
+                value: slaLineLabel ?? `${slaHours.toString()}h SLA`,
                 fill: chartTheme.slaLine,
                 fontSize: 10,
               }}

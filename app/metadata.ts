@@ -68,9 +68,23 @@ export const buildMetadataSummary = (
     };
   }
   const baseTitle = `HNT Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label}) · GH ${formatHours(github.stats.median, ghHas)} (${github.label}) · goal ${slaHours.toString()}h`;
+  // Cycle-time suffix: only appended when the row carries the field and has
+  // at least one landing in one of the windows. Stays out of the title to
+  // avoid crowding — the primary SLA metric keeps top billing.
+  const phabCycle = latest.phabCycle === undefined ? null : pickHeadlineWindow(latest.phabCycle);
+  const githubCycle =
+    latest.githubCycle === undefined ? null : pickHeadlineWindow(latest.githubCycle);
+  const phabCycleClause =
+    phabCycle !== null && phabCycle.stats.n > 0
+      ? `, cycle ${formatHours(phabCycle.stats.median, true)} (${phabCycle.stats.n.toString()} land${phabCycle.stats.n === 1 ? '' : 's'}, ${phabCycle.label})`
+      : '';
+  const githubCycleClause =
+    githubCycle !== null && githubCycle.stats.n > 0
+      ? `, cycle ${formatHours(githubCycle.stats.median, true)} (${githubCycle.stats.n.toString()} land${githubCycle.stats.n === 1 ? '' : 's'}, ${githubCycle.label})`
+      : '';
   const baseDescription = [
-    `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})`,
-    `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})`,
+    `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})${phabCycleClause}`,
+    `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
   ].join(' · ');
   return {
     title: `${overduePrefix}${baseTitle}`,
