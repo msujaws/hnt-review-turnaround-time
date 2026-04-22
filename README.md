@@ -59,7 +59,7 @@ bun run dev            # local Next.js dev server
 bun run build          # production build
 bun run collect        # fetch + compute + write data/*.json (needs env vars)
 
-bun test               # vitest run
+bun run test           # vitest run (never `bun test` — that invokes bun's own runner)
 bun run test:watch     # vitest watch
 bun run test:coverage  # coverage report
 
