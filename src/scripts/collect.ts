@@ -389,6 +389,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const conduit = createConduitClient({
     endpoint: 'https://phabricator.services.mozilla.com/api',
     apiToken: requireEnv('PHABRICATOR_TOKEN'),
+    // Phab's transaction.search limiter keeps cutting us off around the
+    // 100-150 mark per session. Cede the budget voluntarily: pause 30 min
+    // after every 100 transaction.search calls to stay under the ceiling.
+    methodCooldowns: [{ method: 'transaction.search', every: 100, cooldownMs: 30 * 60 * 1000 }],
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 

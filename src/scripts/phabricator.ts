@@ -451,6 +451,12 @@ const parseRetryAfter = (header: string | null): number | null => {
   return null;
 };
 
+export interface MethodCooldown {
+  readonly method: string;
+  readonly every: number;
+  readonly cooldownMs: number;
+}
+
 export const createConduitClient = (options: {
   readonly endpoint: string;
   readonly apiToken: string;
@@ -459,6 +465,7 @@ export const createConduitClient = (options: {
   readonly maxRetries?: number;
   readonly minIntervalMs?: number;
   readonly nowFn?: () => number;
+  readonly methodCooldowns?: readonly MethodCooldown[];
 }): ConduitClient => {
   const { endpoint, apiToken } = options;
   const fetchFn = options.fetchFn ?? fetch;
@@ -471,12 +478,22 @@ export const createConduitClient = (options: {
   const maxRetries = options.maxRetries ?? DEFAULT_MAX_RETRIES;
   const minIntervalMs = options.minIntervalMs ?? DEFAULT_MIN_INTERVAL_MS;
   const nowFn = options.nowFn ?? Date.now;
+  const methodCooldowns = options.methodCooldowns ?? [];
+  const callCountByMethod = new Map<string, number>();
   let lastCallAt = Number.NEGATIVE_INFINITY;
   return {
     call: async (method, params) => {
       const body = new URLSearchParams();
       body.set('api.token', apiToken);
       flattenParams(params, '', body);
+      const priorCount = callCountByMethod.get(method) ?? 0;
+      const cooldown = methodCooldowns.find((entry) => entry.method === method);
+      if (cooldown !== undefined && priorCount > 0 && priorCount % cooldown.every === 0) {
+        // Pause ahead of the Nth+1 call — Phab's opaque per-endpoint limiter
+        // caps us around this many transaction.search calls per session, so
+        // we cede the budget voluntarily instead of eating another 429.
+        await sleepFn(cooldown.cooldownMs);
+      }
       const sinceLast = nowFn() - lastCallAt;
       if (sinceLast < minIntervalMs) {
         await sleepFn(minIntervalMs - sinceLast);
@@ -513,6 +530,7 @@ export const createConduitClient = (options: {
         if (json.error_info !== undefined && json.error_info !== null) {
           throw new Error(`Conduit ${method} error: ${json.error_info}`);
         }
+        callCountByMethod.set(method, priorCount + 1);
         return json.result;
       }
     },
