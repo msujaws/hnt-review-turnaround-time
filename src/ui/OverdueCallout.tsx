@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 
+import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
 import { businessHoursBetween } from '../scripts/businessHours';
 import type { PendingSample } from '../scripts/collect';
 import { timezoneForReviewer, type PeopleMap } from '../scripts/people';
@@ -8,10 +9,6 @@ import { asIsoTimestamp } from '../types/brand';
 import { asMaterialSymbolName, Icon } from './Icon';
 
 const WARNING_ICON = asMaterialSymbolName('warning');
-
-const GITHUB_OWNER = 'Pocket';
-const GITHUB_REPO = 'content-monorepo';
-const PHAB_ORIGIN = 'https://phabricator.services.mozilla.com';
 
 const OVERDUE_MULTIPLIER = 10;
 const SEVERE_MULTIPLIER = 20;

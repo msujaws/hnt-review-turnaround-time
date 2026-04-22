@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import Image from 'next/image';
 import type { FC } from 'react';
 
+import { ET_ZONE, SLA_HOURS } from '../src/config';
 import { loadPeopleMap } from '../src/scripts/people';
 import { Footer } from '../src/ui/Footer';
 import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
@@ -12,9 +13,6 @@ import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
 import { loadPending } from './pending';
 import { loadSamples } from './samples';
-
-const SLA_HOURS = 4;
-const ET_ZONE = 'America/New_York';
 
 export const revalidate = 3600;
 

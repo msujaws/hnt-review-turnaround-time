@@ -2,6 +2,7 @@ import path from 'node:path';
 
 import { z } from 'zod';
 
+import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
 import { asReviewerLogin, type ReviewerLogin } from '../types/brand';
 
 import { pendingSampleSchema, sampleSchema, type PendingSample, type Sample } from './collect';
@@ -181,14 +182,14 @@ export const runAuthorBackfillFromDisk = async (dataDirectory: string): Promise<
   }
 
   const conduit = createConduitClient({
-    endpoint: 'https://phabricator.services.mozilla.com/api',
+    endpoint: `${PHAB_ORIGIN}/api`,
     apiToken: requireEnv('PHABRICATOR_TOKEN'),
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
   const [phabAuthorByRevisionPhid, githubAuthorByPrNumber] = await Promise.all([
     lookupPhabAuthors(conduit, [...phabPhids]),
-    lookupGithubAuthors(gh, [...ghPrs], 'Pocket', 'content-monorepo'),
+    lookupGithubAuthors(gh, [...ghPrs], GITHUB_OWNER, GITHUB_REPO),
   ]);
 
   const merged = mergeAuthors({

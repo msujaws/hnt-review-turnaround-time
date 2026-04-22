@@ -1,16 +1,16 @@
 import type { FC } from 'react';
 
+import {
+  DEFAULT_PHAB_PROJECT_SLUG,
+  GITHUB_REPO_LABEL,
+  GITHUB_REPO_URL,
+  PHAB_PROJECT_URL,
+} from '../src/config';
 import type { HistoryRow, Sample } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
 import { Headline } from '../src/ui/Headline';
 import { Trendline } from '../src/ui/Trendline';
 
-const GITHUB_REPO_OWNER = 'Pocket';
-const GITHUB_REPO_NAME = 'content-monorepo';
-const GITHUB_REPO_URL = `https://github.com/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`;
-const GITHUB_REPO_LABEL = `${GITHUB_REPO_OWNER.toLowerCase()}/${GITHUB_REPO_NAME}`;
-const PHAB_PROJECT_SLUG = 'home-newtab-reviewers';
-const PHAB_PROJECT_URL = `https://phabricator.services.mozilla.com/tag/${PHAB_PROJECT_SLUG}/`;
 const LINK_CLASSES =
   'text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300';
 
@@ -43,7 +43,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
   const phabReviewers = Object.keys(peopleMap.phab);
   const phabProjectLink = (
     <a href={PHAB_PROJECT_URL} className={LINK_CLASSES} rel="noopener noreferrer" target="_blank">
-      {PHAB_PROJECT_SLUG}
+      {DEFAULT_PHAB_PROJECT_SLUG}
     </a>
   );
   const phabDescription =

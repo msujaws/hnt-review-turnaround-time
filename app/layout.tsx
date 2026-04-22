@@ -3,14 +3,13 @@ import path from 'node:path';
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 
+import { SLA_HOURS } from '../src/config';
 import { loadPeopleMap } from '../src/scripts/people';
 
 import './globals.css';
 import { loadHistory } from './history';
 import { buildMetadataSummary } from './metadata';
 import { loadPending } from './pending';
-
-const SLA_HOURS = 4;
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const [history, pending, peopleMap] = await Promise.all([

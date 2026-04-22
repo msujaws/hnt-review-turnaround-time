@@ -1,5 +1,6 @@
 import type { CSSProperties, FC, ReactNode } from 'react';
 
+import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
 import { isSampleInWindow, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
@@ -15,10 +16,6 @@ import {
 
 const SCHEDULE_ICON = asMaterialSymbolName('schedule');
 const EXPAND_ICON = asMaterialSymbolName('expand_more');
-
-const GITHUB_OWNER = 'Pocket';
-const GITHUB_REPO = 'content-monorepo';
-const PHAB_ORIGIN = 'https://phabricator.services.mozilla.com';
 
 const CARD_BASE_CLASSES =
   'flex flex-col gap-1 rounded-md p-4 animate-pop-in transition-all duration-200 ease-bouncy hover:-translate-y-0.5 hover:scale-[1.03]';

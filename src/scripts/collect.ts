@@ -4,6 +4,14 @@ import { DateTime } from 'luxon';
 import { z } from 'zod';
 
 import {
+  DEFAULT_PHAB_PROJECT_SLUG,
+  ET_ZONE,
+  GITHUB_OWNER,
+  GITHUB_REPO,
+  PHAB_ORIGIN,
+  SLA_HOURS,
+} from '../config';
+import {
   asBusinessHours,
   asIsoTimestamp,
   asPrNumber,
@@ -30,14 +38,12 @@ import {
 } from './phabricator';
 import { computeStats, type WindowStats } from './stats';
 
-const SLA_HOURS = 4;
 const RETENTION_DAYS = 90;
 const FOLLOWUP_LOOKBACK_DAYS = 3;
 const BACKFILL_LOOKBACK_DAYS = 45;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
 const WINDOW_30_DAYS = 30;
-const ET_ZONE = 'America/New_York';
 
 export type Sample =
   | (PhabSample & { readonly tatBusinessHours: BusinessHours })
@@ -373,7 +379,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   };
 
   const conduit = createConduitClient({
-    endpoint: 'https://phabricator.services.mozilla.com/api',
+    endpoint: `${PHAB_ORIGIN}/api`,
     apiToken: requireEnv('PHABRICATOR_TOKEN'),
     // Phab's transaction.search limiter keeps cutting us off around the
     // 100-150 mark per session. Cede the budget voluntarily: pause 30 min
@@ -390,7 +396,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     fetchPhab: async (lookbackDaysArgument) => {
       const result = await fetchPhabSamples({
         client: conduit,
-        projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? 'home-newtab-reviewers')
+        projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? DEFAULT_PHAB_PROJECT_SLUG)
           .split(',')
           .map((slug) => slug.trim())
           .filter((slug) => slug.length > 0),
@@ -410,8 +416,8 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     fetchGithub: (lookbackDaysArgument) =>
       fetchGithubSamples({
         client: gh,
-        owner: 'Pocket',
-        repo: 'content-monorepo',
+        owner: GITHUB_OWNER,
+        repo: GITHUB_REPO,
         lookbackDays: lookbackDaysArgument,
       }),
   });
