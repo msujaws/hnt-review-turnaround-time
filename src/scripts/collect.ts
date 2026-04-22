@@ -61,6 +61,10 @@ const phabSampleSchema = z.object({
   source: z.literal('phab'),
   id: z.string().transform((v) => asRevisionPhid(v)),
   revisionId: z.number().int().positive().optional(),
+  author: z
+    .string()
+    .transform((v) => asReviewerLogin(v))
+    .optional(),
   reviewer: z.string().transform((v) => asReviewerLogin(v)),
   requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
   firstActionAt: z.string().transform((v) => asIsoTimestamp(v)),
@@ -70,6 +74,10 @@ const phabSampleSchema = z.object({
 const githubSampleSchema = z.object({
   source: z.literal('github'),
   id: z.number().transform((v) => asPrNumber(v)),
+  author: z
+    .string()
+    .transform((v) => asReviewerLogin(v))
+    .optional(),
   reviewer: z.string().transform((v) => asReviewerLogin(v)),
   requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
   firstActionAt: z.string().transform((v) => asIsoTimestamp(v)),

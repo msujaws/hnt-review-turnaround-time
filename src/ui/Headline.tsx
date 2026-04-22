@@ -116,6 +116,7 @@ const SampleList: FC<SampleListProps> = ({ samples, slaHours }) => (
       <thead className="bg-neutral-900 text-neutral-400">
         <tr>
           <th className="px-3 py-2 font-medium">Review</th>
+          <th className="px-3 py-2 font-medium">Author</th>
           <th className="px-3 py-2 font-medium">Reviewer</th>
           <th className="px-3 py-2 font-medium">Requested</th>
           <th className="px-3 py-2 font-medium">First action</th>
@@ -132,6 +133,9 @@ const SampleList: FC<SampleListProps> = ({ samples, slaHours }) => (
             >
               <td className="px-3 py-2">
                 <SampleIdentifier sample={sample} />
+              </td>
+              <td className="px-3 py-2 text-neutral-200">
+                {sample.author ?? <span className="text-neutral-500">—</span>}
               </td>
               <td className="px-3 py-2 text-neutral-200">{sample.reviewer}</td>
               <td className="px-3 py-2 text-neutral-400">{formatTimestamp(sample.requestedAt)}</td>

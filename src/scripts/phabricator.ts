@@ -13,6 +13,9 @@ export interface PhabSample {
   readonly source: 'phab';
   readonly id: RevisionPhid;
   readonly revisionId?: number | undefined;
+  // Patch author login. Absent on legacy rows collected before this field
+  // existed; every fresh extract populates it.
+  readonly author?: ReviewerLogin | undefined;
   readonly reviewer: ReviewerLogin;
   readonly requestedAt: IsoTimestamp;
   readonly firstActionAt: IsoTimestamp;
@@ -104,6 +107,7 @@ export const extractSamplesFromTransactions = (
   }
 
   const samples: PhabSample[] = [];
+  const authorLogin = loginByPhid.get(revision.authorPhid);
   for (const [reviewerPhid, { requestedAt, firstActionAt }] of emitted) {
     const login = loginByPhid.get(reviewerPhid);
     if (login === undefined) continue;
@@ -111,6 +115,7 @@ export const extractSamplesFromTransactions = (
       source: 'phab',
       id: asRevisionPhid(revision.phid),
       revisionId: revision.id,
+      ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
       reviewer: asReviewerLogin(login),
       requestedAt: toIso(requestedAt),
       firstActionAt: toIso(firstActionAt),

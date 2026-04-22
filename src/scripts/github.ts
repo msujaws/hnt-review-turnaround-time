@@ -13,6 +13,9 @@ import {
 export interface GithubSample {
   readonly source: 'github';
   readonly id: PrNumber;
+  // Patch author login. Absent on legacy rows collected before this field
+  // existed; every fresh extract populates it.
+  readonly author?: ReviewerLogin | undefined;
   readonly reviewer: ReviewerLogin;
   readonly requestedAt: IsoTimestamp;
   readonly firstActionAt: IsoTimestamp;
@@ -147,6 +150,7 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedP
     samples.push({
       source: 'github',
       id: asPrNumber(data.number),
+      author: asReviewerLogin(data.author.login),
       reviewer: asReviewerLogin(reviewer),
       requestedAt: asIsoTimestamp(requestedAt),
       firstActionAt: asIsoTimestamp(firstActionAt),
