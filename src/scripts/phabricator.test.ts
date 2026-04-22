@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import {
   createConduitClient,
+  extractLandingFromTransactions,
   extractSamplesFromTransactions,
   fetchPhabSamples,
   type ConduitClient,
@@ -477,6 +478,188 @@ describe('extractSamplesFromTransactions', () => {
       const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
       expect(pending.map((p) => p.reviewer).sort()).toEqual(['alice', 'bob']);
     });
+  });
+});
+
+describe('extractLandingFromTransactions', () => {
+  const authorPhid = 'PHID-USER-authoraaaaaaaaaaaaaa';
+  const reviewerA = 'PHID-USER-revieweraaaaaaaaaaaaa';
+  const reviewerB = 'PHID-USER-reviewerbbbbbbbbbbbbb';
+
+  it('returns null when the revision never reached published status', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid,
+        dateCreated: 1_761_000_000,
+        fields: { operations: [{ operation: 'add', phid: reviewerA }] },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'comment',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_003_600,
+      }),
+    ];
+    const revisionCreatedAt = 1_760_990_000;
+    expect(
+      extractLandingFromTransactions(revision(), txs, loginByPhid, revisionCreatedAt),
+    ).toBeNull();
+  });
+
+  it('returns null when the revision was abandoned, not published', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_500_000,
+        fields: { old: 'needs-review', new: 'abandoned' },
+      }),
+    ];
+    expect(extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000)).toBeNull();
+  });
+
+  it('emits a landing when the status transitions to published', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid,
+        dateCreated: 1_761_000_100,
+        fields: { operations: [{ operation: 'add', phid: reviewerA }] },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_003_600,
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_100_000,
+        fields: { old: 'accepted', new: 'published' },
+      }),
+    ];
+    const createdAt = 1_761_000_000;
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, createdAt);
+    expect(landing).not.toBeNull();
+    expect(landing).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-abcdefghijklmnopqrst',
+      revisionId: 234_567,
+      author: 'author-user',
+      createdAt: new Date(createdAt * 1000).toISOString(),
+      firstReviewAt: new Date(1_761_003_600 * 1000).toISOString(),
+      landedAt: new Date(1_761_100_000 * 1000).toISOString(),
+      reviewRounds: 1,
+    });
+  });
+
+  it('counts reviewRounds as 1 + number of request-changes transactions', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'request-changes',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_010_000,
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'request-changes',
+        authorPhid: reviewerB,
+        dateCreated: 1_761_020_000,
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'accept',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_030_000,
+      }),
+      mkTransaction({
+        id: 4,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_040_000,
+        fields: { old: 'accepted', new: 'published' },
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
+    expect(landing?.reviewRounds).toBe(3);
+    expect(landing?.firstReviewAt).toBe(new Date(1_761_010_000 * 1000).toISOString());
+  });
+
+  it('returns firstReviewAt=null when no non-author reviewer action exists before land', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_100_000,
+        fields: { old: 'needs-review', new: 'published' },
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
+    expect(landing).not.toBeNull();
+    expect(landing?.firstReviewAt).toBeNull();
+    expect(landing?.reviewRounds).toBe(1);
+  });
+
+  it("ignores the author's own reviewer-type transactions when deciding firstReviewAt", () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'comment',
+        authorPhid,
+        dateCreated: 1_761_001_000,
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_050_000,
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_060_000,
+        fields: { old: 'accepted', new: 'published' },
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
+    expect(landing?.firstReviewAt).toBe(new Date(1_761_050_000 * 1000).toISOString());
+  });
+
+  it('uses the earliest status→published transaction when a revision reopens and re-lands', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_100_000,
+        fields: { old: 'accepted', new: 'published' },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_200_000,
+        fields: { old: 'published', new: 'needs-review' },
+      }),
+      mkTransaction({
+        id: 3,
+        type: 'status',
+        authorPhid,
+        dateCreated: 1_761_300_000,
+        fields: { old: 'accepted', new: 'published' },
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
+    expect(landing?.landedAt).toBe(new Date(1_761_100_000 * 1000).toISOString());
   });
 });
 

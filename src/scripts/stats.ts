@@ -1,5 +1,3 @@
-import type { BusinessHours } from '../types/brand';
-
 export interface WindowStats {
   readonly n: number;
   readonly median: number;
@@ -20,7 +18,11 @@ const percentile = (sorted: readonly number[], p: number): number => {
   return lower + (upper - lower) * fraction;
 };
 
-export const computeStats = (samples: readonly BusinessHours[], slaHours: number): WindowStats => {
+// Metric-agnostic: values may be business hours (TAT, cycle, post-review) or
+// integer review-round counts. `slaHours` is really "SLA threshold in the
+// same units as samples" — callers pass ROUNDS_SLA for rounds, CYCLE_SLA_HOURS
+// for cycle time, etc. pctUnderSLA is the percentage of samples <= threshold.
+export const computeStats = (samples: readonly number[], slaHours: number): WindowStats => {
   const n = samples.length;
   if (n === 0) {
     return { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 };

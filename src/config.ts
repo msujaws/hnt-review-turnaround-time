@@ -4,6 +4,19 @@
 
 export const SLA_HOURS = 4;
 
+// Creation-to-merge target. Covers the full author wait: from the moment the
+// PR/revision is created until it lands. Business hours (9-5 ET, weekdays) so
+// 24h ≈ three business days.
+export const CYCLE_SLA_HOURS = 24;
+
+// First-review-to-merge target. Covers iteration plus the author's own
+// merge-click latency after the earliest reviewer action. One business day.
+export const POST_REVIEW_SLA_HOURS = 8;
+
+// "One-shot" review target: a PR that merged after a single round of review
+// (no changes-requested cycle). Higher is better, so this is a lower-bound.
+export const ROUNDS_SLA = 1;
+
 // ET anchors the "today" calendar day for windows + history rows. Business-
 // hours math defaults to the same zone; see businessHours.ts.
 export const ET_ZONE = 'America/New_York';

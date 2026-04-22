@@ -4,11 +4,14 @@ import { DateTime } from 'luxon';
 import { z } from 'zod';
 
 import {
+  CYCLE_SLA_HOURS,
   DEFAULT_PHAB_PROJECT_SLUG,
   ET_ZONE,
   GITHUB_OWNER,
   GITHUB_REPO,
   PHAB_ORIGIN,
+  POST_REVIEW_SLA_HOURS,
+  ROUNDS_SLA,
   SLA_HOURS,
 } from '../config';
 import {
@@ -24,6 +27,7 @@ import { businessHoursBetween } from './businessHours';
 import {
   createGithubClient,
   fetchGithubSamples,
+  type GithubLanding,
   type GithubPendingSample,
   type GithubSample,
 } from './github';
@@ -32,6 +36,7 @@ import { EMPTY_PEOPLE_MAP, loadPeopleMap, type PeopleMap, timezoneForReviewer } 
 import {
   createConduitClient,
   fetchPhabSamples,
+  type PhabLanding,
   type PhabPendingSample,
   type PhabSample,
   type PhabTransaction,
@@ -51,16 +56,53 @@ export type Sample =
 
 export type PendingSample = PhabPendingSample | GithubPendingSample;
 
+// Stored landing record. Raw PhabLanding / GithubLanding plus the two
+// business-hours derivations (author timezone). postReviewBusinessHours is
+// null iff firstReviewAt is null.
+interface LandingBusinessHours {
+  readonly cycleBusinessHours: BusinessHours;
+  readonly postReviewBusinessHours: BusinessHours | null;
+}
+export type Landing = (PhabLanding | GithubLanding) & LandingBusinessHours;
+
 export interface SourceWindows {
   readonly window7d: WindowStats;
   readonly window14d: WindowStats;
   readonly window30d: WindowStats;
 }
 
+// Instantaneous backlog snapshot: pending reviewers right now (from pending.json)
+// plus their age in business hours. One row per ET day, replaced idempotently
+// like HistoryRow. Zero values are encoded explicitly so trendline consumers
+// don't need to special-case an absent entry vs. a truly empty backlog.
+export interface BacklogSourceStats {
+  readonly openCount: number;
+  readonly oldestBusinessHours: BusinessHours;
+  readonly p90BusinessHours: BusinessHours;
+}
+
+export interface BacklogSnapshot {
+  readonly date: string;
+  readonly phab: BacklogSourceStats;
+  readonly github: BacklogSourceStats;
+}
+
 export interface HistoryRow {
   readonly date: string;
+  // Review turnaround (requestedAt → firstActionAt), per-reviewer. Historical
+  // back-compat: unchanged from pre-landings rows.
   readonly phab: SourceWindows;
   readonly github: SourceWindows;
+  // Per-PR landing metrics. Optional so rows written before the feature shipped
+  // keep validating. Cycle = createdAt → landedAt. PostReview = firstReviewAt
+  // → landedAt (null firstReviewAt drops out). Rounds = WindowStats shape but
+  // units are review-round counts (SLA = 1 one-shot).
+  readonly phabCycle?: SourceWindows | undefined;
+  readonly githubCycle?: SourceWindows | undefined;
+  readonly phabPostReview?: SourceWindows | undefined;
+  readonly githubPostReview?: SourceWindows | undefined;
+  readonly phabRounds?: SourceWindows | undefined;
+  readonly githubRounds?: SourceWindows | undefined;
 }
 
 const phabSampleSchema = z.object({
@@ -91,6 +133,62 @@ const githubSampleSchema = z.object({
 });
 
 export const sampleSchema = z.discriminatedUnion('source', [phabSampleSchema, githubSampleSchema]);
+
+// Landing schema. The nullable-coupling invariant between firstReviewAt and
+// postReviewBusinessHours is enforced with a .refine — either both are null
+// (merged without review) or both are set. Mixing the two would silently
+// produce bad postReviewBusinessHours values.
+const optionalIsoTimestamp = z
+  .string()
+  .transform((v) => asIsoTimestamp(v))
+  .nullable();
+const optionalBusinessHours = z
+  .number()
+  .transform((v) => asBusinessHours(v))
+  .nullable();
+
+const phabLandingSchema = z
+  .object({
+    source: z.literal('phab'),
+    id: z.string().transform((v) => asRevisionPhid(v)),
+    revisionId: z.number().int().positive(),
+    author: z
+      .string()
+      .transform((v) => asReviewerLogin(v))
+      .optional(),
+    createdAt: z.string().transform((v) => asIsoTimestamp(v)),
+    firstReviewAt: optionalIsoTimestamp,
+    landedAt: z.string().transform((v) => asIsoTimestamp(v)),
+    cycleBusinessHours: z.number().transform((v) => asBusinessHours(v)),
+    postReviewBusinessHours: optionalBusinessHours,
+    reviewRounds: z.number().int().nonnegative(),
+  })
+  .refine(
+    (v) => (v.firstReviewAt === null) === (v.postReviewBusinessHours === null),
+    'firstReviewAt and postReviewBusinessHours must both be null or both be set',
+  );
+
+const githubLandingSchema = z
+  .object({
+    source: z.literal('github'),
+    id: z.number().transform((v) => asPrNumber(v)),
+    author: z
+      .string()
+      .transform((v) => asReviewerLogin(v))
+      .optional(),
+    createdAt: z.string().transform((v) => asIsoTimestamp(v)),
+    firstReviewAt: optionalIsoTimestamp,
+    landedAt: z.string().transform((v) => asIsoTimestamp(v)),
+    cycleBusinessHours: z.number().transform((v) => asBusinessHours(v)),
+    postReviewBusinessHours: optionalBusinessHours,
+    reviewRounds: z.number().int().nonnegative(),
+  })
+  .refine(
+    (v) => (v.firstReviewAt === null) === (v.postReviewBusinessHours === null),
+    'firstReviewAt and postReviewBusinessHours must both be null or both be set',
+  );
+
+export const landingSchema = z.union([phabLandingSchema, githubLandingSchema]);
 
 const phabPendingSampleSchema = z.object({
   source: z.literal('phab'),
@@ -134,14 +232,41 @@ const sourceWindowsSchema = z.object({
   window30d: windowStatsSchema,
 });
 
+const backlogSourceStatsSchema = z.object({
+  openCount: z.number().int().nonnegative(),
+  oldestBusinessHours: z
+    .number()
+    .nonnegative()
+    .transform((v) => asBusinessHours(v)),
+  p90BusinessHours: z
+    .number()
+    .nonnegative()
+    .transform((v) => asBusinessHours(v)),
+});
+
+export const backlogSnapshotSchema = z.object({
+  date: z.string(),
+  phab: backlogSourceStatsSchema,
+  github: backlogSourceStatsSchema,
+});
+
 export const historyRowSchema = z.object({
   date: z.string(),
   phab: sourceWindowsSchema,
   github: sourceWindowsSchema,
+  phabCycle: sourceWindowsSchema.optional(),
+  githubCycle: sourceWindowsSchema.optional(),
+  phabPostReview: sourceWindowsSchema.optional(),
+  githubPostReview: sourceWindowsSchema.optional(),
+  phabRounds: sourceWindowsSchema.optional(),
+  githubRounds: sourceWindowsSchema.optional(),
 });
 
 const sampleKey = (sample: { source: string; id: unknown; reviewer: string }): string =>
   `${sample.source}:${String(sample.id)}:${sample.reviewer}`;
+
+const landingKey = (landing: { source: string; id: unknown }): string =>
+  `${landing.source}:${String(landing.id)}`;
 
 const withTat = <T extends PhabSample | GithubSample>(
   sample: T,
@@ -154,6 +279,31 @@ const withTat = <T extends PhabSample | GithubSample>(
     timezoneForReviewer(peopleMap, sample.source, sample.reviewer),
   ),
 });
+
+// Landings: cycleBusinessHours spans createdAt → landedAt, postReview spans
+// firstReviewAt → landedAt. Both use the author's configured timezone
+// (fallback America/New_York) since cycle time is the author's wait. When
+// firstReviewAt is null, the PR/revision landed without a recorded human
+// review (e.g. Phab silent-land); postReviewBusinessHours is null to match.
+const withLandingBusinessHours = (
+  landing: PhabLanding | GithubLanding,
+  peopleMap: PeopleMap,
+): Landing => {
+  const authorLogin = landing.author ?? '';
+  const zone = timezoneForReviewer(peopleMap, landing.source, authorLogin);
+  const cycle = businessHoursBetween(landing.createdAt, landing.landedAt, zone);
+  const postReview =
+    landing.firstReviewAt === null
+      ? null
+      : businessHoursBetween(landing.firstReviewAt, landing.landedAt, zone);
+  // Preserve the source-discriminated shape by branching — a union-wide spread
+  // collapses the discriminant to `'phab' | 'github'` and trips the downstream
+  // narrowing.
+  if (landing.source === 'phab') {
+    return { ...landing, cycleBusinessHours: cycle, postReviewBusinessHours: postReview };
+  }
+  return { ...landing, cycleBusinessHours: cycle, postReviewBusinessHours: postReview };
+};
 
 // Anchor windows on ET calendar-day boundaries. "N-day window" means N distinct
 // ET calendar days ending with today, so a 7-day window includes today plus the
@@ -173,31 +323,124 @@ export const isSampleInWindow = (sample: Sample, windowDays: number, now: Date):
 const filterWithin = (samples: readonly Sample[], windowDays: number, now: Date): BusinessHours[] =>
   samples.filter((s) => isSampleInWindow(s, windowDays, now)).map((s) => s.tatBusinessHours);
 
+// Landings window on landedAt (the metric's anchor date), not requestedAt.
+// Callers pick which numeric field to reduce over — cycle, post-review, or
+// rounds. Null post-review values (no reviewer action before land) drop out.
+export const isLandingInWindow = (landing: Landing, windowDays: number, now: Date): boolean =>
+  Date.parse(landing.landedAt) >= etWindowCutoffMs(now, windowDays);
+
+type LandingMetricExtractor = (l: Landing) => number | null;
+
+const filterLandingsWithin = (
+  landings: readonly Landing[],
+  windowDays: number,
+  now: Date,
+  extract: LandingMetricExtractor,
+): number[] =>
+  landings
+    .filter((l) => isLandingInWindow(l, windowDays, now))
+    .map((l) => extract(l))
+    .filter((v): v is number => v !== null);
+
 const pendingKey = (p: PendingSample): string => `${p.source}:${String(p.id)}:${p.reviewer}`;
+
+// Compute the real-time backlog from pending samples. Age is measured in the
+// reviewer's timezone (matches how tatBusinessHours is computed) so a pending
+// request that sits overnight across a weekend isn't counted as 48h stale. The
+// peopleMap is optional — absent entries fall back to America/New_York. The
+// date field is the ET calendar day at `now`, so replacing today's row stays
+// idempotent like the history file.
+export const computeBacklogSnapshot = (
+  pending: readonly PendingSample[],
+  now: Date,
+  peopleMap: PeopleMap = EMPTY_PEOPLE_MAP,
+): BacklogSnapshot => {
+  const nowIso = asIsoTimestamp(now.toISOString());
+  const dateEt = DateTime.fromJSDate(now, { zone: ET_ZONE }).toISODate() ?? '';
+
+  const computeSource = (source: 'phab' | 'github'): BacklogSourceStats => {
+    const ages = pending
+      .filter((p) => p.source === source)
+      .map((p) =>
+        businessHoursBetween(
+          p.requestedAt,
+          nowIso,
+          timezoneForReviewer(peopleMap, p.source, p.reviewer),
+        ),
+      );
+    if (ages.length === 0) {
+      return {
+        openCount: 0,
+        oldestBusinessHours: asBusinessHours(0),
+        p90BusinessHours: asBusinessHours(0),
+      };
+    }
+    const sorted = [...ages].sort((a, b) => a - b);
+    const p90Position = (sorted.length - 1) * 0.9;
+    const lowerIndex = Math.floor(p90Position);
+    const upperIndex = Math.ceil(p90Position);
+    const fraction = p90Position - lowerIndex;
+    const lower = sorted[lowerIndex] ?? 0;
+    const upper = sorted[upperIndex] ?? lower;
+    const p90 = lower + (upper - lower) * fraction;
+    const oldest = sorted.at(-1) ?? 0;
+    return {
+      openCount: ages.length,
+      oldestBusinessHours: asBusinessHours(oldest),
+      p90BusinessHours: asBusinessHours(p90),
+    };
+  };
+
+  return {
+    date: dateEt,
+    phab: computeSource('phab'),
+    github: computeSource('github'),
+  };
+};
 
 export const collect = async (options: {
   readonly existingSamples: readonly Sample[];
+  readonly existingLandings?: readonly Landing[];
   readonly existingHistory: readonly HistoryRow[];
-  readonly fetchPhab: (
-    lookbackDays: number,
-  ) => Promise<{ samples: readonly PhabSample[]; pending: readonly PhabPendingSample[] }>;
-  readonly fetchGithub: (
-    lookbackDays: number,
-  ) => Promise<{ samples: readonly GithubSample[]; pending: readonly GithubPendingSample[] }>;
+  readonly fetchPhab: (lookbackDays: number) => Promise<{
+    samples: readonly PhabSample[];
+    pending: readonly PhabPendingSample[];
+    landings: readonly PhabLanding[];
+  }>;
+  readonly fetchGithub: (lookbackDays: number) => Promise<{
+    samples: readonly GithubSample[];
+    pending: readonly GithubPendingSample[];
+    landings: readonly GithubLanding[];
+  }>;
   readonly peopleMap?: PeopleMap;
   readonly now?: Date;
   readonly slaHours?: number;
+  readonly cycleSlaHours?: number;
+  readonly postReviewSlaHours?: number;
+  readonly roundsSla?: number;
 }): Promise<{
   readonly samples: Sample[];
   readonly pending: PendingSample[];
+  readonly landings: Landing[];
   readonly history: HistoryRow[];
   readonly lookbackDays: number;
 }> => {
   const now = options.now ?? new Date();
   const slaHours = options.slaHours ?? SLA_HOURS;
+  const cycleSlaHours = options.cycleSlaHours ?? CYCLE_SLA_HOURS;
+  const postReviewSlaHours = options.postReviewSlaHours ?? POST_REVIEW_SLA_HOURS;
+  const roundsSla = options.roundsSla ?? ROUNDS_SLA;
   const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
+  const existingLandings = options.existingLandings ?? [];
+  // Trigger a full backfill on either file's first run. Samples populates
+  // from review-request events (per-reviewer), landings from merge/publish
+  // events (per-PR) — a repo can have populated samples but zero landings
+  // when the feature is rolled out, so we widen the window until both
+  // histories are seeded.
   const lookbackDays =
-    options.existingSamples.length === 0 ? BACKFILL_LOOKBACK_DAYS : FOLLOWUP_LOOKBACK_DAYS;
+    options.existingSamples.length === 0 || existingLandings.length === 0
+      ? BACKFILL_LOOKBACK_DAYS
+      : FOLLOWUP_LOOKBACK_DAYS;
 
   const [phabResult, ghResult] = await Promise.all([
     options.fetchPhab(lookbackDays),
@@ -223,6 +466,24 @@ export const collect = async (options: {
   const retentionCutoff = etWindowCutoffMs(now, RETENTION_DAYS);
   const samples = [...merged.values()].filter((s) => Date.parse(s.requestedAt) >= retentionCutoff);
 
+  // Landings merge: fresh per-run extraction wins for touched (source,id)
+  // keys. Existing landings outside the current lookback are kept verbatim
+  // (like samples). Business hours are recomputed on every entry so peopleMap
+  // edits propagate retroactively.
+  const mergedLandings = new Map<string, Landing>();
+  for (const existing of existingLandings) {
+    mergedLandings.set(landingKey(existing), withLandingBusinessHours(existing, peopleMap));
+  }
+  for (const fresh of phabResult.landings) {
+    mergedLandings.set(landingKey(fresh), withLandingBusinessHours(fresh, peopleMap));
+  }
+  for (const fresh of ghResult.landings) {
+    mergedLandings.set(landingKey(fresh), withLandingBusinessHours(fresh, peopleMap));
+  }
+  const landings = [...mergedLandings.values()].filter(
+    (l) => Date.parse(l.landedAt) >= retentionCutoff,
+  );
+
   // Pending is authoritative from the fresh open-state fetch — no merge with
   // existing state. A pending entry that resolved to a sample simply doesn't
   // appear in this run. Dedup by (source, id, reviewer) across the two sources.
@@ -237,6 +498,22 @@ export const collect = async (options: {
   const ghSeries = samples.filter(
     (s): s is Extract<Sample, { source: 'github' }> => s.source === 'github',
   );
+  const phabLandings = landings.filter(
+    (l): l is Extract<Landing, { source: 'phab' }> => l.source === 'phab',
+  );
+  const ghLandings = landings.filter(
+    (l): l is Extract<Landing, { source: 'github' }> => l.source === 'github',
+  );
+
+  const landingWindows = (
+    series: readonly Landing[],
+    extract: LandingMetricExtractor,
+    sla: number,
+  ): SourceWindows => ({
+    window7d: computeStats(filterLandingsWithin(series, WINDOW_7_DAYS, now, extract), sla),
+    window14d: computeStats(filterLandingsWithin(series, WINDOW_14_DAYS, now, extract), sla),
+    window30d: computeStats(filterLandingsWithin(series, WINDOW_30_DAYS, now, extract), sla),
+  });
 
   const todayEt = DateTime.fromJSDate(now, { zone: ET_ZONE }).toISODate() ?? '';
   const todayRow: HistoryRow = {
@@ -251,12 +528,26 @@ export const collect = async (options: {
       window14d: computeStats(filterWithin(ghSeries, WINDOW_14_DAYS, now), slaHours),
       window30d: computeStats(filterWithin(ghSeries, WINDOW_30_DAYS, now), slaHours),
     },
+    phabCycle: landingWindows(phabLandings, (l) => l.cycleBusinessHours, cycleSlaHours),
+    githubCycle: landingWindows(ghLandings, (l) => l.cycleBusinessHours, cycleSlaHours),
+    phabPostReview: landingWindows(
+      phabLandings,
+      (l) => l.postReviewBusinessHours,
+      postReviewSlaHours,
+    ),
+    githubPostReview: landingWindows(
+      ghLandings,
+      (l) => l.postReviewBusinessHours,
+      postReviewSlaHours,
+    ),
+    phabRounds: landingWindows(phabLandings, (l) => l.reviewRounds, roundsSla),
+    githubRounds: landingWindows(ghLandings, (l) => l.reviewRounds, roundsSla),
   };
 
   const historyWithoutToday = options.existingHistory.filter((row) => row.date !== todayEt);
   const history = [...historyWithoutToday, todayRow].sort((a, b) => a.date.localeCompare(b.date));
 
-  return { samples, pending, history, lookbackDays };
+  return { samples, pending, landings, history, lookbackDays };
 };
 
 const requireEnv = (name: string): string => {
@@ -348,17 +639,28 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
   const pendingPath = path.join(dataDirectory, 'pending.json');
+  const landingsPath = path.join(dataDirectory, 'landings.json');
+  const backlogPath = path.join(dataDirectory, 'backlog.json');
   const progressPath = path.join(dataDirectory, '.phab-progress.json');
 
   const existingSamplesRaw = await readJsonFile<unknown>(samplesPath, []);
   const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
+  const existingLandingsRaw = await readJsonFile<unknown>(landingsPath, []);
+  const existingBacklogRaw = await readJsonFile<unknown>(backlogPath, []);
   const existingSamples = z.array(sampleSchema).parse(existingSamplesRaw);
   const existingHistory = z.array(historyRowSchema).parse(existingHistoryRaw);
+  const existingLandings = z.array(landingSchema).parse(existingLandingsRaw);
+  const existingBacklog = z.array(backlogSnapshotSchema).parse(existingBacklogRaw);
   const peopleMap = await loadPeopleMap(dataDirectory);
 
   const now = new Date();
+  // Mirrors the decision inside collect(): widen to backfill when either
+  // feature's persisted history is empty (samples-first-run OR landings-
+  // first-run). Keeps the phab progress cache's lookback key in sync.
   const lookbackDays =
-    existingSamples.length === 0 ? BACKFILL_LOOKBACK_DAYS : FOLLOWUP_LOOKBACK_DAYS;
+    existingSamples.length === 0 || existingLandings.length === 0
+      ? BACKFILL_LOOKBACK_DAYS
+      : FOLLOWUP_LOOKBACK_DAYS;
   const { transactions: resumeCache, createdAt: progressCreatedAt } = await loadPhabProgress(
     progressPath,
     lookbackDays,
@@ -389,8 +691,9 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
   const seenRevisionPhids = new Set<string>();
-  const { samples, pending, history } = await collect({
+  const { samples, pending, landings, history } = await collect({
     existingSamples,
+    existingLandings,
     existingHistory,
     peopleMap,
     fetchPhab: async (lookbackDaysArgument) => {
@@ -411,7 +714,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
         },
       });
       for (const phid of result.revisionPhidsSeen) seenRevisionPhids.add(phid);
-      return { samples: result.samples, pending: result.pending };
+      return { samples: result.samples, pending: result.pending, landings: result.landings };
     },
     fetchGithub: (lookbackDaysArgument) =>
       fetchGithubSamples({
@@ -422,9 +725,20 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
       }),
   });
 
+  // Backlog snapshot: replace today's row idempotently (matches history.json
+  // behaviour). Old snapshots are kept as-is — they're frozen in time and
+  // can't be recomputed from samples.json after the fact.
+  const todaySnapshot = computeBacklogSnapshot(pending, now, peopleMap);
+  const backlogWithoutToday = existingBacklog.filter((row) => row.date !== todaySnapshot.date);
+  const backlog = [...backlogWithoutToday, todaySnapshot].sort((a, b) =>
+    a.date.localeCompare(b.date),
+  );
+
   await writeJsonFileAtomic(samplesPath, samples);
   await writeJsonFileAtomic(historyPath, history);
   await writeJsonFileAtomic(pendingPath, pending);
+  await writeJsonFileAtomic(landingsPath, landings);
+  await writeJsonFileAtomic(backlogPath, backlog);
   // Rewrite the phab cache file with only the revisions we saw this run and a
   // fresh createdAt anchored on run start (`now`). This keeps the cache from
   // accumulating closed/stale revisions and lets the next run's dateModified

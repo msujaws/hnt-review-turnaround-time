@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import {
+  extractLandingFromPullRequest,
   extractSamplesFromPullRequest,
   fetchGithubSamples,
   type GraphqlClient,
@@ -12,6 +13,7 @@ const pr = (overrides: Partial<PullRequestData> = {}): PullRequestData => ({
   isDraft: false,
   author: { login: 'author-user' },
   createdAt: '2026-04-19T12:00:00Z',
+  mergedAt: null,
   timeline: [],
   ...overrides,
 });
@@ -989,5 +991,159 @@ describe('fetchGithubSamples', () => {
 
     expect(samples).toHaveLength(1);
     expect(samples[0]?.reviewer).toBe('alice');
+  });
+});
+
+describe('extractLandingFromPullRequest', () => {
+  it('returns null for an unmerged PR', () => {
+    const data = pr({
+      mergedAt: null,
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+      ],
+    });
+    expect(extractLandingFromPullRequest(data)).toBeNull();
+  });
+
+  it('returns a one-shot landing when merged after a single approving review', () => {
+    const data = pr({
+      mergedAt: '2026-04-19T18:00:00Z',
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+          state: 'APPROVED',
+        },
+      ],
+    });
+    const landing = extractLandingFromPullRequest(data);
+    expect(landing).not.toBeNull();
+    expect(landing).toMatchObject({
+      source: 'github',
+      id: 42,
+      author: 'author-user',
+      createdAt: '2026-04-19T12:00:00Z',
+      firstReviewAt: '2026-04-19T16:00:00Z',
+      landedAt: '2026-04-19T18:00:00Z',
+      reviewRounds: 1,
+    });
+  });
+
+  it('counts reviewRounds as 1 plus the number of CHANGES_REQUESTED reviews', () => {
+    const data = pr({
+      mergedAt: '2026-04-22T18:00:00Z',
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-20T10:00:00Z',
+          authorLogin: 'alice',
+          state: 'CHANGES_REQUESTED',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-21T10:00:00Z',
+          authorLogin: 'alice',
+          state: 'CHANGES_REQUESTED',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-22T10:00:00Z',
+          authorLogin: 'alice',
+          state: 'APPROVED',
+        },
+      ],
+    });
+    const landing = extractLandingFromPullRequest(data);
+    expect(landing?.reviewRounds).toBe(3);
+    expect(landing?.firstReviewAt).toBe('2026-04-20T10:00:00Z');
+  });
+
+  it('returns firstReviewAt=null when the PR merged without any human review', () => {
+    const data = pr({
+      mergedAt: '2026-04-19T18:00:00Z',
+      timeline: [
+        {
+          kind: 'ReviewRequestedEvent',
+          createdAt: '2026-04-19T14:00:00Z',
+          reviewerLogins: ['alice'],
+        },
+      ],
+    });
+    const landing = extractLandingFromPullRequest(data);
+    expect(landing).not.toBeNull();
+    expect(landing?.firstReviewAt).toBeNull();
+    expect(landing?.reviewRounds).toBe(1);
+  });
+
+  it('ignores bot reviews when picking firstReviewAt', () => {
+    const data = pr({
+      mergedAt: '2026-04-19T18:00:00Z',
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'dependabot[bot]',
+          state: 'APPROVED',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+          state: 'APPROVED',
+        },
+      ],
+    });
+    const landing = extractLandingFromPullRequest(data);
+    expect(landing?.firstReviewAt).toBe('2026-04-19T16:00:00Z');
+    expect(landing?.reviewRounds).toBe(1);
+  });
+
+  it('ignores self-reviews by the PR author', () => {
+    const data = pr({
+      author: { login: 'alice' },
+      mergedAt: '2026-04-19T18:00:00Z',
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'alice',
+          state: 'APPROVED',
+        },
+      ],
+    });
+    const landing = extractLandingFromPullRequest(data);
+    expect(landing?.firstReviewAt).toBeNull();
+    expect(landing?.reviewRounds).toBe(1);
+  });
+
+  it('ignores bot CHANGES_REQUESTED reviews in the rounds count', () => {
+    const data = pr({
+      mergedAt: '2026-04-20T18:00:00Z',
+      timeline: [
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T15:00:00Z',
+          authorLogin: 'dependabot[bot]',
+          state: 'CHANGES_REQUESTED',
+        },
+        {
+          kind: 'PullRequestReview',
+          submittedAt: '2026-04-19T16:00:00Z',
+          authorLogin: 'alice',
+          state: 'APPROVED',
+        },
+      ],
+    });
+    expect(extractLandingFromPullRequest(data)?.reviewRounds).toBe(1);
   });
 });

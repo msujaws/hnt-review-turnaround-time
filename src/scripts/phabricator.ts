@@ -32,6 +32,25 @@ export interface PhabPendingSample {
   readonly requestedAt: IsoTimestamp;
 }
 
+// Per-revision landing record — emitted once when a revision transitions to
+// the "published" status. Separate from per-reviewer samples: one landing per
+// revision, regardless of how many reviewers touched it. Author may be absent
+// when the patch comes from a user outside the reviewer roster (same rule as
+// PhabSample.author).
+export interface PhabLanding {
+  readonly source: 'phab';
+  readonly id: RevisionPhid;
+  readonly revisionId: number;
+  readonly author?: ReviewerLogin | undefined;
+  readonly createdAt: IsoTimestamp;
+  // Earliest reviewer-action transaction. Null when the revision landed
+  // without any recorded reviewer action (e.g. self-land, silent accept).
+  readonly firstReviewAt: IsoTimestamp | null;
+  readonly landedAt: IsoTimestamp;
+  // Approximate: 1 + count of request-changes transactions. One-shot = 1.
+  readonly reviewRounds: number;
+}
+
 export interface ExtractedTransactions {
   readonly samples: readonly PhabSample[];
   readonly pending: readonly PhabPendingSample[];
@@ -44,6 +63,10 @@ export interface PhabRevision {
   // Unix seconds. Compared against resumeCache.createdAt to decide whether a
   // cached transaction list is still valid, so no stale cache is ever served.
   readonly dateModified: number;
+  // Unix seconds. The revision's own creation time — used as the start point
+  // for cycle time (createdAt → landedAt). Optional so legacy callers and
+  // test fixtures that pre-date landings still construct the type.
+  readonly dateCreated?: number;
 }
 
 interface ReviewerOperation {
@@ -59,6 +82,11 @@ export interface PhabTransaction {
   readonly dateCreated: number;
   readonly fields: {
     readonly operations?: readonly ReviewerOperation[];
+    // Populated on `type: 'status'` transactions. Phabricator's status slugs:
+    // 'needs-review' | 'accepted' | 'needs-revision' | 'changes-planned' |
+    // 'published' | 'abandoned' | 'draft'. 'published' is the landed state.
+    readonly old?: string | null;
+    readonly new?: string | null;
   };
 }
 
@@ -71,6 +99,46 @@ const REVIEWER_ADD_OPS = new Set(['add', 'request']);
 
 const toIso = (unixSeconds: number): IsoTimestamp =>
   asIsoTimestamp(new Date(unixSeconds * 1000).toISOString());
+
+// One landing per revision that reached the published status. Callers pass
+// the revision's createdAt (unix seconds) since the revision.search response
+// carries `dateCreated` at a different layer. Returns null when the revision
+// never lands — open, accepted-but-unlanded, abandoned, and draft all map to
+// null. If the revision re-opens and re-publishes, the earliest published
+// transaction wins (matches "when did this first land?").
+export const extractLandingFromTransactions = (
+  revision: PhabRevision,
+  transactions: readonly PhabTransaction[],
+  loginByPhid: ReadonlyMap<string, string>,
+  createdAtUnixSeconds: number,
+): PhabLanding | null => {
+  const ordered = [...transactions].sort((a, b) => a.dateCreated - b.dateCreated);
+  const firstPublished = ordered.find(
+    (tx) => tx.type === 'status' && tx.fields.new === 'published',
+  );
+  if (firstPublished === undefined) return null;
+
+  let firstReviewerAction: number | undefined;
+  let changesRequestedCount = 0;
+  for (const tx of ordered) {
+    if (tx.authorPhid === revision.authorPhid) continue;
+    if (!REVIEWER_ACTION_TYPES.has(tx.type)) continue;
+    firstReviewerAction ??= tx.dateCreated;
+    if (tx.type === 'request-changes') changesRequestedCount += 1;
+  }
+
+  const authorLogin = loginByPhid.get(revision.authorPhid);
+  return {
+    source: 'phab',
+    id: asRevisionPhid(revision.phid),
+    revisionId: revision.id,
+    ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
+    createdAt: toIso(createdAtUnixSeconds),
+    firstReviewAt: firstReviewerAction === undefined ? null : toIso(firstReviewerAction),
+    landedAt: toIso(firstPublished.dateCreated),
+    reviewRounds: 1 + changesRequestedCount,
+  };
+};
 
 export const extractSamplesFromTransactions = (
   revision: PhabRevision,
@@ -168,7 +236,11 @@ const revisionSearchSchema = z.object({
     z.object({
       id: z.number(),
       phid: z.string(),
-      fields: z.object({ authorPHID: z.string(), dateModified: z.number() }),
+      fields: z.object({
+        authorPHID: z.string(),
+        dateCreated: z.number().optional(),
+        dateModified: z.number(),
+      }),
     }),
   ),
   cursor: z.object({ after: z.string().nullable() }),
@@ -186,16 +258,30 @@ const transactionSchema = z.object({
     .nullable()
     .transform((value) => value ?? ''),
   dateCreated: z.number(),
-  fields: z.object({
-    operations: z
-      .array(
-        z.object({
-          operation: z.string(),
-          phid: z.string(),
-        }),
-      )
-      .optional(),
-  }),
+  fields: z
+    .object({
+      operations: z
+        .array(
+          z.object({
+            operation: z.string(),
+            phid: z.string(),
+          }),
+        )
+        .optional(),
+      // Status-change transactions carry `old`/`new` as status slugs. Other
+      // transaction types reuse the same field names for unrelated payloads
+      // (objects, nulls); fall back to null on any non-string value instead
+      // of failing the whole page.
+      old: z
+        .union([z.string(), z.null(), z.unknown().transform(() => null)])
+        .optional()
+        .transform((v) => (typeof v === 'string' ? v : null)),
+      new: z
+        .union([z.string(), z.null(), z.unknown().transform(() => null)])
+        .optional()
+        .transform((v) => (typeof v === 'string' ? v : null)),
+    })
+    .passthrough(),
 });
 
 const transactionSearchSchema = z.object({
@@ -264,6 +350,7 @@ const fetchRevisions = async (
         phid: item.phid,
         authorPhid: item.fields.authorPHID,
         dateModified: item.fields.dateModified,
+        ...(item.fields.dateCreated === undefined ? {} : { dateCreated: item.fields.dateCreated }),
       });
     }
     after = parsed.cursor.after;
@@ -366,6 +453,7 @@ export const fetchPhabSamples = async (params: {
 }): Promise<{
   samples: PhabSample[];
   pending: PhabPendingSample[];
+  landings: PhabLanding[];
   revisionPhidsSeen: readonly string[];
 }> => {
   const { client, projectSlugs, lookbackDays } = params;
@@ -441,6 +529,7 @@ export const fetchPhabSamples = async (params: {
 
   const samples: PhabSample[] = [];
   const pending: PhabPendingSample[] = [];
+  const landings: PhabLanding[] = [];
   for (const rev of revisions) {
     const txs = transactionsByRevision.get(rev.phid) ?? [];
     const extracted = extractSamplesFromTransactions(rev, txs, loginByPhid, {
@@ -448,8 +537,15 @@ export const fetchPhabSamples = async (params: {
     });
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
+    // Landings need the revision's own dateCreated; skip if the API didn't
+    // return it (very old revisions have been observed missing this field in
+    // the wild). The rest of the metrics still populate fine without them.
+    if (rev.dateCreated !== undefined) {
+      const landing = extractLandingFromTransactions(rev, txs, loginByPhid, rev.dateCreated);
+      if (landing !== null) landings.push(landing);
+    }
   }
-  return { samples, pending, revisionPhidsSeen: revisions.map((r) => r.phid) };
+  return { samples, pending, landings, revisionPhidsSeen: revisions.map((r) => r.phid) };
 };
 
 const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): void => {

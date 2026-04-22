@@ -31,6 +31,22 @@ export interface GithubPendingSample {
   readonly requestedAt: IsoTimestamp;
 }
 
+// Per-PR landing record — emitted once when a PR merges. Separate from
+// per-reviewer samples. Author may be missing when the PR was opened by a
+// deleted GitHub account (rare; matches GithubSample.author's optionality).
+export interface GithubLanding {
+  readonly source: 'github';
+  readonly id: PrNumber;
+  readonly author?: ReviewerLogin | undefined;
+  readonly createdAt: IsoTimestamp;
+  // Earliest non-bot, non-author PullRequestReview submittedAt. Null when the
+  // PR merged without any human review activity.
+  readonly firstReviewAt: IsoTimestamp | null;
+  readonly landedAt: IsoTimestamp;
+  // Approximate: 1 + count of CHANGES_REQUESTED reviews. One-shot = 1.
+  readonly reviewRounds: number;
+}
+
 export interface ExtractedPullRequest {
   readonly samples: readonly GithubSample[];
   readonly pending: readonly GithubPendingSample[];
@@ -53,6 +69,9 @@ export type TimelineEvent =
       readonly kind: 'PullRequestReview';
       readonly submittedAt: string;
       readonly authorLogin: string;
+      // GitHub's PullRequestReviewState enum. Used for reviewRounds counting.
+      // Optional so pre-existing test fixtures that predate rounds still parse.
+      readonly state?: 'APPROVED' | 'CHANGES_REQUESTED' | 'COMMENTED' | 'DISMISSED' | 'PENDING';
     };
 
 export interface PullRequestData {
@@ -60,6 +79,8 @@ export interface PullRequestData {
   readonly isDraft: boolean;
   readonly author: { readonly login: string };
   readonly createdAt: string;
+  // Null for open or closed-but-not-merged PRs. Drives landing extraction.
+  readonly mergedAt: string | null;
   readonly timeline: readonly TimelineEvent[];
 }
 
@@ -80,6 +101,38 @@ const earliest = (values: readonly string[]): string | undefined => {
     if (min === undefined || value < min) min = value;
   }
   return min;
+};
+
+// One landing per merged PR. Self-reviews and bot reviews don't count toward
+// firstReviewAt or reviewRounds — this mirrors extractSamplesFromPullRequest's
+// filters so the two metrics are scoped to the same set of "real" reviews.
+export const extractLandingFromPullRequest = (data: PullRequestData): GithubLanding | null => {
+  if (data.mergedAt === null) return null;
+  const authorLogin = data.author.login;
+  const humanReviews = data.timeline.filter(
+    (event): event is Extract<TimelineEvent, { kind: 'PullRequestReview' }> =>
+      event.kind === 'PullRequestReview' &&
+      !isBot(event.authorLogin) &&
+      event.authorLogin !== authorLogin,
+  );
+  let firstReview: string | null = null;
+  for (const event of humanReviews) {
+    if (firstReview === null || event.submittedAt < firstReview) {
+      firstReview = event.submittedAt;
+    }
+  }
+  const changesRequested = humanReviews.filter(
+    (event) => event.state === 'CHANGES_REQUESTED',
+  ).length;
+  return {
+    source: 'github',
+    id: asPrNumber(data.number),
+    ...(authorLogin === '' ? {} : { author: asReviewerLogin(authorLogin) }),
+    createdAt: asIsoTimestamp(data.createdAt),
+    firstReviewAt: firstReview === null ? null : asIsoTimestamp(firstReview),
+    landedAt: asIsoTimestamp(data.mergedAt),
+    reviewRounds: 1 + changesRequested,
+  };
 };
 
 export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedPullRequest => {
@@ -199,6 +252,7 @@ const TIMELINE_FIELDS = `
     }
     ... on PullRequestReview {
       submittedAt
+      state
       author { login }
     }
   }
@@ -214,6 +268,7 @@ const PR_QUERY = `
           isDraft
           createdAt
           updatedAt
+          mergedAt
           author { login }
           timelineItems(
             first: 100
@@ -246,6 +301,7 @@ const OPEN_PR_QUERY = `
           isDraft
           createdAt
           updatedAt
+          mergedAt
           author { login }
           timelineItems(
             first: 100
@@ -300,6 +356,9 @@ const timelineNodeSchema = z.discriminatedUnion('__typename', [
   z.object({
     __typename: z.literal('PullRequestReview'),
     submittedAt: z.string().nullable(),
+    state: z
+      .enum(['APPROVED', 'CHANGES_REQUESTED', 'COMMENTED', 'DISMISSED', 'PENDING'])
+      .optional(),
     author: z.object({ login: z.string() }).nullable(),
   }),
 ]);
@@ -314,6 +373,9 @@ const pullRequestNodeSchema = z.object({
   isDraft: z.boolean(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  // Absent in legacy test fixtures that predate the landings feature; GitHub
+  // itself always returns the field (string or null) when asked for it.
+  mergedAt: z.string().nullable().optional(),
   author: z.object({ login: z.string() }).nullable(),
   timelineItems: timelinePageSchema,
 });
@@ -370,6 +432,7 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
         kind: 'PullRequestReview',
         submittedAt: item.submittedAt,
         authorLogin: item.author.login,
+        ...(item.state === undefined ? {} : { state: item.state }),
       });
     }
   }
@@ -378,6 +441,7 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
     isDraft: node.isDraft,
     author: { login: node.author?.login ?? '' },
     createdAt: node.createdAt,
+    mergedAt: node.mergedAt ?? null,
     timeline,
   };
 };
@@ -482,7 +546,11 @@ export const fetchGithubSamples = async (params: {
   readonly repo: string;
   readonly lookbackDays: number;
   readonly now?: Date;
-}): Promise<{ samples: GithubSample[]; pending: GithubPendingSample[] }> => {
+}): Promise<{
+  samples: GithubSample[];
+  pending: GithubPendingSample[];
+  landings: GithubLanding[];
+}> => {
   const { client, owner, repo, lookbackDays } = params;
   const now = params.now ?? new Date();
   const cutoff = new Date(now.getTime() - lookbackDays * 86_400 * 1000).toISOString();
@@ -499,12 +567,15 @@ export const fetchGithubSamples = async (params: {
 
   const samples: GithubSample[] = [];
   const pending: GithubPendingSample[] = [];
+  const landings: GithubLanding[] = [];
   for (const pr of byNumber.values()) {
     const extracted = extractSamplesFromPullRequest(pr);
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
+    const landing = extractLandingFromPullRequest(pr);
+    if (landing !== null) landings.push(landing);
   }
-  return { samples, pending };
+  return { samples, pending, landings };
 };
 
 export const createGithubClient = (token: string): GraphqlClient => {
