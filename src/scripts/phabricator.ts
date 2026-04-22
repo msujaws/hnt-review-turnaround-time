@@ -330,7 +330,11 @@ export const fetchPhabSamples = async (params: {
     phid: string,
     transactions: readonly PhabTransaction[],
   ) => void | Promise<void>;
-}): Promise<{ samples: PhabSample[]; pending: PhabPendingSample[] }> => {
+}): Promise<{
+  samples: PhabSample[];
+  pending: PhabPendingSample[];
+  revisionPhidsSeen: readonly string[];
+}> => {
   const { client, projectSlugs, lookbackDays } = params;
   const resumeCache = params.resumeCache;
   const onRevisionTransactions = params.onRevisionTransactions;
@@ -412,7 +416,7 @@ export const fetchPhabSamples = async (params: {
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
   }
-  return { samples, pending };
+  return { samples, pending, revisionPhidsSeen: revisions.map((r) => r.phid) };
 };
 
 const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): void => {

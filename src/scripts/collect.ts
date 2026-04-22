@@ -301,11 +301,27 @@ const phabProgressSchema = z.object({
   transactionsByRevisionPhid: z.record(z.array(phabTransactionSchema)),
 });
 
-// Cache entries are safe across arbitrary gaps now that each revision is
-// revalidated against its Phabricator dateModified on resume — we re-fetch
-// any revision modified since the cache was created. The TTL stays in place
-// as an upper bound so closed/deleted revisions don't linger forever.
-const PROGRESS_TTL_MS = 7 * 24 * 3600 * 1000;
+// The cache persists across successful runs now — it's not just a mid-flight
+// resume artifact. Correctness is guaranteed by the per-revision dateModified
+// revalidation in fetchPhabSamples, so arbitrary gaps between runs are safe.
+// The TTL is purely a circuit breaker for bugs, long vacations, or schema
+// drift: beyond 30 days we rebuild from scratch rather than trust old state.
+const PROGRESS_TTL_MS = 30 * 24 * 3600 * 1000;
+
+// Pure helper: keep only cache entries for revisions that actually showed up
+// in this run's revision search. Prevents the cache from growing unbounded
+// with closed/abandoned revisions that will never be queried again.
+export const prunePhabCache = (
+  seen: ReadonlySet<string>,
+  cache: ReadonlyMap<string, readonly PhabTransaction[]>,
+): Map<string, readonly PhabTransaction[]> => {
+  const pruned = new Map<string, readonly PhabTransaction[]>();
+  for (const phid of seen) {
+    const txs = cache.get(phid);
+    if (txs !== undefined) pruned.set(phid, txs);
+  }
+  return pruned;
+};
 
 interface LoadedProgress {
   readonly transactions: Map<string, PhabTransaction[]>;
@@ -342,14 +358,6 @@ const loadPhabProgress = async (
   return { transactions, createdAt: parsed.data.createdAt };
 };
 
-const removeFileIfPresent = async (filePath: string): Promise<void> => {
-  try {
-    await fs.unlink(filePath);
-  } catch (error) {
-    if (!isNodeErrnoException(error) || error.code !== 'ENOENT') throw error;
-  }
-};
-
 export const runCollectionFromDisk = async (dataDirectory: string): Promise<void> => {
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
@@ -371,9 +379,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     now,
   );
   if (resumeCache.size > 0) {
-    process.stderr.write(
-      `resuming phab collect from progress file (${resumeCache.size.toString()} revisions cached)\n`,
-    );
+    process.stderr.write(`phab cache loaded (${resumeCache.size.toString()} revisions)\n`);
   }
 
   const writeProgress = async (
@@ -396,12 +402,13 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
+  const seenRevisionPhids = new Set<string>();
   const { samples, pending, history } = await collect({
     existingSamples,
     existingHistory,
     peopleMap,
-    fetchPhab: (lookbackDaysArgument) =>
-      fetchPhabSamples({
+    fetchPhab: async (lookbackDaysArgument) => {
+      const result = await fetchPhabSamples({
         client: conduit,
         projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? 'home-newtab-reviewers')
           .split(',')
@@ -416,7 +423,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
           resumeCache.set(phid, [...transactions]);
           await writeProgress(resumeCache);
         },
-      }),
+      });
+      for (const phid of result.revisionPhidsSeen) seenRevisionPhids.add(phid);
+      return { samples: result.samples, pending: result.pending };
+    },
     fetchGithub: (lookbackDaysArgument) =>
       fetchGithubSamples({
         client: gh,
@@ -429,7 +439,16 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   await writeJsonFile(samplesPath, samples);
   await writeJsonFile(historyPath, history);
   await writeJsonFile(pendingPath, pending);
-  await removeFileIfPresent(progressPath);
+  // Rewrite the phab cache file with only the revisions we saw this run and a
+  // fresh createdAt anchored on run start (`now`). This keeps the cache from
+  // accumulating closed/stale revisions and lets the next run's dateModified
+  // check correctly re-fetch anything modified after `now`.
+  const prunedCache = prunePhabCache(seenRevisionPhids, resumeCache);
+  await writeJsonFile(progressPath, {
+    lookbackDays,
+    createdAt: now.toISOString(),
+    transactionsByRevisionPhid: Object.fromEntries(prunedCache),
+  });
 };
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
