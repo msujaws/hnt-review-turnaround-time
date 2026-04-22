@@ -1215,6 +1215,165 @@ describe('fetchPhabSamples', () => {
     });
     expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
   });
+
+  it('paginates user.search to pick up users past the first page', async () => {
+    const userSearchCalls: { phids: string[]; after: string | undefined }[] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+                  ],
+                },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-aaaaaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: 1_761_000_000 },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-aaaaaaaaaaaaaaaaaaaa',
+              type: 'reviewers',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_761_000_000,
+              fields: {
+                operations: [
+                  { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  { operation: 'add', phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+                ],
+              },
+            },
+            {
+              id: 2,
+              phid: 'PHID-XACT-bbbbbbbbbbbbbbbbbbbb',
+              type: 'accept',
+              authorPHID: 'PHID-USER-revieweraaaaaaaaaaaaa',
+              dateCreated: 1_761_003_600,
+              fields: {},
+            },
+            {
+              id: 3,
+              phid: 'PHID-XACT-ccccccccccccccccccccc',
+              type: 'accept',
+              authorPHID: 'PHID-USER-reviewerbbbbbbbbbbbbb',
+              dateCreated: 1_761_003_600,
+              fields: {},
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        const p = params as { constraints: { phids: string[] }; after?: string };
+        userSearchCalls.push({ phids: p.constraints.phids, after: p.after });
+        // Phab splits users across pages. First page reveals alice only; the
+        // rest (bob + revision author) land on page 2 behind a cursor.
+        if (p.after === undefined) {
+          return {
+            data: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } }],
+            cursor: { after: 'CURSOR-PAGE-2' },
+          };
+        }
+        return {
+          data: [
+            { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb', fields: { username: 'bob' } },
+            { phid: 'PHID-USER-authoraaaaaaaaaaaaaa', fields: { username: 'author-user' } },
+          ],
+          cursor: { after: null },
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const { samples } = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(userSearchCalls.length).toBeGreaterThanOrEqual(2);
+    expect(userSearchCalls[1]?.after).toBe('CURSOR-PAGE-2');
+    expect(samples.map((s) => s.reviewer).sort()).toEqual(['alice', 'bob']);
+  });
+
+  it('chunks user.search input into batches of at most 100 phids', async () => {
+    const memberPhids = Array.from(
+      { length: 120 },
+      (_, index) => `PHID-USER-reviewer${String(index).padStart(11, '0')}`,
+    );
+    const userSearchBatches: string[][] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: { members: { members: memberPhids.map((phid) => ({ phid })) } },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        // Emit one revision per member so each authorPhid must be resolved —
+        // forces the user.search input list past 100 unique PHIDs.
+        return {
+          data: memberPhids.map((phid, index) => ({
+            id: index + 1,
+            phid: `PHID-DREV-${String(index).padStart(20, '0')}`,
+            fields: { authorPHID: phid, dateModified: 1_761_000_000 },
+          })),
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') {
+        const p = params as { constraints: { phids: string[] } };
+        userSearchBatches.push(p.constraints.phids);
+        return {
+          data: p.constraints.phids.map((phid) => ({
+            phid,
+            fields: { username: `user-${phid.slice(-6)}` },
+          })),
+          cursor: { after: null },
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(userSearchBatches.length).toBeGreaterThanOrEqual(2);
+    for (const batch of userSearchBatches) {
+      expect(batch.length).toBeLessThanOrEqual(100);
+    }
+    const totalResolved = new Set(userSearchBatches.flat());
+    expect(totalResolved.size).toBe(memberPhids.length);
+  });
 });
 
 const jsonResponse = (body: unknown): Response =>
