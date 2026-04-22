@@ -64,8 +64,10 @@ const Page: FC = async () => {
             the individual reviews behind it. The callout at the top surfaces pending reviews that
             have been waiting 10&times; the SLA or longer
             {hasOverdue ? '' : ' (not showing right now since there are no outliers)'}.
-            {latest === undefined ? '' : ` Last snapshot: ${latest.date}.`}
           </p>
+          {latest === undefined ? null : (
+            <p className="text-xs italic text-neutral-500">Last snapshot: {latest.date}.</p>
+          )}
         </div>
       </header>
       <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
