@@ -1,4 +1,4 @@
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 import { isSampleInWindow, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
@@ -249,7 +249,7 @@ const WindowRow: FC<WindowRowProps> = (props) => {
 
 export interface HeadlineProps {
   readonly title: string;
-  readonly description?: string;
+  readonly description?: ReactNode;
   readonly window7d: WindowStats;
   readonly window14d: WindowStats;
   readonly window30d: WindowStats;

@@ -69,7 +69,13 @@ const Page: FC = async () => {
         </div>
       </header>
       <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
-      <Dashboard history={history} samples={samples} slaHours={SLA_HOURS} now={dashboardNow} />
+      <Dashboard
+        history={history}
+        samples={samples}
+        slaHours={SLA_HOURS}
+        now={dashboardNow}
+        peopleMap={peopleMap}
+      />
       <Footer />
     </main>
   );
