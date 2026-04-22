@@ -210,6 +210,9 @@ const userSearchSchema = z.object({
       fields: z.object({ username: z.string() }),
     }),
   ),
+  // Phab returns a cursor on every search response. Tolerate its absence so
+  // existing stubs that elide it keep parsing, but follow `after` when present.
+  cursor: z.object({ after: z.string().nullable() }).optional(),
 });
 
 const lookupProjectMembers = async (
@@ -299,15 +302,45 @@ const fetchTransactions = async (
   return transactions;
 };
 
+// Phab's search endpoints cap a single `phids` constraint at ~100 and
+// paginate the response with cursor.after at a default page size of 100.
+// Miss either and results silently drop. Shared so every `phids`-keyed
+// search (user.search, differential.revision.search, etc.) gets it right.
+export const PHID_SEARCH_CHUNK_SIZE = 100;
+
+export const paginatePhidSearch = async <T>(
+  client: ConduitClient,
+  method: string,
+  phids: readonly string[],
+  parsePage: (raw: unknown) => { readonly rows: readonly T[]; readonly after: string | null },
+): Promise<T[]> => {
+  const out: T[] = [];
+  if (phids.length === 0) return out;
+  for (let start = 0; start < phids.length; start += PHID_SEARCH_CHUNK_SIZE) {
+    const batch = phids.slice(start, start + PHID_SEARCH_CHUNK_SIZE);
+    let after: string | null = null;
+    do {
+      const params: Record<string, unknown> = { constraints: { phids: batch } };
+      if (after !== null) params.after = after;
+      const raw = await client.call(method, params);
+      const page = parsePage(raw);
+      out.push(...page.rows);
+      after = page.after;
+    } while (after !== null);
+  }
+  return out;
+};
+
 const resolveLogins = async (
   client: ConduitClient,
   phids: readonly string[],
 ): Promise<Map<string, string>> => {
+  const users = await paginatePhidSearch(client, 'user.search', phids, (raw) => {
+    const parsed = userSearchSchema.parse(raw);
+    return { rows: parsed.data, after: parsed.cursor?.after ?? null };
+  });
   const byPhid = new Map<string, string>();
-  if (phids.length === 0) return byPhid;
-  const raw = await client.call('user.search', { constraints: { phids } });
-  const parsed = userSearchSchema.parse(raw);
-  for (const entry of parsed.data) {
+  for (const entry of users) {
     byPhid.set(entry.phid, entry.fields.username);
   }
   return byPhid;
