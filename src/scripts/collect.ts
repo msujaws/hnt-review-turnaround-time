@@ -1,4 +1,3 @@
-import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 import { DateTime } from 'luxon';
@@ -20,6 +19,7 @@ import {
   type GithubPendingSample,
   type GithubSample,
 } from './github';
+import { readJsonFile, writeJsonFileAtomic } from './jsonFile';
 import { EMPTY_PEOPLE_MAP, loadPeopleMap, type PeopleMap, timezoneForReviewer } from './people';
 import {
   createConduitClient,
@@ -253,26 +253,6 @@ export const collect = async (options: {
   return { samples, pending, history, lookbackDays };
 };
 
-const isNodeErrnoException = (error: unknown): error is NodeJS.ErrnoException =>
-  error instanceof Error && 'code' in error;
-
-const readJsonFile = async <T>(filePath: string, fallback: T): Promise<T> => {
-  try {
-    const contents = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(contents) as T;
-  } catch (error) {
-    if (isNodeErrnoException(error) && error.code === 'ENOENT') {
-      return fallback;
-    }
-    throw error;
-  }
-};
-
-const writeJsonFile = async (filePath: string, data: unknown): Promise<void> => {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-};
-
 const requireEnv = (name: string): string => {
   const value = process.env[name];
   if (value === undefined || value.length === 0) {
@@ -385,7 +365,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const writeProgress = async (
     transactionsByRevisionPhid: ReadonlyMap<string, readonly PhabTransaction[]>,
   ): Promise<void> => {
-    await writeJsonFile(progressPath, {
+    await writeJsonFileAtomic(progressPath, {
       lookbackDays,
       createdAt: progressCreatedAt,
       transactionsByRevisionPhid: Object.fromEntries(transactionsByRevisionPhid),
@@ -436,15 +416,15 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
       }),
   });
 
-  await writeJsonFile(samplesPath, samples);
-  await writeJsonFile(historyPath, history);
-  await writeJsonFile(pendingPath, pending);
+  await writeJsonFileAtomic(samplesPath, samples);
+  await writeJsonFileAtomic(historyPath, history);
+  await writeJsonFileAtomic(pendingPath, pending);
   // Rewrite the phab cache file with only the revisions we saw this run and a
   // fresh createdAt anchored on run start (`now`). This keeps the cache from
   // accumulating closed/stale revisions and lets the next run's dateModified
   // check correctly re-fetch anything modified after `now`.
   const prunedCache = prunePhabCache(seenRevisionPhids, resumeCache);
-  await writeJsonFile(progressPath, {
+  await writeJsonFileAtomic(progressPath, {
     lookbackDays,
     createdAt: now.toISOString(),
     transactionsByRevisionPhid: Object.fromEntries(prunedCache),

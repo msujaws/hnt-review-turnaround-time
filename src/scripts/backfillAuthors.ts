@@ -1,4 +1,3 @@
-import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 import { z } from 'zod';
@@ -7,6 +6,7 @@ import { asReviewerLogin, type ReviewerLogin } from '../types/brand';
 
 import { pendingSampleSchema, sampleSchema, type PendingSample, type Sample } from './collect';
 import { createGithubClient, type GraphqlClient } from './github';
+import { readJsonFile, writeJsonFileAtomic } from './jsonFile';
 import { createConduitClient, paginatePhidSearch, type ConduitClient } from './phabricator';
 
 export interface MergeAuthorsInput {
@@ -156,21 +156,6 @@ const lookupGithubAuthors = async (
   return authorByPr;
 };
 
-const readJsonFile = async <T>(filePath: string, fallback: T): Promise<T> => {
-  try {
-    const contents = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(contents) as T;
-  } catch (error) {
-    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') return fallback;
-    throw error;
-  }
-};
-
-const writeJsonFile = async (filePath: string, data: unknown): Promise<void> => {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-};
-
 const requireEnv = (name: string): string => {
   const value = process.env[name];
   if (value === undefined || value.length === 0) {
@@ -213,8 +198,8 @@ export const runAuthorBackfillFromDisk = async (dataDirectory: string): Promise<
     githubAuthorByPrNumber,
   });
 
-  await writeJsonFile(samplesPath, merged.samples);
-  await writeJsonFile(pendingPath, merged.pending);
+  await writeJsonFileAtomic(samplesPath, merged.samples);
+  await writeJsonFileAtomic(pendingPath, merged.pending);
   process.stderr.write(
     `backfill: updated ${merged.samplesUpdated.toString()} samples and ${merged.pendingUpdated.toString()} pending entries\n`,
   );
