@@ -76,6 +76,25 @@ describe('Dashboard', () => {
     expect(within(phabSection!).getByText(/Dre, maxx, reemhamz/)).toBeInTheDocument();
   });
 
+  it('links the home-newtab-reviewers project inside the Phab description', () => {
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={{ github: {}, phab: { maxx: asIanaTimezone('America/Chicago') } }}
+      />,
+    );
+    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('section');
+    expect(phabSection).not.toBeNull();
+    const link = within(phabSection!).getByRole('link', { name: 'home-newtab-reviewers' });
+    expect(link).toHaveAttribute(
+      'href',
+      'https://phabricator.services.mozilla.com/tag/home-newtab-reviewers/',
+    );
+  });
+
   it('renders the GitHub repo as a lowercase link in the GitHub description', () => {
     render(
       <Dashboard
