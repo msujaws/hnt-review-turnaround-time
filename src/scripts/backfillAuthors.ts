@@ -80,7 +80,7 @@ const userSearchSchema = z.object({
   ),
 });
 
-const lookupPhabAuthors = async (
+export const lookupPhabAuthors = async (
   client: ConduitClient,
   revisionPhids: readonly string[],
 ): Promise<Map<string, ReviewerLogin>> => {

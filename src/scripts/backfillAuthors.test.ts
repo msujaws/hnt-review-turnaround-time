@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import {
   asBusinessHours,
@@ -8,8 +8,9 @@ import {
   asRevisionPhid,
 } from '../types/brand';
 
-import { mergeAuthors } from './backfillAuthors';
+import { lookupPhabAuthors, mergeAuthors } from './backfillAuthors';
 import type { PendingSample, Sample } from './collect';
+import type { ConduitClient } from './phabricator';
 
 const phabSample = (
   overrides: Partial<Extract<Sample, { source: 'phab' }>> = {},
@@ -107,5 +108,90 @@ describe('mergeAuthors', () => {
       githubAuthorByPrNumber: new Map(),
     });
     expect(merged.samples[0]?.author).toBeUndefined();
+  });
+});
+
+describe('lookupPhabAuthors', () => {
+  it('paginates user.search so author PHIDs past the first page resolve', async () => {
+    const userSearchCalls: { phids: string[]; after: string | undefined }[] = [];
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-DREV-aaaaaaaaaaaaaaaaaaaa',
+              fields: { authorPHID: 'PHID-USER-aaaaaaaaaaaaaaaaaaaa' },
+            },
+            {
+              phid: 'PHID-DREV-bbbbbbbbbbbbbbbbbbbb',
+              fields: { authorPHID: 'PHID-USER-bbbbbbbbbbbbbbbbbbbb' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        const p = params as { constraints: { phids: string[] }; after?: string };
+        userSearchCalls.push({ phids: p.constraints.phids, after: p.after });
+        if (p.after === undefined) {
+          return {
+            data: [{ phid: 'PHID-USER-aaaaaaaaaaaaaaaaaaaa', fields: { username: 'alice' } }],
+            cursor: { after: 'CURSOR-PAGE-2' },
+          };
+        }
+        return {
+          data: [{ phid: 'PHID-USER-bbbbbbbbbbbbbbbbbbbb', fields: { username: 'bob' } }],
+          cursor: { after: null },
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const client: ConduitClient = { call };
+    const byRev = await lookupPhabAuthors(client, [
+      'PHID-DREV-aaaaaaaaaaaaaaaaaaaa',
+      'PHID-DREV-bbbbbbbbbbbbbbbbbbbb',
+    ]);
+    expect(userSearchCalls.length).toBeGreaterThanOrEqual(2);
+    expect(byRev.get('PHID-DREV-aaaaaaaaaaaaaaaaaaaa')).toBe('alice');
+    expect(byRev.get('PHID-DREV-bbbbbbbbbbbbbbbbbbbb')).toBe('bob');
+  });
+
+  it('chunks the revision phids constraint into batches of at most 100', async () => {
+    const revisionSearchBatches: string[][] = [];
+    const revisionPhids = Array.from(
+      { length: 120 },
+      (_, index) => `PHID-DREV-${String(index).padStart(20, '0')}`,
+    );
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'differential.revision.search') {
+        const p = params as { constraints: { phids: string[] } };
+        revisionSearchBatches.push([...p.constraints.phids]);
+        return {
+          data: p.constraints.phids.map((phid) => ({
+            phid,
+            fields: { authorPHID: `PHID-USER-${phid.slice(-11)}` },
+          })),
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        const p = params as { constraints: { phids: string[] } };
+        return {
+          data: p.constraints.phids.map((phid) => ({
+            phid,
+            fields: { username: `u${phid.slice(-5)}` },
+          })),
+          cursor: { after: null },
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const client: ConduitClient = { call };
+    const byRev = await lookupPhabAuthors(client, revisionPhids);
+    expect(revisionSearchBatches.length).toBeGreaterThanOrEqual(2);
+    for (const batch of revisionSearchBatches) {
+      expect(batch.length).toBeLessThanOrEqual(100);
+    }
+    expect(byRev.size).toBe(revisionPhids.length);
   });
 });
