@@ -555,7 +555,7 @@ describe('fetchPhabSamples', () => {
     });
     const client: ConduitClient = { call };
 
-    const { samples } = await fetchPhabSamples({
+    const { samples, revisionPhidsSeen } = await fetchPhabSamples({
       client,
       projectSlugs: ['home-newtab-reviewers'],
       lookbackDays: 21,
@@ -564,6 +564,7 @@ describe('fetchPhabSamples', () => {
 
     expect(samples).toHaveLength(1);
     expect(samples[0]).toMatchObject({ source: 'phab', reviewer: 'alice' });
+    expect(revisionPhidsSeen).toEqual(['PHID-DREV-abcdefghijklmnopqrst']);
     expect(call).toHaveBeenCalledWith(
       'project.search',
       expect.objectContaining({

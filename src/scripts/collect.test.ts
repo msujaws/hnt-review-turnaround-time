@@ -9,10 +9,17 @@ import {
   asRevisionPhid,
 } from '../types/brand';
 
-import { collect, historyRowSchema, sampleSchema, type HistoryRow, type Sample } from './collect';
+import {
+  collect,
+  historyRowSchema,
+  prunePhabCache,
+  sampleSchema,
+  type HistoryRow,
+  type Sample,
+} from './collect';
 import type { GithubPendingSample, GithubSample } from './github';
 import type { PeopleMap } from './people';
-import type { PhabPendingSample, PhabSample } from './phabricator';
+import type { PhabPendingSample, PhabSample, PhabTransaction } from './phabricator';
 
 const makePhabSample = (overrides: Partial<PhabSample> = {}): PhabSample => ({
   source: 'phab',
@@ -550,5 +557,40 @@ describe('collect', () => {
     });
 
     expect(result.pending).toEqual([]);
+  });
+});
+
+const tx = (phid: string): PhabTransaction => ({
+  id: 1,
+  phid,
+  type: 'comment',
+  authorPhid: 'PHID-USER-aaaaaaaaaaaaaaaaaaaa',
+  dateCreated: 1_760_000_000,
+  fields: {},
+});
+
+const makeCache = (
+  entries: readonly (readonly [string, readonly PhabTransaction[]])[],
+): ReadonlyMap<string, readonly PhabTransaction[]> => new Map(entries);
+
+describe('prunePhabCache', () => {
+  it('returns an empty map when the seen set is empty', () => {
+    const cache = makeCache([['PHID-DREV-one', [tx('PHID-XACT-1')]]]);
+    expect(prunePhabCache(new Set(), cache).size).toBe(0);
+  });
+
+  it('drops cache entries whose phid is not in the seen set', () => {
+    const cache = makeCache([
+      ['PHID-DREV-kept', [tx('PHID-XACT-1')]],
+      ['PHID-DREV-dropped', [tx('PHID-XACT-2')]],
+    ]);
+    const pruned = prunePhabCache(new Set(['PHID-DREV-kept']), cache);
+    expect([...pruned.keys()]).toEqual(['PHID-DREV-kept']);
+  });
+
+  it('ignores seen phids that have no cache entry yet', () => {
+    const cache = makeCache([['PHID-DREV-cached', [tx('PHID-XACT-1')]]]);
+    const pruned = prunePhabCache(new Set(['PHID-DREV-cached', 'PHID-DREV-brand-new']), cache);
+    expect([...pruned.keys()]).toEqual(['PHID-DREV-cached']);
   });
 });
