@@ -58,6 +58,7 @@ describe('extractSamplesFromPullRequest', () => {
     expect(samples[0]).toMatchObject({
       source: 'github',
       id: 42,
+      author: 'author-user',
       reviewer: 'alice',
       requestedAt: '2026-04-19T14:00:00Z',
       firstActionAt: '2026-04-19T16:00:00Z',

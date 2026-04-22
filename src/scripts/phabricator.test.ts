@@ -88,6 +88,7 @@ describe('extractSamplesFromTransactions', () => {
       source: 'phab',
       id: 'PHID-DREV-abcdefghijklmnopqrst',
       revisionId: 234_567,
+      author: 'author-user',
       reviewer: 'alice',
     });
     expect(pending).toEqual([]);

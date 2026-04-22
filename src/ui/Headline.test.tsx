@@ -208,6 +208,7 @@ describe('Headline', () => {
     const sample: Sample = {
       source: 'github',
       id: asPrNumber(382),
+      author: asReviewerLogin('author-user'),
       reviewer: asReviewerLogin('jpetto'),
       requestedAt: asIsoTimestamp('2026-04-18T18:00:00Z'),
       firstActionAt: asIsoTimestamp('2026-04-18T20:00:00Z'),
@@ -227,6 +228,32 @@ describe('Headline', () => {
     const row7 = screen.getByTestId('window-7d-details');
     const link = within(row7).getByRole('link', { name: /#382/ });
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo/pull/382');
+  });
+
+  it('shows the patch author in the expanded sample table', () => {
+    const sample: Sample = {
+      source: 'github',
+      id: asPrNumber(501),
+      author: asReviewerLogin('connie'),
+      reviewer: asReviewerLogin('jpetto'),
+      requestedAt: asIsoTimestamp('2026-04-18T18:00:00Z'),
+      firstActionAt: asIsoTimestamp('2026-04-18T20:00:00Z'),
+      tatBusinessHours: asBusinessHours(2),
+    };
+    render(
+      <Headline
+        title="GitHub"
+        window7d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window14d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window30d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        slaHours={4}
+        samples={[sample]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    const row7 = screen.getByTestId('window-7d-details');
+    expect(within(row7).getByRole('columnheader', { name: /author/i })).toBeInTheDocument();
+    expect(within(row7).getByText('connie')).toBeInTheDocument();
   });
 
   it('renders a Phabricator sample as a D<revisionId> link when revisionId is present', () => {
