@@ -1,15 +1,20 @@
-import type { FC } from 'react';
+import type { FC, ReactElement } from 'react';
 
 import {
+  CYCLE_SLA_HOURS,
   DEFAULT_PHAB_PROJECT_SLUG,
   GITHUB_REPO_LABEL,
   GITHUB_REPO_URL,
   PHAB_PROJECT_URL,
+  POST_REVIEW_SLA_HOURS,
+  ROUNDS_SLA,
 } from '../src/config';
-import type { HistoryRow, Sample } from '../src/scripts/collect';
+import type { HistoryRow, Sample, SourceWindows } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
 import { Headline } from '../src/ui/Headline';
-import { Trendline } from '../src/ui/Trendline';
+import { sourceWindowsHasRedIssue } from '../src/ui/redIssue';
+import { Tabs, type TabItem } from '../src/ui/Tabs';
+import { Trendline, type ChartSource } from '../src/ui/Trendline';
 
 const LINK_CLASSES =
   'text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300';
@@ -73,34 +78,152 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
       or review comment.
     </>
   );
-  return (
-    <div className="flex flex-col gap-10">
-      <div className="flex flex-col gap-6">
-        <Headline
-          title="Phabricator"
-          description={phabDescription}
-          window7d={latest.phab.window7d}
-          window14d={latest.phab.window14d}
-          window30d={latest.phab.window30d}
-          slaHours={slaHours}
-          samples={phabSamples}
-          now={now}
-        />
-        <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
-      </div>
-      <div className="flex flex-col gap-6">
-        <Headline
-          title="GitHub"
-          description={githubDescription}
-          window7d={latest.github.window7d}
-          window14d={latest.github.window14d}
-          window30d={latest.github.window30d}
-          slaHours={slaHours}
-          samples={githubSamples}
-          now={now}
-        />
-        <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
-      </div>
+  const emptyWindows: SourceWindows = {
+    window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+    window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+    window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+  };
+  const phabCycle = latest.phabCycle ?? emptyWindows;
+  const ghCycle = latest.githubCycle ?? emptyWindows;
+  const phabPostReview = latest.phabPostReview ?? emptyWindows;
+  const ghPostReview = latest.githubPostReview ?? emptyWindows;
+  const phabRounds = latest.phabRounds ?? emptyWindows;
+  const ghRounds = latest.githubRounds ?? emptyWindows;
+
+  const landingPanel = (config: {
+    readonly title: string;
+    readonly windows: SourceWindows;
+    readonly sla: number;
+    readonly unit?: 'hours' | 'rounds';
+    readonly slaLabel?: string;
+    readonly trendTitle: string;
+    readonly trendSource: ChartSource;
+    readonly valueAxisLabel?: string;
+    readonly slaLineLabel?: string;
+  }): ReactElement => (
+    <div className="flex flex-col gap-6">
+      <Headline
+        title={config.title}
+        window7d={config.windows.window7d}
+        window14d={config.windows.window14d}
+        window30d={config.windows.window30d}
+        slaHours={config.sla}
+        samples={[]}
+        now={now}
+        {...(config.unit === undefined ? {} : { unit: config.unit })}
+        {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
+        countLabel="land"
+      />
+      <Trendline
+        title={config.trendTitle}
+        history={history}
+        source={config.trendSource}
+        slaHours={config.sla}
+        {...(config.valueAxisLabel === undefined ? {} : { valueAxisLabel: config.valueAxisLabel })}
+        {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
+      />
     </div>
   );
+
+  const phabContent = (
+    <div className="flex flex-col gap-6">
+      <Headline
+        title="Phabricator"
+        description={phabDescription}
+        window7d={latest.phab.window7d}
+        window14d={latest.phab.window14d}
+        window30d={latest.phab.window30d}
+        slaHours={slaHours}
+        samples={phabSamples}
+        now={now}
+      />
+      <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
+      {landingPanel({
+        title: 'Phabricator · Creation to merge',
+        windows: phabCycle,
+        sla: CYCLE_SLA_HOURS,
+        trendTitle: 'Cycle-time trend (Phab)',
+        trendSource: 'phabCycle',
+      })}
+      {landingPanel({
+        title: 'Phabricator · First-review to merge',
+        windows: phabPostReview,
+        sla: POST_REVIEW_SLA_HOURS,
+        trendTitle: 'Post-review trend (Phab)',
+        trendSource: 'phabPostReview',
+      })}
+      {landingPanel({
+        title: 'Phabricator · Review rounds',
+        windows: phabRounds,
+        sla: ROUNDS_SLA,
+        unit: 'rounds',
+        slaLabel: 'One-shot',
+        trendTitle: 'Rounds trend (Phab)',
+        trendSource: 'phabRounds',
+        valueAxisLabel: 'rounds',
+        slaLineLabel: 'one-shot',
+      })}
+    </div>
+  );
+
+  const githubContent = (
+    <div className="flex flex-col gap-6">
+      <Headline
+        title="GitHub"
+        description={githubDescription}
+        window7d={latest.github.window7d}
+        window14d={latest.github.window14d}
+        window30d={latest.github.window30d}
+        slaHours={slaHours}
+        samples={githubSamples}
+        now={now}
+      />
+      <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
+      {landingPanel({
+        title: 'GitHub · Creation to merge',
+        windows: ghCycle,
+        sla: CYCLE_SLA_HOURS,
+        trendTitle: 'Cycle-time trend (GH)',
+        trendSource: 'githubCycle',
+      })}
+      {landingPanel({
+        title: 'GitHub · First-review to merge',
+        windows: ghPostReview,
+        sla: POST_REVIEW_SLA_HOURS,
+        trendTitle: 'Post-review trend (GH)',
+        trendSource: 'githubPostReview',
+      })}
+      {landingPanel({
+        title: 'GitHub · Review rounds',
+        windows: ghRounds,
+        sla: ROUNDS_SLA,
+        unit: 'rounds',
+        slaLabel: 'One-shot',
+        trendTitle: 'Rounds trend (GH)',
+        trendSource: 'githubRounds',
+        valueAxisLabel: 'rounds',
+        slaLineLabel: 'one-shot',
+      })}
+    </div>
+  );
+
+  // A tab is "red" if any of its four metric blocks has a bad-tier stat
+  // inside any of the 7/14/30-day windows. Matches the rose ring on stat
+  // cards below so the tab signal agrees with the content.
+  const phabHasRedIssue =
+    sourceWindowsHasRedIssue(latest.phab, slaHours) ||
+    sourceWindowsHasRedIssue(latest.phabCycle, CYCLE_SLA_HOURS) ||
+    sourceWindowsHasRedIssue(latest.phabPostReview, POST_REVIEW_SLA_HOURS) ||
+    sourceWindowsHasRedIssue(latest.phabRounds, ROUNDS_SLA);
+  const githubHasRedIssue =
+    sourceWindowsHasRedIssue(latest.github, slaHours) ||
+    sourceWindowsHasRedIssue(latest.githubCycle, CYCLE_SLA_HOURS) ||
+    sourceWindowsHasRedIssue(latest.githubPostReview, POST_REVIEW_SLA_HOURS) ||
+    sourceWindowsHasRedIssue(latest.githubRounds, ROUNDS_SLA);
+
+  const tabs: TabItem[] = [
+    { id: 'phab', label: 'Phabricator', hasRedIssue: phabHasRedIssue, content: phabContent },
+    { id: 'github', label: 'GitHub', hasRedIssue: githubHasRedIssue, content: githubContent },
+  ];
+  return <Tabs tabs={tabs} />;
 };

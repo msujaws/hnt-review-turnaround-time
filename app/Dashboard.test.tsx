@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
 import type { HistoryRow } from '../src/scripts/collect';
@@ -23,7 +24,7 @@ const row: HistoryRow = {
 };
 
 describe('Dashboard', () => {
-  it('renders a Headline and Trendline for each source when history has data', () => {
+  it('exposes one tab per source, with Phabricator active by default', () => {
     render(
       <Dashboard
         history={[row]}
@@ -33,10 +34,86 @@ describe('Dashboard', () => {
         peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
+    expect(screen.getByRole('tab', { name: /^phabricator$/i })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    expect(screen.getByRole('tab', { name: /^github$/i })).toHaveAttribute(
+      'aria-selected',
+      'false',
+    );
     expect(screen.getByRole('heading', { name: /^phabricator$/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /^github$/i })).toBeInTheDocument();
     expect(screen.getByTestId('trendline-phab')).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /^github$/i })).toBeNull();
+    expect(screen.queryByTestId('trendline-github')).toBeNull();
+  });
+
+  it('shows GitHub content (Headline + Trendline) after clicking the GitHub tab', async () => {
+    const user = userEvent.setup();
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    await user.click(screen.getByRole('tab', { name: /^github$/i }));
+    expect(screen.getByRole('heading', { name: /^github$/i })).toBeInTheDocument();
     expect(screen.getByTestId('trendline-github')).toBeInTheDocument();
+    expect(screen.queryByTestId('trendline-phab')).toBeNull();
+  });
+
+  it('renders cycle-time, post-review, and rounds headlines in each source tab', async () => {
+    const user = userEvent.setup();
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    // Phab tab (default).
+    expect(screen.getByRole('heading', { name: /creation to merge/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /first-review to merge/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /review rounds/i })).toBeInTheDocument();
+    // Switch to GitHub tab — same three panel headings.
+    await user.click(screen.getByRole('tab', { name: /^github$/i }));
+    expect(screen.getByRole('heading', { name: /creation to merge/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /first-review to merge/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /review rounds/i })).toBeInTheDocument();
+  });
+
+  it('marks a source tab red when its review TAT has a bad-tier stat', () => {
+    const rowWithBadPhab: HistoryRow = {
+      ...row,
+      phab: {
+        window7d: { n: 23, median: 2.4, mean: 3.1, p90: 7.8, pctUnderSLA: 87 },
+        // 14d median is 10h, 2.5× the 4h SLA ⇒ bad tier.
+        window14d: { n: 47, median: 10, mean: 10, p90: 15, pctUnderSLA: 30 },
+        window30d: { n: 95, median: 2.7, mean: 3.6, p90: 8.3, pctUnderSLA: 83 },
+      },
+    };
+    render(
+      <Dashboard
+        history={[rowWithBadPhab]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    expect(screen.getByRole('tab', { name: /^phabricator$/i })).toHaveAttribute(
+      'data-red-issue',
+      'true',
+    );
+    expect(screen.getByRole('tab', { name: /^github$/i })).toHaveAttribute(
+      'data-red-issue',
+      'false',
+    );
   });
 
   it('shows a no-data state when history is empty', () => {
@@ -95,7 +172,8 @@ describe('Dashboard', () => {
     );
   });
 
-  it('renders the GitHub repo as a lowercase link in the GitHub description', () => {
+  it('renders the GitHub repo as a lowercase link in the GitHub description', async () => {
+    const user = userEvent.setup();
     render(
       <Dashboard
         history={[row]}
@@ -105,6 +183,8 @@ describe('Dashboard', () => {
         peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
+    // GitHub content isn't mounted until the tab is activated.
+    await user.click(screen.getByRole('tab', { name: /^github$/i }));
     const ghSection = screen.getByRole('heading', { name: /^github$/i }).closest('section');
     expect(ghSection).not.toBeNull();
     const link = within(ghSection!).getByRole('link', { name: 'pocket/content-monorepo' });
