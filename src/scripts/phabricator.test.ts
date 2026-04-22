@@ -59,6 +59,7 @@ describe('extractSamplesFromTransactions', () => {
       source: 'phab',
       id: 'PHID-DREV-abcdefghijklmnopqrst',
       revisionId: 234_567,
+      author: 'author-user',
       reviewer: 'alice',
       requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
     });

@@ -176,6 +176,7 @@ describe('extractSamplesFromPullRequest', () => {
     expect(pending[0]).toMatchObject({
       source: 'github',
       id: 42,
+      author: 'author-user',
       reviewer: 'bob',
       requestedAt: '2026-04-19T14:00:00Z',
     });

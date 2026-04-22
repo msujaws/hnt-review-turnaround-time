@@ -175,6 +175,21 @@ describe('OverdueCallout', () => {
     expect(heading).toHaveTextContent('3');
   });
 
+  it('renders the patch author in a dedicated column', () => {
+    const pending = [pendingGh({ author: asReviewerLogin('connie') })];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    expect(within(region).getByRole('columnheader', { name: /author/i })).toBeInTheDocument();
+    expect(within(region).getByText('connie')).toBeInTheDocument();
+  });
+
   it('applies a soft-pulse animation to the warning icon', () => {
     const pending = [pendingGh()];
     render(
