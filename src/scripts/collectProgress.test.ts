@@ -47,12 +47,12 @@ describe('createProgressWriter', () => {
       state.phase = 'init';
     }, new Date('2026-04-23T14:00:00.000Z'));
     await writer.update((state) => {
-      state.phase = 'phab-transactions';
+      state.phase = 'fetching';
     }, new Date('2026-04-23T14:05:30.000Z'));
     const persisted = await readProgress();
     expect(persisted.startedAt).toBe('2026-04-23T14:00:00.000Z');
     expect(persisted.lastUpdated).toBe('2026-04-23T14:05:30.000Z');
-    expect(persisted.phase).toBe('phab-transactions');
+    expect(persisted.phase).toBe('fetching');
   });
 
   it('accumulates numeric counters across successive updates', async () => {

@@ -24,6 +24,7 @@ import {
 } from '../types/brand';
 
 import { businessHoursBetween } from './businessHours';
+import { createProgressWriter, type ProgressWriter } from './collectProgress';
 import {
   createGithubClient,
   fetchGithubSamples,
@@ -654,13 +655,17 @@ export const loadPhabProgress = async (
   return { transactions, createdAt: parsed.data.createdAt };
 };
 
-export const runCollectionFromDisk = async (dataDirectory: string): Promise<void> => {
+export const runCollectionFromDisk = async (
+  dataDirectory: string,
+  progress?: ProgressWriter,
+): Promise<void> => {
   const samplesPath = path.join(dataDirectory, 'samples.json');
   const historyPath = path.join(dataDirectory, 'history.json');
   const pendingPath = path.join(dataDirectory, 'pending.json');
   const landingsPath = path.join(dataDirectory, 'landings.json');
   const backlogPath = path.join(dataDirectory, 'backlog.json');
   const progressPath = path.join(dataDirectory, '.phab-progress.json');
+  const now = new Date();
 
   const existingSamplesRaw = await readJsonFile<unknown>(samplesPath, []);
   const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
@@ -672,7 +677,6 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   const existingBacklog = z.array(backlogSnapshotSchema).parse(existingBacklogRaw);
   const peopleMap = await loadPeopleMap(dataDirectory);
 
-  const now = new Date();
   // Mirrors the decision inside collect(): widen to backfill when either
   // feature's persisted history is empty (samples-first-run OR landings-
   // first-run). Keeps the phab progress cache's lookback key in sync.
@@ -688,6 +692,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   if (resumeCache.size > 0) {
     process.stderr.write(`phab cache loaded (${resumeCache.size.toString()} revisions)\n`);
   }
+  await progress?.update((state) => {
+    state.phase = 'fetching';
+    state.message = `fetching (lookback ${lookbackDays.toString()}d, ${resumeCache.size.toString()} cached revisions)`;
+  });
 
   const writeProgress = async (
     transactionsByRevisionPhid: ReadonlyMap<string, readonly PhabTransaction[]>,
@@ -736,6 +744,14 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
           resumeCache.set(phid, [...transactions]);
           await writeProgress(resumeCache);
         },
+        onRevisionProcessed: async ({ cached, index, total }) => {
+          await progress?.update((state) => {
+            state.phab.revisionsProcessed = index + 1;
+            state.phab.revisionsTotal = total;
+            if (!cached) state.phab.revisionsFetched += 1;
+            state.message = `phab ${(index + 1).toString()}/${total.toString()} (${cached ? 'cached' : 'fetched'}, ${state.phab.revisionsFetched.toString()} fresh so far)`;
+          });
+        },
       });
       for (const phid of result.revisionPhidsSeen) seenRevisionPhids.add(phid);
       return { samples: result.samples, pending: result.pending, landings: result.landings };
@@ -749,6 +765,11 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
       }),
   });
 
+  await progress?.update((state) => {
+    state.phase = 'computing';
+    state.message = `computing snapshots (${samples.length.toString()} samples, ${landings.length.toString()} landings)`;
+  });
+
   // Backlog snapshot: replace today's row idempotently (matches history.json
   // behaviour). Old snapshots are kept as-is — they're frozen in time and
   // can't be recomputed from samples.json after the fact.
@@ -758,6 +779,10 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     a.date.localeCompare(b.date),
   );
 
+  await progress?.update((state) => {
+    state.phase = 'writing';
+    state.message = 'writing output files';
+  });
   await writeJsonFileAtomic(samplesPath, samples);
   await writeJsonFileAtomic(historyPath, history);
   await writeJsonFileAtomic(pendingPath, pending);
@@ -769,6 +794,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
   // check correctly re-fetch anything modified after `now`.
   const prunedCache = prunePhabCache(seenRevisionPhids, resumeCache);
   await writeJsonFileAtomic(progressPath, {
+    schemaVersion: PHAB_PROGRESS_SCHEMA_VERSION,
     lookbackDays,
     createdAt: now.toISOString(),
     transactionsByRevisionPhid: Object.fromEntries(prunedCache),
@@ -777,10 +803,27 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
   const dataDirectory = path.join(process.cwd(), 'data');
+  const startedAt = new Date();
+  const progress = createProgressWriter(
+    path.join(dataDirectory, '.collect-progress.json'),
+    startedAt,
+  );
+  await progress.update((state) => {
+    state.phase = 'init';
+    state.message = 'loading existing data files';
+  }, startedAt);
   try {
-    await runCollectionFromDisk(dataDirectory);
+    await runCollectionFromDisk(dataDirectory, progress);
+    await progress.update((state) => {
+      state.phase = 'done';
+      state.message = 'completed';
+    });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
+    await progress.update((state) => {
+      state.phase = 'error';
+      state.message = message;
+    });
     process.stderr.write(`collect failed: ${message}\n`);
     process.exitCode = 1;
   }

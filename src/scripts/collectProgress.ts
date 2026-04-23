@@ -22,16 +22,10 @@ export interface CollectProgress {
 }
 
 // Named set so readers don't have to guess; adding a phase is a code change.
-export type CollectProgressPhase =
-  | 'init'
-  | 'phab-revisions'
-  | 'phab-transactions'
-  | 'phab-cooldown'
-  | 'github'
-  | 'computing'
-  | 'writing'
-  | 'done'
-  | 'error';
+// `fetching` covers both Phab and GitHub because they run concurrently inside
+// collect() via Promise.all — linear per-source phases would lie about which
+// is "current" when both are in flight.
+export type CollectProgressPhase = 'init' | 'fetching' | 'computing' | 'writing' | 'done' | 'error';
 
 export interface ProgressWriter {
   snapshot: () => CollectProgress;
