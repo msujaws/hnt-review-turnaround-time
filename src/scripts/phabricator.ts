@@ -489,6 +489,16 @@ export const fetchPhabSamples = async (params: {
     phid: string,
     transactions: readonly PhabTransaction[],
   ) => void | Promise<void>;
+  // Fires once per revision in the deduped recent+open set, regardless of
+  // whether transactions were served from resumeCache or freshly fetched.
+  // Gives observers a cadence tick for progress reporting even during
+  // cache-heavy runs where onRevisionTransactions stays quiet.
+  readonly onRevisionProcessed?: (args: {
+    readonly phid: string;
+    readonly cached: boolean;
+    readonly index: number;
+    readonly total: number;
+  }) => void | Promise<void>;
 }): Promise<{
   samples: PhabSample[];
   pending: PhabPendingSample[];

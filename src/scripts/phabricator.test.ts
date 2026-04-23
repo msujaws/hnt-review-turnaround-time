@@ -1234,6 +1234,79 @@ describe('fetchPhabSamples', () => {
     expect(transactionSearchCalls).toEqual(['PHID-DREV-freshaaaaaaaaaaaaaaaa']);
   });
 
+  it('fires onRevisionProcessed for every revision, distinguishing cache hits from fresh fetches', async () => {
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-cachedaaaaaaaaaaaaaaa',
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                dateModified: 1_760_000_000,
+              },
+            },
+            {
+              id: 2,
+              phid: 'PHID-DREV-freshaaaaaaaaaaaaaaaa',
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                dateModified: 1_760_000_000,
+              },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') return { data: [], cursor: { after: null } };
+      if (method === 'user.search') return { data: [] };
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const cached: PhabTransaction = {
+      id: 99,
+      phid: 'PHID-XACT-cacheaaaaaaaaaaaaaa',
+      type: 'comment',
+      authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+      dateCreated: 1_760_000_000,
+      fields: {},
+    };
+
+    const events: { phid: string; cached: boolean; index: number; total: number }[] = [];
+    await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+      resumeCache: {
+        createdAt: 1_761_000_000,
+        transactionsByRevisionPhid: new Map([['PHID-DREV-cachedaaaaaaaaaaaaaaa', [cached]]]),
+      },
+      onRevisionProcessed: (event) => {
+        events.push(event);
+      },
+    });
+
+    expect(events).toHaveLength(2);
+    expect(events).toEqual([
+      { phid: 'PHID-DREV-cachedaaaaaaaaaaaaaaa', cached: true, index: 0, total: 2 },
+      { phid: 'PHID-DREV-freshaaaaaaaaaaaaaaaa', cached: false, index: 1, total: 2 },
+    ]);
+  });
+
   it('re-fetches a cached revision that has been modified since cache creation', async () => {
     const transactionSearchCalls: string[] = [];
     const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
