@@ -202,19 +202,29 @@ export const extractSamplesFromTransactions = (
   // Pending = reviewers still in an active request window at end of timeline
   // who didn't emit a completed sample. Reviewers whose phid has no login
   // mapping are dropped (same rule applied to completed samples above).
+  // Skip the whole block when the revision is in a terminal state
+  // (abandoned / published / draft / accepted): the request is no longer
+  // actionable, so keeping it in pending would strand the reviewer in the
+  // overdue list forever. undefined status falls through as "open" for
+  // legacy fixtures that build PhabRevision without going through
+  // fetchRevisions. Mirrors the GitHub gate in 78b1ecb.
   const pending: PhabPendingSample[] = [];
-  for (const [reviewerPhid, requestedAt] of currentRequestAt) {
-    if (emitted.has(reviewerPhid)) continue;
-    const login = loginByPhid.get(reviewerPhid);
-    if (login === undefined) continue;
-    pending.push({
-      source: 'phab',
-      id: asRevisionPhid(revision.phid),
-      revisionId: revision.id,
-      ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
-      reviewer: asReviewerLogin(login),
-      requestedAt: toIso(requestedAt),
-    });
+  const revisionIsOpen =
+    revision.status === undefined || OPEN_REVISION_STATUSES.has(revision.status);
+  if (revisionIsOpen) {
+    for (const [reviewerPhid, requestedAt] of currentRequestAt) {
+      if (emitted.has(reviewerPhid)) continue;
+      const login = loginByPhid.get(reviewerPhid);
+      if (login === undefined) continue;
+      pending.push({
+        source: 'phab',
+        id: asRevisionPhid(revision.phid),
+        revisionId: revision.id,
+        ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
+        reviewer: asReviewerLogin(login),
+        requestedAt: toIso(requestedAt),
+      });
+    }
   }
 
   return { samples, pending };
@@ -246,6 +256,12 @@ const revisionSearchSchema = z.object({
         authorPHID: z.string(),
         dateCreated: z.number().optional(),
         dateModified: z.number(),
+        // Phab's differential.revision.search always returns this, but legacy
+        // test fixtures omit it. Optional + z.string() for the inner slug
+        // keeps old fixtures parsing and fails-open on any new Phab status
+        // (the pending gate checks membership in OPEN_REVISION_STATUSES, so
+        // unknown slugs are correctly treated as non-open — the safe default).
+        status: z.object({ value: z.string() }).optional(),
       }),
     }),
   ),
@@ -326,11 +342,19 @@ const lookupProjectMembers = async (
   return { projectPhids, memberPhids: [...uniqueMembers] };
 };
 
-// Revision statuses that still need a reviewer's attention. The open-state
-// query is bounded by OPEN_REVISION_LOOKBACK_DAYS so we don't pull every
-// long-abandoned open revision on the account — each revision costs a
-// transaction.search call, which is where Phab's per-session rate limit bites.
-const OPEN_REVISION_STATUSES = ['needs-review', 'changes-planned', 'needs-revision'] as const;
+// Revision statuses that still need a reviewer's attention. Also the single
+// source of truth for the pending-emission gate in
+// extractSamplesFromTransactions — a revision whose current status isn't in
+// this set has nothing actionable left, so pending would strand a reviewer in
+// the overdue list. The open-state query is bounded by
+// OPEN_REVISION_LOOKBACK_DAYS so we don't pull every long-abandoned open
+// revision on the account — each revision costs a transaction.search call,
+// which is where Phab's per-session rate limit bites.
+const OPEN_REVISION_STATUSES: ReadonlySet<string> = new Set([
+  'needs-review',
+  'changes-planned',
+  'needs-revision',
+]);
 const OPEN_REVISION_LOOKBACK_DAYS = 90;
 
 const fetchRevisions = async (
@@ -357,6 +381,7 @@ const fetchRevisions = async (
         authorPhid: item.fields.authorPHID,
         dateModified: item.fields.dateModified,
         ...(item.fields.dateCreated === undefined ? {} : { dateCreated: item.fields.dateCreated }),
+        ...(item.fields.status === undefined ? {} : { status: item.fields.status.value }),
       });
     }
     after = parsed.cursor.after;
