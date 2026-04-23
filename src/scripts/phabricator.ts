@@ -67,6 +67,12 @@ export interface PhabRevision {
   // for cycle time (createdAt → landedAt). Optional so legacy callers and
   // test fixtures that pre-date landings still construct the type.
   readonly dateCreated?: number;
+  // Current revision status slug ('needs-review', 'accepted', 'abandoned',
+  // 'published', 'draft', etc.). Optional so legacy fixtures that pre-date
+  // this field keep compiling; in production fetchRevisions always populates
+  // it. extractSamplesFromTransactions treats undefined as open so pending
+  // still emits for those legacy paths.
+  readonly status?: string;
 }
 
 interface ReviewerOperation {

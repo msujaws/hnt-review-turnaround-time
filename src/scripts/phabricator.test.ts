@@ -34,6 +34,20 @@ const loginByPhid = new Map<string, string>([
   ['PHID-USER-outsidereviewerccccc', 'charlie'],
 ]);
 
+// Shared fixture: reviewer 'alice' is requested and never acts. Under an open
+// revision status we'd emit pending; under a terminal status we must not.
+const requestedButNeverActed = (): PhabTransaction[] => [
+  mkTransaction({
+    id: 1,
+    type: 'reviewers',
+    authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+    dateCreated: 1_761_000_000,
+    fields: {
+      operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+    },
+  }),
+];
+
 describe('extractSamplesFromTransactions', () => {
   it('returns no samples when there are no transactions', () => {
     const result = extractSamplesFromTransactions(revision(), [], loginByPhid);
@@ -477,6 +491,42 @@ describe('extractSamplesFromTransactions', () => {
       ];
       const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid);
       expect(pending.map((p) => p.reviewer).sort()).toEqual(['alice', 'bob']);
+    });
+  });
+
+  describe('revision status gate on pending emission', () => {
+    for (const terminal of ['abandoned', 'published', 'draft', 'accepted'] as const) {
+      it(`emits no pending when revision.status is ${terminal}, even with an active reviewer request`, () => {
+        const { samples, pending } = extractSamplesFromTransactions(
+          { ...revision(), status: terminal },
+          requestedButNeverActed(),
+          loginByPhid,
+        );
+        expect(samples).toEqual([]);
+        expect(pending).toEqual([]);
+      });
+    }
+
+    it('still emits pending when revision.status is needs-review', () => {
+      const { pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        requestedButNeverActed(),
+        loginByPhid,
+      );
+      expect(pending).toHaveLength(1);
+      expect(pending[0]?.reviewer).toBe('alice');
+    });
+
+    it('treats undefined revision.status as open so legacy fixtures keep emitting pending', () => {
+      // revision() does not set status; this is the back-compat path for every
+      // pre-existing test in this file and for any caller that builds a
+      // PhabRevision inline without going through fetchRevisions.
+      const { pending } = extractSamplesFromTransactions(
+        revision(),
+        requestedButNeverActed(),
+        loginByPhid,
+      );
+      expect(pending).toHaveLength(1);
     });
   });
 });
