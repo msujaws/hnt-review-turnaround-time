@@ -578,7 +578,16 @@ const phabTransactionSchema = z.object({
   }),
 });
 
+// Bump when an extractor or cache-shape change means previously cached
+// transactions would be parsed incorrectly by current code. A mismatch causes
+// loadPhabProgress to return an empty cache, which forces a full rebuild on
+// the next run — safer than trusting a stale cache across breaking fixes.
+// Version 2 invalidates pre-a19dec4 caches that had status transactions with
+// stripped fields.old/fields.new, which made Phab landings undetectable.
+export const PHAB_PROGRESS_SCHEMA_VERSION = 2;
+
 const phabProgressSchema = z.object({
+  schemaVersion: z.literal(PHAB_PROGRESS_SCHEMA_VERSION),
   lookbackDays: z.number().int().positive(),
   createdAt: z.string(),
   transactionsByRevisionPhid: z.record(z.array(phabTransactionSchema)),
@@ -590,14 +599,6 @@ const phabProgressSchema = z.object({
 // The TTL is purely a circuit breaker for bugs, long vacations, or schema
 // drift: beyond 30 days we rebuild from scratch rather than trust old state.
 const PROGRESS_TTL_MS = 30 * 24 * 3600 * 1000;
-
-// Bump when an extractor or cache-shape change means previously cached
-// transactions would be parsed incorrectly by current code. A mismatch causes
-// loadPhabProgress to return an empty cache, which forces a full rebuild on
-// the next run — safer than trusting a stale cache across breaking fixes.
-// Version 2 invalidates pre-a19dec4 caches that had status transactions with
-// stripped fields.old/fields.new, which made Phab landings undetectable.
-export const PHAB_PROGRESS_SCHEMA_VERSION = 2;
 
 // Pure helper: keep only cache entries for revisions that actually showed up
 // in this run's revision search. Prevents the cache from growing unbounded
@@ -692,6 +693,7 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     transactionsByRevisionPhid: ReadonlyMap<string, readonly PhabTransaction[]>,
   ): Promise<void> => {
     await writeJsonFileAtomic(progressPath, {
+      schemaVersion: PHAB_PROGRESS_SCHEMA_VERSION,
       lookbackDays,
       createdAt: progressCreatedAt,
       transactionsByRevisionPhid: Object.fromEntries(transactionsByRevisionPhid),
