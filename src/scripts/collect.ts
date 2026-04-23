@@ -591,6 +591,14 @@ const phabProgressSchema = z.object({
 // drift: beyond 30 days we rebuild from scratch rather than trust old state.
 const PROGRESS_TTL_MS = 30 * 24 * 3600 * 1000;
 
+// Bump when an extractor or cache-shape change means previously cached
+// transactions would be parsed incorrectly by current code. A mismatch causes
+// loadPhabProgress to return an empty cache, which forces a full rebuild on
+// the next run — safer than trusting a stale cache across breaking fixes.
+// Version 2 invalidates pre-a19dec4 caches that had status transactions with
+// stripped fields.old/fields.new, which made Phab landings undetectable.
+export const PHAB_PROGRESS_SCHEMA_VERSION = 2;
+
 // Pure helper: keep only cache entries for revisions that actually showed up
 // in this run's revision search. Prevents the cache from growing unbounded
 // with closed/abandoned revisions that will never be queried again.
@@ -611,7 +619,7 @@ interface LoadedProgress {
   readonly createdAt: string;
 }
 
-const loadPhabProgress = async (
+export const loadPhabProgress = async (
   filePath: string,
   currentLookbackDays: number,
   now: Date,

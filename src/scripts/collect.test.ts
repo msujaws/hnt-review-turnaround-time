@@ -1,4 +1,8 @@
-import { describe, expect, it, vi } from 'vitest';
+import { promises as fs } from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
   asBusinessHours,
@@ -15,6 +19,8 @@ import {
   computeBacklogSnapshot,
   historyRowSchema,
   landingSchema,
+  loadPhabProgress,
+  PHAB_PROGRESS_SCHEMA_VERSION,
   prunePhabCache,
   sampleSchema,
   type BacklogSnapshot,
@@ -947,6 +953,72 @@ describe('landingSchema', () => {
     expect(() =>
       landingSchema.parse({ ...validGithubLanding, postReviewBusinessHours: null }),
     ).toThrow();
+  });
+});
+
+describe('loadPhabProgress', () => {
+  let temporaryDirectory: string;
+  let progressPath: string;
+
+  beforeEach(async () => {
+    temporaryDirectory = await fs.mkdtemp(path.join(os.tmpdir(), 'phab-progress-'));
+    progressPath = path.join(temporaryDirectory, '.phab-progress.json');
+  });
+
+  afterEach(async () => {
+    await fs.rm(temporaryDirectory, { recursive: true, force: true });
+  });
+
+  const cachedPayload = {
+    lookbackDays: 45,
+    createdAt: '2026-04-23T02:49:00.000Z',
+    transactionsByRevisionPhid: {
+      'PHID-DREV-example12345678abcdef': [
+        {
+          id: 1,
+          phid: 'PHID-XACT-example1',
+          type: 'status',
+          authorPhid: 'PHID-USER-author',
+          dateCreated: 1_714_000_000,
+          fields: { old: 'needs-review', new: 'published' },
+        },
+      ],
+    },
+  };
+
+  it('returns an empty cache when the on-disk file has no schemaVersion (legacy stale cache)', async () => {
+    // Mirrors the pre-hardening shape that shipped up through a19dec4: no
+    // schemaVersion field. The loader should treat this as invalid and
+    // return an empty cache so the next run rebuilds from scratch.
+    await fs.writeFile(progressPath, JSON.stringify(cachedPayload), 'utf8');
+    const now = new Date('2026-04-23T03:00:00Z');
+    const { transactions } = await loadPhabProgress(progressPath, 45, now);
+    expect(transactions.size).toBe(0);
+  });
+
+  it('returns an empty cache when schemaVersion does not match the current constant', async () => {
+    const mismatch = { ...cachedPayload, schemaVersion: PHAB_PROGRESS_SCHEMA_VERSION + 1 };
+    await fs.writeFile(progressPath, JSON.stringify(mismatch), 'utf8');
+    const now = new Date('2026-04-23T03:00:00Z');
+    const { transactions } = await loadPhabProgress(progressPath, 45, now);
+    expect(transactions.size).toBe(0);
+  });
+
+  it('returns the cached transactions when schemaVersion, lookbackDays, and TTL all match', async () => {
+    const current = { ...cachedPayload, schemaVersion: PHAB_PROGRESS_SCHEMA_VERSION };
+    await fs.writeFile(progressPath, JSON.stringify(current), 'utf8');
+    const now = new Date('2026-04-23T03:00:00Z');
+    const { transactions } = await loadPhabProgress(progressPath, 45, now);
+    expect(transactions.size).toBe(1);
+    const txs = transactions.get('PHID-DREV-example12345678abcdef');
+    expect(txs).toBeDefined();
+    expect(txs?.[0]?.fields.new).toBe('published');
+  });
+
+  it('pins the current schemaVersion constant to 2 (bump intentionally)', () => {
+    // Guard against accidental bumps during unrelated refactors. Bumping this
+    // constant is a deliberate action that invalidates every on-disk cache.
+    expect(PHAB_PROGRESS_SCHEMA_VERSION).toBe(2);
   });
 });
 
