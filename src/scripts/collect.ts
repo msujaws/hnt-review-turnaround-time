@@ -704,9 +704,13 @@ export const runCollectionFromDisk = async (dataDirectory: string): Promise<void
     endpoint: `${PHAB_ORIGIN}/api`,
     apiToken: requireEnv('PHABRICATOR_TOKEN'),
     // Phab's transaction.search limiter keeps cutting us off around the
-    // 100-150 mark per session. Cede the budget voluntarily: pause 30 min
-    // after every 100 transaction.search calls to stay under the ceiling.
-    methodCooldowns: [{ method: 'transaction.search', every: 100, cooldownMs: 30 * 60 * 1000 }],
+    // 100-call mark per session — observed in the wild: a fresh run fetching
+    // 99 revisions before 429, and a warm-cache retry fetching 85 more
+    // before another 429. Cede the budget voluntarily at 75 so the pause
+    // lands with margin under the ceiling instead of racing it. Daily
+    // follow-up runs process far fewer revisions than this, so the cooldown
+    // only trips during the initial 45-day backfill.
+    methodCooldowns: [{ method: 'transaction.search', every: 75, cooldownMs: 30 * 60 * 1000 }],
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
