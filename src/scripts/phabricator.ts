@@ -508,6 +508,7 @@ export const fetchPhabSamples = async (params: {
   const { client, projectSlugs, lookbackDays } = params;
   const resumeCache = params.resumeCache;
   const onRevisionTransactions = params.onRevisionTransactions;
+  const onRevisionProcessed = params.onRevisionProcessed;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
   const openModifiedStart = Math.floor(
@@ -551,7 +552,8 @@ export const fetchPhabSamples = async (params: {
 
   const transactionsByRevision = new Map<string, readonly PhabTransaction[]>();
   const userPhids = new Set<string>();
-  for (const rev of revisions) {
+  const revisionsTotal = revisions.length;
+  for (const [revisionIndex, rev] of revisions.entries()) {
     userPhids.add(rev.authorPhid);
     const cached = resumeCache?.transactionsByRevisionPhid.get(rev.phid);
     const canReuseCache =
@@ -566,6 +568,14 @@ export const fetchPhabSamples = async (params: {
       }
     }
     transactionsByRevision.set(rev.phid, transactions);
+    if (onRevisionProcessed !== undefined) {
+      await onRevisionProcessed({
+        phid: rev.phid,
+        cached: canReuseCache,
+        index: revisionIndex,
+        total: revisionsTotal,
+      });
+    }
     for (const tx of transactions) {
       userPhids.add(tx.authorPhid);
       for (const op of tx.fields.operations ?? []) {
