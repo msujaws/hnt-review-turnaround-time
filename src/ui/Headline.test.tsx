@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
 import type { Sample } from '../scripts/collect';
@@ -449,6 +450,109 @@ describe('Headline', () => {
       const card = cell.parentElement;
       expect(card?.className).not.toMatch(/emerald|amber|rose/);
     }
+  });
+
+  it('renders as a non-details <section> by default (not collapsible)', () => {
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={window14d}
+        window14d={window14d}
+        window30d={window14d}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    const heading = screen.getByRole('heading', { name: /^phabricator$/i });
+    expect(heading.closest('details')).toBeNull();
+    expect(heading.closest('section')).not.toBeNull();
+  });
+
+  it('when collapsible with defaultOpen=true, renders <details open> wrapping the heading', () => {
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={window14d}
+        window14d={window14d}
+        window30d={window14d}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+        collapsible
+        defaultOpen
+      />,
+    );
+    const heading = screen.getByRole('heading', { name: /^phabricator$/i });
+    const details = heading.closest('details');
+    expect(details).not.toBeNull();
+    expect(details).toHaveAttribute('open');
+    // The heading lives inside <summary>
+    expect(heading.closest('summary')).not.toBeNull();
+  });
+
+  it('when collapsible with defaultOpen=false, renders a closed <details> with a rotate-on-open chevron', () => {
+    render(
+      <Headline
+        title="Phabricator · Creation to merge"
+        window7d={window7d}
+        window14d={window7d}
+        window30d={window7d}
+        slaHours={24}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+        collapsible
+        defaultOpen={false}
+      />,
+    );
+    const heading = screen.getByRole('heading', { name: /creation to merge/i });
+    const details = heading.closest('details');
+    expect(details).not.toBeNull();
+    expect(details).not.toHaveAttribute('open');
+    // The expand chevron rotates when the details is open.
+    const chevron = within(details!).getByText('expand_more');
+    expect(chevron.className).toMatch(/group-open:rotate-180/);
+  });
+
+  it('toggles the collapsible details open when the user clicks the summary', async () => {
+    const user = userEvent.setup();
+    render(
+      <Headline
+        title="Phabricator · Creation to merge"
+        window7d={window7d}
+        window14d={window7d}
+        window30d={window7d}
+        slaHours={24}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+        collapsible
+        defaultOpen={false}
+      />,
+    );
+    const heading = screen.getByRole('heading', { name: /creation to merge/i });
+    const details = heading.closest('details');
+    expect(details).not.toHaveAttribute('open');
+    await user.click(heading.closest('summary')!);
+    expect(details).toHaveAttribute('open');
+  });
+
+  it('renders children after the three window rows when provided', () => {
+    render(
+      <Headline
+        title="Phabricator"
+        window7d={window14d}
+        window14d={window14d}
+        window30d={window14d}
+        slaHours={4}
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      >
+        <div data-testid="trend-child">trend content</div>
+      </Headline>,
+    );
+    const trend = screen.getByTestId('trend-child');
+    const row30Label = screen.getByText('30-day');
+    expect(row30Label.compareDocumentPosition(trend)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it('tints the per-sample TAT text by tier', () => {

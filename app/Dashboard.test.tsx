@@ -116,6 +116,37 @@ describe('Dashboard', () => {
     );
   });
 
+  it('collapses landing sub-panels that have no data while keeping the populated TAT panel open', () => {
+    // Same fixture as the default row: phab/github TAT populated, but the
+    // optional landing fields (phabCycle, phabPostReview, phabRounds) are
+    // absent, so those sub-panels fall back to all-zero windows and should
+    // render collapsed.
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const cycleHeading = screen.getByRole('heading', { name: /creation to merge/i });
+    const cycleDetails = cycleHeading.closest('details');
+    expect(cycleDetails).not.toBeNull();
+    expect(cycleDetails).not.toHaveAttribute('open');
+
+    const postReviewHeading = screen.getByRole('heading', { name: /first-review to merge/i });
+    expect(postReviewHeading.closest('details')).not.toHaveAttribute('open');
+
+    const roundsHeading = screen.getByRole('heading', { name: /review rounds/i });
+    expect(roundsHeading.closest('details')).not.toHaveAttribute('open');
+
+    const phabHeading = screen.getByRole('heading', { name: /^phabricator$/i });
+    const phabDetails = phabHeading.closest('details');
+    expect(phabDetails).not.toBeNull();
+    expect(phabDetails).toHaveAttribute('open');
+  });
+
   it('shows a no-data state when history is empty', () => {
     render(
       <Dashboard
@@ -147,7 +178,7 @@ describe('Dashboard', () => {
         peopleMap={peopleMap}
       />,
     );
-    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('section');
+    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('details');
     expect(phabSection).not.toBeNull();
     // Names should appear alphabetically, case-insensitive: Dre, maxx, reemhamz.
     expect(within(phabSection!).getByText(/Dre, maxx, reemhamz/)).toBeInTheDocument();
@@ -163,7 +194,7 @@ describe('Dashboard', () => {
         peopleMap={{ github: {}, phab: { maxx: asIanaTimezone('America/Chicago') } }}
       />,
     );
-    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('section');
+    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('details');
     expect(phabSection).not.toBeNull();
     const link = within(phabSection!).getByRole('link', { name: 'home-newtab-reviewers' });
     expect(link).toHaveAttribute(
@@ -185,7 +216,7 @@ describe('Dashboard', () => {
     );
     // GitHub content isn't mounted until the tab is activated.
     await user.click(screen.getByRole('tab', { name: /^github$/i }));
-    const ghSection = screen.getByRole('heading', { name: /^github$/i }).closest('section');
+    const ghSection = screen.getByRole('heading', { name: /^github$/i }).closest('details');
     expect(ghSection).not.toBeNull();
     const link = within(ghSection!).getByRole('link', { name: 'pocket/content-monorepo' });
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo');

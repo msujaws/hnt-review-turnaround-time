@@ -90,6 +90,9 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
   const phabRounds = latest.phabRounds ?? emptyWindows;
   const ghRounds = latest.githubRounds ?? emptyWindows;
 
+  const hasAnyData = (w: SourceWindows): boolean =>
+    w.window7d.n + w.window14d.n + w.window30d.n > 0;
+
   const landingPanel = (config: {
     readonly title: string;
     readonly windows: SourceWindows;
@@ -101,19 +104,20 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
     readonly valueAxisLabel?: string;
     readonly slaLineLabel?: string;
   }): ReactElement => (
-    <div className="flex flex-col gap-6">
-      <Headline
-        title={config.title}
-        window7d={config.windows.window7d}
-        window14d={config.windows.window14d}
-        window30d={config.windows.window30d}
-        slaHours={config.sla}
-        samples={[]}
-        now={now}
-        {...(config.unit === undefined ? {} : { unit: config.unit })}
-        {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
-        countLabel="land"
-      />
+    <Headline
+      title={config.title}
+      window7d={config.windows.window7d}
+      window14d={config.windows.window14d}
+      window30d={config.windows.window30d}
+      slaHours={config.sla}
+      samples={[]}
+      now={now}
+      {...(config.unit === undefined ? {} : { unit: config.unit })}
+      {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
+      countLabel="land"
+      collapsible
+      defaultOpen={hasAnyData(config.windows)}
+    >
       <Trendline
         title={config.trendTitle}
         history={history}
@@ -122,7 +126,7 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         {...(config.valueAxisLabel === undefined ? {} : { valueAxisLabel: config.valueAxisLabel })}
         {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
       />
-    </div>
+    </Headline>
   );
 
   const phabContent = (
@@ -136,8 +140,11 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         slaHours={slaHours}
         samples={phabSamples}
         now={now}
-      />
-      <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
+        collapsible
+        defaultOpen={hasAnyData(latest.phab)}
+      >
+        <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
+      </Headline>
       {landingPanel({
         title: 'Phabricator · Creation to merge',
         windows: phabCycle,
@@ -177,8 +184,11 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         slaHours={slaHours}
         samples={githubSamples}
         now={now}
-      />
-      <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
+        collapsible
+        defaultOpen={hasAnyData(latest.github)}
+      >
+        <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
+      </Headline>
       {landingPanel({
         title: 'GitHub · Creation to merge',
         windows: ghCycle,

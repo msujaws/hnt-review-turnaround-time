@@ -280,7 +280,39 @@ export interface HeadlineProps {
   readonly unit?: MetricUnit;
   readonly slaLabel?: string;
   readonly countLabel?: string;
+  // When set, the section renders as <details>/<summary> so the whole panel
+  // can be collapsed. `defaultOpen` seeds the initial state; user toggles are
+  // DOM-owned (no React state) and reset on reload, matching WindowRow.
+  readonly collapsible?: boolean;
+  readonly defaultOpen?: boolean;
+  readonly children?: ReactNode;
 }
+
+interface HeaderContentProps {
+  readonly title: string;
+  readonly description?: ReactNode;
+  readonly statusText: string;
+  readonly showChevron: boolean;
+}
+
+const HeaderContent: FC<HeaderContentProps> = ({ title, description, statusText, showChevron }) => (
+  <>
+    <div className="flex items-baseline justify-between gap-2">
+      <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
+      <span className="flex items-center gap-2 text-sm text-neutral-400">
+        <Icon name={SCHEDULE_ICON} className="text-base" />
+        {statusText}
+        {showChevron ? (
+          <Icon
+            name={EXPAND_ICON}
+            className="text-base text-neutral-500 transition-transform group-open:rotate-180"
+          />
+        ) : null}
+      </span>
+    </div>
+    {description === undefined ? null : <p className="text-sm text-neutral-400">{description}</p>}
+  </>
+);
 
 export const Headline: FC<HeadlineProps> = ({
   title,
@@ -294,23 +326,15 @@ export const Headline: FC<HeadlineProps> = ({
   unit = 'hours',
   slaLabel,
   countLabel = 'review',
+  collapsible = false,
+  defaultOpen = false,
+  children,
 }) => {
   const effectiveSlaLabel = slaLabel ?? `Under ${slaHours.toString()}h SLA`;
   const emptyState = `awaiting first ${countLabel}s`;
-  return (
-    <section className="flex flex-col gap-4">
-      <header className="flex flex-col gap-2">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-semibold text-neutral-100">{title}</h2>
-          <span className="flex items-center gap-2 text-sm text-neutral-400">
-            <Icon name={SCHEDULE_ICON} className="text-base" />
-            {window7d.n + window14d.n + window30d.n === 0 ? emptyState : 'rolling windows'}
-          </span>
-        </div>
-        {description === undefined ? null : (
-          <p className="text-sm text-neutral-400">{description}</p>
-        )}
-      </header>
+  const statusText = window7d.n + window14d.n + window30d.n === 0 ? emptyState : 'rolling windows';
+  const windowRows = (
+    <>
       <WindowRow
         label="7-day"
         stats={window7d}
@@ -341,6 +365,36 @@ export const Headline: FC<HeadlineProps> = ({
         slaLabel={effectiveSlaLabel}
         countLabel={countLabel}
       />
+    </>
+  );
+  if (collapsible) {
+    return (
+      <details className="group flex flex-col gap-4" open={defaultOpen}>
+        <summary className="flex cursor-pointer list-none flex-col gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-sky-500 [&::-webkit-details-marker]:hidden">
+          <HeaderContent
+            title={title}
+            description={description}
+            statusText={statusText}
+            showChevron
+          />
+        </summary>
+        {windowRows}
+        {children}
+      </details>
+    );
+  }
+  return (
+    <section className="flex flex-col gap-4">
+      <header className="flex flex-col gap-2">
+        <HeaderContent
+          title={title}
+          description={description}
+          statusText={statusText}
+          showChevron={false}
+        />
+      </header>
+      {windowRows}
+      {children}
     </section>
   );
 };
