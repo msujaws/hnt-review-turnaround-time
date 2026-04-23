@@ -1557,6 +1557,90 @@ describe('fetchPhabSamples', () => {
     const totalResolved = new Set(userSearchBatches.flat());
     expect(totalResolved.size).toBe(memberPhids.length);
   });
+
+  it('emits a landing when conduit returns a status→published transaction with fields.new', async () => {
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
+              attachments: { members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] } },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-DREV-abcdefghijklmnopqrst',
+              fields: {
+                authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+                dateCreated: 1_760_900_000,
+                dateModified: 1_761_100_000,
+              },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            // Reviewer accepts first to produce a firstReviewAt.
+            {
+              id: 1,
+              phid: 'PHID-XACT-DREV-aaaaaaaaaaaaaaaaaaaa',
+              type: 'accept',
+              authorPHID: 'PHID-USER-revieweraaaaaaaaaaaaa',
+              dateCreated: 1_761_003_600,
+              fields: {},
+            },
+            // Author closes by landing — status transitions to 'published'.
+            {
+              id: 2,
+              phid: 'PHID-XACT-DREV-bbbbbbbbbbbbbbbbbbbb',
+              type: 'status',
+              authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
+              dateCreated: 1_761_100_000,
+              fields: { old: 'accepted', new: 'published' },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: 'PHID-USER-authoraaaaaaaaaaaaaa', fields: { username: 'author-user' } },
+            { phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    const client: ConduitClient = { call };
+
+    const { landings } = await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(landings).toHaveLength(1);
+    expect(landings[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-abcdefghijklmnopqrst',
+      revisionId: 1,
+      author: 'author-user',
+      landedAt: new Date(1_761_100_000 * 1000).toISOString(),
+      firstReviewAt: new Date(1_761_003_600 * 1000).toISOString(),
+      reviewRounds: 1,
+    });
+  });
 });
 
 const jsonResponse = (body: unknown): Response =>

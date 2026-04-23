@@ -567,8 +567,14 @@ const phabTransactionSchema = z.object({
   type: z.string(),
   authorPhid: z.string(),
   dateCreated: z.number(),
+  // old/new are populated on `type: 'status'` transactions only; without them
+  // in the cache, extractLandingFromTransactions can't detect status→published
+  // on cache-hit revisions (they'd need their dateModified to bump to trigger
+  // a refetch). Preserve them on round-trip.
   fields: z.object({
     operations: z.array(z.object({ operation: z.string(), phid: z.string() })).optional(),
+    old: z.string().optional(),
+    new: z.string().optional(),
   }),
 });
 
@@ -628,7 +634,11 @@ const loadPhabProgress = async (
         type: tx.type,
         authorPhid: tx.authorPhid,
         dateCreated: tx.dateCreated,
-        fields: tx.fields.operations === undefined ? {} : { operations: tx.fields.operations },
+        fields: {
+          ...(tx.fields.operations === undefined ? {} : { operations: tx.fields.operations }),
+          ...(tx.fields.old === undefined ? {} : { old: tx.fields.old }),
+          ...(tx.fields.new === undefined ? {} : { new: tx.fields.new }),
+        },
       })),
     );
   }

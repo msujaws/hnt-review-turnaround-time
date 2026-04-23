@@ -375,13 +375,21 @@ const fetchTransactions = async (
     const raw = await client.call('transaction.search', params);
     const parsed = transactionSearchSchema.parse(raw);
     for (const item of parsed.data) {
+      // Preserve operations (reviewer add/remove) and old/new (status
+      // transitions). The latter are required by extractLandingFromTransactions
+      // to detect status→published. Dropping them here was the reason zero
+      // phab landings showed up in the first 45-day backfill.
       transactions.push({
         id: item.id,
         phid: item.phid,
         type: item.type,
         authorPhid: item.authorPHID,
         dateCreated: item.dateCreated,
-        fields: item.fields.operations === undefined ? {} : { operations: item.fields.operations },
+        fields: {
+          ...(item.fields.operations === undefined ? {} : { operations: item.fields.operations }),
+          ...(item.fields.old === null ? {} : { old: item.fields.old }),
+          ...(item.fields.new === null ? {} : { new: item.fields.new }),
+        },
       });
     }
     after = parsed.cursor.after;
