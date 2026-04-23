@@ -81,6 +81,8 @@ export interface PullRequestData {
   readonly createdAt: string;
   // Null for open or closed-but-not-merged PRs. Drives landing extraction.
   readonly mergedAt: string | null;
+  // True for CLOSED or MERGED per GitHub's GraphQL semantics. Gates pending emission.
+  readonly closed: boolean;
   readonly timeline: readonly TimelineEvent[];
 }
 
@@ -215,17 +217,21 @@ export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedP
 
   // Pending = explicit per-reviewer requests still active at the end of the
   // timeline for reviewers who never produced a sample. Team-only requests are
-  // skipped: we can't attribute them to a named reviewer.
+  // skipped: we can't attribute them to a named reviewer. Closed/merged PRs
+  // skip this loop entirely — the request is no longer actionable, so keeping
+  // it in pending would strand the reviewer in the overdue list forever.
   const pending: GithubPendingSample[] = [];
-  for (const [reviewer, requestedAt] of explicitRequestAt) {
-    if (emitted.has(reviewer)) continue;
-    pending.push({
-      source: 'github',
-      id: asPrNumber(data.number),
-      author: asReviewerLogin(data.author.login),
-      reviewer: asReviewerLogin(reviewer),
-      requestedAt: asIsoTimestamp(requestedAt),
-    });
+  if (!data.closed) {
+    for (const [reviewer, requestedAt] of explicitRequestAt) {
+      if (emitted.has(reviewer)) continue;
+      pending.push({
+        source: 'github',
+        id: asPrNumber(data.number),
+        author: asReviewerLogin(data.author.login),
+        reviewer: asReviewerLogin(reviewer),
+        requestedAt: asIsoTimestamp(requestedAt),
+      });
+    }
   }
 
   return { samples, pending };
@@ -269,6 +275,7 @@ const PR_QUERY = `
           createdAt
           updatedAt
           mergedAt
+          closed
           author { login }
           timelineItems(
             first: 100
@@ -302,6 +309,7 @@ const OPEN_PR_QUERY = `
           createdAt
           updatedAt
           mergedAt
+          closed
           author { login }
           timelineItems(
             first: 100
@@ -376,6 +384,9 @@ const pullRequestNodeSchema = z.object({
   // Absent in legacy test fixtures that predate the landings feature; GitHub
   // itself always returns the field (string or null) when asked for it.
   mergedAt: z.string().nullable().optional(),
+  // Optional for forward-compat with pre-existing fixtures; live GitHub always
+  // returns it. Defaults to false in toPullRequestData.
+  closed: z.boolean().optional(),
   author: z.object({ login: z.string() }).nullable(),
   timelineItems: timelinePageSchema,
 });
@@ -442,6 +453,7 @@ const toPullRequestData = (node: z.infer<typeof pullRequestNodeSchema>): PullReq
     author: { login: node.author?.login ?? '' },
     createdAt: node.createdAt,
     mergedAt: node.mergedAt ?? null,
+    closed: node.closed ?? false,
     timeline,
   };
 };

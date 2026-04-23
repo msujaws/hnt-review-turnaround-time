@@ -14,6 +14,7 @@ const pr = (overrides: Partial<PullRequestData> = {}): PullRequestData => ({
   author: { login: 'author-user' },
   createdAt: '2026-04-19T12:00:00Z',
   mergedAt: null,
+  closed: false,
   timeline: [],
   ...overrides,
 });
@@ -502,6 +503,53 @@ describe('extractSamplesFromPullRequest', () => {
         reviewer: 'alice',
         requestedAt: '2026-04-19T14:00:00Z',
       });
+    });
+
+    it('does not emit pending for a closed PR with an outstanding request', () => {
+      // Closed-without-merge PRs still show outstanding review requests in the
+      // timeline, but the request is no longer actionable. Emitting pending
+      // stuck PR #292 in the overdue list for ~360 business hours after close.
+      const data = pr({
+        closed: true,
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('still emits a sample for a pre-close review on a closed PR', () => {
+      // A review that landed before the PR closed is legitimate completed data —
+      // only pending emission is gated on open-state.
+      const data = pr({
+        closed: true,
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            authorLogin: 'alice',
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data);
+      expect(samples).toHaveLength(1);
+      expect(samples[0]).toMatchObject({
+        reviewer: 'alice',
+        requestedAt: '2026-04-19T14:00:00Z',
+        firstActionAt: '2026-04-19T16:00:00Z',
+      });
+      expect(pending).toEqual([]);
     });
 
     it('does not emit pending when a request is followed by a removal', () => {
