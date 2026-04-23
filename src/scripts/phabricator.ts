@@ -110,8 +110,15 @@ const toIso = (unixSeconds: number): IsoTimestamp =>
 // the revision's createdAt (unix seconds) since the revision.search response
 // carries `dateCreated` at a different layer. Returns null when the revision
 // never lands — open, accepted-but-unlanded, abandoned, and draft all map to
-// null. If the revision re-opens and re-publishes, the earliest published
+// null. If the revision re-opens and re-closes, the earliest close
 // transaction wins (matches "when did this first land?").
+//
+// Phabricator surfaces landings via a dedicated 'close' transaction, not a
+// 'status' transition with fields.new === 'published'. An early iteration of
+// this extractor watched for the latter and found zero landings in a 45-day
+// backfill of 411 revisions — the fix is to match the type that Phab
+// actually emits. 'abandon' is similarly its own type (not handled here;
+// abandoned revisions simply never emit a close and return null).
 export const extractLandingFromTransactions = (
   revision: PhabRevision,
   transactions: readonly PhabTransaction[],
@@ -119,9 +126,7 @@ export const extractLandingFromTransactions = (
   createdAtUnixSeconds: number,
 ): PhabLanding | null => {
   const ordered = [...transactions].sort((a, b) => a.dateCreated - b.dateCreated);
-  const firstPublished = ordered.find(
-    (tx) => tx.type === 'status' && tx.fields.new === 'published',
-  );
+  const firstPublished = ordered.find((tx) => tx.type === 'close');
   if (firstPublished === undefined) return null;
 
   let firstReviewerAction: number | undefined;

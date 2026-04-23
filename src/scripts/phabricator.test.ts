@@ -558,20 +558,19 @@ describe('extractLandingFromTransactions', () => {
     ).toBeNull();
   });
 
-  it('returns null when the revision was abandoned, not published', () => {
+  it('returns null when the revision was abandoned, not landed', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
-        type: 'status',
+        type: 'abandon',
         authorPhid,
         dateCreated: 1_761_500_000,
-        fields: { old: 'needs-review', new: 'abandoned' },
       }),
     ];
     expect(extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000)).toBeNull();
   });
 
-  it('emits a landing when the status transitions to published', () => {
+  it('emits a landing when a close transaction fires (Phab signals land via close, not status→published)', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
@@ -588,10 +587,9 @@ describe('extractLandingFromTransactions', () => {
       }),
       mkTransaction({
         id: 3,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_100_000,
-        fields: { old: 'accepted', new: 'published' },
       }),
     ];
     const createdAt = 1_761_000_000;
@@ -631,10 +629,9 @@ describe('extractLandingFromTransactions', () => {
       }),
       mkTransaction({
         id: 4,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_040_000,
-        fields: { old: 'accepted', new: 'published' },
       }),
     ];
     const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
@@ -646,10 +643,9 @@ describe('extractLandingFromTransactions', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_100_000,
-        fields: { old: 'needs-review', new: 'published' },
       }),
     ];
     const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
@@ -674,38 +670,34 @@ describe('extractLandingFromTransactions', () => {
       }),
       mkTransaction({
         id: 3,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_060_000,
-        fields: { old: 'accepted', new: 'published' },
       }),
     ];
     const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
     expect(landing?.firstReviewAt).toBe(new Date(1_761_050_000 * 1000).toISOString());
   });
 
-  it('uses the earliest status→published transaction when a revision reopens and re-lands', () => {
+  it('uses the earliest close transaction when a revision reopens and re-lands', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
         id: 1,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_100_000,
-        fields: { old: 'accepted', new: 'published' },
       }),
       mkTransaction({
         id: 2,
-        type: 'status',
+        type: 'reopen',
         authorPhid,
         dateCreated: 1_761_200_000,
-        fields: { old: 'published', new: 'needs-review' },
       }),
       mkTransaction({
         id: 3,
-        type: 'status',
+        type: 'close',
         authorPhid,
         dateCreated: 1_761_300_000,
-        fields: { old: 'accepted', new: 'published' },
       }),
     ];
     const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
@@ -1721,14 +1713,14 @@ describe('fetchPhabSamples', () => {
               dateCreated: 1_761_003_600,
               fields: {},
             },
-            // Author closes by landing — status transitions to 'published'.
+            // Author lands via a close transaction (Phab's landed signal).
             {
               id: 2,
               phid: 'PHID-XACT-DREV-bbbbbbbbbbbbbbbbbbbb',
-              type: 'status',
+              type: 'close',
               authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa',
               dateCreated: 1_761_100_000,
-              fields: { old: 'accepted', new: 'published' },
+              fields: {},
             },
           ],
           cursor: { after: null },
