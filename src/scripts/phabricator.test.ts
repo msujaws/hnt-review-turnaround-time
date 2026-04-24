@@ -864,7 +864,10 @@ describe('fetchPhabSamples', () => {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
                 members: {
-                  members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
                 },
               },
             },
@@ -950,7 +953,10 @@ describe('fetchPhabSamples', () => {
       'differential.revision.search',
       expect.objectContaining({
         constraints: expect.objectContaining({
-          reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
+          reviewerPHIDs: expect.arrayContaining([
+            'PHID-USER-authoraaaaaaaaaaaaaa',
+            'PHID-USER-revieweraaaaaaaaaaaaa',
+          ]) as unknown,
           modifiedStart: expect.any(Number) as number,
         }) as unknown,
       }),
@@ -964,7 +970,10 @@ describe('fetchPhabSamples', () => {
       'differential.revision.search',
       expect.objectContaining({
         constraints: expect.objectContaining({
-          reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
+          reviewerPHIDs: expect.arrayContaining([
+            'PHID-USER-authoraaaaaaaaaaaaaa',
+            'PHID-USER-revieweraaaaaaaaaaaaa',
+          ]) as unknown,
           statuses: expect.arrayContaining([
             'needs-review',
             'changes-planned',
@@ -986,7 +995,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1066,7 +1080,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1233,7 +1252,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1276,7 +1300,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1321,7 +1350,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1391,7 +1425,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1465,7 +1504,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1526,7 +1570,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],
@@ -1597,7 +1646,10 @@ describe('fetchPhabSamples', () => {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
                 members: {
-                  members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
                 },
               },
             },
@@ -1682,6 +1734,7 @@ describe('fetchPhabSamples', () => {
               attachments: {
                 members: {
                   members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
                     { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
                     { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
                   ],
@@ -1837,7 +1890,14 @@ describe('fetchPhabSamples', () => {
           data: [
             {
               phid: 'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
-              attachments: { members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] } },
+              attachments: {
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
+              },
             },
           ],
         };
@@ -1970,7 +2030,12 @@ describe('fetchPhabSamples', () => {
             {
               phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
               attachments: {
-                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                  ],
+                },
               },
             },
           ],

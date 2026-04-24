@@ -125,11 +125,14 @@ export const extractLandingFromTransactions = (
   loginByPhid: ReadonlyMap<string, string>,
   createdAtUnixSeconds: number,
   // When `allowedAuthorPhids` is set, a revision whose author is not in the
-  // set returns null. Pre-declared so tests that reference the option
-  // typecheck while the wiring is staged; behavior lands in the next commit.
+  // set returns null — the landing is scoped to team-authored revisions
+  // only, matching the author + reviewer gate on sample extraction.
   options: { readonly allowedAuthorPhids?: ReadonlySet<string> } = {},
 ): PhabLanding | null => {
-  void options;
+  const { allowedAuthorPhids } = options;
+  if (allowedAuthorPhids !== undefined && !allowedAuthorPhids.has(revision.authorPhid)) {
+    return null;
+  }
   const ordered = [...transactions].sort((a, b) => a.dateCreated - b.dateCreated);
   const firstPublished = ordered.find((tx) => tx.type === 'close');
   if (firstPublished === undefined) return null;
@@ -161,15 +164,16 @@ export const extractSamplesFromTransactions = (
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
   // `allowedAuthorPhids`, when set, gates the whole revision: if the author
-  // is not in the set, no samples or pending entries are emitted. Pre-declared
-  // here so tests can reference the option while the behavior lands in the
-  // next commit.
+  // is not in the set, no samples or pending entries are emitted.
   options: {
     readonly allowedReviewerPhids?: ReadonlySet<string>;
     readonly allowedAuthorPhids?: ReadonlySet<string>;
   } = {},
 ): ExtractedTransactions => {
-  const { allowedReviewerPhids } = options;
+  const { allowedReviewerPhids, allowedAuthorPhids } = options;
+  if (allowedAuthorPhids !== undefined && !allowedAuthorPhids.has(revision.authorPhid)) {
+    return { samples: [], pending: [] };
+  }
   // Process transactions chronologically, tracking per-reviewer request windows.
   // A reviewer's "active request" starts on add/request and ends on remove. The
   // sample is the first action that falls inside any active window; a later
@@ -583,10 +587,19 @@ export const fetchPhabSamples = async (params: {
     revisionsByPhid.set(rev.phid, rev);
   }
   const revisions = [...revisionsByPhid.values()];
+  // The same PHID set gates both reviewers and authors: "on the team" is
+  // project-membership, and the user's intent is that both sides of the
+  // review must be team members. Aliasing makes the two call-sites read
+  // symmetrically instead of implying two different sets.
   const allowedReviewerPhids = new Set(memberPhids);
+  const allowedAuthorPhids = allowedReviewerPhids;
 
   const transactionsByRevision = new Map<string, readonly PhabTransaction[]>();
   const userPhids = new Set<string>();
+  // Resolve every team member's login, even ones who never authored or
+  // reviewed anything in this window — the returned teamLogins set is the
+  // caller's only way to purge legacy rows without a second Conduit round-trip.
+  for (const phid of memberPhids) userPhids.add(phid);
   const revisionsTotal = revisions.length;
   for (const [revisionIndex, rev] of revisions.entries()) {
     userPhids.add(rev.authorPhid);
@@ -628,6 +641,7 @@ export const fetchPhabSamples = async (params: {
     const txs = transactionsByRevision.get(rev.phid) ?? [];
     const extracted = extractSamplesFromTransactions(rev, txs, loginByPhid, {
       allowedReviewerPhids,
+      allowedAuthorPhids,
     });
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
@@ -635,13 +649,18 @@ export const fetchPhabSamples = async (params: {
     // return it (very old revisions have been observed missing this field in
     // the wild). The rest of the metrics still populate fine without them.
     if (rev.dateCreated !== undefined) {
-      const landing = extractLandingFromTransactions(rev, txs, loginByPhid, rev.dateCreated);
+      const landing = extractLandingFromTransactions(rev, txs, loginByPhid, rev.dateCreated, {
+        allowedAuthorPhids,
+      });
       if (landing !== null) landings.push(landing);
     }
   }
-  // teamLogins is populated in the next commit; emit an empty set here so
-  // the return shape lines up with the declared type.
-  const teamLogins: ReadonlySet<string> = new Set();
+
+  const teamLogins = new Set<string>();
+  for (const phid of memberPhids) {
+    const login = loginByPhid.get(phid);
+    if (login !== undefined) teamLogins.add(login);
+  }
   return {
     samples,
     pending,
