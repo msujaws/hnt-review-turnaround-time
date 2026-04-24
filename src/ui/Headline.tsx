@@ -331,8 +331,19 @@ interface WindowRowProps {
   readonly countLabel: string;
 }
 
-const statsTier = (value: number, stats: WindowStats, slaHours: number): SlaTier | undefined =>
-  stats.n === 0 ? undefined : tierForHours(value, slaHours);
+// Rounds display as integers (formatRounds rounds to nearest), so the tier
+// needs to agree with what the user sees. Otherwise a mean of 1.3 renders as
+// "1" but tiers as warn (1.3 > ROUNDS_SLA of 1).
+const statsTier = (
+  value: number,
+  stats: WindowStats,
+  slaHours: number,
+  unit: MetricUnit,
+): SlaTier | undefined => {
+  if (stats.n === 0) return undefined;
+  const effective = unit === 'rounds' ? Math.round(value) : value;
+  return tierForHours(effective, slaHours);
+};
 
 const pctTier = (stats: WindowStats): SlaTier | undefined =>
   stats.n === 0 ? undefined : tierForPctUnderSla(stats.pctUnderSLA);
@@ -347,19 +358,19 @@ const StatGrid: FC<{
     <StatCell
       label="Median"
       value={formatStatValue(stats.median, stats.n > 0, unit)}
-      tier={statsTier(stats.median, stats, slaHours)}
+      tier={statsTier(stats.median, stats, slaHours, unit)}
       animationDelayMs={0}
     />
     <StatCell
       label="Mean"
       value={formatStatValue(stats.mean, stats.n > 0, unit)}
-      tier={statsTier(stats.mean, stats, slaHours)}
+      tier={statsTier(stats.mean, stats, slaHours, unit)}
       animationDelayMs={70}
     />
     <StatCell
       label="p90"
       value={formatStatValue(stats.p90, stats.n > 0, unit)}
-      tier={statsTier(stats.p90, stats, slaHours)}
+      tier={statsTier(stats.p90, stats, slaHours, unit)}
       animationDelayMs={140}
     />
     <StatCell
