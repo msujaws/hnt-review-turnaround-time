@@ -495,10 +495,22 @@ describe('extractSamplesFromTransactions', () => {
   });
 
   describe('revision status gate on pending emission', () => {
-    for (const terminal of ['abandoned', 'published', 'draft', 'accepted'] as const) {
-      it(`emits no pending when revision.status is ${terminal}, even with an active reviewer request`, () => {
+    // Revision is either terminal (abandoned/published/draft/accepted) or the
+    // ball is in the author's court (changes-planned = author acknowledged,
+    // needs-revision = reviewer requested changes). In either case the
+    // reviewer is not blocking, so pending would strand them in the overdue
+    // list.
+    for (const nonBlocking of [
+      'abandoned',
+      'published',
+      'draft',
+      'accepted',
+      'changes-planned',
+      'needs-revision',
+    ] as const) {
+      it(`emits no pending when revision.status is ${nonBlocking} because the reviewer is not blocking`, () => {
         const { samples, pending } = extractSamplesFromTransactions(
-          { ...revision(), status: terminal },
+          { ...revision(), status: nonBlocking },
           requestedButNeverActed(),
           loginByPhid,
         );
@@ -527,6 +539,42 @@ describe('extractSamplesFromTransactions', () => {
         loginByPhid,
       );
       expect(pending).toHaveLength(1);
+    });
+
+    it('still completes a sample when the reviewer acted and the revision is now needs-revision', () => {
+      // Regression guard: narrowing the pending gate must not break completed
+      // sample emission. Sample emission runs before the pending gate, so a
+      // reviewer who commented on a revision now in needs-revision must still
+      // produce a completed sample with firstActionAt set.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+          },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'comment',
+          authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+          dateCreated: 1_761_003_600,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-revision' },
+        txs,
+        loginByPhid,
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]).toMatchObject({
+        source: 'phab',
+        reviewer: 'alice',
+        firstActionAt: new Date(1_761_003_600 * 1000).toISOString(),
+      });
+      expect(pending).toEqual([]);
     });
   });
 });
@@ -807,12 +855,20 @@ describe('fetchPhabSamples', () => {
       }),
     );
     // Open-state query runs too, constrained by status instead of modifiedStart.
+    // It must include all three open statuses — needs-review is the only one
+    // that still blocks the reviewer, but changes-planned and needs-revision
+    // must also be refetched so follow-up accept/request-changes/close
+    // transactions on paused revisions still land as completed samples.
     expect(call).toHaveBeenCalledWith(
       'differential.revision.search',
       expect.objectContaining({
         constraints: expect.objectContaining({
           reviewerPHIDs: ['PHID-USER-revieweraaaaaaaaaaaaa'],
-          statuses: expect.any(Array) as unknown,
+          statuses: expect.arrayContaining([
+            'needs-review',
+            'changes-planned',
+            'needs-revision',
+          ]) as unknown,
         }) as unknown,
       }),
     );
