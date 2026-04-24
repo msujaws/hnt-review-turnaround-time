@@ -34,11 +34,11 @@ describe('Dashboard', () => {
         peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
-    expect(screen.getByRole('tab', { name: /^phabricator$/i })).toHaveAttribute(
+    expect(screen.getByRole('tab', { name: /frontend team \(phabricator\)/i })).toHaveAttribute(
       'aria-selected',
       'true',
     );
-    expect(screen.getByRole('tab', { name: /^github$/i })).toHaveAttribute(
+    expect(screen.getByRole('tab', { name: /backend team \(github\)/i })).toHaveAttribute(
       'aria-selected',
       'false',
     );
@@ -59,7 +59,7 @@ describe('Dashboard', () => {
         peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
-    await user.click(screen.getByRole('tab', { name: /^github$/i }));
+    await user.click(screen.getByRole('tab', { name: /backend team \(github\)/i }));
     expect(screen.getByRole('heading', { name: /^github$/i })).toBeInTheDocument();
     expect(screen.getByTestId('trendline-github')).toBeInTheDocument();
     expect(screen.queryByTestId('trendline-phab')).toBeNull();
@@ -81,19 +81,19 @@ describe('Dashboard', () => {
     expect(screen.getByRole('heading', { name: /first-review to merge/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /review rounds/i })).toBeInTheDocument();
     // Switch to GitHub tab — same three panel headings.
-    await user.click(screen.getByRole('tab', { name: /^github$/i }));
+    await user.click(screen.getByRole('tab', { name: /backend team \(github\)/i }));
     expect(screen.getByRole('heading', { name: /creation to merge/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /first-review to merge/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /review rounds/i })).toBeInTheDocument();
   });
 
-  it('marks a source tab red when its review TAT has a bad-tier stat', () => {
+  it('marks a source tab red when its 7-day TAT median is over the SLA', () => {
     const rowWithBadPhab: HistoryRow = {
       ...row,
       phab: {
-        window7d: { n: 23, median: 2.4, mean: 3.1, p90: 7.8, pctUnderSLA: 87 },
-        // 14d median is 10h, 2.5× the 4h SLA ⇒ bad tier.
-        window14d: { n: 47, median: 10, mean: 10, p90: 15, pctUnderSLA: 30 },
+        // 7d median is 5h, over the 4h SLA ⇒ red.
+        window7d: { n: 23, median: 5, mean: 5.2, p90: 6, pctUnderSLA: 80 },
+        window14d: { n: 47, median: 2.6, mean: 3.4, p90: 8.1, pctUnderSLA: 85 },
         window30d: { n: 95, median: 2.7, mean: 3.6, p90: 8.3, pctUnderSLA: 83 },
       },
     };
@@ -106,11 +106,63 @@ describe('Dashboard', () => {
         peopleMap={EMPTY_PEOPLE_MAP}
       />,
     );
-    expect(screen.getByRole('tab', { name: /^phabricator$/i })).toHaveAttribute(
+    expect(screen.getByRole('tab', { name: /frontend team \(phabricator\)/i })).toHaveAttribute(
       'data-red-issue',
       'true',
     );
-    expect(screen.getByRole('tab', { name: /^github$/i })).toHaveAttribute(
+    expect(screen.getByRole('tab', { name: /backend team \(github\)/i })).toHaveAttribute(
+      'data-red-issue',
+      'false',
+    );
+  });
+
+  it('does not mark a tab red when only the 14-day window is bad', () => {
+    const rowWithBad14d: HistoryRow = {
+      ...row,
+      phab: {
+        // 7d median is fine (2.4h ≤ 4h SLA); only 14d is blown out.
+        window7d: { n: 23, median: 2.4, mean: 3.1, p90: 7.8, pctUnderSLA: 87 },
+        window14d: { n: 47, median: 10, mean: 10, p90: 15, pctUnderSLA: 30 },
+        window30d: { n: 95, median: 2.7, mean: 3.6, p90: 8.3, pctUnderSLA: 83 },
+      },
+    };
+    render(
+      <Dashboard
+        history={[rowWithBad14d]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    expect(screen.getByRole('tab', { name: /frontend team \(phabricator\)/i })).toHaveAttribute(
+      'data-red-issue',
+      'false',
+    );
+  });
+
+  it('does not mark a tab red when only the cycle-time metric has a bad stat', () => {
+    // Review TAT itself is fine in every window, but the landing metric
+    // (phabCycle) has a blown-out 7-day window. The narrowed rule is
+    // TAT-only, so the tab should stay neutral.
+    const rowWithBadCycle: HistoryRow = {
+      ...row,
+      phabCycle: {
+        window7d: { n: 5, median: 72, mean: 80, p90: 120, pctUnderSLA: 10 },
+        window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+        window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      },
+    };
+    render(
+      <Dashboard
+        history={[rowWithBadCycle]}
+        samples={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    expect(screen.getByRole('tab', { name: /frontend team \(phabricator\)/i })).toHaveAttribute(
       'data-red-issue',
       'false',
     );
@@ -141,6 +193,8 @@ describe('Dashboard', () => {
     const roundsHeading = screen.getByRole('heading', { name: /review rounds/i });
     expect(roundsHeading.closest('details')).not.toHaveAttribute('open');
 
+    // The Phab Headline's h2 still reads "Phabricator" — the team prefix is
+    // on the tab button, not the panel heading.
     const phabHeading = screen.getByRole('heading', { name: /^phabricator$/i });
     const phabDetails = phabHeading.closest('details');
     expect(phabDetails).not.toBeNull();
@@ -215,7 +269,7 @@ describe('Dashboard', () => {
       />,
     );
     // GitHub content isn't mounted until the tab is activated.
-    await user.click(screen.getByRole('tab', { name: /^github$/i }));
+    await user.click(screen.getByRole('tab', { name: /backend team \(github\)/i }));
     const ghSection = screen.getByRole('heading', { name: /^github$/i }).closest('details');
     expect(ghSection).not.toBeNull();
     const link = within(ghSection!).getByRole('link', { name: 'pocket/content-monorepo' });
