@@ -593,6 +593,165 @@ describe('collect', () => {
 
     expect(result.pending).toEqual([]);
   });
+
+  describe('team-membership purge on existing samples and landings', () => {
+    const peopleMap: PeopleMap = {
+      github: {
+        'team-member-a': asIanaTimezone('America/New_York'),
+        'team-member-b': asIanaTimezone('America/New_York'),
+      },
+      phab: {
+        alice: asIanaTimezone('America/New_York'),
+        bob: asIanaTimezone('America/New_York'),
+      },
+    };
+
+    it('drops legacy github samples whose author is not in peopleMap.github', async () => {
+      const existing: Sample[] = [
+        {
+          ...makeGhSample({
+            id: asPrNumber(1),
+            author: asReviewerLogin('external-contributor'),
+            reviewer: asReviewerLogin('team-member-a'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+        {
+          ...makeGhSample({
+            id: asPrNumber(2),
+            author: asReviewerLogin('team-member-a'),
+            reviewer: asReviewerLogin('team-member-b'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples.map((s) => s.id)).toEqual([2]);
+    });
+
+    it('drops legacy github samples whose reviewer is not in peopleMap.github', async () => {
+      const existing: Sample[] = [
+        {
+          ...makeGhSample({
+            id: asPrNumber(3),
+            author: asReviewerLogin('team-member-a'),
+            reviewer: asReviewerLogin('external-reviewer'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples).toEqual([]);
+    });
+
+    it('drops legacy samples with no author field (cannot verify team membership)', async () => {
+      const existing: Sample[] = [
+        {
+          ...makeGhSample({ id: asPrNumber(4), reviewer: asReviewerLogin('team-member-a') }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      expect(existing[0]?.author).toBeUndefined();
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples).toEqual([]);
+    });
+
+    it('drops legacy phab samples whose author is not in peopleMap.phab', async () => {
+      const existing: Sample[] = [
+        {
+          ...makePhabSample({
+            id: asRevisionPhid('PHID-DREV-offteamauthor11111xx'),
+            author: asReviewerLogin('outsider'),
+            reviewer: asReviewerLogin('alice'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+        {
+          ...makePhabSample({
+            id: asRevisionPhid('PHID-DREV-teamauthor22222xxxxx'),
+            author: asReviewerLogin('alice'),
+            reviewer: asReviewerLogin('bob'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples.map((s) => s.id)).toEqual(['PHID-DREV-teamauthor22222xxxxx']);
+    });
+
+    it('drops legacy landings whose author is not on the team', async () => {
+      const existingLandings: Landing[] = [
+        {
+          source: 'github',
+          id: asPrNumber(100),
+          author: asReviewerLogin('external-contributor'),
+          createdAt: asIsoTimestamp('2026-04-15T10:00:00Z'),
+          firstReviewAt: asIsoTimestamp('2026-04-15T12:00:00Z'),
+          landedAt: asIsoTimestamp('2026-04-16T10:00:00Z'),
+          reviewRounds: 1,
+          cycleBusinessHours: asBusinessHours(8),
+          postReviewBusinessHours: asBusinessHours(4),
+        },
+        {
+          source: 'github',
+          id: asPrNumber(101),
+          author: asReviewerLogin('team-member-a'),
+          createdAt: asIsoTimestamp('2026-04-15T10:00:00Z'),
+          firstReviewAt: asIsoTimestamp('2026-04-15T12:00:00Z'),
+          landedAt: asIsoTimestamp('2026-04-16T10:00:00Z'),
+          reviewRounds: 1,
+          cycleBusinessHours: asBusinessHours(8),
+          postReviewBusinessHours: asBusinessHours(4),
+        },
+      ];
+      const result = await collect({
+        existingSamples: [
+          {
+            ...makeGhSample({
+              author: asReviewerLogin('team-member-a'),
+              reviewer: asReviewerLogin('team-member-b'),
+            }),
+            tatBusinessHours: asBusinessHours(2),
+          },
+        ],
+        existingLandings,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.landings.map((l) => l.id)).toEqual([101]);
+    });
+  });
 });
 
 const tx = (phid: string): PhabTransaction => ({
