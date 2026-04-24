@@ -331,7 +331,7 @@ const userSearchSchema = z.object({
   cursor: z.object({ after: z.string().nullable() }).optional(),
 });
 
-const lookupProjectMembers = async (
+export const lookupProjectMembers = async (
   client: ConduitClient,
   slugs: readonly string[],
 ): Promise<{ projectPhids: string[]; memberPhids: string[] }> => {
@@ -476,7 +476,7 @@ export const paginatePhidSearch = async <T>(
   return out;
 };
 
-const resolveLogins = async (
+export const resolveLogins = async (
   client: ConduitClient,
   phids: readonly string[],
 ): Promise<Map<string, string>> => {
