@@ -2,9 +2,15 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
-import type { HistoryRow } from '../src/scripts/collect';
+import type { HistoryRow, Landing } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
-import { asIanaTimezone } from '../src/types/brand';
+import {
+  asBusinessHours,
+  asIanaTimezone,
+  asIsoTimestamp,
+  asReviewerLogin,
+  asRevisionPhid,
+} from '../src/types/brand';
 
 import { Dashboard } from './Dashboard';
 import { buildMetadataSummary } from './metadata';
@@ -29,6 +35,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -54,6 +61,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -71,6 +79,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -101,6 +110,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[rowWithBadPhab]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -130,6 +140,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[rowWithBad14d]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -157,6 +168,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[rowWithBadCycle]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -177,6 +189,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -201,11 +214,73 @@ describe('Dashboard', () => {
     expect(phabDetails).toHaveAttribute('open');
   });
 
+  it('expands each landing panel to list the underlying landings for the active source', () => {
+    // Populate phabCycle/phabPostReview/phabRounds so the panels aren't
+    // collapsed by default and pass landings that match those windows.
+    const rowWithPhabLandings: HistoryRow = {
+      ...row,
+      phabCycle: {
+        window7d: { n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 },
+        window14d: { n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 },
+        window30d: { n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 },
+      },
+      phabPostReview: {
+        window7d: { n: 1, median: 3, mean: 3, p90: 3, pctUnderSLA: 100 },
+        window14d: { n: 1, median: 3, mean: 3, p90: 3, pctUnderSLA: 100 },
+        window30d: { n: 1, median: 3, mean: 3, p90: 3, pctUnderSLA: 100 },
+      },
+      phabRounds: {
+        window7d: { n: 1, median: 1, mean: 1, p90: 1, pctUnderSLA: 100 },
+        window14d: { n: 1, median: 1, mean: 1, p90: 1, pctUnderSLA: 100 },
+        window30d: { n: 1, median: 1, mean: 1, p90: 1, pctUnderSLA: 100 },
+      },
+    };
+    const landings: Landing[] = [
+      {
+        source: 'phab',
+        id: asRevisionPhid('PHID-DREV-abcdefghijklmnopqrst'),
+        revisionId: 295_966,
+        author: asReviewerLogin('maxx'),
+        createdAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+        firstReviewAt: asIsoTimestamp('2026-04-19T17:00:00Z'),
+        landedAt: asIsoTimestamp('2026-04-20T14:00:00Z'),
+        reviewRounds: 1,
+        cycleBusinessHours: asBusinessHours(6),
+        postReviewBusinessHours: asBusinessHours(3),
+      },
+    ];
+    render(
+      <Dashboard
+        history={[rowWithPhabLandings]}
+        samples={[]}
+        landings={landings}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const cycleHeading = screen.getByRole('heading', { name: /creation to merge/i });
+    const cycleDetails = cycleHeading.closest('details');
+    expect(cycleDetails).not.toBeNull();
+    // The cycle panel's 7-day expander lists a link to the Phab revision.
+    const cycleWindow = within(cycleDetails!).getByTestId('window-7d-details');
+    expect(within(cycleWindow).getByRole('link', { name: /D295966/ })).toBeInTheDocument();
+
+    const roundsHeading = screen.getByRole('heading', { name: /review rounds/i });
+    const roundsDetails = roundsHeading.closest('details');
+    expect(roundsDetails).not.toBeNull();
+    const roundsWindow = within(roundsDetails!).getByTestId('window-7d-details');
+    // Rounds table renders a "Landed" column header (no "Created" / "TAT" col).
+    expect(within(roundsWindow).getByRole('columnheader', { name: 'Landed' })).toBeInTheDocument();
+    expect(within(roundsWindow).getByRole('columnheader', { name: 'Rounds' })).toBeInTheDocument();
+  });
+
   it('shows a no-data state when history is empty', () => {
     render(
       <Dashboard
         history={[]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}
@@ -227,6 +302,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={peopleMap}
@@ -243,6 +319,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={{ github: {}, phab: { maxx: asIanaTimezone('America/Chicago') } }}
@@ -263,6 +340,7 @@ describe('Dashboard', () => {
       <Dashboard
         history={[row]}
         samples={[]}
+        landings={[]}
         slaHours={4}
         now={new Date('2026-04-21T12:00:00Z')}
         peopleMap={EMPTY_PEOPLE_MAP}

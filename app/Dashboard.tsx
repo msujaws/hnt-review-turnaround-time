@@ -9,9 +9,9 @@ import {
   POST_REVIEW_SLA_HOURS,
   ROUNDS_SLA,
 } from '../src/config';
-import type { HistoryRow, Sample, SourceWindows } from '../src/scripts/collect';
+import type { HistoryRow, Landing, Sample, SourceWindows } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
-import { Headline } from '../src/ui/Headline';
+import { Headline, type HeadlineItems } from '../src/ui/Headline';
 import { window7dMedianOverSla } from '../src/ui/redIssue';
 import { Tabs, type TabItem } from '../src/ui/Tabs';
 import { Trendline, type ChartSource } from '../src/ui/Trendline';
@@ -25,12 +25,20 @@ const formatReviewerList = (logins: readonly string[]): string =>
 export interface DashboardProps {
   readonly history: readonly HistoryRow[];
   readonly samples: readonly Sample[];
+  readonly landings: readonly Landing[];
   readonly slaHours: number;
   readonly now: Date;
   readonly peopleMap: PeopleMap;
 }
 
-export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now, peopleMap }) => {
+export const Dashboard: FC<DashboardProps> = ({
+  history,
+  samples,
+  landings,
+  slaHours,
+  now,
+  peopleMap,
+}) => {
   const latest = history.at(-1);
   if (latest === undefined) {
     return (
@@ -44,6 +52,12 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
   );
   const githubSamples = samples.filter(
     (s): s is Extract<Sample, { source: 'github' }> => s.source === 'github',
+  );
+  const phabLandings = landings.filter(
+    (l): l is Extract<Landing, { source: 'phab' }> => l.source === 'phab',
+  );
+  const githubLandings = landings.filter(
+    (l): l is Extract<Landing, { source: 'github' }> => l.source === 'github',
   );
   const phabReviewers = Object.keys(peopleMap.phab);
   const phabProjectLink = (
@@ -103,31 +117,38 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
     readonly trendSource: ChartSource;
     readonly valueAxisLabel?: string;
     readonly slaLineLabel?: string;
-  }): ReactElement => (
-    <Headline
-      title={config.title}
-      window7d={config.windows.window7d}
-      window14d={config.windows.window14d}
-      window30d={config.windows.window30d}
-      slaHours={config.sla}
-      samples={[]}
-      now={now}
-      {...(config.unit === undefined ? {} : { unit: config.unit })}
-      {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
-      countLabel="land"
-      collapsible
-      defaultOpen={hasAnyData(config.windows)}
-    >
-      <Trendline
-        title={config.trendTitle}
-        history={history}
-        source={config.trendSource}
+    readonly itemKind: 'cycle' | 'postReview' | 'rounds';
+    readonly landings: readonly Landing[];
+  }): ReactElement => {
+    const items: HeadlineItems = { kind: config.itemKind, items: config.landings };
+    return (
+      <Headline
+        title={config.title}
+        window7d={config.windows.window7d}
+        window14d={config.windows.window14d}
+        window30d={config.windows.window30d}
         slaHours={config.sla}
-        {...(config.valueAxisLabel === undefined ? {} : { valueAxisLabel: config.valueAxisLabel })}
-        {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
-      />
-    </Headline>
-  );
+        items={items}
+        now={now}
+        {...(config.unit === undefined ? {} : { unit: config.unit })}
+        {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
+        countLabel="land"
+        collapsible
+        defaultOpen={hasAnyData(config.windows)}
+      >
+        <Trendline
+          title={config.trendTitle}
+          history={history}
+          source={config.trendSource}
+          slaHours={config.sla}
+          {...(config.valueAxisLabel === undefined
+            ? {}
+            : { valueAxisLabel: config.valueAxisLabel })}
+          {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
+        />
+      </Headline>
+    );
+  };
 
   const phabContent = (
     <div className="flex flex-col gap-6">
@@ -151,6 +172,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         sla: CYCLE_SLA_HOURS,
         trendTitle: 'Cycle-time trend (Phab)',
         trendSource: 'phabCycle',
+        itemKind: 'cycle',
+        landings: phabLandings,
       })}
       {landingPanel({
         title: 'Phabricator · First-review to merge',
@@ -158,6 +181,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         sla: POST_REVIEW_SLA_HOURS,
         trendTitle: 'Post-review trend (Phab)',
         trendSource: 'phabPostReview',
+        itemKind: 'postReview',
+        landings: phabLandings,
       })}
       {landingPanel({
         title: 'Phabricator · Review rounds',
@@ -169,6 +194,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         trendSource: 'phabRounds',
         valueAxisLabel: 'rounds',
         slaLineLabel: 'one-shot',
+        itemKind: 'rounds',
+        landings: phabLandings,
       })}
     </div>
   );
@@ -195,6 +222,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         sla: CYCLE_SLA_HOURS,
         trendTitle: 'Cycle-time trend (GH)',
         trendSource: 'githubCycle',
+        itemKind: 'cycle',
+        landings: githubLandings,
       })}
       {landingPanel({
         title: 'GitHub · First-review to merge',
@@ -202,6 +231,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         sla: POST_REVIEW_SLA_HOURS,
         trendTitle: 'Post-review trend (GH)',
         trendSource: 'githubPostReview',
+        itemKind: 'postReview',
+        landings: githubLandings,
       })}
       {landingPanel({
         title: 'GitHub · Review rounds',
@@ -213,6 +244,8 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
         trendSource: 'githubRounds',
         valueAxisLabel: 'rounds',
         slaLineLabel: 'one-shot',
+        itemKind: 'rounds',
+        landings: githubLandings,
       })}
     </div>
   );

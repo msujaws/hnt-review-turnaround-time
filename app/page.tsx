@@ -13,15 +13,17 @@ import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
 import { loadBacklog } from './backlog';
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
+import { loadLandings } from './landings';
 import { loadPending } from './pending';
 import { loadSamples } from './samples';
 
 export const revalidate = 3600;
 
 const Page: FC = async () => {
-  const [history, samples, pending, backlog, peopleMap] = await Promise.all([
+  const [history, samples, landings, pending, backlog, peopleMap] = await Promise.all([
     loadHistory(),
     loadSamples(),
+    loadLandings(),
     loadPending(),
     loadBacklog(),
     loadPeopleMap(path.join(process.cwd(), 'data')),
@@ -76,6 +78,7 @@ const Page: FC = async () => {
       <Dashboard
         history={history}
         samples={samples}
+        landings={landings}
         slaHours={SLA_HOURS}
         now={dashboardNow}
         peopleMap={peopleMap}
