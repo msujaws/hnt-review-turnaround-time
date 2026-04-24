@@ -86,6 +86,12 @@ Key constants in `src/scripts/collect.ts`:
 - `WINDOW_7_DAYS = 7`, `WINDOW_14_DAYS = 14`
 - `ET_ZONE = 'America/New_York'`
 
+First-run backfill uses Mozilla bugbug's public `revisions.json.zst` dump
+(`src/scripts/bugbug.ts`) instead of hammering Conduit's rate-limited
+`transaction.search`. Daily follow-up runs (3-day window) use Conduit
+directly. `BUGBUG_BACKFILL=0` forces the Conduit path even on backfill; any
+bugbug-side failure auto-falls-through. Requires `zstd` on `PATH`.
+
 ## Scars worth remembering (do not repeat)
 
 1. **GitHub Actions silently strips env vars with the `GITHUB_` prefix.** The

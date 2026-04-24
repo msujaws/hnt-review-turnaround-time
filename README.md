@@ -42,15 +42,38 @@ is needed for the collector script.
 
 Used by the collector (only needed when running the fetch script):
 
-| Variable             | Purpose                                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------------------- |
-| `PHABRICATOR_TOKEN`  | Conduit API token from Phabricator → Settings → Conduit API Tokens                             |
-| `GH_PAT`             | GitHub personal access token with `repo` + `read:org` scopes                                   |
-| `PHAB_PROJECT_SLUGS` | Optional, comma-separated list of Phabricator project slugs (default: `home-newtab-reviewers`) |
+| Variable             | Purpose                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| `PHABRICATOR_TOKEN`  | Conduit API token from Phabricator → Settings → Conduit API Tokens                                     |
+| `GH_PAT`             | GitHub personal access token with `repo` + `read:org` scopes                                           |
+| `PHAB_PROJECT_SLUGS` | Optional, comma-separated list of Phabricator project slugs (default: `home-newtab-reviewers`)         |
+| `BUGBUG_BACKFILL`    | Optional. Set to `0` to skip the bugbug backfill path and force Conduit even on first-run (see below). |
 
 Stored as GitHub Actions secrets (`PHABRICATOR_TOKEN`, `GH_PAT`) for the daily
 workflow. If the team uses multiple Phabricator tags, configure
 `PHAB_PROJECT_SLUGS="slug-a,slug-b"`.
+
+### First-run backfill data source
+
+The collector widens to a 45-day window on the very first run (empty
+`samples.json` or `landings.json`). That window hits Phabricator's
+`transaction.search` rate limit hard — each 30-minute cooldown pause makes
+a fresh backfill take hours. To avoid it, the backfill path downloads
+Mozilla `bugbug`'s public [`revisions.json.zst`][bugbug-dump] artifact
+(combined `differential.revision.search` + `transaction.search`, no auth,
+no rate limit) and filters it down to the configured team.
+
+- Requires `zstd` on `PATH` (installed by default on macOS and
+  `ubuntu-latest` GitHub runners).
+- Daily follow-up runs (3-day window) always use Conduit directly.
+- `bugbug`'s dump refreshes on the 1st and 16th of each month, so the
+  tail end may be up to ~16 days stale; the next daily follow-up fills
+  the gap.
+- On any failure (404, network error, decompression failure) the
+  collector falls back to the Conduit backfill path automatically.
+- Set `BUGBUG_BACKFILL=0` to bypass it entirely.
+
+[bugbug-dump]: https://github.com/mozilla/bugbug/blob/master/docs/data.md#phabricator-revisions
 
 ## Common commands
 
