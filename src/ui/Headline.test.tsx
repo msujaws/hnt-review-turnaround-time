@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
-import type { Sample } from '../scripts/collect';
+import type { Landing, Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 import {
   asBusinessHours,
@@ -13,6 +13,59 @@ import {
 } from '../types/brand';
 
 import { Headline } from './Headline';
+
+const makeCycleLanding = (
+  id: number,
+  author: string,
+  createdAt: string,
+  landedAt: string,
+  cycleHours: number,
+): Landing => ({
+  source: 'github',
+  id: asPrNumber(id),
+  author: asReviewerLogin(author),
+  createdAt: asIsoTimestamp(createdAt),
+  firstReviewAt: asIsoTimestamp(createdAt),
+  landedAt: asIsoTimestamp(landedAt),
+  reviewRounds: 1,
+  cycleBusinessHours: asBusinessHours(cycleHours),
+  postReviewBusinessHours: asBusinessHours(0),
+});
+
+const makePostReviewLanding = (
+  id: number,
+  author: string,
+  firstReviewAt: string | null,
+  landedAt: string,
+  postReviewHours: number | null,
+): Landing => ({
+  source: 'github',
+  id: asPrNumber(id),
+  author: asReviewerLogin(author),
+  createdAt: asIsoTimestamp('2026-04-10T10:00:00Z'),
+  firstReviewAt: firstReviewAt === null ? null : asIsoTimestamp(firstReviewAt),
+  landedAt: asIsoTimestamp(landedAt),
+  reviewRounds: 1,
+  cycleBusinessHours: asBusinessHours(4),
+  postReviewBusinessHours: postReviewHours === null ? null : asBusinessHours(postReviewHours),
+});
+
+const makeRoundsLanding = (
+  id: number,
+  author: string,
+  landedAt: string,
+  rounds: number,
+): Landing => ({
+  source: 'github',
+  id: asPrNumber(id),
+  author: asReviewerLogin(author),
+  createdAt: asIsoTimestamp('2026-04-10T10:00:00Z'),
+  firstReviewAt: asIsoTimestamp('2026-04-11T10:00:00Z'),
+  landedAt: asIsoTimestamp(landedAt),
+  reviewRounds: rounds,
+  cycleBusinessHours: asBusinessHours(4),
+  postReviewBusinessHours: asBusinessHours(2),
+});
 
 const window7d: WindowStats = { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 };
 const window14d: WindowStats = {
@@ -595,5 +648,181 @@ describe('Headline', () => {
     expect(goodTat.className).toMatch(/emerald/);
     expect(warnTat.className).toMatch(/amber/);
     expect(badTat.className).toMatch(/rose/);
+  });
+
+  describe('items={ kind: cycle, ... }', () => {
+    it('renders Review, Author, Created, Landed, Cycle columns for cycle rows', () => {
+      const landings: Landing[] = [
+        makeCycleLanding(900, 'connie', '2026-04-17T18:00:00Z', '2026-04-20T18:00:00Z', 16),
+      ];
+      render(
+        <Headline
+          title="Cycle"
+          window7d={{ n: 1, median: 16, mean: 16, p90: 16, pctUnderSLA: 100 }}
+          window14d={{ n: 1, median: 16, mean: 16, p90: 16, pctUnderSLA: 100 }}
+          window30d={{ n: 1, median: 16, mean: 16, p90: 16, pctUnderSLA: 100 }}
+          slaHours={24}
+          items={{ kind: 'cycle', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      for (const header of ['Review', 'Author', 'Created', 'Landed', 'Cycle']) {
+        expect(within(row7).getByRole('columnheader', { name: header })).toBeInTheDocument();
+      }
+      const dataRow = within(row7).getByRole('link', { name: /#900/ }).closest('tr');
+      expect(dataRow).not.toBeNull();
+      expect(within(dataRow!).getByText('connie')).toBeInTheDocument();
+      expect(within(dataRow!).getByText('16.0h')).toBeInTheDocument();
+    });
+
+    it('filters cycle rows by landedAt window, not createdAt', () => {
+      // 7-day window anchored on 2026-04-21 ends at midnight ET on 2026-04-15.
+      // createdAt way before; landedAt inside — should appear in 7d.
+      const landings: Landing[] = [
+        makeCycleLanding(901, 'connie', '2026-03-01T18:00:00Z', '2026-04-18T18:00:00Z', 5),
+      ];
+      render(
+        <Headline
+          title="Cycle"
+          window7d={{ n: 1, median: 5, mean: 5, p90: 5, pctUnderSLA: 100 }}
+          window14d={{ n: 1, median: 5, mean: 5, p90: 5, pctUnderSLA: 100 }}
+          window30d={{ n: 1, median: 5, mean: 5, p90: 5, pctUnderSLA: 100 }}
+          slaHours={24}
+          items={{ kind: 'cycle', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      expect(
+        within(screen.getByTestId('window-7d-details')).getByRole('link', { name: /#901/ }),
+      ).toBeInTheDocument();
+    });
+
+    it('sorts cycle rows newest-first by landedAt', () => {
+      const landings: Landing[] = [
+        makeCycleLanding(910, 'a', '2026-04-14T10:00:00Z', '2026-04-17T10:00:00Z', 4),
+        makeCycleLanding(911, 'b', '2026-04-14T10:00:00Z', '2026-04-19T10:00:00Z', 4),
+        makeCycleLanding(912, 'c', '2026-04-14T10:00:00Z', '2026-04-18T10:00:00Z', 4),
+      ];
+      render(
+        <Headline
+          title="Cycle"
+          window7d={{ n: 3, median: 4, mean: 4, p90: 4, pctUnderSLA: 100 }}
+          window14d={{ n: 3, median: 4, mean: 4, p90: 4, pctUnderSLA: 100 }}
+          window30d={{ n: 3, median: 4, mean: 4, p90: 4, pctUnderSLA: 100 }}
+          slaHours={24}
+          items={{ kind: 'cycle', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      const orderedLinks = within(row7).getAllByRole('link');
+      expect(orderedLinks.map((a) => a.textContent)).toEqual(['#911', '#912', '#910']);
+    });
+  });
+
+  describe('items={ kind: postReview, ... }', () => {
+    it('renders Review, Author, First review, Landed, Post-review columns', () => {
+      const landings: Landing[] = [
+        makePostReviewLanding(950, 'connie', '2026-04-18T16:00:00Z', '2026-04-19T16:00:00Z', 6),
+      ];
+      render(
+        <Headline
+          title="Post-review"
+          window7d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          window14d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          window30d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          slaHours={8}
+          items={{ kind: 'postReview', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      for (const header of ['Review', 'Author', 'First review', 'Landed', 'Post-review']) {
+        expect(within(row7).getByRole('columnheader', { name: header })).toBeInTheDocument();
+      }
+      const dataRow = within(row7).getByRole('link', { name: /#950/ }).closest('tr');
+      expect(dataRow).not.toBeNull();
+      expect(within(dataRow!).getByText('6.0h')).toBeInTheDocument();
+    });
+
+    it('drops landings whose firstReviewAt is null (merged without review)', () => {
+      const landings: Landing[] = [
+        // With a review — counts and renders.
+        makePostReviewLanding(960, 'a', '2026-04-18T16:00:00Z', '2026-04-19T16:00:00Z', 6),
+        // Silent-land — no review, must not appear.
+        makePostReviewLanding(961, 'b', null, '2026-04-19T16:00:00Z', null),
+      ];
+      render(
+        <Headline
+          title="Post-review"
+          window7d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          window14d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          window30d={{ n: 1, median: 6, mean: 6, p90: 6, pctUnderSLA: 100 }}
+          slaHours={8}
+          items={{ kind: 'postReview', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      expect(within(row7).getByRole('link', { name: /#960/ })).toBeInTheDocument();
+      expect(within(row7).queryByRole('link', { name: /#961/ })).not.toBeInTheDocument();
+    });
+  });
+
+  describe('items={ kind: rounds, ... }', () => {
+    it('renders Review, Author, Landed, Rounds columns with integer values', () => {
+      const landings: Landing[] = [makeRoundsLanding(970, 'connie', '2026-04-19T16:00:00Z', 2)];
+      render(
+        <Headline
+          title="Rounds"
+          window7d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 0 }}
+          window14d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 0 }}
+          window30d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 0 }}
+          slaHours={1}
+          unit="rounds"
+          slaLabel="One-shot"
+          items={{ kind: 'rounds', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      for (const header of ['Review', 'Author', 'Landed', 'Rounds']) {
+        expect(within(row7).getByRole('columnheader', { name: header })).toBeInTheDocument();
+      }
+      // The table cell with "2" must exist and must not be rendered as "2.0h".
+      const roundsRow = within(row7).getByRole('link', { name: /#970/ }).closest('tr');
+      expect(roundsRow).not.toBeNull();
+      expect(within(roundsRow!).getByText('2')).toBeInTheDocument();
+      expect(within(roundsRow!).queryByText(/2\.0h/)).toBeNull();
+    });
+
+    it('tints rounds cells by tier (1=good, 2=warn, 3+=bad)', () => {
+      const landings: Landing[] = [
+        makeRoundsLanding(980, 'a', '2026-04-17T16:00:00Z', 1),
+        makeRoundsLanding(981, 'b', '2026-04-18T16:00:00Z', 2),
+        makeRoundsLanding(982, 'c', '2026-04-19T16:00:00Z', 4),
+      ];
+      render(
+        <Headline
+          title="Rounds"
+          window7d={{ n: 3, median: 2, mean: 2.3, p90: 4, pctUnderSLA: 33 }}
+          window14d={{ n: 3, median: 2, mean: 2.3, p90: 4, pctUnderSLA: 33 }}
+          window30d={{ n: 3, median: 2, mean: 2.3, p90: 4, pctUnderSLA: 33 }}
+          slaHours={1}
+          unit="rounds"
+          slaLabel="One-shot"
+          items={{ kind: 'rounds', items: landings }}
+          now={new Date('2026-04-21T12:00:00Z')}
+        />,
+      );
+      const row7 = screen.getByTestId('window-7d-details');
+      const oneShot = within(row7).getByRole('link', { name: /#980/ }).closest('tr')!;
+      const twoRounds = within(row7).getByRole('link', { name: /#981/ }).closest('tr')!;
+      const fourRounds = within(row7).getByRole('link', { name: /#982/ }).closest('tr')!;
+      expect(within(oneShot).getByText('1').className).toMatch(/emerald/);
+      expect(within(twoRounds).getByText('2').className).toMatch(/amber/);
+      expect(within(fourRounds).getByText('4').className).toMatch(/rose/);
+    });
   });
 });

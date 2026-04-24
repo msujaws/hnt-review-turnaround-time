@@ -1,7 +1,7 @@
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { CSSProperties, FC, ReactElement, ReactNode } from 'react';
 
 import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
-import { isSampleInWindow, type Sample } from '../scripts/collect';
+import { isLandingInWindow, isSampleInWindow, type Landing, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
 import { asMaterialSymbolName, Icon } from './Icon';
@@ -72,34 +72,37 @@ const windowDaysFor = (label: '7-day' | '14-day' | '30-day'): number => {
   return 30;
 };
 
-const filterSamplesForWindow = (samples: readonly Sample[], days: number, now: Date): Sample[] =>
-  samples
-    .filter((s) => isSampleInWindow(s, days, now))
-    .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
-
-interface SampleRowProps {
-  readonly sample: Sample;
+// Identifier used for both Sample and Landing rows — both carry a source
+// discriminator, an id, and an optional Phab revisionId, which is all this
+// component needs to build the outbound link.
+interface ItemIdentifierInput {
+  readonly source: 'phab' | 'github';
+  readonly id: string | number;
+  readonly revisionId?: number | undefined;
 }
 
-const SampleIdentifier: FC<SampleRowProps> = ({ sample }) => {
-  if (sample.source === 'github') {
+const LINK_CLASSES =
+  'font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300';
+
+const ItemIdentifier: FC<{ readonly item: ItemIdentifierInput }> = ({ item }) => {
+  if (item.source === 'github') {
     return (
       <a
-        href={`https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/pull/${String(sample.id)}`}
-        className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
+        href={`https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/pull/${String(item.id)}`}
+        className={LINK_CLASSES}
         rel="noopener noreferrer"
         target="_blank"
       >
-        #{String(sample.id)}
+        #{String(item.id)}
       </a>
     );
   }
-  if (sample.revisionId !== undefined) {
-    const label = `D${sample.revisionId.toString()}`;
+  if (item.revisionId !== undefined) {
+    const label = `D${item.revisionId.toString()}`;
     return (
       <a
         href={`${PHAB_ORIGIN}/${label}`}
-        className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
+        className={LINK_CLASSES}
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -107,62 +110,221 @@ const SampleIdentifier: FC<SampleRowProps> = ({ sample }) => {
       </a>
     );
   }
-  return <span className="font-mono text-neutral-300">{String(sample.id)}</span>;
+  return <span className="font-mono text-neutral-300">{String(item.id)}</span>;
 };
 
-interface SampleListProps {
-  readonly samples: readonly Sample[];
-  readonly slaHours: number;
+// Discriminated set of row kinds. The row renderer, in-window predicate, and
+// sort key are chosen per kind inside WindowRow — callers pass the kind +
+// items and get the right table back.
+export type HeadlineItems =
+  | { readonly kind: 'tat'; readonly items: readonly Sample[] }
+  | { readonly kind: 'cycle'; readonly items: readonly Landing[] }
+  | { readonly kind: 'postReview'; readonly items: readonly Landing[] }
+  | { readonly kind: 'rounds'; readonly items: readonly Landing[] };
+
+interface TableShellProps {
+  readonly headers: readonly string[];
+  readonly children: ReactNode;
 }
 
-const SampleList: FC<SampleListProps> = ({ samples, slaHours }) => (
+const TableShell: FC<TableShellProps> = ({ headers, children }) => (
   <div className="mt-2 overflow-x-auto rounded-md border border-neutral-800 bg-neutral-950">
     <table className="w-full text-left text-xs text-neutral-300">
       <thead className="bg-neutral-900 text-neutral-400">
         <tr>
-          <th className="px-3 py-2 font-medium">Review</th>
-          <th className="px-3 py-2 font-medium">Author</th>
-          <th className="px-3 py-2 font-medium">Reviewer</th>
-          <th className="px-3 py-2 font-medium">Requested</th>
-          <th className="px-3 py-2 font-medium">First action</th>
-          <th className="px-3 py-2 text-right font-medium">TAT</th>
+          {headers.map((header, index) => (
+            <th
+              key={header}
+              className={
+                index === headers.length - 1
+                  ? 'px-3 py-2 text-right font-medium'
+                  : 'px-3 py-2 font-medium'
+              }
+            >
+              {header}
+            </th>
+          ))}
         </tr>
       </thead>
-      <tbody>
-        {samples.map((sample) => {
-          const tier = tierForHours(sample.tatBusinessHours, slaHours);
-          return (
-            <tr
-              key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
-              className="border-t border-neutral-800"
-            >
-              <td className="px-3 py-2">
-                <SampleIdentifier sample={sample} />
-              </td>
-              <td className="px-3 py-2 text-neutral-200">
-                {sample.author ?? <span className="text-neutral-500">—</span>}
-              </td>
-              <td className="px-3 py-2 text-neutral-200">{sample.reviewer}</td>
-              <td className="px-3 py-2 text-neutral-400">{formatTimestamp(sample.requestedAt)}</td>
-              <td className="px-3 py-2 text-neutral-400">
-                {formatTimestamp(sample.firstActionAt)}
-              </td>
-              <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
-                {formatHours(sample.tatBusinessHours)}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
+      <tbody>{children}</tbody>
     </table>
   </div>
 );
+
+const AuthorCell: FC<{ readonly author: string | undefined }> = ({ author }) => (
+  <td className="px-3 py-2 text-neutral-200">
+    {author ?? <span className="text-neutral-500">—</span>}
+  </td>
+);
+
+const TatRow: FC<{ readonly item: Sample; readonly slaHours: number }> = ({ item, slaHours }) => {
+  const tier = tierForHours(item.tatBusinessHours, slaHours);
+  return (
+    <tr className="border-t border-neutral-800">
+      <td className="px-3 py-2">
+        <ItemIdentifier item={item} />
+      </td>
+      <AuthorCell author={item.author} />
+      <td className="px-3 py-2 text-neutral-200">{item.reviewer}</td>
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.requestedAt)}</td>
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.firstActionAt)}</td>
+      <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
+        {formatHours(item.tatBusinessHours)}
+      </td>
+    </tr>
+  );
+};
+
+const CycleRow: FC<{ readonly item: Landing; readonly slaHours: number }> = ({
+  item,
+  slaHours,
+}) => {
+  const tier = tierForHours(item.cycleBusinessHours, slaHours);
+  return (
+    <tr className="border-t border-neutral-800">
+      <td className="px-3 py-2">
+        <ItemIdentifier item={item} />
+      </td>
+      <AuthorCell author={item.author} />
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.createdAt)}</td>
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.landedAt)}</td>
+      <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
+        {formatHours(item.cycleBusinessHours)}
+      </td>
+    </tr>
+  );
+};
+
+// Only rendered after the null-firstReviewAt filter — both firstReviewAt and
+// postReviewBusinessHours are guaranteed non-null here by the Landing schema's
+// coupling refinement.
+type PostReviewRowItem = Landing & {
+  readonly firstReviewAt: string;
+  readonly postReviewBusinessHours: number;
+};
+
+const PostReviewRow: FC<{
+  readonly item: PostReviewRowItem;
+  readonly slaHours: number;
+}> = ({ item, slaHours }) => {
+  const tier = tierForHours(item.postReviewBusinessHours, slaHours);
+  return (
+    <tr className="border-t border-neutral-800">
+      <td className="px-3 py-2">
+        <ItemIdentifier item={item} />
+      </td>
+      <AuthorCell author={item.author} />
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.firstReviewAt)}</td>
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.landedAt)}</td>
+      <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
+        {formatHours(item.postReviewBusinessHours)}
+      </td>
+    </tr>
+  );
+};
+
+// Rounds reuse tierForHours because the tier shape is identical: value ≤ SLA
+// = good, ≤ 2× SLA = warn, over = bad. With ROUNDS_SLA=1 that maps to
+// 1 round=good, 2=warn, 3+=bad.
+const RoundsRow: FC<{ readonly item: Landing; readonly roundsSla: number }> = ({
+  item,
+  roundsSla,
+}) => {
+  const tier = tierForHours(item.reviewRounds, roundsSla);
+  return (
+    <tr className="border-t border-neutral-800">
+      <td className="px-3 py-2">
+        <ItemIdentifier item={item} />
+      </td>
+      <AuthorCell author={item.author} />
+      <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.landedAt)}</td>
+      <td className={`px-3 py-2 text-right font-medium ${TIER_TEXT_CLASSES[tier]}`}>
+        {formatRounds(item.reviewRounds)}
+      </td>
+    </tr>
+  );
+};
+
+const TAT_HEADERS = ['Review', 'Author', 'Reviewer', 'Requested', 'First action', 'TAT'] as const;
+const CYCLE_HEADERS = ['Review', 'Author', 'Created', 'Landed', 'Cycle'] as const;
+const POST_REVIEW_HEADERS = ['Review', 'Author', 'First review', 'Landed', 'Post-review'] as const;
+const ROUNDS_HEADERS = ['Review', 'Author', 'Landed', 'Rounds'] as const;
+
+const sampleKey = (sample: Sample): string =>
+  `${sample.source}:${String(sample.id)}:${sample.reviewer}`;
+
+const landingKey = (landing: Landing): string => `${landing.source}:${String(landing.id)}`;
+
+interface WindowItemsProps {
+  readonly kindItems: HeadlineItems;
+  readonly slaHours: number;
+  readonly windowDays: number;
+  readonly now: Date;
+}
+
+const renderWindowItems = (props: WindowItemsProps): ReactElement | null => {
+  const { kindItems, slaHours, windowDays, now } = props;
+  if (kindItems.kind === 'tat') {
+    const rows = kindItems.items
+      .filter((s) => isSampleInWindow(s, windowDays, now))
+      .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
+    if (rows.length === 0) return null;
+    return (
+      <TableShell headers={TAT_HEADERS}>
+        {rows.map((item) => (
+          <TatRow key={sampleKey(item)} item={item} slaHours={slaHours} />
+        ))}
+      </TableShell>
+    );
+  }
+  if (kindItems.kind === 'cycle') {
+    const rows = kindItems.items
+      .filter((l) => isLandingInWindow(l, windowDays, now))
+      .sort((a, b) => b.landedAt.localeCompare(a.landedAt));
+    if (rows.length === 0) return null;
+    return (
+      <TableShell headers={CYCLE_HEADERS}>
+        {rows.map((item) => (
+          <CycleRow key={landingKey(item)} item={item} slaHours={slaHours} />
+        ))}
+      </TableShell>
+    );
+  }
+  if (kindItems.kind === 'postReview') {
+    const rows = kindItems.items
+      .filter(
+        (l): l is PostReviewRowItem =>
+          l.firstReviewAt !== null && l.postReviewBusinessHours !== null,
+      )
+      .filter((l) => isLandingInWindow(l, windowDays, now))
+      .sort((a, b) => b.landedAt.localeCompare(a.landedAt));
+    if (rows.length === 0) return null;
+    return (
+      <TableShell headers={POST_REVIEW_HEADERS}>
+        {rows.map((item) => (
+          <PostReviewRow key={landingKey(item)} item={item} slaHours={slaHours} />
+        ))}
+      </TableShell>
+    );
+  }
+  const rows = kindItems.items
+    .filter((l) => isLandingInWindow(l, windowDays, now))
+    .sort((a, b) => b.landedAt.localeCompare(a.landedAt));
+  if (rows.length === 0) return null;
+  return (
+    <TableShell headers={ROUNDS_HEADERS}>
+      {rows.map((item) => (
+        <RoundsRow key={landingKey(item)} item={item} roundsSla={slaHours} />
+      ))}
+    </TableShell>
+  );
+};
 
 interface WindowRowProps {
   readonly label: '7-day' | '14-day' | '30-day';
   readonly stats: WindowStats;
   readonly slaHours: number;
-  readonly samples: readonly Sample[];
+  readonly kindItems: HeadlineItems;
   readonly now: Date;
   readonly unit: MetricUnit;
   readonly slaLabel: string;
@@ -226,12 +388,14 @@ const RowBody: FC<WindowRowProps> = ({ label, stats, slaHours, unit, slaLabel, c
 );
 
 const WindowRow: FC<WindowRowProps> = (props) => {
-  const windowSamples = filterSamplesForWindow(
-    props.samples,
-    windowDaysFor(props.label),
-    props.now,
-  );
-  if (windowSamples.length === 0) {
+  const windowDays = windowDaysFor(props.label);
+  const table = renderWindowItems({
+    kindItems: props.kindItems,
+    slaHours: props.slaHours,
+    windowDays,
+    now: props.now,
+  });
+  if (table === null) {
     return (
       <div className="flex flex-col gap-2">
         <RowBody {...props} />
@@ -240,7 +404,7 @@ const WindowRow: FC<WindowRowProps> = (props) => {
   }
   return (
     <details
-      data-testid={`window-${windowDaysFor(props.label).toString()}d-details`}
+      data-testid={`window-${windowDays.toString()}d-details`}
       className="group flex flex-col gap-2 rounded-md"
     >
       <summary className="flex cursor-pointer list-none flex-col gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-sky-500 [&::-webkit-details-marker]:hidden">
@@ -262,11 +426,15 @@ const WindowRow: FC<WindowRowProps> = (props) => {
           slaLabel={props.slaLabel}
         />
       </summary>
-      <SampleList samples={windowSamples} slaHours={props.slaHours} />
+      {table}
     </details>
   );
 };
 
+// Headline accepts the underlying items either as `samples` (legacy, TAT-only)
+// or `items` (new, discriminated). Exactly one source is expected; when both
+// are supplied, `items` wins — this lets existing call sites stay on `samples`
+// while new landing panels pass the richer discriminator.
 export interface HeadlineProps {
   readonly title: string;
   readonly description?: ReactNode;
@@ -274,15 +442,12 @@ export interface HeadlineProps {
   readonly window14d: WindowStats;
   readonly window30d: WindowStats;
   readonly slaHours: number;
-  readonly samples: readonly Sample[];
+  readonly samples?: readonly Sample[];
+  readonly items?: HeadlineItems;
   readonly now: Date;
-  // Metric configuration: defaults preserve the original TAT behaviour.
   readonly unit?: MetricUnit;
   readonly slaLabel?: string;
   readonly countLabel?: string;
-  // When set, the section renders as <details>/<summary> so the whole panel
-  // can be collapsed. `defaultOpen` seeds the initial state; user toggles are
-  // DOM-owned (no React state) and reset on reload, matching WindowRow.
   readonly collapsible?: boolean;
   readonly defaultOpen?: boolean;
   readonly children?: ReactNode;
@@ -322,6 +487,7 @@ export const Headline: FC<HeadlineProps> = ({
   window30d,
   slaHours,
   samples,
+  items,
   now,
   unit = 'hours',
   slaLabel,
@@ -333,13 +499,14 @@ export const Headline: FC<HeadlineProps> = ({
   const effectiveSlaLabel = slaLabel ?? `Under ${slaHours.toString()}h SLA`;
   const emptyState = `awaiting first ${countLabel}s`;
   const statusText = window7d.n + window14d.n + window30d.n === 0 ? emptyState : 'rolling windows';
+  const kindItems: HeadlineItems = items ?? { kind: 'tat', items: samples ?? [] };
   const windowRows = (
     <>
       <WindowRow
         label="7-day"
         stats={window7d}
         slaHours={slaHours}
-        samples={samples}
+        kindItems={kindItems}
         now={now}
         unit={unit}
         slaLabel={effectiveSlaLabel}
@@ -349,7 +516,7 @@ export const Headline: FC<HeadlineProps> = ({
         label="14-day"
         stats={window14d}
         slaHours={slaHours}
-        samples={samples}
+        kindItems={kindItems}
         now={now}
         unit={unit}
         slaLabel={effectiveSlaLabel}
@@ -359,7 +526,7 @@ export const Headline: FC<HeadlineProps> = ({
         label="30-day"
         stats={window30d}
         slaHours={slaHours}
-        samples={samples}
+        kindItems={kindItems}
         now={now}
         unit={unit}
         slaLabel={effectiveSlaLabel}
