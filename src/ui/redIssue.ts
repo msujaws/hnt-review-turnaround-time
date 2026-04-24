@@ -1,26 +1,10 @@
 import type { SourceWindows } from '../scripts/collect';
 
-import { tierForHours, tierForPctUnderSla } from './slaTier';
-
-// True iff any of the 7/14/30-day windows has at least one stat in the 'bad'
-// tier — i.e. median/mean/p90 over 2× the threshold or pctUnderSLA under 70%.
-// Empty windows (n=0) are ignored: pctUnderSLA=0 is a bookkeeping default when
-// there are no samples, not an actual failing metric.
-export const sourceWindowsHasRedIssue = (
-  windows: SourceWindows | undefined,
-  slaThreshold: number,
-): boolean => {
-  if (windows === undefined) return false;
-  for (const w of [windows.window7d, windows.window14d, windows.window30d]) {
-    if (w.n === 0) continue;
-    if (
-      tierForHours(w.median, slaThreshold) === 'bad' ||
-      tierForHours(w.mean, slaThreshold) === 'bad' ||
-      tierForHours(w.p90, slaThreshold) === 'bad' ||
-      tierForPctUnderSla(w.pctUnderSLA) === 'bad'
-    ) {
-      return true;
-    }
-  }
-  return false;
-};
+// True iff the 7-day window has samples and its median is over the SLA.
+// Scoped tightly on purpose: the tab is the top-level at-a-glance signal, and
+// the primary SLA is the review TAT one (4h). The narrower windows
+// (14/30-day) and the secondary landing metrics (cycle, post-review, rounds)
+// still tint their own stat cards via TIER_CARD_CLASSES — they just don't
+// escalate to the tab-level red.
+export const window7dMedianOverSla = (windows: SourceWindows, slaThreshold: number): boolean =>
+  windows.window7d.n > 0 && windows.window7d.median > slaThreshold;

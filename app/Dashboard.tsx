@@ -12,7 +12,7 @@ import {
 import type { HistoryRow, Sample, SourceWindows } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
 import { Headline } from '../src/ui/Headline';
-import { sourceWindowsHasRedIssue } from '../src/ui/redIssue';
+import { window7dMedianOverSla } from '../src/ui/redIssue';
 import { Tabs, type TabItem } from '../src/ui/Tabs';
 import { Trendline, type ChartSource } from '../src/ui/Trendline';
 
@@ -217,23 +217,26 @@ export const Dashboard: FC<DashboardProps> = ({ history, samples, slaHours, now,
     </div>
   );
 
-  // A tab is "red" if any of its four metric blocks has a bad-tier stat
-  // inside any of the 7/14/30-day windows. Matches the rose ring on stat
-  // cards below so the tab signal agrees with the content.
-  const phabHasRedIssue =
-    sourceWindowsHasRedIssue(latest.phab, slaHours) ||
-    sourceWindowsHasRedIssue(latest.phabCycle, CYCLE_SLA_HOURS) ||
-    sourceWindowsHasRedIssue(latest.phabPostReview, POST_REVIEW_SLA_HOURS) ||
-    sourceWindowsHasRedIssue(latest.phabRounds, ROUNDS_SLA);
-  const githubHasRedIssue =
-    sourceWindowsHasRedIssue(latest.github, slaHours) ||
-    sourceWindowsHasRedIssue(latest.githubCycle, CYCLE_SLA_HOURS) ||
-    sourceWindowsHasRedIssue(latest.githubPostReview, POST_REVIEW_SLA_HOURS) ||
-    sourceWindowsHasRedIssue(latest.githubRounds, ROUNDS_SLA);
+  // A tab is "red" only when its 7-day review-TAT median exceeds the SLA.
+  // Narrower than the previous "any bad-tier stat anywhere" rule: the stat
+  // cards still tint themselves for warn/bad in the secondary metrics and
+  // longer windows; the tab-level signal stays tied to the headline metric.
+  const phabHasRedIssue = window7dMedianOverSla(latest.phab, slaHours);
+  const githubHasRedIssue = window7dMedianOverSla(latest.github, slaHours);
 
   const tabs: TabItem[] = [
-    { id: 'phab', label: 'Phabricator', hasRedIssue: phabHasRedIssue, content: phabContent },
-    { id: 'github', label: 'GitHub', hasRedIssue: githubHasRedIssue, content: githubContent },
+    {
+      id: 'phab',
+      label: 'Frontend Team (Phabricator)',
+      hasRedIssue: phabHasRedIssue,
+      content: phabContent,
+    },
+    {
+      id: 'github',
+      label: 'Backend Team (GitHub)',
+      hasRedIssue: githubHasRedIssue,
+      content: githubContent,
+    },
   ];
   return <Tabs tabs={tabs} />;
 };
