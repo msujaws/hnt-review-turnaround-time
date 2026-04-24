@@ -207,16 +207,19 @@ export const extractSamplesFromTransactions = (
   // Pending = reviewers still in an active request window at end of timeline
   // who didn't emit a completed sample. Reviewers whose phid has no login
   // mapping are dropped (same rule applied to completed samples above).
-  // Skip the whole block when the revision is in a terminal state
-  // (abandoned / published / draft / accepted): the request is no longer
-  // actionable, so keeping it in pending would strand the reviewer in the
-  // overdue list forever. undefined status falls through as "open" for
-  // legacy fixtures that build PhabRevision without going through
+  // Skip the whole block when the reviewer is not the one blocking:
+  // - terminal statuses (abandoned / published / draft / accepted) — the
+  //   request is no longer actionable;
+  // - changes-planned — the author acknowledged they'll update the diff;
+  // - needs-revision — a reviewer requested changes; ball is with the author.
+  // In all of these cases keeping the entry in pending would strand the
+  // reviewer in the overdue list. undefined status falls through as "open"
+  // for legacy fixtures that build PhabRevision without going through
   // fetchRevisions. Mirrors the GitHub gate in 78b1ecb.
   const pending: PhabPendingSample[] = [];
-  const revisionIsOpen =
-    revision.status === undefined || OPEN_REVISION_STATUSES.has(revision.status);
-  if (revisionIsOpen) {
+  const reviewerIsBlocking =
+    revision.status === undefined || PENDING_BLOCKING_STATUSES.has(revision.status);
+  if (reviewerIsBlocking) {
     for (const [reviewerPhid, requestedAt] of currentRequestAt) {
       if (emitted.has(reviewerPhid)) continue;
       const login = loginByPhid.get(reviewerPhid);
@@ -264,8 +267,8 @@ const revisionSearchSchema = z.object({
         // Phab's differential.revision.search always returns this, but legacy
         // test fixtures omit it. Optional + z.string() for the inner slug
         // keeps old fixtures parsing and fails-open on any new Phab status
-        // (the pending gate checks membership in OPEN_REVISION_STATUSES, so
-        // unknown slugs are correctly treated as non-open — the safe default).
+        // (the pending gate checks membership in PENDING_BLOCKING_STATUSES, so
+        // unknown slugs are correctly treated as non-blocking — the safe default).
         status: z.object({ value: z.string() }).optional(),
       }),
     }),
@@ -347,19 +350,30 @@ const lookupProjectMembers = async (
   return { projectPhids, memberPhids: [...uniqueMembers] };
 };
 
-// Revision statuses that still need a reviewer's attention. Also the single
-// source of truth for the pending-emission gate in
-// extractSamplesFromTransactions — a revision whose current status isn't in
-// this set has nothing actionable left, so pending would strand a reviewer in
-// the overdue list. The open-state query is bounded by
-// OPEN_REVISION_LOOKBACK_DAYS so we don't pull every long-abandoned open
-// revision on the account — each revision costs a transaction.search call,
-// which is where Phab's per-session rate limit bites.
+// Phab revision statuses that are still open (not abandoned/published/draft/
+// accepted). Used by the open-state revision-search query so we keep pulling
+// in transactions from revisions currently paused on the author —
+// changes-planned and needs-revision can still receive a follow-up
+// accept / request-changes / close from a reviewer, which closes out a
+// completed sample or landing. Narrower than the pending-emission gate
+// (see PENDING_BLOCKING_STATUSES) on purpose. The open-state query is
+// bounded by OPEN_REVISION_LOOKBACK_DAYS so we don't pull every
+// long-abandoned open revision on the account — each revision costs a
+// transaction.search call, which is where Phab's per-session rate limit
+// bites.
 const OPEN_REVISION_STATUSES: ReadonlySet<string> = new Set([
   'needs-review',
   'changes-planned',
   'needs-revision',
 ]);
+// Statuses where the reviewer is actually the one blocking progress. Used
+// only by the pending-emission gate in extractSamplesFromTransactions.
+// needs-review is the sole blocking status: in changes-planned the author
+// acknowledged they'll update the diff, and in needs-revision a reviewer
+// requested changes so the ball is with the author. Emitting pending in
+// either case would strand the reviewer in the overdue list until the
+// author acts.
+const PENDING_BLOCKING_STATUSES: ReadonlySet<string> = new Set(['needs-review']);
 const OPEN_REVISION_LOOKBACK_DAYS = 90;
 
 const fetchRevisions = async (
