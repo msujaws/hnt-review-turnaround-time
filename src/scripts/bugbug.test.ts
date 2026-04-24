@@ -387,4 +387,63 @@ describe('fetchBugbugSamples', () => {
       reviewRounds: 1,
     });
   });
+
+  it('drops revisions authored by a non-team member, even when a team reviewer acted', async () => {
+    // A team reviewer comments on an outsider's revision. Previously this
+    // would emit a sample + landing; with the author gate on, both drop out.
+    const outsiderAuthor = 'PHID-USER-outsideauthoraaaaaa';
+    const record = makeRecord({
+      id: 88,
+      phid: 'PHID-DREV-outsideauthorrev88xx',
+      reviewerPhids: [TEAM_MEMBER_A],
+      authorPhid: outsiderAuthor,
+      status: 'published',
+      transactions: [
+        {
+          id: 100,
+          phid: 'PHID-XACT-reviewersaaaaaaaaaaaa',
+          type: 'reviewers',
+          authorPHID: outsiderAuthor,
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: TEAM_MEMBER_A }] },
+        },
+        commentTx(TEAM_MEMBER_A, 1_761_003_600),
+        {
+          id: 500,
+          phid: 'PHID-XACT-closeaaaaaaaaaaaaaaa',
+          type: 'close',
+          authorPHID: outsiderAuthor,
+          dateCreated: 1_761_007_200,
+          fields: {},
+        },
+      ],
+    });
+
+    const { client } = makeClient(new Map([[outsiderAuthor, 'outsider']]));
+    const fetchFn = vi.fn(async () => ok(toBody(JSON.stringify(record))));
+    const result = await fetchBugbugSamples({
+      conduitClient: client,
+      projectSlugs: ['home-newtab-reviewers'],
+      zstdCommand: ['cat'],
+      fetchFn,
+      now: new Date('2026-10-21T00:00:00Z'),
+    });
+
+    expect(result.samples).toEqual([]);
+    expect(result.pending).toEqual([]);
+    expect(result.landings).toEqual([]);
+  });
+
+  it('returns teamLogins resolved from the project members', async () => {
+    const { client } = makeClient();
+    const fetchFn = vi.fn(async () => ok(toBody('')));
+    const result = await fetchBugbugSamples({
+      conduitClient: client,
+      projectSlugs: ['home-newtab-reviewers'],
+      zstdCommand: ['cat'],
+      fetchFn,
+      now: new Date('2026-10-21T00:00:00Z'),
+    });
+    expect([...result.teamLogins].sort()).toEqual(['alice', 'bob']);
+  });
 });

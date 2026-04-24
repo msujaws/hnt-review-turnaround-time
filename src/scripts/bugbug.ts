@@ -147,6 +147,10 @@ export interface FetchBugbugResult {
   readonly pending: PhabPendingSample[];
   readonly landings: PhabLanding[];
   readonly revisionPhidsSeen: readonly string[];
+  // Logins for every member of the resolved project(s) — mirror of
+  // fetchPhabSamples' return field. The caller uses this as the
+  // authoritative team roster for purging legacy samples/landings.
+  readonly teamLogins: ReadonlySet<string>;
 }
 
 export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<FetchBugbugResult> => {
@@ -336,10 +340,14 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
     }
   }
 
+  // teamLogins is populated in the next commit; emit an empty set here so
+  // the return shape lines up with the declared type.
+  const teamLogins: ReadonlySet<string> = new Set();
   return {
     samples,
     pending,
     landings,
     revisionPhidsSeen: collectedRevisions.map((entry) => entry.record.phid),
+    teamLogins,
   };
 };
