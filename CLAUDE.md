@@ -186,6 +186,13 @@ staging environment — PRs get Vercel preview URLs automatically.
 - **Team expansion on GitHub.** We deliberately skip `Team.members` to stay
   under the node budget; if per-reviewer attribution for team-requested PRs
   matters, we'd need to resolve the team membership with a second query.
+- **`data/people.json` doubles as the team roster.** Its top-level `github`
+  and `phab` maps started as per-reviewer timezone overrides, but their keys
+  are now also what `fetchGithubSamples` and `collect()`'s legacy-row purge
+  treat as "on the team" for GitHub and as the Phab-side login roster for
+  the purge. An empty map on a side means "no team gate on that side" — so
+  adding or removing a login changes both the timezone resolution **and**
+  which review pairs count toward the metrics.
 - **US holidays in business-hour math.** Listed as out of scope in the
   README; revisit if the team wants a stricter SLA counter.
 
