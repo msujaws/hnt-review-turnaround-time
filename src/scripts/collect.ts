@@ -23,6 +23,7 @@ import {
   type BusinessHours,
 } from '../types/brand';
 
+import { fetchBugbugSamples } from './bugbug';
 import { businessHoursBetween } from './businessHours';
 import { createProgressWriter, type ProgressWriter } from './collectProgress';
 import {
@@ -729,12 +730,51 @@ export const runCollectionFromDisk = async (
     existingHistory,
     peopleMap,
     fetchPhab: async (lookbackDaysArgument) => {
+      const projectSlugs = (process.env.PHAB_PROJECT_SLUGS ?? DEFAULT_PHAB_PROJECT_SLUG)
+        .split(',')
+        .map((slug) => slug.trim())
+        .filter((slug) => slug.length > 0);
+      const isBackfill = lookbackDaysArgument === BACKFILL_LOOKBACK_DAYS;
+      const bugbugEnabled = process.env.BUGBUG_BACKFILL !== '0';
+
+      // On the 45-day first-run backfill, prefer the public bugbug dump —
+      // avoids ~100 rate-limited transaction.search calls and the 30-minute
+      // Phab cooldowns they trigger. The dump refreshes twice a month so
+      // the next daily follow-up (FOLLOWUP_LOOKBACK_DAYS=3) backfills
+      // anything bugbug's stale tail missed. Falls back to Conduit on any
+      // failure so a broken artifact never blocks collection.
+      if (isBackfill && bugbugEnabled) {
+        try {
+          process.stderr.write('bugbug: attempting backfill from public dump\n');
+          const bugbugResult = await fetchBugbugSamples({
+            conduitClient: conduit,
+            projectSlugs,
+            now,
+            lookbackDays: lookbackDaysArgument,
+            onRevisionProcessed: async ({ index, total }) => {
+              await progress?.update((state) => {
+                state.phab.revisionsProcessed = index + 1;
+                state.phab.revisionsTotal = total;
+                state.message = `phab (bugbug) ${(index + 1).toString()}/${total.toString()}`;
+              });
+            },
+          });
+          for (const phid of bugbugResult.revisionPhidsSeen) seenRevisionPhids.add(phid);
+          return {
+            samples: bugbugResult.samples,
+            pending: bugbugResult.pending,
+            landings: bugbugResult.landings,
+          };
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : String(error);
+          process.stderr.write(`bugbug backfill failed, falling back to Conduit: ${message}\n`);
+          // Fall through to the Conduit path below.
+        }
+      }
+
       const result = await fetchPhabSamples({
         client: conduit,
-        projectSlugs: (process.env.PHAB_PROJECT_SLUGS ?? DEFAULT_PHAB_PROJECT_SLUG)
-          .split(',')
-          .map((slug) => slug.trim())
-          .filter((slug) => slug.length > 0),
+        projectSlugs,
         lookbackDays: lookbackDaysArgument,
         resumeCache: {
           createdAt: Math.floor(Date.parse(progressCreatedAt) / 1000),
