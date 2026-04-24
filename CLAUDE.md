@@ -20,6 +20,15 @@ src/scripts/collect.ts` works directly.
   `tsc --noEmit` on pre-commit, plus `commitlint` on commit-msg. **Do not
   bypass with `--no-verify`.** If a hook fails, fix the underlying issue.
 
+## Committing
+
+Claude Code may create git commits on my behalf without asking for
+per-commit confirmation, provided the change is already finished and
+`bun run verify` is green. Follow the project's TDD pattern (`test:`
+before `feat:` when possible) and the conventional-commit prefixes
+below. Never push, force-push, or amend published history without an
+explicit ask.
+
 ## Engineering conventions
 
 - **TDD is non-negotiable.** Every module has a colocated `*.test.ts(x)` and
