@@ -270,6 +270,64 @@ describe('extractSamplesFromTransactions', () => {
     expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
   });
 
+  it('drops the revision entirely when the author is not in allowedAuthorPhids', () => {
+    // Revision authored by a non-team member — even if a team reviewer acts,
+    // nothing should be emitted (neither sample nor pending). The
+    // author-on-team gate runs before any per-transaction work.
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+        dateCreated: 1_761_003_600,
+      }),
+    ];
+    const { samples, pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+      allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa']),
+      allowedAuthorPhids: new Set(['PHID-USER-someoneelseaaaaaaaaa']),
+    });
+    expect(samples).toEqual([]);
+    expect(pending).toEqual([]);
+  });
+
+  it('emits the sample when the author is in allowedAuthorPhids', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'accept',
+        authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+        dateCreated: 1_761_003_600,
+      }),
+    ];
+    const { samples } = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+      allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa']),
+      allowedAuthorPhids: new Set([
+        'PHID-USER-authoraaaaaaaaaaaaaa',
+        'PHID-USER-revieweraaaaaaaaaaaaa',
+      ]),
+    });
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({ reviewer: 'alice', author: 'author-user' });
+  });
+
   it('uses the latest request after a remove/re-request cycle, not the first one', () => {
     // Reviewer added at T1, removed at T2, re-added at T3, acts at T4.
     // The sample's requestedAt should be T3 (latest active request), not T1.
@@ -750,6 +808,49 @@ describe('extractLandingFromTransactions', () => {
     ];
     const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000);
     expect(landing?.landedAt).toBe(new Date(1_761_100_000 * 1000).toISOString());
+  });
+
+  it('returns null when the author is not in allowedAuthorPhids', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'accept',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_050_000,
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'close',
+        authorPhid,
+        dateCreated: 1_761_100_000,
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000, {
+      allowedAuthorPhids: new Set(['PHID-USER-someoneelseaaaaaaaaa']),
+    });
+    expect(landing).toBeNull();
+  });
+
+  it('emits the landing when the author is in allowedAuthorPhids', () => {
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'accept',
+        authorPhid: reviewerA,
+        dateCreated: 1_761_050_000,
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'close',
+        authorPhid,
+        dateCreated: 1_761_100_000,
+      }),
+    ];
+    const landing = extractLandingFromTransactions(revision(), txs, loginByPhid, 1_761_000_000, {
+      allowedAuthorPhids: new Set([authorPhid]),
+    });
+    expect(landing).not.toBeNull();
+    expect(landing?.author).toBe('author-user');
   });
 });
 
@@ -1811,6 +1912,143 @@ describe('fetchPhabSamples', () => {
       firstReviewAt: new Date(1_761_003_600 * 1000).toISOString(),
       reviewRounds: 1,
     });
+  });
+
+  it('returns teamLogins resolved from the project members, regardless of recent activity', async () => {
+    // memberPhids includes both alice (reviewed something) and bob (dormant
+    // but still on the team). resolveLogins must cover both so the caller
+    // can purge legacy samples by login even for members who never show up
+    // in the transaction graph of this fetch window.
+    const call = vi.fn(async (method: string): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: {
+                  members: [
+                    { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+                    { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb' },
+                  ],
+                },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } },
+            { phid: 'PHID-USER-reviewerbbbbbbbbbbbbb', fields: { username: 'bob' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const { teamLogins } = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect([...teamLogins].sort()).toEqual(['alice', 'bob']);
+  });
+
+  it('drops revisions whose author is not on the team, even when a team reviewer acted', async () => {
+    // Revision author is PHID-USER-outsideauthoraaaaaa (non-team); reviewer
+    // alice is on the team and accepts. We must not emit a sample or landing.
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+              attachments: {
+                members: { members: [{ phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        const constraints = (params as { constraints: Record<string, unknown> }).constraints;
+        if ('modifiedStart' in constraints) {
+          return {
+            data: [
+              {
+                id: 42,
+                phid: 'PHID-DREV-outsideauthoredxxxxx',
+                fields: {
+                  authorPHID: 'PHID-USER-outsideauthoraaaaaa',
+                  dateModified: 1_761_000_000,
+                  dateCreated: 1_761_000_000,
+                },
+              },
+            ],
+            cursor: { after: null },
+          };
+        }
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-aaaaaaaaaaaaaaaaaaaa',
+              type: 'reviewers',
+              authorPHID: 'PHID-USER-outsideauthoraaaaaa',
+              dateCreated: 1_761_000_000,
+              fields: {
+                operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }],
+              },
+            },
+            {
+              id: 2,
+              phid: 'PHID-XACT-bbbbbbbbbbbbbbbbbbbb',
+              type: 'accept',
+              authorPHID: 'PHID-USER-revieweraaaaaaaaaaaaa',
+              dateCreated: 1_761_007_200,
+              fields: {},
+            },
+            {
+              id: 3,
+              phid: 'PHID-XACT-cccccccccccccccccccc',
+              type: 'close',
+              authorPHID: 'PHID-USER-outsideauthoraaaaaa',
+              dateCreated: 1_761_100_000,
+              fields: {},
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: 'PHID-USER-outsideauthoraaaaaa', fields: { username: 'outsider' } },
+            { phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const result = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(result.samples).toEqual([]);
+    expect(result.pending).toEqual([]);
+    expect(result.landings).toEqual([]);
   });
 });
 

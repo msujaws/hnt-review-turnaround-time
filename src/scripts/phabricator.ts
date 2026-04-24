@@ -124,7 +124,12 @@ export const extractLandingFromTransactions = (
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
   createdAtUnixSeconds: number,
+  // When `allowedAuthorPhids` is set, a revision whose author is not in the
+  // set returns null. Pre-declared so tests that reference the option
+  // typecheck while the wiring is staged; behavior lands in the next commit.
+  options: { readonly allowedAuthorPhids?: ReadonlySet<string> } = {},
 ): PhabLanding | null => {
+  void options;
   const ordered = [...transactions].sort((a, b) => a.dateCreated - b.dateCreated);
   const firstPublished = ordered.find((tx) => tx.type === 'close');
   if (firstPublished === undefined) return null;
@@ -155,7 +160,14 @@ export const extractSamplesFromTransactions = (
   revision: PhabRevision,
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
-  options: { readonly allowedReviewerPhids?: ReadonlySet<string> } = {},
+  // `allowedAuthorPhids`, when set, gates the whole revision: if the author
+  // is not in the set, no samples or pending entries are emitted. Pre-declared
+  // here so tests can reference the option while the behavior lands in the
+  // next commit.
+  options: {
+    readonly allowedReviewerPhids?: ReadonlySet<string>;
+    readonly allowedAuthorPhids?: ReadonlySet<string>;
+  } = {},
 ): ExtractedTransactions => {
   const { allowedReviewerPhids } = options;
   // Process transactions chronologically, tracking per-reviewer request windows.
@@ -523,6 +535,10 @@ export const fetchPhabSamples = async (params: {
   pending: PhabPendingSample[];
   landings: PhabLanding[];
   revisionPhidsSeen: readonly string[];
+  // Logins for every member of the resolved project(s). The caller uses this
+  // as the authoritative team roster on the Phab side — useful for purging
+  // legacy samples/landings by login without a second Conduit round-trip.
+  teamLogins: ReadonlySet<string>;
 }> => {
   const { client, projectSlugs, lookbackDays } = params;
   const resumeCache = params.resumeCache;
@@ -623,7 +639,16 @@ export const fetchPhabSamples = async (params: {
       if (landing !== null) landings.push(landing);
     }
   }
-  return { samples, pending, landings, revisionPhidsSeen: revisions.map((r) => r.phid) };
+  // teamLogins is populated in the next commit; emit an empty set here so
+  // the return shape lines up with the declared type.
+  const teamLogins: ReadonlySet<string> = new Set();
+  return {
+    samples,
+    pending,
+    landings,
+    revisionPhidsSeen: revisions.map((r) => r.phid),
+    teamLogins,
+  };
 };
 
 const flattenParams = (value: unknown, prefix: string, body: URLSearchParams): void => {
