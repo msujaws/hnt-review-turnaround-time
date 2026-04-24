@@ -104,7 +104,9 @@ const makeClient = (
           {
             phid: PROJECT_PHID,
             attachments: {
-              members: { members: [{ phid: TEAM_MEMBER_A }, { phid: TEAM_MEMBER_B }] },
+              members: {
+                members: [{ phid: AUTHOR }, { phid: TEAM_MEMBER_A }, { phid: TEAM_MEMBER_B }],
+              },
             },
           },
         ],
@@ -271,8 +273,12 @@ describe('fetchBugbugSamples', () => {
     expect(result.samples).toHaveLength(2);
   });
 
-  it('returns empty arrays for an empty dump and does not call user.search', async () => {
-    const { client, calls } = makeClient();
+  it('returns empty arrays for an empty dump', async () => {
+    // Note: user.search still fires on an empty dump now that teamLogins is
+    // part of the return contract — every team-member PHID must resolve to a
+    // login so the caller can purge legacy rows by login. The old "no
+    // user.search on empty" assertion was specific to a pre-teamLogins era.
+    const { client } = makeClient();
     const fetchFn = vi.fn(async () => ok(toBody('')));
     const result = await fetchBugbugSamples({
       conduitClient: client,
@@ -285,7 +291,6 @@ describe('fetchBugbugSamples', () => {
     expect(result.samples).toEqual([]);
     expect(result.pending).toEqual([]);
     expect(result.landings).toEqual([]);
-    expect(calls.some((c) => c.method === 'user.search')).toBe(false);
   });
 
   it('throws when the artifact endpoint returns 404', async () => {
@@ -444,6 +449,6 @@ describe('fetchBugbugSamples', () => {
       fetchFn,
       now: new Date('2026-10-21T00:00:00Z'),
     });
-    expect([...result.teamLogins].sort()).toEqual(['alice', 'bob']);
+    expect([...result.teamLogins].sort()).toEqual(['alice', 'author-user', 'bob']);
   });
 });

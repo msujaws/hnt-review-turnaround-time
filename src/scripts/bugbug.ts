@@ -263,7 +263,13 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
     const record = parsed.data;
 
     // Short-circuit by team membership before touching transactions — cuts
-    // ~99% of records out of the ~600k in the full dump.
+    // ~99% of records out of the ~600k in the full dump. Both sides of the
+    // review must be team members: the author, and at least one named
+    // reviewer. An outsider's revision that a team member reviewed drops
+    // out here without paying for transaction parsing.
+    if (!allowedReviewerPhids.has(record.fields.authorPHID)) {
+      continue;
+    }
     const reviewers = record.attachments?.reviewers?.reviewers ?? [];
     if (!reviewers.some((entry) => allowedReviewerPhids.has(entry.reviewerPHID))) {
       continue;
@@ -310,6 +316,12 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
     );
   }
 
+  // Resolve every team member's login (not just those who showed up in
+  // record transactions) so teamLogins is complete for the caller's
+  // legacy-row purge. On an empty dump, userPhids starts empty, so we
+  // need this branch to still resolve the roster.
+  for (const phid of memberPhids) userPhids.add(phid);
+
   const loginByPhid =
     userPhids.size === 0
       ? new Map<string, string>()
@@ -323,6 +335,7 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
     const revision = toPhabRevision(record);
     const extracted = extractSamplesFromTransactions(revision, transactions, loginByPhid, {
       allowedReviewerPhids,
+      allowedAuthorPhids: allowedReviewerPhids,
     });
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
@@ -332,6 +345,7 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
         transactions,
         loginByPhid,
         revision.dateCreated,
+        { allowedAuthorPhids: allowedReviewerPhids },
       );
       if (landing !== null) landings.push(landing);
     }
@@ -340,9 +354,11 @@ export const fetchBugbugSamples = async (params: FetchBugbugParams): Promise<Fet
     }
   }
 
-  // teamLogins is populated in the next commit; emit an empty set here so
-  // the return shape lines up with the declared type.
-  const teamLogins: ReadonlySet<string> = new Set();
+  const teamLogins = new Set<string>();
+  for (const phid of memberPhids) {
+    const login = loginByPhid.get(phid);
+    if (login !== undefined) teamLogins.add(login);
+  }
   return {
     samples,
     pending,
