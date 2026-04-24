@@ -685,6 +685,84 @@ describe('extractSamplesFromPullRequest', () => {
       expect(pending.map((p) => p.reviewer).sort()).toEqual(['alice', 'bob']);
     });
   });
+
+  describe('team-membership filter', () => {
+    it('drops the whole PR when the author is not in allowedTeamLogins', () => {
+      // PR by a non-team contributor, reviewed by a team member. Nothing
+      // should flow through — neither a completed sample nor a pending entry.
+      const data = pr({
+        author: { login: 'external-contributor' },
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            authorLogin: 'alice',
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data, {
+        allowedTeamLogins: new Set(['author-user', 'alice']),
+      });
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('skips reviewers not in allowedTeamLogins from samples and pending', () => {
+      // A team author is reviewed by both a team reviewer and an outsider.
+      // Only the team reviewer's sample should survive.
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice', 'external-reviewer'],
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            authorLogin: 'alice',
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T17:00:00Z',
+            authorLogin: 'external-reviewer',
+          },
+        ],
+      });
+      const { samples, pending } = extractSamplesFromPullRequest(data, {
+        allowedTeamLogins: new Set(['author-user', 'alice']),
+      });
+      expect(samples.map((s) => s.reviewer)).toEqual(['alice']);
+      expect(pending).toEqual([]);
+    });
+
+    it('emits normally when both author and reviewer are in allowedTeamLogins', () => {
+      const data = pr({
+        timeline: [
+          {
+            kind: 'ReviewRequestedEvent',
+            createdAt: '2026-04-19T14:00:00Z',
+            reviewerLogins: ['alice'],
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            authorLogin: 'alice',
+          },
+        ],
+      });
+      const { samples } = extractSamplesFromPullRequest(data, {
+        allowedTeamLogins: new Set(['author-user', 'alice']),
+      });
+      expect(samples).toHaveLength(1);
+      expect(samples[0]?.reviewer).toBe('alice');
+    });
+  });
 });
 
 const emptyPage = {
@@ -1040,6 +1118,101 @@ describe('fetchGithubSamples', () => {
     expect(samples).toHaveLength(1);
     expect(samples[0]?.reviewer).toBe('alice');
   });
+
+  it('filters samples, pending, and landings by teamLogins when provided', async () => {
+    // Two PRs on the same page: one authored by a team member (kept) and one
+    // by an outsider (dropped), both with a single team-member reviewer.
+    const page = {
+      repository: {
+        pullRequests: {
+          pageInfo: { hasNextPage: false, endCursor: null },
+          nodes: [
+            {
+              number: 100,
+              isDraft: false,
+              createdAt: '2026-04-18T10:00:00Z',
+              updatedAt: '2026-04-19T20:00:00Z',
+              mergedAt: '2026-04-19T18:00:00Z',
+              closed: true,
+              author: { login: 'team-author' },
+              timelineItems: {
+                pageInfo: { hasNextPage: false, endCursor: null },
+                nodes: [
+                  {
+                    __typename: 'ReviewRequestedEvent',
+                    createdAt: '2026-04-19T14:00:00Z',
+                    requestedReviewer: { __typename: 'User', login: 'team-reviewer' },
+                  },
+                  {
+                    __typename: 'PullRequestReview',
+                    submittedAt: '2026-04-19T16:00:00Z',
+                    author: { login: 'team-reviewer' },
+                    state: 'APPROVED',
+                  },
+                ],
+              },
+            },
+            {
+              number: 101,
+              isDraft: false,
+              createdAt: '2026-04-18T10:00:00Z',
+              updatedAt: '2026-04-19T20:00:00Z',
+              mergedAt: '2026-04-19T18:00:00Z',
+              closed: true,
+              author: { login: 'external-contributor' },
+              timelineItems: {
+                pageInfo: { hasNextPage: false, endCursor: null },
+                nodes: [
+                  {
+                    __typename: 'ReviewRequestedEvent',
+                    createdAt: '2026-04-19T14:00:00Z',
+                    requestedReviewer: { __typename: 'User', login: 'team-reviewer' },
+                  },
+                  {
+                    __typename: 'PullRequestReview',
+                    submittedAt: '2026-04-19T16:00:00Z',
+                    author: { login: 'team-reviewer' },
+                    state: 'APPROVED',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    };
+    const request = mockGraphqlResponses({ recent: [page], open: [page] });
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+
+    const { samples, landings } = await fetchGithubSamples({
+      client,
+      owner: 'Pocket',
+      repo: 'content-monorepo',
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+      teamLogins: new Set(['team-author', 'team-reviewer']),
+    });
+    expect(samples.map((s) => s.id)).toEqual([100]);
+    expect(landings.map((l) => l.id)).toEqual([100]);
+  });
+
+  it('throws when teamLogins is explicitly empty', async () => {
+    // Guards against the case where peopleMap.github is unset on the caller —
+    // we shouldn't silently collect every PR. Collect should route around
+    // the empty-team case before even calling fetchGithubSamples.
+    const request = mockGraphqlResponses();
+    const client: GraphqlClient = { request: request as unknown as GraphqlClient['request'] };
+    await expect(
+      fetchGithubSamples({
+        client,
+        owner: 'Pocket',
+        repo: 'content-monorepo',
+        lookbackDays: 21,
+        now: new Date('2026-04-20T12:00:00Z'),
+        teamLogins: new Set(),
+      }),
+    ).rejects.toThrow(/team/i);
+  });
 });
 
 describe('extractLandingFromPullRequest', () => {
@@ -1193,5 +1366,54 @@ describe('extractLandingFromPullRequest', () => {
       ],
     });
     expect(extractLandingFromPullRequest(data)?.reviewRounds).toBe(1);
+  });
+
+  describe('team-membership filter', () => {
+    it('returns null when the PR author is not in allowedTeamLogins', () => {
+      const data = pr({
+        author: { login: 'external-contributor' },
+        mergedAt: '2026-04-19T18:00:00Z',
+        timeline: [
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-19T16:00:00Z',
+            authorLogin: 'alice',
+            state: 'APPROVED',
+          },
+        ],
+      });
+      const landing = extractLandingFromPullRequest(data, {
+        allowedTeamLogins: new Set(['author-user', 'alice']),
+      });
+      expect(landing).toBeNull();
+    });
+
+    it('drops non-team reviewers from firstReviewAt and reviewRounds', () => {
+      // An external reviewer requests changes first, then a team reviewer
+      // approves. The external review should not count toward firstReviewAt
+      // or reviewRounds — those metrics are scoped to the team's activity.
+      const data = pr({
+        mergedAt: '2026-04-22T18:00:00Z',
+        timeline: [
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-20T10:00:00Z',
+            authorLogin: 'external-reviewer',
+            state: 'CHANGES_REQUESTED',
+          },
+          {
+            kind: 'PullRequestReview',
+            submittedAt: '2026-04-21T10:00:00Z',
+            authorLogin: 'alice',
+            state: 'APPROVED',
+          },
+        ],
+      });
+      const landing = extractLandingFromPullRequest(data, {
+        allowedTeamLogins: new Set(['author-user', 'alice']),
+      });
+      expect(landing?.firstReviewAt).toBe('2026-04-21T10:00:00Z');
+      expect(landing?.reviewRounds).toBe(1);
+    });
   });
 });

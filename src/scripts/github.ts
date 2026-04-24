@@ -108,7 +108,14 @@ const earliest = (values: readonly string[]): string | undefined => {
 // One landing per merged PR. Self-reviews and bot reviews don't count toward
 // firstReviewAt or reviewRounds — this mirrors extractSamplesFromPullRequest's
 // filters so the two metrics are scoped to the same set of "real" reviews.
-export const extractLandingFromPullRequest = (data: PullRequestData): GithubLanding | null => {
+// `allowedTeamLogins`, when provided, scopes the landing to team-authored PRs
+// and drops non-team reviewers from firstReviewAt/reviewRounds. Behavior
+// lands in the next commit; the option is declared here so tests typecheck.
+export const extractLandingFromPullRequest = (
+  data: PullRequestData,
+  options: { readonly allowedTeamLogins?: ReadonlySet<string> } = {},
+): GithubLanding | null => {
+  void options;
   if (data.mergedAt === null) return null;
   const authorLogin = data.author.login;
   const humanReviews = data.timeline.filter(
@@ -137,7 +144,14 @@ export const extractLandingFromPullRequest = (data: PullRequestData): GithubLand
   };
 };
 
-export const extractSamplesFromPullRequest = (data: PullRequestData): ExtractedPullRequest => {
+export const extractSamplesFromPullRequest = (
+  data: PullRequestData,
+  // `allowedTeamLogins`, when provided, drops the entire PR if the author
+  // isn't in the set and filters non-team reviewers out of samples/pending.
+  // Pre-declared so tests typecheck; behavior lands in the next commit.
+  options: { readonly allowedTeamLogins?: ReadonlySet<string> } = {},
+): ExtractedPullRequest => {
+  void options;
   if (data.isDraft) return { samples: [], pending: [] };
 
   const hasAnyRequestEvent = data.timeline.some((event) => event.kind === 'ReviewRequestedEvent');
@@ -558,6 +572,10 @@ export const fetchGithubSamples = async (params: {
   readonly repo: string;
   readonly lookbackDays: number;
   readonly now?: Date;
+  // Team roster as GitHub logins. When provided, the PR is kept only when
+  // its author is in the set, and only reviewers in the set flow through
+  // to samples/pending/landings. Behavior lands in the next commit.
+  readonly teamLogins?: ReadonlySet<string>;
 }): Promise<{
   samples: GithubSample[];
   pending: GithubPendingSample[];
