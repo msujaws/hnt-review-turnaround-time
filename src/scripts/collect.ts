@@ -449,6 +449,31 @@ export const collect = async (options: {
     options.fetchGithub(lookbackDays),
   ]);
 
+  // Team-membership purge on legacy rows only. The extractors already
+  // filter fresh samples/landings; this sweeps out rows written before the
+  // team gate was in place (or under a stale roster). peopleMap.{github,phab}
+  // is the roster — when a source's roster is empty, we skip that source's
+  // purge so an unpopulated people.json doesn't wipe legitimate history.
+  // Rows without an `author` field are dropped when a roster exists:
+  // we can't verify their team membership and the legacy samples.json
+  // may predate that field.
+  const teamLoginsBySource = {
+    github: new Set(Object.keys(peopleMap.github)),
+    phab: new Set(Object.keys(peopleMap.phab)),
+  } as const;
+  const legacySampleOnTeam = (sample: Sample): boolean => {
+    const roster = teamLoginsBySource[sample.source];
+    if (roster.size === 0) return true;
+    if (sample.author === undefined) return false;
+    return roster.has(sample.author) && roster.has(sample.reviewer);
+  };
+  const legacyLandingOnTeam = (landing: Landing): boolean => {
+    const roster = teamLoginsBySource[landing.source];
+    if (roster.size === 0) return true;
+    if (landing.author === undefined) return false;
+    return roster.has(landing.author);
+  };
+
   // Fresh extraction wins for keys touched by this run's fetch — so extractor
   // bug fixes heal samples inside the current follow-up / backfill window.
   // Anything older than the fetch window is kept as-is from existingSamples
@@ -456,6 +481,7 @@ export const collect = async (options: {
   // withTat so peopleMap edits still propagate retroactively.
   const merged = new Map<string, Sample>();
   for (const existing of options.existingSamples) {
+    if (!legacySampleOnTeam(existing)) continue;
     merged.set(sampleKey(existing), withTat(existing, peopleMap));
   }
   for (const fresh of phabResult.samples) {
@@ -474,6 +500,7 @@ export const collect = async (options: {
   // edits propagate retroactively.
   const mergedLandings = new Map<string, Landing>();
   for (const existing of existingLandings) {
+    if (!legacyLandingOnTeam(existing)) continue;
     mergedLandings.set(landingKey(existing), withLandingBusinessHours(existing, peopleMap));
   }
   for (const fresh of phabResult.landings) {
@@ -796,13 +823,21 @@ export const runCollectionFromDisk = async (
       for (const phid of result.revisionPhidsSeen) seenRevisionPhids.add(phid);
       return { samples: result.samples, pending: result.pending, landings: result.landings };
     },
-    fetchGithub: (lookbackDaysArgument) =>
-      fetchGithubSamples({
+    fetchGithub: (lookbackDaysArgument) => {
+      // peopleMap.github keys are the team roster on the GitHub side — the
+      // user's "known list of reviewers is the same as the team". An empty
+      // roster means "don't gate yet"; fetchGithubSamples skips the filter
+      // when teamLogins is absent. A non-empty roster enforces author ∈ team
+      // AND reviewer ∈ team at the extractor layer.
+      const teamLogins = new Set(Object.keys(peopleMap.github));
+      return fetchGithubSamples({
         client: gh,
         owner: GITHUB_OWNER,
         repo: GITHUB_REPO,
         lookbackDays: lookbackDaysArgument,
-      }),
+        ...(teamLogins.size === 0 ? {} : { teamLogins }),
+      });
+    },
   });
 
   await progress?.update((state) => {

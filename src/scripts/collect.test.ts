@@ -156,6 +156,7 @@ describe('collect', () => {
     // Existing sample has tatBusinessHours=0 cached (was computed in ET against a Sunday UTC span).
     const existing: Sample = {
       ...makeGhSample({
+        author: asReviewerLogin('mel-author'),
         reviewer: asReviewerLogin('mel-reviewer'),
         requestedAt: asIsoTimestamp('2026-06-01T00:00:00Z'),
         firstActionAt: asIsoTimestamp('2026-06-01T02:00:00Z'),
@@ -163,7 +164,10 @@ describe('collect', () => {
       tatBusinessHours: asBusinessHours(0),
     };
     const peopleMap: PeopleMap = {
-      github: { 'mel-reviewer': asIanaTimezone('Australia/Melbourne') },
+      github: {
+        'mel-author': asIanaTimezone('Australia/Melbourne'),
+        'mel-reviewer': asIanaTimezone('Australia/Melbourne'),
+      },
       phab: {},
     };
     const fetchPhab = vi.fn(async () => ({ samples: [], pending: [], landings: [] }));
