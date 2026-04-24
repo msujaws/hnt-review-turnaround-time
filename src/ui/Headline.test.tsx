@@ -206,6 +206,34 @@ describe('Headline', () => {
     expect(screen.getAllByText(/^2$/).length).toBeGreaterThan(0);
   });
 
+  it('tints a rounds stat by its displayed integer (mean 1.3 displays "1" and is good)', () => {
+    // mean=1.3 displays as "1" via Math.round. The tier should match what the
+    // user sees — 1 round = good — rather than the raw float which would be
+    // warn.
+    const rounds: WindowStats = { n: 10, median: 1, mean: 1.3, p90: 2, pctUnderSLA: 70 };
+    render(
+      <Headline
+        title="Rounds"
+        window7d={rounds}
+        window14d={rounds}
+        window30d={rounds}
+        slaHours={1}
+        unit="rounds"
+        slaLabel="One-shot"
+        samples={[]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    // Find all cells whose displayed value is "1" — any of them should be
+    // green (emerald), not amber. We take the first cell whose label sibling
+    // is "Mean" so the assertion is unambiguous.
+    const meanLabel = screen.getAllByText('Mean')[0];
+    expect(meanLabel).toBeDefined();
+    const meanCard = meanLabel!.parentElement;
+    expect(meanCard?.className).toMatch(/emerald/);
+    expect(meanCard?.className).not.toMatch(/amber|rose/);
+  });
+
   it('uses the configured count label (e.g. "land" for landings)', () => {
     render(
       <Headline
