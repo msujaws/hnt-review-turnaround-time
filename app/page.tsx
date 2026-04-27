@@ -62,8 +62,8 @@ const Page: FC = async () => {
             Each tile shows median, mean, p90, and the percentage of reviews under the {SLA_HOURS}h
             SLA for rolling 7-, 14-, and 30-day windows. Tiles are tinted{' '}
             <span className="text-emerald-300">green</span> when well inside target,{' '}
-            <span className="text-amber-300">amber</span> when slipping, and{' '}
-            <span className="text-rose-300">rose</span> when well over &mdash; expand a row to see
+            <span className="text-amber-300">yellow</span> when slipping, and{' '}
+            <span className="text-rose-300">red</span> when well over &mdash; expand a row to see
             the individual reviews behind it. The callout at the top surfaces pending reviews that
             have been waiting 10&times; the SLA or longer
             {hasOverdue ? '' : ' (not showing right now since there are no outliers)'}.
