@@ -165,12 +165,17 @@ export const extractSamplesFromTransactions = (
   loginByPhid: ReadonlyMap<string, string>,
   // `allowedAuthorPhids`, when set, gates the whole revision: if the author
   // is not in the set, no samples or pending entries are emitted.
+  // `projectMembers` carries reviewer-group memberships: when the team's
+  // project tag is requested as a reviewer, an action by any of its members
+  // satisfies the project's request and produces a sample attributed to that
+  // human. The project's pending entry is suppressed in that case.
   options: {
     readonly allowedReviewerPhids?: ReadonlySet<string>;
     readonly allowedAuthorPhids?: ReadonlySet<string>;
+    readonly projectMembers?: ReadonlyMap<string, ReadonlySet<string>>;
   } = {},
 ): ExtractedTransactions => {
-  const { allowedReviewerPhids, allowedAuthorPhids } = options;
+  const { allowedReviewerPhids, allowedAuthorPhids, projectMembers } = options;
   if (allowedAuthorPhids !== undefined && !allowedAuthorPhids.has(revision.authorPhid)) {
     return { samples: [], pending: [] };
   }
@@ -182,6 +187,10 @@ export const extractSamplesFromTransactions = (
 
   const currentRequestAt = new Map<string, number>();
   const emitted = new Map<string, { requestedAt: number; firstActionAt: number }>();
+  // Project requests resolved by a member action. Their PHIDs stay in
+  // currentRequestAt (so a later remove can still process), but the pending
+  // gate skips them.
+  const resolvedProjects = new Set<string>();
 
   for (const tx of ordered) {
     if (tx.type === 'reviewers') {
@@ -192,6 +201,7 @@ export const extractSamplesFromTransactions = (
           currentRequestAt.set(op.phid, tx.dateCreated);
         } else if (op.operation === 'remove') {
           currentRequestAt.delete(op.phid);
+          resolvedProjects.delete(op.phid);
         }
       }
       continue;
@@ -199,7 +209,21 @@ export const extractSamplesFromTransactions = (
     if (!REVIEWER_ACTION_TYPES.has(tx.type)) continue;
     if (tx.authorPhid === revision.authorPhid) continue;
     if (emitted.has(tx.authorPhid)) continue;
-    const requestedAt = currentRequestAt.get(tx.authorPhid);
+    let requestedAt = currentRequestAt.get(tx.authorPhid);
+    // Reviewer-group bookkeeping: any active project request that contains
+    // this actor as a member is satisfied by their action, regardless of
+    // whether the actor was also individually requested. This both supplies
+    // requestedAt when there's no individual request and suppresses the
+    // project's pending entry when there is one.
+    if (projectMembers !== undefined) {
+      for (const [requestedPhid, projectRequestedAt] of currentRequestAt) {
+        if (resolvedProjects.has(requestedPhid)) continue;
+        const members = projectMembers.get(requestedPhid);
+        if (members?.has(tx.authorPhid) !== true) continue;
+        resolvedProjects.add(requestedPhid);
+        requestedAt ??= projectRequestedAt;
+      }
+    }
     if (requestedAt === undefined) continue;
     emitted.set(tx.authorPhid, { requestedAt, firstActionAt: tx.dateCreated });
   }
@@ -238,6 +262,7 @@ export const extractSamplesFromTransactions = (
   if (reviewerIsBlocking) {
     for (const [reviewerPhid, requestedAt] of currentRequestAt) {
       if (emitted.has(reviewerPhid)) continue;
+      if (resolvedProjects.has(reviewerPhid)) continue;
       const login = loginByPhid.get(reviewerPhid);
       if (login === undefined) continue;
       pending.push({
@@ -258,6 +283,10 @@ const projectSearchSchema = z.object({
   data: z.array(
     z.object({
       phid: z.string(),
+      // Phab returns the project's canonical slug at fields.slug. The
+      // `slugs` attachment exists but covers only secondary/historical
+      // slugs and is empty for most projects, so it's not what we want.
+      fields: z.object({ slug: z.string().nullable().optional() }).optional(),
       attachments: z
         .object({
           members: z
@@ -350,7 +379,18 @@ const userSearchSchema = z.object({
 export const lookupProjectMembers = async (
   client: ConduitClient,
   slugs: readonly string[],
-): Promise<{ projectPhids: string[]; memberPhids: string[] }> => {
+): Promise<{
+  projectPhids: string[];
+  memberPhids: string[];
+  // Project PHID → first slug returned by Phab. Used to surface a
+  // reviewer-group project under its slug in pending samples and the
+  // teamLogins set.
+  projectSlugByPhid: Map<string, string>;
+  // Project PHID → set of human member PHIDs. Threaded into extraction so
+  // that an action by any project member resolves the project's pending
+  // request.
+  projectMembers: Map<string, Set<string>>;
+}> => {
   const raw = await client.call('project.search', {
     constraints: { slugs: [...slugs] },
     attachments: { members: true },
@@ -358,12 +398,19 @@ export const lookupProjectMembers = async (
   const parsed = projectSearchSchema.parse(raw);
   const projectPhids = parsed.data.map((entry) => entry.phid);
   const uniqueMembers = new Set<string>();
+  const projectSlugByPhid = new Map<string, string>();
+  const projectMembers = new Map<string, Set<string>>();
   for (const entry of parsed.data) {
+    const members = new Set<string>();
     for (const member of entry.attachments?.members?.members ?? []) {
       uniqueMembers.add(member.phid);
+      members.add(member.phid);
     }
+    projectMembers.set(entry.phid, members);
+    const slug = entry.fields?.slug;
+    if (slug !== undefined && slug !== null) projectSlugByPhid.set(entry.phid, slug);
   }
-  return { projectPhids, memberPhids: [...uniqueMembers] };
+  return { projectPhids, memberPhids: [...uniqueMembers], projectSlugByPhid, projectMembers };
 };
 
 // Phab revision statuses that are still open (not abandoned/published/draft/
@@ -557,7 +604,8 @@ export const fetchPhabSamples = async (params: {
   if (projectSlugs.length === 0) {
     throw new Error('at least one project slug is required');
   }
-  const { projectPhids, memberPhids } = await lookupProjectMembers(client, projectSlugs);
+  const { projectPhids, memberPhids, projectSlugByPhid, projectMembers } =
+    await lookupProjectMembers(client, projectSlugs);
   if (projectPhids.length === 0) {
     throw new Error(`no project slugs resolved: ${projectSlugs.join(', ')}`);
   }
@@ -567,6 +615,14 @@ export const fetchPhabSamples = async (params: {
     );
   }
 
+  // Reviewer-set covers both individual humans and the project tag itself.
+  // Without the project PHIDs, Phab's revision.search misses revisions where
+  // the project was added as a reviewer group (the dashboard's primary
+  // under-count). With them, we still need projectMembers at extraction time
+  // to credit the actual acting human and clear the project's pending entry
+  // when one of its members reviews.
+  const reviewerSet = [...memberPhids, ...projectPhids];
+
   // Two independent revision queries, deduped by PHID:
   // 1. Recently-modified revisions (any status) — the follow-up / backfill window.
   //    Needed to resolve stale pending entries into completed samples.
@@ -574,11 +630,11 @@ export const fetchPhabSamples = async (params: {
   //    pending state. Catches stale-but-still-open revisions the recent query
   //    would miss.
   const recentRevisions = await fetchRevisions(client, {
-    reviewerPHIDs: [...memberPhids],
+    reviewerPHIDs: reviewerSet,
     modifiedStart,
   });
   const openRevisions = await fetchRevisions(client, {
-    reviewerPHIDs: [...memberPhids],
+    reviewerPHIDs: reviewerSet,
     statuses: [...OPEN_REVISION_STATUSES],
     modifiedStart: openModifiedStart,
   });
@@ -587,12 +643,12 @@ export const fetchPhabSamples = async (params: {
     revisionsByPhid.set(rev.phid, rev);
   }
   const revisions = [...revisionsByPhid.values()];
-  // The same PHID set gates both reviewers and authors: "on the team" is
-  // project-membership, and the user's intent is that both sides of the
-  // review must be team members. Aliasing makes the two call-sites read
-  // symmetrically instead of implying two different sets.
-  const allowedReviewerPhids = new Set(memberPhids);
-  const allowedAuthorPhids = allowedReviewerPhids;
+  // Reviewer-side gate: humans (for direct attribution) plus project PHIDs
+  // (for reviewer-group attribution via projectMembers).
+  // Author-side gate: humans only — projects don't author revisions, so
+  // including them here would be a no-op semantically and confusing to read.
+  const allowedReviewerPhids = new Set(reviewerSet);
+  const allowedAuthorPhids = new Set(memberPhids);
 
   const transactionsByRevision = new Map<string, readonly PhabTransaction[]>();
   const userPhids = new Set<string>();
@@ -632,7 +688,15 @@ export const fetchPhabSamples = async (params: {
     }
   }
 
-  const loginByPhid = await resolveLogins(client, [...userPhids]);
+  // user.search rejects non-USER PHIDs, so strip out any project PHIDs that
+  // landed in userPhids via reviewer-op operations (the reviewer-group case)
+  // before calling it.
+  const onlyUserPhids = [...userPhids].filter((phid) => phid.startsWith('PHID-USER-'));
+  const userLoginByPhid = await resolveLogins(client, onlyUserPhids);
+  // Merge project slugs into the same login map so pending-emission can
+  // resolve a project PHID's display name without a separate lookup.
+  const loginByPhid = new Map<string, string>(userLoginByPhid);
+  for (const [phid, slug] of projectSlugByPhid) loginByPhid.set(phid, slug);
 
   const samples: PhabSample[] = [];
   const pending: PhabPendingSample[] = [];
@@ -642,6 +706,7 @@ export const fetchPhabSamples = async (params: {
     const extracted = extractSamplesFromTransactions(rev, txs, loginByPhid, {
       allowedReviewerPhids,
       allowedAuthorPhids,
+      projectMembers,
     });
     samples.push(...extracted.samples);
     pending.push(...extracted.pending);
@@ -661,6 +726,10 @@ export const fetchPhabSamples = async (params: {
     const login = loginByPhid.get(phid);
     if (login !== undefined) teamLogins.add(login);
   }
+  // Include the project slug too — it's a legitimate "reviewer" value on
+  // pending samples emitted via the reviewer-group path, and the legacy-row
+  // purge in collect.ts looks up roster membership by exact string match.
+  for (const slug of projectSlugByPhid.values()) teamLogins.add(slug);
   return {
     samples,
     pending,

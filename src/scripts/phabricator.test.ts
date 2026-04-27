@@ -635,6 +635,154 @@ describe('extractSamplesFromTransactions', () => {
       expect(pending).toEqual([]);
     });
   });
+
+  describe('project tag as a reviewer (reviewer group)', () => {
+    // When a Phab project is added as a reviewer (reviewer-group pattern), the
+    // revision's reviewer ops carry the project's PHID, not individual member
+    // PHIDs. Pending must surface under the project slug; a member acting
+    // satisfies the project's request and gets attributed in the sample.
+    const projectPhid = 'PHID-PROJ-newtabaaaaaaaaaaaaaa';
+    const aliceUserPhid = 'PHID-USER-revieweraaaaaaaaaaaaa';
+    const enrichedLogins = new Map<string, string>([
+      ...loginByPhid,
+      [projectPhid, 'home-newtab-reviewers'],
+    ]);
+
+    it('emits pending under the project slug when only the project is requested', () => {
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+        },
+      );
+      expect(samples).toEqual([]);
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        source: 'phab',
+        reviewer: 'home-newtab-reviewers',
+        requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
+      });
+    });
+
+    it("attributes the sample to the acting member and resolves the project's pending request", () => {
+      // Project is the only requested reviewer; alice (a member) accepts. The
+      // sample must be attributed to alice (not the project) and use the
+      // project's request timestamp; no pending entry remains for the project.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'accept',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_007_200,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid, aliceUserPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+          projectMembers: new Map([[projectPhid, new Set([aliceUserPhid])]]),
+        },
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]).toMatchObject({
+        source: 'phab',
+        reviewer: 'alice',
+        requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
+        firstActionAt: new Date(1_761_007_200 * 1000).toISOString(),
+      });
+      expect(pending).toEqual([]);
+    });
+
+    it('drops project-tagged revisions whose author is not on the team', () => {
+      // Author gate still applies: no samples or pending for a non-member's
+      // revision, even when the team's project is the requested reviewer.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-outsideauthoraaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+      ];
+      const outsideRevision: PhabRevision = {
+        ...revision(),
+        authorPhid: 'PHID-USER-outsideauthoraaaaaa',
+        status: 'needs-review',
+      };
+      const { samples, pending } = extractSamplesFromTransactions(
+        outsideRevision,
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+        },
+      );
+      expect(samples).toEqual([]);
+      expect(pending).toEqual([]);
+    });
+
+    it('does not double-attribute when both the project and an individual member are requested', () => {
+      // Both project and alice are requested. Alice accepts. Expect a single
+      // sample (alice's) and no pending for either the project or alice.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: {
+            operations: [
+              { operation: 'add', phid: projectPhid },
+              { operation: 'add', phid: aliceUserPhid },
+            ],
+          },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'accept',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_007_200,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid, aliceUserPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+          projectMembers: new Map([[projectPhid, new Set([aliceUserPhid])]]),
+        },
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]?.reviewer).toBe('alice');
+      expect(pending).toEqual([]);
+    });
+  });
 });
 
 describe('extractLandingFromTransactions', () => {
@@ -1219,7 +1367,12 @@ describe('fetchPhabSamples', () => {
       }
       if (method === 'differential.revision.search') {
         const p = params as { constraints: { reviewerPHIDs: string[] } };
+        // The query unions individual member PHIDs *and* the project PHIDs
+        // themselves so revisions where the project tag was added as a
+        // reviewer group are also fetched. Members deduped across slugs.
         expect([...p.constraints.reviewerPHIDs].sort()).toEqual([
+          'PHID-PROJ-aaaaaaaaaaaaaaaaaaaa',
+          'PHID-PROJ-bbbbbbbbbbbbbbbbbbbb',
           'PHID-USER-outsidereviewerccccc',
           'PHID-USER-revieweraaaaaaaaaaaaa',
           'PHID-USER-reviewerbbbbbbbbbbbbb',
@@ -2114,6 +2267,109 @@ describe('fetchPhabSamples', () => {
     expect(result.samples).toEqual([]);
     expect(result.pending).toEqual([]);
     expect(result.landings).toEqual([]);
+  });
+
+  it('emits pending under the project slug when a revision is reviewed by the project tag itself', async () => {
+    // Reviewer-group pattern: someone added #home-newtab-reviewers as the
+    // reviewer; no individual member is on the request. The dashboard's open
+    // backlog must still surface this revision, attributed to the project
+    // slug. Asserts that:
+    //   1. The reviewerPHIDs query constraint includes the project's own PHID
+    //      (otherwise Phab won't return the revision at all).
+    //   2. teamLogins includes the project slug so legacy purges don't drop
+    //      these rows on a follow-up run.
+    //   3. The pending entry's `reviewer` is the project slug.
+    const projectPhid = 'PHID-PROJ-newtabaaaaaaaaaaaaaa';
+    const memberPhid = 'PHID-USER-revieweraaaaaaaaaaaaa';
+    const teamAuthorPhid = 'PHID-USER-authoraaaaaaaaaaaaaa';
+    const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
+      if (method === 'project.search') {
+        return {
+          data: [
+            {
+              phid: projectPhid,
+              fields: { name: 'home-newtab-reviewers', slug: 'home-newtab-reviewers' },
+              attachments: {
+                members: { members: [{ phid: memberPhid }, { phid: teamAuthorPhid }] },
+              },
+            },
+          ],
+        };
+      }
+      if (method === 'differential.revision.search') {
+        const constraints = (params as { constraints: Record<string, unknown> }).constraints;
+        const reviewerPHIDs = constraints.reviewerPHIDs;
+        // The reviewer-group revision will only come back if the query
+        // includes the project PHID itself — that's the bug being fixed.
+        if (
+          Array.isArray(reviewerPHIDs) &&
+          (reviewerPHIDs as readonly string[]).includes(projectPhid) &&
+          'modifiedStart' in constraints &&
+          !('statuses' in constraints)
+        ) {
+          return {
+            data: [
+              {
+                id: 555,
+                phid: 'PHID-DREV-projectreviewerxxxxx',
+                fields: {
+                  authorPHID: teamAuthorPhid,
+                  dateModified: 1_761_000_000,
+                  dateCreated: 1_760_900_000,
+                  status: { value: 'needs-review' },
+                },
+              },
+            ],
+            cursor: { after: null },
+          };
+        }
+        return { data: [], cursor: { after: null } };
+      }
+      if (method === 'transaction.search') {
+        return {
+          data: [
+            {
+              id: 1,
+              phid: 'PHID-XACT-aaaaaaaaaaaaaaaaaaaa',
+              type: 'reviewers',
+              authorPHID: teamAuthorPhid,
+              dateCreated: 1_761_000_000,
+              fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+            },
+          ],
+          cursor: { after: null },
+        };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: teamAuthorPhid, fields: { username: 'author-user' } },
+            { phid: memberPhid, fields: { username: 'alice' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+
+    const { pending, teamLogins } = await fetchPhabSamples({
+      client: { call },
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 21,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+    expect(call).toHaveBeenCalledWith(
+      'project.search',
+      expect.objectContaining({
+        attachments: { members: true },
+      }),
+    );
+    expect(pending).toHaveLength(1);
+    expect(pending[0]).toMatchObject({
+      source: 'phab',
+      reviewer: 'home-newtab-reviewers',
+      revisionId: 555,
+    });
+    expect(teamLogins.has('home-newtab-reviewers')).toBe(true);
   });
 });
 
