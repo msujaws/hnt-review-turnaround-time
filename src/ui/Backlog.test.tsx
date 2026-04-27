@@ -185,6 +185,26 @@ describe('Backlog', () => {
       expect(screen.queryByTestId('backlog-github-details')).toBeNull();
     });
 
+    it('renders a Full Results link at the bottom of the phab list', () => {
+      render(
+        <Backlog
+          snapshots={[snapshot('2026-04-22', 1, 0)]}
+          pending={[
+            phabPending('PHID-DREV-aaaaaaaaaaaaaaaaaaaa', 296_454, 'home-newtab-reviewers'),
+          ]}
+          now={now}
+          peopleMap={peopleMap}
+        />,
+      );
+      const link = within(screen.getByTestId('backlog-phab-details')).getByRole('link', {
+        name: /full results/i,
+      });
+      expect(link).toHaveAttribute(
+        'href',
+        'https://phabricator.services.mozilla.com/differential/?responsiblePHIDs%5B0%5D=PHID-PROJ-mjq6kpntsdx4ugyvwdoz&statuses%5B0%5D=open()&order=newest&bucket=action',
+      );
+    });
+
     it('sorts rows by waiting time descending (oldest request first)', () => {
       // Earlier requestedAt = waited longer = should come first.
       const older: PendingSample = {

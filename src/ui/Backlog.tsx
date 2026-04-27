@@ -34,39 +34,62 @@ const waitingHoursFor = (sample: PendingSample, now: Date, peopleMap: PeopleMap)
     timezoneForReviewer(peopleMap, sample.source, sample.reviewer),
   );
 
+// Phabricator query for every open revision where the team's project is the
+// "responsible" party (author or reviewer). Same filter the page in the Phab
+// UI uses; lets the user see the broader set the dashboard intentionally
+// narrows (team-authored + needs-review only).
+const PHAB_FULL_RESULTS_URL =
+  'https://phabricator.services.mozilla.com/differential/?responsiblePHIDs%5B0%5D=PHID-PROJ-mjq6kpntsdx4ugyvwdoz&statuses%5B0%5D=open()&order=newest&bucket=action';
+
+const fullResultsUrlFor = (source: 'phab' | 'github'): string | undefined =>
+  source === 'phab' ? PHAB_FULL_RESULTS_URL : undefined;
+
 const PendingList: FC<{
   readonly entries: readonly { readonly sample: PendingSample; readonly hours: number }[];
-}> = ({ entries }) => (
-  <ul className="flex flex-col gap-2 pt-3">
-    {entries.map(({ sample, hours }) => (
-      <li
-        key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
-        data-testid="backlog-row"
-        className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded bg-neutral-950 px-3 py-2 text-xs ring-1 ring-neutral-800"
+  readonly fullResultsUrl?: string | undefined;
+}> = ({ entries, fullResultsUrl }) => (
+  <div className="flex flex-col gap-2 pt-3">
+    <ul className="flex flex-col gap-2">
+      {entries.map(({ sample, hours }) => (
+        <li
+          key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
+          data-testid="backlog-row"
+          className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded bg-neutral-950 px-3 py-2 text-xs ring-1 ring-neutral-800"
+        >
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <a
+              href={linkFor(sample)}
+              className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {labelFor(sample)}
+            </a>
+            <span className="text-neutral-500">·</span>
+            <span className="text-neutral-300">
+              {sample.author ?? <span className="text-neutral-500">—</span>} →{' '}
+              <span className="text-neutral-100">{sample.reviewer}</span>
+            </span>
+          </div>
+          <div className="flex items-baseline gap-2 text-neutral-400">
+            <span>{formatTimestamp(sample.requestedAt)}</span>
+            <span className="text-neutral-500">·</span>
+            <span className="font-medium text-neutral-200">{formatHours(hours)} waiting</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+    {fullResultsUrl === undefined ? null : (
+      <a
+        href={fullResultsUrl}
+        className="self-end pt-1 text-xs text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <a
-            href={linkFor(sample)}
-            className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {labelFor(sample)}
-          </a>
-          <span className="text-neutral-500">·</span>
-          <span className="text-neutral-300">
-            {sample.author ?? <span className="text-neutral-500">—</span>} →{' '}
-            <span className="text-neutral-100">{sample.reviewer}</span>
-          </span>
-        </div>
-        <div className="flex items-baseline gap-2 text-neutral-400">
-          <span>{formatTimestamp(sample.requestedAt)}</span>
-          <span className="text-neutral-500">·</span>
-          <span className="font-medium text-neutral-200">{formatHours(hours)} waiting</span>
-        </div>
-      </li>
-    ))}
-  </ul>
+        Full Results
+      </a>
+    )}
+  </div>
 );
 
 const SourceCard: FC<{
@@ -111,7 +134,7 @@ const SourceCard: FC<{
           {formatHours(stats.p90BusinessHours)}
         </span>
       </summary>
-      <PendingList entries={entries} />
+      <PendingList entries={entries} fullResultsUrl={fullResultsUrlFor(source)} />
     </details>
   );
 };
