@@ -74,7 +74,7 @@ const Page: FC = async () => {
         </div>
       </header>
       <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
-      <Backlog snapshots={backlog} />
+      <Backlog snapshots={backlog} pending={pending} now={realNow} peopleMap={peopleMap} />
       <Dashboard
         history={history}
         samples={samples}
