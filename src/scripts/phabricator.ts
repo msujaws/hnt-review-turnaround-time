@@ -221,26 +221,24 @@ export const extractSamplesFromTransactions = (
     }
     if (!REVIEWER_ACTION_TYPES.has(tx.type)) continue;
     if (tx.authorPhid === revision.authorPhid) continue;
-    if (emitted.has(tx.authorPhid)) continue;
-    let requestedAt = currentRequestAt.get(tx.authorPhid);
-    // Reviewer-group bookkeeping: any active project request that contains
-    // this actor as a member is satisfied by their action, regardless of
-    // whether the actor was also individually requested. This both supplies
-    // requestedAt when there's no individual request and suppresses the
-    // project's pending entry when there is one.
+    // Project-membership bookkeeping runs unconditionally — separate from
+    // the actor's sample emission. A reviewer who comments early sets their
+    // own emitted slot from that first action, but a *later* accept by the
+    // same member must still promote the project to acceptedByTeam.
+    // Capture projectRequestedAt for the actor as a side product so we
+    // don't have to re-walk the map below.
+    let projectRequestedAtForActor: number | undefined;
     if (projectMembers !== undefined) {
       for (const [requestedPhid, projectRequestedAt] of currentRequestAt) {
         const members = projectMembers.get(requestedPhid);
         if (members?.has(tx.authorPhid) !== true) continue;
-        if (!resolvedProjects.has(requestedPhid)) {
-          resolvedProjects.add(requestedPhid);
-          requestedAt ??= projectRequestedAt;
-        }
-        // Promote the project to accepted on the first member accept, even
-        // if a prior member action (comment / inline) already resolved it.
+        resolvedProjects.add(requestedPhid);
         if (tx.type === 'accept') acceptedProjects.add(requestedPhid);
+        projectRequestedAtForActor ??= projectRequestedAt;
       }
     }
+    if (emitted.has(tx.authorPhid)) continue;
+    const requestedAt = currentRequestAt.get(tx.authorPhid) ?? projectRequestedAtForActor;
     if (requestedAt === undefined) continue;
     emitted.set(tx.authorPhid, { requestedAt, firstActionAt: tx.dateCreated });
   }
