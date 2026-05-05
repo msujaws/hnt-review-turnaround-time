@@ -44,41 +44,80 @@ const PHAB_FULL_RESULTS_URL =
 const fullResultsUrlFor = (source: 'phab' | 'github'): string | undefined =>
   source === 'phab' ? PHAB_FULL_RESULTS_URL : undefined;
 
+interface PendingEntry {
+  readonly sample: PendingSample;
+  readonly hours: number;
+}
+
+const PendingRow: FC<{ readonly entry: PendingEntry; readonly muted?: boolean }> = ({
+  entry: { sample, hours },
+  muted = false,
+}) => (
+  <li
+    data-testid={muted ? 'backlog-row-accepted' : 'backlog-row'}
+    className={`flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded px-3 py-2 text-xs ${
+      muted
+        ? 'bg-neutral-950/60 ring-1 ring-neutral-800/60'
+        : 'bg-neutral-950 ring-1 ring-neutral-800'
+    }`}
+  >
+    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+      <a
+        href={linkFor(sample)}
+        className={`font-mono underline decoration-sky-700 underline-offset-4 ${
+          muted ? 'text-sky-500 hover:text-sky-400' : 'text-sky-400 hover:text-sky-300'
+        }`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {labelFor(sample)}
+      </a>
+      <span className="text-neutral-500">·</span>
+      <span className={muted ? 'text-neutral-400' : 'text-neutral-300'}>
+        {sample.author ?? <span className="text-neutral-500">—</span>} →{' '}
+        <span className={muted ? 'text-neutral-300' : 'text-neutral-100'}>{sample.reviewer}</span>
+      </span>
+    </div>
+    <div className={`flex items-baseline gap-2 ${muted ? 'text-neutral-500' : 'text-neutral-400'}`}>
+      <span>{formatTimestamp(sample.requestedAt)}</span>
+      <span className="text-neutral-500">·</span>
+      <span className={`font-medium ${muted ? 'text-neutral-400' : 'text-neutral-200'}`}>
+        {formatHours(hours)} waiting
+      </span>
+    </div>
+  </li>
+);
+
 const PendingList: FC<{
-  readonly entries: readonly { readonly sample: PendingSample; readonly hours: number }[];
+  readonly primary: readonly PendingEntry[];
+  readonly accepted: readonly PendingEntry[];
   readonly fullResultsUrl?: string | undefined;
-}> = ({ entries, fullResultsUrl }) => (
+}> = ({ primary, accepted, fullResultsUrl }) => (
   <div className="flex flex-col gap-2 pt-3">
     <ul className="flex flex-col gap-2">
-      {entries.map(({ sample, hours }) => (
-        <li
-          key={`${sample.source}:${String(sample.id)}:${sample.reviewer}`}
-          data-testid="backlog-row"
-          className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded bg-neutral-950 px-3 py-2 text-xs ring-1 ring-neutral-800"
-        >
-          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <a
-              href={linkFor(sample)}
-              className="font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {labelFor(sample)}
-            </a>
-            <span className="text-neutral-500">·</span>
-            <span className="text-neutral-300">
-              {sample.author ?? <span className="text-neutral-500">—</span>} →{' '}
-              <span className="text-neutral-100">{sample.reviewer}</span>
-            </span>
-          </div>
-          <div className="flex items-baseline gap-2 text-neutral-400">
-            <span>{formatTimestamp(sample.requestedAt)}</span>
-            <span className="text-neutral-500">·</span>
-            <span className="font-medium text-neutral-200">{formatHours(hours)} waiting</span>
-          </div>
-        </li>
+      {primary.map((entry) => (
+        <PendingRow
+          key={`${entry.sample.source}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
+          entry={entry}
+        />
       ))}
     </ul>
+    {accepted.length === 0 ? null : (
+      <div className="flex flex-col gap-2 pt-2">
+        <h3 className="text-[11px] uppercase tracking-wide text-neutral-500">
+          Accepted by us · waiting on others
+        </h3>
+        <ul className="flex flex-col gap-2">
+          {accepted.map((entry) => (
+            <PendingRow
+              key={`${entry.sample.source}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
+              entry={entry}
+              muted
+            />
+          ))}
+        </ul>
+      </div>
+    )}
     {fullResultsUrl === undefined ? null : (
       <a
         href={fullResultsUrl}
@@ -109,10 +148,21 @@ const SourceCard: FC<{
       </div>
     );
   }
-  const entries = pending
+  // Phab pending entries can carry an `acceptedByTeam` flag indicating an HNT
+  // member already accepted, but the revision is still in needs-review (an
+  // external reviewer is blocking). Split those into a separate, deprioritized
+  // sub-list. GitHub pending samples never carry the flag, so the partition is
+  // a no-op for them.
+  const allEntries = pending
     .filter((sample) => sample.source === source)
     .map((sample) => ({ sample, hours: waitingHoursFor(sample, now, peopleMap) }))
     .sort((a, b) => b.hours - a.hours);
+  const primary = allEntries.filter(
+    ({ sample }) => sample.source !== 'phab' || sample.acceptedByTeam !== true,
+  );
+  const accepted = allEntries.filter(
+    ({ sample }) => sample.source === 'phab' && sample.acceptedByTeam === true,
+  );
   return (
     <details
       data-testid={`backlog-${source}-details`}
@@ -134,7 +184,11 @@ const SourceCard: FC<{
           {formatHours(stats.p90BusinessHours)}
         </span>
       </summary>
-      <PendingList entries={entries} fullResultsUrl={fullResultsUrlFor(source)} />
+      <PendingList
+        primary={primary}
+        accepted={accepted}
+        fullResultsUrl={fullResultsUrlFor(source)}
+      />
     </details>
   );
 };
