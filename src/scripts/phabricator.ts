@@ -198,6 +198,12 @@ export const extractSamplesFromTransactions = (
   // currentRequestAt (so a later remove can still process), but the pending
   // gate skips them.
   const resolvedProjects = new Set<string>();
+  // Subset of resolvedProjects whose resolution was specifically an `accept`
+  // transaction (not a comment / inline / request-changes / reject). Drives
+  // the acceptedByTeam pending flag — a member commenting on the project's
+  // request resolves the team's pending response, but the team has not
+  // ACCEPTED, so we don't surface it as "Accepted by us · waiting on others."
+  const acceptedProjects = new Set<string>();
 
   for (const tx of ordered) {
     if (tx.type === 'reviewers') {
@@ -224,11 +230,15 @@ export const extractSamplesFromTransactions = (
     // project's pending entry when there is one.
     if (projectMembers !== undefined) {
       for (const [requestedPhid, projectRequestedAt] of currentRequestAt) {
-        if (resolvedProjects.has(requestedPhid)) continue;
         const members = projectMembers.get(requestedPhid);
         if (members?.has(tx.authorPhid) !== true) continue;
-        resolvedProjects.add(requestedPhid);
-        requestedAt ??= projectRequestedAt;
+        if (!resolvedProjects.has(requestedPhid)) {
+          resolvedProjects.add(requestedPhid);
+          requestedAt ??= projectRequestedAt;
+        }
+        // Promote the project to accepted on the first member accept, even
+        // if a prior member action (comment / inline) already resolved it.
+        if (tx.type === 'accept') acceptedProjects.add(requestedPhid);
       }
     }
     if (requestedAt === undefined) continue;
@@ -264,22 +274,27 @@ export const extractSamplesFromTransactions = (
   // for legacy fixtures that build PhabRevision without going through
   // fetchRevisions. Mirrors the GitHub gate in 78b1ecb.
   //
-  // Project tags whose pending request was satisfied by a member action
-  // (resolvedProjects) still emit a pending entry — but flagged with
+  // Project tags whose pending request was specifically *accepted* by a
+  // member (acceptedProjects) emit a pending entry flagged with
   // acceptedByTeam: true so the UI can demote them into the
-  // "accepted by us, waiting on others" sub-list. The flag is meaningful
-  // only while the revision is in needs-review: if Phab had moved the
-  // revision to accepted/published, the gate above already short-circuits
-  // pending emission entirely.
+  // "accepted by us, waiting on others" sub-list. Projects resolved by a
+  // softer member action (comment / inline / request-changes / reject) are
+  // still dropped from pending — the team responded but did not accept,
+  // and surfacing them as either "regular pending" or "accepted by us"
+  // would misrepresent reality. The acceptedByTeam flag is only meaningful
+  // while the revision is in needs-review: if Phab moved it to
+  // accepted/published, the gate above short-circuits pending emission
+  // entirely.
   const pending: PhabPendingSample[] = [];
   const reviewerIsBlocking =
     revision.status === undefined || PENDING_BLOCKING_STATUSES.has(revision.status);
   if (reviewerIsBlocking) {
     for (const [reviewerPhid, requestedAt] of currentRequestAt) {
       if (emitted.has(reviewerPhid)) continue;
+      const acceptedByTeam = acceptedProjects.has(reviewerPhid);
+      if (resolvedProjects.has(reviewerPhid) && !acceptedByTeam) continue;
       const login = loginByPhid.get(reviewerPhid);
       if (login === undefined) continue;
-      const acceptedByTeam = resolvedProjects.has(reviewerPhid);
       pending.push({
         source: 'phab',
         id: asRevisionPhid(revision.phid),
