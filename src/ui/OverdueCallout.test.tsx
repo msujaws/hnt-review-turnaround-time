@@ -52,6 +52,16 @@ describe('isOverduePending', () => {
     expect(isOverduePending(sample, now, EMPTY_PEOPLE_MAP, 4)).toBe(false);
   });
 
+  it('returns false for an acceptedByTeam pending entry even when its age is over 10x the SLA', () => {
+    // The team has accepted; the revision is still in needs-review because
+    // an external reviewer is blocking. We don't want to alarm the team's
+    // page about a wait they've already discharged — Backlog surfaces these
+    // in a deprioritized sub-list instead.
+    const sample = pendingPhab({ acceptedByTeam: true });
+    const now = new Date('2026-04-17T21:00:00Z'); // 40h since Mon 09:00 ET
+    expect(isOverduePending(sample, now, EMPTY_PEOPLE_MAP, 4)).toBe(false);
+  });
+
   it('uses the reviewer timezone from the people map', () => {
     // A Melbourne reviewer: the same UTC window maps to different business
     // hours in Melbourne vs ET. Anchor the test on ET being inside off-hours.
@@ -217,5 +227,56 @@ describe('OverdueCallout', () => {
     );
     const region = screen.getByRole('region', { name: /overdue/i });
     expect(region.className).toMatch(/animate-pop-in/);
+  });
+
+  it('excludes acceptedByTeam pending entries from the red banner', () => {
+    // Two old pending entries: one regular, one acceptedByTeam. Only the
+    // regular one should appear in the table.
+    const pending: PendingSample[] = [
+      pendingPhab({
+        id: asRevisionPhid('PHID-DREV-regulaaaaaaaaaaaaaaa'),
+        revisionId: 100,
+        reviewer: asReviewerLogin('home-newtab-reviewers'),
+      }),
+      pendingPhab({
+        id: asRevisionPhid('PHID-DREV-acceptaaaaaaaaaaaaaa'),
+        revisionId: 200,
+        reviewer: asReviewerLogin('home-newtab-reviewers'),
+        acceptedByTeam: true,
+      }),
+    ];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')} // both > 40h
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    expect(within(region).getByText(/D100/)).toBeInTheDocument();
+    expect(within(region).queryByText(/D200/)).toBeNull();
+    const heading = within(region).getByRole('heading', { name: /overdue/i });
+    expect(heading).toHaveTextContent('1');
+  });
+
+  it('renders nothing when the only overdue entries are acceptedByTeam', () => {
+    const pending: PendingSample[] = [
+      pendingPhab({ acceptedByTeam: true }),
+      pendingPhab({
+        id: asRevisionPhid('PHID-DREV-acceptbbbbbbbbbbbbbb'),
+        revisionId: 300,
+        acceptedByTeam: true,
+      }),
+    ];
+    const { container } = render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    expect(container.firstChild).toBeNull();
   });
 });
