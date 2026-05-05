@@ -20,12 +20,20 @@ const waitingHoursFor = (sample: PendingSample, now: Date, peopleMap: PeopleMap)
     timezoneForReviewer(peopleMap, sample.source, sample.reviewer),
   );
 
+// acceptedByTeam pending entries (HNT accepted, revision still in needs-review
+// because an external reviewer is blocking) are intentionally excluded from
+// the red Overdue callout — Backlog surfaces them in a deprioritized sub-list
+// instead. Filtering here keeps the page-level hasOverdue check in sync with
+// the rendered table.
 export const isOverduePending = (
   sample: PendingSample,
   now: Date,
   peopleMap: PeopleMap,
   slaHours: number,
-): boolean => waitingHoursFor(sample, now, peopleMap) >= slaHours * OVERDUE_MULTIPLIER;
+): boolean => {
+  if (sample.source === 'phab' && sample.acceptedByTeam === true) return false;
+  return waitingHoursFor(sample, now, peopleMap) >= slaHours * OVERDUE_MULTIPLIER;
+};
 
 const formatHours = (value: number): string => {
   const rounded = Math.round(value * 10) / 10;
@@ -57,6 +65,7 @@ export interface OverdueCalloutProps {
 
 export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours, peopleMap }) => {
   const overdue = pending
+    .filter((sample) => !(sample.source === 'phab' && sample.acceptedByTeam === true))
     .map((sample) => ({ sample, hours: waitingHoursFor(sample, now, peopleMap) }))
     .filter((entry) => entry.hours >= slaHours * OVERDUE_MULTIPLIER)
     .sort((a, b) => b.hours - a.hours);
