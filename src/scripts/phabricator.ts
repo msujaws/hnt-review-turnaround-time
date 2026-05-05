@@ -30,6 +30,13 @@ export interface PhabPendingSample {
   readonly author?: ReviewerLogin | undefined;
   readonly reviewer: ReviewerLogin;
   readonly requestedAt: IsoTimestamp;
+  // True iff `reviewer` is a project tag whose pending request was satisfied
+  // by an HNT member action while the revision is still in needs-review (i.e.,
+  // the broader review is blocking on someone outside the team). The UI
+  // demotes these into a "Accepted by us · waiting on others" sub-list and
+  // excludes them from the red Overdue callout. Absent/false means a regular
+  // pending entry.
+  readonly acceptedByTeam?: boolean | undefined;
 }
 
 // Per-revision landing record — emitted once when a revision transitions to
@@ -256,15 +263,23 @@ export const extractSamplesFromTransactions = (
   // reviewer in the overdue list. undefined status falls through as "open"
   // for legacy fixtures that build PhabRevision without going through
   // fetchRevisions. Mirrors the GitHub gate in 78b1ecb.
+  //
+  // Project tags whose pending request was satisfied by a member action
+  // (resolvedProjects) still emit a pending entry — but flagged with
+  // acceptedByTeam: true so the UI can demote them into the
+  // "accepted by us, waiting on others" sub-list. The flag is meaningful
+  // only while the revision is in needs-review: if Phab had moved the
+  // revision to accepted/published, the gate above already short-circuits
+  // pending emission entirely.
   const pending: PhabPendingSample[] = [];
   const reviewerIsBlocking =
     revision.status === undefined || PENDING_BLOCKING_STATUSES.has(revision.status);
   if (reviewerIsBlocking) {
     for (const [reviewerPhid, requestedAt] of currentRequestAt) {
       if (emitted.has(reviewerPhid)) continue;
-      if (resolvedProjects.has(reviewerPhid)) continue;
       const login = loginByPhid.get(reviewerPhid);
       if (login === undefined) continue;
+      const acceptedByTeam = resolvedProjects.has(reviewerPhid);
       pending.push({
         source: 'phab',
         id: asRevisionPhid(revision.phid),
@@ -272,6 +287,7 @@ export const extractSamplesFromTransactions = (
         ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
         reviewer: asReviewerLogin(login),
         requestedAt: toIso(requestedAt),
+        ...(acceptedByTeam ? { acceptedByTeam: true } : {}),
       });
     }
   }

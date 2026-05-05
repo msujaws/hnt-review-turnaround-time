@@ -202,6 +202,11 @@ const phabPendingSampleSchema = z.object({
     .optional(),
   reviewer: z.string().transform((v) => asReviewerLogin(v)),
   requestedAt: z.string().transform((v) => asIsoTimestamp(v)),
+  // Optional flag: true when the project tag's pending request was satisfied
+  // by an HNT member action while the revision is still in needs-review.
+  // Absent on rows written before this feature shipped — those parse as
+  // regular pending entries.
+  acceptedByTeam: z.boolean().optional(),
 });
 
 const githubPendingSampleSchema = z.object({
