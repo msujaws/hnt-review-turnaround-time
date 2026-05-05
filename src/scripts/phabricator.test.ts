@@ -837,6 +837,60 @@ describe('extractSamplesFromTransactions', () => {
       });
     });
 
+    it('flags acceptedByTeam when a member who already commented later accepts', () => {
+      // A member's earlier comment satisfies the actor's emitted slot for
+      // sample emission, but a later accept by the same member must still
+      // promote the project to acceptedByTeam. Real-world example: a
+      // reviewer leaves an inline comment, then comes back the next day and
+      // accepts. Pre-fix this would have flagged from the comment alone;
+      // a naive fix that only updates acceptedProjects when emitted.has is
+      // false would miss the accept entirely.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'comment',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_003_600,
+        }),
+        mkTransaction({
+          id: 3,
+          type: 'accept',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_007_200,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid, aliceUserPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+          projectMembers: new Map([[projectPhid, new Set([aliceUserPhid])]]),
+        },
+      );
+      // Sample is anchored on the FIRST action (the comment), as before.
+      expect(samples).toHaveLength(1);
+      expect(samples[0]).toMatchObject({
+        reviewer: 'alice',
+        firstActionAt: new Date(1_761_003_600 * 1000).toISOString(),
+      });
+      // Even though emitted was set from the comment, the later accept
+      // promotes the project to acceptedByTeam.
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        reviewer: 'home-newtab-reviewers',
+        acceptedByTeam: true,
+      });
+    });
+
     it('does not flag acceptedByTeam when the member only commented (no accept)', () => {
       // A member commenting satisfies the time-to-first-action sample for the
       // project, but the team has not actually accepted the revision —
