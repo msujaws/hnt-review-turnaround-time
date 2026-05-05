@@ -836,6 +836,44 @@ describe('extractSamplesFromTransactions', () => {
         acceptedByTeam: true,
       });
     });
+
+    it('does not flag acceptedByTeam when the member only commented (no accept)', () => {
+      // A member commenting satisfies the time-to-first-action sample for the
+      // project, but the team has not actually accepted the revision —
+      // surfacing it as "Accepted by us · waiting on others" would be wrong.
+      // The project's pending entry stays dropped (matches pre-flag behavior:
+      // any reviewer action resolves the project's pending request for the
+      // backlog view), so the revision doesn't get stranded as a regular
+      // pending entry either.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'comment',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_007_200,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid, aliceUserPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+          projectMembers: new Map([[projectPhid, new Set([aliceUserPhid])]]),
+        },
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]?.reviewer).toBe('alice');
+      expect(pending).toEqual([]);
+    });
   });
 });
 
