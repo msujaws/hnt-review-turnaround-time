@@ -29,13 +29,19 @@ const snapshot = (date: string, phabOpen: number, ghOpen: number): BacklogSnapsh
 
 const peopleMap: PeopleMap = { github: {}, phab: {} };
 
-const phabPending = (id: string, revisionId: number, reviewer: string): PendingSample => ({
+const phabPending = (
+  id: string,
+  revisionId: number,
+  reviewer: string,
+  options: { readonly acceptedByTeam?: boolean } = {},
+): PendingSample => ({
   source: 'phab',
   id: asRevisionPhid(id),
   revisionId,
   author: asReviewerLogin('mconley'),
   reviewer: asReviewerLogin(reviewer),
   requestedAt: asIsoTimestamp('2026-04-24T16:11:47.000Z'),
+  ...(options.acceptedByTeam === true ? { acceptedByTeam: true } : {}),
 });
 
 const githubPending = (n: number, reviewer: string): PendingSample => ({
@@ -203,6 +209,58 @@ describe('Backlog', () => {
         'href',
         'https://phabricator.services.mozilla.com/differential/?responsiblePHIDs%5B0%5D=PHID-PROJ-mjq6kpntsdx4ugyvwdoz&statuses%5B0%5D=open()&order=newest&bucket=action',
       );
+    });
+
+    describe('accepted-by-team rows', () => {
+      it('renders accepted-by-team entries under a separate sub-list with its own heading', () => {
+        // Two regular pending + one acceptedByTeam. The acceptedByTeam row
+        // should sit under a "Accepted by us · waiting on others" heading,
+        // not in the primary list, and the count summary still reflects the
+        // total openCount (the snapshot's count is authoritative for the
+        // summary text).
+        render(
+          <Backlog
+            snapshots={[snapshot('2026-04-22', 3, 0)]}
+            pending={[
+              phabPending('PHID-DREV-aaaaaaaaaaaaaaaaaaaa', 296_454, 'home-newtab-reviewers'),
+              phabPending('PHID-DREV-bbbbbbbbbbbbbbbbbbbb', 296_376, 'home-newtab-reviewers'),
+              phabPending('PHID-DREV-cccccccccccccccccccc', 296_237, 'home-newtab-reviewers', {
+                acceptedByTeam: true,
+              }),
+            ]}
+            now={now}
+            peopleMap={peopleMap}
+          />,
+        );
+        const phabDetails = screen.getByTestId('backlog-phab-details');
+        // Heading separates the two sub-lists.
+        const heading = within(phabDetails).getByText(/accepted by us/i);
+        expect(heading).toBeInTheDocument();
+        // Primary rows precede the heading; accepted-by-team rows follow it.
+        const primary = within(phabDetails).getAllByTestId('backlog-row');
+        const accepted = within(phabDetails).getAllByTestId('backlog-row-accepted');
+        expect(primary).toHaveLength(2);
+        expect(accepted).toHaveLength(1);
+        expect(primary.map((r) => r.textContent).join('|')).toContain('D296454');
+        expect(primary.map((r) => r.textContent).join('|')).toContain('D296376');
+        expect(accepted[0]?.textContent).toContain('D296237');
+      });
+
+      it('does not render the heading or sub-list when there are no accepted-by-team entries', () => {
+        render(
+          <Backlog
+            snapshots={[snapshot('2026-04-22', 1, 0)]}
+            pending={[
+              phabPending('PHID-DREV-aaaaaaaaaaaaaaaaaaaa', 296_454, 'home-newtab-reviewers'),
+            ]}
+            now={now}
+            peopleMap={peopleMap}
+          />,
+        );
+        const phabDetails = screen.getByTestId('backlog-phab-details');
+        expect(within(phabDetails).queryByText(/accepted by us/i)).toBeNull();
+        expect(within(phabDetails).queryAllByTestId('backlog-row-accepted')).toHaveLength(0);
+      });
     });
 
     it('sorts rows by waiting time descending (oldest request first)', () => {
