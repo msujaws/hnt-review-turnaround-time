@@ -676,10 +676,13 @@ describe('extractSamplesFromTransactions', () => {
       });
     });
 
-    it("attributes the sample to the acting member and resolves the project's pending request", () => {
-      // Project is the only requested reviewer; alice (a member) accepts. The
-      // sample must be attributed to alice (not the project) and use the
-      // project's request timestamp; no pending entry remains for the project.
+    it('attributes the sample to the acting member and surfaces the project as accepted-by-team', () => {
+      // Project is the only requested reviewer; alice (a member) accepts but
+      // the revision stays in needs-review (something/someone else is still
+      // blocking). The sample is attributed to alice (not the project) using
+      // the project's request timestamp, AND the project still emits a pending
+      // entry flagged acceptedByTeam: true so the UI can surface "we did our
+      // part, waiting on others" as a lower-priority row.
       const txs: PhabTransaction[] = [
         mkTransaction({
           id: 1,
@@ -712,6 +715,48 @@ describe('extractSamplesFromTransactions', () => {
         requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
         firstActionAt: new Date(1_761_007_200 * 1000).toISOString(),
       });
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        source: 'phab',
+        reviewer: 'home-newtab-reviewers',
+        requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
+        acceptedByTeam: true,
+      });
+    });
+
+    it('drops the project pending entry once the revision moves out of needs-review', () => {
+      // Same shape as the prior test, but the revision has already transitioned
+      // to a non-blocking status (accepted, published, abandoned). Nothing to
+      // surface — not even as accepted-by-team, since the broader review is
+      // resolved. The reviewerIsBlocking gate suppresses pending emission for
+      // every status other than needs-review.
+      const txs: PhabTransaction[] = [
+        mkTransaction({
+          id: 1,
+          type: 'reviewers',
+          authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+          dateCreated: 1_761_000_000,
+          fields: { operations: [{ operation: 'add', phid: projectPhid }] },
+        }),
+        mkTransaction({
+          id: 2,
+          type: 'accept',
+          authorPhid: aliceUserPhid,
+          dateCreated: 1_761_007_200,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'accepted' },
+        txs,
+        enrichedLogins,
+        {
+          allowedReviewerPhids: new Set([projectPhid, aliceUserPhid]),
+          allowedAuthorPhids: new Set(['PHID-USER-authoraaaaaaaaaaaaaa']),
+          projectMembers: new Map([[projectPhid, new Set([aliceUserPhid])]]),
+        },
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]?.reviewer).toBe('alice');
       expect(pending).toEqual([]);
     });
 
@@ -747,7 +792,11 @@ describe('extractSamplesFromTransactions', () => {
 
     it('does not double-attribute when both the project and an individual member are requested', () => {
       // Both project and alice are requested. Alice accepts. Expect a single
-      // sample (alice's) and no pending for either the project or alice.
+      // sample (alice's) and no pending entry for alice as an individual.
+      // The project still emits an acceptedByTeam pending entry while the
+      // revision is in needs-review — alice's accept satisfies both her own
+      // request and the project's, but the broader review is still blocking
+      // on someone else.
       const txs: PhabTransaction[] = [
         mkTransaction({
           id: 1,
@@ -780,7 +829,12 @@ describe('extractSamplesFromTransactions', () => {
       );
       expect(samples).toHaveLength(1);
       expect(samples[0]?.reviewer).toBe('alice');
-      expect(pending).toEqual([]);
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        source: 'phab',
+        reviewer: 'home-newtab-reviewers',
+        acceptedByTeam: true,
+      });
     });
   });
 });
