@@ -61,7 +61,8 @@ explicit ask.
 ## Architecture in 30 seconds
 
 ```
-GitHub Actions (Mon-Fri 13:00 UTC, .github/workflows/daily-snapshot.yml)
+GitHub Actions (Mon-Fri, cron 10:00 UTC ≈ 6:00 ET; runs late ~7:00 ET on
+                GitHub's shared queue — .github/workflows/daily-snapshot.yml)
   └─ bun run collect
        ├─ fetchPhabSamples   (src/scripts/phabricator.ts)
        ├─ fetchGithubSamples (src/scripts/github.ts)
@@ -74,7 +75,8 @@ GitHub Actions (Mon-Fri 13:00 UTC, .github/workflows/daily-snapshot.yml)
                └─ Vercel redeploys on push
                       └─ app/layout.tsx generateMetadata() reads the latest
                          history row into <title> / og:description
-                              └─ Slack Workflow posts the URL; Slack unfurls.
+                              └─ Slack Workflow posts the URL at 13:00 UTC /
+                                 9:00 ET (≥2h after collect); Slack unfurls.
 ```
 
 Key constants in `src/scripts/collect.ts`:
