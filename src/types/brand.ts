@@ -9,6 +9,7 @@ export type ReviewerLogin = Brand<string, 'ReviewerLogin'>;
 export type BusinessHours = Brand<number, 'BusinessHours'>;
 export type IsoTimestamp = Brand<string, 'IsoTimestamp'>;
 export type IanaTimezone = Brand<string, 'IanaTimezone'>;
+export type GroupId = Brand<string, 'GroupId'>;
 
 const revisionPhidSchema = z.string().regex(/^PHID-DREV-[a-z0-9]{20}$/, 'invalid revision PHID');
 
@@ -53,3 +54,11 @@ const ianaTimezoneSchema = z.string().refine((value) => {
 
 export const asIanaTimezone = (value: string): IanaTimezone =>
   ianaTimezoneSchema.parse(value) as IanaTimezone;
+
+// A review-group identifier: a URL-safe slug used both as the dropdown route
+// segment and the per-group data directory name. Membership in the known set
+// lives in src/groups.ts (getGroup); this only enforces the slug shape so the
+// brand stays free of a circular import on the registry.
+const groupIdSchema = z.string().regex(/^[a-z][a-z0-9-]*$/, 'invalid group id');
+
+export const asGroupId = (value: string): GroupId => groupIdSchema.parse(value) as GroupId;
