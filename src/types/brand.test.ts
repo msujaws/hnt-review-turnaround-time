@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   asBusinessHours,
+  asGroupId,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
@@ -98,5 +99,33 @@ describe('asIsoTimestamp', () => {
 
   it('rejects empty string', () => {
     expect(() => asIsoTimestamp('')).toThrow();
+  });
+});
+
+describe('asGroupId', () => {
+  it('accepts a lowercase hyphenated slug', () => {
+    expect(asGroupId('home-newtab')).toBe('home-newtab');
+  });
+
+  it('accepts a single lowercase word', () => {
+    expect(asGroupId('sharing')).toBe('sharing');
+  });
+
+  it('rejects empty string', () => {
+    expect(() => asGroupId('')).toThrow();
+  });
+
+  it('rejects uppercase characters', () => {
+    expect(() => asGroupId('Home-Newtab')).toThrow();
+  });
+
+  it('rejects underscores and spaces', () => {
+    expect(() => asGroupId('home_newtab')).toThrow();
+    expect(() => asGroupId('home newtab')).toThrow();
+  });
+
+  it('rejects a leading hyphen or digit', () => {
+    expect(() => asGroupId('-home')).toThrow();
+    expect(() => asGroupId('1home')).toThrow();
   });
 });
