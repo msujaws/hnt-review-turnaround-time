@@ -30,6 +30,11 @@ export interface MetadataOptions {
   readonly pending?: readonly PendingSample[];
   readonly now?: Date;
   readonly peopleMap?: PeopleMap;
+  // Group display name for the unfurl title. Defaults to 'HNT' for back-compat.
+  readonly label?: string;
+  // Whether this group reviews on GitHub. Phabricator-only groups suppress the
+  // GH segment so the unfurl doesn't advertise an always-N/A metric.
+  readonly hasGithub?: boolean;
 }
 
 const countOverdue = (
@@ -47,27 +52,32 @@ export const buildMetadataSummary = (
   const pending = options.pending ?? [];
   const now = options.now ?? new Date();
   const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
+  const label = options.label ?? 'HNT';
+  const hasGithub = options.hasGithub ?? true;
   const overdueCount = countOverdue(pending, now, peopleMap, slaHours);
   const overduePrefix = overdueCount > 0 ? `⚠ ${overdueCount.toString()} overdue · ` : '';
 
   const latest = history.at(-1);
   if (latest === undefined) {
     return {
-      title: `${overduePrefix}HNT Review TAT`,
+      title: `${overduePrefix}${label} Review TAT`,
       description: overdueCount > 0 ? `${overduePrefix}No snapshots yet.` : 'No snapshots yet.',
     };
   }
   const phab = pickHeadlineWindow(latest.phab);
   const github = pickHeadlineWindow(latest.github);
   const phabHas = phab.stats.n > 0;
-  const ghHas = github.stats.n > 0;
+  const ghHas = hasGithub && github.stats.n > 0;
   if (!phabHas && !ghHas) {
     return {
-      title: `${overduePrefix}HNT Review TAT · awaiting first reviews`,
+      title: `${overduePrefix}${label} Review TAT · awaiting first reviews`,
       description: `${overduePrefix}No reviews yet in the 7/14/30-day windows.`,
     };
   }
-  const baseTitle = `HNT Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label}) · GH ${formatHours(github.stats.median, ghHas)} (${github.label}) · goal ${slaHours.toString()}h`;
+  const ghTitleClause = hasGithub
+    ? ` · GH ${formatHours(github.stats.median, ghHas)} (${github.label})`
+    : '';
+  const baseTitle = `${label} Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label})${ghTitleClause} · goal ${slaHours.toString()}h`;
   // Cycle-time suffix: only appended when the row carries the field and has
   // at least one landing in one of the windows. Stays out of the title to
   // avoid crowding — the primary SLA metric keeps top billing.
@@ -82,10 +92,15 @@ export const buildMetadataSummary = (
     githubCycle !== null && githubCycle.stats.n > 0
       ? `, cycle ${formatHours(githubCycle.stats.median, true)} (${githubCycle.stats.n.toString()} land${githubCycle.stats.n === 1 ? '' : 's'}, ${githubCycle.label})`
       : '';
-  const baseDescription = [
+  const descriptionLines = [
     `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})${phabCycleClause}`,
-    `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
-  ].join(' · ');
+  ];
+  if (hasGithub) {
+    descriptionLines.push(
+      `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
+    );
+  }
+  const baseDescription = descriptionLines.join(' · ');
   return {
     title: `${overduePrefix}${baseTitle}`,
     description: `${overduePrefix}${baseDescription}`,

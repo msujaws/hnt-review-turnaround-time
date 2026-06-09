@@ -1,14 +1,7 @@
 import type { FC, ReactElement } from 'react';
 
-import {
-  CYCLE_SLA_HOURS,
-  DEFAULT_PHAB_PROJECT_SLUG,
-  GITHUB_REPO_LABEL,
-  GITHUB_REPO_URL,
-  PHAB_PROJECT_URL,
-  POST_REVIEW_SLA_HOURS,
-  ROUNDS_SLA,
-} from '../src/config';
+import { CYCLE_SLA_HOURS, POST_REVIEW_SLA_HOURS, ROUNDS_SLA } from '../src/config';
+import { defaultGroup, type GroupConfig } from '../src/groups';
 import type { HistoryRow, Landing, Sample, SourceWindows } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
 import { Headline, type HeadlineItems } from '../src/ui/Headline';
@@ -29,6 +22,10 @@ export interface DashboardProps {
   readonly slaHours: number;
   readonly now: Date;
   readonly peopleMap: PeopleMap;
+  // Which review group this dashboard renders. Defaults to Home-NewTab — the
+  // only group that also tracks GitHub. Phabricator-only groups drop the
+  // GitHub tab entirely.
+  readonly group?: GroupConfig;
 }
 
 export const Dashboard: FC<DashboardProps> = ({
@@ -38,6 +35,7 @@ export const Dashboard: FC<DashboardProps> = ({
   slaHours,
   now,
   peopleMap,
+  group = defaultGroup(),
 }) => {
   const latest = history.at(-1);
   if (latest === undefined) {
@@ -61,8 +59,13 @@ export const Dashboard: FC<DashboardProps> = ({
   );
   const phabReviewers = Object.keys(peopleMap.phab);
   const phabProjectLink = (
-    <a href={PHAB_PROJECT_URL} className={LINK_CLASSES} rel="noopener noreferrer" target="_blank">
-      {DEFAULT_PHAB_PROJECT_SLUG}
+    <a
+      href={group.phabProjectUrl}
+      className={LINK_CLASSES}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      {group.phabProjectSlugs.join(', ')}
     </a>
   );
   const phabDescription =
@@ -82,11 +85,17 @@ export const Dashboard: FC<DashboardProps> = ({
         or requests changes.
       </>
     );
+  const githubRepoUrl = group.github
+    ? `https://github.com/${group.github.owner}/${group.github.repo}`
+    : '';
+  const githubRepoLabel = group.github
+    ? `${group.github.owner.toLowerCase()}/${group.github.repo}`
+    : '';
   const githubDescription = (
     <>
       Pull requests in{' '}
-      <a href={GITHUB_REPO_URL} className={LINK_CLASSES} rel="noopener noreferrer" target="_blank">
-        {GITHUB_REPO_LABEL}
+      <a href={githubRepoUrl} className={LINK_CLASSES} rel="noopener noreferrer" target="_blank">
+        {githubRepoLabel}
       </a>{' '}
       where a team member is a requested reviewer. Time stops at that reviewer&apos;s first review
       or review comment.
@@ -257,19 +266,26 @@ export const Dashboard: FC<DashboardProps> = ({
   const phabHasRedIssue = window7dMedianOverSla(latest.phab, slaHours);
   const githubHasRedIssue = window7dMedianOverSla(latest.github, slaHours);
 
-  const tabs: TabItem[] = [
-    {
-      id: 'phab',
-      label: 'Frontend Team (Phabricator)',
-      hasRedIssue: phabHasRedIssue,
-      content: phabContent,
-    },
-    {
-      id: 'github',
-      label: 'Backend Team (GitHub)',
-      hasRedIssue: githubHasRedIssue,
-      content: githubContent,
-    },
-  ];
+  // Only the GitHub-bearing group (Home-NewTab) keeps the two-platform
+  // "Frontend/Backend Team" framing. Phabricator-only groups show a single
+  // plainly-labelled Phabricator tab and no GitHub tab at all.
+  const phabTab: TabItem = {
+    id: 'phab',
+    label: group.github === undefined ? 'Phabricator' : 'Frontend Team (Phabricator)',
+    hasRedIssue: phabHasRedIssue,
+    content: phabContent,
+  };
+  const tabs: TabItem[] =
+    group.github === undefined
+      ? [phabTab]
+      : [
+          phabTab,
+          {
+            id: 'github',
+            label: 'Backend Team (GitHub)',
+            hasRedIssue: githubHasRedIssue,
+            content: githubContent,
+          },
+        ];
   return <Tabs tabs={tabs} />;
 };

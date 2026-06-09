@@ -1,40 +1,15 @@
-import path from 'node:path';
-
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 
-import { SLA_HOURS } from '../src/config';
-import { loadPeopleMap } from '../src/scripts/people';
-
 import './globals.css';
-import { loadHistory } from './history';
-import { buildMetadataSummary } from './metadata';
-import { loadPending } from './pending';
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const [history, pending, peopleMap] = await Promise.all([
-    loadHistory(),
-    loadPending(),
-    loadPeopleMap(path.join(process.cwd(), 'data')),
-  ]);
-  const summary = buildMetadataSummary(history, SLA_HOURS, {
-    pending,
-    now: new Date(),
-    peopleMap,
-  });
-  return {
-    title: summary.title,
-    description: summary.description,
-    openGraph: {
-      title: summary.title,
-      description: summary.description,
-    },
-    twitter: {
-      card: 'summary',
-      title: summary.title,
-      description: summary.description,
-    },
-  };
+// Static site-wide fallback only. Per-group, data-driven titles/descriptions
+// (the ones Slack unfurls) are generated at the page level — app/page.tsx for
+// the default group and app/g/[group]/page.tsx for the rest — because a layout
+// can't see route params.
+export const metadata: Metadata = {
+  title: 'Review Turnaround',
+  description: 'Code-review turnaround time across Firefox review groups.',
 };
 
 interface RootLayoutProps {
