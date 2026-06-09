@@ -79,6 +79,25 @@ describe('buildMetadataSummary', () => {
     expect(summary.description).toBe('No snapshots yet.');
   });
 
+  it('uses the provided group label in the title', () => {
+    const summary = buildMetadataSummary([row()], 4, { label: 'IP Protection' });
+    expect(summary.title).toMatch(/^IP Protection Review TAT/);
+    expect(summary.title).not.toMatch(/HNT/);
+  });
+
+  it('uses the label in the empty-history fallback', () => {
+    const summary = buildMetadataSummary([], 4, { label: 'Desktop Theme' });
+    expect(summary.title).toBe('Desktop Theme Review TAT');
+  });
+
+  it('suppresses the GitHub clause for Phabricator-only groups', () => {
+    const summary = buildMetadataSummary([row()], 4, { label: 'Sharing', hasGithub: false });
+    expect(summary.title).toMatch(/Phab 2\.1h \(7d\)/);
+    expect(summary.title).not.toMatch(/GH /);
+    expect(summary.description).toMatch(/Phab 7d/);
+    expect(summary.description).not.toMatch(/GH /);
+  });
+
   it('flags overdue even when history is empty (no snapshots yet but reviewers are already waiting)', () => {
     const summary = buildMetadataSummary([], 4, {
       pending: [pendingGh('2026-04-13T13:00:00Z')],
