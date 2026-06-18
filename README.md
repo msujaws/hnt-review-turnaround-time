@@ -10,6 +10,7 @@ tracked independently and never merged.
 | IP Protection | `ip-protection-reviewers` | —                         | `/g/ip-protection` |
 | Desktop Theme | `desktop-theme-reviewers` | —                         | `/g/desktop-theme` |
 | Sharing       | `sharing-reviewers`       | —                         | `/g/sharing`       |
+| GeckoView     | `geckoview-reviewers`     | —                         | `/g/geckoview`     |
 
 Only Home-NewTab reviews on GitHub (`Pocket/content-monorepo`, all pull requests:
 non-draft, non-bot, non-self); the other groups are Phabricator-only. The set of
