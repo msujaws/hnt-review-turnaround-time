@@ -71,6 +71,14 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     phabProjectSlugs: ['sharing-reviewers'],
     phabProjectUrl: phabProjectUrl('sharing-reviewers'),
   },
+  {
+    id: asGroupId('geckoview'),
+    label: 'GeckoView',
+    title: 'GeckoView Review Turnaround',
+    description: phabOnlyDescription('GeckoView'),
+    phabProjectSlugs: ['geckoview-reviewers'],
+    phabProjectUrl: phabProjectUrl('geckoview-reviewers'),
+  },
 ];
 
 export const DEFAULT_GROUP_ID: GroupId = HOME_NEWTAB.id;
