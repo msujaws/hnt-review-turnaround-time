@@ -16,6 +16,7 @@ describe('group route', () => {
       'ip-protection',
       'desktop-theme',
       'sharing',
+      'geckoview',
     ]);
   });
 
