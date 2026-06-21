@@ -1,6 +1,8 @@
-import type { HistoryRow, PendingSample, SourceWindows } from '../src/scripts/collect';
+import { FAST_HOURS } from '../src/config';
+import type { HistoryRow, PendingSample, Sample, SourceWindows } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import type { WindowStats } from '../src/scripts/stats';
+import { countFastInWindow } from '../src/ui/fastReview';
 import { isOverduePending } from '../src/ui/OverdueCallout';
 
 export interface MetadataSummary {
@@ -26,8 +28,17 @@ const pickHeadlineWindow = (row: SourceWindows): Headline => {
   return { label: '30d', stats: row.window30d };
 };
 
+const windowDaysForLabel = (label: string): number => {
+  if (label === '7d') return 7;
+  if (label === '14d') return 14;
+  return 30;
+};
+
 export interface MetadataOptions {
   readonly pending?: readonly PendingSample[];
+  // Completed reviews, used to celebrate fast turnarounds (under 2 business
+  // hours) in the unfurl. Counted within each source's headline window.
+  readonly samples?: readonly Sample[];
   readonly now?: Date;
   readonly peopleMap?: PeopleMap;
   // Group display name for the unfurl title. Defaults to 'HNT' for back-compat.
@@ -74,6 +85,22 @@ export const buildMetadataSummary = (
       description: `${overduePrefix}No reviews yet in the 7/14/30-day windows.`,
     };
   }
+  // Celebrate fast reviews (under FAST_HOURS business hours) completed in each
+  // source's headline window. Sums across sources for a single headline number;
+  // GitHub is excluded for Phabricator-only groups. Sits after the overdue
+  // prefix so a problem still leads, with the celebration trailing it.
+  const samples = options.samples ?? [];
+  const phabSamples = samples.filter((s) => s.source === 'phab');
+  const githubSamples = samples.filter((s) => s.source === 'github');
+  const fastCount =
+    countFastInWindow(phabSamples, windowDaysForLabel(phab.label), now, FAST_HOURS) +
+    (hasGithub
+      ? countFastInWindow(githubSamples, windowDaysForLabel(github.label), now, FAST_HOURS)
+      : 0);
+  const fastPrefix =
+    fastCount > 0 ? `🎉 ${fastCount.toString()} under ${FAST_HOURS.toString()}h · ` : '';
+  const prefix = `${overduePrefix}${fastPrefix}`;
+
   const ghTitleClause = hasGithub
     ? ` · GH ${formatHours(github.stats.median, ghHas)} (${github.label})`
     : '';
@@ -102,7 +129,7 @@ export const buildMetadataSummary = (
   }
   const baseDescription = descriptionLines.join(' · ');
   return {
-    title: `${overduePrefix}${baseTitle}`,
-    description: `${overduePrefix}${baseDescription}`,
+    title: `${prefix}${baseTitle}`,
+    description: `${prefix}${baseDescription}`,
   };
 };

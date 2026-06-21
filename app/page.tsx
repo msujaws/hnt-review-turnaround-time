@@ -9,6 +9,7 @@ import { GroupView } from './GroupView';
 import { loadHistory } from './history';
 import { buildMetadataSummary } from './metadata';
 import { loadPending } from './pending';
+import { loadSamples } from './samples';
 
 export const revalidate = 3600;
 
@@ -18,13 +19,15 @@ export const revalidate = 3600;
 export const generateMetadata = async (): Promise<Metadata> => {
   const group = defaultGroup();
   const dataDirectory = dataDirectoryForGroup(group.id);
-  const [history, pending, peopleMap] = await Promise.all([
+  const [history, pending, samples, peopleMap] = await Promise.all([
     loadHistory(dataDirectory),
     loadPending(dataDirectory),
+    loadSamples(dataDirectory),
     loadPeopleMap(dataDirectory),
   ]);
   const summary = buildMetadataSummary(history, SLA_HOURS, {
     pending,
+    samples,
     now: new Date(),
     peopleMap,
     label: group.label,
