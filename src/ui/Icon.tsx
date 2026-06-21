@@ -14,6 +14,8 @@ const ALLOWED_SYMBOLS = new Set<string>([
   'code',
   'merge_type',
   'expand_more',
+  'emoji_events',
+  'bolt',
 ]);
 
 export const asMaterialSymbolName = (name: string): MaterialSymbolName => {
