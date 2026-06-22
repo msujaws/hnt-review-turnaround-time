@@ -79,6 +79,14 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     phabProjectSlugs: ['geckoview-reviewers'],
     phabProjectUrl: phabProjectUrl('geckoview-reviewers'),
   },
+  {
+    id: asGroupId('credential-management'),
+    label: 'Credential Management',
+    title: 'Credential Management Review Turnaround',
+    description: phabOnlyDescription('Credential Management'),
+    phabProjectSlugs: ['credential-management-reviewers'],
+    phabProjectUrl: phabProjectUrl('credential-management-reviewers'),
+  },
 ];
 
 export const DEFAULT_GROUP_ID: GroupId = HOME_NEWTAB.id;
