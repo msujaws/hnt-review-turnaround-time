@@ -8,8 +8,14 @@ on:
 permissions:
   contents: write
 
+# One snapshot run at a time. A queued cron/dispatch run waits rather than
+# racing the commit job's push, so that push is always a fast-forward.
+concurrency:
+  group: daily-snapshot
+  cancel-in-progress: false
+
 jobs:
-  snapshot:
+  collect:
     runs-on: ubuntu-latest
     timeout-minutes: 45 # caps the runaway-backfill problem (a single run once hit 2.5h)
     strategy:
@@ -33,21 +39,46 @@ jobs:
         env:
           PHABRICATOR_TOKEN: ${{ secrets.PHABRICATOR_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
+      # Hand the group's data to the commit job instead of pushing here, so a
+      # single writer lands one commit (one Vercel deploy) with no push races.
+      - name: Upload group data
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-${{ matrix.group }}
+          path: data/${{ matrix.group }}/
+
+  commit:
+    needs: collect
+    if: ${{ always() }} # publish whatever groups succeeded, even if some failed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Each artifact's files sit at its root (upload strips the data/<group>/
+      # prefix), so download into per-artifact dirs and rebuild data/<group>/
+      # from the artifact name. merge-multiple would collapse every group's
+      # samples.json onto each other instead.
+      - name: Download group data
+        uses: actions/download-artifact@v4
+        with:
+          path: incoming
+          pattern: data-*
+      - name: Reconstruct data directories
+        run: |
+          shopt -s nullglob
+          for dir in incoming/data-*/; do
+            group="$(basename "$dir")"
+            group="${group#data-}"
+            mkdir -p "data/$group"
+            cp -R "$dir". "data/$group/"
+          done
       - name: Commit snapshot
         run: |
           git config user.name  "hnt-tat-bot"
           git config user.email "hnt-tat-bot@users.noreply.github.com"
-          git add data/${{ matrix.group }}/
+          git add data/
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "chore(data): daily snapshot ${{ matrix.group }} $(date -u +%F)"
-            # A prior matrix leg already pushed since this job's checkout, so
-            # rebase our single data commit on top before pushing. Retry to ride
-            # out a race with an overlapping workflow_dispatch run.
-            for attempt in 1 2 3; do
-              git pull --rebase --autostash origin main && git push && break
-              echo "push attempt $attempt failed, retrying"
-              sleep 5
-            done
+            git commit -m "chore(data): daily snapshot $(date -u +%F)"
+            git push
           fi
