@@ -17,6 +17,7 @@ describe('group route', () => {
       'desktop-theme',
       'sharing',
       'geckoview',
+      'credential-management',
     ]);
   });
 
