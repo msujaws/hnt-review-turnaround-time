@@ -12,13 +12,14 @@ import {
 } from './groups';
 
 describe('group registry', () => {
-  it('tracks exactly the five known groups', () => {
+  it('tracks exactly the six known groups', () => {
     expect(allGroups().map((group) => group.id)).toEqual([
       'home-newtab',
       'ip-protection',
       'desktop-theme',
       'sharing',
       'geckoview',
+      'credential-management',
     ]);
   });
 
@@ -34,7 +35,13 @@ describe('group registry', () => {
   });
 
   it('marks the new groups as Phabricator-only (no GitHub repo)', () => {
-    for (const id of ['ip-protection', 'desktop-theme', 'sharing', 'geckoview'] as const) {
+    for (const id of [
+      'ip-protection',
+      'desktop-theme',
+      'sharing',
+      'geckoview',
+      'credential-management',
+    ] as const) {
       const group = getGroup(id);
       expect(group).toBeDefined();
       expect(group?.github).toBeUndefined();
@@ -46,6 +53,9 @@ describe('group registry', () => {
     expect(getGroup('desktop-theme')?.phabProjectSlugs).toEqual(['desktop-theme-reviewers']);
     expect(getGroup('sharing')?.phabProjectSlugs).toEqual(['sharing-reviewers']);
     expect(getGroup('geckoview')?.phabProjectSlugs).toEqual(['geckoview-reviewers']);
+    expect(getGroup('credential-management')?.phabProjectSlugs).toEqual([
+      'credential-management-reviewers',
+    ]);
   });
 
   it('derives the Phabricator project URL from the origin and first slug', () => {
