@@ -31,6 +31,10 @@ before `feat:` when possible) and the conventional-commit prefixes
 below. Never push, force-push, or amend published history without an
 explicit ask.
 
+**Work directly on `main`.** Do not create or switch to a feature branch
+unless I explicitly ask for one. This overrides the default "branch first when
+on the default branch" behavior — commit straight to `main` for this repo.
+
 ## Engineering conventions
 
 - **TDD is non-negotiable.** Every module has a colocated `*.test.ts(x)` and
