@@ -165,6 +165,17 @@ describe('buildMetadataSummary', () => {
     expect(summary.description.startsWith('🎉 2 under 2h · ')).toBe(true);
   });
 
+  it('anchors the fast-review count on the snapshot day, not real now', () => {
+    // The snapshot is dated 2026-04-20 and the sample falls in its 7d window.
+    // `now` is months later — if the count used real now, the window would
+    // miss the sample and there would be no celebration.
+    const summary = buildMetadataSummary([row()], 4, {
+      now: new Date('2026-07-01T12:00:00Z'),
+      samples: [phabSample('2026-04-16T13:00:00Z', 1)],
+    });
+    expect(summary.title.startsWith('🎉 1 under 2h · ')).toBe(true);
+  });
+
   it('omits the celebration prefix when no review beat 2h (back-compat with no samples)', () => {
     const summary = buildMetadataSummary([row()], 4);
     expect(summary.title).not.toMatch(/under 2h/);

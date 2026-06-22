@@ -1,4 +1,6 @@
-import { FAST_HOURS } from '../src/config';
+import { DateTime } from 'luxon';
+
+import { ET_ZONE, FAST_HOURS } from '../src/config';
 import type { HistoryRow, PendingSample, Sample, SourceWindows } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import type { WindowStats } from '../src/scripts/stats';
@@ -89,13 +91,19 @@ export const buildMetadataSummary = (
   // source's headline window. Sums across sources for a single headline number;
   // GitHub is excluded for Phabricator-only groups. Sits after the overdue
   // prefix so a problem still leads, with the celebration trailing it.
+  //
+  // Anchored on the snapshot's ET day (not real `now`), so the celebration
+  // describes the same window as the headline median — which came from the
+  // snapshot. Real `now` would suppress it whenever the latest snapshot is more
+  // than a window old. Overdue stays on real `now`: pending items keep aging.
+  const snapshotNow = DateTime.fromISO(latest.date, { zone: ET_ZONE }).endOf('day').toJSDate();
   const samples = options.samples ?? [];
   const phabSamples = samples.filter((s) => s.source === 'phab');
   const githubSamples = samples.filter((s) => s.source === 'github');
   const fastCount =
-    countFastInWindow(phabSamples, windowDaysForLabel(phab.label), now, FAST_HOURS) +
+    countFastInWindow(phabSamples, windowDaysForLabel(phab.label), snapshotNow, FAST_HOURS) +
     (hasGithub
-      ? countFastInWindow(githubSamples, windowDaysForLabel(github.label), now, FAST_HOURS)
+      ? countFastInWindow(githubSamples, windowDaysForLabel(github.label), snapshotNow, FAST_HOURS)
       : 0);
   const fastPrefix =
     fastCount > 0 ? `🎉 ${fastCount.toString()} under ${FAST_HOURS.toString()}h · ` : '';
