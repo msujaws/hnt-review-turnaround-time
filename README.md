@@ -19,6 +19,18 @@ groups lives in `src/groups.ts`.
 TAT = time from review request to first reviewer action, measured in **business hours**
 (Mon–Fri 09:00–17:00 US/Eastern). Goal: **4 business hours**.
 
+Each group's page surfaces:
+
+- **Rolling stats** — 7d / 14d / 30d p50 / mean / p90 / %-under-SLA per source,
+  with trendlines and an expandable list of the individual reviews behind each window.
+- **Overdue callout** — pending reviews that have been waiting 10× the SLA or longer.
+- **Reviewer leaderboard** — reviewers (not authors) ranked by the share of their
+  recent reviews that beat the 4h SLA, tie-broken by fastest median turnaround. Split
+  into per-source (Phabricator / GitHub) sections; a reviewer needs a minimum number of
+  reviews in the window to qualify. The leader gets a trophy.
+- **Fast-review celebration** — reviews that finished in under 2 business hours are
+  counted and celebrated in the Slack unfurl (see below).
+
 ## How it works
 
 ```
@@ -38,6 +50,11 @@ Nothing in the pipeline posts to Slack directly. Slack's link unfurl reads the
 per-group at the page level, so a plain Slack Workflow Builder step that posts a
 group's URL (the bare URL for Home-NewTab, `/g/<id>` for the rest) surfaces that
 group's current numbers with no bot token required.
+
+The unfurl headline can carry two prefixes ahead of the median figures: a
+`⚠ N overdue ·` warning when pending reviews have blown past 10× the SLA, and a
+`🎉 N under 2h ·` celebration counting reviews that finished in under 2 business
+hours within the headline window. The warning leads; the celebration follows.
 
 ## Setup
 
@@ -155,6 +172,8 @@ First run for a group backfills the last 45 days; subsequent runs only query
 ## Out of scope (v1)
 
 - US federal holidays in business-hour math
-- Per-reviewer breakdowns
+- Per-reviewer breakdowns beyond the SLA leaderboard (e.g. per-reviewer trendlines)
+- Cross-source reviewer identity merging (a reviewer active on both Phabricator and
+  GitHub appears once per source on the leaderboard)
 - Alerting when SLA drops below a threshold
 - Backfill of samples older than 45 days on first run
