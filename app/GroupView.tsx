@@ -14,6 +14,7 @@ import { Backlog } from '../src/ui/Backlog';
 import { Footer } from '../src/ui/Footer';
 import { GroupSwitcher } from '../src/ui/GroupSwitcher';
 import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
+import { ReviewerLeaderboard } from '../src/ui/ReviewerLeaderboard';
 
 import { loadBacklog } from './backlog';
 import { Dashboard } from './Dashboard';
@@ -86,6 +87,7 @@ export const GroupView: FC<GroupViewProps> = async ({ group }) => {
       </header>
       <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
       <Backlog snapshots={backlog} pending={pending} now={realNow} peopleMap={peopleMap} />
+      <ReviewerLeaderboard samples={samples} now={dashboardNow} slaHours={SLA_HOURS} />
       <Dashboard
         history={history}
         samples={samples}
