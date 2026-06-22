@@ -200,6 +200,42 @@ describe('OverdueCallout', () => {
     expect(within(region).getByText('connie')).toBeInTheDocument();
   });
 
+  it('renders a Source column by default (multi-source group)', () => {
+    const pending = [pendingPhab()];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    expect(within(region).getByRole('columnheader', { name: /source/i })).toBeInTheDocument();
+    expect(within(region).getByText('Phab')).toBeInTheDocument();
+  });
+
+  it('omits the Source column when the group has no GitHub setup', () => {
+    const pending = [pendingPhab()];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+        hasGithub={false}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    // No Source column header, and no per-row source badge.
+    expect(within(region).queryByRole('columnheader', { name: /source/i })).toBeNull();
+    expect(within(region).queryByText('Phab')).toBeNull();
+    // The remaining columns still render.
+    expect(within(region).getByRole('columnheader', { name: /^review$/i })).toBeInTheDocument();
+    expect(within(region).getByRole('columnheader', { name: /author/i })).toBeInTheDocument();
+    expect(within(region).getByText('bob')).toBeInTheDocument();
+  });
+
   it('applies a soft-pulse animation to the warning icon', () => {
     const pending = [pendingGh()];
     render(

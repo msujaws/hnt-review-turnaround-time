@@ -198,6 +198,8 @@ export interface BacklogProps {
   readonly pending: readonly PendingSample[];
   readonly now: Date;
   readonly peopleMap: PeopleMap;
+  // Phabricator-only groups (no `github` config) hide the GitHub source card.
+  readonly hasGithub?: boolean;
 }
 
 export const Backlog: FC<BacklogProps> = ({ snapshots, pending, now, peopleMap }) => {

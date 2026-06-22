@@ -70,6 +70,24 @@ describe('Backlog', () => {
     expect(screen.getByText(/5 open/i)).toBeInTheDocument();
   });
 
+  it('hides the GitHub card entirely when the group has no GitHub setup', () => {
+    render(
+      <Backlog
+        snapshots={[snapshot('2026-04-22', 3, 5)]}
+        pending={[]}
+        now={now}
+        peopleMap={peopleMap}
+        hasGithub={false}
+      />,
+    );
+    // Phab card still renders with its open count.
+    expect(screen.getByText(/3 open/i)).toBeInTheDocument();
+    // No GitHub chrome at all: no card, no open count, no details element.
+    expect(screen.queryByText(/github/i)).toBeNull();
+    expect(screen.queryByText(/5 open/i)).toBeNull();
+    expect(screen.queryByTestId('backlog-github-details')).toBeNull();
+  });
+
   it('renders the oldest business-hours age', () => {
     render(
       <Backlog

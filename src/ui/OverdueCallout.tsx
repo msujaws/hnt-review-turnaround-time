@@ -61,6 +61,9 @@ export interface OverdueCalloutProps {
   readonly now: Date;
   readonly slaHours: number;
   readonly peopleMap: PeopleMap;
+  // Phabricator-only groups (no `github` config) drop the redundant Source
+  // column, since every row would read "Phab".
+  readonly hasGithub?: boolean;
 }
 
 export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours, peopleMap }) => {
