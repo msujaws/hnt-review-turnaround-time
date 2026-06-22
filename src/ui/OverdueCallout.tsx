@@ -66,7 +66,13 @@ export interface OverdueCalloutProps {
   readonly hasGithub?: boolean;
 }
 
-export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours, peopleMap }) => {
+export const OverdueCallout: FC<OverdueCalloutProps> = ({
+  pending,
+  now,
+  slaHours,
+  peopleMap,
+  hasGithub = true,
+}) => {
   const overdue = pending
     .filter((sample) => !(sample.source === 'phab' && sample.acceptedByTeam === true))
     .map((sample) => ({ sample, hours: waitingHoursFor(sample, now, peopleMap) }))
@@ -92,7 +98,7 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
         <table className="w-full text-left text-xs text-neutral-300">
           <thead className="bg-neutral-900 text-neutral-400">
             <tr>
-              <th className="px-3 py-2 font-medium">Source</th>
+              {hasGithub && <th className="px-3 py-2 font-medium">Source</th>}
               <th className="px-3 py-2 font-medium">Review</th>
               <th className="px-3 py-2 font-medium">Author</th>
               <th className="px-3 py-2 font-medium">Reviewer</th>
@@ -107,7 +113,9 @@ export const OverdueCallout: FC<OverdueCalloutProps> = ({ pending, now, slaHours
                 data-testid="overdue-row"
                 className="border-t border-neutral-800"
               >
-                <td className="px-3 py-2 text-neutral-400">{sourceBadge(sample.source)}</td>
+                {hasGithub && (
+                  <td className="px-3 py-2 text-neutral-400">{sourceBadge(sample.source)}</td>
+                )}
                 <td className="px-3 py-2">
                   <a
                     href={linkFor(sample)}

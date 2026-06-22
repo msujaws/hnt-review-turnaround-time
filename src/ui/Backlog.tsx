@@ -202,7 +202,13 @@ export interface BacklogProps {
   readonly hasGithub?: boolean;
 }
 
-export const Backlog: FC<BacklogProps> = ({ snapshots, pending, now, peopleMap }) => {
+export const Backlog: FC<BacklogProps> = ({
+  snapshots,
+  pending,
+  now,
+  peopleMap,
+  hasGithub = true,
+}) => {
   const latest = snapshots.at(-1);
   if (latest === undefined) {
     return (
@@ -216,7 +222,7 @@ export const Backlog: FC<BacklogProps> = ({ snapshots, pending, now, peopleMap }
       <h2 className="text-sm font-medium uppercase tracking-wide text-neutral-400">
         Open review backlog
       </h2>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className={`grid grid-cols-1 gap-3 ${hasGithub ? 'sm:grid-cols-2' : ''}`}>
         <SourceCard
           label="Phab"
           source="phab"
@@ -225,14 +231,16 @@ export const Backlog: FC<BacklogProps> = ({ snapshots, pending, now, peopleMap }
           now={now}
           peopleMap={peopleMap}
         />
-        <SourceCard
-          label="GitHub"
-          source="github"
-          stats={latest.github}
-          pending={pending}
-          now={now}
-          peopleMap={peopleMap}
-        />
+        {hasGithub && (
+          <SourceCard
+            label="GitHub"
+            source="github"
+            stats={latest.github}
+            pending={pending}
+            now={now}
+            peopleMap={peopleMap}
+          />
+        )}
       </div>
     </section>
   );

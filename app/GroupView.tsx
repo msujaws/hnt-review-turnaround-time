@@ -51,6 +51,7 @@ export const GroupView: FC<GroupViewProps> = async ({ group }) => {
   const realNow = new Date();
   const hasOverdue = pending.some((s) => isOverduePending(s, realNow, peopleMap, SLA_HOURS));
   const switcherGroups = allGroups().map((g) => ({ id: g.id, label: g.label }));
+  const hasGithub = group.github !== undefined;
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10">
       <div className="flex justify-end">
@@ -85,8 +86,20 @@ export const GroupView: FC<GroupViewProps> = async ({ group }) => {
           )}
         </div>
       </header>
-      <OverdueCallout pending={pending} now={realNow} slaHours={SLA_HOURS} peopleMap={peopleMap} />
-      <Backlog snapshots={backlog} pending={pending} now={realNow} peopleMap={peopleMap} />
+      <OverdueCallout
+        pending={pending}
+        now={realNow}
+        slaHours={SLA_HOURS}
+        peopleMap={peopleMap}
+        hasGithub={hasGithub}
+      />
+      <Backlog
+        snapshots={backlog}
+        pending={pending}
+        now={realNow}
+        peopleMap={peopleMap}
+        hasGithub={hasGithub}
+      />
       <ReviewerLeaderboard samples={samples} now={dashboardNow} slaHours={SLA_HOURS} />
       <Dashboard
         history={history}
