@@ -11,13 +11,25 @@ permissions:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
+    timeout-minutes: 45 # caps the runaway-backfill problem (a single run once hit 2.5h)
+    strategy:
+      max-parallel: 1 # shared Phabricator token -> never run Phab calls concurrently
+      fail-fast: false # one group's 429 must not cancel the others
+      matrix:
+        group:
+          - home-newtab
+          - ip-protection
+          - desktop-theme
+          - sharing
+          - geckoview
+          - credential-management
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
-      - run: bun run collect
+      - run: bun run collect ${{ matrix.group }}
         env:
           PHABRICATOR_TOKEN: ${{ secrets.PHABRICATOR_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -25,10 +37,17 @@ jobs:
         run: |
           git config user.name  "hnt-tat-bot"
           git config user.email "hnt-tat-bot@users.noreply.github.com"
-          git add data/
+          git add data/${{ matrix.group }}/
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "chore(data): daily snapshot $(date -u +%F)"
-            git push
+            git commit -m "chore(data): daily snapshot ${{ matrix.group }} $(date -u +%F)"
+            # A prior matrix leg already pushed since this job's checkout, so
+            # rebase our single data commit on top before pushing. Retry to ride
+            # out a race with an overlapping workflow_dispatch run.
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && break
+              echo "push attempt $attempt failed, retrying"
+              sleep 5
+            done
           fi
