@@ -11,7 +11,7 @@ import {
   ROUNDS_SLA,
   SLA_HOURS,
 } from '../config';
-import { allGroups, dataDirectoryForGroup, type GroupConfig } from '../groups';
+import { allGroups, dataDirectoryForGroup, getGroup, type GroupConfig } from '../groups';
 import {
   asBusinessHours,
   asIsoTimestamp,
@@ -893,17 +893,42 @@ export const runCollectionFromDisk = async (
 // order given, so a CI matrix can target one group per job. Throws on any
 // unknown id so a typo fails fast instead of silently collecting nothing.
 export const selectGroups = (argv: readonly string[]): readonly GroupConfig[] => {
-  throw new Error(`selectGroups not implemented (argv: ${argv.join(', ')})`);
+  if (argv.length === 0) return allGroups();
+  return argv.map((id) => {
+    const group = getGroup(id);
+    if (group === undefined) {
+      const known = allGroups()
+        .map((candidate) => candidate.id)
+        .join(', ');
+      throw new Error(`unknown group id "${id}" (known: ${known})`);
+    }
+    return group;
+  });
 };
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
-  // Collect every group sequentially. Each owns its own data/<id> directory
+  // Collect the selected group(s) sequentially. Bare `bun run collect` covers
+  // every group; `bun run collect <id> [<id>...]` covers only the named ones,
+  // letting CI run one group per job. Each owns its own data/<id> directory
   // and progress file, so their samples/history never mix. Sequential is
-  // mandatory: all groups share one Phabricator token and the
+  // mandatory even across jobs: all groups share one Phabricator token and the
   // transaction.search cooldown, so parallel runs would race the rate limiter.
   // A failure in one group is logged and skipped rather than aborting the rest.
+  // Empty only when argv resolution throws below; selectGroups never returns
+  // an empty list for valid input (bare argv yields every group), so the loop
+  // simply no-ops on a usage error and the exit code stays 2.
+  let groups: readonly GroupConfig[] = [];
+  try {
+    groups = selectGroups(process.argv.slice(2));
+  } catch (error: unknown) {
+    process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);
+    // Exit 2 for a usage error (unknown id) — distinct from a collection
+    // failure (1) — so CI can tell a typo from a transient Phabricator outage.
+    process.exitCode = 2;
+  }
+
   let anyFailed = false;
-  for (const group of allGroups()) {
+  for (const group of groups) {
     const dataDirectory = dataDirectoryForGroup(group.id);
     const startedAt = new Date();
     const progress = createProgressWriter(
