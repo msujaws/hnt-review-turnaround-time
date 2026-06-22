@@ -1,11 +1,13 @@
 # CLAUDE.md — guidance for Claude Code sessions
 
-This project tracks code-review turnaround time for the Firefox Home-NewTab
-team. A daily GitHub Actions cron job pulls review activity from Phabricator
-and GitHub, writes samples + rolling stats to JSON files in the repo, and
-Vercel redeploys on push so a Slack Workflow posting the bare URL unfurls with
-the current numbers. Read `README.md` first for the end-user surface; this file
-is the parts that aren't obvious from the code.
+This project tracks code-review turnaround time for several Firefox review
+groups (Home-NewTab plus IP Protection, Desktop Theme, and Sharing — see
+`src/groups.ts`), selectable via a dropdown. A daily GitHub Actions cron job
+pulls review activity from Phabricator and GitHub, writes per-group samples +
+rolling stats to JSON files in the repo, and Vercel redeploys on push so a Slack
+Workflow posting a group's URL unfurls with that group's current numbers. Read
+`README.md` first for the end-user surface; this file is the parts that aren't
+obvious from the code.
 
 ## Runtime and tooling
 
@@ -28,6 +30,10 @@ per-commit confirmation, provided the change is already finished and
 before `feat:` when possible) and the conventional-commit prefixes
 below. Never push, force-push, or amend published history without an
 explicit ask.
+
+**Work directly on `main`.** Do not create or switch to a feature branch
+unless I explicitly ask for one. This overrides the default "branch first when
+on the default branch" behavior — commit straight to `main` for this repo.
 
 ## Engineering conventions
 
@@ -61,21 +67,34 @@ explicit ask.
 ## Architecture in 30 seconds
 
 ```
-GitHub Actions (Mon-Fri 13:00 UTC, .github/workflows/daily-snapshot.yml)
+GitHub Actions (Mon-Fri, cron 10:00 UTC ≈ 6:00 ET; runs late ~7:00 ET on
+                GitHub's shared queue — .github/workflows/daily-snapshot.yml)
   └─ bun run collect
-       ├─ fetchPhabSamples   (src/scripts/phabricator.ts)
-       ├─ fetchGithubSamples (src/scripts/github.ts)
-       ├─ collect()          (src/scripts/collect.ts, orchestrator)
-       │     ├─ dedupes by (source, id, reviewer), existing wins
-       │     ├─ prunes samples older than RETENTION_DAYS (90)
-       │     ├─ recomputes window7d / window14d via computeStats
-       │     └─ replaces today's history row (idempotent)
-       └─ writes data/samples.json and data/history.json, commits, pushes
+       └─ for each group in src/groups.ts (sequential — shared Phab token + cooldown):
+            ├─ runCollectionFromDisk(group, data/<group-id>)
+            ├─ fetchPhabSamples   (src/scripts/phabricator.ts; group.phabProjectSlugs)
+            ├─ fetchGithubSamples (src/scripts/github.ts; only when group.github set —
+            │                      Phab-only groups pass a no-op so the GH window zeroes)
+            ├─ collect()          (src/scripts/collect.ts, orchestrator)
+            │     ├─ dedupes by (source, id, reviewer), existing wins
+            │     ├─ prunes samples older than RETENTION_DAYS (90)
+            │     ├─ recomputes window7d / window14d / window30d via computeStats
+            │     └─ replaces today's history row (idempotent)
+            └─ writes data/<group-id>/{samples,history,pending,landings,backlog}.json
+       └─ one commit covers every group's data/, pushes
                └─ Vercel redeploys on push
-                      └─ app/layout.tsx generateMetadata() reads the latest
-                         history row into <title> / og:description
-                              └─ Slack Workflow posts the URL; Slack unfurls.
+                      └─ page-level generateMetadata() (app/page.tsx for the default
+                         group, app/g/[group]/page.tsx for the rest) reads that group's
+                         latest history row into <title> / og:description. NOTE: this is
+                         page-level, not app/layout.tsx — layouts never get route params.
+                              └─ Slack Workflow posts each group's URL (bare URL = default
+                                 group, /g/<id> otherwise) ≥2h after collect; Slack unfurls.
 ```
+
+Groups live in `src/groups.ts` (`ALL_GROUPS`, `getGroup`, `defaultGroup`,
+`dataDirectoryForGroup`). Home-NewTab is the default (bare `/`) and the only group
+with a `github` config; the rest are Phabricator-only. Data is never merged across
+groups — each owns `data/<id>/`.
 
 Key constants in `src/scripts/collect.ts`:
 
@@ -113,13 +132,14 @@ bugbug-side failure auto-falls-through. Requires `zstd` on `PATH`.
    reviewer it names, and reviews fall back to that timestamp when there's no
    explicit per-reviewer request. Do not reintroduce the old "drop null
    reviewers" filter.
-5. **The `home-newtab-reviewers` Phabricator project tag is effectively
-   dormant** (two revisions in its entire history, nothing recent). The
-   original plan assumed it was active; reality disagrees. `fetchPhabSamples`
-   now accepts `projectSlugs: string[]` and the collector reads
-   `PHAB_PROJECT_SLUGS` from env (comma-separated, defaults to that slug). If
-   we find the right tag(s), set the env var; if Phab is genuinely unused by
-   the team, leave the section as a near-zero chart.
+5. **Per-group Phabricator slugs live in `src/groups.ts`, not an env var.**
+   `fetchPhabSamples` accepts `projectSlugs: string[]`, and each group's slugs
+   come from its `GroupConfig.phabProjectSlugs`. The old `PHAB_PROJECT_SLUGS`
+   env override was **removed** — don't reintroduce it. To track a new project
+   tag, add a group entry (or extend an existing group's `phabProjectSlugs`)
+   in `src/groups.ts`. (Historical note: `home-newtab-reviewers` was found to be
+   a dormant tag, but `fetchPhabSamples` uses the project's _member list_ as the
+   roster, not a revision tag, so the metric still populates.)
 6. **`ResizeObserver` is undefined under jsdom**, which `recharts`'s
    `ResponsiveContainer` needs. The stub in `vitest.setup.ts` exists for this
    reason. Removing it silently breaks every Trendline-touching component
@@ -186,13 +206,16 @@ staging environment — PRs get Vercel preview URLs automatically.
 - **Team expansion on GitHub.** We deliberately skip `Team.members` to stay
   under the node budget; if per-reviewer attribution for team-requested PRs
   matters, we'd need to resolve the team membership with a second query.
-- **`data/people.json` doubles as the team roster.** Its top-level `github`
-  and `phab` maps started as per-reviewer timezone overrides, but their keys
-  are now also what `fetchGithubSamples` and `collect()`'s legacy-row purge
-  treat as "on the team" for GitHub and as the Phab-side login roster for
-  the purge. An empty map on a side means "no team gate on that side" — so
-  adding or removing a login changes both the timezone resolution **and**
-  which review pairs count toward the metrics.
+- **`data/<group>/people.json` doubles as the team roster.** Each group has its
+  own `people.json` (e.g. `data/home-newtab/people.json`), loaded via
+  `loadPeopleMap(dataDirectoryForGroup(group.id))`. Its top-level `github` and
+  `phab` maps started as per-reviewer timezone overrides, but their keys are now
+  also what `fetchGithubSamples` and `collect()`'s legacy-row purge treat as "on
+  the team" for GitHub and as the Phab-side login roster for the purge. An empty
+  map on a side means "no team gate on that side" — so adding or removing a login
+  changes both the timezone resolution **and** which review pairs count toward
+  the metrics. New (Phab-only) groups start with no `people.json` at all, which
+  means no team gate and ET-default timezones until one is added.
 - **US holidays in business-hour math.** Listed as out of scope in the
   README; revisit if the team wants a stricter SLA counter.
 

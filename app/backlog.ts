@@ -5,9 +5,9 @@ import { z } from 'zod';
 import { backlogSnapshotSchema, type BacklogSnapshot } from '../src/scripts/collect';
 import { readValidatedJsonFile } from '../src/scripts/jsonFile';
 
-export const loadBacklog = async (): Promise<BacklogSnapshot[]> =>
+export const loadBacklog = async (dataDirectory: string): Promise<BacklogSnapshot[]> =>
   readValidatedJsonFile(
-    path.join(process.cwd(), 'data', 'backlog.json'),
+    path.join(dataDirectory, 'backlog.json'),
     z.array(backlogSnapshotSchema),
     [],
   );

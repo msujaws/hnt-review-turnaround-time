@@ -5,15 +5,13 @@ import { z } from 'zod';
 
 import {
   CYCLE_SLA_HOURS,
-  DEFAULT_PHAB_PROJECT_SLUG,
   ET_ZONE,
-  GITHUB_OWNER,
-  GITHUB_REPO,
   PHAB_ORIGIN,
   POST_REVIEW_SLA_HOURS,
   ROUNDS_SLA,
   SLA_HOURS,
 } from '../config';
+import { allGroups, dataDirectoryForGroup, type GroupConfig } from '../groups';
 import {
   asBusinessHours,
   asIsoTimestamp,
@@ -689,6 +687,7 @@ export const loadPhabProgress = async (
 };
 
 export const runCollectionFromDisk = async (
+  group: GroupConfig,
   dataDirectory: string,
   progress?: ProgressWriter,
 ): Promise<void> => {
@@ -753,7 +752,10 @@ export const runCollectionFromDisk = async (
     // only trips during the initial 45-day backfill.
     methodCooldowns: [{ method: 'transaction.search', every: 75, cooldownMs: 30 * 60 * 1000 }],
   });
-  const gh = createGithubClient(requireEnv('GH_PAT'));
+  // Phab-only groups never touch GitHub — skip the client (and the GH_PAT
+  // requirement) entirely so a missing token can't block their collection.
+  const githubConfig = group.github;
+  const gh = githubConfig === undefined ? undefined : createGithubClient(requireEnv('GH_PAT'));
 
   const seenRevisionPhids = new Set<string>();
   const { samples, pending, landings, history } = await collect({
@@ -762,10 +764,7 @@ export const runCollectionFromDisk = async (
     existingHistory,
     peopleMap,
     fetchPhab: async (lookbackDaysArgument) => {
-      const projectSlugs = (process.env.PHAB_PROJECT_SLUGS ?? DEFAULT_PHAB_PROJECT_SLUG)
-        .split(',')
-        .map((slug) => slug.trim())
-        .filter((slug) => slug.length > 0);
+      const projectSlugs = group.phabProjectSlugs;
       const isBackfill = lookbackDaysArgument === BACKFILL_LOOKBACK_DAYS;
       const bugbugEnabled = process.env.BUGBUG_BACKFILL !== '0';
 
@@ -828,21 +827,28 @@ export const runCollectionFromDisk = async (
       for (const phid of result.revisionPhidsSeen) seenRevisionPhids.add(phid);
       return { samples: result.samples, pending: result.pending, landings: result.landings };
     },
-    fetchGithub: (lookbackDaysArgument) => {
-      // peopleMap.github keys are the team roster on the GitHub side — the
-      // user's "known list of reviewers is the same as the team". An empty
-      // roster means "don't gate yet"; fetchGithubSamples skips the filter
-      // when teamLogins is absent. A non-empty roster enforces author ∈ team
-      // AND reviewer ∈ team at the extractor layer.
-      const teamLogins = new Set(Object.keys(peopleMap.github));
-      return fetchGithubSamples({
-        client: gh,
-        owner: GITHUB_OWNER,
-        repo: GITHUB_REPO,
-        lookbackDays: lookbackDaysArgument,
-        ...(teamLogins.size === 0 ? {} : { teamLogins }),
-      });
-    },
+    fetchGithub:
+      githubConfig === undefined || gh === undefined
+        ? // No-op for Phab-only groups: collect() always calls fetchGithub and
+          // always computes a github window, so we return empty arrays (the
+          // window zeroes out) rather than skipping — and crucially never call
+          // fetchGithubSamples, which would otherwise pull the whole repo.
+          () => Promise.resolve({ samples: [], pending: [], landings: [] })
+        : (lookbackDaysArgument) => {
+            // peopleMap.github keys are the team roster on the GitHub side — the
+            // user's "known list of reviewers is the same as the team". An empty
+            // roster means "don't gate yet"; fetchGithubSamples skips the filter
+            // when teamLogins is absent. A non-empty roster enforces author ∈ team
+            // AND reviewer ∈ team at the extractor layer.
+            const teamLogins = new Set(Object.keys(peopleMap.github));
+            return fetchGithubSamples({
+              client: gh,
+              owner: githubConfig.owner,
+              repo: githubConfig.repo,
+              lookbackDays: lookbackDaysArgument,
+              ...(teamLogins.size === 0 ? {} : { teamLogins }),
+            });
+          },
   });
 
   await progress?.update((state) => {
@@ -882,29 +888,38 @@ export const runCollectionFromDisk = async (
 };
 
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
-  const dataDirectory = path.join(process.cwd(), 'data');
-  const startedAt = new Date();
-  const progress = createProgressWriter(
-    path.join(dataDirectory, '.collect-progress.json'),
-    startedAt,
-  );
-  await progress.update((state) => {
-    state.phase = 'init';
-    state.message = 'loading existing data files';
-  }, startedAt);
-  try {
-    await runCollectionFromDisk(dataDirectory, progress);
+  // Collect every group sequentially. Each owns its own data/<id> directory
+  // and progress file, so their samples/history never mix. Sequential is
+  // mandatory: all groups share one Phabricator token and the
+  // transaction.search cooldown, so parallel runs would race the rate limiter.
+  // A failure in one group is logged and skipped rather than aborting the rest.
+  let anyFailed = false;
+  for (const group of allGroups()) {
+    const dataDirectory = dataDirectoryForGroup(group.id);
+    const startedAt = new Date();
+    const progress = createProgressWriter(
+      path.join(dataDirectory, '.collect-progress.json'),
+      startedAt,
+    );
     await progress.update((state) => {
-      state.phase = 'done';
-      state.message = 'completed';
-    });
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
-    await progress.update((state) => {
-      state.phase = 'error';
-      state.message = message;
-    });
-    process.stderr.write(`collect failed: ${message}\n`);
-    process.exitCode = 1;
+      state.phase = 'init';
+      state.message = `loading existing data files (${group.id})`;
+    }, startedAt);
+    try {
+      await runCollectionFromDisk(group, dataDirectory, progress);
+      await progress.update((state) => {
+        state.phase = 'done';
+        state.message = 'completed';
+      });
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      await progress.update((state) => {
+        state.phase = 'error';
+        state.message = message;
+      });
+      process.stderr.write(`collect failed for ${group.id}: ${message}\n`);
+      anyFailed = true;
+    }
   }
+  if (anyFailed) process.exitCode = 1;
 }

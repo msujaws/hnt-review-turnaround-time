@@ -2,10 +2,12 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
+import type { GroupConfig } from '../src/groups';
 import type { HistoryRow, Landing } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import {
   asBusinessHours,
+  asGroupId,
   asIanaTimezone,
   asIsoTimestamp,
   asReviewerLogin,
@@ -14,6 +16,15 @@ import {
 
 import { Dashboard } from './Dashboard';
 import { buildMetadataSummary } from './metadata';
+
+const phabOnlyGroup: GroupConfig = {
+  id: asGroupId('ip-protection'),
+  label: 'IP Protection',
+  title: 'IP Protection Review Turnaround',
+  description: 'IP Protection reviews.',
+  phabProjectSlugs: ['ip-protection-reviewers'],
+  phabProjectUrl: 'https://phabricator.services.mozilla.com/tag/ip-protection-reviewers/',
+};
 
 const row: HistoryRow = {
   date: '2026-04-20',
@@ -331,6 +342,30 @@ describe('Dashboard', () => {
     expect(link).toHaveAttribute(
       'href',
       'https://phabricator.services.mozilla.com/tag/home-newtab-reviewers/',
+    );
+  });
+
+  it('hides the GitHub tab for a Phabricator-only group and links its own project', () => {
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        landings={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+        group={phabOnlyGroup}
+      />,
+    );
+    expect(screen.getByRole('tab', { name: /phabricator/i })).toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: /github/i })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /^github$/i })).toBeNull();
+    const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('details');
+    expect(phabSection).not.toBeNull();
+    const link = within(phabSection!).getByRole('link', { name: 'ip-protection-reviewers' });
+    expect(link).toHaveAttribute(
+      'href',
+      'https://phabricator.services.mozilla.com/tag/ip-protection-reviewers/',
     );
   });
 

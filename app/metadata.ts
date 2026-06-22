@@ -1,6 +1,10 @@
-import type { HistoryRow, PendingSample, SourceWindows } from '../src/scripts/collect';
+import { DateTime } from 'luxon';
+
+import { ET_ZONE, FAST_HOURS } from '../src/config';
+import type { HistoryRow, PendingSample, Sample, SourceWindows } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import type { WindowStats } from '../src/scripts/stats';
+import { countFastInWindow } from '../src/ui/fastReview';
 import { isOverduePending } from '../src/ui/OverdueCallout';
 
 export interface MetadataSummary {
@@ -26,10 +30,24 @@ const pickHeadlineWindow = (row: SourceWindows): Headline => {
   return { label: '30d', stats: row.window30d };
 };
 
+const windowDaysForLabel = (label: string): number => {
+  if (label === '7d') return 7;
+  if (label === '14d') return 14;
+  return 30;
+};
+
 export interface MetadataOptions {
   readonly pending?: readonly PendingSample[];
+  // Completed reviews, used to celebrate fast turnarounds (under 2 business
+  // hours) in the unfurl. Counted within each source's headline window.
+  readonly samples?: readonly Sample[];
   readonly now?: Date;
   readonly peopleMap?: PeopleMap;
+  // Group display name for the unfurl title. Defaults to 'HNT' for back-compat.
+  readonly label?: string;
+  // Whether this group reviews on GitHub. Phabricator-only groups suppress the
+  // GH segment so the unfurl doesn't advertise an always-N/A metric.
+  readonly hasGithub?: boolean;
 }
 
 const countOverdue = (
@@ -47,27 +65,54 @@ export const buildMetadataSummary = (
   const pending = options.pending ?? [];
   const now = options.now ?? new Date();
   const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
+  const label = options.label ?? 'HNT';
+  const hasGithub = options.hasGithub ?? true;
   const overdueCount = countOverdue(pending, now, peopleMap, slaHours);
   const overduePrefix = overdueCount > 0 ? `⚠ ${overdueCount.toString()} overdue · ` : '';
 
   const latest = history.at(-1);
   if (latest === undefined) {
     return {
-      title: `${overduePrefix}HNT Review TAT`,
+      title: `${overduePrefix}${label} Review TAT`,
       description: overdueCount > 0 ? `${overduePrefix}No snapshots yet.` : 'No snapshots yet.',
     };
   }
   const phab = pickHeadlineWindow(latest.phab);
   const github = pickHeadlineWindow(latest.github);
   const phabHas = phab.stats.n > 0;
-  const ghHas = github.stats.n > 0;
+  const ghHas = hasGithub && github.stats.n > 0;
   if (!phabHas && !ghHas) {
     return {
-      title: `${overduePrefix}HNT Review TAT · awaiting first reviews`,
+      title: `${overduePrefix}${label} Review TAT · awaiting first reviews`,
       description: `${overduePrefix}No reviews yet in the 7/14/30-day windows.`,
     };
   }
-  const baseTitle = `HNT Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label}) · GH ${formatHours(github.stats.median, ghHas)} (${github.label}) · goal ${slaHours.toString()}h`;
+  // Celebrate fast reviews (under FAST_HOURS business hours) completed in each
+  // source's headline window. Sums across sources for a single headline number;
+  // GitHub is excluded for Phabricator-only groups. Sits after the overdue
+  // prefix so a problem still leads, with the celebration trailing it.
+  //
+  // Anchored on the snapshot's ET day (not real `now`), so the celebration
+  // describes the same window as the headline median — which came from the
+  // snapshot. Real `now` would suppress it whenever the latest snapshot is more
+  // than a window old. Overdue stays on real `now`: pending items keep aging.
+  const snapshotNow = DateTime.fromISO(latest.date, { zone: ET_ZONE }).endOf('day').toJSDate();
+  const samples = options.samples ?? [];
+  const phabSamples = samples.filter((s) => s.source === 'phab');
+  const githubSamples = samples.filter((s) => s.source === 'github');
+  const fastCount =
+    countFastInWindow(phabSamples, windowDaysForLabel(phab.label), snapshotNow, FAST_HOURS) +
+    (hasGithub
+      ? countFastInWindow(githubSamples, windowDaysForLabel(github.label), snapshotNow, FAST_HOURS)
+      : 0);
+  const fastPrefix =
+    fastCount > 0 ? `🎉 ${fastCount.toString()} under ${FAST_HOURS.toString()}h · ` : '';
+  const prefix = `${overduePrefix}${fastPrefix}`;
+
+  const ghTitleClause = hasGithub
+    ? ` · GH ${formatHours(github.stats.median, ghHas)} (${github.label})`
+    : '';
+  const baseTitle = `${label} Review TAT · Phab ${formatHours(phab.stats.median, phabHas)} (${phab.label})${ghTitleClause} · goal ${slaHours.toString()}h`;
   // Cycle-time suffix: only appended when the row carries the field and has
   // at least one landing in one of the windows. Stays out of the title to
   // avoid crowding — the primary SLA metric keeps top billing.
@@ -82,12 +127,17 @@ export const buildMetadataSummary = (
     githubCycle !== null && githubCycle.stats.n > 0
       ? `, cycle ${formatHours(githubCycle.stats.median, true)} (${githubCycle.stats.n.toString()} land${githubCycle.stats.n === 1 ? '' : 's'}, ${githubCycle.label})`
       : '';
-  const baseDescription = [
+  const descriptionLines = [
     `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})${phabCycleClause}`,
-    `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
-  ].join(' · ');
+  ];
+  if (hasGithub) {
+    descriptionLines.push(
+      `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
+    );
+  }
+  const baseDescription = descriptionLines.join(' · ');
   return {
-    title: `${overduePrefix}${baseTitle}`,
-    description: `${overduePrefix}${baseDescription}`,
+    title: `${prefix}${baseTitle}`,
+    description: `${prefix}${baseDescription}`,
   };
 };

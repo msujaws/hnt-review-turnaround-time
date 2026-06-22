@@ -10,5 +10,5 @@ coverage
 .vercel
 .tsbuildinfo
 tsconfig.tsbuildinfo
-data/.phab-progress.json
-data/.collect-progress.json
+data/*/.phab-progress.json
+data/*/.collect-progress.json
