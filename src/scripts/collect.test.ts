@@ -4,6 +4,7 @@ import path from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { allGroups } from '../groups';
 import {
   asBusinessHours,
   asIanaTimezone,
@@ -23,6 +24,7 @@ import {
   PHAB_PROGRESS_SCHEMA_VERSION,
   prunePhabCache,
   sampleSchema,
+  selectGroups,
   type BacklogSnapshot,
   type HistoryRow,
   type Landing,
@@ -1204,5 +1206,29 @@ describe('prunePhabCache', () => {
     const cache = makeCache([['PHID-DREV-cached', [tx('PHID-XACT-1')]]]);
     const pruned = prunePhabCache(new Set(['PHID-DREV-cached', 'PHID-DREV-brand-new']), cache);
     expect([...pruned.keys()]).toEqual(['PHID-DREV-cached']);
+  });
+});
+
+describe('selectGroups', () => {
+  it('returns every group when no ids are given', () => {
+    expect(selectGroups([])).toEqual(allGroups());
+  });
+
+  it('returns only the named group for a single id', () => {
+    const selected = selectGroups(['desktop-theme']);
+    expect(selected.map((group) => group.id)).toEqual(['desktop-theme']);
+  });
+
+  it('returns the named groups in argv order', () => {
+    const selected = selectGroups(['sharing', 'geckoview']);
+    expect(selected.map((group) => group.id)).toEqual(['sharing', 'geckoview']);
+  });
+
+  it('throws on an unknown id, naming the offender', () => {
+    expect(() => selectGroups(['nope'])).toThrow(/unknown group id "nope"/);
+  });
+
+  it('throws when any id is unknown, even alongside valid ones', () => {
+    expect(() => selectGroups(['sharing', 'nope'])).toThrow(/unknown group id "nope"/);
   });
 });

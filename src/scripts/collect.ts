@@ -887,6 +887,15 @@ export const runCollectionFromDisk = async (
   });
 };
 
+// Resolve which group(s) a `collect` invocation should process. Bare
+// invocation (no args) collects every group, preserving the original
+// `bun run collect` behavior; named ids collect only those groups, in the
+// order given, so a CI matrix can target one group per job. Throws on any
+// unknown id so a typo fails fast instead of silently collecting nothing.
+export const selectGroups = (argv: readonly string[]): readonly GroupConfig[] => {
+  throw new Error(`selectGroups not implemented (argv: ${argv.join(', ')})`);
+};
+
 if (import.meta.url === `file://${process.argv[1] ?? ''}`) {
   // Collect every group sequentially. Each owns its own data/<id> directory
   // and progress file, so their samples/history never mix. Sequential is
