@@ -610,6 +610,18 @@ export const fetchPhabSamples = async (params: {
     readonly index: number;
     readonly total: number;
   }) => void | Promise<void>;
+  // Upper bound on FRESH transaction.search calls this run (revisions served
+  // from resumeCache don't count). Revisions are processed newest-first, so the
+  // budget is spent on the most-recently-modified revisions — the ones most
+  // likely to carry new reviewer activity. Once the budget is exhausted, any
+  // remaining revision that would need a fresh fetch falls back to its (possibly
+  // stale) cache entry, or to no transactions if it was never cached. Deferred
+  // revisions still appear in revisionPhidsSeen, so their cache survives the
+  // caller's prune and a later run finishes them. Undefined means no cap
+  // (fetch every uncached revision). See MAX_FRESH_TRANSACTION_FETCHES in
+  // collect.ts, kept below the transaction.search cooldown threshold so the
+  // 30-minute Phab cooldown never trips in normal operation.
+  readonly maxFreshTransactionFetches?: number;
 }): Promise<{
   samples: PhabSample[];
   pending: PhabPendingSample[];
@@ -624,6 +636,7 @@ export const fetchPhabSamples = async (params: {
   const resumeCache = params.resumeCache;
   const onRevisionTransactions = params.onRevisionTransactions;
   const onRevisionProcessed = params.onRevisionProcessed;
+  const maxFreshTransactionFetches = params.maxFreshTransactionFetches ?? Infinity;
   const now = params.now ?? new Date();
   const modifiedStart = Math.floor((now.getTime() - lookbackDays * 86_400 * 1000) / 1000);
   const openModifiedStart = Math.floor(
@@ -671,7 +684,9 @@ export const fetchPhabSamples = async (params: {
   for (const rev of [...recentRevisions, ...openRevisions]) {
     revisionsByPhid.set(rev.phid, rev);
   }
-  const revisions = [...revisionsByPhid.values()];
+  // Newest-first so a bounded fresh-fetch budget (maxFreshTransactionFetches) is
+  // spent on the most-recently-modified revisions. Stable for equal timestamps.
+  const revisions = [...revisionsByPhid.values()].sort((a, b) => b.dateModified - a.dateModified);
   // Reviewer-side gate: humans (for direct attribution) plus project PHIDs
   // (for reviewer-group attribution via projectMembers).
   // Author-side gate: humans only — projects don't author revisions, so
@@ -686,25 +701,38 @@ export const fetchPhabSamples = async (params: {
   // caller's only way to purge legacy rows without a second Conduit round-trip.
   for (const phid of memberPhids) userPhids.add(phid);
   const revisionsTotal = revisions.length;
+  let freshFetchCount = 0;
   for (const [revisionIndex, rev] of revisions.entries()) {
     userPhids.add(rev.authorPhid);
     const cached = resumeCache?.transactionsByRevisionPhid.get(rev.phid);
     const canReuseCache =
       cached !== undefined && rev.dateModified <= (resumeCache?.createdAt ?? -Infinity);
     let transactions: readonly PhabTransaction[];
+    let servedFromCache: boolean;
     if (canReuseCache) {
       transactions = cached;
-    } else {
+      servedFromCache = true;
+    } else if (freshFetchCount < maxFreshTransactionFetches) {
       transactions = await fetchTransactions(client, rev.phid);
+      freshFetchCount += 1;
+      servedFromCache = false;
       if (onRevisionTransactions !== undefined) {
         await onRevisionTransactions(rev.phid, transactions);
       }
+    } else {
+      // Fresh-fetch budget exhausted: carry forward the (possibly stale) cache
+      // entry rather than spend a transaction.search we don't have budget for.
+      // Falls back to empty when this revision was never cached — a future run
+      // (its phid stays in revisionPhidsSeen, so the cache isn't pruned) will
+      // pick it up once the budget reaches it.
+      transactions = cached ?? [];
+      servedFromCache = true;
     }
     transactionsByRevision.set(rev.phid, transactions);
     if (onRevisionProcessed !== undefined) {
       await onRevisionProcessed({
         phid: rev.phid,
-        cached: canReuseCache,
+        cached: servedFromCache,
         index: revisionIndex,
         total: revisionsTotal,
       });
