@@ -1861,6 +1861,197 @@ describe('fetchPhabSamples', () => {
     expect(transactionSearchCalls).toEqual(['PHID-DREV-changedaaaaaaaaaaaaa']);
   });
 
+  // Shared roster (author + alice) for the fresh-fetch-cap tests below.
+  const capRosterResponse = {
+    data: [
+      {
+        phid: 'PHID-PROJ-newtabaaaaaaaaaaaaaa',
+        attachments: {
+          members: {
+            members: [
+              { phid: 'PHID-USER-authoraaaaaaaaaaaaaa' },
+              { phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+            ],
+          },
+        },
+      },
+    ],
+  };
+
+  // Builds a Conduit mock that returns the given revisions from the
+  // recent-updates query (open-state query stays empty to avoid dupes).
+  // transaction.search records each objectIdentifier it sees and returns that
+  // revision's wire transactions (default empty), so a test can assert exactly
+  // which revisions triggered a fresh fetch.
+  const buildCapClient = (
+    revisions: readonly {
+      phid: string;
+      id: number;
+      dateModified: number;
+      wireTransactions?: unknown[];
+    }[],
+  ): { client: ConduitClient; transactionSearchCalls: string[] } => {
+    const transactionSearchCalls: string[] = [];
+    const call = vi.fn(async (method: string, p: unknown): Promise<unknown> => {
+      if (method === 'project.search') return capRosterResponse;
+      if (method === 'differential.revision.search') {
+        const constraints = (p as { constraints: Record<string, unknown> }).constraints;
+        if ('statuses' in constraints) return { data: [], cursor: { after: null } };
+        return {
+          data: revisions.map((r) => ({
+            id: r.id,
+            phid: r.phid,
+            fields: { authorPHID: 'PHID-USER-authoraaaaaaaaaaaaaa', dateModified: r.dateModified },
+          })),
+          cursor: { after: null },
+        };
+      }
+      if (method === 'transaction.search') {
+        const objectIdentifier = (p as { objectIdentifier: string }).objectIdentifier;
+        transactionSearchCalls.push(objectIdentifier);
+        const rev = revisions.find((r) => r.phid === objectIdentifier);
+        return { data: rev?.wireTransactions ?? [], cursor: { after: null } };
+      }
+      if (method === 'user.search') {
+        return {
+          data: [
+            { phid: 'PHID-USER-authoraaaaaaaaaaaaaa', fields: { username: 'author-user' } },
+            { phid: 'PHID-USER-revieweraaaaaaaaaaaaa', fields: { username: 'alice' } },
+          ],
+        };
+      }
+      throw new Error(`unexpected method ${method}`);
+    });
+    return { client: { call }, transactionSearchCalls };
+  };
+
+  it('caps fresh transaction.search calls at maxFreshTransactionFetches', async () => {
+    const { client, transactionSearchCalls } = buildCapClient([
+      { phid: 'PHID-DREV-cap1aaaaaaaaaaaaaaaa', id: 1, dateModified: 1_761_000_300 },
+      { phid: 'PHID-DREV-cap2aaaaaaaaaaaaaaaa', id: 2, dateModified: 1_761_000_200 },
+      { phid: 'PHID-DREV-cap3aaaaaaaaaaaaaaaa', id: 3, dateModified: 1_761_000_100 },
+    ]);
+
+    await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+      maxFreshTransactionFetches: 2,
+    });
+
+    expect(transactionSearchCalls).toHaveLength(2);
+  });
+
+  it('fetches the most-recently-modified revisions first when capped', async () => {
+    // Deliberately supplied out of dateModified order: middle, oldest, newest.
+    const { client, transactionSearchCalls } = buildCapClient([
+      { phid: 'PHID-DREV-mid0aaaaaaaaaaaaaaaa', id: 2, dateModified: 1_761_000_200 },
+      { phid: 'PHID-DREV-old0aaaaaaaaaaaaaaaa', id: 3, dateModified: 1_761_000_100 },
+      { phid: 'PHID-DREV-new0aaaaaaaaaaaaaaaa', id: 1, dateModified: 1_761_000_300 },
+    ]);
+
+    await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+      maxFreshTransactionFetches: 1,
+    });
+
+    expect(transactionSearchCalls).toEqual(['PHID-DREV-new0aaaaaaaaaaaaaaaa']);
+  });
+
+  it('serves capped-out revisions from stale cache instead of refetching', async () => {
+    // Both revisions were modified AFTER the cache was created, so each would
+    // normally be refetched. With a cap of 1, only the newest is fetched fresh;
+    // the older one carries its (stale) cached transactions into extraction
+    // rather than triggering a transaction.search.
+    const { client, transactionSearchCalls } = buildCapClient([
+      { phid: 'PHID-DREV-fresh0aaaaaaaaaaaaaa', id: 1, dateModified: 1_762_000_300 },
+      { phid: 'PHID-DREV-stale0aaaaaaaaaaaaaa', id: 2, dateModified: 1_762_000_100 },
+    ]);
+    const cachedAdd: PhabTransaction = {
+      id: 1,
+      phid: 'PHID-XACT-addaaaaaaaaaaaaaaaa',
+      type: 'reviewers',
+      authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+      dateCreated: 1_760_000_000,
+      fields: { operations: [{ operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' }] },
+    };
+    const cachedAccept: PhabTransaction = {
+      id: 2,
+      phid: 'PHID-XACT-accaaaaaaaaaaaaaaaa',
+      type: 'accept',
+      authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+      dateCreated: 1_760_007_200,
+      fields: {},
+    };
+
+    const { samples } = await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+      maxFreshTransactionFetches: 1,
+      resumeCache: {
+        createdAt: 1_761_000_000, // before both revisions' dateModified
+        transactionsByRevisionPhid: new Map([
+          ['PHID-DREV-stale0aaaaaaaaaaaaaa', [cachedAdd, cachedAccept]],
+        ]),
+      },
+    });
+
+    // Only the newest revision hit the wire; the older came from stale cache.
+    expect(transactionSearchCalls).toEqual(['PHID-DREV-fresh0aaaaaaaaaaaaaa']);
+    // The stale-cached transactions still produced a completed sample.
+    expect(samples).toHaveLength(1);
+    expect(samples[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-stale0aaaaaaaaaaaaaa',
+      reviewer: 'alice',
+    });
+  });
+
+  it('returns every revision in revisionPhidsSeen regardless of the cap', async () => {
+    const { client } = buildCapClient([
+      { phid: 'PHID-DREV-seen1aaaaaaaaaaaaaaa', id: 1, dateModified: 1_761_000_300 },
+      { phid: 'PHID-DREV-seen2aaaaaaaaaaaaaaa', id: 2, dateModified: 1_761_000_200 },
+      { phid: 'PHID-DREV-seen3aaaaaaaaaaaaaaa', id: 3, dateModified: 1_761_000_100 },
+    ]);
+
+    const { revisionPhidsSeen } = await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+      maxFreshTransactionFetches: 1,
+    });
+
+    expect([...revisionPhidsSeen].sort()).toEqual([
+      'PHID-DREV-seen1aaaaaaaaaaaaaaa',
+      'PHID-DREV-seen2aaaaaaaaaaaaaaa',
+      'PHID-DREV-seen3aaaaaaaaaaaaaaa',
+    ]);
+  });
+
+  it('fetches transactions for every revision when no cap is set', async () => {
+    const { client, transactionSearchCalls } = buildCapClient([
+      { phid: 'PHID-DREV-all1aaaaaaaaaaaaaaaa', id: 1, dateModified: 1_761_000_300 },
+      { phid: 'PHID-DREV-all2aaaaaaaaaaaaaaaa', id: 2, dateModified: 1_761_000_200 },
+      { phid: 'PHID-DREV-all3aaaaaaaaaaaaaaaa', id: 3, dateModified: 1_761_000_100 },
+    ]);
+
+    await fetchPhabSamples({
+      client,
+      projectSlugs: ['home-newtab-reviewers'],
+      lookbackDays: 3,
+      now: new Date('2026-04-20T12:00:00Z'),
+    });
+
+    expect(transactionSearchCalls).toHaveLength(3);
+  });
+
   it('invokes onRevisionTransactions after each revision fetched from the wire', async () => {
     const call = vi.fn(async (method: string, params: unknown): Promise<unknown> => {
       if (method === 'project.search') {
