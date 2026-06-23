@@ -49,6 +49,16 @@ const BACKFILL_LOOKBACK_DAYS = 45;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
 const WINDOW_30_DAYS = 30;
+// Upper bound on fresh transaction.search calls per run. Held below the
+// transaction.search cooldown threshold (every: 75, see the createConduitClient
+// call below) so the 30-minute Phab cooldown never trips in normal operation —
+// a single CI job (timeout-minutes: 45) can't afford that sleep. A busy group's
+// cold first run fetches the 60 most-recently-modified revisions, persists its
+// progress cache, and converges the rest over the next few daily runs. Older
+// revisions deferred this run keep their existing samples/landings (collect()
+// merges, it doesn't drop) and stay in revisionPhidsSeen so their cache survives
+// the prune.
+const MAX_FRESH_TRANSACTION_FETCHES = 60;
 
 export type Sample =
   | (PhabSample & { readonly tatBusinessHours: BusinessHours })
@@ -807,6 +817,7 @@ export const runCollectionFromDisk = async (
         client: conduit,
         projectSlugs,
         lookbackDays: lookbackDaysArgument,
+        maxFreshTransactionFetches: MAX_FRESH_TRANSACTION_FETCHES,
         resumeCache: {
           createdAt: Math.floor(Date.parse(progressCreatedAt) / 1000),
           transactionsByRevisionPhid: resumeCache,
