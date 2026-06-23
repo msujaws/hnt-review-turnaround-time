@@ -551,6 +551,54 @@ describe('collect', () => {
     expect(result.history[1]?.date).toBe('2026-04-20');
   });
 
+  it('retains existing samples and landings when this run re-emits nothing for them', async () => {
+    // The fresh-fetch cap can leave a busy group's older revisions un-fetched on
+    // a given run (their transactions arrive on a later run). collect() must keep
+    // those revisions' previously persisted samples/landings rather than dropping
+    // them just because this run didn't re-emit them — otherwise the cap would
+    // erase history every run. An empty fresh fetch simulates fully-deferred
+    // revisions.
+    const existingSample: Sample = {
+      ...makePhabSample(),
+      tatBusinessHours: asBusinessHours(2),
+    };
+    const existingLanding: Landing = {
+      source: 'phab',
+      id: asRevisionPhid('PHID-DREV-zzzzzzzzzzzzzzzzzzzz'),
+      revisionId: 9,
+      createdAt: asIsoTimestamp('2026-04-10T12:00:00Z'),
+      firstReviewAt: null,
+      landedAt: asIsoTimestamp('2026-04-12T12:00:00Z'),
+      reviewRounds: 1,
+      cycleBusinessHours: asBusinessHours(16),
+      postReviewBusinessHours: null,
+    };
+    const fetchPhab = vi.fn(async () => phabResult());
+    const fetchGithub = vi.fn(async () => ghResult());
+
+    const result = await collect({
+      existingSamples: [existingSample],
+      existingLandings: [existingLanding],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      now: new Date('2026-04-20T13:00:00Z'),
+    });
+
+    expect(result.samples).toHaveLength(1);
+    expect(result.samples[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-abcdefghijklmnopqrst',
+      reviewer: 'alice',
+    });
+    expect(result.landings).toHaveLength(1);
+    expect(result.landings[0]).toMatchObject({
+      source: 'phab',
+      id: 'PHID-DREV-zzzzzzzzzzzzzzzzzzzz',
+      revisionId: 9,
+    });
+  });
+
   it('passes pending through from fresh fetches to the result', async () => {
     const phabPending: PhabPendingSample = {
       source: 'phab',
