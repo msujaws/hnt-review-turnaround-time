@@ -559,9 +559,9 @@
     "createdAt": "2026-05-27T14:24:09.000Z",
     "firstReviewAt": "2026-06-18T16:38:25.000Z",
     "landedAt": "2026-06-22T19:24:34.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 149.00694444444446,
-    "postReviewBusinessHours": 18.769166666666663
+    "postReviewBusinessHours": 18.769166666666663,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -634,5 +634,17 @@
     "reviewRounds": 2,
     "cycleBusinessHours": 20.66027777777778,
     "postReviewBusinessHours": 13.667777777777777
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xshufjqdq47wgvdzq7oo",
+    "revisionId": 307551,
+    "author": "NeilDeakin",
+    "createdAt": "2026-06-18T13:15:04.000Z",
+    "firstReviewAt": "2026-06-19T10:01:32.000Z",
+    "landedAt": "2026-06-25T12:30:25.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 39.74888888888889,
+    "postReviewBusinessHours": 32
   }
 ]
