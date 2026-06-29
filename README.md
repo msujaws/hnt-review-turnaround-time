@@ -24,10 +24,6 @@ Each group's page surfaces:
 - **Rolling stats** — 7d / 14d / 30d p50 / mean / p90 / %-under-SLA per source,
   with trendlines and an expandable list of the individual reviews behind each window.
 - **Overdue callout** — pending reviews that have been waiting 10× the SLA or longer.
-- **Reviewer leaderboard** — reviewers (not authors) ranked by the share of their
-  recent reviews that beat the 4h SLA, tie-broken by fastest median turnaround. Split
-  into per-source (Phabricator / GitHub) sections; a reviewer needs a minimum number of
-  reviews in the window to qualify. The leader gets a trophy.
 - **Fast-review celebration** — reviews that finished in under 2 business hours are
   counted and celebrated in the Slack unfurl (see below).
 
@@ -172,8 +168,7 @@ First run for a group backfills the last 45 days; subsequent runs only query
 ## Out of scope (v1)
 
 - US federal holidays in business-hour math
-- Per-reviewer breakdowns beyond the SLA leaderboard (e.g. per-reviewer trendlines)
-- Cross-source reviewer identity merging (a reviewer active on both Phabricator and
-  GitHub appears once per source on the leaderboard)
+- Per-reviewer breakdowns (e.g. per-reviewer trendlines)
+- Cross-source reviewer identity merging
 - Alerting when SLA drops below a threshold
 - Backfill of samples older than 45 days on first run

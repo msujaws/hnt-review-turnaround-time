@@ -6,13 +6,9 @@
 export const SLA_HOURS = 4;
 
 // "Fast review" celebration threshold. A review whose turnaround beat this many
-// business hours is worth celebrating (unfurl + leaderboard). Strictly under —
+// business hours is worth celebrating in the Slack unfurl. Strictly under —
 // see isFastSample in src/ui/fastReview.ts. Deliberately tighter than SLA_HOURS.
 export const FAST_HOURS = 2;
-
-// Minimum in-window reviews a reviewer must have done to appear on the
-// leaderboard. Guards against a one-off sub-hour review topping the board.
-export const LEADERBOARD_MIN_SAMPLES = 3;
 
 // Creation-to-merge target. Covers the full author wait: from the moment the
 // PR/revision is created until it lands. Business hours (9-5 ET, weekdays) so
