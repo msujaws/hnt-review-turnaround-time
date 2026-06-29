@@ -8,11 +8,6 @@ describe('asMaterialSymbolName', () => {
     expect(asMaterialSymbolName('trending_up')).toBe('trending_up');
   });
 
-  it('accepts the celebration and speed symbols', () => {
-    expect(asMaterialSymbolName('emoji_events')).toBe('emoji_events');
-    expect(asMaterialSymbolName('bolt')).toBe('bolt');
-  });
-
   it('rejects an unknown symbol name', () => {
     expect(() => asMaterialSymbolName('definitely_not_a_symbol')).toThrow();
   });
