@@ -696,18 +696,6 @@
     "reviewRounds": 2
   },
   {
-    "source": "phab",
-    "id": "PHID-DREV-ywlyk3ny5p7b4aheoukt",
-    "revisionId": 285626,
-    "author": "ini",
-    "createdAt": "2026-03-02T23:21:50.000Z",
-    "firstReviewAt": "2026-03-10T22:12:29.000Z",
-    "landedAt": "2026-04-02T22:02:59.000Z",
-    "cycleBusinessHours": 184,
-    "postReviewBusinessHours": 136,
-    "reviewRounds": 1
-  },
-  {
     "source": "github",
     "id": 384,
     "author": "mmiermans",
@@ -3986,5 +3974,53 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 0.145,
     "postReviewBusinessHours": 0.1313888888888889
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-nyv273qqmlfxt6eqhhyt",
+    "revisionId": 309697,
+    "author": "maxx",
+    "createdAt": "2026-06-30T20:27:20.000Z",
+    "firstReviewAt": "2026-06-30T20:27:29.000Z",
+    "landedAt": "2026-06-30T21:14:20.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 0.7833333333333333,
+    "postReviewBusinessHours": 0.7808333333333334
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-pkvrhmqwy56fgoduhida",
+    "revisionId": 309615,
+    "author": "maxx",
+    "createdAt": "2026-06-30T15:43:02.000Z",
+    "firstReviewAt": "2026-06-30T15:43:12.000Z",
+    "landedAt": "2026-06-30T18:58:55.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 3.2647222222222223,
+    "postReviewBusinessHours": 3.2619444444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xw3gfgmm2asjdhkjvi7m",
+    "revisionId": 309649,
+    "author": "maxx",
+    "createdAt": "2026-06-30T17:59:19.000Z",
+    "firstReviewAt": "2026-06-30T17:59:24.000Z",
+    "landedAt": "2026-06-30T18:58:55.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 0.9933333333333334,
+    "postReviewBusinessHours": 0.9919444444444444
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-abjdnyafoszwhuujtt2p",
+    "revisionId": 309323,
+    "author": "nina-py",
+    "createdAt": "2026-06-29T09:28:24.000Z",
+    "firstReviewAt": "2026-06-29T09:29:40.000Z",
+    "landedAt": "2026-06-30T07:17:14.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 8
   }
 ]
