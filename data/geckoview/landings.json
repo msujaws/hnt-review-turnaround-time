@@ -307,9 +307,9 @@
     "createdAt": "2026-06-08T03:45:37.000Z",
     "firstReviewAt": "2026-06-08T12:41:45.000Z",
     "landedAt": "2026-06-09T02:54:13.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 8,
-    "postReviewBusinessHours": 8,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 8
   },
   {
     "source": "phab",
@@ -859,9 +859,9 @@
     "createdAt": "2026-06-23T21:06:05.000Z",
     "firstReviewAt": "2026-06-23T21:58:32.000Z",
     "landedAt": "2026-06-24T16:41:53.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 3.6980555555555554,
-    "postReviewBusinessHours": 3.6980555555555554
+    "postReviewBusinessHours": 3.6980555555555554,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -991,9 +991,9 @@
     "createdAt": "2026-06-16T13:25:39.000Z",
     "firstReviewAt": "2026-06-17T08:51:06.000Z",
     "landedAt": "2026-06-30T07:19:47.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 79.5725,
-    "postReviewBusinessHours": 72
+    "postReviewBusinessHours": 72,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1003,9 +1003,9 @@
     "createdAt": "2026-06-16T13:25:27.000Z",
     "firstReviewAt": "2026-06-24T23:27:50.000Z",
     "landedAt": "2026-06-30T07:19:47.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 79.57583333333334,
-    "postReviewBusinessHours": 24
+    "postReviewBusinessHours": 24,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1015,9 +1015,9 @@
     "createdAt": "2026-06-29T21:24:26.000Z",
     "firstReviewAt": "2026-06-29T21:52:24.000Z",
     "landedAt": "2026-06-29T23:04:11.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 0,
-    "postReviewBusinessHours": 0
+    "postReviewBusinessHours": 0,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1066,5 +1066,17 @@
     "reviewRounds": 3,
     "cycleBusinessHours": 1630.9066666666665,
     "postReviewBusinessHours": 1630.3113888888888
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-rnvhzyndkabndj3e6kpr",
+    "revisionId": 309980,
+    "author": "m_kato",
+    "createdAt": "2026-07-02T04:40:39.000Z",
+    "firstReviewAt": "2026-07-02T15:54:18.000Z",
+    "landedAt": "2026-07-02T23:30:40.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 5.095
   }
 ]
