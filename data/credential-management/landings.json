@@ -679,9 +679,9 @@
     "createdAt": "2026-06-24T13:32:30.000Z",
     "firstReviewAt": "2026-06-29T09:09:27.000Z",
     "landedAt": "2026-06-30T09:55:37.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 31.458333333333332,
-    "postReviewBusinessHours": 8
+    "postReviewBusinessHours": 8,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -691,9 +691,9 @@
     "createdAt": "2026-05-20T16:24:36.000Z",
     "firstReviewAt": "2026-06-17T08:11:00.000Z",
     "landedAt": "2026-06-30T09:55:36.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 228.59,
-    "postReviewBusinessHours": 72
+    "postReviewBusinessHours": 72,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -703,9 +703,9 @@
     "createdAt": "2026-06-24T13:06:44.000Z",
     "firstReviewAt": "2026-06-26T13:24:34.000Z",
     "landedAt": "2026-06-29T14:02:08.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 24.923333333333336,
-    "postReviewBusinessHours": 8.626111111111111
+    "postReviewBusinessHours": 8.626111111111111,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -718,5 +718,41 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 4.419722222222222,
     "postReviewBusinessHours": 2.803611111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-qttnvg3mlkwzfehypwms",
+    "revisionId": 307491,
+    "author": "joschmidt",
+    "createdAt": "2026-06-18T08:34:43.000Z",
+    "firstReviewAt": "2026-07-01T15:44:14.000Z",
+    "landedAt": "2026-07-03T08:35:50.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 88,
+    "postReviewBusinessHours": 13.262777777777778
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-e7eglm5s7ow46ee4lvzb",
+    "revisionId": 308300,
+    "author": "kandres",
+    "createdAt": "2026-06-23T15:57:36.000Z",
+    "firstReviewAt": "2026-06-24T15:37:39.000Z",
+    "landedAt": "2026-07-02T22:22:33.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 61.04,
+    "postReviewBusinessHours": 53.372499999999995
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-toivhss6ag7pp4yp2ziz",
+    "revisionId": 308813,
+    "author": "vprema",
+    "createdAt": "2026-06-25T15:14:39.000Z",
+    "firstReviewAt": "2026-06-25T23:23:35.000Z",
+    "landedAt": "2026-07-02T14:49:28.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 39.58027777777777,
+    "postReviewBusinessHours": 33.824444444444445
   }
 ]
