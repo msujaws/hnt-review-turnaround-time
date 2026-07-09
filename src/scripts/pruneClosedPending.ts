@@ -9,9 +9,7 @@ import path from 'node:path';
 
 import { z } from 'zod';
 
-import { GITHUB_OWNER, GITHUB_REPO } from '../config';
-
-import { pendingSampleSchema, type PendingSample } from './collect';
+import { pendingSampleSchema, repoSlugForRecord, type PendingSample } from './collect';
 import { createGithubClient, type GraphqlClient } from './github';
 import { readJsonFile, writeJsonFileAtomic } from './jsonFile';
 
@@ -54,33 +52,50 @@ export const runPruneClosedPending = async (dataDirectory: string): Promise<void
   const raw = await readJsonFile<unknown>(pendingPath, []);
   const pending = z.array(pendingSampleSchema).parse(raw);
 
-  const githubPrNumbers = new Set<number>();
+  // Group pending github PRs by their repo so each is checked against the
+  // correct owner/repo (legacy repo-less rows default to content-monorepo).
+  const prNumbersByRepo = new Map<string, Set<number>>();
   for (const entry of pending) {
-    if (entry.source === 'github') githubPrNumbers.add(entry.id);
+    if (entry.source !== 'github') continue;
+    const slug = repoSlugForRecord(entry);
+    const set = prNumbersByRepo.get(slug) ?? new Set<number>();
+    set.add(entry.id);
+    prNumbersByRepo.set(slug, set);
   }
-  if (githubPrNumbers.size === 0) {
+  const totalChecked = [...prNumbersByRepo.values()].reduce((sum, set) => sum + set.size, 0);
+  if (totalChecked === 0) {
     process.stderr.write('no github pending entries to check\n');
     return;
   }
 
   const client = createGithubClient(requireEnv('GH_PAT'));
-  const closedIds = new Set<number>();
-  for (const number of githubPrNumbers) {
-    if (await isPrClosed(client, GITHUB_OWNER, GITHUB_REPO, number)) {
-      closedIds.add(number);
+  // Keyed `${slug}#${number}` — a PR number alone is ambiguous across repos.
+  const closedKeys = new Set<string>();
+  for (const [slug, numbers] of prNumbersByRepo) {
+    const [owner, repo] = slug.split('/');
+    if (owner === undefined || repo === undefined) continue;
+    for (const number of numbers) {
+      if (await isPrClosed(client, owner, repo, number)) {
+        closedKeys.add(`${slug}#${String(number)}`);
+      }
     }
   }
 
   const kept: PendingSample[] = pending.filter(
-    (entry) => !(entry.source === 'github' && closedIds.has(entry.id)),
+    (entry) =>
+      !(
+        entry.source === 'github' &&
+        closedKeys.has(`${repoSlugForRecord(entry)}#${String(entry.id)}`)
+      ),
   );
   const dropped = pending.length - kept.length;
   process.stderr.write(
-    `checked ${String(githubPrNumbers.size)} github PRs, dropped ${String(dropped)} pending entries for closed PRs\n`,
+    `checked ${String(totalChecked)} github PRs, dropped ${String(dropped)} pending entries for closed PRs\n`,
   );
-  if (closedIds.size > 0) {
-    const ids = [...closedIds].sort((a, b) => a - b).join(',');
-    process.stderr.write(`closed PR numbers: ${ids}\n`);
+  if (closedKeys.size > 0) {
+    process.stderr.write(
+      `closed PRs: ${[...closedKeys].sort((a, b) => a.localeCompare(b)).join(', ')}\n`,
+    );
   }
   await writeJsonFileAtomic(pendingPath, kept);
 };

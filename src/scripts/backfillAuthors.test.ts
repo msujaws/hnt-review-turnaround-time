@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import {
   asBusinessHours,
+  asGithubRepoSlug,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
@@ -57,7 +58,7 @@ describe('mergeAuthors', () => {
       phabAuthorByRevisionPhid: new Map([
         ['PHID-DREV-aaaaaaaaaaaaaaaaaaaa', asReviewerLogin('connie')],
       ]),
-      githubAuthorByPrNumber: new Map(),
+      githubAuthorByRepoPr: new Map(),
     });
     expect(merged.samples[0]?.author).toBe('connie');
   });
@@ -68,9 +69,28 @@ describe('mergeAuthors', () => {
       samples,
       pending: [],
       phabAuthorByRevisionPhid: new Map(),
-      githubAuthorByPrNumber: new Map([[382, asReviewerLogin('dave')]]),
+      // Repo-less legacy row resolves to the content-monorepo default key.
+      githubAuthorByRepoPr: new Map([['Pocket/content-monorepo#382', asReviewerLogin('dave')]]),
     });
     expect(merged.samples[0]?.author).toBe('dave');
+  });
+
+  it('resolves same-numbered PRs from different repos to distinct authors', () => {
+    const samples: Sample[] = [
+      ghSample({ id: asPrNumber(5), repo: asGithubRepoSlug('Pocket/content-monorepo') }),
+      ghSample({ id: asPrNumber(5), repo: asGithubRepoSlug('mozilla-services/merino-py') }),
+    ];
+    const merged = mergeAuthors({
+      samples,
+      pending: [],
+      phabAuthorByRevisionPhid: new Map(),
+      githubAuthorByRepoPr: new Map([
+        ['Pocket/content-monorepo#5', asReviewerLogin('content-author')],
+        ['mozilla-services/merino-py#5', asReviewerLogin('jpetto')],
+      ]),
+    });
+    expect(merged.samples[0]?.author).toBe('content-author');
+    expect(merged.samples[1]?.author).toBe('jpetto');
   });
 
   it('fills in author on pending samples, not just completed samples', () => {
@@ -81,7 +101,7 @@ describe('mergeAuthors', () => {
       phabAuthorByRevisionPhid: new Map([
         ['PHID-DREV-bbbbbbbbbbbbbbbbbbbb', asReviewerLogin('connie')],
       ]),
-      githubAuthorByPrNumber: new Map(),
+      githubAuthorByRepoPr: new Map(),
     });
     expect(merged.pending[0]?.author).toBe('connie');
   });
@@ -94,7 +114,7 @@ describe('mergeAuthors', () => {
       phabAuthorByRevisionPhid: new Map([
         ['PHID-DREV-aaaaaaaaaaaaaaaaaaaa', asReviewerLogin('should-not-overwrite')],
       ]),
-      githubAuthorByPrNumber: new Map(),
+      githubAuthorByRepoPr: new Map(),
     });
     expect(merged.samples[0]?.author).toBe('existing');
   });
@@ -105,7 +125,7 @@ describe('mergeAuthors', () => {
       samples,
       pending: [],
       phabAuthorByRevisionPhid: new Map(),
-      githubAuthorByPrNumber: new Map(),
+      githubAuthorByRepoPr: new Map(),
     });
     expect(merged.samples[0]?.author).toBeUndefined();
   });

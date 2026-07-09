@@ -2,19 +2,31 @@ import path from 'node:path';
 
 import { z } from 'zod';
 
-import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
+import { PHAB_ORIGIN } from '../config';
 import { asReviewerLogin, type ReviewerLogin } from '../types/brand';
 
-import { pendingSampleSchema, sampleSchema, type PendingSample, type Sample } from './collect';
+import {
+  pendingSampleSchema,
+  repoSlugForRecord,
+  sampleSchema,
+  type PendingSample,
+  type Sample,
+} from './collect';
 import { createGithubClient, type GraphqlClient } from './github';
 import { readJsonFile, writeJsonFileAtomic } from './jsonFile';
 import { createConduitClient, paginatePhidSearch, type ConduitClient } from './phabricator';
+
+// GitHub authors are keyed by `${owner/repo}#${prNumber}` (see githubAuthorKey)
+// because a bare PR number is ambiguous once more than one repo feeds the
+// group — two repos can share a number.
+export const githubAuthorKey = (repoSlug: string, prNumber: number): string =>
+  `${repoSlug}#${String(prNumber)}`;
 
 export interface MergeAuthorsInput {
   readonly samples: readonly Sample[];
   readonly pending: readonly PendingSample[];
   readonly phabAuthorByRevisionPhid: ReadonlyMap<string, ReviewerLogin>;
-  readonly githubAuthorByPrNumber: ReadonlyMap<number, ReviewerLogin>;
+  readonly githubAuthorByRepoPr: ReadonlyMap<string, ReviewerLogin>;
 }
 
 export interface MergeAuthorsOutput {
@@ -33,13 +45,15 @@ const withAuthor = <T extends { readonly source: string; readonly author?: unkno
 };
 
 const authorFor = (
-  entry: { source: 'phab' | 'github'; id: string | number },
+  entry: { source: 'phab' | 'github'; id: string | number; repo?: string | undefined },
   input: MergeAuthorsInput,
 ): ReviewerLogin | undefined => {
   if (entry.source === 'phab') {
     return input.phabAuthorByRevisionPhid.get(String(entry.id));
   }
-  return input.githubAuthorByPrNumber.get(Number(entry.id));
+  return input.githubAuthorByRepoPr.get(
+    githubAuthorKey(repoSlugForRecord(entry), Number(entry.id)),
+  );
 };
 
 export const mergeAuthors = (input: MergeAuthorsInput): MergeAuthorsOutput => {
@@ -174,11 +188,19 @@ export const runAuthorBackfillFromDisk = async (dataDirectory: string): Promise<
   const pending: PendingSample[] = z.array(pendingSampleSchema).parse(pendingRaw);
 
   const phabPhids = new Set<string>();
-  const ghPrs = new Set<number>();
+  // GitHub PRs needing backfill, grouped by their repo so each is queried
+  // against the correct owner/repo.
+  const ghPrsByRepo = new Map<string, Set<number>>();
   for (const entry of [...samples, ...pending]) {
     if (entry.author !== undefined) continue;
-    if (entry.source === 'phab') phabPhids.add(String(entry.id));
-    else ghPrs.add(Number(entry.id));
+    if (entry.source === 'phab') {
+      phabPhids.add(String(entry.id));
+    } else {
+      const slug = repoSlugForRecord(entry);
+      const set = ghPrsByRepo.get(slug) ?? new Set<number>();
+      set.add(Number(entry.id));
+      ghPrsByRepo.set(slug, set);
+    }
   }
 
   const conduit = createConduitClient({
@@ -187,16 +209,22 @@ export const runAuthorBackfillFromDisk = async (dataDirectory: string): Promise<
   });
   const gh = createGithubClient(requireEnv('GH_PAT'));
 
-  const [phabAuthorByRevisionPhid, githubAuthorByPrNumber] = await Promise.all([
-    lookupPhabAuthors(conduit, [...phabPhids]),
-    lookupGithubAuthors(gh, [...ghPrs], GITHUB_OWNER, GITHUB_REPO),
-  ]);
+  const githubAuthorByRepoPr = new Map<string, ReviewerLogin>();
+  const phabAuthorByRevisionPhid = await lookupPhabAuthors(conduit, [...phabPhids]);
+  for (const [slug, numbers] of ghPrsByRepo) {
+    const [owner, repo] = slug.split('/');
+    if (owner === undefined || repo === undefined) continue;
+    const byPr = await lookupGithubAuthors(gh, [...numbers], owner, repo);
+    for (const [number, login] of byPr) {
+      githubAuthorByRepoPr.set(githubAuthorKey(slug, number), login);
+    }
+  }
 
   const merged = mergeAuthors({
     samples,
     pending,
     phabAuthorByRevisionPhid,
-    githubAuthorByPrNumber,
+    githubAuthorByRepoPr,
   });
 
   await writeJsonFileAtomic(samplesPath, merged.samples);
