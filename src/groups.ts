@@ -3,10 +3,23 @@ import path from 'node:path';
 import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from './config';
 import { asGroupId, type GroupId } from './types/brand';
 
+// One GitHub repository a group pulls review activity from. A group may track
+// several repos, each with its own gating policy:
+//   - `authorLogins` set  → keep only PRs authored by those logins. Absent →
+//     gate authors by the group's people.json github roster (legacy behavior).
+//   - `gateReviewersByRoster` (default true) → count only reviews by roster
+//     members. Set false to count reviews by anyone (author-only scoping).
+export interface GithubRepoConfig {
+  readonly owner: string;
+  readonly repo: string;
+  readonly authorLogins?: readonly string[];
+  readonly gateReviewersByRoster?: boolean;
+}
+
 // A single review group the dashboard can track. Data for distinct groups is
 // never merged: each group owns a `data/<id>/` directory and renders at its
 // own URL. New groups are Phabricator-only; only Home-NewTab also pulls
-// GitHub (the Pocket content-monorepo).
+// GitHub (the Pocket content-monorepo, plus merino-py for the backend team).
 export interface GroupConfig {
   readonly id: GroupId;
   // Short display name used in the dropdown and metadata titles.
@@ -19,8 +32,8 @@ export interface GroupConfig {
   readonly phabProjectSlugs: readonly string[];
   // Link target for the primary project tag.
   readonly phabProjectUrl: string;
-  // Present only for groups that also review on GitHub.
-  readonly github?: { readonly owner: string; readonly repo: string };
+  // Present (and non-empty) only for groups that also review on GitHub.
+  readonly github?: readonly GithubRepoConfig[];
 }
 
 const phabProjectUrl = (slug: string): string => `${PHAB_ORIGIN}/tag/${slug}/`;
@@ -42,7 +55,17 @@ const HOME_NEWTAB: GroupConfig = {
     'local timezone).',
   phabProjectSlugs: ['home-newtab-reviewers'],
   phabProjectUrl: phabProjectUrl('home-newtab-reviewers'),
-  github: { owner: GITHUB_OWNER, repo: GITHUB_REPO },
+  github: [
+    // content-monorepo: gate by the people.json github roster on both sides.
+    { owner: GITHUB_OWNER, repo: GITHUB_REPO },
+    // merino-py: only the backend team's PRs, reviewed by anyone.
+    {
+      owner: 'mozilla-services',
+      repo: 'merino-py',
+      authorLogins: ['jpetto', 'mmiermans', 'Herraj'],
+      gateReviewersByRoster: false,
+    },
+  ],
 };
 
 export const ALL_GROUPS: readonly GroupConfig[] = [

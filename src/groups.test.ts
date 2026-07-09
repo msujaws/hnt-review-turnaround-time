@@ -28,10 +28,18 @@ describe('group registry', () => {
     expect(defaultGroup().id).toBe('home-newtab');
   });
 
-  it('gives the default group both a Phab slug and a GitHub repo', () => {
+  it('gives the default group a Phab slug and two GitHub repos', () => {
     const group = defaultGroup();
     expect(group.phabProjectSlugs).toEqual(['home-newtab-reviewers']);
-    expect(group.github).toEqual({ owner: 'Pocket', repo: 'content-monorepo' });
+    expect(group.github).toEqual([
+      { owner: 'Pocket', repo: 'content-monorepo' },
+      {
+        owner: 'mozilla-services',
+        repo: 'merino-py',
+        authorLogins: ['jpetto', 'mmiermans', 'Herraj'],
+        gateReviewersByRoster: false,
+      },
+    ]);
   });
 
   it('marks the new groups as Phabricator-only (no GitHub repo)', () => {
