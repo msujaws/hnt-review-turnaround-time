@@ -2,9 +2,11 @@ import { graphql } from '@octokit/graphql';
 import { z } from 'zod';
 
 import {
+  asGithubRepoSlug,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
+  type GithubRepoSlug,
   type IsoTimestamp,
   type PrNumber,
   type ReviewerLogin,
@@ -13,6 +15,9 @@ import {
 export interface GithubSample {
   readonly source: 'github';
   readonly id: PrNumber;
+  // Source repository as `owner/repo`. Absent on legacy rows collected before
+  // multi-repo support; those normalize to the content-monorepo default.
+  readonly repo?: GithubRepoSlug | undefined;
   // Patch author login. Absent on legacy rows collected before this field
   // existed; every fresh extract populates it.
   readonly author?: ReviewerLogin | undefined;
@@ -24,6 +29,8 @@ export interface GithubSample {
 export interface GithubPendingSample {
   readonly source: 'github';
   readonly id: PrNumber;
+  // Source repository as `owner/repo`. Absent on legacy rows; see GithubSample.
+  readonly repo?: GithubRepoSlug | undefined;
   // Patch author login. Absent on legacy rows collected before this field
   // existed; every fresh extract populates it.
   readonly author?: ReviewerLogin | undefined;
@@ -37,6 +44,8 @@ export interface GithubPendingSample {
 export interface GithubLanding {
   readonly source: 'github';
   readonly id: PrNumber;
+  // Source repository as `owner/repo`. Absent on legacy rows; see GithubSample.
+  readonly repo?: GithubRepoSlug | undefined;
   readonly author?: ReviewerLogin | undefined;
   readonly createdAt: IsoTimestamp;
   // Earliest non-bot, non-author PullRequestReview submittedAt. Null when the
@@ -108,23 +117,27 @@ const earliest = (values: readonly string[]): string | undefined => {
 // One landing per merged PR. Self-reviews and bot reviews don't count toward
 // firstReviewAt or reviewRounds — this mirrors extractSamplesFromPullRequest's
 // filters so the two metrics are scoped to the same set of "real" reviews.
-// `allowedTeamLogins`, when provided, scopes the landing to team-authored PRs
-// and drops non-team reviewers from firstReviewAt/reviewRounds — both metrics
-// stay consistent with the team-only sample feed.
+// `allowedAuthorLogins`, when provided, scopes the landing to those authors'
+// PRs. `allowedReviewerLogins`, when provided, drops non-listed reviewers from
+// firstReviewAt/reviewRounds — both metrics stay consistent with the sample
+// feed. An absent reviewer gate counts every human reviewer.
 export const extractLandingFromPullRequest = (
   data: PullRequestData,
-  options: { readonly allowedTeamLogins?: ReadonlySet<string> } = {},
+  options: {
+    readonly allowedAuthorLogins?: ReadonlySet<string>;
+    readonly allowedReviewerLogins?: ReadonlySet<string>;
+  } = {},
 ): GithubLanding | null => {
-  const { allowedTeamLogins } = options;
+  const { allowedAuthorLogins, allowedReviewerLogins } = options;
   if (data.mergedAt === null) return null;
   const authorLogin = data.author.login;
-  if (allowedTeamLogins !== undefined && !allowedTeamLogins.has(authorLogin)) return null;
+  if (allowedAuthorLogins !== undefined && !allowedAuthorLogins.has(authorLogin)) return null;
   const humanReviews = data.timeline.filter(
     (event): event is Extract<TimelineEvent, { kind: 'PullRequestReview' }> =>
       event.kind === 'PullRequestReview' &&
       !isBot(event.authorLogin) &&
       event.authorLogin !== authorLogin &&
-      (allowedTeamLogins === undefined || allowedTeamLogins.has(event.authorLogin)),
+      (allowedReviewerLogins === undefined || allowedReviewerLogins.has(event.authorLogin)),
   );
   let firstReview: string | null = null;
   for (const event of humanReviews) {
@@ -148,16 +161,20 @@ export const extractLandingFromPullRequest = (
 
 export const extractSamplesFromPullRequest = (
   data: PullRequestData,
-  // `allowedTeamLogins`, when provided, drops the entire PR if the author
-  // isn't in the set and filters non-team reviewers out of samples/pending.
-  // Team-requested timeline events still flow through (they carry no
-  // individual reviewer login to filter against); the per-review author
-  // check below handles the named-reviewer gate.
-  options: { readonly allowedTeamLogins?: ReadonlySet<string> } = {},
+  // `allowedAuthorLogins`, when provided, drops the entire PR if the author
+  // isn't in the set. `allowedReviewerLogins`, when provided, filters
+  // non-listed reviewers out of samples/pending; when absent, every reviewer
+  // counts. Team-requested timeline events still flow through (they carry no
+  // individual reviewer login to filter against); the per-review author check
+  // below handles the named-reviewer gate.
+  options: {
+    readonly allowedAuthorLogins?: ReadonlySet<string>;
+    readonly allowedReviewerLogins?: ReadonlySet<string>;
+  } = {},
 ): ExtractedPullRequest => {
-  const { allowedTeamLogins } = options;
+  const { allowedAuthorLogins, allowedReviewerLogins } = options;
   if (data.isDraft) return { samples: [], pending: [] };
-  if (allowedTeamLogins !== undefined && !allowedTeamLogins.has(data.author.login)) {
+  if (allowedAuthorLogins !== undefined && !allowedAuthorLogins.has(data.author.login)) {
     return { samples: [], pending: [] };
   }
 
@@ -196,7 +213,7 @@ export const extractSamplesFromPullRequest = (
       } else {
         for (const login of event.reviewerLogins) {
           if (isBot(login) || login === data.author.login) continue;
-          if (allowedTeamLogins !== undefined && !allowedTeamLogins.has(login)) continue;
+          if (allowedReviewerLogins !== undefined && !allowedReviewerLogins.has(login)) continue;
           if (event.kind === 'ReviewRequestedEvent') {
             explicitRequestAt.set(login, event.createdAt);
           } else {
@@ -207,7 +224,8 @@ export const extractSamplesFromPullRequest = (
       continue;
     }
     if (isBot(event.authorLogin) || event.authorLogin === data.author.login) continue;
-    if (allowedTeamLogins !== undefined && !allowedTeamLogins.has(event.authorLogin)) continue;
+    if (allowedReviewerLogins !== undefined && !allowedReviewerLogins.has(event.authorLogin))
+      continue;
     if (emitted.has(event.authorLogin)) continue;
     const reviewAt = event.submittedAt;
     // Pick the earliest still-active request (explicit or team) at or before the
@@ -581,23 +599,27 @@ export const fetchGithubSamples = async (params: {
   readonly repo: string;
   readonly lookbackDays: number;
   readonly now?: Date;
-  // Team roster as GitHub logins. When provided, the PR is kept only when
-  // its author is in the set, and only reviewers in the set flow through
-  // to samples/pending/landings. An explicitly empty set is an error —
-  // collect() must route around the empty-team case before calling this,
-  // otherwise we'd silently produce zero samples on every run.
-  readonly teamLogins?: ReadonlySet<string>;
+  // Author allowlist as GitHub logins. When provided, a PR is kept only when
+  // its author is in the set. An explicitly empty set is an error — collect()
+  // must route around the empty-author case before calling this, otherwise
+  // we'd silently produce zero samples on every run.
+  readonly authorLogins?: ReadonlySet<string>;
+  // Reviewer allowlist as GitHub logins. When provided, only reviewers in the
+  // set flow through to samples/pending/landings. When absent, every reviewer
+  // counts (used for repos that gate on author only).
+  readonly reviewerLogins?: ReadonlySet<string>;
 }): Promise<{
   samples: GithubSample[];
   pending: GithubPendingSample[];
   landings: GithubLanding[];
 }> => {
-  const { client, owner, repo, lookbackDays, teamLogins } = params;
-  if (teamLogins?.size === 0) {
-    throw new Error('teamLogins was explicitly empty — refusing to collect every PR');
+  const { client, owner, repo, lookbackDays, authorLogins, reviewerLogins } = params;
+  if (authorLogins?.size === 0) {
+    throw new Error('authorLogins was explicitly empty — refusing to collect every PR');
   }
   const now = params.now ?? new Date();
   const cutoff = new Date(now.getTime() - lookbackDays * 86_400 * 1000).toISOString();
+  const repoSlug = asGithubRepoSlug(`${owner}/${repo}`);
 
   // Two independent PR fetches, deduped by number:
   // 1. Recently-updated PRs (any state) — picks up newly completed reviews.
@@ -609,16 +631,19 @@ export const fetchGithubSamples = async (params: {
   const byNumber = new Map<number, PullRequestData>();
   for (const pr of [...recent, ...open]) byNumber.set(pr.number, pr);
 
-  const extractOptions = teamLogins === undefined ? {} : { allowedTeamLogins: teamLogins };
+  const extractOptions = {
+    ...(authorLogins === undefined ? {} : { allowedAuthorLogins: authorLogins }),
+    ...(reviewerLogins === undefined ? {} : { allowedReviewerLogins: reviewerLogins }),
+  };
   const samples: GithubSample[] = [];
   const pending: GithubPendingSample[] = [];
   const landings: GithubLanding[] = [];
   for (const pr of byNumber.values()) {
     const extracted = extractSamplesFromPullRequest(pr, extractOptions);
-    samples.push(...extracted.samples);
-    pending.push(...extracted.pending);
+    for (const sample of extracted.samples) samples.push({ ...sample, repo: repoSlug });
+    for (const p of extracted.pending) pending.push({ ...p, repo: repoSlug });
     const landing = extractLandingFromPullRequest(pr, extractOptions);
-    if (landing !== null) landings.push(landing);
+    if (landing !== null) landings.push({ ...landing, repo: repoSlug });
   }
   return { samples, pending, landings };
 };
