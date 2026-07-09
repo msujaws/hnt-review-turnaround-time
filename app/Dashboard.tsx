@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from 'react';
+import { Fragment, type FC, type ReactElement } from 'react';
 
 import { CYCLE_SLA_HOURS, POST_REVIEW_SLA_HOURS, ROUNDS_SLA } from '../src/config';
 import { defaultGroup, type GroupConfig } from '../src/groups';
@@ -85,20 +85,40 @@ export const Dashboard: FC<DashboardProps> = ({
         or requests changes.
       </>
     );
-  const githubRepoUrl = group.github
-    ? `https://github.com/${group.github.owner}/${group.github.repo}`
-    : '';
-  const githubRepoLabel = group.github
-    ? `${group.github.owner.toLowerCase()}/${group.github.repo}`
-    : '';
+  const githubRepos = group.github ?? [];
+  const hasGithub = githubRepos.length > 0;
+  // Each repo can gate differently: content-monorepo counts team-member
+  // reviewers; merino-py is scoped to the backend team's own PRs but counts
+  // any reviewer. Describe each repo's scope from its config so the copy stays
+  // accurate as the roster/repos change.
+  const describeRepoScope = (repo: (typeof githubRepos)[number]): ReactElement =>
+    repo.authorLogins === undefined ? (
+      <>where a team member is a requested reviewer</>
+    ) : (
+      <>
+        authored by{' '}
+        <span className="text-neutral-200">{formatReviewerList([...repo.authorLogins])}</span>
+        {repo.gateReviewersByRoster === false ? ' (any reviewer)' : ''}
+      </>
+    );
   const githubDescription = (
     <>
       Pull requests in{' '}
-      <a href={githubRepoUrl} className={LINK_CLASSES} rel="noopener noreferrer" target="_blank">
-        {githubRepoLabel}
-      </a>{' '}
-      where a team member is a requested reviewer. Time stops at that reviewer&apos;s first review
-      or review comment.
+      {githubRepos.map((repo, index) => (
+        <Fragment key={`${repo.owner}/${repo.repo}`}>
+          {index > 0 ? '; ' : ''}
+          <a
+            href={`https://github.com/${repo.owner}/${repo.repo}`}
+            className={LINK_CLASSES}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {repo.owner.toLowerCase()}/{repo.repo}
+          </a>{' '}
+          {describeRepoScope(repo)}
+        </Fragment>
+      ))}
+      . Time stops at that reviewer&apos;s first review or review comment.
     </>
   );
   const emptyWindows: SourceWindows = {
@@ -271,21 +291,20 @@ export const Dashboard: FC<DashboardProps> = ({
   // plainly-labelled Phabricator tab and no GitHub tab at all.
   const phabTab: TabItem = {
     id: 'phab',
-    label: group.github === undefined ? 'Phabricator' : 'Frontend Team (Phabricator)',
+    label: hasGithub ? 'Frontend Team (Phabricator)' : 'Phabricator',
     hasRedIssue: phabHasRedIssue,
     content: phabContent,
   };
-  const tabs: TabItem[] =
-    group.github === undefined
-      ? [phabTab]
-      : [
-          phabTab,
-          {
-            id: 'github',
-            label: 'Backend Team (GitHub)',
-            hasRedIssue: githubHasRedIssue,
-            content: githubContent,
-          },
-        ];
+  const tabs: TabItem[] = hasGithub
+    ? [
+        phabTab,
+        {
+          id: 'github',
+          label: 'Backend Team (GitHub)',
+          hasRedIssue: githubHasRedIssue,
+          content: githubContent,
+        },
+      ]
+    : [phabTab];
   return <Tabs tabs={tabs} />;
 };

@@ -31,7 +31,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     now: new Date(),
     peopleMap,
     label: group.label,
-    hasGithub: group.github !== undefined,
+    hasGithub: (group.github?.length ?? 0) > 0,
   });
   return {
     title: summary.title,
