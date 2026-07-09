@@ -1,9 +1,10 @@
 import type { CSSProperties, FC, ReactElement, ReactNode } from 'react';
 
-import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
+import { PHAB_ORIGIN } from '../config';
 import { isLandingInWindow, isSampleInWindow, type Landing, type Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
+import { githubPrUrl, githubRepoShortName, githubRepoSlug } from './githubRepo';
 import { asMaterialSymbolName, Icon } from './Icon';
 import {
   TIER_CARD_CLASSES,
@@ -73,11 +74,12 @@ const windowDaysFor = (label: '7-day' | '14-day' | '30-day'): number => {
 };
 
 // Identifier used for both Sample and Landing rows — both carry a source
-// discriminator, an id, and an optional Phab revisionId, which is all this
-// component needs to build the outbound link.
+// discriminator, an id, an optional github repo slug, and an optional Phab
+// revisionId, which is all this component needs to build the outbound link.
 interface ItemIdentifierInput {
   readonly source: 'phab' | 'github';
   readonly id: string | number;
+  readonly repo?: string | undefined;
   readonly revisionId?: number | undefined;
 }
 
@@ -88,12 +90,12 @@ const ItemIdentifier: FC<{ readonly item: ItemIdentifierInput }> = ({ item }) =>
   if (item.source === 'github') {
     return (
       <a
-        href={`https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/pull/${String(item.id)}`}
+        href={githubPrUrl(item.repo, item.id)}
         className={LINK_CLASSES}
         rel="noopener noreferrer"
         target="_blank"
       >
-        #{String(item.id)}
+        {githubRepoShortName(item.repo)} #{String(item.id)}
       </a>
     );
   }
@@ -250,10 +252,17 @@ const CYCLE_HEADERS = ['Review', 'Author', 'Created', 'Landed', 'Cycle'] as cons
 const POST_REVIEW_HEADERS = ['Review', 'Author', 'First review', 'Landed', 'Post-review'] as const;
 const ROUNDS_HEADERS = ['Review', 'Author', 'Landed', 'Rounds'] as const;
 
-const sampleKey = (sample: Sample): string =>
-  `${sample.source}:${String(sample.id)}:${sample.reviewer}`;
+// Keys must disambiguate by repo — two repos can share a PR number, so a bare
+// `source:id:reviewer` would collide and drop a legitimate row (or break the
+// React key). Phab rows have no repo axis.
+const repoPart = (item: Sample | Landing): string =>
+  item.source === 'github' ? githubRepoSlug(item.repo) : '';
 
-const landingKey = (landing: Landing): string => `${landing.source}:${String(landing.id)}`;
+const sampleKey = (sample: Sample): string =>
+  `${sample.source}:${repoPart(sample)}:${String(sample.id)}:${sample.reviewer}`;
+
+const landingKey = (landing: Landing): string =>
+  `${landing.source}:${repoPart(landing)}:${String(landing.id)}`;
 
 interface WindowItemsProps {
   readonly kindItems: HeadlineItems;

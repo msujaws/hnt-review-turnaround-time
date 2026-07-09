@@ -6,6 +6,7 @@ import type { Landing, Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 import {
   asBusinessHours,
+  asGithubRepoSlug,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
@@ -362,6 +363,33 @@ describe('Headline', () => {
     const row7 = screen.getByTestId('window-7d-details');
     const link = within(row7).getByRole('link', { name: /#382/ });
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo/pull/382');
+  });
+
+  it('links a merino-py sample to its own repo and labels the repo', () => {
+    const sample: Sample = {
+      source: 'github',
+      id: asPrNumber(7),
+      repo: asGithubRepoSlug('mozilla-services/merino-py'),
+      author: asReviewerLogin('jpetto'),
+      reviewer: asReviewerLogin('outsider'),
+      requestedAt: asIsoTimestamp('2026-04-18T18:00:00Z'),
+      firstActionAt: asIsoTimestamp('2026-04-18T20:00:00Z'),
+      tatBusinessHours: asBusinessHours(2),
+    };
+    render(
+      <Headline
+        title="GitHub"
+        window7d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window14d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        window30d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 100 }}
+        slaHours={4}
+        samples={[sample]}
+        now={new Date('2026-04-21T12:00:00Z')}
+      />,
+    );
+    const row7 = screen.getByTestId('window-7d-details');
+    const link = within(row7).getByRole('link', { name: /merino-py #7/ });
+    expect(link).toHaveAttribute('href', 'https://github.com/mozilla-services/merino-py/pull/7');
   });
 
   it('shows the patch author in the expanded sample table', () => {
@@ -745,7 +773,11 @@ describe('Headline', () => {
       );
       const row7 = screen.getByTestId('window-7d-details');
       const orderedLinks = within(row7).getAllByRole('link');
-      expect(orderedLinks.map((a) => a.textContent)).toEqual(['#911', '#912', '#910']);
+      expect(orderedLinks.map((a) => a.textContent)).toEqual([
+        'content-monorepo #911',
+        'content-monorepo #912',
+        'content-monorepo #910',
+      ]);
     });
   });
 

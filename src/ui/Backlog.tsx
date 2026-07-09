@@ -1,11 +1,12 @@
 import type { FC } from 'react';
 
-import { GITHUB_OWNER, GITHUB_REPO, PHAB_ORIGIN } from '../config';
+import { PHAB_ORIGIN } from '../config';
 import { businessHoursBetween } from '../scripts/businessHours';
 import type { BacklogSnapshot, BacklogSourceStats, PendingSample } from '../scripts/collect';
 import { timezoneForReviewer, type PeopleMap } from '../scripts/people';
 import { asIsoTimestamp } from '../types/brand';
 
+import { githubPrUrl, githubRepoShortName, githubRepoSlug } from './githubRepo';
 import { asMaterialSymbolName, Icon } from './Icon';
 
 const EXPAND_ICON = asMaterialSymbolName('expand_more');
@@ -21,11 +22,13 @@ const formatTimestamp = (value: string): string => {
 
 const linkFor = (sample: PendingSample): string =>
   sample.source === 'github'
-    ? `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/pull/${String(sample.id)}`
+    ? githubPrUrl(sample.repo, sample.id)
     : `${PHAB_ORIGIN}/D${String(sample.revisionId)}`;
 
 const labelFor = (sample: PendingSample): string =>
-  sample.source === 'github' ? `#${String(sample.id)}` : `D${String(sample.revisionId)}`;
+  sample.source === 'github'
+    ? `${githubRepoShortName(sample.repo)} #${String(sample.id)}`
+    : `D${String(sample.revisionId)}`;
 
 const waitingHoursFor = (sample: PendingSample, now: Date, peopleMap: PeopleMap): number =>
   businessHoursBetween(
@@ -97,7 +100,7 @@ const PendingList: FC<{
     <ul className="flex flex-col gap-2">
       {primary.map((entry) => (
         <PendingRow
-          key={`${entry.sample.source}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
+          key={`${entry.sample.source}:${entry.sample.source === 'github' ? githubRepoSlug(entry.sample.repo) : ''}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
           entry={entry}
         />
       ))}
@@ -110,7 +113,7 @@ const PendingList: FC<{
         <ul className="flex flex-col gap-2">
           {accepted.map((entry) => (
             <PendingRow
-              key={`${entry.sample.source}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
+              key={`${entry.sample.source}:${entry.sample.source === 'github' ? githubRepoSlug(entry.sample.repo) : ''}:${String(entry.sample.id)}:${entry.sample.reviewer}`}
               entry={entry}
               muted
             />

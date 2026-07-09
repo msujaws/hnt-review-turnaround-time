@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { PendingSample } from '../scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../scripts/people';
 import {
+  asGithubRepoSlug,
   asIanaTimezone,
   asIsoTimestamp,
   asPrNumber,
@@ -125,6 +126,26 @@ describe('OverdueCallout', () => {
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo/pull/42');
     expect(within(region).getByText('alice')).toBeInTheDocument();
     expect(within(region).getByText(/40\.0h/)).toBeInTheDocument();
+  });
+
+  it('links a merino-py overdue row to its own repo with a repo label', () => {
+    const pending = [
+      pendingGh({
+        id: asPrNumber(9),
+        repo: asGithubRepoSlug('mozilla-services/merino-py'),
+      }),
+    ];
+    render(
+      <OverdueCallout
+        pending={pending}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    const region = screen.getByRole('region', { name: /overdue/i });
+    const link = within(region).getByRole('link', { name: /merino-py #9/ });
+    expect(link).toHaveAttribute('href', 'https://github.com/mozilla-services/merino-py/pull/9');
   });
 
   it('links Phabricator items using the human-readable revision id', () => {
