@@ -3468,9 +3468,9 @@
     "createdAt": "2026-06-25T16:23:51.000Z",
     "firstReviewAt": "2026-06-25T21:34:07.000Z",
     "landedAt": "2026-06-29T00:06:29.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 13.6025,
-    "postReviewBusinessHours": 8.431388888888888,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 8.431388888888888
   },
   {
     "source": "phab",
@@ -3804,6 +3804,7 @@
     "firstReviewAt": "2026-07-06T21:08:48Z",
     "landedAt": "2026-07-07T11:40:21Z",
     "reviewRounds": 1,
+    "repo": "Pocket/content-monorepo",
     "cycleBusinessHours": 22.30527777777778,
     "postReviewBusinessHours": 2.853333333333333
   },
@@ -3887,7 +3888,80 @@
     "firstReviewAt": "2026-07-08T21:00:45Z",
     "landedAt": "2026-07-08T21:12:15Z",
     "reviewRounds": 1,
+    "repo": "Pocket/content-monorepo",
     "cycleBusinessHours": 5.889444444444445,
     "postReviewBusinessHours": 0.19166666666666668
+  },
+  {
+    "source": "github",
+    "id": 1659,
+    "author": "Herraj",
+    "createdAt": "2026-07-08T22:30:37Z",
+    "firstReviewAt": "2026-07-09T13:09:15Z",
+    "landedAt": "2026-07-09T14:42:01Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 1.7002777777777778,
+    "postReviewBusinessHours": 1.546111111111111
+  },
+  {
+    "source": "github",
+    "id": 1655,
+    "author": "Herraj",
+    "createdAt": "2026-07-08T20:09:02Z",
+    "firstReviewAt": "2026-07-08T20:16:32Z",
+    "landedAt": "2026-07-08T20:18:01Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 0.1497222222222222,
+    "postReviewBusinessHours": 0.024722222222222222
+  },
+  {
+    "source": "github",
+    "id": 1651,
+    "author": "Herraj",
+    "createdAt": "2026-07-07T19:22:39Z",
+    "firstReviewAt": "2026-07-08T14:58:17Z",
+    "landedAt": "2026-07-08T15:46:24Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 4.395833333333333,
+    "postReviewBusinessHours": 0.8019444444444445
+  },
+  {
+    "source": "github",
+    "id": 1649,
+    "author": "mmiermans",
+    "createdAt": "2026-07-07T14:46:20Z",
+    "firstReviewAt": "2026-07-08T13:49:42Z",
+    "landedAt": "2026-07-08T14:00:26Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 0
+  },
+  {
+    "source": "github",
+    "id": 1625,
+    "author": "Herraj",
+    "createdAt": "2026-06-19T14:58:29Z",
+    "firstReviewAt": "2026-07-01T11:07:38Z",
+    "landedAt": "2026-07-08T00:22:36Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 102.02527777777777,
+    "postReviewBusinessHours": 40
+  },
+  {
+    "source": "github",
+    "id": 1652,
+    "author": "mmiermans",
+    "createdAt": "2026-07-07T20:11:23Z",
+    "firstReviewAt": "2026-07-07T20:39:07Z",
+    "landedAt": "2026-07-07T20:39:39Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 0.4711111111111111,
+    "postReviewBusinessHours": 0.008888888888888889
   }
 ]
