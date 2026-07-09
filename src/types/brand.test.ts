@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   asBusinessHours,
+  asGithubRepoSlug,
   asGroupId,
   asIsoTimestamp,
   asPrNumber,
@@ -127,5 +128,36 @@ describe('asGroupId', () => {
   it('rejects a leading hyphen or digit', () => {
     expect(() => asGroupId('-home')).toThrow();
     expect(() => asGroupId('1home')).toThrow();
+  });
+});
+
+describe('asGithubRepoSlug', () => {
+  it('accepts an owner/repo slug', () => {
+    expect(asGithubRepoSlug('Pocket/content-monorepo')).toBe('Pocket/content-monorepo');
+  });
+
+  it('preserves case for URL building', () => {
+    expect(asGithubRepoSlug('mozilla-services/merino-py')).toBe('mozilla-services/merino-py');
+  });
+
+  it('rejects empty string', () => {
+    expect(() => asGithubRepoSlug('')).toThrow();
+  });
+
+  it('rejects a slug with no slash', () => {
+    expect(() => asGithubRepoSlug('content-monorepo')).toThrow();
+  });
+
+  it('rejects a slug with more than one slash', () => {
+    expect(() => asGithubRepoSlug('Pocket/content/monorepo')).toThrow();
+  });
+
+  it('rejects empty owner or repo segments', () => {
+    expect(() => asGithubRepoSlug('/content-monorepo')).toThrow();
+    expect(() => asGithubRepoSlug('Pocket/')).toThrow();
+  });
+
+  it('rejects whitespace in a segment', () => {
+    expect(() => asGithubRepoSlug('Pocket/content monorepo')).toThrow();
   });
 });

@@ -10,6 +10,7 @@ export type BusinessHours = Brand<number, 'BusinessHours'>;
 export type IsoTimestamp = Brand<string, 'IsoTimestamp'>;
 export type IanaTimezone = Brand<string, 'IanaTimezone'>;
 export type GroupId = Brand<string, 'GroupId'>;
+export type GithubRepoSlug = Brand<string, 'GithubRepoSlug'>;
 
 const revisionPhidSchema = z.string().regex(/^PHID-DREV-[a-z0-9]{20}$/, 'invalid revision PHID');
 
@@ -62,3 +63,14 @@ export const asIanaTimezone = (value: string): IanaTimezone =>
 const groupIdSchema = z.string().regex(/^[a-z][a-z0-9-]*$/, 'invalid group id');
 
 export const asGroupId = (value: string): GroupId => groupIdSchema.parse(value) as GroupId;
+
+// A GitHub repository identifier in `owner/repo` form (e.g.
+// `Pocket/content-monorepo`). Case is preserved because it feeds PR URLs;
+// display labels lowercase it separately. Exactly one slash, both segments
+// non-empty and whitespace-free.
+const githubRepoSlugSchema = z
+  .string()
+  .regex(/^[^\s/]+\/[^\s/]+$/, 'invalid GitHub repo slug (expected owner/repo)');
+
+export const asGithubRepoSlug = (value: string): GithubRepoSlug =>
+  githubRepoSlugSchema.parse(value) as GithubRepoSlug;
