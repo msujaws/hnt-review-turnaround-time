@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { allGroups } from '../groups';
 import {
   asBusinessHours,
+  asGithubRepoSlug,
   asIanaTimezone,
   asIsoTimestamp,
   asPrNumber,
@@ -761,6 +762,77 @@ describe('collect', () => {
       expect(result.samples.map((s) => s.id)).toEqual(['PHID-DREV-teamauthor22222xxxxx']);
     });
 
+    it('retains a merino-style existing sample with an off-roster reviewer', async () => {
+      // merino-py policy gates by author only (reviewer = anyone). A sample
+      // authored by jpetto and reviewed by a non-roster login must survive the
+      // purge — the reviewer-any semantics carry over to the legacy sweep.
+      const githubPolicies = new Map([
+        [
+          'Pocket/content-monorepo',
+          {
+            authorLogins: new Set(['team-member-a', 'team-member-b']),
+            reviewerLogins: new Set(['team-member-a', 'team-member-b']),
+          },
+        ],
+        ['mozilla-services/merino-py', { authorLogins: new Set(['jpetto']) }],
+      ]);
+      const existing: Sample[] = [
+        {
+          ...makeGhSample({
+            id: asPrNumber(5),
+            repo: asGithubRepoSlug('mozilla-services/merino-py'),
+            author: asReviewerLogin('jpetto'),
+            reviewer: asReviewerLogin('random-outsider'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        githubPolicies,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples.map((s) => s.id)).toEqual([5]);
+    });
+
+    it('still purges a content-monorepo existing sample with an off-roster reviewer', async () => {
+      const githubPolicies = new Map([
+        [
+          'Pocket/content-monorepo',
+          {
+            authorLogins: new Set(['team-member-a', 'team-member-b']),
+            reviewerLogins: new Set(['team-member-a', 'team-member-b']),
+          },
+        ],
+        ['mozilla-services/merino-py', { authorLogins: new Set(['jpetto']) }],
+      ]);
+      const existing: Sample[] = [
+        {
+          ...makeGhSample({
+            id: asPrNumber(6),
+            repo: asGithubRepoSlug('Pocket/content-monorepo'),
+            author: asReviewerLogin('team-member-a'),
+            reviewer: asReviewerLogin('random-outsider'),
+          }),
+          tatBusinessHours: asBusinessHours(2),
+        },
+      ];
+      const result = await collect({
+        existingSamples: existing,
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult()),
+        peopleMap,
+        githubPolicies,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples).toEqual([]);
+    });
+
     it('drops legacy landings whose author is not on the team', async () => {
       const existingLandings: Landing[] = [
         {
@@ -804,6 +876,96 @@ describe('collect', () => {
         now: new Date('2026-04-20T13:00:00Z'),
       });
       expect(result.landings.map((l) => l.id)).toEqual([101]);
+    });
+  });
+
+  describe('github repo identity in dedup keys', () => {
+    it('keeps two same-numbered PRs from different repos distinct', async () => {
+      const contentSample = makeGhSample({
+        id: asPrNumber(50),
+        repo: asGithubRepoSlug('Pocket/content-monorepo'),
+        reviewer: asReviewerLogin('bob'),
+      });
+      const merinoSample = makeGhSample({
+        id: asPrNumber(50),
+        repo: asGithubRepoSlug('mozilla-services/merino-py'),
+        reviewer: asReviewerLogin('bob'),
+      });
+      const contentPending: GithubPendingSample = {
+        source: 'github',
+        id: asPrNumber(51),
+        repo: asGithubRepoSlug('Pocket/content-monorepo'),
+        reviewer: asReviewerLogin('bob'),
+        requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+      };
+      const merinoPending: GithubPendingSample = {
+        source: 'github',
+        id: asPrNumber(51),
+        repo: asGithubRepoSlug('mozilla-services/merino-py'),
+        reviewer: asReviewerLogin('bob'),
+        requestedAt: asIsoTimestamp('2026-04-19T14:00:00Z'),
+      };
+      const contentLanding = makeGhLanding({
+        id: asPrNumber(52),
+        repo: asGithubRepoSlug('Pocket/content-monorepo'),
+      });
+      const merinoLanding = makeGhLanding({
+        id: asPrNumber(52),
+        repo: asGithubRepoSlug('mozilla-services/merino-py'),
+      });
+      const result = await collect({
+        existingSamples: [],
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () =>
+          ghResult(
+            [contentSample, merinoSample],
+            [contentPending, merinoPending],
+            [contentLanding, merinoLanding],
+          ),
+        ),
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      expect(result.samples.filter((s) => s.source === 'github')).toHaveLength(2);
+      expect(result.pending.filter((p) => p.source === 'github')).toHaveLength(2);
+      expect(result.landings.filter((l) => l.source === 'github')).toHaveLength(2);
+    });
+
+    it('dedups a legacy repo-less row against a fresh content-monorepo row', async () => {
+      const roster: PeopleMap = {
+        github: {
+          bob: asIanaTimezone('America/New_York'),
+          'author-user': asIanaTimezone('America/New_York'),
+        },
+        phab: {},
+      };
+      const legacy: Sample = {
+        ...makeGhSample({
+          id: asPrNumber(60),
+          author: asReviewerLogin('author-user'),
+          reviewer: asReviewerLogin('bob'),
+        }),
+        tatBusinessHours: asBusinessHours(9),
+      };
+      const fresh = makeGhSample({
+        id: asPrNumber(60),
+        repo: asGithubRepoSlug('Pocket/content-monorepo'),
+        author: asReviewerLogin('author-user'),
+        reviewer: asReviewerLogin('bob'),
+        firstActionAt: asIsoTimestamp('2026-04-19T16:00:00Z'),
+      });
+      const result = await collect({
+        existingSamples: [legacy],
+        existingHistory: [],
+        fetchPhab: vi.fn(async () => phabResult()),
+        fetchGithub: vi.fn(async () => ghResult([fresh])),
+        peopleMap: roster,
+        now: new Date('2026-04-20T13:00:00Z'),
+      });
+      const github = result.samples.filter((s) => s.source === 'github');
+      expect(github).toHaveLength(1);
+      // Fresh row wins the merge.
+      expect(github[0]?.firstActionAt).toBe('2026-04-19T16:00:00Z');
     });
   });
 });

@@ -6,14 +6,23 @@ import { z } from 'zod';
 import {
   CYCLE_SLA_HOURS,
   ET_ZONE,
+  GITHUB_OWNER,
+  GITHUB_REPO,
   PHAB_ORIGIN,
   POST_REVIEW_SLA_HOURS,
   ROUNDS_SLA,
   SLA_HOURS,
 } from '../config';
-import { allGroups, dataDirectoryForGroup, getGroup, type GroupConfig } from '../groups';
+import {
+  allGroups,
+  dataDirectoryForGroup,
+  getGroup,
+  type GithubRepoConfig,
+  type GroupConfig,
+} from '../groups';
 import {
   asBusinessHours,
+  asGithubRepoSlug,
   asIsoTimestamp,
   asPrNumber,
   asReviewerLogin,
@@ -132,6 +141,10 @@ const phabSampleSchema = z.object({
 const githubSampleSchema = z.object({
   source: z.literal('github'),
   id: z.number().transform((v) => asPrNumber(v)),
+  repo: z
+    .string()
+    .transform((v) => asGithubRepoSlug(v))
+    .optional(),
   author: z
     .string()
     .transform((v) => asReviewerLogin(v))
@@ -182,6 +195,10 @@ const githubLandingSchema = z
   .object({
     source: z.literal('github'),
     id: z.number().transform((v) => asPrNumber(v)),
+    repo: z
+      .string()
+      .transform((v) => asGithubRepoSlug(v))
+      .optional(),
     author: z
       .string()
       .transform((v) => asReviewerLogin(v))
@@ -220,6 +237,10 @@ const phabPendingSampleSchema = z.object({
 const githubPendingSampleSchema = z.object({
   source: z.literal('github'),
   id: z.number().transform((v) => asPrNumber(v)),
+  repo: z
+    .string()
+    .transform((v) => asGithubRepoSlug(v))
+    .optional(),
   author: z
     .string()
     .transform((v) => asReviewerLogin(v))
@@ -277,11 +298,32 @@ export const historyRowSchema = z.object({
   githubRounds: sourceWindowsSchema.optional(),
 });
 
-const sampleKey = (sample: { source: string; id: unknown; reviewer: string }): string =>
-  `${sample.source}:${String(sample.id)}:${sample.reviewer}`;
+// Repo-less legacy github rows normalize to the content-monorepo default so a
+// legacy row and a freshly-stamped content-monorepo row collapse to the same
+// dedup key (fresh wins). Phab records have no repo axis.
+const DEFAULT_GITHUB_REPO_SLUG = `${GITHUB_OWNER}/${GITHUB_REPO}`;
 
-const landingKey = (landing: { source: string; id: unknown }): string =>
-  `${landing.source}:${String(landing.id)}`;
+export const repoSlugForRecord = (record: { source: string; repo?: string | undefined }): string =>
+  record.source === 'github' ? (record.repo ?? DEFAULT_GITHUB_REPO_SLUG) : '';
+
+// Resolved per-repo gating policy shared by the fetch path and the legacy
+// purge. `authorLogins`/`reviewerLogins` mirror the extractor's options:
+// undefined means "no gate on that axis".
+export interface ResolvedGithubPolicy {
+  readonly authorLogins?: ReadonlySet<string>;
+  readonly reviewerLogins?: ReadonlySet<string>;
+}
+
+const sampleKey = (sample: {
+  source: string;
+  id: unknown;
+  reviewer: string;
+  repo?: string | undefined;
+}): string =>
+  `${sample.source}:${repoSlugForRecord(sample)}:${String(sample.id)}:${sample.reviewer}`;
+
+const landingKey = (landing: { source: string; id: unknown; repo?: string | undefined }): string =>
+  `${landing.source}:${repoSlugForRecord(landing)}:${String(landing.id)}`;
 
 const withTat = <T extends PhabSample | GithubSample>(
   sample: T,
@@ -357,7 +399,8 @@ const filterLandingsWithin = (
     .map((l) => extract(l))
     .filter((v): v is number => v !== null);
 
-const pendingKey = (p: PendingSample): string => `${p.source}:${String(p.id)}:${p.reviewer}`;
+const pendingKey = (p: PendingSample): string =>
+  `${p.source}:${repoSlugForRecord(p)}:${String(p.id)}:${p.reviewer}`;
 
 // Compute the real-time backlog from pending samples. Age is measured in the
 // reviewer's timezone (matches how tatBusinessHours is computed) so a pending
@@ -428,6 +471,11 @@ export const collect = async (options: {
     landings: readonly GithubLanding[];
   }>;
   readonly peopleMap?: PeopleMap;
+  // Resolved per-repo github gating policy keyed by `owner/repo` slug. Drives
+  // the legacy purge so it applies the same author/reviewer rules the fetch
+  // path used. Absent → legacy single-repo behavior (author ∈ roster AND
+  // reviewer ∈ roster for every github record).
+  readonly githubPolicies?: ReadonlyMap<string, ResolvedGithubPolicy>;
   readonly now?: Date;
   readonly slaHours?: number;
   readonly cycleSlaHours?: number;
@@ -470,21 +518,46 @@ export const collect = async (options: {
   // Rows without an `author` field are dropped when a roster exists:
   // we can't verify their team membership and the legacy samples.json
   // may predate that field.
-  const teamLoginsBySource = {
-    github: new Set(Object.keys(peopleMap.github)),
-    phab: new Set(Object.keys(peopleMap.phab)),
-  } as const;
+  const phabRoster = new Set(Object.keys(peopleMap.phab));
+  const githubRoster = new Set(Object.keys(peopleMap.github));
+  // Default github policy for repos not covered by `githubPolicies` (and for
+  // callers that pass none): gate author AND reviewer by the roster. An empty
+  // roster leaves both axes ungated, matching the legacy "no team gate" path.
+  const defaultGithubPolicy: ResolvedGithubPolicy = {
+    ...(githubRoster.size === 0 ? {} : { authorLogins: githubRoster }),
+    ...(githubRoster.size === 0 ? {} : { reviewerLogins: githubRoster }),
+  };
+  const githubPolicyFor = (repoSlug: string): ResolvedGithubPolicy =>
+    options.githubPolicies?.get(repoSlug) ?? defaultGithubPolicy;
+  const phabOnTeam = (author: string | undefined, reviewer: string): boolean => {
+    if (phabRoster.size === 0) return true;
+    if (author === undefined) return false;
+    return phabRoster.has(author) && phabRoster.has(reviewer);
+  };
   const legacySampleOnTeam = (sample: Sample): boolean => {
-    const roster = teamLoginsBySource[sample.source];
-    if (roster.size === 0) return true;
-    if (sample.author === undefined) return false;
-    return roster.has(sample.author) && roster.has(sample.reviewer);
+    if (sample.source === 'phab') return phabOnTeam(sample.author, sample.reviewer);
+    const policy = githubPolicyFor(repoSlugForRecord(sample));
+    if (
+      policy.authorLogins !== undefined &&
+      (sample.author === undefined || !policy.authorLogins.has(sample.author))
+    ) {
+      return false;
+    }
+    if (policy.reviewerLogins !== undefined && !policy.reviewerLogins.has(sample.reviewer)) {
+      return false;
+    }
+    return true;
   };
   const legacyLandingOnTeam = (landing: Landing): boolean => {
-    const roster = teamLoginsBySource[landing.source];
-    if (roster.size === 0) return true;
+    if (landing.source === 'phab') {
+      if (phabRoster.size === 0) return true;
+      if (landing.author === undefined) return false;
+      return phabRoster.has(landing.author);
+    }
+    const policy = githubPolicyFor(repoSlugForRecord(landing));
+    if (policy.authorLogins === undefined) return true;
     if (landing.author === undefined) return false;
-    return roster.has(landing.author);
+    return policy.authorLogins.has(landing.author);
   };
 
   // Fresh extraction wins for keys touched by this run's fetch — so extractor
@@ -764,8 +837,36 @@ export const runCollectionFromDisk = async (
   });
   // Phab-only groups never touch GitHub — skip the client (and the GH_PAT
   // requirement) entirely so a missing token can't block their collection.
-  const githubConfig = group.github;
-  const gh = githubConfig === undefined ? undefined : createGithubClient(requireEnv('GH_PAT'));
+  const githubRepos = group.github ?? [];
+  const gh = githubRepos.length === 0 ? undefined : createGithubClient(requireEnv('GH_PAT'));
+
+  // Resolve each configured repo's author/reviewer gate once. The same policy
+  // drives both the fetch (which PRs/reviews to pull) and collect()'s legacy
+  // purge (which persisted rows to keep) so the two never diverge.
+  //   - authorLogins: explicit config list, else the github roster (undefined
+  //     when the roster is empty → no author gate, legacy behavior). merino's
+  //     explicit list is roster-independent so its author gate is never off.
+  //   - reviewerLogins: the roster when gateReviewersByRoster (default), else
+  //     undefined → count reviews by anyone.
+  const githubRoster = new Set(Object.keys(peopleMap.github));
+  const resolveRepoPolicy = (repoCfg: GithubRepoConfig): ResolvedGithubPolicy => {
+    const authorLogins =
+      repoCfg.authorLogins === undefined
+        ? githubRoster.size === 0
+          ? undefined
+          : githubRoster
+        : new Set(repoCfg.authorLogins);
+    const gateReviewers = repoCfg.gateReviewersByRoster ?? true;
+    const reviewerLogins = gateReviewers && githubRoster.size > 0 ? githubRoster : undefined;
+    return {
+      ...(authorLogins === undefined ? {} : { authorLogins }),
+      ...(reviewerLogins === undefined ? {} : { reviewerLogins }),
+    };
+  };
+  const githubPolicies = new Map<string, ResolvedGithubPolicy>();
+  for (const repoCfg of githubRepos) {
+    githubPolicies.set(`${repoCfg.owner}/${repoCfg.repo}`, resolveRepoPolicy(repoCfg));
+  }
 
   const seenRevisionPhids = new Set<string>();
   const { samples, pending, landings, history } = await collect({
@@ -773,6 +874,7 @@ export const runCollectionFromDisk = async (
     existingLandings,
     existingHistory,
     peopleMap,
+    githubPolicies,
     fetchPhab: async (lookbackDaysArgument) => {
       const projectSlugs = group.phabProjectSlugs;
       const isBackfill = lookbackDaysArgument === BACKFILL_LOOKBACK_DAYS;
@@ -839,26 +941,39 @@ export const runCollectionFromDisk = async (
       return { samples: result.samples, pending: result.pending, landings: result.landings };
     },
     fetchGithub:
-      githubConfig === undefined || gh === undefined
+      gh === undefined
         ? // No-op for Phab-only groups: collect() always calls fetchGithub and
           // always computes a github window, so we return empty arrays (the
           // window zeroes out) rather than skipping — and crucially never call
           // fetchGithubSamples, which would otherwise pull the whole repo.
           () => Promise.resolve({ samples: [], pending: [], landings: [] })
-        : (lookbackDaysArgument) => {
-            // peopleMap.github keys are the team roster on the GitHub side — the
-            // user's "known list of reviewers is the same as the team". An empty
-            // roster means "don't gate yet"; fetchGithubSamples skips the filter
-            // when teamLogins is absent. A non-empty roster enforces author ∈ team
-            // AND reviewer ∈ team at the extractor layer.
-            const teamLogins = new Set(Object.keys(peopleMap.github));
-            return fetchGithubSamples({
-              client: gh,
-              owner: githubConfig.owner,
-              repo: githubConfig.repo,
-              lookbackDays: lookbackDaysArgument,
-              ...(teamLogins.size === 0 ? {} : { teamLogins }),
-            });
+        : async (lookbackDaysArgument) => {
+            // Pull each configured repo in turn (sequential — one shared PAT),
+            // applying that repo's resolved gate, and concatenate. Each record
+            // is stamped with its `owner/repo` by fetchGithubSamples, so the
+            // combined feed stays deduped and correctly linked per repo.
+            const samples: GithubSample[] = [];
+            const pending: GithubPendingSample[] = [];
+            const landings: GithubLanding[] = [];
+            for (const repoCfg of githubRepos) {
+              const policy = githubPolicies.get(`${repoCfg.owner}/${repoCfg.repo}`);
+              const repoResult = await fetchGithubSamples({
+                client: gh,
+                owner: repoCfg.owner,
+                repo: repoCfg.repo,
+                lookbackDays: lookbackDaysArgument,
+                ...(policy?.authorLogins === undefined
+                  ? {}
+                  : { authorLogins: policy.authorLogins }),
+                ...(policy?.reviewerLogins === undefined
+                  ? {}
+                  : { reviewerLogins: policy.reviewerLogins }),
+              });
+              samples.push(...repoResult.samples);
+              pending.push(...repoResult.pending);
+              landings.push(...repoResult.landings);
+            }
+            return { samples, pending, landings };
           },
   });
 
