@@ -2429,5 +2429,192 @@
         "pctUnderSLA": 0
       }
     }
+  },
+  {
+    "date": "2026-07-10",
+    "phab": {
+      "window7d": {
+        "n": 7,
+        "median": 0.1622222222222222,
+        "mean": 1.2230555555555556,
+        "p90": 3.3566111111111137,
+        "pctUnderSLA": 85.71428571428571
+      },
+      "window14d": {
+        "n": 16,
+        "median": 1.2909722222222222,
+        "mean": 5.259513888888889,
+        "p90": 16.52166666666667,
+        "pctUnderSLA": 62.5
+      },
+      "window30d": {
+        "n": 32,
+        "median": 6.367638888888889,
+        "mean": 9.149392361111111,
+        "p90": 21.650833333333335,
+        "pctUnderSLA": 40.625
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabCycle": {
+      "window7d": {
+        "n": 8,
+        "median": 4.642361111111111,
+        "mean": 18.59684027777778,
+        "p90": 44.79999999999998,
+        "pctUnderSLA": 87.5
+      },
+      "window14d": {
+        "n": 16,
+        "median": 12.801527777777778,
+        "mean": 39.77130208333333,
+        "p90": 100,
+        "pctUnderSLA": 56.25
+      },
+      "window30d": {
+        "n": 33,
+        "median": 31.458333333333332,
+        "mean": 79.81994107744107,
+        "p90": 212.67338888888895,
+        "pctUnderSLA": 45.45454545454545
+      }
+    },
+    "githubCycle": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabPostReview": {
+      "window7d": {
+        "n": 8,
+        "median": 0.7477777777777779,
+        "mean": 1.6470833333333332,
+        "p90": 3.7751111111111104,
+        "pctUnderSLA": 100
+      },
+      "window14d": {
+        "n": 16,
+        "median": 2.384027777777778,
+        "mean": 12.848576388888889,
+        "p90": 43.59847222222222,
+        "pctUnderSLA": 68.75
+      },
+      "window30d": {
+        "n": 33,
+        "median": 8,
+        "mean": 50.21649831649831,
+        "p90": 68.27450000000002,
+        "pctUnderSLA": 51.515151515151516
+      }
+    },
+    "githubPostReview": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabRounds": {
+      "window7d": {
+        "n": 8,
+        "median": 1,
+        "mean": 1,
+        "p90": 1,
+        "pctUnderSLA": 100
+      },
+      "window14d": {
+        "n": 16,
+        "median": 1,
+        "mean": 1,
+        "p90": 1,
+        "pctUnderSLA": 100
+      },
+      "window30d": {
+        "n": 33,
+        "median": 1,
+        "mean": 1.5151515151515151,
+        "p90": 2,
+        "pctUnderSLA": 78.78787878787878
+      }
+    },
+    "githubRounds": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    }
   }
 ]
