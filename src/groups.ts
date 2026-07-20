@@ -34,6 +34,11 @@ export interface GroupConfig {
   readonly phabProjectUrl: string;
   // Present (and non-empty) only for groups that also review on GitHub.
   readonly github?: readonly GithubRepoConfig[];
+  // Tab labels for the two-platform view. Only meaningful when `github` is set
+  // (a Phab-only group shows a single plain "Phabricator" tab). Absent falls
+  // back to Home-NewTab's "Frontend Team / Backend Team" framing.
+  readonly phabTabLabel?: string;
+  readonly githubTabLabel?: string;
 }
 
 const phabProjectUrl = (slug: string): string => `${PHAB_ORIGIN}/tag/${slug}/`;

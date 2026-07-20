@@ -18,6 +18,7 @@ describe('group route', () => {
       'sharing',
       'geckoview',
       'credential-management',
+      'ai-platform',
     ]);
   });
 

@@ -26,6 +26,18 @@ const phabOnlyGroup: GroupConfig = {
   phabProjectUrl: 'https://phabricator.services.mozilla.com/tag/ip-protection-reviewers/',
 };
 
+const twoPlatformGroup: GroupConfig = {
+  id: asGroupId('ai-platform'),
+  label: 'AI Platform and Experience',
+  title: 'AI Platform and Experience Review Turnaround',
+  description: 'AI Platform reviews.',
+  phabProjectSlugs: ['ai-platform-reviewers'],
+  phabProjectUrl: 'https://phabricator.services.mozilla.com/tag/ai-platform-reviewers/',
+  phabTabLabel: 'AI Platform (Phabricator)',
+  githubTabLabel: 'MLPA (GitHub)',
+  github: [{ owner: 'Firefox-AI', repo: 'MLPA' }],
+};
+
 const row: HistoryRow = {
   date: '2026-04-20',
   phab: {
@@ -367,6 +379,32 @@ describe('Dashboard', () => {
       'href',
       'https://phabricator.services.mozilla.com/tag/ip-protection-reviewers/',
     );
+  });
+
+  it('labels the two-platform tabs from the group config', async () => {
+    const user = userEvent.setup();
+    render(
+      <Dashboard
+        history={[row]}
+        samples={[]}
+        landings={[]}
+        slaHours={4}
+        now={new Date('2026-04-21T12:00:00Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+        group={twoPlatformGroup}
+      />,
+    );
+    expect(screen.getByRole('tab', { name: /ai platform \(phabricator\)/i })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    const githubTab = screen.getByRole('tab', { name: /mlpa \(github\)/i });
+    expect(githubTab).toHaveAttribute('aria-selected', 'false');
+    // The HNT-specific "Frontend/Backend Team" framing must not leak in.
+    expect(screen.queryByRole('tab', { name: /frontend team/i })).toBeNull();
+    expect(screen.queryByRole('tab', { name: /backend team/i })).toBeNull();
+    await user.click(githubTab);
+    expect(screen.getByRole('heading', { name: /^github$/i })).toBeInTheDocument();
   });
 
   it('renders the GitHub repo as a lowercase link in the GitHub description', async () => {

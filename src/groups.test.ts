@@ -12,7 +12,7 @@ import {
 } from './groups';
 
 describe('group registry', () => {
-  it('tracks exactly the six known groups', () => {
+  it('tracks exactly the seven known groups', () => {
     expect(allGroups().map((group) => group.id)).toEqual([
       'home-newtab',
       'ip-protection',
@@ -20,6 +20,7 @@ describe('group registry', () => {
       'sharing',
       'geckoview',
       'credential-management',
+      'ai-platform',
     ]);
   });
 
@@ -64,6 +65,16 @@ describe('group registry', () => {
     expect(getGroup('credential-management')?.phabProjectSlugs).toEqual([
       'credential-management-reviewers',
     ]);
+    expect(getGroup('ai-platform')?.phabProjectSlugs).toEqual(['ai-platform-reviewers']);
+  });
+
+  it('tracks AI Platform across both Phabricator and the Firefox-AI/MLPA repo', () => {
+    const group = getGroup('ai-platform');
+    expect(group).toBeDefined();
+    expect(group?.label).toBe('AI Platform and Experience');
+    expect(group?.github).toEqual([{ owner: 'Firefox-AI', repo: 'MLPA' }]);
+    expect(group?.phabTabLabel).toBe('AI Platform (Phabricator)');
+    expect(group?.githubTabLabel).toBe('MLPA (GitHub)');
   });
 
   it('derives the Phabricator project URL from the origin and first slug', () => {
