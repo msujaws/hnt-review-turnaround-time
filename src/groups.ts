@@ -18,8 +18,9 @@ export interface GithubRepoConfig {
 
 // A single review group the dashboard can track. Data for distinct groups is
 // never merged: each group owns a `data/<id>/` directory and renders at its
-// own URL. New groups are Phabricator-only; only Home-NewTab also pulls
-// GitHub (the Pocket content-monorepo, plus merino-py for the backend team).
+// own URL. Most groups are Phabricator-only; Home-NewTab (Pocket
+// content-monorepo + merino-py) and AI Platform and Experience (Firefox-AI/MLPA)
+// also pull GitHub.
 export interface GroupConfig {
   readonly id: GroupId;
   // Short display name used in the dropdown and metadata titles.
@@ -60,6 +61,8 @@ const HOME_NEWTAB: GroupConfig = {
     'local timezone).',
   phabProjectSlugs: ['home-newtab-reviewers'],
   phabProjectUrl: phabProjectUrl('home-newtab-reviewers'),
+  phabTabLabel: 'Frontend Team (Phabricator)',
+  githubTabLabel: 'Backend Team (GitHub)',
   github: [
     // content-monorepo: gate by the people.json github roster on both sides.
     { owner: GITHUB_OWNER, repo: GITHUB_REPO },
@@ -114,6 +117,26 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('Credential Management'),
     phabProjectSlugs: ['credential-management-reviewers'],
     phabProjectUrl: phabProjectUrl('credential-management-reviewers'),
+  },
+  {
+    id: asGroupId('ai-platform'),
+    label: 'AI Platform and Experience',
+    title: 'AI Platform and Experience Review Turnaround',
+    // Spans both Phabricator and GitHub, so this is written fresh rather than
+    // via phabOnlyDescription — the wording stays platform-agnostic like HNT.
+    description:
+      'How long the AI Platform and Experience team takes to give first feedback on code ' +
+      'reviews, measured from the moment a reviewer is requested to their first accept, ' +
+      'comment, or request-changes. Clock is in business hours only (Mon–Fri 9am–5pm in ' +
+      "each reviewer's local timezone).",
+    phabProjectSlugs: ['ai-platform-reviewers'],
+    phabProjectUrl: phabProjectUrl('ai-platform-reviewers'),
+    phabTabLabel: 'AI Platform (Phabricator)',
+    githubTabLabel: 'MLPA (GitHub)',
+    // MLPA is the team's dedicated repo: no roster gate (no people.json), so
+    // every PR and reviewer counts. Add a data/ai-platform/people.json later
+    // to gate and to give reviewers non-ET timezones.
+    github: [{ owner: 'Firefox-AI', repo: 'MLPA' }],
   },
 ];
 

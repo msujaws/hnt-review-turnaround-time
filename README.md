@@ -4,17 +4,21 @@ Daily dashboard that tracks code-review turnaround time (TAT) for several Firefo
 review groups. A dropdown at the top switches between them; each group's data is
 tracked independently and never merged.
 
-| Group         | Phabricator project tag   | GitHub                    | URL                |
-| ------------- | ------------------------- | ------------------------- | ------------------ |
-| Home-NewTab   | `home-newtab-reviewers`   | `Pocket/content-monorepo` | `/` (default)      |
-| IP Protection | `ip-protection-reviewers` | —                         | `/g/ip-protection` |
-| Desktop Theme | `desktop-theme-reviewers` | —                         | `/g/desktop-theme` |
-| Sharing       | `sharing-reviewers`       | —                         | `/g/sharing`       |
-| GeckoView     | `geckoview-reviewers`     | —                         | `/g/geckoview`     |
+| Group                      | Phabricator project tag           | GitHub                    | URL                        |
+| -------------------------- | --------------------------------- | ------------------------- | -------------------------- |
+| Home-NewTab                | `home-newtab-reviewers`           | `Pocket/content-monorepo` | `/` (default)              |
+| IP Protection              | `ip-protection-reviewers`         | —                         | `/g/ip-protection`         |
+| Desktop Theme              | `desktop-theme-reviewers`         | —                         | `/g/desktop-theme`         |
+| Sharing                    | `sharing-reviewers`               | —                         | `/g/sharing`               |
+| GeckoView                  | `geckoview-reviewers`             | —                         | `/g/geckoview`             |
+| Credential Management      | `credential-management-reviewers` | —                         | `/g/credential-management` |
+| AI Platform and Experience | `ai-platform-reviewers`           | `Firefox-AI/MLPA`         | `/g/ai-platform`           |
 
-Only Home-NewTab reviews on GitHub (`Pocket/content-monorepo`, all pull requests:
-non-draft, non-bot, non-self); the other groups are Phabricator-only. The set of
-groups lives in `src/groups.ts`.
+Home-NewTab and AI Platform and Experience review on both Phabricator and GitHub;
+the other groups are Phabricator-only. Home-NewTab pulls `Pocket/content-monorepo`
+(all pull requests: non-draft, non-bot, non-self) plus the backend team's
+`mozilla-services/merino-py` PRs; AI Platform and Experience pulls `Firefox-AI/MLPA`.
+The set of groups lives in `src/groups.ts`.
 
 TAT = time from review request to first reviewer action, measured in **business hours**
 (Mon–Fri 09:00–17:00 US/Eastern). Goal: **4 business hours**.

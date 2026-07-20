@@ -286,12 +286,12 @@ export const Dashboard: FC<DashboardProps> = ({
   const phabHasRedIssue = window7dMedianOverSla(latest.phab, slaHours);
   const githubHasRedIssue = window7dMedianOverSla(latest.github, slaHours);
 
-  // Only the GitHub-bearing group (Home-NewTab) keeps the two-platform
-  // "Frontend/Backend Team" framing. Phabricator-only groups show a single
-  // plainly-labelled Phabricator tab and no GitHub tab at all.
+  // Two-platform groups label their tabs from the group config (falling back
+  // to Home-NewTab's "Frontend/Backend Team" framing). Phabricator-only groups
+  // show a single plainly-labelled Phabricator tab and no GitHub tab at all.
   const phabTab: TabItem = {
     id: 'phab',
-    label: hasGithub ? 'Frontend Team (Phabricator)' : 'Phabricator',
+    label: hasGithub ? (group.phabTabLabel ?? 'Frontend Team (Phabricator)') : 'Phabricator',
     hasRedIssue: phabHasRedIssue,
     content: phabContent,
   };
@@ -300,7 +300,7 @@ export const Dashboard: FC<DashboardProps> = ({
         phabTab,
         {
           id: 'github',
-          label: 'Backend Team (GitHub)',
+          label: group.githubTabLabel ?? 'Backend Team (GitHub)',
           hasRedIssue: githubHasRedIssue,
           content: githubContent,
         },
