@@ -1,7 +1,7 @@
 name: daily-snapshot
 
 # Each group collects on its own hourly cron so the shared Phabricator token's
-# rate budget recovers between groups — running all six back-to-back exhausted
+# rate budget recovers between groups — running all seven back-to-back exhausted
 # it and 429'd the later ones. One group per run is well under Phab's per-window
 # call ceiling. The cron->group mapping below is coupled to src/groups.ts
 # (ALL_GROUPS ids); keep them in sync when adding/removing a group.
@@ -13,6 +13,7 @@ on:
     - cron: '0 8 * * 1-5' # sharing
     - cron: '0 9 * * 1-5' # geckoview
     - cron: '0 10 * * 1-5' # credential-management
+    - cron: '0 11 * * 1-5' # ai-platform
   workflow_dispatch:
     inputs:
       group:
@@ -49,7 +50,7 @@ jobs:
           SCHEDULE: ${{ github.event.schedule }}
           INPUT_GROUP: ${{ github.event.inputs.group }}
         run: |
-          all="home-newtab ip-protection desktop-theme sharing geckoview credential-management"
+          all="home-newtab ip-protection desktop-theme sharing geckoview credential-management ai-platform"
           case "$SCHEDULE" in
             '0 5 * * 1-5')  groups="home-newtab" ;;
             '0 6 * * 1-5')  groups="ip-protection" ;;
@@ -57,6 +58,7 @@ jobs:
             '0 8 * * 1-5')  groups="sharing" ;;
             '0 9 * * 1-5')  groups="geckoview" ;;
             '0 10 * * 1-5') groups="credential-management" ;;
+            '0 11 * * 1-5') groups="ai-platform" ;;
             *)              groups="${INPUT_GROUP:-$all}" ;;
           esac
           # cache_key is the single group id, or "all" when collecting every group.
