@@ -1306,5 +1306,41 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 16.949444444444445,
     "postReviewBusinessHours": 10.846944444444444
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-breg3ojdlum5retrztfe",
+    "revisionId": 314825,
+    "author": "thasan",
+    "createdAt": "2026-07-29T04:05:40.000Z",
+    "firstReviewAt": "2026-07-29T12:53:12.000Z",
+    "landedAt": "2026-07-29T21:49:46.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 8
+  },
+  {
+    "source": "github",
+    "id": 219,
+    "author": "randy-concepcion",
+    "createdAt": "2026-07-29T14:25:04Z",
+    "firstReviewAt": "2026-07-29T14:34:39Z",
+    "landedAt": "2026-07-29T14:46:54Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.3638888888888889,
+    "postReviewBusinessHours": 0.20416666666666666
+  },
+  {
+    "source": "github",
+    "id": 218,
+    "author": "github-actions",
+    "createdAt": "2026-07-29T12:55:01Z",
+    "firstReviewAt": "2026-07-29T13:54:04Z",
+    "landedAt": "2026-07-29T13:58:07Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.9686111111111111,
+    "postReviewBusinessHours": 0.06749999999999999
   }
 ]
