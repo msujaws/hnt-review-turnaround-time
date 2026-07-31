@@ -3207,9 +3207,9 @@
     "createdAt": "2026-07-10T18:07:53.000Z",
     "firstReviewAt": "2026-07-10T18:08:05.000Z",
     "landedAt": "2026-07-10T21:10:23.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 3.0416666666666665,
-    "postReviewBusinessHours": 3.0383333333333336
+    "postReviewBusinessHours": 3.0383333333333336,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3915,9 +3915,9 @@
     "createdAt": "2026-07-23T21:29:59.000Z",
     "firstReviewAt": "2026-07-23T21:30:05.000Z",
     "landedAt": "2026-07-28T05:08:49.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 18.50027777777778,
-    "postReviewBusinessHours": 18.49861111111111
+    "postReviewBusinessHours": 18.49861111111111,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3927,8 +3927,20 @@
     "createdAt": "2026-05-14T21:48:10.000Z",
     "firstReviewAt": "2026-05-14T21:49:37.000Z",
     "landedAt": "2026-05-22T23:17:11.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 48,
-    "postReviewBusinessHours": 48
+    "postReviewBusinessHours": 48,
+    "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-tmxq7vplnkl2o4w2tjne",
+    "revisionId": 314120,
+    "author": "mconley",
+    "createdAt": "2026-07-24T21:09:15.000Z",
+    "firstReviewAt": "2026-07-24T21:09:28.000Z",
+    "landedAt": "2026-07-30T18:01:45.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 29.029166666666665,
+    "postReviewBusinessHours": 29.029166666666665
   }
 ]
