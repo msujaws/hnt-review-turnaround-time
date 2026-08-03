@@ -5421,5 +5421,192 @@
         "pctUnderSLA": 0
       }
     }
+  },
+  {
+    "date": "2026-08-03",
+    "phab": {
+      "window7d": {
+        "n": 8,
+        "median": 2.3943055555555555,
+        "mean": 4.123680555555556,
+        "p90": 8.945555555555554,
+        "pctUnderSLA": 62.5
+      },
+      "window14d": {
+        "n": 20,
+        "median": 5.9087499999999995,
+        "mean": 6.989819444444445,
+        "p90": 16.02013888888889,
+        "pctUnderSLA": 40
+      },
+      "window30d": {
+        "n": 42,
+        "median": 7.536111111111111,
+        "mean": 10.434199735449736,
+        "p90": 23.66741666666666,
+        "pctUnderSLA": 35.714285714285715
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabCycle": {
+      "window7d": {
+        "n": 4,
+        "median": 31.125,
+        "mean": 28.94833333333333,
+        "p90": 52.13683333333333,
+        "pctUnderSLA": 50
+      },
+      "window14d": {
+        "n": 13,
+        "median": 27.326666666666664,
+        "mean": 27.174273504273508,
+        "p90": 52.605666666666664,
+        "pctUnderSLA": 46.15384615384615
+      },
+      "window30d": {
+        "n": 27,
+        "median": 27.789444444444445,
+        "mean": 34.57529835390947,
+        "p90": 66.02400000000002,
+        "pctUnderSLA": 44.44444444444444
+      }
+    },
+    "githubCycle": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabPostReview": {
+      "window7d": {
+        "n": 4,
+        "median": 30.58458333333333,
+        "mean": 28.55291666666667,
+        "p90": 51.48866666666667,
+        "pctUnderSLA": 25
+      },
+      "window14d": {
+        "n": 13,
+        "median": 14.423055555555553,
+        "mean": 20.05807692307692,
+        "p90": 45.90372222222223,
+        "pctUnderSLA": 38.46153846153847
+      },
+      "window30d": {
+        "n": 27,
+        "median": 16,
+        "mean": 24.52468106995885,
+        "p90": 50.25016666666667,
+        "pctUnderSLA": 37.03703703703704
+      }
+    },
+    "githubPostReview": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabRounds": {
+      "window7d": {
+        "n": 4,
+        "median": 1,
+        "mean": 1,
+        "p90": 1,
+        "pctUnderSLA": 100
+      },
+      "window14d": {
+        "n": 13,
+        "median": 1,
+        "mean": 1.3076923076923077,
+        "p90": 2,
+        "pctUnderSLA": 69.23076923076923
+      },
+      "window30d": {
+        "n": 27,
+        "median": 1,
+        "mean": 1.5185185185185186,
+        "p90": 2.400000000000002,
+        "pctUnderSLA": 66.66666666666666
+      }
+    },
+    "githubRounds": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    }
   }
 ]
