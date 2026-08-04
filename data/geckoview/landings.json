@@ -373,18 +373,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-tqgufy4z4pw5vmjnyvdt",
-    "revisionId": 297904,
-    "author": "ohall",
-    "createdAt": "2026-05-01T17:58:17.000Z",
-    "firstReviewAt": "2026-05-06T17:57:00.000Z",
-    "landedAt": "2026-05-06T20:08:07.000Z",
-    "cycleBusinessHours": 26.16388888888889,
-    "postReviewBusinessHours": 2.185277777777778,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-h36lxn3hyslv53berfvc",
     "revisionId": 297842,
     "author": "hiro",
@@ -441,18 +429,6 @@
     "landedAt": "2026-05-14T05:02:10.000Z",
     "cycleBusinessHours": 104,
     "postReviewBusinessHours": 96,
-    "reviewRounds": 2
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-gp6r7wfzdgzm33pp7ajr",
-    "revisionId": 282083,
-    "author": "nika",
-    "createdAt": "2026-02-06T00:54:48.000Z",
-    "firstReviewAt": "2026-02-06T01:13:49.000Z",
-    "landedAt": "2026-05-06T17:37:16.000Z",
-    "cycleBusinessHours": 508.62111111111113,
-    "postReviewBusinessHours": 508.62111111111113,
     "reviewRounds": 2
   },
   {
@@ -955,9 +931,9 @@
     "createdAt": "2026-06-15T05:06:06.000Z",
     "firstReviewAt": "2026-06-15T22:50:56.000Z",
     "landedAt": "2026-07-29T20:42:01.000Z",
-    "reviewRounds": 2,
     "cycleBusinessHours": 263.7002777777778,
-    "postReviewBusinessHours": 255.70027777777779
+    "postReviewBusinessHours": 255.70027777777779,
+    "reviewRounds": 2
   },
   {
     "source": "phab",
@@ -967,9 +943,9 @@
     "createdAt": "2026-06-15T05:06:03.000Z",
     "firstReviewAt": "2026-06-15T23:12:50.000Z",
     "landedAt": "2026-07-29T20:41:59.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 263.69972222222225,
-    "postReviewBusinessHours": 255.69972222222222
+    "postReviewBusinessHours": 255.69972222222222,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -979,8 +955,8 @@
     "createdAt": "2026-07-27T21:45:03.000Z",
     "firstReviewAt": "2026-07-31T07:25:57.000Z",
     "landedAt": "2026-07-31T22:13:37.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 32,
-    "postReviewBusinessHours": 8
+    "postReviewBusinessHours": 8,
+    "reviewRounds": 1
   }
 ]
