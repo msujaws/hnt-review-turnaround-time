@@ -61,18 +61,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-w7nhjykawo4qseigvjgu",
-    "revisionId": 298719,
-    "author": "hjones",
-    "createdAt": "2026-05-06T02:35:50.000Z",
-    "firstReviewAt": "2026-05-06T18:37:16.000Z",
-    "landedAt": "2026-05-07T15:08:19.000Z",
-    "cycleBusinessHours": 10.13861111111111,
-    "postReviewBusinessHours": 4.517499999999999,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-lkvdb6s4ltytknoga2al",
     "revisionId": 297495,
     "author": "sfoster",
@@ -94,18 +82,6 @@
     "cycleBusinessHours": 8,
     "postReviewBusinessHours": 8,
     "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-xfl44cafxnh3w6e742nj",
-    "revisionId": 297049,
-    "author": "hjones",
-    "createdAt": "2026-04-28T16:00:39.000Z",
-    "firstReviewAt": "2026-04-29T19:06:10.000Z",
-    "landedAt": "2026-05-08T02:17:03.000Z",
-    "cycleBusinessHours": 60.98916666666666,
-    "postReviewBusinessHours": 49.897222222222226,
-    "reviewRounds": 4
   },
   {
     "source": "phab",
@@ -177,18 +153,6 @@
     "landedAt": "2026-05-13T22:33:43.000Z",
     "cycleBusinessHours": 24,
     "postReviewBusinessHours": 24,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-skgxsuygk5sy36476ycq",
-    "revisionId": 298718,
-    "author": "hjones",
-    "createdAt": "2026-05-06T02:35:46.000Z",
-    "firstReviewAt": "2026-05-06T05:08:17.000Z",
-    "landedAt": "2026-05-07T15:08:18.000Z",
-    "cycleBusinessHours": 10.138333333333332,
-    "postReviewBusinessHours": 10.138333333333332,
     "reviewRounds": 1
   },
   {
@@ -934,5 +898,17 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 8,
     "postReviewBusinessHours": 3.613611111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-imspjdkbqmbtsxs23lzh",
+    "revisionId": 316099,
+    "author": "dao",
+    "createdAt": "2026-08-03T18:41:11.000Z",
+    "firstReviewAt": "2026-08-03T19:11:32.000Z",
+    "landedAt": "2026-08-04T11:24:44.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 2.313611111111111,
+    "postReviewBusinessHours": 1.8077777777777777
   }
 ]
