@@ -1,30 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-lwg6qgx4nikkyoemq7ph",
-    "revisionId": 299025,
-    "author": "nina-py",
-    "createdAt": "2026-05-07T03:32:07.000Z",
-    "firstReviewAt": "2026-05-07T04:07:29.000Z",
-    "landedAt": "2026-05-07T04:13:08.000Z",
-    "cycleBusinessHours": 0.6836111111111111,
-    "postReviewBusinessHours": 0.09416666666666668,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-lfcbdkgkecultm4shzdx",
-    "revisionId": 299232,
-    "author": "maxx",
-    "createdAt": "2026-05-07T20:40:35.000Z",
-    "firstReviewAt": "2026-05-07T21:13:48.000Z",
-    "landedAt": "2026-05-08T02:21:56.000Z",
-    "cycleBusinessHours": 1.3236111111111113,
-    "postReviewBusinessHours": 0.77,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-hre7o6yztyucbgn3k5lj",
     "revisionId": 297178,
     "author": "Dre",
@@ -3798,5 +3774,101 @@
     "cycleBusinessHours": 16.96027777777778,
     "postReviewBusinessHours": 16.95638888888889,
     "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-22ev23xmjbksiy34infn",
+    "revisionId": 308102,
+    "author": "joel",
+    "createdAt": "2026-06-22T18:13:37.000Z",
+    "firstReviewAt": "2026-07-07T19:24:24.000Z",
+    "landedAt": "2026-08-04T17:47:38.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 247.56694444444443,
+    "postReviewBusinessHours": 158.38722222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-digofliwcjhykplk4mps",
+    "revisionId": 308103,
+    "author": "joel",
+    "createdAt": "2026-06-22T18:13:44.000Z",
+    "firstReviewAt": "2026-06-22T18:41:18.000Z",
+    "landedAt": "2026-08-04T17:47:39.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 247.56527777777777,
+    "postReviewBusinessHours": 247.10583333333335
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-jzcvnjfeci4fpgvg3r25",
+    "revisionId": 311747,
+    "author": "joel",
+    "createdAt": "2026-07-12T22:15:23.000Z",
+    "firstReviewAt": "2026-07-12T22:15:36.000Z",
+    "landedAt": "2026-08-04T17:47:37.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 132.79361111111112,
+    "postReviewBusinessHours": 132.79361111111112
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-37vnoh7rajwhyfqkzqjo",
+    "revisionId": 315080,
+    "author": "reemhamz",
+    "createdAt": "2026-07-29T19:42:43.000Z",
+    "firstReviewAt": "2026-08-04T17:28:46.000Z",
+    "landedAt": "2026-08-04T22:48:08.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 32,
+    "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-mzcw5gyt72jtpzjiktkp",
+    "revisionId": 316036,
+    "author": "reemhamz",
+    "createdAt": "2026-08-03T15:16:37.000Z",
+    "firstReviewAt": "2026-08-03T16:03:31.000Z",
+    "landedAt": "2026-08-04T22:11:01.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-mpt3wvs6fuxljpnbkn2u",
+    "revisionId": 315693,
+    "author": "Dre",
+    "createdAt": "2026-07-31T18:15:01.000Z",
+    "firstReviewAt": "2026-07-31T18:15:09.000Z",
+    "landedAt": "2026-08-04T21:07:03.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 18.86722222222222,
+    "postReviewBusinessHours": 18.865000000000002
+  },
+  {
+    "source": "github",
+    "id": 404,
+    "author": "jpetto",
+    "createdAt": "2026-07-23T20:02:32Z",
+    "firstReviewAt": "2026-07-24T15:37:42Z",
+    "landedAt": "2026-08-04T21:01:46Z",
+    "reviewRounds": 1,
+    "repo": "Pocket/content-monorepo",
+    "cycleBusinessHours": 64.98722222222223,
+    "postReviewBusinessHours": 61.40111111111111
+  },
+  {
+    "source": "github",
+    "id": 1704,
+    "author": "Herraj",
+    "createdAt": "2026-08-04T15:57:47Z",
+    "firstReviewAt": "2026-08-04T16:23:03Z",
+    "landedAt": "2026-08-04T16:26:43Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 0.4822222222222222,
+    "postReviewBusinessHours": 0.06111111111111111
   }
 ]
