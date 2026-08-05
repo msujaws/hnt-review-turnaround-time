@@ -1027,9 +1027,9 @@
     "createdAt": "2026-07-07T21:48:46.000Z",
     "firstReviewAt": "2026-07-07T22:17:33.000Z",
     "landedAt": "2026-07-22T22:41:51.000Z",
+    "reviewRounds": 2,
     "cycleBusinessHours": 88,
-    "postReviewBusinessHours": 88,
-    "reviewRounds": 2
+    "postReviewBusinessHours": 88
   },
   {
     "source": "phab",
@@ -1450,5 +1450,29 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 410.44944444444445,
     "postReviewBusinessHours": 376
+  },
+  {
+    "source": "github",
+    "id": 221,
+    "author": "randy-concepcion",
+    "createdAt": "2026-08-04T14:50:24Z",
+    "firstReviewAt": "2026-08-04T17:14:48Z",
+    "landedAt": "2026-08-04T18:28:19Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 3.631944444444444,
+    "postReviewBusinessHours": 1.2252777777777777
+  },
+  {
+    "source": "github",
+    "id": 222,
+    "author": "github-actions",
+    "createdAt": "2026-08-04T18:30:05Z",
+    "firstReviewAt": null,
+    "landedAt": "2026-08-04T18:50:04Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.33305555555555555,
+    "postReviewBusinessHours": null
   }
 ]
