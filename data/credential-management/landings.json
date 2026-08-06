@@ -289,18 +289,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-sqqrna4gxrqwlrknz46h",
-    "revisionId": 299179,
-    "author": "vprema",
-    "createdAt": "2026-05-07T17:04:54.000Z",
-    "firstReviewAt": "2026-05-07T22:09:18.000Z",
-    "landedAt": "2026-05-08T16:11:08.000Z",
-    "cycleBusinessHours": 7.103888888888889,
-    "postReviewBusinessHours": 3.1855555555555553,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-up55zfsc4gbpubgnguay",
     "revisionId": 297638,
     "author": "kandres",
@@ -321,18 +309,6 @@
     "landedAt": "2026-06-11T14:02:37.000Z",
     "cycleBusinessHours": 241.04361111111112,
     "postReviewBusinessHours": 0.6763888888888889,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-bauiskemxiodmplcfic2",
-    "revisionId": 296820,
-    "author": "joschmidt",
-    "createdAt": "2026-04-27T19:34:40.000Z",
-    "firstReviewAt": "2026-05-05T09:51:52.000Z",
-    "landedAt": "2026-05-08T08:04:16.000Z",
-    "cycleBusinessHours": 65.42222222222223,
-    "postReviewBusinessHours": 24,
     "reviewRounds": 1
   },
   {
@@ -1090,5 +1066,29 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 3.6811111111111114,
     "postReviewBusinessHours": 2.0544444444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-5smb2h3zrn5ugwgiukuj",
+    "revisionId": 316590,
+    "author": "kalenlu",
+    "createdAt": "2026-08-05T16:54:44.000Z",
+    "firstReviewAt": "2026-08-05T19:35:23.000Z",
+    "landedAt": "2026-08-05T21:01:46.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 4.087777777777778,
+    "postReviewBusinessHours": 1.4102777777777777
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-scydai7rkgv3epn4zhab",
+    "revisionId": 316267,
+    "author": "kbaliev",
+    "createdAt": "2026-08-04T14:25:18.000Z",
+    "firstReviewAt": "2026-08-05T00:16:20.000Z",
+    "landedAt": "2026-08-05T14:54:20.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8.483888888888888,
+    "postReviewBusinessHours": 1.9055555555555554
   }
 ]
