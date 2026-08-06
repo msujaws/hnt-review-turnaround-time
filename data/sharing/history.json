@@ -5795,5 +5795,192 @@
         "pctUnderSLA": 0
       }
     }
+  },
+  {
+    "date": "2026-08-06",
+    "phab": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 4,
+        "median": 2.1201388888888886,
+        "mean": 3.8581250000000002,
+        "p90": 7.360944444444446,
+        "pctUnderSLA": 75
+      },
+      "window30d": {
+        "n": 8,
+        "median": 3.5519444444444446,
+        "mean": 6.559444444444445,
+        "p90": 15.99075,
+        "pctUnderSLA": 50
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabCycle": {
+      "window7d": {
+        "n": 2,
+        "median": 27.479861111111113,
+        "mean": 27.479861111111113,
+        "p90": 29.43463888888889,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 7,
+        "median": 25.03638888888889,
+        "mean": 19.992738095238092,
+        "p90": 34.58661111111112,
+        "pctUnderSLA": 42.857142857142854
+      },
+      "window30d": {
+        "n": 13,
+        "median": 29.923333333333336,
+        "mean": 37.009423076923085,
+        "p90": 71.37322222222224,
+        "pctUnderSLA": 30.76923076923077
+      }
+    },
+    "githubCycle": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabPostReview": {
+      "window7d": {
+        "n": 2,
+        "median": 26.93472222222222,
+        "mean": 26.93472222222222,
+        "p90": 28.45561111111111,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 7,
+        "median": 22.721666666666668,
+        "mean": 16.092222222222226,
+        "p90": 26.5545,
+        "pctUnderSLA": 42.857142857142854
+      },
+      "window30d": {
+        "n": 13,
+        "median": 23.311944444444446,
+        "mean": 30.457414529914526,
+        "p90": 56,
+        "pctUnderSLA": 23.076923076923077
+      }
+    },
+    "githubPostReview": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabRounds": {
+      "window7d": {
+        "n": 2,
+        "median": 2,
+        "mean": 2,
+        "p90": 2.8,
+        "pctUnderSLA": 50
+      },
+      "window14d": {
+        "n": 7,
+        "median": 1,
+        "mean": 1.2857142857142858,
+        "p90": 1.8000000000000007,
+        "pctUnderSLA": 85.71428571428571
+      },
+      "window30d": {
+        "n": 13,
+        "median": 1,
+        "mean": 1.3846153846153846,
+        "p90": 2.8000000000000007,
+        "pctUnderSLA": 76.92307692307693
+      }
+    },
+    "githubRounds": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    }
   }
 ]
