@@ -6356,5 +6356,192 @@
         "pctUnderSLA": 0
       }
     }
+  },
+  {
+    "date": "2026-08-06",
+    "phab": {
+      "window7d": {
+        "n": 1,
+        "median": 16.706666666666667,
+        "mean": 16.706666666666667,
+        "p90": 16.706666666666667,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 4,
+        "median": 6.407222222222222,
+        "mean": 7.544513888888888,
+        "p90": 14.079500000000001,
+        "pctUnderSLA": 25
+      },
+      "window30d": {
+        "n": 16,
+        "median": 4.320416666666667,
+        "mean": 6.462395833333333,
+        "p90": 16.79277777777778,
+        "pctUnderSLA": 50
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabCycle": {
+      "window7d": {
+        "n": 2,
+        "median": 163.36930555555554,
+        "mean": 163.36930555555554,
+        "p90": 210.3098611111111,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 4,
+        "median": 87.49263888888889,
+        "mean": 99.60874999999999,
+        "p90": 186.83958333333334,
+        "pctUnderSLA": 25
+      },
+      "window30d": {
+        "n": 21,
+        "median": 17.90361111111111,
+        "mean": 68.01571428571428,
+        "p90": 222.045,
+        "pctUnderSLA": 57.14285714285714
+      }
+    },
+    "githubCycle": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabPostReview": {
+      "window7d": {
+        "n": 2,
+        "median": 116.56583333333334,
+        "mean": 116.56583333333333,
+        "p90": 200.2676111111111,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 4,
+        "median": 41.11416666666666,
+        "mean": 76.04229166666667,
+        "p90": 175.92205555555557,
+        "pctUnderSLA": 25
+      },
+      "window30d": {
+        "n": 21,
+        "median": 11.938611111111111,
+        "mean": 59.319761904761904,
+        "p90": 221.19305555555556,
+        "pctUnderSLA": 42.857142857142854
+      }
+    },
+    "githubPostReview": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabRounds": {
+      "window7d": {
+        "n": 2,
+        "median": 2,
+        "mean": 2,
+        "p90": 2,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 4,
+        "median": 1.5,
+        "mean": 1.5,
+        "p90": 2,
+        "pctUnderSLA": 50
+      },
+      "window30d": {
+        "n": 21,
+        "median": 1,
+        "mean": 1.5238095238095237,
+        "p90": 2,
+        "pctUnderSLA": 57.14285714285714
+      }
+    },
+    "githubRounds": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    }
   }
 ]
