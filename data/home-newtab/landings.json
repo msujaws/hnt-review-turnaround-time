@@ -2523,9 +2523,9 @@
     "createdAt": "2026-06-18T21:45:50.000Z",
     "firstReviewAt": "2026-06-23T00:34:56.000Z",
     "landedAt": "2026-07-02T19:26:50.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 77.68333333333332,
-    "postReviewBusinessHours": 59.44722222222222,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 59.44722222222222
   },
   {
     "source": "phab",
@@ -3825,18 +3825,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-jj6yx5fwt4a5acbbeurk",
-    "revisionId": 315470,
-    "author": "jbrown",
-    "createdAt": "2026-07-30T23:17:28.000Z",
-    "firstReviewAt": "2026-08-03T22:17:30.000Z",
-    "landedAt": "2026-08-06T04:10:49.000Z",
-    "reviewRounds": 1,
-    "cycleBusinessHours": 32,
-    "postReviewBusinessHours": 16
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-l6lmibl452teyssfxg5z",
     "revisionId": 316458,
     "author": "nina-py",
@@ -3885,6 +3873,114 @@
   },
   {
     "source": "phab",
+    "id": "PHID-DREV-jv2c5kkbzmy6rronipk2",
+    "revisionId": 316700,
+    "author": "nina-py",
+    "createdAt": "2026-08-06T03:05:25.000Z",
+    "firstReviewAt": "2026-08-06T03:05:33.000Z",
+    "landedAt": "2026-08-06T23:29:35.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 4.402777777777778,
+    "postReviewBusinessHours": 4.400555555555555
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-6rfqxyiglkwavo5gy7hc",
+    "revisionId": 316483,
+    "author": "nina-py",
+    "createdAt": "2026-08-05T09:09:18.000Z",
+    "firstReviewAt": "2026-08-05T09:09:24.000Z",
+    "landedAt": "2026-08-06T23:29:35.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8.493055555555555,
+    "postReviewBusinessHours": 8.493055555555555
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-obwr6tjxo64ogqet4hj6",
+    "revisionId": 315438,
+    "author": "ini",
+    "createdAt": "2026-07-30T20:19:59.000Z",
+    "firstReviewAt": "2026-07-30T20:20:07.000Z",
+    "landedAt": "2026-08-06T21:27:45.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 40.66694444444444,
+    "postReviewBusinessHours": 40.66472222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-szcvcrsgjdhwnrooxbf3",
+    "revisionId": 316652,
+    "author": "ini",
+    "createdAt": "2026-08-05T21:23:38.000Z",
+    "firstReviewAt": "2026-08-05T21:23:50.000Z",
+    "landedAt": "2026-08-06T21:27:43.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-nkuhijdbtjw5vqvwd7gk",
+    "revisionId": 307703,
+    "author": "nina-py",
+    "createdAt": "2026-06-19T04:51:22.000Z",
+    "firstReviewAt": "2026-06-22T01:05:22.000Z",
+    "landedAt": "2026-08-06T21:27:42.000Z",
+    "reviewRounds": 3,
+    "cycleBusinessHours": 274.14388888888885,
+    "postReviewBusinessHours": 269.91055555555556
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ommsqttzhi24czdwbnqb",
+    "revisionId": 315437,
+    "author": "ini",
+    "createdAt": "2026-07-30T20:19:47.000Z",
+    "firstReviewAt": "2026-07-30T20:19:55.000Z",
+    "landedAt": "2026-08-06T21:27:42.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 40.67027777777778,
+    "postReviewBusinessHours": 40.66805555555556
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-wpzu3sckqan6ipwsinqs",
+    "revisionId": 315410,
+    "author": "ini",
+    "createdAt": "2026-07-30T19:26:34.000Z",
+    "firstReviewAt": "2026-07-30T19:27:01.000Z",
+    "landedAt": "2026-08-06T21:27:42.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 41.55722222222222,
+    "postReviewBusinessHours": 41.54972222222223
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-jqamq3stsxmnplczy7i3",
+    "revisionId": 316186,
+    "author": "joel",
+    "createdAt": "2026-08-04T05:11:25.000Z",
+    "firstReviewAt": "2026-08-04T05:11:35.000Z",
+    "landedAt": "2026-08-06T20:04:15.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 23.070833333333333,
+    "postReviewBusinessHours": 23.070833333333333
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-jj6yx5fwt4a5acbbeurk",
+    "revisionId": 315470,
+    "author": "jbrown",
+    "createdAt": "2026-07-30T23:17:28.000Z",
+    "firstReviewAt": "2026-08-03T22:17:30.000Z",
+    "landedAt": "2026-08-06T04:10:49.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 32,
+    "postReviewBusinessHours": 16
+  },
+  {
+    "source": "phab",
     "id": "PHID-DREV-22ev23xmjbksiy34infn",
     "revisionId": 308102,
     "author": "joel",
@@ -3918,5 +4014,17 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 132.79361111111112,
     "postReviewBusinessHours": 132.79361111111112
+  },
+  {
+    "source": "github",
+    "id": 1708,
+    "author": "Herraj",
+    "createdAt": "2026-08-05T18:38:38Z",
+    "firstReviewAt": "2026-08-05T20:59:52Z",
+    "landedAt": "2026-08-06T14:33:32Z",
+    "reviewRounds": 1,
+    "repo": "mozilla-services/merino-py",
+    "cycleBusinessHours": 3.915,
+    "postReviewBusinessHours": 1.5611111111111111
   }
 ]
