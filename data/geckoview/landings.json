@@ -289,18 +289,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-obdg5wt2scvnvebxzs66",
-    "revisionId": 300023,
-    "author": "tthibaud",
-    "createdAt": "2026-05-12T13:24:13.000Z",
-    "firstReviewAt": "2026-05-12T14:35:25.000Z",
-    "landedAt": "2026-05-12T16:25:18.000Z",
-    "cycleBusinessHours": 3.0180555555555557,
-    "postReviewBusinessHours": 1.831388888888889,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-lsvq3xzhqmthitvtaxds",
     "revisionId": 299637,
     "author": "jonalmeida",
@@ -895,9 +883,9 @@
     "createdAt": "2026-07-24T05:20:45.000Z",
     "firstReviewAt": "2026-07-28T21:07:42.000Z",
     "landedAt": "2026-07-29T06:18:46.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 24,
-    "postReviewBusinessHours": 0
+    "postReviewBusinessHours": 0,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -970,5 +958,29 @@
     "reviewRounds": 2,
     "cycleBusinessHours": 0,
     "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ey4xhiixbimyxcyigryq",
+    "revisionId": 317369,
+    "author": "jonalmeida",
+    "createdAt": "2026-08-09T19:23:57.000Z",
+    "firstReviewAt": "2026-08-09T19:25:45.000Z",
+    "landedAt": "2026-08-09T22:59:59.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 0,
+    "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-lgsmbnh7suqsrcobzh7b",
+    "revisionId": 316635,
+    "author": "botond",
+    "createdAt": "2026-08-05T19:52:49.000Z",
+    "firstReviewAt": "2026-08-05T20:26:44.000Z",
+    "landedAt": "2026-08-07T20:54:44.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 17.031944444444445,
+    "postReviewBusinessHours": 16.466666666666665
   }
 ]
