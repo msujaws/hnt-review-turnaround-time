@@ -1,0 +1,1217 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 1985839,
+    "summary": "[meta] At-scale launch blockers",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-08-28T16:38:52Z",
+    "resolvedAt": "2026-07-01T14:41:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2000048,
+    "summary": "[meta] Update IPP metrics",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-11-13T19:16:23Z",
+    "resolvedAt": "2026-07-01T13:54:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2000053,
+    "summary": "[meta] IPP bandwidth monitoring",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-11-13T19:26:26Z",
+    "resolvedAt": "2026-07-01T13:55:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2021034,
+    "summary": "Document bandwidth usage display logic in IP Protection",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-04T16:30:26Z",
+    "resolvedAt": "2026-07-08T04:05:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022545,
+    "summary": "“Get started” panel briefly displayed when opening the VPN panel after browser restart",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-11T13:34:33Z",
+    "resolvedAt": "2026-06-23T21:59:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025373,
+    "summary": "Add l10n notes in code for built-in VPN and correct geographic error string",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-23T15:11:52Z",
+    "resolvedAt": "2026-07-17T09:32:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2027922,
+    "summary": "[a11y] Keyboard navigation - VPN toolbarbutton does not respond to Enter keypress",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-30T22:15:22Z",
+    "resolvedAt": "2026-05-21T09:43:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2027927,
+    "summary": "[a11y] Keyboard operation: toggling Turn On/Off buttons is not possible while keeping the toggle focused",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-30T22:35:58Z",
+    "resolvedAt": "2026-07-01T19:18:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028640,
+    "summary": "50 GB quota (shown in VPN menu) doesn't automatically get updated at the start of a new month (until you connect to the VPN)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-01T21:31:38Z",
+    "resolvedAt": "2026-05-23T09:49:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028904,
+    "summary": "Remove custom font sizing from all VPN elements besides status",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-02T14:36:42Z",
+    "resolvedAt": "2026-07-07T21:12:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033119,
+    "summary": "[meta] IP Protection callout updates for 151",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-17T19:49:24Z",
+    "resolvedAt": "2026-07-02T13:26:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033122,
+    "summary": "[experimenter] Add IP Protection location switching CFR",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-17T20:00:16Z",
+    "resolvedAt": "2026-06-03T12:58:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033128,
+    "summary": "[meta] Implement location picker subview",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-17T20:26:52Z",
+    "resolvedAt": "2026-07-02T13:27:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033131,
+    "summary": "[experimenter] Update existing IP Protection discovery CFRs",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-17T20:34:12Z",
+    "resolvedAt": "2026-06-03T13:09:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033814,
+    "summary": "bait and switch Free VPN becomes €9.99/month (What's New page advertises feature to users who haven't gotten the roll-out yet)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-21T15:07:00Z",
+    "resolvedAt": "2026-06-26T17:58:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033876,
+    "summary": "[meta] Implement location picker button",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-21T17:55:43Z",
+    "resolvedAt": "2026-05-18T14:59:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034088,
+    "summary": "VPN toolbar button shows incorrect state and excludes wrong URL for JSON/PDF viewer pages",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-22T13:54:06Z",
+    "resolvedAt": "2026-07-16T03:52:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034102,
+    "summary": "Expose proxy protection state as a reusable API",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-22T14:20:17Z",
+    "resolvedAt": "2026-07-01T09:31:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034299,
+    "summary": "Add \"unavailable\" label for disabled locations in location picker",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-23T02:05:43Z",
+    "resolvedAt": "2026-05-23T09:49:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034698,
+    "summary": "VPN toolbar icon briefly disapears when you turn it on the first time in a browsing session",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-04-24T04:40:59Z",
+    "resolvedAt": "2026-07-14T04:01:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037056,
+    "summary": "Extra large VPN Status Checkbox in Overflow Menu",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-05T12:01:11Z",
+    "resolvedAt": "2026-05-20T21:21:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037184,
+    "summary": "IP-Protection: implement the kotlin glue for GPI AuthProvider",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-05T17:05:52Z",
+    "resolvedAt": "2026-07-14T21:42:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037774,
+    "summary": "Oversized Fox Icon in VPN about:preferences while signed out",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-07T07:26:39Z",
+    "resolvedAt": "2026-05-18T12:33:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037952,
+    "summary": "[experimenter] Add new nth tab discovery CFR with 2nd and 3rd tab variants",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-07T16:43:04Z",
+    "resolvedAt": "2026-06-03T13:05:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039036,
+    "summary": "IP-Protection: use a dummy auth provider for tests",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-12T17:23:17Z",
+    "resolvedAt": "2026-05-29T00:34:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039181,
+    "summary": "Incorrect text color in VPN panels under High Contrast Mode",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-13T06:42:21Z",
+    "resolvedAt": "2026-06-18T15:35:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039291,
+    "summary": "[a11y] Update font size for recommended location description",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-13T14:10:40Z",
+    "resolvedAt": "2026-05-20T12:45:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039304,
+    "summary": "Create an Enterprise AuthProvider for IPProtection",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-13T14:28:55Z",
+    "resolvedAt": "2026-05-20T09:20:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039487,
+    "summary": "Site exclusion description alignment is slightly offset in the VPN main panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-14T06:49:28Z",
+    "resolvedAt": "2026-07-12T11:36:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039551,
+    "summary": "With VPN on across macOS suspend, networking breaks",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-14T12:33:41Z",
+    "resolvedAt": "2026-06-10T10:08:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039829,
+    "summary": "IP-PRotection activator add-on: add VPN state and region conditions",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-15T09:51:49Z",
+    "resolvedAt": "2026-05-19T16:13:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039861,
+    "summary": "Clicking the \"Next\" button from VPN Discovery CFR does not close the panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-15T12:48:11Z",
+    "resolvedAt": "2026-06-04T14:25:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039896,
+    "summary": "Fix definition of secondary button label in ipProtection.ftl",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-15T14:14:35Z",
+    "resolvedAt": "2026-05-16T09:17:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040063,
+    "summary": "Add \"unlimited\" to the IPP entitlement",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-15T23:20:53Z",
+    "resolvedAt": "2026-05-28T09:15:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040065,
+    "summary": "Update IPP bandwidth enabled pref",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-15T23:31:48Z",
+    "resolvedAt": "2026-05-28T09:15:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040414,
+    "summary": "Add version of No thanks button string as label in ipProtection.ftl",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-18T15:56:53Z",
+    "resolvedAt": "2026-05-19T04:13:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040511,
+    "summary": "Return early in IPPUsageHelper and IPProtectionInfobarManager when not tracking bandwidth",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-18T21:07:26Z",
+    "resolvedAt": "2026-05-28T09:15:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040512,
+    "summary": "Guard IPProtectionPanel usage changed handling when not tracking bandwidth",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-18T21:12:14Z",
+    "resolvedAt": "2026-05-28T09:15:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040718,
+    "summary": "Update language referencing number of locations in ipProtection.ftl",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-19T16:41:58Z",
+    "resolvedAt": "2026-05-22T09:38:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040881,
+    "summary": "The \"Get extra privacy\" link in the discovery CFRs is not rendered correctly",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-20T08:43:19Z",
+    "resolvedAt": "2026-06-03T13:16:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040888,
+    "summary": "IP-Protection activator: introduce the WC tab breakage list",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-20T09:04:17Z",
+    "resolvedAt": "2026-05-21T09:48:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040957,
+    "summary": "Add browser.ipProtection.blockIPProtectionCallouts pref",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-20T13:35:16Z",
+    "resolvedAt": "2026-05-21T21:21:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040965,
+    "summary": "Add 'Not now' as label attribute for secondary button dropdown in ipProtection.ftl",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-20T13:54:04Z",
+    "resolvedAt": "2026-05-20T21:23:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041329,
+    "summary": "IP-PRotection activator add-on: implement a date condition for the WC project",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-21T13:56:10Z",
+    "resolvedAt": "2026-05-22T22:36:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041394,
+    "summary": "VPN buttons move slightly downward when you click \"Turn on VPN\"",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-21T16:43:58Z",
+    "resolvedAt": "2026-06-11T04:14:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041418,
+    "summary": "Add background and darker font text for selected location in locations subview",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-21T17:53:55Z",
+    "resolvedAt": "2026-05-23T09:54:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041521,
+    "summary": "Add Nova icons for Firefox :: IP Protection",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-22T01:21:10Z",
+    "resolvedAt": "2026-06-12T21:19:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041794,
+    "summary": "VPN whitelist",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-22T19:01:59Z",
+    "resolvedAt": "2026-05-28T09:18:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041803,
+    "summary": "IPProtection does not reconnect or update when the AccessConnector policy is modified live",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-22T19:31:09Z",
+    "resolvedAt": "2026-06-02T22:00:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042079,
+    "summary": "IP-Protection activator: set the correct dates for WC",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-25T07:41:57Z",
+    "resolvedAt": "2026-05-26T21:39:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042286,
+    "summary": "Addon message incorrectly displayed on unauthorized URL paths for domain-restricted rules",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-26T05:57:12Z",
+    "resolvedAt": "2026-05-28T09:19:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042289,
+    "summary": "Messaging addon (infobar) is not displayed on magenta.tv when VPN is enabled during the World Cup time range",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-26T06:10:27Z",
+    "resolvedAt": "2026-05-28T09:19:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042407,
+    "summary": "IPPEnterpriseAuthProvider does not notify listeners after policy activation",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-26T13:53:19Z",
+    "resolvedAt": "2026-05-29T00:36:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042454,
+    "summary": "VPN button icon abnormally large",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-26T15:34:44Z",
+    "resolvedAt": "2026-05-27T17:51:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042691,
+    "summary": "[a11y] Unavailable locations are completely skipped by keyboard navigation and screen readers",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T10:36:14Z",
+    "resolvedAt": "2026-07-06T21:43:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042799,
+    "summary": "[Android] - Expose refreshUsage",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T13:21:37Z",
+    "resolvedAt": "2026-06-22T20:02:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042852,
+    "summary": "(Android) - FxA Active auth provider handles updateEntitlement diffrent",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T15:12:12Z",
+    "resolvedAt": "2026-06-10T10:09:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042992,
+    "summary": "Add a safeguard to VPN toolbar logo size",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T21:28:56Z",
+    "resolvedAt": "2026-05-28T09:21:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043020,
+    "summary": "Set bandwidth.enabled pref in IPPProxyManager",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T21:53:42Z",
+    "resolvedAt": "2026-06-03T09:32:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043024,
+    "summary": "Check for entitlement changes after startup",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-27T21:57:12Z",
+    "resolvedAt": "2026-05-29T20:10:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043166,
+    "summary": "“Get Started” panel is displayed after browser restart while browser.ipProtection.guardian.endpoint pref has an invalid value",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-28T09:29:31Z",
+    "resolvedAt": "2026-06-30T13:35:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043755,
+    "summary": "Check usage on IPP panel open when paused",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-29T21:53:44Z",
+    "resolvedAt": "2026-06-05T01:32:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043999,
+    "summary": "ipp-protection: add telemetry for the ipp-activator messaging",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-01T10:04:53Z",
+    "resolvedAt": "2026-06-02T22:05:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044130,
+    "summary": "Remove mentions of 50 GB bandwidth limit",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-01T18:32:15Z",
+    "resolvedAt": "2026-06-03T15:21:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044131,
+    "summary": "Add browser.ipProtection.bandwidth.enabled prefs to allowed prefs for feature callout CTA",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-01T18:33:39Z",
+    "resolvedAt": "2026-06-02T22:05:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044274,
+    "summary": "Domains opened from excluded domain bypass Firefox VPN",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-02T10:09:03Z",
+    "resolvedAt": "2026-06-11T08:28:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044420,
+    "summary": "Unset button width for unauthenticated state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-02T17:46:09Z",
+    "resolvedAt": "2026-06-12T21:19:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044431,
+    "summary": "Update isEnrolling / loading template",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-02T18:05:55Z",
+    "resolvedAt": "2026-06-18T09:49:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044432,
+    "summary": "Add a Nimbus variable to set the IPP upgradeNotAvailable pref",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-02T18:09:29Z",
+    "resolvedAt": "2026-06-03T09:33:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044502,
+    "summary": "Update panel background color for errors, paused, connecting and disconnected states",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-02T23:28:54Z",
+    "resolvedAt": "2026-06-17T10:45:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044520,
+    "summary": "Disable location button when VPN is in the process of being activated",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T00:30:29Z",
+    "resolvedAt": "2026-06-09T09:11:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044522,
+    "summary": "Increase VPN panel max-height so that the location selector upgrade promo is visible with minimum 5 locations",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T00:37:11Z",
+    "resolvedAt": "2026-06-18T20:12:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044524,
+    "summary": "Unbold \"Monthly data limit\" and bold current bandwidth usage in VPN settings section",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T00:47:44Z",
+    "resolvedAt": "2026-06-16T08:46:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044660,
+    "summary": "Default \"Not now\" option of the Captive Portal first VPN Discovery CFR does not dismiss the panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T13:15:14Z",
+    "resolvedAt": "2026-07-01T10:35:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044825,
+    "summary": "Remove borders for location buttons in locations subview",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T22:34:27Z",
+    "resolvedAt": "2026-06-12T07:51:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045154,
+    "summary": "Text color for selected location has poor contrast with dark mode and nova enabled",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-04T23:25:14Z",
+    "resolvedAt": "2026-06-12T07:51:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045636,
+    "summary": "[META][QA][QA-5314] Testing for Discovery CFR for Built-in VPN experiment",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-08T08:00:06Z",
+    "resolvedAt": "2026-06-09T13:50:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045641,
+    "summary": "[Experiment] Control branch messages not triggering while enrolled in the “Discovery CFR for Built-in VPN” experiment, and “Unexpected end of expressions” error is shown in Browser Console",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-08T08:32:27Z",
+    "resolvedAt": "2026-06-08T18:21:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045761,
+    "summary": "[Experiment] No description text is displayed on the first and second callouts while enrolled in Treatment B branch of the experiment",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-08T14:33:49Z",
+    "resolvedAt": "2026-06-08T17:37:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045856,
+    "summary": "Update VPN panel width to smaller size",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-08T18:36:03Z",
+    "resolvedAt": "2026-06-18T09:49:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045991,
+    "summary": "[Rollout] The first captive portal callout cannot be dismissed using the \"Not now\" button",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-09T09:11:04Z",
+    "resolvedAt": "2026-06-09T12:47:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046099,
+    "summary": "[Android] Document unlimited mode in GeckoView",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-09T15:19:10Z",
+    "resolvedAt": "2026-06-22T20:02:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046406,
+    "summary": "[Android] Expose CountryList & Selection",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-10T13:12:12Z",
+    "resolvedAt": "2026-06-22T20:03:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046492,
+    "summary": "VPN toolbar button icons spill into each other in Customize Mode",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-10T15:46:38Z",
+    "resolvedAt": "2026-06-17T22:10:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046583,
+    "summary": "Remove --button-text-color-menu for forced colors locations-subview.css",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-10T20:49:12Z",
+    "resolvedAt": "2026-06-23T09:44:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047020,
+    "summary": "Apply bold font weight for Recommended label in locations subview",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-11T23:30:10Z",
+    "resolvedAt": "2026-06-12T21:21:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047438,
+    "summary": "Warning notification bar for site incompatibility with VPN shows up despite not having VPN turned on",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-14T15:46:33Z",
+    "resolvedAt": "2026-06-17T10:50:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048035,
+    "summary": "Land strings that were added via experimenter",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-16T17:14:05Z",
+    "resolvedAt": "2026-06-17T22:11:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048679,
+    "summary": "Update VPN panel color for High Contrast Mode",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-18T15:33:37Z",
+    "resolvedAt": "2026-06-24T17:05:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048706,
+    "summary": "Update radius for VPN panel status box and settings button",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-18T17:16:34Z",
+    "resolvedAt": "2026-06-22T20:03:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048775,
+    "summary": "Update status box and loading state borders to use deemphasized color tokens",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-18T22:13:22Z",
+    "resolvedAt": "2026-06-23T09:30:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049380,
+    "summary": "Replace `rem` with `em` for VPN panel max-height",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-22T15:01:28Z",
+    "resolvedAt": "2026-06-23T09:30:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049469,
+    "summary": "Location button in VPN panel is missing borders when Nova is enabled",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-22T18:07:20Z",
+    "resolvedAt": "2026-06-25T17:04:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049599,
+    "summary": "Selected location text is unreadable (black text on purple background) with Alpenglow theme in Location subview",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T08:57:36Z",
+    "resolvedAt": "2026-06-30T21:16:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049674,
+    "summary": "LifecycleHelper is not reacting to Activity-Lifecycle events",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T12:50:45Z",
+    "resolvedAt": "2026-07-01T19:18:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049817,
+    "summary": "Turn on/off VPN button in VPN panel is wrong color",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T18:33:27Z",
+    "resolvedAt": "2026-07-13T14:13:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049901,
+    "summary": "Retry transient failures when getting a proxy pass",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T23:24:03Z",
+    "resolvedAt": "2026-07-03T09:36:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050135,
+    "summary": "IProtection.sys.mjs might leak IPProtectionPanel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-24T15:25:41Z",
+    "resolvedAt": "2026-08-03T16:11:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050348,
+    "summary": "[Nova] [a11y] VPN main panel exclusion toggle is not visible while disabled using default browser themes",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-25T06:42:53Z",
+    "resolvedAt": "2026-07-29T04:16:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050417,
+    "summary": "[Nova] VPN Get Started “By proceeding, you agree to the Terms of Service and Privacy Notice” text is Align Left",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-25T12:43:05Z",
+    "resolvedAt": "2026-06-29T21:53:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050639,
+    "summary": "Border radius should be medium instead of xlarge for VPN panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-25T20:37:13Z",
+    "resolvedAt": "2026-06-27T08:48:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050652,
+    "summary": "VPN panel state illustration sizes don't match the spec",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-25T21:13:38Z",
+    "resolvedAt": "2026-06-27T08:49:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050761,
+    "summary": "[Nova] VPN location list items permanently display hover effect styling without active hover in certain HCM themes (e.g., Dusk)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-26T08:35:29Z",
+    "resolvedAt": "2026-07-14T04:02:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050822,
+    "summary": "[Nova] The “Settings” option has no border when Increased Contrast is enabled",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-26T11:56:36Z",
+    "resolvedAt": "2026-07-13T14:17:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051218,
+    "summary": "[Nova] VPN toolbar icon is dark black instead of matching the Nova theme when in Paused state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-29T08:40:49Z",
+    "resolvedAt": "2026-07-01T19:19:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051223,
+    "summary": "[Nova] [HCM] VPN toolbar icon does not respect High Contrast Mode when in a paused state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-29T08:49:44Z",
+    "resolvedAt": "2026-07-02T13:40:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051225,
+    "summary": "VPN panel briefly displays loading state every time it is opened while in paused state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-29T08:52:53Z",
+    "resolvedAt": "2026-08-07T20:09:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051977,
+    "summary": "Show the VPN unavailable screen when getting a 451 from Guardian.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-01T16:31:09Z",
+    "resolvedAt": "2026-07-28T21:53:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052007,
+    "summary": "Add property to country object for premium locations",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-01T17:56:01Z",
+    "resolvedAt": "2026-07-07T21:14:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052013,
+    "summary": "Filter locations list based on default or premium status",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-01T18:09:05Z",
+    "resolvedAt": "2026-07-15T09:36:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052521,
+    "summary": "IP-Protection: remove IPPFxaAuthProvider",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-03T12:46:20Z",
+    "resolvedAt": "2026-07-06T21:47:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052845,
+    "summary": "IP-Protection: telemetry for GPI authentication",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-06T13:14:39Z",
+    "resolvedAt": "2026-07-27T14:44:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053491,
+    "summary": "Fix heading regression for VPN status box",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-08T16:54:28Z",
+    "resolvedAt": "2026-07-09T16:10:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053753,
+    "summary": "Broken Inclusion-Rule can deadlock the VPN",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-09T12:42:30Z",
+    "resolvedAt": "2026-07-13T20:34:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054136,
+    "summary": "Land strings for all offramp CFRs",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-10T16:26:42Z",
+    "resolvedAt": "2026-07-17T09:34:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054141,
+    "summary": "[experimenter] Add CFR for Mozilla VPN subscribers",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-10T16:40:12Z",
+    "resolvedAt": "2026-07-17T14:16:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054144,
+    "summary": "[experimenter] Add CFR for non-Mozilla VPN subscribers who have Firefox set as default",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-10T16:44:50Z",
+    "resolvedAt": "2026-07-17T14:12:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054147,
+    "summary": "[experimenter] Add experimental CFRs for users who don't have a Mozilla VPN subscription or have Firefox set to default",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-10T16:52:30Z",
+    "resolvedAt": "2026-07-17T14:16:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054514,
+    "summary": "ProxyPass infinite refresh-loop when the System-Clock has drifted more then 15minutes.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-13T15:30:29Z",
+    "resolvedAt": "2026-08-06T21:21:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054901,
+    "summary": "IP-Protection: option to enable GPI auth provider in secret settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-14T12:48:39Z",
+    "resolvedAt": "2026-08-03T22:23:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055206,
+    "summary": "IPPLifecylce handler does not retry a failed refresh.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-15T12:36:26Z",
+    "resolvedAt": "2026-07-28T21:54:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055274,
+    "summary": "VPN toolbar icon lacks hover state on macOS",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-15T16:38:35Z",
+    "resolvedAt": "2026-07-16T21:42:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056495,
+    "summary": "IP-Protection: Remove world-cup deprecated entries in the list of breakage rules",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-21T08:52:44Z",
+    "resolvedAt": "2026-07-23T16:19:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056876,
+    "summary": "Unparsed {maxusage} string displayed in Firefox VPN Summer promo CFR",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-22T12:47:19Z",
+    "resolvedAt": "2026-07-30T17:13:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058264,
+    "summary": "Bug: Mozilla VPN upgrade promo shows in regions where VPN is unavailable (Japan)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-27T19:00:56Z",
+    "resolvedAt": "2026-07-28T21:57:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060090,
+    "summary": "Add a VPN incompatibility warning for www.bbc.co.uk/iplayer",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-02T21:54:06Z",
+    "resolvedAt": "2026-08-03T09:00:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060236,
+    "summary": "Land strings for built-in VPN for Android promo",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-03T13:58:55Z",
+    "resolvedAt": "2026-08-13T04:27:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060821,
+    "summary": "[Rollout] The messages of the “Built‑in VPN Beta – Summer promo off‑ramp messaging rollout” have no chance to be shown to clients, as there is no VPN Toolbar button available after enrolling in the rollout",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-05T10:46:56Z",
+    "resolvedAt": "2026-08-05T13:15:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060845,
+    "summary": "[Experiment and Rollout] The clients can be enrolled in both “Built‑in VPN Beta – Summer promo off‑ramp messaging rollout” and “Built‑in VPN Beta – Summer promo default browser experiment” at the same time",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-05T11:58:39Z",
+    "resolvedAt": "2026-08-05T13:16:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061171,
+    "summary": "[Experiment] The “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_PROMO” experiment message is displayed to clients even when Firefox is already set as the default browser",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-06T11:39:33Z",
+    "resolvedAt": "2026-08-06T14:23:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061274,
+    "summary": "Add a new pref to gate the site inclusions feature",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-06T14:47:13Z",
+    "resolvedAt": "2026-08-07T20:13:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061622,
+    "summary": "[Stage] \"Get Started\" panel displayed after successful authentication",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-07T07:26:11Z",
+    "resolvedAt": "2026-08-10T08:24:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062190,
+    "summary": "[Rollout] Users in the JP region cannot enroll in the “Built-in VPN Beta - Summer promo off-ramp messaging rollout” and are therefore unable to receive the “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPGRADE_NOT_AVAILABLE” message",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-10T09:54:34Z",
+    "resolvedAt": "2026-08-10T15:11:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062238,
+    "summary": "[Rollout] The “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPGRADE_NOT_AVAILABLE” and “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPSELL” messages are displayed to clients even when Firefox is not set as the default browser",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-10T12:02:17Z",
+    "resolvedAt": "2026-08-10T15:14:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063206,
+    "summary": "The “Bandwidth reset” CFR cannot be triggered on Windows",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-13T09:04:49Z",
+    "resolvedAt": "2026-08-13T14:20:17Z"
+  }
+]

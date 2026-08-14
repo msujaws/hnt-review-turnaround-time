@@ -1,0 +1,3251 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 1981986,
+    "summary": "Lists widget - lists and tasks context menus are visible for a split second when refreshing NTP",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-08-08T10:31:18Z",
+    "resolvedAt": "2026-06-03T20:49:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1995391,
+    "summary": "newtabTrainhopAddon should allow co-enrollment, prioritizing the enrollment with the highest version number",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-10-20T19:45:58Z",
+    "resolvedAt": "2026-08-01T09:55:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2008125,
+    "summary": "Button lacks accessible name (Timer widget > ••• button)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-12-31T17:58:55Z",
+    "resolvedAt": "2026-06-20T09:56:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2008143,
+    "summary": "Button lacks accessible name (Task list widget > ••• button)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-12-31T18:09:20Z",
+    "resolvedAt": "2026-07-12T04:36:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2008158,
+    "summary": "Decorative image not programmatically identified (Customize button)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-12-31T18:23:55Z",
+    "resolvedAt": "2026-06-09T09:09:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2008199,
+    "summary": "Disclosure button expanded/collapsed state not programmatically defined (Weather card > ••• button)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-12-31T18:47:23Z",
+    "resolvedAt": "2026-06-10T10:07:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2016230,
+    "summary": "Create feature-based class names to change logo position on new tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-11T20:18:30Z",
+    "resolvedAt": "2026-05-20T16:32:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018699,
+    "summary": "Migrate simple unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:06:09Z",
+    "resolvedAt": "2026-08-05T09:24:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018702,
+    "summary": "Migrate simple Redux unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:10:09Z",
+    "resolvedAt": "2026-08-08T09:41:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018705,
+    "summary": "Migrate Sections unit test to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:13:28Z",
+    "resolvedAt": "2026-08-08T09:41:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018709,
+    "summary": "Migrate Base unit test to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:15:30Z",
+    "resolvedAt": "2026-08-08T09:41:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018751,
+    "summary": "Update Content Feed / Section UI to Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T19:52:03Z",
+    "resolvedAt": "2026-06-16T21:08:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018762,
+    "summary": "Project Nova, Shortcuts - Update pinning behavior",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T20:12:04Z",
+    "resolvedAt": "2026-06-27T08:44:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2019788,
+    "summary": "[meta] Firefox 148 (Fast-follow) train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-26T21:50:49Z",
+    "resolvedAt": "2026-05-21T04:57:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2019789,
+    "summary": "`./mach newtab install` crashes on Windows with WinError 193 - ./mach cannot be spawned as a Win32 process.",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-26T21:57:31Z",
+    "resolvedAt": "2026-07-07T09:29:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2020418,
+    "summary": "Create Claude skill for @nova-cleanup code comments",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-02T17:52:22Z",
+    "resolvedAt": "2026-06-16T21:12:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022046,
+    "summary": "Integrate new Nova design tokens into newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-09T21:12:59Z",
+    "resolvedAt": "2026-06-16T21:20:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2024071,
+    "summary": "Migrate remaining content-src/components Enzyme unit tests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-17T22:37:53Z",
+    "resolvedAt": "2026-08-09T02:49:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2024720,
+    "summary": "Address console.error messages in new Jest test suite",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-19T18:10:06Z",
+    "resolvedAt": "2026-05-23T09:48:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025793,
+    "summary": "Stop including activity-stream.bundle.js and vendor.bundle.js in the source tree",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-24T14:18:11Z",
+    "resolvedAt": "2026-08-07T20:08:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028377,
+    "summary": "[META][QA][QA-5012] [QA-5014] [QA-5017] New Tab Nova Content",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-01T08:18:56Z",
+    "resolvedAt": "2026-05-20T13:48:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2030876,
+    "summary": "Nova customization panel - Upload Nova wallpapers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-10T04:51:35Z",
+    "resolvedAt": "2026-06-16T21:09:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2031665,
+    "summary": "AccuWeather sponsored text is overlapping the \"Tell us what you think link\" when medium weather card is hovered",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-14T13:05:12Z",
+    "resolvedAt": "2026-07-24T09:04:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033418,
+    "summary": "The “Customize” button fails to render correctly, and overlaps on browser resize",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-20T11:15:38Z",
+    "resolvedAt": "2026-06-29T20:28:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033573,
+    "summary": "Privacy Notice at the bottom of New Tab page links to the wrong place (wrong fragment identifier)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-20T19:30:52Z",
+    "resolvedAt": "2026-07-01T09:31:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033580,
+    "summary": "Sports widget - Add telemetry for \"follow\" flow state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-20T19:42:36Z",
+    "resolvedAt": "2026-05-19T03:37:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033581,
+    "summary": "Implement adaptive polling logic to query sports data more frequently during live events",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-20T19:44:12Z",
+    "resolvedAt": "2026-05-31T22:49:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033841,
+    "summary": "Newtab Nova mixin for col span and any other common helpful mixins we can find",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-21T16:10:55Z",
+    "resolvedAt": "2026-06-09T09:10:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034105,
+    "summary": "Disabled toggles from the Customize menu of the New Tab have insufficient contrast and are barely visible in Dark Theme",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-22T14:32:19Z",
+    "resolvedAt": "2026-06-16T21:09:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034393,
+    "summary": "Stories cannot be enabled again with mouse pointer when customization panel is in fading state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-23T09:57:57Z",
+    "resolvedAt": "2026-05-27T08:57:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034857,
+    "summary": "New-tab page placeholder-image thumbnail content have sharp bottom corners, which look inconsistent with top corners and with the nearby rounded tile-corners",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-24T15:45:03Z",
+    "resolvedAt": "2026-06-18T20:12:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034869,
+    "summary": "Add \"Learn more\" link to New Tab sections context menu",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-24T16:55:48Z",
+    "resolvedAt": "2026-06-11T04:13:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2035176,
+    "summary": "Weather widget small card layout issues with opt-in location options and error message displayed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-27T11:50:22Z",
+    "resolvedAt": "2026-05-21T09:43:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2035221,
+    "summary": "If wallpaper list can't be queried from remote settings, wallpapers can't be uploaded.",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-27T14:49:08Z",
+    "resolvedAt": "2026-08-01T09:55:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2035296,
+    "summary": "prefers-reduced-motion ignored for tile hover/focus transition effect in about:newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-27T19:25:26Z",
+    "resolvedAt": "2026-06-11T04:13:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2035923,
+    "summary": "Vertical scrollbar appears unnecessarily on Firefox Home Page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-29T19:18:38Z",
+    "resolvedAt": "2026-06-03T20:35:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036238,
+    "summary": "Sports widget - Add Kit animation on hover/focus on intro state of widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-01T03:11:49Z",
+    "resolvedAt": "2026-05-28T09:13:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036865,
+    "summary": "Refactor WallpaperFeatureHighlight arrow to use clip-path instead of SVG",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-04T17:28:07Z",
+    "resolvedAt": "2026-06-09T09:10:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037169,
+    "summary": "Newtab widgets drag n drop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-05T16:43:40Z",
+    "resolvedAt": "2026-05-30T21:05:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037351,
+    "summary": "[Windows] Context menu button is not visible on Story cards when High Contrast #1 or #2 is enabled on Windows 10",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-06T08:21:33Z",
+    "resolvedAt": "2026-06-30T06:39:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038048,
+    "summary": "Convert widget expansion handling to shared widget expansion",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-07T21:15:19Z",
+    "resolvedAt": "2026-05-21T09:44:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038098,
+    "summary": "Newtab Remove region and locale prefs for contextual sponsored content",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-08T02:39:12Z",
+    "resolvedAt": "2026-06-17T10:44:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038261,
+    "summary": "Newtab add widget button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-08T15:11:38Z",
+    "resolvedAt": "2026-05-29T09:22:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038392,
+    "summary": "Update widget_size and action_type descriptions in metrics.yaml",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-09T02:59:43Z",
+    "resolvedAt": "2026-05-20T09:20:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038732,
+    "summary": "Update region/locale defaults for Weather widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-11T16:47:29Z",
+    "resolvedAt": "2026-05-26T21:38:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038790,
+    "summary": "Localize time zone names in World Clock",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-11T19:21:04Z",
+    "resolvedAt": "2026-05-21T09:44:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038816,
+    "summary": "Widget telemetry sends incorrect size data",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-11T21:08:20Z",
+    "resolvedAt": "2026-06-02T09:38:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038823,
+    "summary": "Create match component",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-11T21:48:29Z",
+    "resolvedAt": "2026-05-19T16:12:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038880,
+    "summary": "Sports widget - Add \"Live watch\" dialog",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-12T06:54:45Z",
+    "resolvedAt": "2026-05-29T09:22:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038881,
+    "summary": "Sports widget - Update \"follow teams\" state to be populated by `/teams` endpoint data",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-12T06:58:32Z",
+    "resolvedAt": "2026-05-18T22:00:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038981,
+    "summary": "Newtab widgets move widget menu items",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-12T14:14:00Z",
+    "resolvedAt": "2026-05-21T09:44:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039335,
+    "summary": "[meta] Firefox 151 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-13T15:54:23Z",
+    "resolvedAt": "2026-06-12T12:50:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039423,
+    "summary": "Update default prefs for widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-13T21:21:27Z",
+    "resolvedAt": "2026-06-25T04:42:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039530,
+    "summary": "The new option \"Manage widgets\" from the \"Widgets\" container context menu is missing the label/string",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-14T11:07:51Z",
+    "resolvedAt": "2026-05-18T11:47:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039587,
+    "summary": "Add accessible names and tooltips to sports event widget flag images",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-14T14:39:27Z",
+    "resolvedAt": "2026-05-20T12:45:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039703,
+    "summary": "widgets_enabled_list string_list telemetery event does not count trainhopConfig enabled widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-14T20:12:23Z",
+    "resolvedAt": "2026-06-02T09:38:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039752,
+    "summary": "Sports widget - Update matches UI to include followed teams logic + design",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-14T23:39:19Z",
+    "resolvedAt": "2026-05-22T09:37:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039765,
+    "summary": "Update Weather widget to use WidgetRegistry for PREF_WEATHER_SIZE",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T01:29:55Z",
+    "resolvedAt": "2026-05-20T09:20:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039770,
+    "summary": "Add close \"X\" in Lists Widget input field",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T02:09:18Z",
+    "resolvedAt": "2026-05-22T09:37:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039775,
+    "summary": "Sports widget - Wire up query link for each match",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T03:18:01Z",
+    "resolvedAt": "2026-05-21T09:45:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039925,
+    "summary": "Move New Tab preference strings to a trainhoppable FTL file",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T15:22:30Z",
+    "resolvedAt": "2026-06-12T07:50:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039956,
+    "summary": "Update locales for Firefox 151 train-hop (Manifest 152.2.X)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T16:20:04Z",
+    "resolvedAt": "2026-05-21T04:57:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039963,
+    "summary": "Manually bump the minor version number of New tab from 152.2.0 to 152.3.0",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T16:48:35Z",
+    "resolvedAt": "2026-05-21T04:57:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040009,
+    "summary": "Create useWidgetTelemetry hook",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T19:47:55Z",
+    "resolvedAt": "2026-06-12T21:18:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040014,
+    "summary": "Migrate Lists widget to useWidgetTelemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T20:00:46Z",
+    "resolvedAt": "2026-06-13T21:05:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040024,
+    "summary": "Migrate World Clock widget to useWidgetTelemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T20:24:24Z",
+    "resolvedAt": "2026-06-17T10:44:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040027,
+    "summary": "Add infrastructure for branding variations on New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T20:58:44Z",
+    "resolvedAt": "2026-05-22T09:37:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040033,
+    "summary": "Newtab small weather widget size change doesn't always work",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-15T21:22:49Z",
+    "resolvedAt": "2026-05-18T22:01:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040254,
+    "summary": "Sports widget: route size resolution through resolveWidgetSize helper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T00:20:59Z",
+    "resolvedAt": "2026-05-19T16:14:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040269,
+    "summary": "Sports widget - Add group stage section in match highlights",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T03:43:10Z",
+    "resolvedAt": "2026-05-22T09:37:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040370,
+    "summary": "Hovering over the small size widget pushes the last clock out of the widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T13:51:01Z",
+    "resolvedAt": "2026-05-20T12:45:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040376,
+    "summary": "Small world clock widget doesn't extend into large size when editing clocks",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T14:02:15Z",
+    "resolvedAt": "2026-05-20T12:45:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040480,
+    "summary": "Add WCW OMC message strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T19:35:19Z",
+    "resolvedAt": "2026-05-21T09:47:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040481,
+    "summary": "Add WCW full country name strings and group stage names",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T19:39:18Z",
+    "resolvedAt": "2026-05-20T12:45:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040483,
+    "summary": "Add WCW API Status strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T19:43:15Z",
+    "resolvedAt": "2026-05-27T08:58:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040503,
+    "summary": "Use localized entries for Follow Teams Country list",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T20:39:11Z",
+    "resolvedAt": "2026-05-20T12:45:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040519,
+    "summary": "Add logic to feed data to display correct translated strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-18T21:48:01Z",
+    "resolvedAt": "2026-06-12T21:18:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040552,
+    "summary": "Sports widget - Add \"view all\" button and list view to results tab when the widget is medium size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T03:46:26Z",
+    "resolvedAt": "2026-05-20T12:46:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040645,
+    "summary": "World clock - Long nickname (Roman / Greek characters) overflows container and overlaps with time display",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T13:00:15Z",
+    "resolvedAt": "2026-05-23T09:50:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040674,
+    "summary": "Add WCW Watch Live stream strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T14:57:18Z",
+    "resolvedAt": "2026-05-20T21:22:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040677,
+    "summary": "[macOS][VO] Unable to reach Edit/Remove options in World Clock widget with Voiceover Commands",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T15:07:53Z",
+    "resolvedAt": "2026-05-22T09:38:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040835,
+    "summary": "Sports widget - remove temporary date parameter from SportsFeed.sys.mjs when we're ready to ship",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-20T03:08:51Z",
+    "resolvedAt": "2026-05-27T08:58:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040843,
+    "summary": "Sports widget - Add pagination when there are 2 or more live games happening",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-20T04:37:35Z",
+    "resolvedAt": "2026-06-01T08:46:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041033,
+    "summary": "The logo is still visible when no new tab features are enabled (Top sites, widgets, content feed, etc)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-20T16:33:24Z",
+    "resolvedAt": "2026-05-21T09:48:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041094,
+    "summary": "New Callout message for World Cup wallpapers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-20T19:41:00Z",
+    "resolvedAt": "2026-05-27T08:58:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041105,
+    "summary": "Update telemetry value for Sports widget name to be \"sports\"",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-20T20:28:34Z",
+    "resolvedAt": "2026-06-01T00:10:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041163,
+    "summary": "Sports widget: fix flag size in \"Follow teams\" view after backend updates",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T02:22:13Z",
+    "resolvedAt": "2026-05-21T21:22:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041196,
+    "summary": "Sports widget - Only show teams in the follow state if they were not eliminiated",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T04:06:19Z",
+    "resolvedAt": "2026-05-22T09:38:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041203,
+    "summary": "[meta] Firefox 151.0.1 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T04:55:08Z",
+    "resolvedAt": "2026-06-12T12:41:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041204,
+    "summary": "Update runtime-metrics for Firefox 151.0.1 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T04:59:13Z",
+    "resolvedAt": "2026-05-21T21:22:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041205,
+    "summary": "Update locales for Firefox 151.0.1  train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T05:04:11Z",
+    "resolvedAt": "2026-05-21T21:22:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041207,
+    "summary": "The name of the sports widget label in the Widgets Mgmt Panel is not localized",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T05:23:09Z",
+    "resolvedAt": "2026-05-23T09:53:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041244,
+    "summary": "Sports widget: emit telemetry when the user switches between match tabs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-21T09:40:52Z",
+    "resolvedAt": "2026-05-22T09:38:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041532,
+    "summary": "Fix failing tests for Logo.jsx",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T02:09:07Z",
+    "resolvedAt": "2026-05-23T09:54:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041573,
+    "summary": "Sports widget - Add in TBD state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T06:48:14Z",
+    "resolvedAt": "2026-06-05T01:31:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041651,
+    "summary": "View Upcoming menu option does not redirect to the Upcoming tab after refreshing the page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T10:45:35Z",
+    "resolvedAt": "2026-05-26T03:19:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041682,
+    "summary": "Menu options are no longer focused after mouse cursor leaves the menu area",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T12:31:31Z",
+    "resolvedAt": "2026-05-27T15:10:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041708,
+    "summary": "Add pref to hide logo from new tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T14:13:24Z",
+    "resolvedAt": "2026-05-23T09:55:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041711,
+    "summary": "Manually bump the minor version number of New tab from 153.0.0 to 153.1.0",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T14:26:25Z",
+    "resolvedAt": "2026-05-23T09:55:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041727,
+    "summary": "Newtab widgets limit to 1 row, and have a show more widgets button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T15:07:13Z",
+    "resolvedAt": "2026-05-26T21:39:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041730,
+    "summary": "When a user has more than two rows of shortcuts, the logo should be in the inline-start sidebar",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T15:19:38Z",
+    "resolvedAt": "2026-05-23T09:55:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041757,
+    "summary": "Run newtab jest tests as part of node tests Tier 1 job",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T16:19:09Z",
+    "resolvedAt": "2026-05-23T09:55:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041765,
+    "summary": "Sports widget - various visual fixes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T16:58:36Z",
+    "resolvedAt": "2026-05-25T09:32:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041781,
+    "summary": "Create 2 new widget Callout messages",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T18:29:00Z",
+    "resolvedAt": "2026-05-28T09:18:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041814,
+    "summary": "Add additional branding variations for newtab logo",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-22T20:42:03Z",
+    "resolvedAt": "2026-05-26T09:01:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042054,
+    "summary": "Sports widget - match list view should make the widget expand to the large size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-25T00:30:09Z",
+    "resolvedAt": "2026-05-26T03:19:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042158,
+    "summary": "Keyboard focus on some elements in World cup widget is either cutoff and/or overlaps other elements",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-25T13:41:36Z",
+    "resolvedAt": "2026-06-05T01:31:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042271,
+    "summary": "Sports widget - add /wcs/live endpoint",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T04:11:48Z",
+    "resolvedAt": "2026-05-27T08:59:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042282,
+    "summary": "Newtab widgets limit to 1 row, and have a show more widgets button strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T05:35:41Z",
+    "resolvedAt": "2026-05-26T21:40:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042325,
+    "summary": "World clock - Longer city names are truncated",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T08:59:40Z",
+    "resolvedAt": "2026-05-28T09:19:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042487,
+    "summary": "Sports widget: Adaptive polling state machine in SportsFeed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T17:18:40Z",
+    "resolvedAt": "2026-05-30T21:06:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042488,
+    "summary": "Sports widget: Dispatch IntersectionObserver visibility for live polling",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T17:19:20Z",
+    "resolvedAt": "2026-05-30T21:06:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042519,
+    "summary": "[meta] Firefox 151.0.2 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T19:35:05Z",
+    "resolvedAt": "2026-06-12T12:47:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042522,
+    "summary": "Newtab Connect OMC asrouter message component to allow widget s to be turned on",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T19:41:17Z",
+    "resolvedAt": "2026-05-29T09:23:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042524,
+    "summary": "Update runtime-metrics for Firefox 151.0.2 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T19:52:42Z",
+    "resolvedAt": "2026-05-27T19:45:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042525,
+    "summary": "Update locales for Firefox 151.0.2 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T19:53:24Z",
+    "resolvedAt": "2026-05-28T09:20:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042550,
+    "summary": "Fix scrollbar from appearing when there is no content on the New Tab page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T21:55:23Z",
+    "resolvedAt": "2026-05-28T09:20:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042815,
+    "summary": "Sticky search on scroll is no longer working",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-27T14:09:22Z",
+    "resolvedAt": "2026-05-29T09:24:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042866,
+    "summary": "Replace kit animated GIF with webm video",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-27T15:31:08Z",
+    "resolvedAt": "2026-05-28T09:20:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042885,
+    "summary": "[meta] Firefox 151.0.3 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-27T16:02:24Z",
+    "resolvedAt": "2026-06-12T12:47:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043088,
+    "summary": "Sports widget - Don't show the live endpoint data until kick-off",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T01:39:42Z",
+    "resolvedAt": "2026-05-28T09:21:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043106,
+    "summary": "Sports widget - Add strings for pagination feature",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T05:02:24Z",
+    "resolvedAt": "2026-06-01T08:47:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043316,
+    "summary": "Add final branding variation for New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T15:37:28Z",
+    "resolvedAt": "2026-05-29T09:25:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043386,
+    "summary": "Standardize New Tab widgets hover background",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T19:30:22Z",
+    "resolvedAt": "2026-05-30T09:33:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043405,
+    "summary": "Remove all (Legacy) Telemetry probes for Activity Stream",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T20:01:13Z",
+    "resolvedAt": "2026-06-22T20:02:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043408,
+    "summary": "Update default widget order and default sizes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T20:10:10Z",
+    "resolvedAt": "2026-05-30T09:34:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043412,
+    "summary": "Weather widget should return localized conditions from AccuWeather",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T20:22:16Z",
+    "resolvedAt": "2026-06-03T04:10:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043431,
+    "summary": "Improve world cup widget intro state poster image quality",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-28T20:59:32Z",
+    "resolvedAt": "2026-05-30T09:34:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043478,
+    "summary": "Sports widget - Show matches beyond the 21 day limit",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T03:46:14Z",
+    "resolvedAt": "2026-06-18T09:48:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043495,
+    "summary": "Sports widget: emit widgets_error on endpoint failures, align widget_source on click telemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T06:48:32Z",
+    "resolvedAt": "2026-06-02T09:41:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043537,
+    "summary": "2.4 - 1.27% installer size + 2 more (Linux, Windows) regression on Wed May 27 2026",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T09:19:17Z",
+    "resolvedAt": "2026-06-02T15:10:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043586,
+    "summary": "World cup medium view layout is affected by longer strings on other locales than en-US",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T12:49:15Z",
+    "resolvedAt": "2026-06-03T04:10:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043639,
+    "summary": "Disable branding variations if the sports widget is disabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T15:18:23Z",
+    "resolvedAt": "2026-05-30T21:07:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043665,
+    "summary": "Size submenu for some New Tab widgets doesn't work on initial browser load",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T16:49:29Z",
+    "resolvedAt": "2026-05-30T21:07:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043730,
+    "summary": "Add WebNotifications to newtab state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-29T20:06:36Z",
+    "resolvedAt": "2026-07-12T11:36:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043944,
+    "summary": "Sports widget - Upcoming matches alone should not be used to determine kick-off",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-31T22:04:23Z",
+    "resolvedAt": "2026-06-01T08:47:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044093,
+    "summary": "Newtab sports widget watch live button is missing",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T16:42:40Z",
+    "resolvedAt": "2026-06-02T09:43:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044100,
+    "summary": "Sort matches chronologically when sports widget followed-only toggle is off",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T17:14:38Z",
+    "resolvedAt": "2026-06-02T09:43:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044115,
+    "summary": "World Cup Widget: Celebration animation",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T17:38:05Z",
+    "resolvedAt": "2026-06-09T09:11:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044132,
+    "summary": "Update locales for Firefox 151.0.3 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T18:33:56Z",
+    "resolvedAt": "2026-06-02T22:05:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044180,
+    "summary": "Update default live polling time from 60s to 180s",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T22:14:17Z",
+    "resolvedAt": "2026-06-02T22:05:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044196,
+    "summary": "World Cup Widget: Celebration animation trigger",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-01T23:54:41Z",
+    "resolvedAt": "2026-06-09T09:11:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044326,
+    "summary": "Extend ./mach newtab locales-report to accept a --string ID argument to see the coverage for a specific string",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T13:51:53Z",
+    "resolvedAt": "2026-06-12T21:19:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044372,
+    "summary": "If a match ended in penalties, the penalties text is visible when the WCW is in medium size layout",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T15:37:56Z",
+    "resolvedAt": "2026-06-15T02:18:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044430,
+    "summary": "World Cup Widget: Celebration animation Intersection Observer",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T18:03:04Z",
+    "resolvedAt": "2026-06-09T09:11:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044456,
+    "summary": "widget.*.interacted pref is flipped when user turns off a widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T20:10:24Z",
+    "resolvedAt": "2026-06-03T04:12:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044483,
+    "summary": "World Clocks widget is missing the widgets.clocks.interaction pref and   interaction tracking entirely",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T21:54:50Z",
+    "resolvedAt": "2026-07-31T04:33:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044506,
+    "summary": "Intermittent TV browser/extensions/newtab/test/xpcshell/test_WeatherFeed.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-02T23:52:11Z",
+    "resolvedAt": "2026-06-18T09:49:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044732,
+    "summary": "New-tab world-cup widget animation plays too eagerly/repeatedly (on every mouseover)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-03T16:28:50Z",
+    "resolvedAt": "2026-06-05T01:36:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044744,
+    "summary": "Newtab list widget add item button background flashes background on refresh",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-03T17:02:16Z",
+    "resolvedAt": "2026-06-08T21:36:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044808,
+    "summary": "Hiding the new widgets from ... button leaves widgets in the customize sidebar enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-03T20:38:53Z",
+    "resolvedAt": "2026-06-22T11:07:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044816,
+    "summary": "Sports widget: emit widgets_user_event telemetry on live carousel navigation",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-03T21:26:14Z",
+    "resolvedAt": "2026-06-05T01:36:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044826,
+    "summary": "New-Tab Widgets 3-dot menu entries aren't vertically centered in their hover-granted colorful stripe",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-03T22:36:52Z",
+    "resolvedAt": "2026-07-16T09:15:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044923,
+    "summary": "[META] [QA] [QA-5287] Testing New Tab train-hop for Firefox 151.0.3 Release",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T08:49:29Z",
+    "resolvedAt": "2026-06-26T07:47:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044939,
+    "summary": "Sports widget refresh button is missing",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T09:47:39Z",
+    "resolvedAt": "2026-06-12T21:20:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045034,
+    "summary": "Update text string for \"Show less widgets\" to be \"Show fewer widgets\"",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T14:56:05Z",
+    "resolvedAt": "2026-06-05T01:37:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045035,
+    "summary": "The sports widget match row, when hovered, overlaps the \"view all\" button in medium size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T14:58:18Z",
+    "resolvedAt": "2026-06-05T01:37:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045049,
+    "summary": "Add error boundary around each widget to contain component errors to only that specific widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T15:35:50Z",
+    "resolvedAt": "2026-06-05T01:37:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045101,
+    "summary": "Update locales for Firefox 151.0.3 train-hop (June 4)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-04T19:15:10Z",
+    "resolvedAt": "2026-06-05T01:37:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045630,
+    "summary": "[Wayland] Wrong pointer position when long press and move on new tab and history buttons",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T06:52:53Z",
+    "resolvedAt": "2026-06-23T01:22:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045758,
+    "summary": "[Rollout] The large clocks widget is displayed instead of the medium one after enrollment",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T14:30:38Z",
+    "resolvedAt": "2026-06-11T14:08:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045759,
+    "summary": "[Rollout] The wrong callout is displayed for multiple World Cup rollouts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T14:32:30Z",
+    "resolvedAt": "2026-06-11T14:08:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045760,
+    "summary": "[Rollout] The WCW callout is not displayed for multiple World Cup rollouts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T14:33:27Z",
+    "resolvedAt": "2026-06-11T14:09:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045817,
+    "summary": "Newtab devtools toggle allizom for ads no longer works",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T16:19:41Z",
+    "resolvedAt": "2026-06-10T10:12:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045872,
+    "summary": "World Cup Widget: Celebration pref should be triggered by custom trainhopConfig payload",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T19:27:56Z",
+    "resolvedAt": "2026-06-09T09:13:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045893,
+    "summary": "Crossword game has CSP violation blocking image load",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-08T20:57:50Z",
+    "resolvedAt": "2026-06-22T18:07:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046045,
+    "summary": "Make \"Hide widget\" consistent",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T12:16:42Z",
+    "resolvedAt": "2026-07-07T21:13:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046057,
+    "summary": "Widget layout issues when moving the sports widget with drag and drop while the Link watching list is open",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T13:09:02Z",
+    "resolvedAt": "2026-06-18T20:13:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046085,
+    "summary": "Widgets callout is rendered underneath the search bar in NTP",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T14:45:28Z",
+    "resolvedAt": "2026-06-10T03:32:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046124,
+    "summary": "[meta] Firefox 151.0.4 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T16:17:57Z",
+    "resolvedAt": "2026-06-12T12:41:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046125,
+    "summary": "Update locales for Firefox 151.0.4 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T16:18:24Z",
+    "resolvedAt": "2026-06-10T03:32:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046143,
+    "summary": "weather widget activate without user opt-in",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-09T17:53:49Z",
+    "resolvedAt": "2026-07-27T08:20:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046439,
+    "summary": "Update locales for Firefox 152 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-10T14:22:46Z",
+    "resolvedAt": "2026-06-15T02:18:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046444,
+    "summary": "about:preferences#home does not show Widget toggle options when widgets are enabled via Nimbus",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-10T14:31:17Z",
+    "resolvedAt": "2026-06-12T07:52:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046594,
+    "summary": "Include Small size widgets in the \"Maximize\" action when in the widget row",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-10T21:19:16Z",
+    "resolvedAt": "2026-06-25T04:44:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046707,
+    "summary": "newtab thumbnails are downloaded as 296px wide and stretched to 298.133px (nova)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T08:06:01Z",
+    "resolvedAt": "2026-07-03T21:45:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046717,
+    "summary": "sports widget: first game of soccer/football worldcup (Mexico - South Africa) missing/not shown as Upcoming but Korea - Czechia instead",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T09:00:18Z",
+    "resolvedAt": "2026-06-11T14:42:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046913,
+    "summary": "Widget settings should be visible (but not enabled) for users in Nimbus experiments",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T18:39:35Z",
+    "resolvedAt": "2026-06-12T07:53:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046930,
+    "summary": "sports widget: first game MEX - RSA shown as '0-0 Full Time' under 'Results' because data still shows it as scheduled at kickoff time",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T19:07:05Z",
+    "resolvedAt": "2026-06-12T00:41:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046945,
+    "summary": "Widgets doesn't match UI locale after switching language from settings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T19:48:17Z",
+    "resolvedAt": "2026-06-18T09:50:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046946,
+    "summary": "Add WebNotifications badge to top sites",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T19:56:58Z",
+    "resolvedAt": "2026-08-05T09:24:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046947,
+    "summary": "Add TopSites hover card with notifications",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T19:59:50Z",
+    "resolvedAt": "2026-08-05T09:24:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046956,
+    "summary": "Add shortcut button disappears when Top Sites rows are set to 1 on Firefox New Tab page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-11T20:31:38Z",
+    "resolvedAt": "2026-06-18T09:50:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047068,
+    "summary": "world cup widget doesn't show last result by default",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-12T06:42:38Z",
+    "resolvedAt": "2026-06-15T19:56:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047209,
+    "summary": "Sports refresh button should spin when actively requesting an update",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-12T14:57:56Z",
+    "resolvedAt": "2026-06-12T21:21:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047216,
+    "summary": "Newtab sports widget change watch live links to new tab target",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-12T15:21:40Z",
+    "resolvedAt": "2026-06-12T21:21:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047272,
+    "summary": "Firefox restart required to see \"live\" tab in world cup widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-12T19:17:17Z",
+    "resolvedAt": "2026-06-18T09:50:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047453,
+    "summary": "Update runtime-metrics for Firefox 152 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-14T20:16:40Z",
+    "resolvedAt": "2026-06-15T02:18:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047456,
+    "summary": "WCW Blank page after matches end",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-14T21:50:39Z",
+    "resolvedAt": "2026-06-15T21:16:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047457,
+    "summary": "Minimizing widgets with the ^ button doesn't work with View All",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-14T21:55:19Z",
+    "resolvedAt": "2026-06-15T21:16:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047703,
+    "summary": "football/soccer widget: country names in tooltip remain English (en-US) but should be localized",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-15T19:18:00Z",
+    "resolvedAt": "2026-06-17T10:51:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047765,
+    "summary": "Fix Add/Edit Clcoks background",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-15T21:53:35Z",
+    "resolvedAt": "2026-06-17T22:11:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047788,
+    "summary": "Show less/more transition animation",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-16T00:27:14Z",
+    "resolvedAt": "2026-07-21T10:17:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047965,
+    "summary": "Overlapping elements for sports widget statuses in medium size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-16T13:54:08Z",
+    "resolvedAt": "2026-06-18T09:51:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048082,
+    "summary": "WorldCW - Celebration animation phase 2",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-16T20:29:07Z",
+    "resolvedAt": "2026-08-06T16:11:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048092,
+    "summary": "WorldCW - Celebration animation phase 2 STRINGS",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-16T21:10:29Z",
+    "resolvedAt": "2026-06-17T22:11:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048386,
+    "summary": "Set up boilerplate Privacy widget (prefs/UI) for the New Tab page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-17T20:48:53Z",
+    "resolvedAt": "2026-06-25T05:26:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048387,
+    "summary": "Wire Privacy widget to PrivacyMetricsService display state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-17T20:48:58Z",
+    "resolvedAt": "2026-08-10T17:55:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048388,
+    "summary": "Add Glean telemetry for the Privacy New Tab widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-17T20:49:02Z",
+    "resolvedAt": "2026-08-13T04:25:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048389,
+    "summary": "Add strings for the Privacy New Tab widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-17T20:49:06Z",
+    "resolvedAt": "2026-07-09T16:07:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048712,
+    "summary": "WCW: View schedule's Key Dates are off sometimes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-18T17:50:15Z",
+    "resolvedAt": "2026-06-19T04:14:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048751,
+    "summary": "Update locales for Firefox 152.0.1 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-18T20:19:55Z",
+    "resolvedAt": "2026-06-19T04:14:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048752,
+    "summary": "Update runtime-metrics for Firefox 152.0.1 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-18T20:30:40Z",
+    "resolvedAt": "2026-06-19T04:14:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049032,
+    "summary": "Get rid of a bunch of now-uneeded trainhop compatibility shims that have expired",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-19T20:49:58Z",
+    "resolvedAt": "2026-06-23T22:04:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049390,
+    "summary": "Create static UI message states",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-22T15:25:56Z",
+    "resolvedAt": "2026-06-29T09:38:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049472,
+    "summary": "Newtab drag n drops could transition the movement of widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-22T18:22:38Z",
+    "resolvedAt": "2026-07-21T10:17:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049488,
+    "summary": "Scaffold the Daily Crossword widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-22T19:40:09Z",
+    "resolvedAt": "2026-06-25T09:57:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049489,
+    "summary": "Render the Daily Crossword in a sandboxed iframe",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-22T19:41:53Z",
+    "resolvedAt": "2026-07-09T16:08:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049528,
+    "summary": "Add topsites.pinned_count metric to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T00:32:03Z",
+    "resolvedAt": "2026-06-25T05:27:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049535,
+    "summary": "render-activity-stream-html.js fails with \"Cannot find package 'meow'\" after fresh npm install",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T01:40:39Z",
+    "resolvedAt": "2026-06-25T05:27:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049545,
+    "summary": "Newtab clean shortcuts list and shortcuts drag n drop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T04:02:28Z",
+    "resolvedAt": "2026-06-26T04:17:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049700,
+    "summary": "[Experiment] The title and secondary button of the Tab Groups Promo message from treatment-a are cropped on Spanish locales after resizing the browser window",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T14:06:13Z",
+    "resolvedAt": "2026-07-02T06:28:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049798,
+    "summary": "World Cup Wallpapers: Semi-finals Message",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T18:04:38Z",
+    "resolvedAt": "2026-06-25T05:33:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049800,
+    "summary": "Medium size widgets limit to 1 row, and have a show more widgets button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T18:07:12Z",
+    "resolvedAt": "2026-06-24T04:02:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049845,
+    "summary": "Firefox 152.0.2 extreme memory usage and complete freeze on startup (regression from 152.0.1)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T19:48:38Z",
+    "resolvedAt": "2026-06-25T05:33:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049875,
+    "summary": "Update locales for Firefox 152.0.1 v2 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T21:15:05Z",
+    "resolvedAt": "2026-06-24T04:02:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049886,
+    "summary": "Sports widget - Remove Watch LIve button and modal from countries not included in the /watch-links endpoint",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T21:38:28Z",
+    "resolvedAt": "2026-06-24T04:11:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049897,
+    "summary": "Add newtab.scroll boolean metric to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-23T22:38:01Z",
+    "resolvedAt": "2026-06-27T08:47:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049914,
+    "summary": "Hard-code in 11px as the font-size for the Sponsored text in Topsites",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T01:17:53Z",
+    "resolvedAt": "2026-06-25T05:33:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049936,
+    "summary": "Scaffold the Stocks widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T04:38:20Z",
+    "resolvedAt": "2026-06-27T08:47:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050118,
+    "summary": "Add a utility flag to `./mach newtab trainhop-recipe` to make it easier to populate our tracking table with entries",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T15:01:24Z",
+    "resolvedAt": "2026-07-06T21:44:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050190,
+    "summary": "Use border-radius-medium for New Tab topsite tiles",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T17:23:10Z",
+    "resolvedAt": "2026-06-26T04:19:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050235,
+    "summary": "WCW: sportsWidget.interaction pref not set by Results, Upcoming navigations",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T19:18:55Z",
+    "resolvedAt": "2026-06-26T04:19:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050239,
+    "summary": "Weather widget small card layout issues with opt-in location locales",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-24T19:35:29Z",
+    "resolvedAt": "2026-06-30T03:15:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050299,
+    "summary": "FocusTimer: Fix progress circle on transition",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T00:09:06Z",
+    "resolvedAt": "2026-06-25T05:34:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050312,
+    "summary": "Fix OFF timing of Widget resizing via Widget Header",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T00:49:07Z",
+    "resolvedAt": "2026-07-03T21:46:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050339,
+    "summary": "Crossword widget - Add in locales preview file for en-xx localization",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T04:47:05Z",
+    "resolvedAt": "2026-07-10T10:23:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050340,
+    "summary": "Crossword widget - Add Crossword to AboutPreferences",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T04:49:05Z",
+    "resolvedAt": "2026-07-13T20:32:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050377,
+    "summary": "[Nova] The “Learn how we protect your data” link from the “NEWTAB_PERSONALIZATION_MESSAGE” displays a blue and non‑rounded focus outline",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T09:37:03Z",
+    "resolvedAt": "2026-08-05T09:24:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050669,
+    "summary": "Add pref to control max number of trackers show in widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-25T22:15:04Z",
+    "resolvedAt": "2026-06-29T09:39:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050881,
+    "summary": "Use border-radius-xsmall for New Tab inferred personalization checkbox",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T15:06:47Z",
+    "resolvedAt": "2026-06-29T21:54:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050900,
+    "summary": "Migrate test/unit/common/Reducers.test.js to test/jest/common/Reducers.test.jsx",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T16:57:57Z",
+    "resolvedAt": "2026-08-08T09:42:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050954,
+    "summary": "Add logic to show different tip messages through out the day/week",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T19:58:42Z",
+    "resolvedAt": "2026-08-08T09:42:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050969,
+    "summary": "Set up boilerplate Picture of the Day widget (prefs/basic UI)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:12:46Z",
+    "resolvedAt": "2026-07-10T10:23:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050971,
+    "summary": "Add strings for the Picture of the Day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:14:54Z",
+    "resolvedAt": "2026-07-02T09:53:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050972,
+    "summary": "Add ability to dimiss current daily photo",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:16:53Z",
+    "resolvedAt": "2026-07-10T10:23:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050973,
+    "summary": "Add ability to set the picture of the day as a custom wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:17:21Z",
+    "resolvedAt": "2026-07-10T10:23:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050975,
+    "summary": "Display a localized image description for the picture of the day",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:23:41Z",
+    "resolvedAt": "2026-07-10T10:23:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050976,
+    "summary": "Connect Picture of the day widget to the Merino endpoint to set the background of the widget to the current picture",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:26:08Z",
+    "resolvedAt": "2026-07-10T10:23:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050977,
+    "summary": "Add telemetry to the Picture of the day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-26T21:28:06Z",
+    "resolvedAt": "2026-07-10T10:23:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051167,
+    "summary": "Weather widget not showing fahrenheit/celsius switch",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-28T22:25:14Z",
+    "resolvedAt": "2026-06-29T09:39:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051179,
+    "summary": "Focus Timer widget: add small size in Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T01:29:24Z",
+    "resolvedAt": "2026-07-17T09:33:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051187,
+    "summary": "Focus Timer widget: make focus/break transition reliable (celebration completion not firing)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T04:15:03Z",
+    "resolvedAt": "2026-06-30T21:17:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051310,
+    "summary": "Newtab package.json node version is way out of date",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T14:57:29Z",
+    "resolvedAt": "2026-06-30T03:15:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051313,
+    "summary": "Create devtools controls area for enabling/configuring widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T15:05:38Z",
+    "resolvedAt": "2026-07-17T09:33:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051327,
+    "summary": "Newtab shortcuts ... button wallpaper contrast issue",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T15:51:27Z",
+    "resolvedAt": "2026-06-29T21:55:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051333,
+    "summary": "Use moz-checkbox for New Tab inferred personalization checkbox",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T16:02:49Z",
+    "resolvedAt": "2026-07-10T10:24:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051348,
+    "summary": "Add deep-linking for Highlights",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T16:45:30Z",
+    "resolvedAt": "2026-06-30T03:15:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051408,
+    "summary": "Newtab decouple client layout pref from remote layouts pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T19:49:57Z",
+    "resolvedAt": "2026-08-10T20:30:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051412,
+    "summary": "Newtab setup layouts in remote settings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T19:56:50Z",
+    "resolvedAt": "2026-08-10T20:27:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051413,
+    "summary": "Newtab client needs to request layouts from remote settings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T20:02:31Z",
+    "resolvedAt": "2026-07-23T16:16:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051420,
+    "summary": "Initialize the MozAdsClient singleton in New Tab behind a feature flag",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T20:30:38Z",
+    "resolvedAt": "2026-07-06T21:46:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051450,
+    "summary": "Make the wallpaper feature highlight CTA deep-link category configurable via OMC message content",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T23:43:07Z",
+    "resolvedAt": "2026-07-07T21:14:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051457,
+    "summary": "Sports widget - the \"Now\" tab missing live sub-state labels and live shootout score in the pill",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T00:03:51Z",
+    "resolvedAt": "2026-06-30T09:12:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051512,
+    "summary": "Sports widget - Remove \"penalties\" string from results match tile in when medium size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T08:49:44Z",
+    "resolvedAt": "2026-06-30T23:31:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051610,
+    "summary": "Newtab shortcuts drag n drop updates to placeholder",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T14:48:56Z",
+    "resolvedAt": "2026-07-10T10:24:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051616,
+    "summary": "Add CTA button to Privacy widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T15:12:24Z",
+    "resolvedAt": "2026-08-10T17:54:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051628,
+    "summary": "[Intermittent] The sponsored tiles and the Add Shortcut button look like they reload when pinning and unpinning shortcuts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T15:35:15Z",
+    "resolvedAt": "2026-07-09T16:08:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051684,
+    "summary": "Sports widget: display team.region (not team.key) for the team code under the flag",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T17:55:30Z",
+    "resolvedAt": "2026-07-01T09:35:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051736,
+    "summary": "Update locales for Firefox 152.0.4 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T20:21:36Z",
+    "resolvedAt": "2026-06-30T23:31:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051915,
+    "summary": "The custom image URL is not applied to the manually added Top Site tile after editing, showing a preview of the Homepage of the website instead",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-01T12:29:43Z",
+    "resolvedAt": "2026-07-09T16:09:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052128,
+    "summary": "sports widget: soccer/football world championship widget displays wrong if goals scored in extra time (counted twice)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-02T09:08:33Z",
+    "resolvedAt": "2026-07-03T09:37:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052371,
+    "summary": "World Cup Widget: Two varieties for Survey Message STRINGS",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-02T21:14:14Z",
+    "resolvedAt": "2026-07-03T09:38:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052373,
+    "summary": "World Cup Widget: Two varieties for Survey Message",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-02T21:24:21Z",
+    "resolvedAt": "2026-07-07T21:15:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052416,
+    "summary": "Stocks widget: introduce default state for Medium and Large sizes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-03T02:27:05Z",
+    "resolvedAt": "2026-07-10T10:24:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052427,
+    "summary": "Stocks widget: add error state",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-03T04:11:47Z",
+    "resolvedAt": "2026-07-17T09:33:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052616,
+    "summary": "Fetch New Tab ads through the MozAdsClient in AdsFeed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-03T23:02:00Z",
+    "resolvedAt": "2026-07-10T10:24:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052622,
+    "summary": "Newtab write a technical doc on data formate structure and mecahnics for the data",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-04T00:16:02Z",
+    "resolvedAt": "2026-07-21T13:54:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052945,
+    "summary": "[meta] Firefox 152.0.5 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-06T18:43:57Z",
+    "resolvedAt": "2026-07-12T01:41:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053140,
+    "summary": "Perma mozilla-beta /builds/worker/checkouts/gecko/browser/components/asrouter/modules/ASRouter.sys.mjs:1632:3 | Duplicate name '_isAllowedActionOnlyMessageAction'. (no-dupe-class-members)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-07T15:15:13Z",
+    "resolvedAt": "2026-07-15T13:40:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053246,
+    "summary": "Update locales for Firefox 152.0.5 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-07T20:12:41Z",
+    "resolvedAt": "2026-07-08T04:06:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053251,
+    "summary": "Newtab add new pin button is creating new rows if grouped pins is off",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-07T20:30:34Z",
+    "resolvedAt": "2026-07-08T04:07:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053264,
+    "summary": "Newtab Hide section layout cards that don't fill their row",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-07T21:07:08Z",
+    "resolvedAt": "2026-07-12T04:44:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053311,
+    "summary": "Crossword widget - Add context menu with postMessages script",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-08T03:58:34Z",
+    "resolvedAt": "2026-07-15T03:21:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053514,
+    "summary": "Picture of the Day: Follow up Strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-08T18:26:54Z",
+    "resolvedAt": "2026-07-09T16:11:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053568,
+    "summary": "Remove three unused activity-stream discoverystream.thumbsUpDown.* preferences",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-08T21:12:04Z",
+    "resolvedAt": "2026-07-23T16:17:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053623,
+    "summary": "POTD: Missing string",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-08T23:49:02Z",
+    "resolvedAt": "2026-07-09T16:11:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053667,
+    "summary": "Crossword widget - Add \"New\" badge + interactions logic",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-09T05:39:33Z",
+    "resolvedAt": "2026-07-15T03:21:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053838,
+    "summary": "POTD: Re-add strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-09T16:17:24Z",
+    "resolvedAt": "2026-07-09T22:58:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053843,
+    "summary": "Remove unused Add Shortcut OMC artifacts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-09T16:22:58Z",
+    "resolvedAt": "2026-07-17T09:34:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053933,
+    "summary": "Add author and license attribution to picture of the day",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-09T21:42:19Z",
+    "resolvedAt": "2026-07-10T10:25:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053963,
+    "summary": "Crossword widget - Add strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T00:49:32Z",
+    "resolvedAt": "2026-07-10T10:25:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054104,
+    "summary": "Picture of the Day \"Set as wallpaper\" always classifies theme as \"light\" because calculateTheme runs in the parent process",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T15:15:28Z",
+    "resolvedAt": "2026-07-12T11:38:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054106,
+    "summary": "Picture of the Day \"Set as wallpaper\" checkmark doesn't track whether the current picture is actually the active wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T15:16:39Z",
+    "resolvedAt": "2026-07-12T11:38:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054109,
+    "summary": "Picture of the Day widget: UX refinements",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T15:19:59Z",
+    "resolvedAt": "2026-07-14T09:47:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054111,
+    "summary": "Add a pref / trainhopConfig gate to toggle the Picture of the Day \"Set as wallpaper\" feature",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T15:20:29Z",
+    "resolvedAt": "2026-07-12T11:38:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054112,
+    "summary": "Add a dedicated trainhopConfig.widgetPictureOfTheDay payload for POTD feature config",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T15:22:28Z",
+    "resolvedAt": "2026-07-12T11:38:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054175,
+    "summary": "Update Shortcuts Add/Edit dialog for Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T18:58:41Z",
+    "resolvedAt": "2026-07-18T09:11:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054325,
+    "summary": "Update locales for Firefox 152.0.6 train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-12T01:47:27Z",
+    "resolvedAt": "2026-07-12T11:39:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054391,
+    "summary": "Capture web notifications into a live New Tab slice",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-12T21:59:52Z",
+    "resolvedAt": "2026-08-05T09:24:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054436,
+    "summary": "Daily crossword widget content overflows and clips past the bottom container boundary",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-13T09:43:36Z",
+    "resolvedAt": "2026-07-15T03:21:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054463,
+    "summary": "Related articles are not opening on click",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-13T12:42:12Z",
+    "resolvedAt": "2026-07-15T03:21:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054568,
+    "summary": "Picture of the Day widget - Add \"New\" badge + interactions logic",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-13T19:04:23Z",
+    "resolvedAt": "2026-07-14T09:47:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054581,
+    "summary": "ExternalComponentWrapper doesn't properly forward down \"live\" properties from MessageWrapper, like isIntersecting",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-13T19:38:43Z",
+    "resolvedAt": "2026-07-22T21:44:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054599,
+    "summary": "Update the initial order of the Picture of the day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-13T21:42:39Z",
+    "resolvedAt": "2026-07-14T09:47:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054868,
+    "summary": "The New Tab page is no longer localized on localized builds after installing the latest Train Hop XPI (154.6.20260713.11701)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T09:04:41Z",
+    "resolvedAt": "2026-07-15T11:46:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054886,
+    "summary": "Daily crossword title's descenders are being clipped",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T11:35:41Z",
+    "resolvedAt": "2026-07-16T00:08:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054936,
+    "summary": "Crossword widget: Migrate strings from Fluent file back to inline markup",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T14:05:29Z",
+    "resolvedAt": "2026-07-15T03:21:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054985,
+    "summary": "Migrate New Tab Widgets expand button to moz-button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T16:17:18Z",
+    "resolvedAt": "2026-07-17T09:34:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055029,
+    "summary": "Standardize New Tab widgets and sections header spacing",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T18:58:53Z",
+    "resolvedAt": "2026-07-23T16:17:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055057,
+    "summary": "Add a dedicated trainhopConfig.widgetCrossword payload for Crossword feature config",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T20:23:18Z",
+    "resolvedAt": "2026-07-18T09:12:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055158,
+    "summary": "Daily crossword widget is blank after closing and reopening browser",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T09:21:14Z",
+    "resolvedAt": "2026-07-16T03:54:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055195,
+    "summary": "Daily crossword completed puzzle and show clues are displayed in medium sized widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T12:04:25Z",
+    "resolvedAt": "2026-07-16T21:42:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055304,
+    "summary": "Update Discovery Stream Admin buttons to use moz-button components",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T18:36:32Z",
+    "resolvedAt": "2026-07-17T09:35:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055306,
+    "summary": "Discovery Stream Admin: Add per-widget feature toggles and pref reset buttons",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T18:37:53Z",
+    "resolvedAt": "2026-07-17T09:35:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055307,
+    "summary": "Migrate Discovery Stream Admin unit tests to jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T18:39:27Z",
+    "resolvedAt": "2026-07-17T09:35:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055312,
+    "summary": "Update Dev Tools Wrench button to match nova redesign",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T18:55:07Z",
+    "resolvedAt": "2026-07-17T09:35:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055314,
+    "summary": "Add \"close\" (dismss) button to Discovery Stream Admin panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-15T19:13:09Z",
+    "resolvedAt": "2026-07-17T09:35:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055369,
+    "summary": "Change the URL to open from an anchor tag, not a button element",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-16T00:03:46Z",
+    "resolvedAt": "2026-07-17T16:19:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055640,
+    "summary": "Fail jest tests that emit console.error messages",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-16T20:35:08Z",
+    "resolvedAt": "2026-07-18T09:12:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055643,
+    "summary": "Populate MozAdsRequestOptions flags from adsBackendConfig in AdsFeed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-16T20:40:54Z",
+    "resolvedAt": "2026-07-21T10:23:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055939,
+    "summary": "Remove version 153 train-hop compatibility shims for the World Cup newtab logo variations",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-17T19:35:07Z",
+    "resolvedAt": "2026-07-24T09:05:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055942,
+    "summary": "Remove version 145 train-hop shim for PrivacyFeed getTodayStats guard",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-17T19:36:37Z",
+    "resolvedAt": "2026-07-21T10:24:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056300,
+    "summary": "Expose available browser themes to New Tab and apply/install a selected theme",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T16:07:08Z",
+    "resolvedAt": "2026-07-24T22:06:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056301,
+    "summary": "Add New Tab Customize Panel browser theme selection strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T16:07:24Z",
+    "resolvedAt": "2026-07-24T22:06:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056304,
+    "summary": "Add full browser theme selection sub-panel to the New Tab Customize Panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T16:10:14Z",
+    "resolvedAt": "2026-07-24T22:06:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056937,
+    "summary": "Expose trainhopConfig values in Discovery Stream Admin tooling",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-22T16:07:27Z",
+    "resolvedAt": "2026-07-26T21:55:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057171,
+    "summary": "[Privacy widget] Font size of the message is set as root instead of small",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T09:12:47Z",
+    "resolvedAt": "2026-08-10T17:54:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057217,
+    "summary": "Newtab custom wallpapers flash when selecting from picture of the day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T13:38:21Z",
+    "resolvedAt": "2026-07-28T09:59:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057286,
+    "summary": "Newtab make ad allowed ranks configurable via trainhopConfig",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T16:51:23Z",
+    "resolvedAt": "2026-07-24T22:07:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057317,
+    "summary": "Provide the New Tab `context_id` to Mozilla Ads Client",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T18:54:33Z",
+    "resolvedAt": "2026-08-08T09:42:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057616,
+    "summary": "Automate runtime-metrics update for train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-24T16:34:17Z",
+    "resolvedAt": "2026-08-01T09:57:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057646,
+    "summary": "World Clock Widget: Complete City Search",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-24T19:07:46Z",
+    "resolvedAt": "2026-08-05T04:30:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057871,
+    "summary": "browser_newtab_last_LinkMenu.js fails on Linux 22.04 when browser.nova.enabled is true",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-26T15:26:20Z",
+    "resolvedAt": "2026-08-06T09:58:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058485,
+    "summary": "Update incorrect/missing nova-cleanup comments",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-28T12:55:20Z",
+    "resolvedAt": "2026-08-06T09:58:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058567,
+    "summary": "Enable Glean telemetry for AdsClient by implementing MozAdsTelemetry against FOG",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-28T16:28:18Z",
+    "resolvedAt": "2026-08-07T09:49:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058878,
+    "summary": "Remove skip-if==\"nova\" for already fixed perma fail tests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-29T10:29:52Z",
+    "resolvedAt": "2026-08-01T09:58:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058938,
+    "summary": "Enable remote settings driven sections layout in Nightly",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-29T14:29:54Z",
+    "resolvedAt": "2026-08-06T09:59:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059030,
+    "summary": "Use MAC in TopSitesFeed for fetching tiles from MARS",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-29T17:06:46Z",
+    "resolvedAt": "2026-07-30T09:24:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059095,
+    "summary": "Use MAC in DiscoveryStreamFeed for fetching tiles from MARS",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-29T18:30:30Z",
+    "resolvedAt": "2026-08-05T04:30:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059104,
+    "summary": "Automate locales update for train-hop",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-29T19:05:20Z",
+    "resolvedAt": "2026-08-07T04:27:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059741,
+    "summary": "Crossword widget double-counts actions and includes too many catch-all \"interaction\" user_actions",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-31T13:25:24Z",
+    "resolvedAt": "2026-08-05T09:25:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059811,
+    "summary": "Fix issue with the \"Show more widgets\" visibility",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-31T17:26:26Z",
+    "resolvedAt": "2026-08-05T09:25:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060320,
+    "summary": "Fix `newtab.closed` and `newtab.sections_impression` firing unexpectedly",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-03T18:24:39Z",
+    "resolvedAt": "2026-08-08T09:43:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060323,
+    "summary": "Add topsite display customization event to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-03T18:24:55Z",
+    "resolvedAt": "2026-08-07T04:28:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060664,
+    "summary": "Use MAC for callbacks in HNT TelemetryFeed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-04T20:58:46Z",
+    "resolvedAt": "2026-08-14T04:17:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060749,
+    "summary": "Stocks widget: add widgets.stocks.interaction and flip it on user actions",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T06:15:55Z",
+    "resolvedAt": "2026-08-06T10:00:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060787,
+    "summary": "Migrate the Stocks widget telemetry to the shared useWidgetTelemetry hook",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T09:05:24Z",
+    "resolvedAt": "2026-08-07T09:50:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060908,
+    "summary": "Create initial JSON dump of Remote settings sections layouts for cold startup",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T15:23:26Z",
+    "resolvedAt": "2026-08-12T04:03:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060958,
+    "summary": "Add surface_id to the newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T18:25:36Z",
+    "resolvedAt": "2026-08-11T09:24:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060964,
+    "summary": "Fix spoc request building in DiscoveryStream with MAC",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T19:16:45Z",
+    "resolvedAt": "2026-08-06T10:00:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061063,
+    "summary": "Stocks widget: show a \"New\" badge until first interaction",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T02:30:52Z",
+    "resolvedAt": "2026-08-07T09:50:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061072,
+    "summary": "Focus Timer: make the small size available in the context menu",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T04:07:05Z",
+    "resolvedAt": "2026-08-10T20:48:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061524,
+    "summary": "[Privacy widget] Add UTM params for external CTA actions",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T21:11:41Z",
+    "resolvedAt": "2026-08-14T04:17:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061740,
+    "summary": "Reduce gutter width on default new tab layout",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-07T15:07:03Z",
+    "resolvedAt": "2026-08-12T04:03:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061741,
+    "summary": "Create side-by-side content layout variant",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-07T15:08:20Z",
+    "resolvedAt": "2026-08-14T04:18:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061876,
+    "summary": "Privacy Widget: Celebrations",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-07T22:13:43Z",
+    "resolvedAt": "2026-08-12T04:03:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062117,
+    "summary": "New Tab: activity-stream.bundle.js and css/activity-stream.css re-added after Bug 2025793 removed them",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T04:07:22Z",
+    "resolvedAt": "2026-08-11T09:25:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062360,
+    "summary": "Widget size 'medium' isn't usable for all widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T17:52:30Z",
+    "resolvedAt": "2026-08-13T20:11:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062364,
+    "summary": "New Tab trainhop XPI builds from shipit fail with \"newtab-node-modules must be fetched in CI\"",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T18:01:09Z",
+    "resolvedAt": "2026-08-11T09:25:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062391,
+    "summary": "[crossword] Too small to play",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T18:54:38Z",
+    "resolvedAt": "2026-08-13T20:15:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062434,
+    "summary": "New Tab topsite context menu button should obey prefers-reduced-motion",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T21:01:07Z",
+    "resolvedAt": "2026-08-12T04:04:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062473,
+    "summary": "Expand newtab's list of region and locales for content support",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T00:41:46Z",
+    "resolvedAt": "2026-08-12T04:04:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062621,
+    "summary": "The background for New Shortcut/Edit Shortcut prompt is transparent and hardly visible with the latest \"Newtab\" addon installed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T14:02:22Z",
+    "resolvedAt": "2026-08-12T04:04:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062683,
+    "summary": "Add wrexham favicon to topsites",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T16:04:08Z",
+    "resolvedAt": "2026-08-12T20:24:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062750,
+    "summary": "Add a dedicated trainhopConfig.widgetPrivacy payload for Privacy widget feature config",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T18:25:21Z",
+    "resolvedAt": "2026-08-13T04:28:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062753,
+    "summary": "Add layout mgmt panel in Discovery Stream Admin",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T18:35:42Z",
+    "resolvedAt": "2026-08-14T04:18:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062806,
+    "summary": "Crash in [@ callback_interface_ads_client_moz_ads_context_id_provider_context_id]",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T21:38:41Z",
+    "resolvedAt": "2026-08-12T20:24:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062830,
+    "summary": "Privacy Widget Celebration: Reduce the Sparkles",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-12T00:41:04Z",
+    "resolvedAt": "2026-08-13T04:28:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063098,
+    "summary": "Gate newtab web notifications behind a Nimbus trainhop config",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-12T21:15:15Z",
+    "resolvedAt": "2026-08-13T04:28:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063344,
+    "summary": "macOS trainhop CI jobs have stopped running on mozilla-central merges since be1ad74e08cab1c71617c3f54a0b95bc01641eab merged",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T15:11:33Z",
+    "resolvedAt": "2026-08-14T04:19:40Z"
+  }
+]

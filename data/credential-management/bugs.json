@@ -1,0 +1,407 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 1715736,
+    "summary": "New generated password for a site opened in container tab is not auto-saved if it previously had a password generated and auto-saved in any kind of tab",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2021-06-10T09:15:41Z",
+    "resolvedAt": "2026-06-03T13:53:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1767002,
+    "summary": "Generated passwords are some times reused",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2022-04-29T10:58:13Z",
+    "resolvedAt": "2026-06-03T14:10:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1788917,
+    "summary": "Intermittent toolkit/components/passwordmgr/test/browser/browser_doorhanger_form_password_edit.js | single tracking bug",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2022-09-02T13:23:56Z",
+    "resolvedAt": "2026-07-29T21:42:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1999812,
+    "summary": "[contextual-password-manager] several style issues",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2025-11-12T21:21:20Z",
+    "resolvedAt": "2026-07-28T19:36:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2006299,
+    "summary": "[meta] Make LoginStore API Async",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2025-12-16T10:37:32Z",
+    "resolvedAt": "2026-06-09T16:25:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022270,
+    "summary": "Remove  JSON Storage Sync API Methods",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-03-10T16:25:58Z",
+    "resolvedAt": "2026-06-10T22:02:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037036,
+    "summary": "Use GUID for remove/modify in LoginManagerRustMirror to prevent operating on wrong login when origins collide",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-05T10:52:07Z",
+    "resolvedAt": "2026-05-29T00:34:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040672,
+    "summary": "LoginManagerRustMirror: Update version to trigger re-migration",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-19T14:53:28Z",
+    "resolvedAt": "2026-06-02T22:00:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041273,
+    "summary": "Fix intermittent failures: test_logins_decrypt_failure.js fails due to race between Rust mirror and NSS token reset",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-21T11:01:17Z",
+    "resolvedAt": "2026-05-26T21:39:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041348,
+    "summary": "Fix generated password cache not cleared for Container Tab users after autosaved login is updated with username",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-21T14:39:49Z",
+    "resolvedAt": "2026-05-30T09:28:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041353,
+    "summary": "Application Services Rust storage as primary login store on Desktop",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-21T14:43:11Z",
+    "resolvedAt": "2026-06-30T21:15:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041356,
+    "summary": "Fix `searchAndDedupeLogins` to explicitly sort results by matching scheme instead of relying on storage insertion order",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-21T14:51:38Z",
+    "resolvedAt": "2026-05-26T21:39:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041358,
+    "summary": "Fire `passwordmgr-storage-changed` notifications from Rust login storage backend and gate events to active backend only",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-21T14:54:56Z",
+    "resolvedAt": "2026-05-26T21:39:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042808,
+    "summary": "Refactor `LoginManagerStorage.create()` to return a Promise instead of using a callback",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-27T13:50:12Z",
+    "resolvedAt": "2026-06-17T10:44:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042816,
+    "summary": "Remove LoginManagerRustMirror",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-27T14:09:37Z",
+    "resolvedAt": "2026-06-23T09:29:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044645,
+    "summary": "Move LoginHelper.checkLoginValues() to LoginManager._checkLogin() to validate logins for all storage backends",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-03T12:11:22Z",
+    "resolvedAt": "2026-06-10T22:03:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045032,
+    "summary": "AS: logins update() incorrectly bumps times_used and time_last_used",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-04T14:54:59Z",
+    "resolvedAt": "2026-06-08T14:27:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2045696,
+    "summary": "Remove LoginManager Sync API Methods",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-08T12:16:50Z",
+    "resolvedAt": "2026-06-11T13:42:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046055,
+    "summary": "Rust login storage throws a non-Error object on bulk operation failure",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-09T12:54:47Z",
+    "resolvedAt": "2026-06-10T22:04:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046056,
+    "summary": "Rust login storage: apply login metadata defaults and report numSavedPasswords telemetry",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-09T13:00:58Z",
+    "resolvedAt": "2026-06-11T16:36:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047975,
+    "summary": "[contextual-password-manager] Add new fox illustration for empty state",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-16T14:26:54Z",
+    "resolvedAt": "2026-06-17T22:11:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048228,
+    "summary": "Streamline addLoginsAsync across adapters",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-17T12:18:30Z",
+    "resolvedAt": "2026-06-22T16:33:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048229,
+    "summary": "Make passwordmgr unit tests pass against Rust storage backend",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-17T12:19:43Z",
+    "resolvedAt": "2026-07-06T21:43:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048463,
+    "summary": "Remove or update metrics expiring at the end of Firefox 154: pwmgr.doorhanger_submitted_* before Gecko switches to version 155 on 2026-07-20",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-18T02:35:25Z",
+    "resolvedAt": "2026-07-20T17:54:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048554,
+    "summary": "Add telemetry to login storage migrator",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-18T08:14:27Z",
+    "resolvedAt": "2026-07-03T21:45:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049698,
+    "summary": "Clicking the address bar while the Password Save/Update doorhanger is open no longer selects the page URL",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-23T14:05:27Z",
+    "resolvedAt": "2026-08-07T04:27:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049979,
+    "summary": "Not now button should be used instead of the Don't update, in the Update passwords doorhanger",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-24T08:39:45Z",
+    "resolvedAt": "2026-08-11T21:47:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049980,
+    "summary": "The list of logins dropdown arrow and the show/hide password icon are missaligned in the save/update password doorhanger",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-24T08:45:27Z",
+    "resolvedAt": "2026-07-28T21:53:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050064,
+    "summary": "Implement Rust Logins Sync Bridge",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-24T13:24:21Z",
+    "resolvedAt": "2026-06-30T21:16:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051520,
+    "summary": "Ensure sync logs go to logins component",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-06-30T09:45:31Z",
+    "resolvedAt": "2026-07-06T07:51:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052145,
+    "summary": "Primary Password support for Login Storage Migrator",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-02T11:03:10Z",
+    "resolvedAt": "2026-07-06T09:57:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052153,
+    "summary": "The edit button inside the passwords dropdown is not read by the screen reader upon hovering the mouse over it",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-02T11:19:10Z",
+    "resolvedAt": "2026-08-06T09:57:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052154,
+    "summary": "The edit button inside the passwords dropdown cannot be reached using the keyboard",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-02T11:23:42Z",
+    "resolvedAt": "2026-08-01T09:55:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052520,
+    "summary": "\"Import your login from Google Chrome\" suggestion appears despite existing saved login",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-03T12:46:15Z",
+    "resolvedAt": "2026-07-22T11:09:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053044,
+    "summary": "Rust logins removal API does not emit event",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-07T08:18:45Z",
+    "resolvedAt": "2026-07-07T21:16:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053385,
+    "summary": "test_include_other_subdomains_in_lookup.html relies on login origin normalization",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-08T11:18:43Z",
+    "resolvedAt": "2026-07-09T15:39:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053409,
+    "summary": "LoginHelper.getBrowserForPrompt should handle a null browsingContext",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-08T13:11:25Z",
+    "resolvedAt": "2026-07-09T16:10:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053428,
+    "summary": "Rust login storage: integrate primary-password prompt with cancel handling",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-08T14:20:22Z",
+    "resolvedAt": "2026-07-09T22:58:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053557,
+    "summary": "Rust Logins: remove logins without decrypting",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-08T20:55:24Z",
+    "resolvedAt": "2026-07-09T18:09:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053724,
+    "summary": "Enable Rust storage by default",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-09T10:24:09Z",
+    "resolvedAt": "2026-07-18T09:11:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054067,
+    "summary": "Use new Rust api methods for login removal",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-10T13:42:51Z",
+    "resolvedAt": "2026-07-13T20:34:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056155,
+    "summary": "JavaScript error: resource://gre/modules/LoginManager.sys.mjs, line 510: TypeError: can't access property \"uiBusy\", this._storage is null",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-20T06:28:21Z",
+    "resolvedAt": "2026-07-21T10:25:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057888,
+    "summary": "browser_autocomplete_import.js fails on Linux 22.04 when browser.nova.enabled is true",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-26T16:22:31Z",
+    "resolvedAt": "2026-08-07T04:27:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059294,
+    "summary": "[contextual-password-manager] Double border around the notification message bar in the password card",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-30T03:21:33Z",
+    "resolvedAt": "2026-08-07T09:50:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059343,
+    "summary": "Reveal Password context menu option does not work in the Password doorhanger",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-30T08:05:07Z",
+    "resolvedAt": "2026-08-07T09:50:02Z"
+  }
+]

@@ -1,0 +1,1055 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 2025627,
+    "summary": "Content Sharing helper to create a share for signed-in users",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-24T00:27:33Z",
+    "resolvedAt": "2026-05-27T22:29:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025893,
+    "summary": "Implement telemetry for modal and creation flow",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-24T16:29:20Z",
+    "resolvedAt": "2026-05-23T09:48:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025995,
+    "summary": "Account for too many links error in desktop modal",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-24T20:05:26Z",
+    "resolvedAt": "2026-05-17T20:52:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025996,
+    "summary": "Create any triggers needed for sharing callouts",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-24T20:09:38Z",
+    "resolvedAt": "2026-05-27T08:57:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028261,
+    "summary": "Add /report endpoint",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-31T20:19:53Z",
+    "resolvedAt": "2026-05-29T14:26:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028265,
+    "summary": "Implement Celery workers",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-03-31T20:32:30Z",
+    "resolvedAt": "2026-05-29T14:21:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036462,
+    "summary": "Disable unneeded django-allauth routes",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-01T22:14:02Z",
+    "resolvedAt": "2026-06-11T02:25:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036473,
+    "summary": "Implement soft delete",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-01T22:42:38Z",
+    "resolvedAt": "2026-05-22T20:22:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036478,
+    "summary": "Implement interstitial \"auth complete\" page design",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-01T22:50:17Z",
+    "resolvedAt": "2026-05-28T18:56:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036481,
+    "summary": "Decide if the /admin dashboard should be exposed in production",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-01T22:57:31Z",
+    "resolvedAt": "2026-06-19T05:44:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2036485,
+    "summary": "Implement landing page design",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-01T23:04:00Z",
+    "resolvedAt": "2026-05-29T14:30:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037233,
+    "summary": "Wire GCP Secret Manager secrets to app and worker environments",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T19:47:10Z",
+    "resolvedAt": "2026-05-29T14:26:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037234,
+    "summary": "Update allowed hosts to match dev, stage and prod",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T19:47:48Z",
+    "resolvedAt": "2026-05-29T14:26:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037237,
+    "summary": "Remove or gate unused endpoints",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T19:51:49Z",
+    "resolvedAt": "2026-06-16T15:53:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037238,
+    "summary": "Add PodMonitoring to fxsharing",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T19:52:38Z",
+    "resolvedAt": "2026-06-11T22:57:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037261,
+    "summary": "Add celery worker workload to helm chart",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T21:31:47Z",
+    "resolvedAt": "2026-05-29T14:26:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037263,
+    "summary": "Provision cloud Memorystore for celery broker in all environments",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T21:33:30Z",
+    "resolvedAt": "2026-05-29T14:26:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037265,
+    "summary": "Enforce per-user share limit",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T21:36:29Z",
+    "resolvedAt": "2026-06-15T19:10:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037267,
+    "summary": "Implement celery task retry with backoff and DLQ",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T21:53:03Z",
+    "resolvedAt": "2026-06-12T16:31:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037268,
+    "summary": "Implement report endpoint",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T21:59:55Z",
+    "resolvedAt": "2026-05-29T14:26:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037270,
+    "summary": "Create share status-aware API response",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-05T22:06:46Z",
+    "resolvedAt": "2026-05-29T14:26:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037557,
+    "summary": "Decide if we should set the server path via a pref",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-06T17:41:13Z",
+    "resolvedAt": "2026-05-28T17:04:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037559,
+    "summary": "Drop the migrations before we launch",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-06T17:46:36Z",
+    "resolvedAt": "2026-06-10T17:49:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039018,
+    "summary": "Provsision redis for dev and prod as celery broker",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-12T15:49:45Z",
+    "resolvedAt": "2026-05-29T14:21:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039428,
+    "summary": "Modal responsive narrow view",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-13T21:47:14Z",
+    "resolvedAt": "2026-05-21T09:45:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039649,
+    "summary": "Implement report endpoint rate limiting",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-14T16:58:03Z",
+    "resolvedAt": "2026-06-22T15:54:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039735,
+    "summary": "Handle static files correctly",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-14T22:17:36Z",
+    "resolvedAt": "2026-05-26T16:15:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039749,
+    "summary": "Insert content via django, not via api/JS frontend",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-14T23:23:42Z",
+    "resolvedAt": "2026-05-20T17:23:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040042,
+    "summary": "Share modal styling does not match design",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T22:21:33Z",
+    "resolvedAt": "2026-05-28T09:15:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040043,
+    "summary": "[Link Collections] “View page” opens the share page in a new tab but does not switch to it",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T22:26:18Z",
+    "resolvedAt": "2026-05-21T09:45:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040048,
+    "summary": "[Link Collections] Tab group menu remains open over the share modal",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T22:27:49Z",
+    "resolvedAt": "2026-05-19T04:13:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040049,
+    "summary": "User cannot create a second share link from the same tab group",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T22:32:10Z",
+    "resolvedAt": "2026-06-11T02:29:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040055,
+    "summary": "[Link Collections] Delay between clicking create and modal appearing",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T22:57:33Z",
+    "resolvedAt": "2026-05-22T09:37:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040064,
+    "summary": "Follow up to 5 redirects",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-15T23:29:17Z",
+    "resolvedAt": "2026-06-12T18:00:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040368,
+    "summary": "'from' section still contains placeholder in the share page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T13:46:55Z",
+    "resolvedAt": "2026-06-17T23:59:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040380,
+    "summary": "Websites are missing their icon on the share page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T14:16:19Z",
+    "resolvedAt": "2026-06-18T00:00:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040385,
+    "summary": "The folder panel no longer opens after dragging the last bookmark out when Share panel is enabled",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T14:29:13Z",
+    "resolvedAt": "2026-05-27T08:58:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040388,
+    "summary": "Share page grid view is not according to figma design",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T14:45:20Z",
+    "resolvedAt": "2026-06-18T00:00:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040398,
+    "summary": "[Link Collections] Expiration date for link is missing from the share page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T15:06:04Z",
+    "resolvedAt": "2026-06-22T14:45:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040406,
+    "summary": "Number of websites/links is not displayed on the share page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T15:26:45Z",
+    "resolvedAt": "2026-06-18T00:01:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040408,
+    "summary": "Share page has no light theme",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T15:40:02Z",
+    "resolvedAt": "2026-06-18T00:04:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040413,
+    "summary": "Share page with 11 links or more breaks the layout",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-18T15:54:43Z",
+    "resolvedAt": "2026-06-18T00:05:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040578,
+    "summary": "\"Share folder\" context menu has different position and is missing the \"New\" badge",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-19T08:18:31Z",
+    "resolvedAt": "2026-05-28T09:16:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040602,
+    "summary": "[Link Collections] \"Share folder\" does not open the Share modal when accessed from the Bookmarks Sidebar or Library",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-19T09:41:26Z",
+    "resolvedAt": "2026-05-22T09:38:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040610,
+    "summary": "Consider disabling \"Share folder\" context menu item for empty folders",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-19T10:09:27Z",
+    "resolvedAt": "2026-08-07T04:26:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040735,
+    "summary": "Update copy in signed in banner",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-19T17:41:16Z",
+    "resolvedAt": "2026-06-11T17:42:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040824,
+    "summary": "Share is not created after signing in",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T02:13:09Z",
+    "resolvedAt": "2026-05-21T09:47:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040897,
+    "summary": "There is no share limit error received once 30 share pages are created",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T09:54:24Z",
+    "resolvedAt": "2026-06-22T16:52:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040946,
+    "summary": "Non-HTTP/HTTPS tabs are included in the Share modal and shared page tab count",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T12:41:00Z",
+    "resolvedAt": "2026-05-30T21:05:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040961,
+    "summary": "[Link Collections] Share modal warning message does not match Figma specifications when more than 30 links are selected",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T13:39:33Z",
+    "resolvedAt": "2026-05-23T09:52:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041016,
+    "summary": "Create Seed File",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T15:50:16Z",
+    "resolvedAt": "2026-06-08T18:44:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041050,
+    "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/contentsharing/tests/browser/browser_testLoadingState.js (finished) | application timed out after 370.0 seconds with no output",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T17:33:09Z",
+    "resolvedAt": "2026-05-20T17:50:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041067,
+    "summary": "provision share.firefox.com subdomain + connect to prod environment",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T18:04:54Z",
+    "resolvedAt": "2026-06-19T05:45:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041084,
+    "summary": "Add Celery worker info to database",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T19:12:07Z",
+    "resolvedAt": "2026-05-29T14:26:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041135,
+    "summary": "Update share pages",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-20T22:52:49Z",
+    "resolvedAt": "2026-05-29T14:20:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041213,
+    "summary": "'NEW' badge is missing from bookmark folder and tab groups",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-21T06:34:37Z",
+    "resolvedAt": "2026-05-29T09:23:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041461,
+    "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/contentsharing/tests/browser/browser_testLoadingState.js | application timed out after 740.0 seconds with no output",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-21T19:54:06Z",
+    "resolvedAt": "2026-05-26T21:39:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041484,
+    "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/contentsharing/tests/browser/browser_testShareBookmarks.js (finished) | application timed out after 740.0 seconds with no output",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-21T21:40:45Z",
+    "resolvedAt": "2026-05-21T23:47:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041777,
+    "summary": "Final round of string updates",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-22T17:47:49Z",
+    "resolvedAt": "2026-05-30T09:29:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042329,
+    "summary": "Same share link generated for different FXA accounts",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T09:17:17Z",
+    "resolvedAt": "2026-06-10T17:36:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042366,
+    "summary": "Share modal errors are not recorded in about:glean",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T11:52:25Z",
+    "resolvedAt": "2026-05-30T21:06:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042516,
+    "summary": "Tab group entry point UX polish",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T19:16:54Z",
+    "resolvedAt": "2026-07-16T21:40:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042555,
+    "summary": "Website background issues",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:09:20Z",
+    "resolvedAt": "2026-06-11T17:41:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042556,
+    "summary": "Card states UX issues",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:10:36Z",
+    "resolvedAt": "2026-06-11T22:55:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042558,
+    "summary": "Website padding tweaks",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:12:05Z",
+    "resolvedAt": "2026-06-11T17:42:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042559,
+    "summary": "Website font issues",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:13:11Z",
+    "resolvedAt": "2026-06-11T17:42:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042560,
+    "summary": "Open links in new tab",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:17:20Z",
+    "resolvedAt": "2026-06-18T00:05:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042561,
+    "summary": "Copy link button does no match designs",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:18:33Z",
+    "resolvedAt": "2026-06-10T20:18:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042562,
+    "summary": "Wrong execution of naming when page has no name",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:19:20Z",
+    "resolvedAt": "2026-06-16T13:19:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042564,
+    "summary": "Report unsafe page tweaks",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-26T23:20:41Z",
+    "resolvedAt": "2026-06-15T18:37:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043066,
+    "summary": "The share should load in the post-login page if that tab is still open",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-27T22:44:15Z",
+    "resolvedAt": "2026-05-29T00:37:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043437,
+    "summary": "Create feature entry for contentsharing experiment",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-05-28T21:43:58Z",
+    "resolvedAt": "2026-05-29T09:25:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044458,
+    "summary": "Add download firefox banner to link page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-02T20:21:29Z",
+    "resolvedAt": "2026-06-16T14:47:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044488,
+    "summary": "<Enter> doesn't copy the QR code by default",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-02T21:59:37Z",
+    "resolvedAt": "2026-06-16T08:46:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044511,
+    "summary": "\".png\" not appended to saved generated QR codes",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-03T00:06:08Z",
+    "resolvedAt": "2026-06-16T08:46:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044674,
+    "summary": "The url from the QR code pop-up is displayed incorrectly on RTL builds",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-03T13:52:26Z",
+    "resolvedAt": "2026-06-18T20:12:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2044898,
+    "summary": "Consider adjusting the QR code background to improve contrast in the light theme",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-04T07:31:13Z",
+    "resolvedAt": "2026-06-23T09:29:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046520,
+    "summary": "Implement share creation endpoint rate limiting",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-10T17:22:41Z",
+    "resolvedAt": "2026-06-22T15:53:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046821,
+    "summary": "Icon color should adjust to light / dark theme",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-11T14:31:55Z",
+    "resolvedAt": "2026-06-11T21:51:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047024,
+    "summary": "Github complaints: Update Dockerfile to use node.js 24 before June 16",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-11T23:39:02Z",
+    "resolvedAt": "2026-06-16T15:57:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047276,
+    "summary": "Add Fastly WAF to prod env",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-12T19:33:42Z",
+    "resolvedAt": "2026-06-16T20:46:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048017,
+    "summary": "Add Otel custom metrics to",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-16T16:27:33Z",
+    "resolvedAt": "2026-06-17T22:32:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048112,
+    "summary": "style the fxsharing FxA login page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-16T23:34:08Z",
+    "resolvedAt": "2026-06-17T22:31:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048116,
+    "summary": "add FxA prod URLs to k8s config",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-17T00:32:57Z",
+    "resolvedAt": "2026-06-17T00:43:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048340,
+    "summary": "Serve hashed files for CDN caching",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-17T17:54:39Z",
+    "resolvedAt": "2026-06-18T22:06:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048419,
+    "summary": "Favicons are blurrly",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-17T23:33:05Z",
+    "resolvedAt": "2026-06-18T15:56:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048421,
+    "summary": "Some favicons load slowly",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-17T23:35:53Z",
+    "resolvedAt": "2026-07-15T16:23:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048433,
+    "summary": "Landing page and 404 page CTA buttons need SUMO link",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-17T23:58:10Z",
+    "resolvedAt": "2026-06-18T19:41:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048489,
+    "summary": "Callout to download Firefox is not present on Google Chrome",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-18T04:47:06Z",
+    "resolvedAt": "2026-06-18T14:47:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048496,
+    "summary": "In other browsers, the download firefox upsell can cover up the report abuse link",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-18T04:55:54Z",
+    "resolvedAt": "2026-06-18T16:15:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048739,
+    "summary": "Update download firefox banner: styles and copy",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-18T19:30:25Z",
+    "resolvedAt": "2026-06-18T19:51:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048748,
+    "summary": "Desktop sometimes showing \"no shareable links\" message when there's 1-2 new tabs in a set of tabs",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-18T20:08:48Z",
+    "resolvedAt": "2026-07-16T21:40:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048968,
+    "summary": "Share is done in a random order for all the entry points",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-19T15:11:53Z",
+    "resolvedAt": "2026-07-15T19:56:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049446,
+    "summary": "Expired share page button does nothing",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-22T16:53:34Z",
+    "resolvedAt": "2026-06-22T18:12:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049491,
+    "summary": "Add analytics tag to the share.f.c site",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-22T19:51:42Z",
+    "resolvedAt": "2026-06-22T20:33:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050525,
+    "summary": "Don't add fxsharing.shares.tasks.fetch_link_preview failues to dead_letter_queue table",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-25T15:14:25Z",
+    "resolvedAt": "2026-06-29T15:32:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051346,
+    "summary": "Debug experiment triggers",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-29T16:38:47Z",
+    "resolvedAt": "2026-07-01T16:17:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051660,
+    "summary": "Referrals: Newtab entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T16:49:47Z",
+    "resolvedAt": "2026-07-31T04:33:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051691,
+    "summary": "Referrals: Toolbar Entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:11:55Z",
+    "resolvedAt": "2026-07-30T09:23:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051696,
+    "summary": "Referrals: Hamburger menu entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:29:04Z",
+    "resolvedAt": "2026-07-18T09:10:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051698,
+    "summary": "Referrals: Accounts menu entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:31:50Z",
+    "resolvedAt": "2026-07-28T09:58:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051699,
+    "summary": "Referrals: About firefox entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:35:16Z",
+    "resolvedAt": "2026-07-18T09:10:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051700,
+    "summary": "Referrals: Settings entry point",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:38:50Z",
+    "resolvedAt": "2026-08-05T04:29:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051701,
+    "summary": "Referrals: gate referrals behind pref",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:41:07Z",
+    "resolvedAt": "2026-07-18T09:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051706,
+    "summary": "Referrals: Generate and store referral code",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:51:25Z",
+    "resolvedAt": "2026-07-18T09:11:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051707,
+    "summary": "Referrals: Redirect about:referrals to landing page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-06-30T18:53:41Z",
+    "resolvedAt": "2026-07-24T22:05:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052256,
+    "summary": "Add share button to url bar",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:14:27Z",
+    "resolvedAt": "2026-08-12T04:01:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052257,
+    "summary": "Create pref for share button in url bar",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:15:30Z",
+    "resolvedAt": "2026-08-05T04:29:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052258,
+    "summary": "Create a panel for the share options",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:18:42Z",
+    "resolvedAt": "2026-08-11T09:22:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052262,
+    "summary": "Add copy link button to panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:24:03Z",
+    "resolvedAt": "2026-08-13T04:25:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052264,
+    "summary": "Add screenshot button to panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:26:48Z",
+    "resolvedAt": "2026-08-13T04:26:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055255,
+    "summary": "Referrals: Use referral attribution in startup ping and then remove",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-15T15:43:57Z",
+    "resolvedAt": "2026-08-07T04:27:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057583,
+    "summary": "Increase referral code length to 16",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-24T15:03:30Z",
+    "resolvedAt": "2026-07-28T10:00:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057666,
+    "summary": "Referrals: Add feature to feature manifest",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-24T20:42:13Z",
+    "resolvedAt": "2026-07-28T10:00:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059557,
+    "summary": "Create new /sharing directory and move /contentsharing and SharingUtils into it",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-30T19:54:41Z",
+    "resolvedAt": "2026-08-05T04:30:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063036,
+    "summary": "Remove colon character from referral code",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-12T17:05:38Z",
+    "resolvedAt": "2026-08-13T04:28:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063104,
+    "summary": "Referrals settings entry missing referral ID",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-12T21:52:04Z",
+    "resolvedAt": "2026-08-13T04:28:42Z"
+  }
+]

@@ -1,0 +1,371 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 1407718,
+    "summary": "Developer button in overflow menu is missing the '>' to indicate a subview",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2017-10-11T17:58:46Z",
+    "resolvedAt": "2026-07-15T09:35:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2011528,
+    "summary": "Add selected tokens for menus",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-01-20T20:24:06Z",
+    "resolvedAt": "2026-06-18T09:47:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022986,
+    "summary": "Update panelUI-shared.css so it passes use-design-tokens",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-03-12T20:46:42Z",
+    "resolvedAt": "2026-07-07T21:12:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2032240,
+    "summary": "Add Nova icons for Firefox :: Theme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-04-16T00:15:28Z",
+    "resolvedAt": "2026-05-29T09:20:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034863,
+    "summary": "Decide how webextension themes will appear in Nova floating chrome mode",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-04-24T16:07:44Z",
+    "resolvedAt": "2026-06-02T21:59:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2038764,
+    "summary": "Remove Nova outer window padding when the window is fullscreen",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-11T18:00:06Z",
+    "resolvedAt": "2026-07-12T11:36:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040456,
+    "summary": "Use the image() function rather than linear-gradient for solid colors",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-18T18:25:24Z",
+    "resolvedAt": "2026-05-23T09:50:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040598,
+    "summary": "[Ubuntu] Settings ‘browser.nova.enabled’ on true renders the browser window borders transparent",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-19T09:23:48Z",
+    "resolvedAt": "2026-06-03T09:40:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2041479,
+    "summary": "Firefox shows inconsistent tooltip colors when themed",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-21T20:54:28Z",
+    "resolvedAt": "2026-06-15T21:14:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042859,
+    "summary": "Don't reference Linux-unavailable warning-large.png in sanitize dialog CSS",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-27T15:18:44Z",
+    "resolvedAt": "2026-05-28T09:20:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043602,
+    "summary": "Run automated browser-chrome and mochitest-chrome and talos tests with Nova enabled",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-29T13:41:24Z",
+    "resolvedAt": "2026-06-09T21:11:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043958,
+    "summary": "Status panel text obscured by macOS Tahoe window corner radius",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-01T00:40:05Z",
+    "resolvedAt": "2026-06-02T09:42:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046132,
+    "summary": "Additional Nova icon pass on Toolkit and Firefox Theme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-09T16:59:41Z",
+    "resolvedAt": "2026-06-18T09:49:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046264,
+    "summary": "Multiple mochitest nova failures",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-10T00:12:46Z",
+    "resolvedAt": "2026-06-10T22:04:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046822,
+    "summary": "Use `background-clip: border-area` to implement the selected tab border gradient",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-11T14:33:29Z",
+    "resolvedAt": "2026-06-13T21:06:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046864,
+    "summary": "Add history-20 icon for use by Smart Window",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-11T16:07:48Z",
+    "resolvedAt": "2026-06-16T08:47:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048186,
+    "summary": "Also let the content context menu use content's preferred color scheme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-17T09:17:24Z",
+    "resolvedAt": "2026-06-18T20:16:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048189,
+    "summary": "Stop / reload button twitches when animating",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-17T09:32:40Z",
+    "resolvedAt": "2026-07-12T11:37:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048354,
+    "summary": "Remap tab-audio-blocked-circle-12.svg to Nova icon play-circle-fill-12",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-17T18:58:20Z",
+    "resolvedAt": "2026-07-28T09:57:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049141,
+    "summary": "Default favicon asset is off-center",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-20T23:50:20Z",
+    "resolvedAt": "2026-06-22T20:03:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050419,
+    "summary": "Tweak and improve manifest token interpolation syntax",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-25T12:48:33Z",
+    "resolvedAt": "2026-06-26T04:49:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050546,
+    "summary": "Remove dead CSS rule .alltabs-item[selected=\"true\"]",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-25T15:50:58Z",
+    "resolvedAt": "2026-07-14T04:02:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050610,
+    "summary": "Mach buildtokens got out of date, update it",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-25T18:59:21Z",
+    "resolvedAt": "2026-06-27T20:36:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050655,
+    "summary": "[Nova] Page blocks (sidebar/toolbar/content area) in dark theme should have light grey borders",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-25T21:22:50Z",
+    "resolvedAt": "2026-07-14T21:42:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051184,
+    "summary": "Also let the clipboard menu use content's preferred color scheme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-29T03:23:56Z",
+    "resolvedAt": "2026-06-29T21:54:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051246,
+    "summary": "Panel headers have become oversized",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-29T09:51:34Z",
+    "resolvedAt": "2026-06-29T21:55:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051473,
+    "summary": "Also let the autocomplete panel use content's preferred color scheme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-30T03:39:43Z",
+    "resolvedAt": "2026-07-03T21:46:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051554,
+    "summary": "Introduce a new system ESM as single source of truth for the list of Firefox Themes managed through the new Nova Themes Picker webcomponents",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-30T12:38:31Z",
+    "resolvedAt": "2026-07-09T16:08:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053220,
+    "summary": "Remove testing XPI base url pref from ThemesList.sys.mjs",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-07T18:29:28Z",
+    "resolvedAt": "2026-08-05T21:47:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053333,
+    "summary": "Border radius mismatches between chrome blocks and outer window",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-08T07:04:54Z",
+    "resolvedAt": "2026-07-22T04:29:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054183,
+    "summary": "Remove Nova outer window padding when the window is maximized",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-10T19:36:46Z",
+    "resolvedAt": "2026-08-07T04:27:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054261,
+    "summary": "Fix reload button disabled state override",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-11T10:12:23Z",
+    "resolvedAt": "2026-07-14T21:44:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054481,
+    "summary": "Sidebar custom theme sidebar_border color is missing when Nova is enabled",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-13T13:55:37Z",
+    "resolvedAt": "2026-08-07T20:09:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054492,
+    "summary": "Custom theme toolbar_field_border and toolbar_field_border_focus are ignored by the urlbar when Nova is enabled",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-13T14:29:18Z",
+    "resolvedAt": "2026-07-17T21:32:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057058,
+    "summary": "Telemetry metric for Nova adoption",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-23T00:45:36Z",
+    "resolvedAt": "2026-08-05T09:24:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058235,
+    "summary": "browser_ext_management_themes.js fails when browser.nova.enabled is true",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-27T17:50:50Z",
+    "resolvedAt": "2026-07-29T21:43:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058315,
+    "summary": "Background tab labels disappear with the default theme and browser.theme.native-theme = true",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-27T21:48:09Z",
+    "resolvedAt": "2026-08-13T14:43:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058525,
+    "summary": "Inconsistent color scheme between context menu and its submenu",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-28T14:40:42Z",
+    "resolvedAt": "2026-08-07T20:10:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058575,
+    "summary": "Ctrl-Tab preview labels are no longer centered",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-28T16:37:48Z",
+    "resolvedAt": "2026-07-28T21:58:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060862,
+    "summary": "Prevent `:has()` usage on the main window",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-05T13:24:53Z",
+    "resolvedAt": "2026-08-06T21:23:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062042,
+    "summary": "Minor follow-ups for the native theme on nova",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-09T10:31:14Z",
+    "resolvedAt": "2026-08-13T20:13:45Z"
+  }
+]
