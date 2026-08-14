@@ -11,6 +11,10 @@ describe('asMaterialSymbolName', () => {
   it('rejects an unknown symbol name', () => {
     expect(() => asMaterialSymbolName('definitely_not_a_symbol')).toThrow();
   });
+
+  it('accepts the bug icon used by the filed-to-fixed panel', () => {
+    expect(asMaterialSymbolName('bug_report')).toBe('bug_report');
+  });
 });
 
 describe('Icon', () => {
