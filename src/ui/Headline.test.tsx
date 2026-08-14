@@ -941,6 +941,16 @@ describe('Headline bug fix time', () => {
     expect(card?.className).toContain('bg-neutral-900');
   });
 
+  // The whole panel asserts no judgment. Tinting the percentage red at 58%
+  // would read as failing against a threshold nobody set — the same reason the
+  // median/mean/p90 cards are neutral.
+  it('leaves the "% fixed within" card uncolored too', () => {
+    renderPanel([makeBug()]);
+    const card = screen.getAllByText('62%')[0]?.parentElement;
+    expect(card?.className).toContain('bg-neutral-900');
+    expect(card?.className).not.toMatch(/emerald|amber|rose/);
+  });
+
   it('links each bug row to its Bugzilla page', () => {
     renderPanel([makeBug()]);
     const link = screen.getAllByRole('link', { name: 'bug 2036233' })[0];
