@@ -427,15 +427,19 @@ const statsTier = (
   if (stats.n === 0) return undefined;
   // Days have no goal to pass or fail, so leave the cards neutral. Tinting them
   // against FIXED_WITHIN_DAYS would paint mean (18.4d) and p90 (47.6d) red
-  // forever and read as "failing" for a metric with no target. The "% fixed
-  // within" card keeps its coloring — more is better needs no target.
+  // forever and read as "failing" for a metric with no target.
   if (unit === 'days') return undefined;
   const effective = unit === 'rounds' ? Math.round(value) : value;
   return tierForHours(effective, slaHours);
 };
 
-const pctTier = (stats: WindowStats): SlaTier | undefined =>
-  stats.n === 0 ? undefined : tierForPctUnderSla(stats.pctUnderSLA);
+// Neutral for the days unit as well, so the whole no-goal panel asserts no
+// judgment. tierForPctUnderSla would paint a 58% "fixed within 7 days" red,
+// which reads as failing against a threshold nobody agreed to.
+const pctTier = (stats: WindowStats, unit: MetricUnit): SlaTier | undefined => {
+  if (stats.n === 0 || unit === 'days') return undefined;
+  return tierForPctUnderSla(stats.pctUnderSLA);
+};
 
 const StatGrid: FC<{
   readonly stats: WindowStats;
@@ -465,7 +469,7 @@ const StatGrid: FC<{
     <StatCell
       label={slaLabel}
       value={formatPercent(stats.pctUnderSLA)}
-      tier={pctTier(stats)}
+      tier={pctTier(stats, unit)}
       animationDelayMs={210}
     />
   </div>
