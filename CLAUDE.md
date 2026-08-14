@@ -75,12 +75,16 @@ GitHub Actions (Mon-Fri, cron 10:00 UTC ≈ 6:00 ET; runs late ~7:00 ET on
             ├─ fetchPhabSamples   (src/scripts/phabricator.ts; group.phabProjectSlugs)
             ├─ fetchGithubSamples (src/scripts/github.ts; only when group.github set —
             │                      Phab-only groups pass a no-op so the GH window zeroes)
+            ├─ fetchBugSamples    (src/scripts/bugzilla.ts; group.bugzilla scopes.
+            │                      Unauthenticated BMO REST, whole 90-day window every
+            │                      run. A throw here is caught and falls back to the
+            │                      persisted bugs.json — never aborts the run)
             ├─ collect()          (src/scripts/collect.ts, orchestrator)
             │     ├─ dedupes by (source, id, reviewer), existing wins
             │     ├─ prunes samples older than RETENTION_DAYS (90)
             │     ├─ recomputes window7d / window14d / window30d via computeStats
             │     └─ replaces today's history row (idempotent)
-            └─ writes data/<group-id>/{samples,history,pending,landings,backlog}.json
+            └─ writes data/<group-id>/{samples,history,pending,landings,backlog,bugs}.json
        └─ one commit covers every group's data/, pushes
                └─ Vercel redeploys on push
                       └─ page-level generateMetadata() (app/page.tsx for the default
@@ -99,6 +103,8 @@ groups — each owns `data/<id>/`.
 Key constants in `src/scripts/collect.ts`:
 
 - `SLA_HOURS = 4`
+- `FIXED_WITHIN_DAYS = 7` (the bug panel's "% fixed within" reading — deliberately
+  NOT an SLA: no reference line, no tab tint, no `<title>` mention)
 - `RETENTION_DAYS = 90`
 - `BACKFILL_LOOKBACK_DAYS = 45` (first run only — no existing samples)
 - `FOLLOWUP_LOOKBACK_DAYS = 3` (every subsequent run)
@@ -153,6 +159,30 @@ bugbug-side failure auto-falls-through. Requires `zstd` on `PATH`.
    unless you pass `--no-warn-ignored`. This is already set in
    `lint-staged.config.mjs`. Don't remove that flag — adding a top-level
    config file (e.g. `vitest.config.ts`) will otherwise fail pre-commit.
+9. **Bugzilla answers a nonexistent product OR component with HTTP 200 and
+   `{"bugs":[]}`** — no error status, no error body. A renamed component would
+   therefore make a group report zero fixed bugs forever with nothing saying why.
+   `assertScopeExists` in `src/scripts/bugzilla.ts` resolves every configured scope
+   against `/rest/product`'s real component list before querying, and that is the
+   only thing standing between a rename and a silently dead metric. Don't drop it
+   as a redundant round-trip.
+10. **Bug windows bucket on `cf_last_resolved`, not filing date.** This is what
+    makes the shared 7/14/30-day window machinery valid for the metric: every bug
+    in a window has both timestamps, so nothing is censored. Filing-date cohorts
+    measured ~75% unresolved over the trailing week, which would make each recent
+    window a median over only the fastest quarter of its cohort. Do not "fix" the
+    anchor to `filedAt`; `isBugInWindow`'s test in `collect.test.ts` is the guard.
+11. **`renderWindowItems` in `src/ui/Headline.tsx` ends in an unconditional
+    fall-through branch**, currently `bugFix`. `kindItems` is narrowed to the last
+    `HeadlineItems` member there, so an explicit `kind === '…'` test trips
+    `no-unnecessary-condition`. Adding a new row kind means promoting that trailing
+    block to an explicit `if` first, or the new kind silently renders as bugs.
+12. **`bun run test:coverage` writes `coverage/`, which stylelint then fails on**
+    (`.L3` etc. in the HTML reporter's CSS are not kebab-case). `coverage/` is
+    gitignored but stylelint does not read `.gitignore`, so `bun run verify` breaks
+    until you `rm -rf coverage`. Coverage thresholds are also **already below their
+    configured 90/85 gate on `main`** (~84% lines) and are run by neither `verify`
+    nor CI.
 
 ## When you're asked to collect locally
 
@@ -168,7 +198,18 @@ Expected shape:
 ```
 GH_PAT=ghp_...
 PHABRICATOR_TOKEN=api-...
-# optional: PHAB_PROJECT_SLUGS=slug-a,slug-b
+```
+
+Bugzilla needs no credential — BMO's REST API is read unauthenticated, which is
+also why restricted security bugs never appear in the fix-time metric. To exercise
+just the bug side without a full collection (which always builds the Conduit
+client):
+
+```bash
+bun -e 'import { createBugzillaClient, fetchBugSamples } from "./src/scripts/bugzilla.ts";
+  const r = await fetchBugSamples({ client: createBugzillaClient(),
+    scopes: [{ product: "Firefox", components: ["New Tab Page"] }], lookbackDays: 90 });
+  console.log(r.samples.length, "bugs");'
 ```
 
 Inspect results quickly:

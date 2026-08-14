@@ -4,15 +4,15 @@ Daily dashboard that tracks code-review turnaround time (TAT) for several Firefo
 review groups. A dropdown at the top switches between them; each group's data is
 tracked independently and never merged.
 
-| Group                      | Phabricator project tag           | GitHub                    | URL                        |
-| -------------------------- | --------------------------------- | ------------------------- | -------------------------- |
-| Home-NewTab                | `home-newtab-reviewers`           | `Pocket/content-monorepo` | `/` (default)              |
-| IP Protection              | `ip-protection-reviewers`         | —                         | `/g/ip-protection`         |
-| Desktop Theme              | `desktop-theme-reviewers`         | —                         | `/g/desktop-theme`         |
-| Sharing                    | `sharing-reviewers`               | —                         | `/g/sharing`               |
-| GeckoView                  | `geckoview-reviewers`             | —                         | `/g/geckoview`             |
-| Credential Management      | `credential-management-reviewers` | —                         | `/g/credential-management` |
-| AI Platform and Experience | `ai-platform-reviewers`           | `Firefox-AI/MLPA`         | `/g/ai-platform`           |
+| Group                      | Phabricator project tag           | GitHub                    | Bugzilla scope               | URL                        |
+| -------------------------- | --------------------------------- | ------------------------- | ---------------------------- | -------------------------- |
+| Home-NewTab                | `home-newtab-reviewers`           | `Pocket/content-monorepo` | Firefox :: New Tab Page      | `/` (default)              |
+| IP Protection              | `ip-protection-reviewers`         | —                         | Firefox :: IP Protection     | `/g/ip-protection`         |
+| Desktop Theme              | `desktop-theme-reviewers`         | —                         | Firefox :: Theme             | `/g/desktop-theme`         |
+| Sharing                    | `sharing-reviewers`               | —                         | Firefox :: Sharing           | `/g/sharing`               |
+| GeckoView                  | `geckoview-reviewers`             | —                         | GeckoView (whole product)    | `/g/geckoview`             |
+| Credential Management      | `credential-management-reviewers` | —                         | Toolkit :: Password Manager  | `/g/credential-management` |
+| AI Platform and Experience | `ai-platform-reviewers`           | `Firefox-AI/MLPA`         | Core :: Machine Learning: \* | `/g/ai-platform`           |
 
 Home-NewTab and AI Platform and Experience review on both Phabricator and GitHub;
 the other groups are Phabricator-only. Home-NewTab pulls `Pocket/content-monorepo`
@@ -30,13 +30,44 @@ Each group's page surfaces:
 - **Overdue callout** — pending reviews that have been waiting 10× the SLA or longer.
 - **Fast-review celebration** — reviews that finished in under 2 business hours are
   counted and celebrated in the Slack unfurl (see below).
+- **Bug fix time** — how long a bug takes from filing to `RESOLVED FIXED`.
+
+### Bug fix time (filed → RESOLVED FIXED)
+
+A separate metric from review turnaround, shown as a panel in each group's
+Phabricator tab. Scoped by Bugzilla product::component (see the table above), and
+measured in **calendar days** — weekends and nights included, unlike every review
+metric on the page. A bug filed Friday evening and fixed Monday morning waited the
+whole weekend.
+
+There is deliberately **no goal and no SLA**. The panel reports a "% fixed within 7
+days" figure because it is a legible summary, but it draws no reference line on its
+trendline, leaves the median/mean/p90 cards uncolored, never tints the tab red, and
+stays out of the page `<title>`. 7 days is a reading, not a target.
+
+**Read the median.** The distribution is heavily right-skewed: for
+`Firefox :: New Tab Page` over 90 days the median is 4.6 days while the mean is 18.4
+and the p90 is 47.6, because a handful of long-lived bugs pull the tail. The mean and
+p90 are shown but are not typical.
+
+Windows bucket by **resolution date**, not filing date. That is what keeps the
+existing 7/14/30-day windows valid: every bug counted has both a filing and a
+resolution timestamp, so there is no censoring. Filing-date cohorts were measured at
+roughly 75% unresolved over the trailing week, which would have made each recent
+window a median over only the fastest quarter of its cohort. The consequence to know
+is the mirror image: a years-old bug fixed yesterday lands in yesterday's window with
+its full age, and `cf_last_resolved` records the _latest_ resolution, so a reopened
+and re-fixed bug reports the time to its most recent fix.
+
+Bugzilla is read unauthenticated, so restricted (security) bugs are invisible to this
+metric.
 
 ## How it works
 
 ```
 GitHub Actions (daily 09:00 ET)
   → for each group in src/groups.ts (sequential):
-      → fetch Phab (+ GitHub for Home-NewTab)
+      → fetch Phab (+ GitHub for Home-NewTab) (+ Bugzilla for every group)
       → compute 7d / 14d / 30d rolling p50 / mean / p90 / %-under-SLA per source
       → write snapshot to data/<group>/history.json + samples.json + …
   → commit + push (one commit covers every group's data/)
@@ -131,8 +162,10 @@ bun run verify         # runs lint + stylelint + format:check + typecheck + test
   `react`/`react-hooks` + `jsx-a11y` + `tailwindcss`, zero warnings tolerated.
 - **Prettier** + **stylelint** enforced via `lint-staged` pre-commit.
 - **Branded types** (`src/types/brand.ts`) for all domain IDs (`RevisionPhid`,
-  `PrNumber`, `ReviewerLogin`, `BusinessHours`, `IsoTimestamp`, `GroupId`)
-  validated by `zod` at every API boundary.
+  `PrNumber`, `BugNumber`, `ReviewerLogin`, `BusinessHours`, `CalendarDays`,
+  `IsoTimestamp`, `GroupId`) validated by `zod` at every API boundary.
+  `CalendarDays` and `BusinessHours` are numerically identical but kept distinct:
+  47 calendar days is seven weeks, 47 business hours is six working days.
 - **Conventional commits** enforced by `commitlint` in the `commit-msg` hook.
 - **Husky hooks**:
   - `pre-commit`: `lint-staged` + `tsc --noEmit`
@@ -162,12 +195,23 @@ bun run verify         # runs lint + stylelint + format:check + typecheck + test
 
 See `src/scripts/collect.ts`. Each group owns a `data/<group-id>/` directory
 (e.g. `data/home-newtab/`, `data/ip-protection/`) holding its own
-`history.json`, `samples.json`, `landings.json`, `pending.json`, and
-`backlog.json` — group data is never merged. `history.json` is an append-only
+`history.json`, `samples.json`, `landings.json`, `pending.json`,
+`backlog.json`, and `bugs.json` — group data is never merged. `history.json` is an append-only
 list of daily snapshots; `samples.json` retains individual per-review samples
 for 90 days (so window recomputes stay cheap and auditable in git history).
 First run for a group backfills the last 45 days; subsequent runs only query
 3 days back. The collector loops over every group in `src/groups.ts` on each run.
+
+`bugs.json` is the exception to all of the above: it is **fully replaced** on
+every run, not merged, because the Bugzilla query re-derives the whole 90-day
+resolved set in one cheap request. That makes the first run self-backfilling with
+no 45-day special case, and it is also the only correct choice — a bug that gets
+reopened, or re-resolved as `WONTFIX`, stops matching `resolution=FIXED` and has
+to leave the dataset, where a merge would pin the stale `FIXED` row forever. The
+tradeoff: `bugs.json` is a cache rather than an archive, and a past day's figure
+can change retroactively. A failing Bugzilla fetch keeps the previous `bugs.json`
+and logs to stderr rather than aborting the run, so a BMO outage cannot take down
+the review-turnaround metrics.
 
 ## Out of scope (v1)
 
@@ -176,3 +220,7 @@ First run for a group backfills the last 45 days; subsequent runs only query
 - Cross-source reviewer identity merging
 - Alerting when SLA drops below a threshold
 - Backfill of samples older than 45 days on first run
+- Restricted (security) bugs in the fix-time metric — Bugzilla is read
+  unauthenticated
+- Back-dated `bugFix` history rows: `bugs.json` covers 90 days from the first run,
+  but the trendline only gains a point per daily snapshot from that run forward
