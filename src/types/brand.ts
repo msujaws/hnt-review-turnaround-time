@@ -7,6 +7,8 @@ export type RevisionPhid = Brand<string, 'RevisionPhid'>;
 export type PrNumber = Brand<number, 'PrNumber'>;
 export type ReviewerLogin = Brand<string, 'ReviewerLogin'>;
 export type BusinessHours = Brand<number, 'BusinessHours'>;
+export type CalendarDays = Brand<number, 'CalendarDays'>;
+export type BugNumber = Brand<number, 'BugNumber'>;
 export type IsoTimestamp = Brand<string, 'IsoTimestamp'>;
 export type IanaTimezone = Brand<string, 'IanaTimezone'>;
 export type GroupId = Brand<string, 'GroupId'>;
@@ -22,6 +24,15 @@ const reviewerLoginSchema = z
   .refine((value) => value.trim().length > 0, 'must not be whitespace-only');
 
 const businessHoursSchema = z.number().finite().nonnegative();
+
+// Wall-clock days, used by the bug filed-to-fixed metric. Numerically identical
+// to BusinessHours but deliberately a separate brand: bug lifetimes are not
+// clipped to 9-5 weekdays, and a value of 47 means seven weeks here versus six
+// working days there. Keeping them distinct stops the two from being swapped
+// into each other's formatters or stat thresholds.
+const calendarDaysSchema = z.number().finite().nonnegative();
+
+const bugNumberSchema = z.number().int().positive();
 
 const isoTimestampSchema = z.string().refine((value) => {
   if (value.length === 0) return false;
@@ -39,6 +50,11 @@ export const asReviewerLogin = (value: string): ReviewerLogin =>
 
 export const asBusinessHours = (value: number): BusinessHours =>
   businessHoursSchema.parse(value) as BusinessHours;
+
+export const asCalendarDays = (value: number): CalendarDays =>
+  calendarDaysSchema.parse(value) as CalendarDays;
+
+export const asBugNumber = (value: number): BugNumber => bugNumberSchema.parse(value) as BugNumber;
 
 export const asIsoTimestamp = (value: string): IsoTimestamp =>
   isoTimestampSchema.parse(value) as IsoTimestamp;
