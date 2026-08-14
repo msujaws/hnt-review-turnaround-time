@@ -218,6 +218,24 @@ Inspect results quickly:
 bun -e 'const s=JSON.parse(require("node:fs").readFileSync("data/samples.json","utf8")); console.log(s.length,"samples"); for(const x of s){console.log(x.source,x.id,x.reviewer,x.requestedAt,"->",x.firstActionAt);}'
 ```
 
+### Seeding the bug trendline for a group
+
+`bugs.json` backfills its full 90 days on the group's first collect, but
+`history.json` only gains a `bugFix` block from that run forward — so the bug
+trendline starts as one point. Bug windows are the one metric here that can be
+retro-filled (they're anchored on `resolvedAt`, and `bugs.json` holds the whole
+window), so run this **once per group, after that group's first collect**:
+
+```bash
+bun run src/scripts/backfillBugHistory.ts <group-id>   # or no arg for all groups
+```
+
+It fills roughly the last 60 days of rows (a row is only filled when its widest
+30-day window is entirely inside `bugs.json`'s 90-day reach) and is idempotent.
+**This is deliberately not wired into the daily cron**, because running it every
+day would rewrite past history rows and mask a real change. The consequence: a
+group that never gets the manual run keeps a one-point trendline indefinitely.
+
 Reset and re-backfill (lose local samples.json in-progress state):
 
 ```bash
