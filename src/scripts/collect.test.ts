@@ -1479,6 +1479,15 @@ describe('isBugInWindow', () => {
     expect(isBugInWindow(ancient, 7, now)).toBe(true);
   });
 
+  // Bounded above as well as below. This is what makes a past day's windows
+  // recomputable: backfillBugHistory anchors each row on the end of its own ET
+  // day, and without the upper bound a July row would count August's fixes.
+  it('excludes a bug resolved after the anchor', () => {
+    const future = makeBug({ resolvedAt: asIsoTimestamp('2026-05-01T00:00:00Z') });
+    expect(isBugInWindow(future, 7, now)).toBe(false);
+    expect(isBugInWindow(future, 30, now)).toBe(false);
+  });
+
   it('excludes a bug resolved before the window opens', () => {
     const old = makeBug({ resolvedAt: asIsoTimestamp('2026-04-01T00:00:00Z') });
     expect(isBugInWindow(old, 7, now)).toBe(false);
