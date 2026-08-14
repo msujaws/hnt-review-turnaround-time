@@ -236,3 +236,53 @@ describe('buildMetadataSummary', () => {
     expect(summary.title).toMatch(/GH 4\.0h \(30d\)/);
   });
 });
+
+describe('buildMetadataSummary bug fix time', () => {
+  const bugRow: HistoryRow = {
+    date: '2026-04-20',
+    phab: {
+      window7d: { n: 23, median: 2.4, mean: 3.1, p90: 7.8, pctUnderSLA: 87 },
+      window14d: { n: 47, median: 2.6, mean: 3.4, p90: 8.1, pctUnderSLA: 85 },
+      window30d: { n: 95, median: 2.7, mean: 3.6, p90: 8.3, pctUnderSLA: 83 },
+    },
+    github: {
+      window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+      window30d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+    },
+    bugFix: {
+      window7d: { n: 53, median: 4.6, mean: 18.4, p90: 47.6, pctUnderSLA: 62 },
+      window14d: { n: 96, median: 5.1, mean: 20.2, p90: 51.3, pctUnderSLA: 58 },
+      window30d: { n: 210, median: 6, mean: 22, p90: 60, pctUnderSLA: 55 },
+    },
+  };
+
+  it('appends a filed-to-fixed clause to the description', () => {
+    const summary = buildMetadataSummary([bugRow], 4, { now: new Date('2026-04-20T13:00:00Z') });
+    expect(summary.description).toContain('Bugs 7d: median 4.6d filed-to-fixed (n=53)');
+  });
+
+  // The title's job is the review SLA. Bug fix time has no goal to breach, so it
+  // must not compete for Slack's first line.
+  it('keeps bug fix time out of the title', () => {
+    const summary = buildMetadataSummary([bugRow], 4, { now: new Date('2026-04-20T13:00:00Z') });
+    expect(summary.title).not.toMatch(/bug/i);
+    expect(summary.title).not.toContain('4.6d');
+  });
+
+  it('omits the clause on a row written before the metric shipped', () => {
+    const legacy: HistoryRow = { date: bugRow.date, phab: bugRow.phab, github: bugRow.github };
+    const summary = buildMetadataSummary([legacy], 4, { now: new Date('2026-04-20T13:00:00Z') });
+    expect(summary.description).not.toMatch(/filed-to-fixed/);
+  });
+
+  it('omits the clause when the window is empty', () => {
+    const empty = { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 };
+    const summary = buildMetadataSummary(
+      [{ ...bugRow, bugFix: { window7d: empty, window14d: empty, window30d: empty } }],
+      4,
+      { now: new Date('2026-04-20T13:00:00Z') },
+    );
+    expect(summary.description).not.toMatch(/filed-to-fixed/);
+  });
+});

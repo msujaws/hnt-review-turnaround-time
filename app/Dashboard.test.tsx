@@ -3,9 +3,10 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
 import type { GroupConfig } from '../src/groups';
-import type { HistoryRow, Landing } from '../src/scripts/collect';
+import type { BugSample, HistoryRow, Landing } from '../src/scripts/collect';
 import { EMPTY_PEOPLE_MAP, type PeopleMap } from '../src/scripts/people';
 import {
+  asBugNumber,
   asBusinessHours,
   asGroupId,
   asIanaTimezone,
@@ -505,5 +506,108 @@ describe('buildMetadataSummary', () => {
     const summary = buildMetadataSummary([emptyRow], 4);
     expect(summary.title).toBe('HNT Review TAT · awaiting first reviews');
     expect(summary.description).toMatch(/no reviews yet/i);
+  });
+});
+
+const bugScopedGroup: GroupConfig = {
+  ...phabOnlyGroup,
+  bugzilla: [{ product: 'Firefox', components: ['New Tab Page'] }],
+};
+
+const bugWindows = {
+  window7d: { n: 3, median: 4.6, mean: 18.4, p90: 47.6, pctUnderSLA: 62 },
+  window14d: { n: 9, median: 5.1, mean: 20.2, p90: 51.3, pctUnderSLA: 58 },
+  window30d: { n: 30, median: 6, mean: 22, p90: 60, pctUnderSLA: 55 },
+};
+
+const rowWithBugs: HistoryRow = { ...row, bugFix: bugWindows };
+
+const makeBug = (overrides: Partial<BugSample> = {}): BugSample => ({
+  source: 'bugzilla',
+  id: asBugNumber(2_036_233),
+  summary: 'Sports widget - add starter state without countdown',
+  product: 'Firefox',
+  component: 'New Tab Page',
+  filedAt: asIsoTimestamp('2026-04-14T00:00:00Z'),
+  resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z'),
+  ...overrides,
+});
+
+describe('Dashboard bug fix-time panel', () => {
+  const renderWith = (group: GroupConfig, history: readonly HistoryRow[]): void => {
+    render(
+      <Dashboard
+        history={history}
+        samples={[]}
+        landings={[]}
+        bugs={[makeBug()]}
+        slaHours={4}
+        now={new Date('2026-04-20T23:59:59Z')}
+        peopleMap={EMPTY_PEOPLE_MAP}
+        group={group}
+      />,
+    );
+  };
+
+  it('renders inside the Phabricator tab for a group with a bugzilla scope', () => {
+    renderWith(bugScopedGroup, [rowWithBugs]);
+    expect(screen.getByRole('heading', { name: /Bugzilla · Filed to fixed/ })).toBeInTheDocument();
+    expect(screen.getByTestId('trendline-bugFix')).toBeInTheDocument();
+  });
+
+  // Bug fix time is orthogonal to which review tool was used, but the user
+  // chose a panel over a third tab. Guard that it stays a panel.
+  it('adds no tab', () => {
+    renderWith(bugScopedGroup, [rowWithBugs]);
+    expect(screen.getAllByRole('tab')).toHaveLength(1);
+  });
+
+  it('renders nothing for a group with no bugzilla scope', () => {
+    renderWith(phabOnlyGroup, [rowWithBugs]);
+    expect(
+      screen.queryByRole('heading', { name: /Bugzilla · Filed to fixed/ }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByTestId('trendline-bugFix')).not.toBeInTheDocument();
+  });
+
+  it('shows the median in days', () => {
+    renderWith(bugScopedGroup, [rowWithBugs]);
+    expect(screen.getAllByText('4.6d').length).toBeGreaterThan(0);
+  });
+
+  it('links the buglist so the number can be audited', () => {
+    renderWith(bugScopedGroup, [rowWithBugs]);
+    const link = screen.getByRole('link', { name: 'Firefox :: New Tab Page' });
+    expect(link.getAttribute('href')).toContain('buglist.cgi');
+    expect(link.getAttribute('href')).toContain('resolution=FIXED');
+  });
+
+  it('says the clock is calendar days, unlike the review metrics', () => {
+    renderWith(bugScopedGroup, [rowWithBugs]);
+    expect(screen.getByText(/weekends included/)).toBeInTheDocument();
+  });
+
+  // Between deploy and the first cron there is no bugFix key. The panel should
+  // still render its empty state rather than disappearing.
+  it('still renders when the history row predates the metric', () => {
+    renderWith(bugScopedGroup, [row]);
+    expect(screen.getByRole('heading', { name: /Bugzilla · Filed to fixed/ })).toBeInTheDocument();
+  });
+
+  // A slow bug queue is not a review-turnaround regression, and there is no SLA
+  // to breach, so the bug metric must not drive the tab's red signal.
+  it('does not tint the tab when bug fix time is high', () => {
+    renderWith(bugScopedGroup, [
+      {
+        ...row,
+        bugFix: {
+          window7d: { n: 5, median: 200, mean: 300, p90: 400, pctUnderSLA: 0 },
+          window14d: bugWindows.window14d,
+          window30d: bugWindows.window30d,
+        },
+      },
+    ]);
+    const tab = screen.getByRole('tab');
+    expect(tab.className).not.toContain('text-red');
   });
 });
