@@ -6,6 +6,7 @@ import { z } from 'zod';
 import {
   CYCLE_SLA_HOURS,
   ET_ZONE,
+  FIXED_WITHIN_DAYS,
   GITHUB_OWNER,
   GITHUB_REPO,
   PHAB_ORIGIN,
@@ -21,6 +22,7 @@ import {
   type GroupConfig,
 } from '../groups';
 import {
+  asBugNumber,
   asBusinessHours,
   asGithubRepoSlug,
   asIsoTimestamp,
@@ -31,7 +33,14 @@ import {
 } from '../types/brand';
 
 import { fetchBugbugSamples } from './bugbug';
+import {
+  createBugzillaClient,
+  fetchBugSamples,
+  type BugSample,
+  type BugzillaScope,
+} from './bugzilla';
 import { businessHoursBetween } from './businessHours';
+import { calendarDaysBetween } from './calendarDays';
 import { createProgressWriter, type ProgressWriter } from './collectProgress';
 import {
   createGithubClient,
@@ -106,6 +115,10 @@ export interface BacklogSnapshot {
   readonly github: BacklogSourceStats;
 }
 
+// Re-exported so the page loaders (app/bugs.ts) and UI can import the bug type
+// from the same module they get every other persisted type from.
+export type { BugSample } from './bugzilla';
+
 export interface HistoryRow {
   readonly date: string;
   // Review turnaround (requestedAt → firstActionAt), per-reviewer. Historical
@@ -122,6 +135,12 @@ export interface HistoryRow {
   readonly githubPostReview?: SourceWindows | undefined;
   readonly phabRounds?: SourceWindows | undefined;
   readonly githubRounds?: SourceWindows | undefined;
+  // Bug filed-to-fixed time in CALENDAR days (not business hours), bucketed by
+  // resolution date. Optional like every post-v1 key so rows written before
+  // this shipped keep validating. `pctUnderSLA` here means "share fixed within
+  // FIXED_WITHIN_DAYS" — a reporting bucket, not an SLA: this metric has no
+  // team goal, draws no reference line, and stays out of the page <title>.
+  readonly bugFix?: SourceWindows | undefined;
 }
 
 const phabSampleSchema = z.object({
@@ -286,6 +305,19 @@ export const backlogSnapshotSchema = z.object({
   github: backlogSourceStatsSchema,
 });
 
+// Persisted shape for data/<group>/bugs.json. The API-payload schema lives in
+// bugzilla.ts; this one lives here because the page loaders import every
+// persisted schema from collect.ts.
+export const bugSampleSchema = z.object({
+  source: z.literal('bugzilla'),
+  id: z.number().transform((value) => asBugNumber(value)),
+  summary: z.string(),
+  product: z.string(),
+  component: z.string(),
+  filedAt: z.string().transform((value) => asIsoTimestamp(value)),
+  resolvedAt: z.string().transform((value) => asIsoTimestamp(value)),
+});
+
 export const historyRowSchema = z.object({
   date: z.string(),
   phab: sourceWindowsSchema,
@@ -296,6 +328,7 @@ export const historyRowSchema = z.object({
   githubPostReview: sourceWindowsSchema.optional(),
   phabRounds: sourceWindowsSchema.optional(),
   githubRounds: sourceWindowsSchema.optional(),
+  bugFix: sourceWindowsSchema.optional(),
 });
 
 // Repo-less legacy github rows normalize to the content-monorepo default so a
@@ -399,6 +432,33 @@ const filterLandingsWithin = (
     .map((l) => extract(l))
     .filter((v): v is number => v !== null);
 
+// Bugs window on resolvedAt — the date the metric completes — so the standard
+// 7/14/30-day windows work verbatim: every bug in a window has both a filedAt
+// and a resolvedAt, with no censoring. Anchoring on filedAt instead would make
+// recent windows structurally optimistic, because most bugs filed in the last
+// week are not fixed yet and only the fastest ones would have a duration at all
+// (measured: the trailing 7-day filing cohort is ~75% unresolved).
+export const isBugInWindow = (bug: BugSample, windowDays: number, now: Date): boolean =>
+  Date.parse(bug.resolvedAt) >= etWindowCutoffMs(now, windowDays);
+
+const filterBugsWithin = (bugs: readonly BugSample[], windowDays: number, now: Date): number[] =>
+  bugs
+    .filter((bug) => isBugInWindow(bug, windowDays, now))
+    .map((bug) => calendarDaysBetween(bug.filedAt, bug.resolvedAt));
+
+// Exported (unlike the landingWindows closure inside collect) so a past day's
+// windows can be recomputed from the same bugs.json — which is possible only
+// because they are resolution-anchored.
+export const bugFixWindows = (
+  bugs: readonly BugSample[],
+  now: Date,
+  fixedWithinDays: number,
+): SourceWindows => ({
+  window7d: computeStats(filterBugsWithin(bugs, WINDOW_7_DAYS, now), fixedWithinDays),
+  window14d: computeStats(filterBugsWithin(bugs, WINDOW_14_DAYS, now), fixedWithinDays),
+  window30d: computeStats(filterBugsWithin(bugs, WINDOW_30_DAYS, now), fixedWithinDays),
+});
+
 const pendingKey = (p: PendingSample): string =>
   `${p.source}:${repoSlugForRecord(p)}:${String(p.id)}:${p.reviewer}`;
 
@@ -470,6 +530,12 @@ export const collect = async (options: {
     pending: readonly GithubPendingSample[];
     landings: readonly GithubLanding[];
   }>;
+  readonly existingBugs?: readonly BugSample[];
+  // Re-derives the entire retention window on every run (the BMO query is
+  // resolution-date based and cheap), so unlike fetchPhab/fetchGithub this takes
+  // no lookbackDays argument and does not participate in the backfill decision.
+  // Absent means the group has no Bugzilla scope: the window zeroes out.
+  readonly fetchBugs?: () => Promise<{ samples: readonly BugSample[] }>;
   readonly peopleMap?: PeopleMap;
   // Resolved per-repo github gating policy keyed by `owner/repo` slug. Drives
   // the legacy purge so it applies the same author/reviewer rules the fetch
@@ -481,10 +547,12 @@ export const collect = async (options: {
   readonly cycleSlaHours?: number;
   readonly postReviewSlaHours?: number;
   readonly roundsSla?: number;
+  readonly fixedWithinDays?: number;
 }): Promise<{
   readonly samples: Sample[];
   readonly pending: PendingSample[];
   readonly landings: Landing[];
+  readonly bugs: BugSample[];
   readonly history: HistoryRow[];
   readonly lookbackDays: number;
 }> => {
@@ -493,21 +561,45 @@ export const collect = async (options: {
   const cycleSlaHours = options.cycleSlaHours ?? CYCLE_SLA_HOURS;
   const postReviewSlaHours = options.postReviewSlaHours ?? POST_REVIEW_SLA_HOURS;
   const roundsSla = options.roundsSla ?? ROUNDS_SLA;
+  const fixedWithinDays = options.fixedWithinDays ?? FIXED_WITHIN_DAYS;
   const peopleMap = options.peopleMap ?? EMPTY_PEOPLE_MAP;
   const existingLandings = options.existingLandings ?? [];
+  const existingBugs = options.existingBugs ?? [];
   // Trigger a full backfill on either file's first run. Samples populates
   // from review-request events (per-reviewer), landings from merge/publish
   // events (per-PR) — a repo can have populated samples but zero landings
   // when the feature is rolled out, so we widen the window until both
-  // histories are seeded.
+  // histories are seeded. Bugs are deliberately NOT part of this test: they
+  // are re-fetched in full every run, so an empty bugs.json must not widen the
+  // Phabricator lookback and re-run the expensive bugbug/Conduit walk.
   const lookbackDays =
     options.existingSamples.length === 0 || existingLandings.length === 0
       ? BACKFILL_LOOKBACK_DAYS
       : FOLLOWUP_LOOKBACK_DAYS;
 
-  const [phabResult, ghResult] = await Promise.all([
+  // BMO is a public third-party endpoint with no token and no SLA of its own,
+  // and it is not what this dashboard is primarily for. An outage or a renamed
+  // component must not take down the review-turnaround metrics, so fall back to
+  // the persisted window (still valid — bug windows are date-anchored, not
+  // run-anchored) and log loudly. Same fall-through spirit as the bugbug
+  // backfill's Conduit fallback.
+  const fetchBugsOrKeepExisting = async (): Promise<readonly BugSample[]> => {
+    const { fetchBugs } = options;
+    if (fetchBugs === undefined) return [];
+    try {
+      const fetched = await fetchBugs();
+      return fetched.samples;
+    } catch (error: unknown) {
+      const reason = error instanceof Error ? error.message : String(error);
+      process.stderr.write(`bugzilla fetch failed, keeping existing bugs: ${reason}\n`);
+      return existingBugs;
+    }
+  };
+
+  const [phabResult, ghResult, freshBugs] = await Promise.all([
     options.fetchPhab(lookbackDays),
     options.fetchGithub(lookbackDays),
+    fetchBugsOrKeepExisting(),
   ]);
 
   // Team-membership purge on legacy rows only. The extractors already
@@ -599,6 +691,15 @@ export const collect = async (options: {
     (l) => Date.parse(l.landedAt) >= retentionCutoff,
   );
 
+  // Full replace, not a merge by id. Every other source is merged because
+  // Conduit and GitHub are expensive to re-read, but the BMO query re-derives
+  // the whole retention window every run, so the fresh result IS the retained
+  // set. Replacing is also the only correct choice: a bug that was reopened, or
+  // re-resolved as WONTFIX or DUPLICATE, stops matching resolution=FIXED and
+  // must leave the dataset. A merge would pin the stale FIXED row forever.
+  // bugs.json is therefore a cache, not an archive.
+  const bugs = freshBugs.filter((bug) => Date.parse(bug.resolvedAt) >= retentionCutoff);
+
   // Pending is authoritative from the fresh open-state fetch — no merge with
   // existing state. A pending entry that resolved to a sample simply doesn't
   // appear in this run. Dedup by (source, id, reviewer) across the two sources.
@@ -657,12 +758,13 @@ export const collect = async (options: {
     ),
     phabRounds: landingWindows(phabLandings, (l) => l.reviewRounds, roundsSla),
     githubRounds: landingWindows(ghLandings, (l) => l.reviewRounds, roundsSla),
+    bugFix: bugFixWindows(bugs, now, fixedWithinDays),
   };
 
   const historyWithoutToday = options.existingHistory.filter((row) => row.date !== todayEt);
   const history = [...historyWithoutToday, todayRow].sort((a, b) => a.date.localeCompare(b.date));
 
-  return { samples, pending, landings, history, lookbackDays };
+  return { samples, pending, landings, bugs, history, lookbackDays };
 };
 
 const requireEnv = (name: string): string => {
@@ -779,6 +881,7 @@ export const runCollectionFromDisk = async (
   const pendingPath = path.join(dataDirectory, 'pending.json');
   const landingsPath = path.join(dataDirectory, 'landings.json');
   const backlogPath = path.join(dataDirectory, 'backlog.json');
+  const bugsPath = path.join(dataDirectory, 'bugs.json');
   const progressPath = path.join(dataDirectory, '.phab-progress.json');
   const now = new Date();
 
@@ -786,10 +889,12 @@ export const runCollectionFromDisk = async (
   const existingHistoryRaw = await readJsonFile<unknown>(historyPath, []);
   const existingLandingsRaw = await readJsonFile<unknown>(landingsPath, []);
   const existingBacklogRaw = await readJsonFile<unknown>(backlogPath, []);
+  const existingBugsRaw = await readJsonFile<unknown>(bugsPath, []);
   const existingSamples = z.array(sampleSchema).parse(existingSamplesRaw);
   const existingHistory = z.array(historyRowSchema).parse(existingHistoryRaw);
   const existingLandings = z.array(landingSchema).parse(existingLandingsRaw);
   const existingBacklog = z.array(backlogSnapshotSchema).parse(existingBacklogRaw);
+  const existingBugs = z.array(bugSampleSchema).parse(existingBugsRaw);
   const peopleMap = await loadPeopleMap(dataDirectory);
 
   // Mirrors the decision inside collect(): widen to backfill when either
@@ -840,6 +945,11 @@ export const runCollectionFromDisk = async (
   const githubRepos = group.github ?? [];
   const gh = githubRepos.length === 0 ? undefined : createGithubClient(requireEnv('GH_PAT'));
 
+  // Groups with no Bugzilla scope skip the client entirely. No requireEnv here:
+  // BMO is read unauthenticated, so there is no token to be missing.
+  const bugzillaScopes: readonly BugzillaScope[] = group.bugzilla ?? [];
+  const bmo = bugzillaScopes.length === 0 ? undefined : createBugzillaClient();
+
   // Resolve each configured repo's author/reviewer gate once. The same policy
   // drives both the fetch (which PRs/reviews to pull) and collect()'s legacy
   // purge (which persisted rows to keep) so the two never diverge.
@@ -869,7 +979,7 @@ export const runCollectionFromDisk = async (
   }
 
   const seenRevisionPhids = new Set<string>();
-  const { samples, pending, landings, history } = await collect({
+  const { samples, pending, landings, bugs, history } = await collect({
     existingSamples,
     existingLandings,
     existingHistory,
@@ -975,6 +1085,20 @@ export const runCollectionFromDisk = async (
             }
             return { samples, pending, landings };
           },
+    existingBugs,
+    ...(bmo === undefined
+      ? {}
+      : {
+          fetchBugs: () =>
+            fetchBugSamples({
+              client: bmo,
+              scopes: bugzillaScopes,
+              // The whole retention window, re-derived every run — not the
+              // 3-vs-45-day incremental lookback the other two fetchers use.
+              lookbackDays: RETENTION_DAYS,
+              now,
+            }),
+        }),
   });
 
   await progress?.update((state) => {
@@ -1000,6 +1124,7 @@ export const runCollectionFromDisk = async (
   await writeJsonFileAtomic(pendingPath, pending);
   await writeJsonFileAtomic(landingsPath, landings);
   await writeJsonFileAtomic(backlogPath, backlog);
+  await writeJsonFileAtomic(bugsPath, bugs);
   // Rewrite the phab cache file with only the revisions we saw this run and a
   // fresh createdAt anchored on run start (`now`). This keeps the cache from
   // accumulating closed/stale revisions and lets the next run's dateModified
