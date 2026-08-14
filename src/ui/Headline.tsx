@@ -1,9 +1,18 @@
 import type { CSSProperties, FC, ReactElement, ReactNode } from 'react';
 
 import { PHAB_ORIGIN } from '../config';
-import { isLandingInWindow, isSampleInWindow, type Landing, type Sample } from '../scripts/collect';
+import { calendarDaysBetween } from '../scripts/calendarDays';
+import {
+  isBugInWindow,
+  isLandingInWindow,
+  isSampleInWindow,
+  type BugSample,
+  type Landing,
+  type Sample,
+} from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 
+import { bugzillaBugUrl } from './bugzillaLinks';
 import { githubPrUrl, githubRepoShortName, githubRepoSlug } from './githubRepo';
 import { asMaterialSymbolName, Icon } from './Icon';
 import {
@@ -33,12 +42,26 @@ const formatHours = (value: number): string => {
 // the header already labels the panel as "Rounds".
 const formatRounds = (value: number): string => String(Math.round(value));
 
-type MetricUnit = 'hours' | 'rounds';
-
-const formatStatValue = (value: number, hasData: boolean, unit: MetricUnit): string => {
-  if (!hasData) return 'N/A';
-  return unit === 'rounds' ? formatRounds(value) : formatHours(value);
+// Calendar days, one decimal like formatHours. The suffix matters: a bug p90 of
+// 47.6 rendered as "47.6h" would read as six working days instead of seven
+// weeks.
+const formatDays = (value: number): string => {
+  const rounded = Math.round(value * 10) / 10;
+  return `${rounded.toFixed(1)}d`;
 };
+
+export type MetricUnit = 'hours' | 'rounds' | 'days';
+
+// A record rather than a ternary chain so a new unit cannot silently fall
+// through to hours.
+const UNIT_FORMATTERS: Record<MetricUnit, (value: number) => string> = {
+  hours: formatHours,
+  rounds: formatRounds,
+  days: formatDays,
+};
+
+const formatStatValue = (value: number, hasData: boolean, unit: MetricUnit): string =>
+  hasData ? UNIT_FORMATTERS[unit](value) : 'N/A';
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
 const formatTimestamp = (value: string): string => {
   const date = new Date(value);
@@ -77,7 +100,7 @@ const windowDaysFor = (label: '7-day' | '14-day' | '30-day'): number => {
 // discriminator, an id, an optional github repo slug, and an optional Phab
 // revisionId, which is all this component needs to build the outbound link.
 interface ItemIdentifierInput {
-  readonly source: 'phab' | 'github';
+  readonly source: 'phab' | 'github' | 'bugzilla';
   readonly id: string | number;
   readonly repo?: string | undefined;
   readonly revisionId?: number | undefined;
@@ -87,6 +110,18 @@ const LINK_CLASSES =
   'font-mono text-sky-400 underline decoration-sky-700 underline-offset-4 hover:text-sky-300';
 
 const ItemIdentifier: FC<{ readonly item: ItemIdentifierInput }> = ({ item }) => {
+  if (item.source === 'bugzilla') {
+    return (
+      <a
+        href={bugzillaBugUrl(item.id)}
+        className={LINK_CLASSES}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        bug {String(item.id)}
+      </a>
+    );
+  }
   if (item.source === 'github') {
     return (
       <a
@@ -122,7 +157,8 @@ export type HeadlineItems =
   | { readonly kind: 'tat'; readonly items: readonly Sample[] }
   | { readonly kind: 'cycle'; readonly items: readonly Landing[] }
   | { readonly kind: 'postReview'; readonly items: readonly Landing[] }
-  | { readonly kind: 'rounds'; readonly items: readonly Landing[] };
+  | { readonly kind: 'rounds'; readonly items: readonly Landing[] }
+  | { readonly kind: 'bugFix'; readonly items: readonly BugSample[] };
 
 interface TableShellProps {
   readonly headers: readonly string[];
@@ -247,10 +283,30 @@ const RoundsRow: FC<{ readonly item: Landing; readonly roundsSla: number }> = ({
   );
 };
 
+// No tier tinting on the days cell: this metric has no goal, so coloring a row
+// red would assert a target the team never set. See the uncolored stat cards in
+// StatGrid for the same reason.
+const BugFixRow: FC<{ readonly item: BugSample }> = ({ item }) => (
+  <tr className="border-t border-neutral-800">
+    <td className="px-3 py-2">
+      <ItemIdentifier item={item} />
+    </td>
+    <td className="max-w-md truncate px-3 py-2 text-neutral-300" title={item.summary}>
+      {item.summary}
+    </td>
+    <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.filedAt)}</td>
+    <td className="px-3 py-2 text-neutral-400">{formatTimestamp(item.resolvedAt)}</td>
+    <td className="px-3 py-2 text-right font-medium text-neutral-100">
+      {formatDays(calendarDaysBetween(item.filedAt, item.resolvedAt))}
+    </td>
+  </tr>
+);
+
 const TAT_HEADERS = ['Review', 'Author', 'Reviewer', 'Requested', 'First action', 'TAT'] as const;
 const CYCLE_HEADERS = ['Review', 'Author', 'Created', 'Landed', 'Cycle'] as const;
 const POST_REVIEW_HEADERS = ['Review', 'Author', 'First review', 'Landed', 'Post-review'] as const;
 const ROUNDS_HEADERS = ['Review', 'Author', 'Landed', 'Rounds'] as const;
+const BUG_FIX_HEADERS = ['Bug', 'Summary', 'Filed', 'Resolved', 'Days'] as const;
 
 // Keys must disambiguate by repo — two repos can share a PR number, so a bare
 // `source:id:reviewer` would collide and drop a legitimate row (or break the
@@ -263,6 +319,8 @@ const sampleKey = (sample: Sample): string =>
 
 const landingKey = (landing: Landing): string =>
   `${landing.source}:${repoPart(landing)}:${String(landing.id)}`;
+
+const bugKey = (bug: BugSample): string => `bugzilla:${String(bug.id)}`;
 
 interface WindowItemsProps {
   readonly kindItems: HeadlineItems;
@@ -316,14 +374,31 @@ const renderWindowItems = (props: WindowItemsProps): ReactElement | null => {
       </TableShell>
     );
   }
+  if (kindItems.kind === 'rounds') {
+    const rows = kindItems.items
+      .filter((l) => isLandingInWindow(l, windowDays, now))
+      .sort((a, b) => b.landedAt.localeCompare(a.landedAt));
+    if (rows.length === 0) return null;
+    return (
+      <TableShell headers={ROUNDS_HEADERS}>
+        {rows.map((item) => (
+          <RoundsRow key={landingKey(item)} item={item} roundsSla={slaHours} />
+        ))}
+      </TableShell>
+    );
+  }
+  // NOTE: this last branch is an unconditional fall-through — kindItems is
+  // narrowed to the final HeadlineItems member here, so an explicit
+  // `kind === 'bugFix'` test would trip no-unnecessary-condition. Adding a
+  // sixth kind means converting THIS block to an explicit `if` first.
   const rows = kindItems.items
-    .filter((l) => isLandingInWindow(l, windowDays, now))
-    .sort((a, b) => b.landedAt.localeCompare(a.landedAt));
+    .filter((bug) => isBugInWindow(bug, windowDays, now))
+    .sort((a, b) => b.resolvedAt.localeCompare(a.resolvedAt));
   if (rows.length === 0) return null;
   return (
-    <TableShell headers={ROUNDS_HEADERS}>
+    <TableShell headers={BUG_FIX_HEADERS}>
       {rows.map((item) => (
-        <RoundsRow key={landingKey(item)} item={item} roundsSla={slaHours} />
+        <BugFixRow key={bugKey(item)} item={item} />
       ))}
     </TableShell>
   );
@@ -350,6 +425,11 @@ const statsTier = (
   unit: MetricUnit,
 ): SlaTier | undefined => {
   if (stats.n === 0) return undefined;
+  // Days have no goal to pass or fail, so leave the cards neutral. Tinting them
+  // against FIXED_WITHIN_DAYS would paint mean (18.4d) and p90 (47.6d) red
+  // forever and read as "failing" for a metric with no target. The "% fixed
+  // within" card keeps its coloring — more is better needs no target.
+  if (unit === 'days') return undefined;
   const effective = unit === 'rounds' ? Math.round(value) : value;
   return tierForHours(effective, slaHours);
 };
