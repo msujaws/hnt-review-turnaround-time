@@ -1,94 +1,84 @@
-import path from 'node:path';
-
 import { describe, expect, it } from 'vitest';
 
-import { PHAB_ORIGIN } from './config';
-import {
-  allGroups,
-  dataDirectoryForGroup,
-  defaultGroup,
-  DEFAULT_GROUP_ID,
-  getGroup,
-} from './groups';
+import { ALL_GROUPS, allGroups, DEFAULT_GROUP_ID, defaultGroup, getGroup } from './groups';
 
 describe('group registry', () => {
-  it('tracks exactly the seven known groups', () => {
-    expect(allGroups().map((group) => group.id)).toEqual([
-      'home-newtab',
-      'ip-protection',
-      'desktop-theme',
-      'sharing',
-      'geckoview',
-      'credential-management',
-      'ai-platform',
-    ]);
+  it('exposes the default group at the bare route', () => {
+    expect(defaultGroup().id).toBe(DEFAULT_GROUP_ID);
+    expect(getGroup(DEFAULT_GROUP_ID)).toBe(defaultGroup());
   });
 
-  it('defaults to home-newtab', () => {
-    expect(DEFAULT_GROUP_ID).toBe('home-newtab');
-    expect(defaultGroup().id).toBe('home-newtab');
+  it('returns undefined for an unknown id', () => {
+    expect(getGroup('no-such-group')).toBeUndefined();
   });
 
-  it('gives the default group a Phab slug and two GitHub repos', () => {
-    const group = defaultGroup();
-    expect(group.phabProjectSlugs).toEqual(['home-newtab-reviewers']);
-    expect(group.github).toEqual([
-      { owner: 'Pocket', repo: 'content-monorepo' },
-      {
-        owner: 'mozilla-services',
-        repo: 'merino-py',
-        authorLogins: ['jpetto', 'mmiermans', 'Herraj'],
-        gateReviewersByRoster: false,
-      },
-    ]);
+  it('has unique group ids', () => {
+    const ids = allGroups().map((group) => group.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
+});
 
-  it('marks the new groups as Phabricator-only (no GitHub repo)', () => {
-    for (const id of [
-      'ip-protection',
-      'desktop-theme',
-      'sharing',
-      'geckoview',
-      'credential-management',
-    ] as const) {
-      const group = getGroup(id);
-      expect(group).toBeDefined();
-      expect(group?.github).toBeUndefined();
+describe('bugzilla scoping', () => {
+  it('gives every group at least one bugzilla scope', () => {
+    for (const group of ALL_GROUPS) {
+      expect(group.bugzilla, `${group.id} has no bugzilla scope`).toBeDefined();
+      expect((group.bugzilla ?? []).length).toBeGreaterThan(0);
     }
   });
 
-  it('maps each group to its reviewers project slug', () => {
-    expect(getGroup('ip-protection')?.phabProjectSlugs).toEqual(['ip-protection-reviewers']);
-    expect(getGroup('desktop-theme')?.phabProjectSlugs).toEqual(['desktop-theme-reviewers']);
-    expect(getGroup('sharing')?.phabProjectSlugs).toEqual(['sharing-reviewers']);
-    expect(getGroup('geckoview')?.phabProjectSlugs).toEqual(['geckoview-reviewers']);
-    expect(getGroup('credential-management')?.phabProjectSlugs).toEqual([
-      'credential-management-reviewers',
+  it('names a non-empty product on every scope', () => {
+    for (const group of ALL_GROUPS) {
+      for (const scope of group.bugzilla ?? []) {
+        expect(scope.product.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  // An empty array means "whole product", which is a very different query from
+  // "these components". A scope that meant to name components but ended up with
+  // [] would silently widen to the entire product, so require omission instead.
+  it('omits components rather than passing an empty array', () => {
+    for (const group of ALL_GROUPS) {
+      for (const scope of group.bugzilla ?? []) {
+        if (scope.components !== undefined) {
+          expect(
+            scope.components.length,
+            `${group.id} has an empty components array`,
+          ).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
+  it('scopes geckoview to the whole product, which is where its bugs live', () => {
+    // GeckoView bugs spread across General, IME, Extensions and PDF Viewer, so
+    // a hand-listed component set would undercount. Verified against BMO.
+    const geckoview = getGroup('geckoview');
+    expect(geckoview?.bugzilla).toEqual([{ product: 'GeckoView' }]);
+  });
+
+  it('scopes home-newtab to Firefox :: New Tab Page', () => {
+    expect(getGroup('home-newtab')?.bugzilla).toEqual([
+      { product: 'Firefox', components: ['New Tab Page'] },
     ]);
-    expect(getGroup('ai-platform')?.phabProjectSlugs).toEqual(['ai-platform-reviewers']);
   });
 
-  it('tracks AI Platform across both Phabricator and the Firefox-AI/MLPA repo', () => {
-    const group = getGroup('ai-platform');
-    expect(group).toBeDefined();
-    expect(group?.label).toBe('AI Platform and Experience');
-    expect(group?.github).toEqual([{ owner: 'Firefox-AI', repo: 'MLPA' }]);
-    expect(group?.phabTabLabel).toBe('AI Platform (Phabricator)');
-    expect(group?.githubTabLabel).toBe('MLPA (GitHub)');
+  it('scopes ai-platform to every Core :: Machine Learning component', () => {
+    const scopes = getGroup('ai-platform')?.bugzilla ?? [];
+    expect(scopes).toHaveLength(1);
+    expect(scopes[0]?.product).toBe('Core');
+    expect(scopes[0]?.components).toEqual([
+      'Machine Learning: Frontend',
+      'Machine Learning: General',
+      'Machine Learning: Models',
+      'Machine Learning: On Device',
+      'Machine Learning: Server',
+    ]);
   });
 
-  it('derives the Phabricator project URL from the origin and first slug', () => {
-    expect(getGroup('sharing')?.phabProjectUrl).toBe(`${PHAB_ORIGIN}/tag/sharing-reviewers/`);
-  });
-
-  it('returns undefined for an unknown group id', () => {
-    expect(getGroup('nope')).toBeUndefined();
-    expect(getGroup('')).toBeUndefined();
-  });
-
-  it('places each group data dir under data/<id>', () => {
-    expect(dataDirectoryForGroup(defaultGroup().id)).toBe(
-      path.join(process.cwd(), 'data', 'home-newtab'),
-    );
+  it('scopes credential-management to the Toolkit password manager', () => {
+    expect(getGroup('credential-management')?.bugzilla).toEqual([
+      { product: 'Toolkit', components: ['Password Manager'] },
+    ]);
   });
 });
