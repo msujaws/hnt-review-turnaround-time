@@ -61,12 +61,12 @@ import {
 } from './phabricator';
 import { computeStats, type WindowStats } from './stats';
 
-const RETENTION_DAYS = 90;
+export const RETENTION_DAYS = 90;
 const FOLLOWUP_LOOKBACK_DAYS = 3;
 const BACKFILL_LOOKBACK_DAYS = 45;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
-const WINDOW_30_DAYS = 30;
+export const WINDOW_30_DAYS = 30;
 // Upper bound on fresh transaction.search calls per run. Held below the
 // transaction.search cooldown threshold (every: 75, see the createConduitClient
 // call below) so the 30-minute Phab cooldown never trips in normal operation —
@@ -438,8 +438,15 @@ const filterLandingsWithin = (
 // recent windows structurally optimistic, because most bugs filed in the last
 // week are not fixed yet and only the fastest ones would have a duration at all
 // (measured: the trailing 7-day filing cohort is ~75% unresolved).
-export const isBugInWindow = (bug: BugSample, windowDays: number, now: Date): boolean =>
-  Date.parse(bug.resolvedAt) >= etWindowCutoffMs(now, windowDays);
+// Bounded at BOTH ends. The upper bound is `now` — a window that ends at time T
+// must not contain a fix that happened after T. In the live path this excludes
+// nothing (nothing is resolved in the future), but it is what makes a past day's
+// windows recomputable: backfillBugHistory anchors each row on the end of its own
+// ET day, and without the upper bound a July row would count August's fixes.
+export const isBugInWindow = (bug: BugSample, windowDays: number, now: Date): boolean => {
+  const resolved = Date.parse(bug.resolvedAt);
+  return resolved >= etWindowCutoffMs(now, windowDays) && resolved <= now.getTime();
+};
 
 const filterBugsWithin = (bugs: readonly BugSample[], windowDays: number, now: Date): number[] =>
   bugs
