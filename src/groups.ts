@@ -16,6 +16,20 @@ export interface GithubRepoConfig {
   readonly gateReviewersByRoster?: boolean;
 }
 
+// One slice of Bugzilla a group owns, for the bug filed-to-fixed metric.
+// Scoped by product::component rather than derived from the group's Phabricator
+// revisions: a revision's bug tag is incomplete (fixes land without one) and a
+// single bug can span several revisions, so product::component is the stable,
+// auditable scope. `components` omitted means the whole product.
+//
+// A component listed here must exist in BMO — assertScopeExists in
+// src/scripts/bugzilla.ts checks it on every run, because BMO answers an
+// unknown component with HTTP 200 and an empty bug list rather than an error.
+export interface BugzillaScopeConfig {
+  readonly product: string;
+  readonly components?: readonly string[];
+}
+
 // A single review group the dashboard can track. Data for distinct groups is
 // never merged: each group owns a `data/<id>/` directory and renders at its
 // own URL. Most groups are Phabricator-only; Home-NewTab (Pocket
@@ -35,6 +49,10 @@ export interface GroupConfig {
   readonly phabProjectUrl: string;
   // Present (and non-empty) only for groups that also review on GitHub.
   readonly github?: readonly GithubRepoConfig[];
+  // Bugzilla scopes for the filed-to-fixed metric. Optional so a group can opt
+  // out; every group currently sets it. Absent or empty means the group
+  // collects no bugs and renders no bug panel.
+  readonly bugzilla?: readonly BugzillaScopeConfig[];
   // Tab labels for the two-platform view. Only meaningful when `github` is set
   // (a Phab-only group shows a single plain "Phabricator" tab). Absent falls
   // back to Home-NewTab's "Frontend Team / Backend Team" framing.
@@ -61,6 +79,7 @@ const HOME_NEWTAB: GroupConfig = {
     'local timezone).',
   phabProjectSlugs: ['home-newtab-reviewers'],
   phabProjectUrl: phabProjectUrl('home-newtab-reviewers'),
+  bugzilla: [{ product: 'Firefox', components: ['New Tab Page'] }],
   phabTabLabel: 'Frontend Team (Phabricator)',
   githubTabLabel: 'Backend Team (GitHub)',
   github: [
@@ -85,6 +104,7 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('IP Protection'),
     phabProjectSlugs: ['ip-protection-reviewers'],
     phabProjectUrl: phabProjectUrl('ip-protection-reviewers'),
+    bugzilla: [{ product: 'Firefox', components: ['IP Protection'] }],
   },
   {
     id: asGroupId('desktop-theme'),
@@ -93,6 +113,7 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('Desktop Theme'),
     phabProjectSlugs: ['desktop-theme-reviewers'],
     phabProjectUrl: phabProjectUrl('desktop-theme-reviewers'),
+    bugzilla: [{ product: 'Firefox', components: ['Theme'] }],
   },
   {
     id: asGroupId('sharing'),
@@ -101,6 +122,7 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('Sharing'),
     phabProjectSlugs: ['sharing-reviewers'],
     phabProjectUrl: phabProjectUrl('sharing-reviewers'),
+    bugzilla: [{ product: 'Firefox', components: ['Sharing'] }],
   },
   {
     id: asGroupId('geckoview'),
@@ -109,6 +131,10 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('GeckoView'),
     phabProjectSlugs: ['geckoview-reviewers'],
     phabProjectUrl: phabProjectUrl('geckoview-reviewers'),
+    // Whole product, no component list: GeckoView's fixed bugs spread across
+    // General, IME, Extensions and PDF Viewer, so naming components by hand
+    // would undercount and would need editing every time one is added.
+    bugzilla: [{ product: 'GeckoView' }],
   },
   {
     id: asGroupId('credential-management'),
@@ -117,6 +143,7 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     description: phabOnlyDescription('Credential Management'),
     phabProjectSlugs: ['credential-management-reviewers'],
     phabProjectUrl: phabProjectUrl('credential-management-reviewers'),
+    bugzilla: [{ product: 'Toolkit', components: ['Password Manager'] }],
   },
   {
     id: asGroupId('ai-platform'),
@@ -131,6 +158,18 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
       "each reviewer's local timezone).",
     phabProjectSlugs: ['ai-platform-reviewers'],
     phabProjectUrl: phabProjectUrl('ai-platform-reviewers'),
+    bugzilla: [
+      {
+        product: 'Core',
+        components: [
+          'Machine Learning: Frontend',
+          'Machine Learning: General',
+          'Machine Learning: Models',
+          'Machine Learning: On Device',
+          'Machine Learning: Server',
+        ],
+      },
+    ],
     phabTabLabel: 'AI Platform (Phabricator)',
     githubTabLabel: 'MLPA (GitHub)',
     // MLPA is the team's dedicated repo: no roster gate (no people.json), so
