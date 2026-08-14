@@ -28,7 +28,8 @@ export type ChartSource =
   | 'phabPostReview'
   | 'githubPostReview'
   | 'phabRounds'
-  | 'githubRounds';
+  | 'githubRounds'
+  | 'bugFix';
 
 export interface ChartPoint {
   readonly date: string;
@@ -60,17 +61,33 @@ export const buildChartData = (history: readonly HistoryRow[], source: ChartSour
     };
   });
 
+// null → draw no reference line. Every metric with a real target (TAT, cycle,
+// post-review, rounds) passes a number; bug fix time passes null, because a
+// dashed line at 7 days would invent a goal the team never set.
+export const slaReferenceFor = (options: {
+  readonly slaHours: number | null;
+  readonly slaLineLabel?: string | undefined;
+}): { readonly y: number; readonly label: string } | null => {
+  const { slaHours } = options;
+  if (slaHours === null) return null;
+  return { y: slaHours, label: options.slaLineLabel ?? `${slaHours.toString()}h SLA` };
+};
+
 export interface TrendlineProps {
   readonly title: string;
   readonly history: readonly HistoryRow[];
   readonly source: ChartSource;
-  readonly slaHours?: number;
+  // null suppresses the reference line entirely — see slaReferenceFor.
+  readonly slaHours?: number | null;
   // Left-axis label. Defaults to "hours"; pass "rounds" for the review-rounds
   // trendline so the axis doesn't lie about the units.
   readonly valueAxisLabel?: string;
   // SLA line label. Defaults to "${sla}h SLA". For non-hour metrics, override
   // (e.g. "one-shot" for rounds, or omit the "h").
   readonly slaLineLabel?: string;
+  // Right-hand axis label. Defaults to "% SLA"; a metric with no SLA must
+  // override it or the axis lies about what the series means.
+  readonly pctAxisLabel?: string;
 }
 
 export const Trendline: FC<TrendlineProps> = ({
@@ -80,8 +97,10 @@ export const Trendline: FC<TrendlineProps> = ({
   slaHours = 4,
   valueAxisLabel = 'hours',
   slaLineLabel,
+  pctAxisLabel = '% SLA',
 }) => {
   const data = buildChartData(history, source);
+  const reference = slaReferenceFor({ slaHours, slaLineLabel });
   return (
     <section className="flex flex-col gap-3">
       <h3 className="text-lg font-semibold text-neutral-100">{title}</h3>
@@ -111,7 +130,7 @@ export const Trendline: FC<TrendlineProps> = ({
               stroke={chartTheme.textMuted}
               tick={{ fontSize: 12 }}
               label={{
-                value: '% SLA',
+                value: pctAxisLabel,
                 angle: 90,
                 position: 'insideRight',
                 fill: chartTheme.textMuted,
@@ -125,17 +144,15 @@ export const Trendline: FC<TrendlineProps> = ({
               }}
             />
             <Legend wrapperStyle={{ color: chartTheme.text }} />
-            <ReferenceLine
-              y={slaHours}
-              yAxisId="hours"
-              stroke={chartTheme.slaLine}
-              strokeDasharray="3 3"
-              label={{
-                value: slaLineLabel ?? `${slaHours.toString()}h SLA`,
-                fill: chartTheme.slaLine,
-                fontSize: 10,
-              }}
-            />
+            {reference === null ? null : (
+              <ReferenceLine
+                y={reference.y}
+                yAxisId="hours"
+                stroke={chartTheme.slaLine}
+                strokeDasharray="3 3"
+                label={{ value: reference.label, fill: chartTheme.slaLine, fontSize: 10 }}
+              />
+            )}
             <Line
               yAxisId="hours"
               type="monotone"
