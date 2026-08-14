@@ -2,9 +2,10 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
-import type { Landing, Sample } from '../scripts/collect';
+import type { BugSample, Landing, Sample } from '../scripts/collect';
 import type { WindowStats } from '../scripts/stats';
 import {
+  asBugNumber,
   asBusinessHours,
   asGithubRepoSlug,
   asIsoTimestamp,
@@ -884,5 +885,141 @@ describe('Headline', () => {
       expect(within(twoRounds).getByText('2').className).toMatch(/amber/);
       expect(within(fourRounds).getByText('4').className).toMatch(/rose/);
     });
+  });
+});
+
+const makeBug = (overrides: Partial<BugSample> = {}): BugSample => ({
+  source: 'bugzilla',
+  id: asBugNumber(2_036_233),
+  summary: 'Sports widget - add starter state without countdown',
+  product: 'Firefox',
+  component: 'New Tab Page',
+  filedAt: asIsoTimestamp('2026-04-14T00:00:00Z'),
+  resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z'),
+  ...overrides,
+});
+
+const bugWindow: WindowStats = { n: 3, median: 4.6, mean: 18.4, p90: 47.6, pctUnderSLA: 62 };
+const now = new Date('2026-04-20T13:00:00Z');
+
+describe('Headline bug fix time', () => {
+  const renderPanel = (bugs: readonly BugSample[]): void => {
+    render(
+      <Headline
+        title="Bugzilla · Filed to fixed"
+        window7d={bugWindow}
+        window14d={bugWindow}
+        window30d={bugWindow}
+        slaHours={7}
+        unit="days"
+        slaLabel="Fixed ≤ 7d"
+        countLabel="bug"
+        items={{ kind: 'bugFix', items: bugs }}
+        now={now}
+      />,
+    );
+  };
+
+  it('formats stat values as days, not hours', () => {
+    renderPanel([makeBug()]);
+    // "4.6h" would read as under a working day; this metric means 4.6 days.
+    expect(screen.getAllByText('4.6d').length).toBeGreaterThan(0);
+    expect(screen.queryByText('4.6h')).not.toBeInTheDocument();
+  });
+
+  it('shows the skewed mean and p90 in days too', () => {
+    renderPanel([makeBug()]);
+    expect(screen.getAllByText('18.4d').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('47.6d').length).toBeGreaterThan(0);
+  });
+
+  // The metric has no goal, so median/mean/p90 must not be tinted. Tinting
+  // would paint a 47.6d p90 red forever against a threshold nobody agreed to.
+  it('leaves the day stat cards uncolored', () => {
+    renderPanel([makeBug()]);
+    const card = screen.getAllByText('4.6d')[0]?.parentElement;
+    expect(card?.className).toContain('bg-neutral-900');
+  });
+
+  it('links each bug row to its Bugzilla page', () => {
+    renderPanel([makeBug()]);
+    const link = screen.getAllByRole('link', { name: 'bug 2036233' })[0];
+    expect(link).toHaveAttribute('href', 'https://bugzilla.mozilla.org/show_bug.cgi?id=2036233');
+  });
+
+  it('renders the filed-to-fixed table headers', () => {
+    renderPanel([makeBug()]);
+    for (const header of ['Bug', 'Summary', 'Filed', 'Resolved', 'Days']) {
+      expect(screen.getAllByText(header).length).toBeGreaterThan(0);
+    }
+  });
+
+  it('shows the computed day count per row', () => {
+    renderPanel([makeBug()]);
+    // 2026-04-14 to 2026-04-20 is exactly 6 days.
+    expect(screen.getAllByText('6.0d').length).toBeGreaterThan(0);
+  });
+
+  it('excludes a bug resolved outside the window', () => {
+    renderPanel([
+      makeBug({ id: asBugNumber(1) }),
+      makeBug({ id: asBugNumber(2), resolvedAt: asIsoTimestamp('2026-01-01T00:00:00Z') }),
+    ]);
+    const sevenDay = screen.getByTestId('window-7d-details');
+    expect(within(sevenDay).getByRole('link', { name: 'bug 1' })).toBeInTheDocument();
+    expect(within(sevenDay).queryByRole('link', { name: 'bug 2' })).not.toBeInTheDocument();
+  });
+
+  it('sorts newest resolution first', () => {
+    renderPanel([
+      makeBug({ id: asBugNumber(1), resolvedAt: asIsoTimestamp('2026-04-16T00:00:00Z') }),
+      makeBug({ id: asBugNumber(2), resolvedAt: asIsoTimestamp('2026-04-19T00:00:00Z') }),
+    ]);
+    const links = within(screen.getByTestId('window-7d-details')).getAllByRole('link');
+    expect(links[0]).toHaveAccessibleName('bug 2');
+  });
+
+  it('labels the count with the bug noun', () => {
+    render(
+      <Headline
+        title="Bugzilla · Filed to fixed"
+        window7d={{ n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 }}
+        window14d={bugWindow}
+        window30d={bugWindow}
+        slaHours={7}
+        unit="days"
+        countLabel="bug"
+        items={{ kind: 'bugFix', items: [] }}
+        now={now}
+      />,
+    );
+    expect(screen.getByText('no bugs in window')).toBeInTheDocument();
+  });
+});
+
+// Regression guard for promoting the rounds branch out of the trailing
+// fall-through position in renderWindowItems. If the promotion went wrong, the
+// rounds table would render as the bug table (or not at all).
+describe('Headline rounds after the bugFix kind was added', () => {
+  it('still renders the rounds table with integer values', () => {
+    render(
+      <Headline
+        title="Phabricator · Review rounds"
+        window7d={{ n: 1, median: 2, mean: 2, p90: 2, pctUnderSLA: 0 }}
+        window14d={window14d}
+        window30d={window30d}
+        slaHours={1}
+        unit="rounds"
+        slaLabel="One-shot"
+        items={{
+          kind: 'rounds',
+          items: [makeRoundsLanding(7, 'carol', '2026-04-20T10:00:00Z', 2)],
+        }}
+        now={now}
+      />,
+    );
+    const sevenDay = screen.getByTestId('window-7d-details');
+    expect(within(sevenDay).getByText('Rounds')).toBeInTheDocument();
+    expect(within(sevenDay).queryByText('Summary')).not.toBeInTheDocument();
   });
 });
