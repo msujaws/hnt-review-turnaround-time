@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { allGroups } from '../groups';
 import {
+  asBugNumber,
   asBusinessHours,
   asGithubRepoSlug,
   asIanaTimezone,
@@ -15,11 +16,15 @@ import {
   asRevisionPhid,
 } from '../types/brand';
 
+import type { BugSample } from './bugzilla';
 import {
   backlogSnapshotSchema,
+  bugFixWindows,
+  bugSampleSchema,
   collect,
   computeBacklogSnapshot,
   historyRowSchema,
+  isBugInWindow,
   landingSchema,
   loadPhabProgress,
   PHAB_PROGRESS_SCHEMA_VERSION,
@@ -1440,5 +1445,237 @@ describe('selectGroups', () => {
 
   it('throws when any id is unknown, even alongside valid ones', () => {
     expect(() => selectGroups(['sharing', 'nope'])).toThrow(/unknown group id "nope"/);
+  });
+});
+
+const makeBug = (overrides: Partial<BugSample> = {}): BugSample => ({
+  source: 'bugzilla',
+  id: asBugNumber(2_036_233),
+  summary: 'Sports widget - add starter state without countdown',
+  product: 'Firefox',
+  component: 'New Tab Page',
+  filedAt: asIsoTimestamp('2026-04-14T00:00:00Z'),
+  resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z'),
+  ...overrides,
+});
+
+const bugResult = (samples: readonly BugSample[] = []): { samples: readonly BugSample[] } => ({
+  samples,
+});
+
+const zeroStats = { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 };
+
+describe('isBugInWindow', () => {
+  const now = new Date('2026-04-20T13:00:00Z');
+
+  // The load-bearing case for the whole metric: windows bucket by resolution
+  // date, not filing date. A years-old bug fixed yesterday belongs to
+  // yesterday's window. If someone "fixes" the anchor to filedAt, this fails.
+  it('anchors on resolvedAt, not filedAt', () => {
+    const ancient = makeBug({
+      filedAt: asIsoTimestamp('2025-08-08T00:00:00Z'),
+      resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z'),
+    });
+    expect(isBugInWindow(ancient, 7, now)).toBe(true);
+  });
+
+  it('excludes a bug resolved before the window opens', () => {
+    const old = makeBug({ resolvedAt: asIsoTimestamp('2026-04-01T00:00:00Z') });
+    expect(isBugInWindow(old, 7, now)).toBe(false);
+    expect(isBugInWindow(old, 30, now)).toBe(true);
+  });
+});
+
+describe('bugFixWindows', () => {
+  const now = new Date('2026-04-20T13:00:00Z');
+
+  it('reports calendar days between filing and resolution', () => {
+    const windows = bugFixWindows([makeBug()], now, 7);
+    expect(windows.window7d.n).toBe(1);
+    expect(windows.window7d.median).toBe(6);
+  });
+
+  // Bug lifetimes are right-skewed (measured p50 4.6d against a mean of 18.4d),
+  // so the skew has to survive into the stats rather than being averaged away.
+  it('preserves the skew between median and mean', () => {
+    const bugs = [
+      makeBug({ id: asBugNumber(1), filedAt: asIsoTimestamp('2026-04-19T00:00:00Z') }),
+      makeBug({ id: asBugNumber(2), filedAt: asIsoTimestamp('2026-04-18T00:00:00Z') }),
+      makeBug({ id: asBugNumber(3), filedAt: asIsoTimestamp('2026-01-01T00:00:00Z') }),
+    ];
+    const windows = bugFixWindows(bugs, now, 7);
+    expect(windows.window7d.median).toBe(2);
+    expect(windows.window7d.mean).toBeGreaterThan(30);
+  });
+
+  it('counts a bug fixed at exactly the threshold as within it', () => {
+    // pctUnderSLA is inclusive <=, so a 7.0-day fix counts as "fixed within 7".
+    const exactly = makeBug({
+      filedAt: asIsoTimestamp('2026-04-13T00:00:00Z'),
+      resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z'),
+    });
+    expect(bugFixWindows([exactly], now, 7).window7d.pctUnderSLA).toBe(100);
+  });
+
+  it('buckets by resolution date across the three windows', () => {
+    const bugs = [
+      makeBug({ id: asBugNumber(1), resolvedAt: asIsoTimestamp('2026-04-20T00:00:00Z') }),
+      makeBug({ id: asBugNumber(2), resolvedAt: asIsoTimestamp('2026-04-10T00:00:00Z') }),
+      makeBug({ id: asBugNumber(3), resolvedAt: asIsoTimestamp('2026-03-25T00:00:00Z') }),
+    ];
+    const windows = bugFixWindows(bugs, now, 7);
+    expect(windows.window7d.n).toBe(1);
+    expect(windows.window14d.n).toBe(2);
+    expect(windows.window30d.n).toBe(3);
+  });
+
+  it('zeroes every window when there are no bugs', () => {
+    const windows = bugFixWindows([], now, 7);
+    expect(windows.window7d).toEqual({ n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 });
+  });
+});
+
+describe('collect bug fix time', () => {
+  const now = new Date('2026-04-20T13:00:00Z');
+
+  it('writes a bugFix block on today history row', async () => {
+    const result = await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingLandings: [],
+      existingHistory: [],
+      fetchPhab: vi.fn(async () => phabResult()),
+      fetchGithub: vi.fn(async () => ghResult()),
+      fetchBugs: vi.fn(async () => bugResult([makeBug()])),
+      now,
+    });
+    expect(result.bugs).toHaveLength(1);
+    expect(result.history.at(-1)?.bugFix?.window7d.n).toBe(1);
+  });
+
+  it('zeroes the block and collects nothing when no fetcher is supplied', async () => {
+    const result = await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingHistory: [],
+      fetchPhab: vi.fn(async () => phabResult()),
+      fetchGithub: vi.fn(async () => ghResult()),
+      now,
+    });
+    expect(result.bugs).toEqual([]);
+    expect(result.history.at(-1)?.bugFix?.window7d.n).toBe(0);
+  });
+
+  // Full replace, not a merge. The BMO query re-derives the whole retention
+  // window every run, so a bug that was reopened (or re-resolved WONTFIX) stops
+  // matching resolution=FIXED and must leave the dataset. A fresh-wins merge
+  // would pin the stale FIXED row in the metric forever.
+  it('drops a bug the fresh fetch no longer returns', async () => {
+    const reopened = makeBug({ id: asBugNumber(999) });
+    const result = await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingLandings: [],
+      existingHistory: [],
+      fetchPhab: vi.fn(async () => phabResult()),
+      fetchGithub: vi.fn(async () => ghResult()),
+      existingBugs: [reopened],
+      fetchBugs: vi.fn(async () => bugResult([makeBug()])),
+      now,
+    });
+    expect(result.bugs.map((b) => b.id)).toEqual([2_036_233]);
+  });
+
+  it('prunes a bug resolved outside the retention window', async () => {
+    const ancient = makeBug({
+      id: asBugNumber(3),
+      filedAt: asIsoTimestamp('2025-10-01T00:00:00Z'),
+      resolvedAt: asIsoTimestamp('2025-11-01T00:00:00Z'),
+    });
+    const result = await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingLandings: [],
+      existingHistory: [],
+      fetchPhab: vi.fn(async () => phabResult()),
+      fetchGithub: vi.fn(async () => ghResult()),
+      fetchBugs: vi.fn(async () => bugResult([ancient, makeBug()])),
+      now,
+    });
+    expect(result.bugs.map((b) => b.id)).toEqual([2_036_233]);
+  });
+
+  // BMO is a public endpoint with no token and no SLA of its own. An outage
+  // there must not take down the primary review-turnaround metrics.
+  it('keeps the persisted bugs and still snapshots when the fetch throws', async () => {
+    const existing = [makeBug()];
+    const result = await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingLandings: [],
+      existingHistory: [],
+      fetchPhab: vi.fn(async () => phabResult([makePhabSample()])),
+      fetchGithub: vi.fn(async () => ghResult()),
+      existingBugs: existing,
+      fetchBugs: vi.fn(() => Promise.reject(new Error('BMO is down'))),
+      now,
+    });
+    expect(result.bugs).toEqual(existing);
+    expect(result.history.at(-1)?.phab.window7d.n).toBe(1);
+  });
+
+  it('does not let an empty bugs file widen the phabricator lookback', async () => {
+    // An empty bugs.json must not trigger the 45-day backfill path, which would
+    // re-run the expensive bugbug/Conduit walk on every deploy.
+    const fetchPhab = vi.fn(async () => phabResult());
+    await collect({
+      existingSamples: [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }],
+      existingLandings: [
+        {
+          ...makePhabLanding(),
+          cycleBusinessHours: asBusinessHours(4),
+          postReviewBusinessHours: asBusinessHours(2),
+        },
+      ],
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub: vi.fn(async () => ghResult()),
+      existingBugs: [],
+      fetchBugs: vi.fn(async () => bugResult()),
+      now,
+    });
+    expect(fetchPhab).toHaveBeenCalledWith(3);
+  });
+});
+
+describe('bugSampleSchema', () => {
+  const valid = {
+    source: 'bugzilla',
+    id: 2_036_233,
+    summary: 'Sports widget',
+    product: 'Firefox',
+    component: 'New Tab Page',
+    filedAt: '2026-04-14T00:00:00Z',
+    resolvedAt: '2026-04-20T00:00:00Z',
+  };
+
+  it('parses and brands a persisted row', () => {
+    expect(bugSampleSchema.parse(valid)).toEqual(valid);
+  });
+
+  it('rejects a row with no resolution timestamp', () => {
+    const withoutResolved: Record<string, unknown> = { ...valid };
+    delete withoutResolved.resolvedAt;
+    expect(() => bugSampleSchema.parse(withoutResolved)).toThrow();
+  });
+
+  it('rejects a non-positive bug id at the brand boundary', () => {
+    expect(() => bugSampleSchema.parse({ ...valid, id: 0 })).toThrow();
+  });
+});
+
+describe('historyRowSchema bug back-compat', () => {
+  it('parses a row written before the bug metric shipped', () => {
+    const legacy = {
+      date: '2026-04-20',
+      phab: { window7d: zeroStats, window14d: zeroStats, window30d: zeroStats },
+      github: { window7d: zeroStats, window14d: zeroStats, window30d: zeroStats },
+    };
+    expect(historyRowSchema.parse(legacy).bugFix).toBeUndefined();
   });
 });
