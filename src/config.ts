@@ -23,6 +23,16 @@ export const POST_REVIEW_SLA_HOURS = 8;
 // (no changes-requested cycle). Higher is better, so this is a lower-bound.
 export const ROUNDS_SLA = 1;
 
+// Threshold for the "% fixed within N days" stat card on the bug filed-to-fixed
+// panel, in calendar days. Deliberately NOT named *_SLA and not a goal: the
+// panel draws no reference line on its trendline, leaves the median/mean/p90
+// cards uncolored, and stays out of the page <title>. It exists only because
+// WindowStats.pctUnderSLA is a required field, and "fixed within a week" is the
+// reading that makes that number legible. Named for the reading rather than for
+// a window so it is not confused with the 7/14/30-day rolling windows.
+// Measured on Firefox :: New Tab Page: median 4.6d, mean 18.4d, p90 47.6d.
+export const FIXED_WITHIN_DAYS = 7;
+
 // ET anchors the "today" calendar day for windows + history rows. Business-
 // hours math defaults to the same zone; see businessHours.ts.
 export const ET_ZONE = 'America/New_York';
@@ -37,3 +47,8 @@ export const GITHUB_REPO_URL = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO
 export const GITHUB_REPO_LABEL = `${GITHUB_OWNER.toLowerCase()}/${GITHUB_REPO}`;
 
 export const PHAB_ORIGIN = 'https://phabricator.services.mozilla.com';
+
+// Bugzilla is read unauthenticated, so restricted (security) bugs are invisible
+// to the filed-to-fixed metric. Adding an API key would include them; that is a
+// deliberate decision rather than a default.
+export const BUGZILLA_ORIGIN = 'https://bugzilla.mozilla.org';
