@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  asBugNumber,
   asBusinessHours,
+  asCalendarDays,
   asGithubRepoSlug,
   asGroupId,
   asIsoTimestamp,
@@ -80,6 +82,50 @@ describe('asBusinessHours', () => {
 
   it('rejects Infinity', () => {
     expect(() => asBusinessHours(Number.POSITIVE_INFINITY)).toThrow();
+  });
+});
+
+describe('asCalendarDays', () => {
+  it('accepts zero', () => {
+    expect(asCalendarDays(0)).toBe(0);
+  });
+
+  it('accepts a fractional day count', () => {
+    expect(asCalendarDays(4.6)).toBe(4.6);
+  });
+
+  it('accepts values far above a business-hours range', () => {
+    expect(asCalendarDays(299.4)).toBe(299.4);
+  });
+
+  it('rejects negative values', () => {
+    expect(() => asCalendarDays(-0.1)).toThrow();
+  });
+
+  it('rejects NaN', () => {
+    expect(() => asCalendarDays(Number.NaN)).toThrow();
+  });
+
+  it('rejects Infinity', () => {
+    expect(() => asCalendarDays(Number.POSITIVE_INFINITY)).toThrow();
+  });
+});
+
+describe('asBugNumber', () => {
+  it('accepts a Bugzilla bug id', () => {
+    expect(asBugNumber(2_036_233)).toBe(2_036_233);
+  });
+
+  it('rejects zero', () => {
+    expect(() => asBugNumber(0)).toThrow();
+  });
+
+  it('rejects negative numbers', () => {
+    expect(() => asBugNumber(-1)).toThrow();
+  });
+
+  it('rejects non-integers', () => {
+    expect(() => asBugNumber(1.5)).toThrow();
   });
 });
 
