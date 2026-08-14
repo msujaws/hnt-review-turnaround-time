@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { HistoryRow } from '../scripts/collect';
 
-import { buildChartData, Trendline } from './Trendline';
+import { buildChartData, slaReferenceFor, Trendline } from './Trendline';
 
 const row = (date: string, medianHours: number, pctUnderSLA: number): HistoryRow => ({
   date,
@@ -72,5 +72,63 @@ describe('Trendline', () => {
     render(<Trendline title="Phab" history={history} source="phab" />);
     const container = screen.getByTestId('trendline-phab');
     expect(container).toBeInTheDocument();
+  });
+});
+
+describe('slaReferenceFor', () => {
+  it('draws a labelled line for a metric with a target', () => {
+    expect(slaReferenceFor({ slaHours: 24 })).toEqual({ y: 24, label: '24h SLA' });
+  });
+
+  it('prefers an explicit label over the hours default', () => {
+    expect(slaReferenceFor({ slaHours: 1, slaLineLabel: 'one-shot' })).toEqual({
+      y: 1,
+      label: 'one-shot',
+    });
+  });
+
+  // Bug fix time has no team goal, so a dashed line at 7 days would invent one.
+  it('draws no line when the metric has no target', () => {
+    expect(slaReferenceFor({ slaHours: null })).toBeNull();
+  });
+});
+
+describe('Trendline bug fix source', () => {
+  const bugWindows = {
+    window7d: { n: 3, median: 4.6, mean: 18.4, p90: 47.6, pctUnderSLA: 62 },
+    window14d: { n: 9, median: 5.1, mean: 20.2, p90: 51.3, pctUnderSLA: 58 },
+    window30d: { n: 30, median: 6, mean: 22, p90: 60, pctUnderSLA: 55 },
+  };
+
+  it('reads the 14-day window off the bugFix key', () => {
+    const history: HistoryRow[] = [
+      { date: '2026-04-20', phab: bugWindows, github: bugWindows, bugFix: bugWindows },
+    ];
+    expect(buildChartData(history, 'bugFix')).toEqual([
+      { date: '2026-04-20', median: 5.1, mean: 20.2, p90: 51.3, pctUnderSLA: 58 },
+    ]);
+  });
+
+  // Rows written before the metric shipped have no bugFix key. They plot as a
+  // zero point rather than throwing.
+  it('emits a zero point for a row predating the metric', () => {
+    const history: HistoryRow[] = [{ date: '2026-04-01', phab: bugWindows, github: bugWindows }];
+    expect(buildChartData(history, 'bugFix')).toEqual([
+      { date: '2026-04-01', median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
+    ]);
+  });
+
+  it('renders the chart container for the bugFix source with no sla line', () => {
+    render(
+      <Trendline
+        title="Bug fix-time trend"
+        history={[{ date: '2026-04-20', phab: bugWindows, github: bugWindows, bugFix: bugWindows }]}
+        source="bugFix"
+        slaHours={null}
+        valueAxisLabel="days"
+        pctAxisLabel="% ≤ 7d"
+      />,
+    );
+    expect(screen.getByTestId('trendline-bugFix')).toBeInTheDocument();
   });
 });
