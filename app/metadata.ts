@@ -17,6 +17,9 @@ const formatHours = (value: number, hasData: boolean): string => {
   const rounded = Math.round(value * 10) / 10;
   return `${rounded.toFixed(1)}h`;
 };
+// Calendar days for the bug clause. Distinct suffix from formatHours because
+// "18.4h" and "18.4d" are three weeks apart.
+const formatDays = (value: number): string => `${(Math.round(value * 10) / 10).toFixed(1)}d`;
 const formatPercent = (value: number): string => `${Math.round(value).toString()}%`;
 
 interface Headline {
@@ -127,6 +130,14 @@ export const buildMetadataSummary = (
     githubCycle !== null && githubCycle.stats.n > 0
       ? `, cycle ${formatHours(githubCycle.stats.median, true)} (${githubCycle.stats.n.toString()} land${githubCycle.stats.n === 1 ? '' : 's'}, ${githubCycle.label})`
       : '';
+  // og:description only, never the title. The title's job is the review SLA;
+  // bug fix time has no goal to breach, so it must not compete for Slack's
+  // first line. Same precedent as phabCycleClause above.
+  const bugFix = latest.bugFix === undefined ? null : pickHeadlineWindow(latest.bugFix);
+  const bugFixLine =
+    bugFix !== null && bugFix.stats.n > 0
+      ? `Bugs ${bugFix.label}: median ${formatDays(bugFix.stats.median)} filed-to-fixed (n=${bugFix.stats.n.toString()})`
+      : null;
   const descriptionLines = [
     `Phab ${phab.label}: median ${formatHours(phab.stats.median, phabHas)}, ${formatPercent(phab.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${phab.stats.n.toString()})${phabCycleClause}`,
   ];
@@ -135,6 +146,7 @@ export const buildMetadataSummary = (
       `GH ${github.label}: median ${formatHours(github.stats.median, ghHas)}, ${formatPercent(github.stats.pctUnderSLA)} under ${slaHours.toString()}h SLA (n=${github.stats.n.toString()})${githubCycleClause}`,
     );
   }
+  if (bugFixLine !== null) descriptionLines.push(bugFixLine);
   const baseDescription = descriptionLines.join(' · ');
   return {
     title: `${prefix}${baseTitle}`,

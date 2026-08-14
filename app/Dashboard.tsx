@@ -1,10 +1,16 @@
-import { Fragment, type FC, type ReactElement } from 'react';
+import { Fragment, type FC, type ReactElement, type ReactNode } from 'react';
 
-import { CYCLE_SLA_HOURS, POST_REVIEW_SLA_HOURS, ROUNDS_SLA } from '../src/config';
+import {
+  CYCLE_SLA_HOURS,
+  FIXED_WITHIN_DAYS,
+  POST_REVIEW_SLA_HOURS,
+  ROUNDS_SLA,
+} from '../src/config';
 import { defaultGroup, type GroupConfig } from '../src/groups';
-import type { HistoryRow, Landing, Sample, SourceWindows } from '../src/scripts/collect';
+import type { BugSample, HistoryRow, Landing, Sample, SourceWindows } from '../src/scripts/collect';
 import type { PeopleMap } from '../src/scripts/people';
-import { Headline, type HeadlineItems } from '../src/ui/Headline';
+import { bugzillaBuglistUrl, bugzillaScopeLabel } from '../src/ui/bugzillaLinks';
+import { Headline, type HeadlineItems, type MetricUnit } from '../src/ui/Headline';
 import { window7dMedianOverSla } from '../src/ui/redIssue';
 import { Tabs, type TabItem } from '../src/ui/Tabs';
 import { Trendline, type ChartSource } from '../src/ui/Trendline';
@@ -19,6 +25,9 @@ export interface DashboardProps {
   readonly history: readonly HistoryRow[];
   readonly samples: readonly Sample[];
   readonly landings: readonly Landing[];
+  // Bugs backing the filed-to-fixed panel. Optional so existing call sites (and
+  // a group whose first collect hasn't run) don't have to supply it.
+  readonly bugs?: readonly BugSample[];
   readonly slaHours: number;
   readonly now: Date;
   readonly peopleMap: PeopleMap;
@@ -32,6 +41,7 @@ export const Dashboard: FC<DashboardProps> = ({
   history,
   samples,
   landings,
+  bugs = [],
   slaHours,
   now,
   peopleMap,
@@ -121,6 +131,24 @@ export const Dashboard: FC<DashboardProps> = ({
       . Time stops at that reviewer&apos;s first review or review comment.
     </>
   );
+  const bugFixDescription = (
+    <>
+      Bugs in{' '}
+      <a
+        href={bugzillaBuglistUrl(group.bugzilla ?? [])}
+        className={LINK_CLASSES}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {bugzillaScopeLabel(group.bugzilla ?? [])}
+      </a>{' '}
+      resolved FIXED, measured from filing to the last resolution. Clock is in{' '}
+      <strong>calendar</strong> days, weekends included &mdash; unlike the review metrics above.
+      Bucketed by resolution date, so every bug counted has both timestamps. Read the median: the
+      distribution is heavily right-skewed, so the mean and p90 are pulled up by a handful of
+      long-lived bugs and are not typical.
+    </>
+  );
   const emptyWindows: SourceWindows = {
     window7d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
     window14d: { n: 0, median: 0, mean: 0, p90: 0, pctUnderSLA: 0 },
@@ -132,52 +160,65 @@ export const Dashboard: FC<DashboardProps> = ({
   const ghPostReview = latest.githubPostReview ?? emptyWindows;
   const phabRounds = latest.phabRounds ?? emptyWindows;
   const ghRounds = latest.githubRounds ?? emptyWindows;
+  const bugFix = latest.bugFix ?? emptyWindows;
+  // Gated on config rather than on `latest.bugFix` being present, so the panel
+  // shows Headline's honest empty state in the window between deploy and the
+  // first cron instead of vanishing.
+  const bugzillaScopes = group.bugzilla ?? [];
+  const hasBugzilla = bugzillaScopes.length > 0;
 
   const hasAnyData = (w: SourceWindows): boolean =>
     w.window7d.n + w.window14d.n + w.window30d.n > 0;
 
-  const landingPanel = (config: {
+  // Renamed from landingPanel: it renders bug rows too, and a factory called
+  // landingPanel that emits a Bugzilla table would be a lie. `items` is passed
+  // as a HeadlineItems rather than a kind + array so a caller cannot pair the
+  // bugFix kind with a landings array.
+  const metricPanel = (config: {
     readonly title: string;
+    readonly description?: ReactNode;
     readonly windows: SourceWindows;
+    // The threshold fed to the stat cards. `trendSla` controls the chart line
+    // separately, so a metric can report a "% within" figure without drawing a
+    // goal line for it.
     readonly sla: number;
-    readonly unit?: 'hours' | 'rounds';
+    readonly trendSla?: number | null;
+    readonly unit?: MetricUnit;
     readonly slaLabel?: string;
+    readonly countLabel?: string;
     readonly trendTitle: string;
     readonly trendSource: ChartSource;
     readonly valueAxisLabel?: string;
     readonly slaLineLabel?: string;
-    readonly itemKind: 'cycle' | 'postReview' | 'rounds';
-    readonly landings: readonly Landing[];
-  }): ReactElement => {
-    const items: HeadlineItems = { kind: config.itemKind, items: config.landings };
-    return (
-      <Headline
-        title={config.title}
-        window7d={config.windows.window7d}
-        window14d={config.windows.window14d}
-        window30d={config.windows.window30d}
-        slaHours={config.sla}
-        items={items}
-        now={now}
-        {...(config.unit === undefined ? {} : { unit: config.unit })}
-        {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
-        countLabel="land"
-        collapsible
-        defaultOpen={hasAnyData(config.windows)}
-      >
-        <Trendline
-          title={config.trendTitle}
-          history={history}
-          source={config.trendSource}
-          slaHours={config.sla}
-          {...(config.valueAxisLabel === undefined
-            ? {}
-            : { valueAxisLabel: config.valueAxisLabel })}
-          {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
-        />
-      </Headline>
-    );
-  };
+    readonly pctAxisLabel?: string;
+    readonly items: HeadlineItems;
+  }): ReactElement => (
+    <Headline
+      title={config.title}
+      window7d={config.windows.window7d}
+      window14d={config.windows.window14d}
+      window30d={config.windows.window30d}
+      slaHours={config.sla}
+      items={config.items}
+      now={now}
+      {...(config.description === undefined ? {} : { description: config.description })}
+      {...(config.unit === undefined ? {} : { unit: config.unit })}
+      {...(config.slaLabel === undefined ? {} : { slaLabel: config.slaLabel })}
+      countLabel={config.countLabel ?? 'land'}
+      collapsible
+      defaultOpen={hasAnyData(config.windows)}
+    >
+      <Trendline
+        title={config.trendTitle}
+        history={history}
+        source={config.trendSource}
+        slaHours={config.trendSla === undefined ? config.sla : config.trendSla}
+        {...(config.valueAxisLabel === undefined ? {} : { valueAxisLabel: config.valueAxisLabel })}
+        {...(config.slaLineLabel === undefined ? {} : { slaLineLabel: config.slaLineLabel })}
+        {...(config.pctAxisLabel === undefined ? {} : { pctAxisLabel: config.pctAxisLabel })}
+      />
+    </Headline>
+  );
 
   const phabContent = (
     <div className="flex flex-col gap-6">
@@ -195,25 +236,23 @@ export const Dashboard: FC<DashboardProps> = ({
       >
         <Trendline title="Phabricator trend" history={history} source="phab" slaHours={slaHours} />
       </Headline>
-      {landingPanel({
+      {metricPanel({
         title: 'Phabricator · Creation to merge',
         windows: phabCycle,
         sla: CYCLE_SLA_HOURS,
         trendTitle: 'Cycle-time trend (Phab)',
         trendSource: 'phabCycle',
-        itemKind: 'cycle',
-        landings: phabLandings,
+        items: { kind: 'cycle', items: phabLandings },
       })}
-      {landingPanel({
+      {metricPanel({
         title: 'Phabricator · First-review to merge',
         windows: phabPostReview,
         sla: POST_REVIEW_SLA_HOURS,
         trendTitle: 'Post-review trend (Phab)',
         trendSource: 'phabPostReview',
-        itemKind: 'postReview',
-        landings: phabLandings,
+        items: { kind: 'postReview', items: phabLandings },
       })}
-      {landingPanel({
+      {metricPanel({
         title: 'Phabricator · Review rounds',
         windows: phabRounds,
         sla: ROUNDS_SLA,
@@ -223,9 +262,28 @@ export const Dashboard: FC<DashboardProps> = ({
         trendSource: 'phabRounds',
         valueAxisLabel: 'rounds',
         slaLineLabel: 'one-shot',
-        itemKind: 'rounds',
-        landings: phabLandings,
+        items: { kind: 'rounds', items: phabLandings },
       })}
+      {hasBugzilla
+        ? metricPanel({
+            title: 'Bugzilla · Filed to fixed',
+            description: bugFixDescription,
+            windows: bugFix,
+            sla: FIXED_WITHIN_DAYS,
+            // No goal line: the stat cards report "% fixed within 7 days", but
+            // the team has set no filed-to-fixed target, so drawing a dashed
+            // line at 7 days on the chart would invent one.
+            trendSla: null,
+            unit: 'days',
+            slaLabel: `Fixed \u2264 ${FIXED_WITHIN_DAYS.toString()}d`,
+            countLabel: 'bug',
+            trendTitle: 'Bug fix-time trend',
+            trendSource: 'bugFix',
+            valueAxisLabel: 'days',
+            pctAxisLabel: `% \u2264 ${FIXED_WITHIN_DAYS.toString()}d`,
+            items: { kind: 'bugFix', items: bugs },
+          })
+        : null}
     </div>
   );
 
@@ -245,25 +303,23 @@ export const Dashboard: FC<DashboardProps> = ({
       >
         <Trendline title="GitHub trend" history={history} source="github" slaHours={slaHours} />
       </Headline>
-      {landingPanel({
+      {metricPanel({
         title: 'GitHub · Creation to merge',
         windows: ghCycle,
         sla: CYCLE_SLA_HOURS,
         trendTitle: 'Cycle-time trend (GH)',
         trendSource: 'githubCycle',
-        itemKind: 'cycle',
-        landings: githubLandings,
+        items: { kind: 'cycle', items: githubLandings },
       })}
-      {landingPanel({
+      {metricPanel({
         title: 'GitHub · First-review to merge',
         windows: ghPostReview,
         sla: POST_REVIEW_SLA_HOURS,
         trendTitle: 'Post-review trend (GH)',
         trendSource: 'githubPostReview',
-        itemKind: 'postReview',
-        landings: githubLandings,
+        items: { kind: 'postReview', items: githubLandings },
       })}
-      {landingPanel({
+      {metricPanel({
         title: 'GitHub · Review rounds',
         windows: ghRounds,
         sla: ROUNDS_SLA,
@@ -273,8 +329,7 @@ export const Dashboard: FC<DashboardProps> = ({
         trendSource: 'githubRounds',
         valueAxisLabel: 'rounds',
         slaLineLabel: 'one-shot',
-        itemKind: 'rounds',
-        landings: githubLandings,
+        items: { kind: 'rounds', items: githubLandings },
       })}
     </div>
   );

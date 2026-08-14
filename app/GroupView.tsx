@@ -16,6 +16,7 @@ import { GroupSwitcher } from '../src/ui/GroupSwitcher';
 import { isOverduePending, OverdueCallout } from '../src/ui/OverdueCallout';
 
 import { loadBacklog } from './backlog';
+import { loadBugs } from './bugs';
 import { Dashboard } from './Dashboard';
 import { loadHistory } from './history';
 import { loadLandings } from './landings';
@@ -30,12 +31,13 @@ export interface GroupViewProps {
 // group) and the `/g/[group]` route delegate here so the two stay identical.
 export const GroupView: FC<GroupViewProps> = async ({ group }) => {
   const dataDirectory = dataDirectoryForGroup(group.id);
-  const [history, samples, landings, pending, backlog, peopleMap] = await Promise.all([
+  const [history, samples, landings, pending, backlog, bugs, peopleMap] = await Promise.all([
     loadHistory(dataDirectory),
     loadSamples(dataDirectory),
     loadLandings(dataDirectory),
     loadPending(dataDirectory),
     loadBacklog(dataDirectory),
+    loadBugs(dataDirectory),
     loadPeopleMap(dataDirectory),
   ]);
   const latest = history.at(-1);
@@ -103,6 +105,7 @@ export const GroupView: FC<GroupViewProps> = async ({ group }) => {
         history={history}
         samples={samples}
         landings={landings}
+        bugs={bugs}
         slaHours={SLA_HOURS}
         now={dashboardNow}
         peopleMap={peopleMap}
