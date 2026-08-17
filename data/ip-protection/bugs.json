@@ -136,15 +136,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033876,
-    "summary": "[meta] Implement location picker button",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-21T17:55:43Z",
-    "resolvedAt": "2026-05-18T14:59:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034088,
     "summary": "VPN toolbar button shows incorrect state and excludes wrong URL for JSON/PDF viewer pages",
     "product": "Firefox",
@@ -196,15 +187,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-05T17:05:52Z",
     "resolvedAt": "2026-07-14T21:42:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037774,
-    "summary": "Oversized Fox Icon in VPN about:preferences while signed out",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-07T07:26:39Z",
-    "resolvedAt": "2026-05-18T12:33:49Z"
   },
   {
     "source": "bugzilla",
@@ -271,30 +253,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039829,
-    "summary": "IP-PRotection activator add-on: add VPN state and region conditions",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-15T09:51:49Z",
-    "resolvedAt": "2026-05-19T16:13:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039861,
     "summary": "Clicking the \"Next\" button from VPN Discovery CFR does not close the panel",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-05-15T12:48:11Z",
     "resolvedAt": "2026-06-04T14:25:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039896,
-    "summary": "Fix definition of secondary button label in ipProtection.ftl",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-15T14:14:35Z",
-    "resolvedAt": "2026-05-16T09:17:41Z"
   },
   {
     "source": "bugzilla",
@@ -313,15 +277,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-15T23:31:48Z",
     "resolvedAt": "2026-05-28T09:15:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040414,
-    "summary": "Add version of No thanks button string as label in ipProtection.ftl",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-18T15:56:53Z",
-    "resolvedAt": "2026-05-19T04:13:45Z"
   },
   {
     "source": "bugzilla",
@@ -1096,6 +1051,15 @@
     "component": "IP Protection",
     "filedAt": "2026-07-15T16:38:35Z",
     "resolvedAt": "2026-07-16T21:42:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056232,
+    "summary": "Do not expose IP Protection feature if not fully translated",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-20T12:47:08Z",
+    "resolvedAt": "2026-08-14T21:55:53Z"
   },
   {
     "source": "bugzilla",
