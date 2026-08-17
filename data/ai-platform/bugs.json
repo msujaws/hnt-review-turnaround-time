@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2024509,
-    "summary": "Add Gecko Profiler markers to SmartWindow interaction lifecycle and tools",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-18T23:47:48Z",
-    "resolvedAt": "2026-05-16T09:14:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2026393,
     "summary": "[Models] Set up automated running of production chat evaluation suite daily with alerts",
     "product": "Core",
@@ -187,15 +178,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-04-24T21:00:25Z",
     "resolvedAt": "2026-06-03T09:31:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2036789,
-    "summary": "[Models] Design unified \"chat\" evaluation task",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-04T14:08:06Z",
-    "resolvedAt": "2026-05-18T17:28:26Z"
   },
   {
     "source": "bugzilla",
@@ -892,6 +874,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062289,
+    "summary": "Plan Memories evaluation overhaul",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T15:02:23Z",
+    "resolvedAt": "2026-08-14T20:02:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062739,
     "summary": "Limit the number of sessions to use in first-run memories generation",
     "product": "Core",
@@ -1324,15 +1315,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018177,
-    "summary": "[a11y] Smart window - Unable to reach the Add tabs or Ask Submit buttons using keyboard navigation after text is added to the Smart bar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-20T13:37:02Z",
-    "resolvedAt": "2026-05-16T09:14:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2019042,
     "summary": "smartbar suggestion list is shorter than address bar making it hard to switch to open tabs, other suggest results further down",
     "product": "Core",
@@ -1366,15 +1348,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-16T12:17:11Z",
     "resolvedAt": "2026-05-22T09:35:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2023767,
-    "summary": "Nova window switcher UI updates",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-17T01:50:15Z",
-    "resolvedAt": "2026-05-16T09:14:16Z"
   },
   {
     "source": "bugzilla",
@@ -1585,24 +1558,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2031786,
-    "summary": "Normalize follow-up strings (punctuation + whitespace)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-14T18:24:01Z",
-    "resolvedAt": "2026-05-16T09:14:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2032122,
-    "summary": "[meta] Smart Window 150.0.x uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-15T16:38:16Z",
-    "resolvedAt": "2026-05-19T16:19:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2032199,
     "summary": "Spike: Align on technical approach for history thumbnails",
     "product": "Core",
@@ -1627,15 +1582,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-17T14:37:34Z",
     "resolvedAt": "2026-06-23T21:59:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033003,
-    "summary": "Update the hint text for Custom Models endpoint URL",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T14:40:02Z",
-    "resolvedAt": "2026-05-16T21:21:05Z"
   },
   {
     "source": "bugzilla",
@@ -1672,15 +1618,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-20T20:08:21Z",
     "resolvedAt": "2026-07-12T04:36:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033844,
-    "summary": "[meta] Smart Window 151 uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-21T16:17:41Z",
-    "resolvedAt": "2026-05-19T16:25:56Z"
   },
   {
     "source": "bugzilla",
@@ -1828,15 +1765,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037220,
-    "summary": "Set as Default Onboarding Card",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-05T19:05:32Z",
-    "resolvedAt": "2026-05-16T09:15:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037360,
     "summary": "Add horizontal scroll indicator to assistant markdown table",
     "product": "Core",
@@ -1954,15 +1882,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039097,
-    "summary": "Add window resizing support for Spotlight chromeless browser",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-12T21:22:02Z",
-    "resolvedAt": "2026-05-18T22:00:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039351,
     "summary": "Smart Window tab restore should restore the tab's chat conversation",
     "product": "Core",
@@ -2023,15 +1942,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-15T22:26:18Z",
     "resolvedAt": "2026-07-31T22:06:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040061,
-    "summary": "Update Set Default Promo card targeting interaction count",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-15T23:20:23Z",
-    "resolvedAt": "2026-05-16T09:18:01Z"
   },
   {
     "source": "bugzilla",
@@ -3358,6 +3268,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056551,
+    "summary": "The Smart Window Switcher button keyboard focus ring is too thick",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-21T12:26:09Z",
+    "resolvedAt": "2026-08-15T09:06:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056717,
     "summary": "Intermittent [TV] browser/components/aiwindow/ui/test/browser/browser_aiwindow_monitor_create.js | test_monitor_creation - Uncaught exception in test - Dialog should close after creation - timed out after 50 tries.",
     "product": "Core",
@@ -3547,6 +3466,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058723,
+    "summary": "Implement AITab page composition code to enable evals of AITab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-28T22:26:16Z",
+    "resolvedAt": "2026-08-17T09:40:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058767,
     "summary": "SmartWindow ToU Spotlight Modal for FR launch",
     "product": "Core",
@@ -3643,6 +3571,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-03T23:29:21Z",
     "resolvedAt": "2026-08-05T04:31:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060489,
+    "summary": "The Monitor Agent Create a task panel resets all fields when switching tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-04T11:28:49Z",
+    "resolvedAt": "2026-08-15T09:06:18Z"
   },
   {
     "source": "bugzilla",
@@ -3760,6 +3697,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-07T21:52:31Z",
     "resolvedAt": "2026-08-14T04:18:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061889,
+    "summary": "[Spike] Sync with New Tab teams to build SW promos on newtab surface",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-07T22:37:03Z",
+    "resolvedAt": "2026-08-14T21:14:38Z"
   },
   {
     "source": "bugzilla",
