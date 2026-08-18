@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2016230,
-    "summary": "Create feature-based class names to change logo position on new tab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-11T20:18:30Z",
-    "resolvedAt": "2026-05-20T16:32:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2018699,
     "summary": "Migrate simple unit tests to Jest/RTL",
     "product": "Firefox",
@@ -178,15 +169,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-03-24T14:18:11Z",
     "resolvedAt": "2026-08-07T20:08:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2028377,
-    "summary": "[META][QA][QA-5012] [QA-5014] [QA-5017] New Tab Nova Content",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-01T08:18:56Z",
-    "resolvedAt": "2026-05-20T13:48:16Z"
   },
   {
     "source": "bugzilla",
@@ -379,15 +361,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038392,
-    "summary": "Update widget_size and action_type descriptions in metrics.yaml",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-09T02:59:43Z",
-    "resolvedAt": "2026-05-20T09:20:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038732,
     "summary": "Update region/locale defaults for Weather widget",
     "product": "Firefox",
@@ -451,15 +424,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039587,
-    "summary": "Add accessible names and tooltips to sports event widget flag images",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-14T14:39:27Z",
-    "resolvedAt": "2026-05-20T12:45:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039703,
     "summary": "widgets_enabled_list string_list telemetery event does not count trainhopConfig enabled widgets",
     "product": "Firefox",
@@ -475,15 +439,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-14T23:39:19Z",
     "resolvedAt": "2026-05-22T09:37:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039765,
-    "summary": "Update Weather widget to use WidgetRegistry for PREF_WEATHER_SIZE",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T01:29:55Z",
-    "resolvedAt": "2026-05-20T09:20:54Z"
   },
   {
     "source": "bugzilla",
@@ -577,39 +532,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040370,
-    "summary": "Hovering over the small size widget pushes the last clock out of the widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T13:51:01Z",
-    "resolvedAt": "2026-05-20T12:45:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040376,
-    "summary": "Small world clock widget doesn't extend into large size when editing clocks",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T14:02:15Z",
-    "resolvedAt": "2026-05-20T12:45:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040480,
     "summary": "Add WCW OMC message strings",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-18T19:35:19Z",
     "resolvedAt": "2026-05-21T09:47:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040481,
-    "summary": "Add WCW full country name strings and group stage names",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T19:39:18Z",
-    "resolvedAt": "2026-05-20T12:45:52Z"
   },
   {
     "source": "bugzilla",
@@ -622,15 +550,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040503,
-    "summary": "Use localized entries for Follow Teams Country list",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T20:39:11Z",
-    "resolvedAt": "2026-05-20T12:45:57Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040519,
     "summary": "Add logic to feed data to display correct translated strings",
     "product": "Firefox",
@@ -640,30 +559,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040552,
-    "summary": "Sports widget - Add \"view all\" button and list view to results tab when the widget is medium size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-19T03:46:26Z",
-    "resolvedAt": "2026-05-20T12:46:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040645,
     "summary": "World clock - Long nickname (Roman / Greek characters) overflows container and overlaps with time display",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-19T13:00:15Z",
     "resolvedAt": "2026-05-23T09:50:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040674,
-    "summary": "Add WCW Watch Live stream strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-19T14:57:18Z",
-    "resolvedAt": "2026-05-20T21:22:52Z"
   },
   {
     "source": "bugzilla",
@@ -3247,5 +3148,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-14T16:19:19Z",
     "resolvedAt": "2026-08-15T09:07:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063840,
+    "summary": "moz-page-thumb test URLs use the \"thumbnail\" host and never resolve",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-15T20:21:32Z",
+    "resolvedAt": "2026-08-17T21:17:56Z"
   }
 ]
