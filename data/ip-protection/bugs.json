@@ -10,6 +10,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1992379,
+    "summary": "[META] [QA] [QA-4497] QA request for Free VPN integration (Fx 146)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-10-03T11:29:05Z",
+    "resolvedAt": "2026-08-17T10:17:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2000048,
     "summary": "[meta] Update IPP metrics",
     "product": "Firefox",
@@ -25,6 +34,42 @@
     "component": "IP Protection",
     "filedAt": "2025-11-13T19:26:26Z",
     "resolvedAt": "2026-07-01T13:55:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2005704,
+    "summary": "[META] [QA] [QA-4708] QA request for Free VPN integration (Fx 148)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-12-12T08:55:04Z",
+    "resolvedAt": "2026-08-17T10:14:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2005705,
+    "summary": "[META] [QA] [QA-4707] QA request for Free VPN integration (Fx 147)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-12-12T09:01:24Z",
+    "resolvedAt": "2026-08-17T10:13:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2010504,
+    "summary": "[META] [QA] [QA-4800] QA request for Free VPN integration (Fx 149)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-01-15T07:58:38Z",
+    "resolvedAt": "2026-08-17T10:12:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2020726,
+    "summary": "[META] [QA] [QA-4967] QA request for Free VPN integration (Fx 150)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-03T16:54:59Z",
+    "resolvedAt": "2026-08-17T10:13:09Z"
   },
   {
     "source": "bugzilla",
@@ -52,6 +97,15 @@
     "component": "IP Protection",
     "filedAt": "2026-03-23T15:11:52Z",
     "resolvedAt": "2026-07-17T09:32:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2027779,
+    "summary": "[META] [QA] [QA-5087] QA request for Free VPN integration (Fx 151)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-03-30T15:15:36Z",
+    "resolvedAt": "2026-08-17T10:14:42Z"
   },
   {
     "source": "bugzilla",
@@ -172,12 +226,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037056,
-    "summary": "Extra large VPN Status Checkbox in Overflow Menu",
+    "id": 2036065,
+    "summary": "[META] [QA] [QA-5180] QA request for Free VPN integration (Fx 152)",
     "product": "Firefox",
     "component": "IP Protection",
-    "filedAt": "2026-05-05T12:01:11Z",
-    "resolvedAt": "2026-05-20T21:21:30Z"
+    "filedAt": "2026-04-30T13:07:16Z",
+    "resolvedAt": "2026-08-17T10:16:31Z"
   },
   {
     "source": "bugzilla",
@@ -214,24 +268,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-13T06:42:21Z",
     "resolvedAt": "2026-06-18T15:35:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039291,
-    "summary": "[a11y] Update font size for recommended location description",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-13T14:10:40Z",
-    "resolvedAt": "2026-05-20T12:45:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039304,
-    "summary": "Create an Enterprise AuthProvider for IPProtection",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-13T14:28:55Z",
-    "resolvedAt": "2026-05-20T09:20:30Z"
   },
   {
     "source": "bugzilla",
@@ -307,6 +343,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2040879,
+    "summary": "[META] [QA] [QA-5254] QA request for Free VPN integration (Fx 153)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-20T08:37:00Z",
+    "resolvedAt": "2026-08-17T10:16:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2040881,
     "summary": "The \"Get extra privacy\" link in the discovery CFRs is not rendered correctly",
     "product": "Firefox",
@@ -331,15 +376,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-20T13:35:16Z",
     "resolvedAt": "2026-05-21T21:21:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040965,
-    "summary": "Add 'Not now' as label attribute for secondary button dropdown in ipProtection.ftl",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-20T13:54:04Z",
-    "resolvedAt": "2026-05-20T21:23:22Z"
   },
   {
     "source": "bugzilla",
