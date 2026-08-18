@@ -1526,13 +1526,37 @@
   {
     "source": "github",
     "id": 228,
+    "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
     "createdAt": "2026-08-14T18:22:58Z",
     "firstReviewAt": null,
     "landedAt": "2026-08-14T19:07:15Z",
+    "cycleBusinessHours": 0.7380555555555556,
+    "postReviewBusinessHours": null,
+    "reviewRounds": 1
+  },
+  {
+    "source": "github",
+    "id": 229,
+    "author": "github-actions",
+    "createdAt": "2026-08-14T19:08:47Z",
+    "firstReviewAt": null,
+    "landedAt": "2026-08-17T12:32:49Z",
     "reviewRounds": 1,
     "repo": "Firefox-AI/MLPA",
-    "cycleBusinessHours": 0.7380555555555556,
+    "cycleBusinessHours": 1.853611111111111,
     "postReviewBusinessHours": null
+  },
+  {
+    "source": "github",
+    "id": 227,
+    "author": "noahpodgurski",
+    "createdAt": "2026-08-14T16:20:32Z",
+    "firstReviewAt": "2026-08-14T18:49:34Z",
+    "landedAt": "2026-08-17T12:20:11Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 4.657777777777778,
+    "postReviewBusinessHours": 2.173888888888889
   }
 ]

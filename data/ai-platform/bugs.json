@@ -316,15 +316,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040680,
-    "summary": "Memories generation - handle budget exceeded scenario",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-19T15:13:06Z",
-    "resolvedAt": "2026-05-20T21:22:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040760,
     "summary": "[Models] When using a custom endpoint but known model, openAIEngine should use that model's prompts, not generic",
     "product": "Core",
@@ -766,6 +757,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056677,
+    "summary": "[Models] Evaluate Form Filling aspect of Smart Form Fill",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-21T19:04:50Z",
+    "resolvedAt": "2026-08-17T15:38:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056725,
     "summary": "Console.maxLogLevelPref used with a non-existing pref: browser.smartwindow.telemetryLogLevel",
     "product": "Core",
@@ -883,6 +883,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062353,
+    "summary": "[Models] Review and define telemetry for Smart Form Fill model performance",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T17:29:15Z",
+    "resolvedAt": "2026-08-17T15:34:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062383,
+    "summary": "[Models] Check SFF field alignment in evals",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T18:37:49Z",
+    "resolvedAt": "2026-08-17T15:34:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062739,
     "summary": "Limit the number of sessions to use in first-run memories generation",
     "product": "Core",
@@ -898,6 +916,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-13T15:02:18Z",
     "resolvedAt": "2026-08-14T04:19:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063948,
+    "summary": "Make third_party/llama.cpp vendor again",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-17T03:55:49Z",
+    "resolvedAt": "2026-08-17T21:18:23Z"
   },
   {
     "source": "bugzilla",
@@ -1270,15 +1297,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2014402,
-    "summary": "Update Smartbar telemetry to distinguish between fullpage and sidebar actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-04T11:07:05Z",
-    "resolvedAt": "2026-05-20T15:00:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2015106,
     "summary": "The Assistant Sidebar should have a minimum width when resized",
     "product": "Core",
@@ -1375,15 +1393,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-20T16:19:47Z",
     "resolvedAt": "2026-07-07T09:29:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2025054,
-    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_aichat_open_link.js | aichat container tab behavior / should open link in the container of the selected tab - Uncaught exception in test - TypeError: can't access property",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-20T22:49:54Z",
-    "resolvedAt": "2026-05-20T21:20:57Z"
   },
   {
     "source": "bugzilla",
@@ -1567,15 +1576,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2032994,
-    "summary": "Add thumbs up/down feedback actions behind pref",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T14:21:31Z",
-    "resolvedAt": "2026-05-20T13:25:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033002,
     "summary": "Build feedback modal shell and wire to thumbs actions",
     "product": "Core",
@@ -1702,39 +1702,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035589,
-    "summary": "Markdown links in Assistant responses flash during rendering",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-28T18:23:49Z",
-    "resolvedAt": "2026-05-20T09:19:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035893,
     "summary": "Handle new prompts while disambiguation/confirmation UI is active",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-29T17:24:15Z",
     "resolvedAt": "2026-06-10T10:08:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2036193,
-    "summary": "[Feedback MVP] Add feedback modal for thumbs up/down",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-30T21:10:09Z",
-    "resolvedAt": "2026-05-20T09:19:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2036194,
-    "summary": "[Feedback MVP] Send user feedback data via Glean",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-30T21:13:40Z",
-    "resolvedAt": "2026-05-20T09:20:02Z"
   },
   {
     "source": "bugzilla",
@@ -3286,6 +3259,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056732,
+    "summary": "automatically download smart tab grouping models without extra opt-in for smart window auto tab grouping",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-21T22:26:18Z",
+    "resolvedAt": "2026-08-18T09:25:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056938,
     "summary": "[meta] Exa Integration (v0) - Text Only, no citations",
     "product": "Core",
@@ -3718,12 +3700,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062141,
+    "summary": "Keyboard-activating a panel button opens an unrequested link preview",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T07:23:11Z",
+    "resolvedAt": "2026-08-18T09:26:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062474,
     "summary": "Turn on Auto Tab Grouping Config",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T00:56:42Z",
     "resolvedAt": "2026-08-11T13:57:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062688,
+    "summary": "Add resume (PUWYLO) prompt telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T16:10:06Z",
+    "resolvedAt": "2026-08-18T09:26:33Z"
   },
   {
     "source": "bugzilla",
@@ -3745,6 +3745,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063876,
+    "summary": "Update third_party/js/prosemirror/LICENSE to the revision it is vendored from",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-16T05:37:41Z",
+    "resolvedAt": "2026-08-17T21:18:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056645,
     "summary": "remove world cup-related tool calls",
     "product": "Core",
@@ -3760,5 +3769,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-11T16:58:22Z",
     "resolvedAt": "2026-08-13T04:27:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063620,
+    "summary": "Pass model to memory context prompt",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-14T15:07:48Z",
+    "resolvedAt": "2026-08-18T09:27:19Z"
   }
 ]
