@@ -367,5 +367,23 @@
     "component": "Theme",
     "filedAt": "2026-08-09T10:31:14Z",
     "resolvedAt": "2026-08-13T20:13:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062268,
+    "summary": "Collapse sidebar button has a bit weird background color when using dark mode in Gnome",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-10T14:10:16Z",
+    "resolvedAt": "2026-08-17T15:51:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064177,
+    "summary": "Remove unnecessary `viewBox` (so we go back to automagically getting preserveAspectRatio=\"none\" behavior) in film-strip SVG assets",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-17T19:18:45Z",
+    "resolvedAt": "2026-08-18T09:28:07Z"
   }
 ]
