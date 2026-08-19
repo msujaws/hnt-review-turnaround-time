@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2019788,
-    "summary": "[meta] Firefox 148 (Fast-follow) train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-26T21:50:49Z",
-    "resolvedAt": "2026-05-21T04:57:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2019789,
     "summary": "`./mach newtab install` crashes on Windows with WinError 193 - ./mach cannot be spawned as a Win32 process.",
     "product": "Firefox",
@@ -142,6 +133,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-03-09T21:12:59Z",
     "resolvedAt": "2026-06-16T21:20:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022264,
+    "summary": "IAB Ads Devtools toggle fix",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-10T16:10:04Z",
+    "resolvedAt": "2026-08-18T09:24:42Z"
   },
   {
     "source": "bugzilla",
@@ -262,15 +262,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035176,
-    "summary": "Weather widget small card layout issues with opt-in location options and error message displayed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-27T11:50:22Z",
-    "resolvedAt": "2026-05-21T09:43:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035221,
     "summary": "If wallpaper list can't be queried from remote settings, wallpapers can't be uploaded.",
     "product": "Firefox",
@@ -334,15 +325,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038048,
-    "summary": "Convert widget expansion handling to shared widget expansion",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-07T21:15:19Z",
-    "resolvedAt": "2026-05-21T09:44:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038098,
     "summary": "Newtab Remove region and locale prefs for contextual sponsored content",
     "product": "Firefox",
@@ -370,15 +352,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038790,
-    "summary": "Localize time zone names in World Clock",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-11T19:21:04Z",
-    "resolvedAt": "2026-05-21T09:44:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038816,
     "summary": "Widget telemetry sends incorrect size data",
     "product": "Firefox",
@@ -394,15 +367,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-12T06:54:45Z",
     "resolvedAt": "2026-05-29T09:22:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038981,
-    "summary": "Newtab widgets move widget menu items",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-12T14:14:00Z",
-    "resolvedAt": "2026-05-21T09:44:48Z"
   },
   {
     "source": "bugzilla",
@@ -451,39 +415,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039775,
-    "summary": "Sports widget - Wire up query link for each match",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T03:18:01Z",
-    "resolvedAt": "2026-05-21T09:45:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039925,
     "summary": "Move New Tab preference strings to a trainhoppable FTL file",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-15T15:22:30Z",
     "resolvedAt": "2026-06-12T07:50:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039956,
-    "summary": "Update locales for Firefox 151 train-hop (Manifest 152.2.X)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T16:20:04Z",
-    "resolvedAt": "2026-05-21T04:57:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039963,
-    "summary": "Manually bump the minor version number of New tab from 152.2.0 to 152.3.0",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T16:48:35Z",
-    "resolvedAt": "2026-05-21T04:57:05Z"
   },
   {
     "source": "bugzilla",
@@ -529,15 +466,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-18T03:43:10Z",
     "resolvedAt": "2026-05-22T09:37:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040480,
-    "summary": "Add WCW OMC message strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T19:35:19Z",
-    "resolvedAt": "2026-05-21T09:47:00Z"
   },
   {
     "source": "bugzilla",
@@ -595,15 +523,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041033,
-    "summary": "The logo is still visible when no new tab features are enabled (Top sites, widgets, content feed, etc)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-20T16:33:24Z",
-    "resolvedAt": "2026-05-21T09:48:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041094,
     "summary": "New Callout message for World Cup wallpapers",
     "product": "Firefox",
@@ -622,15 +541,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041163,
-    "summary": "Sports widget: fix flag size in \"Follow teams\" view after backend updates",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T02:22:13Z",
-    "resolvedAt": "2026-05-21T21:22:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041196,
     "summary": "Sports widget - Only show teams in the follow state if they were not eliminiated",
     "product": "Firefox",
@@ -646,24 +556,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-21T04:55:08Z",
     "resolvedAt": "2026-06-12T12:41:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041204,
-    "summary": "Update runtime-metrics for Firefox 151.0.1 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T04:59:13Z",
-    "resolvedAt": "2026-05-21T21:22:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041205,
-    "summary": "Update locales for Firefox 151.0.1  train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T05:04:11Z",
-    "resolvedAt": "2026-05-21T21:22:16Z"
   },
   {
     "source": "bugzilla",
@@ -2089,6 +1981,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2051410,
+    "summary": "Newtab daily briefing can probably be removed now",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-29T19:52:43Z",
+    "resolvedAt": "2026-08-18T09:25:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2051412,
     "summary": "Newtab setup layouts in remote settings",
     "product": "Firefox",
@@ -2185,6 +2086,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-30T20:21:36Z",
     "resolvedAt": "2026-06-30T23:31:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051742,
+    "summary": "Migrate New Tab ContextMenu/LinkMenu to panel-list",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-30T21:02:56Z",
+    "resolvedAt": "2026-08-18T09:25:24Z"
   },
   {
     "source": "bugzilla",
@@ -2671,6 +2581,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-17T19:36:37Z",
     "resolvedAt": "2026-07-21T10:24:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056255,
+    "summary": "Weather forecast widget SCSS has root level <hr> styles",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T13:39:47Z",
+    "resolvedAt": "2026-08-18T09:25:33Z"
   },
   {
     "source": "bugzilla",
