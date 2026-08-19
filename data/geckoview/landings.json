@@ -229,18 +229,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-fmzqnhtmdyvouzhajaom",
-    "revisionId": 301902,
-    "author": "botond",
-    "createdAt": "2026-05-21T20:03:31.000Z",
-    "firstReviewAt": "2026-05-21T20:56:25.000Z",
-    "landedAt": "2026-05-21T21:38:08.000Z",
-    "cycleBusinessHours": 0.9413888888888889,
-    "postReviewBusinessHours": 0.059722222222222225,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-pqguzr66atlyqpum2fsx",
     "revisionId": 301761,
     "author": "m_kato",
@@ -922,5 +910,29 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 256.51944444444445,
     "postReviewBusinessHours": 244.5825
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-kvh5vqgixw3i5omhxiqz",
+    "revisionId": 318561,
+    "author": "ohall",
+    "createdAt": "2026-08-13T19:18:07.000Z",
+    "firstReviewAt": "2026-08-13T19:34:04.000Z",
+    "landedAt": "2026-08-18T23:02:38.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 25.698055555555552,
+    "postReviewBusinessHours": 25.432222222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-5gauv2yttk2vjjekq4qp",
+    "revisionId": 319233,
+    "author": "ohall",
+    "createdAt": "2026-08-17T19:49:54.000Z",
+    "firstReviewAt": "2026-08-17T19:50:56.000Z",
+    "landedAt": "2026-08-18T23:02:38.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 9.168333333333333,
+    "postReviewBusinessHours": 9.15111111111111
   }
 ]
