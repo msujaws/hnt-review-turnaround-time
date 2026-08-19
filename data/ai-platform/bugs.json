@@ -919,12 +919,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063727,
+    "summary": "PUWYLO v0 Fast Follow : Reduce mismatch between follow up message and links contained in preview",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T20:41:33Z",
+    "resolvedAt": "2026-08-19T09:42:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063948,
     "summary": "Make third_party/llama.cpp vendor again",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-08-17T03:55:49Z",
     "resolvedAt": "2026-08-17T21:18:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064196,
+    "summary": "PUWYLO v0 Fast Follow: Filter out memories with no associated pages",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-17T20:20:05Z",
+    "resolvedAt": "2026-08-19T09:43:41Z"
   },
   {
     "source": "bugzilla",
@@ -1105,6 +1123,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-29T14:47:42Z",
     "resolvedAt": "2026-07-14T19:27:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051970,
+    "summary": "Introduce a dedicated process for (potentially) hardware accelerated inference",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-01T16:21:15Z",
+    "resolvedAt": "2026-08-19T09:35:38Z"
   },
   {
     "source": "bugzilla",
@@ -1528,15 +1555,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-09T13:26:38Z",
     "resolvedAt": "2026-07-29T21:42:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2031331,
-    "summary": "[FE] Add easter egg for responses to questions about Kit 🦊",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-13T16:19:00Z",
-    "resolvedAt": "2026-05-21T09:43:23Z"
   },
   {
     "source": "bugzilla",
@@ -2401,6 +2419,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-11T22:42:41Z",
     "resolvedAt": "2026-06-27T08:46:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047007,
+    "summary": "Add a Smart Window enabled metric to accurately count clients with Smart Window enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-11T22:52:28Z",
+    "resolvedAt": "2026-08-19T09:35:35Z"
   },
   {
     "source": "bugzilla",
@@ -3727,6 +3754,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062695,
+    "summary": "[Models] Improve Clustering for ATG",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T16:34:10Z",
+    "resolvedAt": "2026-08-19T09:39:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062696,
+    "summary": "[Models] Improve Group Naming for ATG",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T16:35:02Z",
+    "resolvedAt": "2026-08-19T09:39:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062842,
     "summary": "[Monitor Agent][FE] save text change and button styles",
     "product": "Core",
@@ -3751,6 +3796,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-16T05:37:41Z",
     "resolvedAt": "2026-08-17T21:18:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064470,
+    "summary": "[Monitor Agent][FE] Add Kit for Smart Window Agent Watch promo card",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T18:06:23Z",
+    "resolvedAt": "2026-08-19T10:25:15Z"
   },
   {
     "source": "bugzilla",

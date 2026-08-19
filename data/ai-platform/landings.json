@@ -1495,9 +1495,9 @@
     "createdAt": "2026-08-10T15:42:14.000Z",
     "firstReviewAt": "2026-08-10T20:46:23.000Z",
     "landedAt": "2026-08-10T22:08:10.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 5.296111111111111,
-    "postReviewBusinessHours": 0.22694444444444445
+    "postReviewBusinessHours": 0.22694444444444445,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1558,5 +1558,17 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 4.657777777777778,
     "postReviewBusinessHours": 2.173888888888889
+  },
+  {
+    "source": "github",
+    "id": 231,
+    "author": "subpath",
+    "createdAt": "2026-08-18T13:55:37Z",
+    "firstReviewAt": "2026-08-18T13:58:03Z",
+    "landedAt": "2026-08-18T14:54:37Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.9833333333333333,
+    "postReviewBusinessHours": 0.9427777777777778
   }
 ]
