@@ -352,6 +352,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058577,
+    "summary": "Nova's dark theme doesn't match Gnome's dark mode too well",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-28T16:40:20Z",
+    "resolvedAt": "2026-08-19T03:09:45Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060862,
     "summary": "Prevent `:has()` usage on the main window",
     "product": "Firefox",
