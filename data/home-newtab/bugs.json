@@ -235,6 +235,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2034363,
+    "summary": "Incorrect card type detection in impression and dismiss events for small and large cards if NOVA is enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-23T08:41:01Z",
+    "resolvedAt": "2026-08-19T12:28:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2034393,
     "summary": "Stories cannot be enabled again with mouse pointer when customization panel is in fading state",
     "product": "Firefox",
@@ -397,24 +406,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039752,
-    "summary": "Sports widget - Update matches UI to include followed teams logic + design",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-14T23:39:19Z",
-    "resolvedAt": "2026-05-22T09:37:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039770,
-    "summary": "Add close \"X\" in Lists Widget input field",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T02:09:18Z",
-    "resolvedAt": "2026-05-22T09:37:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039925,
     "summary": "Move New Tab preference strings to a trainhoppable FTL file",
     "product": "Firefox",
@@ -451,24 +442,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040027,
-    "summary": "Add infrastructure for branding variations on New Tab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T20:58:44Z",
-    "resolvedAt": "2026-05-22T09:37:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040269,
-    "summary": "Sports widget - Add group stage section in match highlights",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T03:43:10Z",
-    "resolvedAt": "2026-05-22T09:37:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040483,
     "summary": "Add WCW API Status strings",
     "product": "Firefox",
@@ -493,15 +466,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-19T13:00:15Z",
     "resolvedAt": "2026-05-23T09:50:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040677,
-    "summary": "[macOS][VO] Unable to reach Edit/Remove options in World Clock widget with Voiceover Commands",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-19T15:07:53Z",
-    "resolvedAt": "2026-05-22T09:38:05Z"
   },
   {
     "source": "bugzilla",
@@ -541,15 +505,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041196,
-    "summary": "Sports widget - Only show teams in the follow state if they were not eliminiated",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T04:06:19Z",
-    "resolvedAt": "2026-05-22T09:38:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041203,
     "summary": "[meta] Firefox 151.0.1 train-hop metabug",
     "product": "Firefox",
@@ -565,15 +520,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-21T05:23:09Z",
     "resolvedAt": "2026-05-23T09:53:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041244,
-    "summary": "Sports widget: emit telemetry when the user switches between match tabs",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T09:40:52Z",
-    "resolvedAt": "2026-05-22T09:38:53Z"
   },
   {
     "source": "bugzilla",
@@ -2971,6 +2917,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062482,
+    "summary": "Stocks widget: add a Markets/Watchlist list dropdown",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T01:49:44Z",
+    "resolvedAt": "2026-08-19T09:38:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062483,
+    "summary": "Stocks widget: let users add default tickers to their Watchlist",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T01:55:07Z",
+    "resolvedAt": "2026-08-19T09:38:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062621,
     "summary": "The background for New Shortcut/Edit Shortcut prompt is transparent and hardly visible with the latest \"Newtab\" addon installed",
     "product": "Firefox",
@@ -3007,6 +2971,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062800,
+    "summary": "[meta] Firefox 153.0.4 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-11T21:27:05Z",
+    "resolvedAt": "2026-08-20T04:21:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062806,
     "summary": "Crash in [@ callback_interface_ads_client_moz_ads_context_id_provider_context_id]",
     "product": "Firefox",
@@ -3025,12 +2998,66 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062845,
+    "summary": "Stocks widget: add watchlist add/remove Fluent strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-12T03:05:22Z",
+    "resolvedAt": "2026-08-19T09:39:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062920,
+    "summary": "Add a small size to the Stocks New Tab widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-12T10:33:52Z",
+    "resolvedAt": "2026-08-19T09:39:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063098,
     "summary": "Gate newtab web notifications behind a Nimbus trainhop config",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-12T21:15:15Z",
     "resolvedAt": "2026-08-13T04:28:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063144,
+    "summary": "Stocks Widget: update feed to fetch data for individual stock tickers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T01:44:37Z",
+    "resolvedAt": "2026-08-19T09:39:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063183,
+    "summary": "Stocks Widget: add ticker search to find and add individual stocks",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T05:50:51Z",
+    "resolvedAt": "2026-08-19T09:40:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063207,
+    "summary": "Number of trackers blocked across 0 sites is displayed in the widget after clearing all the browser data",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T09:25:01Z",
+    "resolvedAt": "2026-08-19T09:40:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063289,
+    "summary": "Stocks Widget: add Watchlist tab to the Medium size",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T13:29:31Z",
+    "resolvedAt": "2026-08-19T09:40:32Z"
   },
   {
     "source": "bugzilla",
@@ -3070,11 +3097,83 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063684,
+    "summary": "Update the 7-double-row-2-ad fallback in SectionsLayoutFeed to match Remote Settings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T17:51:36Z",
+    "resolvedAt": "2026-08-20T04:21:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063709,
+    "summary": "Remove version 154 train-hop shims for contextual ads region/locale defaults",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:32:32Z",
+    "resolvedAt": "2026-08-19T09:41:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063710,
+    "summary": "Remove version 154 train-hop version check for MozAdsClient in AdsClient",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:32:59Z",
+    "resolvedAt": "2026-08-19T09:41:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063711,
+    "summary": "Remove version 154 train-hop shim for registerRuntimeMetric in NewTabGleanUtils",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:33:28Z",
+    "resolvedAt": "2026-08-19T09:41:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063712,
+    "summary": "Remove version 154 train-hop shim for getLogger in TemporaryMerinoClientShim",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:33:56Z",
+    "resolvedAt": "2026-08-19T09:41:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063713,
+    "summary": "Re-remove version 145 train-hop shim for PrivacyFeed getTodayStats guard",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:36:10Z",
+    "resolvedAt": "2026-08-19T09:42:01Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063840,
     "summary": "moz-page-thumb test URLs use the \"thumbnail\" host and never resolve",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-15T20:21:32Z",
     "resolvedAt": "2026-08-17T21:17:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063958,
+    "summary": "UX fixes for privacy widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-17T06:23:21Z",
+    "resolvedAt": "2026-08-19T21:27:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064368,
+    "summary": "[META][QA][QA-5595] Testing New Tab train-hop for Firefox 154.0 Release",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-18T12:52:55Z",
+    "resolvedAt": "2026-08-20T04:58:30Z"
   }
 ]
