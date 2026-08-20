@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036473,
-    "summary": "Implement soft delete",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-01T22:42:38Z",
-    "resolvedAt": "2026-05-22T20:22:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036478,
     "summary": "Implement interstitial \"auth complete\" page design",
     "product": "Firefox",
@@ -244,15 +235,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040055,
-    "summary": "[Link Collections] Delay between clicking create and modal appearing",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-15T22:57:33Z",
-    "resolvedAt": "2026-05-22T09:37:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040064,
     "summary": "Follow up to 5 redirects",
     "product": "Firefox",
@@ -340,15 +322,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-19T08:18:31Z",
     "resolvedAt": "2026-05-28T09:16:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040602,
-    "summary": "[Link Collections] \"Share folder\" does not open the Share modal when accessed from the Bookmarks Sidebar or Library",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-19T09:41:26Z",
-    "resolvedAt": "2026-05-22T09:38:01Z"
   },
   {
     "source": "bugzilla",
@@ -919,12 +892,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052263,
+    "summary": "Add Share button to panel (Windows)",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:25:13Z",
+    "resolvedAt": "2026-08-19T09:35:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052264,
     "summary": "Add screenshot button to panel",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-07-02T16:26:48Z",
     "resolvedAt": "2026-08-13T04:26:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052265,
+    "summary": "Add QR code button to panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:27:21Z",
+    "resolvedAt": "2026-08-19T09:35:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052268,
+    "summary": "Enable/disable buttons depending on the current page",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:31:09Z",
+    "resolvedAt": "2026-08-19T09:35:49Z"
   },
   {
     "source": "bugzilla",
@@ -982,11 +982,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064156,
+    "summary": "Unify entrypoint telemetry under a single metric",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-17T18:34:36Z",
+    "resolvedAt": "2026-08-19T09:43:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064232,
     "summary": "Intermittent TV browser/components/sharing/tests/browser/browser_testSharePanelButtonVisibility.js | test_nonShareablePage - Test timed out",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-08-17T21:52:09Z",
     "resolvedAt": "2026-08-18T00:32:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064740,
+    "summary": "empty browser/components/sharing/tests/browser/browser_testShareAuth.js",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-19T15:19:04Z",
+    "resolvedAt": "2026-08-20T04:22:43Z"
   }
 ]
