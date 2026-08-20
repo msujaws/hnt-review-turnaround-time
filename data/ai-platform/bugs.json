@@ -631,6 +631,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052356,
+    "summary": "Smart Window perf: remove serial pre-request I/O on the TTFT path (parallel FxA token, cached prompts)",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-02T21:12:45Z",
+    "resolvedAt": "2026-08-20T04:20:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052685,
     "summary": "the summarize page button in ai sidebar with gemini fails without an error",
     "product": "Core",
@@ -1288,6 +1297,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062960,
+    "summary": "Run ml perftests with both onnx native and wasm to cover shipping configurations",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-12T13:03:16Z",
+    "resolvedAt": "2026-08-20T04:21:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064108,
+    "summary": "Do not run ML perftests on autoland if they're not alerting",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-17T15:49:53Z",
+    "resolvedAt": "2026-08-20T04:22:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064679,
+    "summary": "browser_ml_smart_tab_clustering_perf.js expects a fixed output but it varies by arch",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-19T12:03:27Z",
+    "resolvedAt": "2026-08-20T04:22:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1982104,
     "summary": "[GenAI Chat Sidebar] The group of radio controls to select an AI provider is not labeled",
     "product": "Core",
@@ -1384,15 +1420,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-11T11:15:25Z",
     "resolvedAt": "2026-06-12T07:49:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2023557,
-    "summary": "Resubmitted prompts via retry button don’t pass context in Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-16T12:17:11Z",
-    "resolvedAt": "2026-05-22T09:35:34Z"
   },
   {
     "source": "bugzilla",
@@ -1564,24 +1591,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-13T20:59:03Z",
     "resolvedAt": "2026-06-12T07:49:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2031516,
-    "summary": "Integrate disambiguation flow for natural language tab actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-13T23:26:46Z",
-    "resolvedAt": "2026-05-22T09:35:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2031517,
-    "summary": "Show post-close message when closing current tab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-13T23:33:11Z",
-    "resolvedAt": "2026-05-22T09:36:01Z"
   },
   {
     "source": "bugzilla",
@@ -2536,6 +2545,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-15T12:08:56Z",
     "resolvedAt": "2026-07-28T09:57:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2047563,
+    "summary": "The History List View panel has a white Frame with High contrast enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-15T12:11:30Z",
+    "resolvedAt": "2026-08-20T03:04:28Z"
   },
   {
     "source": "bugzilla",
@@ -3832,5 +3850,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-14T15:07:48Z",
     "resolvedAt": "2026-08-18T09:27:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064790,
+    "summary": "Set browser.smartwindow.searchTheWebFast default to true",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-19T17:09:01Z",
+    "resolvedAt": "2026-08-20T04:22:52Z"
   }
 ]

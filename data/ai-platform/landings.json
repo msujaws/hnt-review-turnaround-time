@@ -1570,5 +1570,77 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 0.9833333333333333,
     "postReviewBusinessHours": 0.9427777777777778
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-464tlsqswmhc3fv4gc4a",
+    "revisionId": 319762,
+    "author": "valentinp",
+    "createdAt": "2026-08-19T12:47:22.000Z",
+    "firstReviewAt": "2026-08-19T12:51:48.000Z",
+    "landedAt": "2026-08-20T01:44:46.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-fbw5qvqvgdyjzfoj2wpt",
+    "revisionId": 318508,
+    "author": "valentinp",
+    "createdAt": "2026-08-13T16:05:23.000Z",
+    "firstReviewAt": "2026-08-13T16:05:54.000Z",
+    "landedAt": "2026-08-20T01:44:45.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 36.91027777777778,
+    "postReviewBusinessHours": 36.901666666666664
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-3scv2k3t4t6eod3ofc6q",
+    "revisionId": 318506,
+    "author": "valentinp",
+    "createdAt": "2026-08-13T16:05:13.000Z",
+    "firstReviewAt": "2026-08-13T16:05:46.000Z",
+    "landedAt": "2026-08-20T01:44:44.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 36.91305555555555,
+    "postReviewBusinessHours": 36.90388888888889
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-mjdjgddvqspi3uswokbl",
+    "revisionId": 319158,
+    "author": "valentinp",
+    "createdAt": "2026-08-17T15:59:46.000Z",
+    "firstReviewAt": "2026-08-17T16:08:43.000Z",
+    "landedAt": "2026-08-20T01:44:45.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 21.003888888888888,
+    "postReviewBusinessHours": 20.85472222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-2ye3wstj25nxo7sdbeaw",
+    "revisionId": 318509,
+    "author": "valentinp",
+    "createdAt": "2026-08-13T16:05:27.000Z",
+    "firstReviewAt": "2026-08-13T16:34:10.000Z",
+    "landedAt": "2026-08-20T01:44:44.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 36.90916666666667,
+    "postReviewBusinessHours": 36.43055555555555
+  },
+  {
+    "source": "github",
+    "id": 230,
+    "author": "github-actions",
+    "createdAt": "2026-08-17T12:34:22Z",
+    "firstReviewAt": null,
+    "landedAt": "2026-08-19T12:13:56Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 16,
+    "postReviewBusinessHours": null
   }
 ]
