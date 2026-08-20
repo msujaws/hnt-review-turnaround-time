@@ -325,15 +325,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040718,
-    "summary": "Update language referencing number of locations in ipProtection.ftl",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-19T16:41:58Z",
-    "resolvedAt": "2026-05-22T09:38:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040879,
     "summary": "[META] [QA] [QA-5254] QA request for Free VPN integration (Fx 153)",
     "product": "Firefox",
@@ -349,15 +340,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-20T08:43:19Z",
     "resolvedAt": "2026-06-03T13:16:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041329,
-    "summary": "IP-PRotection activator add-on: implement a date condition for the WC project",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-21T13:56:10Z",
-    "resolvedAt": "2026-05-22T22:36:36Z"
   },
   {
     "source": "bugzilla",
@@ -1186,5 +1168,23 @@
     "component": "IP Protection",
     "filedAt": "2026-08-13T09:04:49Z",
     "resolvedAt": "2026-08-13T14:20:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063357,
+    "summary": "Assert all known errors are Typed/Piped correctly.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-13T16:03:45Z",
+    "resolvedAt": "2026-08-20T04:21:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064482,
+    "summary": "empty browser/components/ipprotection/tests/browser/browser_ipprotection_usage.js",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-18T18:32:29Z",
+    "resolvedAt": "2026-08-19T21:28:17Z"
   }
 ]
