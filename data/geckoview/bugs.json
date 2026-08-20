@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 1994860,
-    "summary": "Add IntDef annotations for ScrollPositionUpdate.source",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2025-10-16T21:34:52Z",
-    "resolvedAt": "2026-05-22T09:34:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 1994863,
     "summary": "Make ScrollPositionUpdate use a private constructor",
     "product": "GeckoView",
@@ -367,5 +358,14 @@
     "component": "General",
     "filedAt": "2026-08-07T19:39:00Z",
     "resolvedAt": "2026-08-08T09:44:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062612,
+    "summary": "[UI] Wireframe in FAB / Toolbar for tools",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-11T13:25:51Z",
+    "resolvedAt": "2026-08-19T09:38:53Z"
   }
 ]
