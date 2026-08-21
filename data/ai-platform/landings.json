@@ -1538,26 +1538,26 @@
   {
     "source": "github",
     "id": 229,
+    "repo": "Firefox-AI/MLPA",
     "author": "github-actions",
     "createdAt": "2026-08-14T19:08:47Z",
     "firstReviewAt": null,
     "landedAt": "2026-08-17T12:32:49Z",
-    "reviewRounds": 1,
-    "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 1.853611111111111,
-    "postReviewBusinessHours": null
+    "postReviewBusinessHours": null,
+    "reviewRounds": 1
   },
   {
     "source": "github",
     "id": 227,
+    "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
     "createdAt": "2026-08-14T16:20:32Z",
     "firstReviewAt": "2026-08-14T18:49:34Z",
     "landedAt": "2026-08-17T12:20:11Z",
-    "reviewRounds": 1,
-    "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 4.657777777777778,
-    "postReviewBusinessHours": 2.173888888888889
+    "postReviewBusinessHours": 2.173888888888889,
+    "reviewRounds": 1
   },
   {
     "source": "github",
@@ -1642,5 +1642,41 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 16,
     "postReviewBusinessHours": null
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-cmdoptg7ubidpnfcclny",
+    "revisionId": 318531,
+    "author": "valentinp",
+    "createdAt": "2026-08-13T17:41:24.000Z",
+    "firstReviewAt": "2026-08-13T17:41:38.000Z",
+    "landedAt": "2026-08-21T04:37:48.000Z",
+    "reviewRounds": 3,
+    "cycleBusinessHours": 43.309999999999995,
+    "postReviewBusinessHours": 43.306111111111115
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-au74zpfnrmjuzrxjxce7",
+    "revisionId": 319299,
+    "author": "jbowser",
+    "createdAt": "2026-08-17T23:13:36.000Z",
+    "firstReviewAt": "2026-08-19T03:05:54.000Z",
+    "landedAt": "2026-08-20T15:58:05.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 18.968055555555555,
+    "postReviewBusinessHours": 10.968055555555557
+  },
+  {
+    "source": "github",
+    "id": 232,
+    "author": "jgauf",
+    "createdAt": "2026-08-19T20:28:41Z",
+    "firstReviewAt": "2026-08-20T12:35:55Z",
+    "landedAt": "2026-08-20T13:10:04Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.6897222222222222,
+    "postReviewBusinessHours": 0.16777777777777778
   }
 ]

@@ -154,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033940,
-    "summary": "Update moz-button usage to type=\"ghost\"",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-21T22:23:32Z",
-    "resolvedAt": "2026-05-23T09:49:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034844,
     "summary": "Evaluate Mistral 4",
     "product": "Core",
@@ -313,15 +304,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-18T18:28:00Z",
     "resolvedAt": "2026-07-23T14:02:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040760,
-    "summary": "[Models] When using a custom endpoint but known model, openAIEngine should use that model's prompts, not generic",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-19T19:16:03Z",
-    "resolvedAt": "2026-05-23T09:51:09Z"
   },
   {
     "source": "bugzilla",
@@ -892,6 +874,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062346,
+    "summary": "[Monitor Agent][Models] Add the historical page snapshots to the runtime and prompt",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T17:26:06Z",
+    "resolvedAt": "2026-08-21T04:22:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062353,
     "summary": "[Models] Review and define telemetry for Smart Form Fill model performance",
     "product": "Core",
@@ -952,6 +943,33 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-17T20:20:05Z",
     "resolvedAt": "2026-08-19T09:43:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064838,
+    "summary": "Reduce PUWYLO URL semantic similarity threshold and expose as a pref",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-19T18:54:54Z",
+    "resolvedAt": "2026-08-20T16:30:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064840,
+    "summary": "Flakey test for browser_smartwindow_beta_badge",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-19T18:58:48Z",
+    "resolvedAt": "2026-08-21T04:22:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064844,
+    "summary": "PUWYLO v0: Gate feature to en locale",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-19T19:04:59Z",
+    "resolvedAt": "2026-08-21T04:22:33Z"
   },
   {
     "source": "bugzilla",
@@ -1306,6 +1324,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063023,
+    "summary": "Consider utilizing `isAvailable` within the `best-onnx` fallback logic",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-12T16:24:04Z",
+    "resolvedAt": "2026-08-20T21:53:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064108,
     "summary": "Do not run ML perftests on autoland if they're not alerting",
     "product": "Core",
@@ -1330,6 +1357,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2025-08-08T19:56:03Z",
     "resolvedAt": "2026-06-12T07:49:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1994400,
+    "summary": "Korean/Japanese composition unexpectedly stops when mouse select triggers Firefox builtin AI chatbot popup icon",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2025-10-15T10:15:40Z",
+    "resolvedAt": "2026-08-21T09:56:35Z"
   },
   {
     "source": "bugzilla",
@@ -1429,6 +1465,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-17T15:09:18Z",
     "resolvedAt": "2026-07-03T09:35:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2024015,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_telemetry.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-17T19:00:07Z",
+    "resolvedAt": "2026-08-20T16:41:13Z"
   },
   {
     "source": "bugzilla",
@@ -1918,15 +1963,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040036,
-    "summary": "Move natural language browser action UI strings into localization resources.",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-15T21:46:28Z",
-    "resolvedAt": "2026-05-23T09:50:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040041,
     "summary": "Expose Mistral strings to localization",
     "product": "Core",
@@ -2032,15 +2068,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-21T02:39:47Z",
     "resolvedAt": "2026-06-12T21:18:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041422,
-    "summary": "Restore Smart Window background color and remove Smartbar input border",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-21T18:26:58Z",
-    "resolvedAt": "2026-05-23T09:54:19Z"
   },
   {
     "source": "bugzilla",
@@ -3043,6 +3070,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2054226,
+    "summary": "Update Smart Window promo to include a top-right close (×) button and remote settings images",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-10T23:08:18Z",
+    "resolvedAt": "2026-08-21T09:57:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2054473,
     "summary": "Perma [tier 2] browser/components/aiwindow/ui/test/browser/browser_aiwindow_agent_monitor_item.js | single tracking bug",
     "product": "Core",
@@ -3412,6 +3448,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057625,
+    "summary": "[meta] Smart Window 154 uplifts",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-24T17:02:23Z",
+    "resolvedAt": "2026-08-20T20:03:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058014,
     "summary": "The New chat, Chat history and More Buttons from the New tab AI chat are barely visible with blurred text underneath",
     "product": "Core",
@@ -3619,6 +3664,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2060620,
+    "summary": "[Monitor Agent][FE]  Clean up /command palette",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-04T17:19:52Z",
+    "resolvedAt": "2026-08-21T09:57:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060705,
     "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_group_tabs_button.js | application timed out after 740.0 seconds with no output",
     "product": "Core",
@@ -3754,12 +3808,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062417,
+    "summary": "browser.smartwindow.agent.enabled set default and set nimbus feature pattern for Smart Window Agent Watch",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T19:57:28Z",
+    "resolvedAt": "2026-08-20T16:28:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062474,
     "summary": "Turn on Auto Tab Grouping Config",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T00:56:42Z",
     "resolvedAt": "2026-08-11T13:57:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062573,
+    "summary": "Unable to invoke the Create a Task modal in the sidebar by typing /watch and hitting the Enter key",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T10:46:43Z",
+    "resolvedAt": "2026-08-21T09:57:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062597,
+    "summary": "Unable to create a monitor from the new tab page",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T12:47:57Z",
+    "resolvedAt": "2026-08-21T09:57:50Z"
   },
   {
     "source": "bugzilla",
@@ -3814,6 +3895,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-16T05:37:41Z",
     "resolvedAt": "2026-08-17T21:18:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064410,
+    "summary": "Expand available component list for AITab protyping json",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T15:00:06Z",
+    "resolvedAt": "2026-08-21T09:58:31Z"
   },
   {
     "source": "bugzilla",
