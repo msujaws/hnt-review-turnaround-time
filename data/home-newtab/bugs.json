@@ -154,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2024720,
-    "summary": "Address console.error messages in new Jest test suite",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-19T18:10:06Z",
-    "resolvedAt": "2026-05-23T09:48:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2025793,
     "summary": "Stop including activity-stream.bundle.js and vendor.bundle.js in the source tree",
     "product": "Firefox",
@@ -460,15 +451,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040645,
-    "summary": "World clock - Long nickname (Roman / Greek characters) overflows container and overlaps with time display",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-19T13:00:15Z",
-    "resolvedAt": "2026-05-23T09:50:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040835,
     "summary": "Sports widget - remove temporary date parameter from SportsFeed.sys.mjs when we're ready to ship",
     "product": "Firefox",
@@ -514,24 +496,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041207,
-    "summary": "The name of the sports widget label in the Widgets Mgmt Panel is not localized",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T05:23:09Z",
-    "resolvedAt": "2026-05-23T09:53:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041532,
-    "summary": "Fix failing tests for Logo.jsx",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T02:09:07Z",
-    "resolvedAt": "2026-05-23T09:54:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041573,
     "summary": "Sports widget - Add in TBD state",
     "product": "Firefox",
@@ -559,48 +523,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041708,
-    "summary": "Add pref to hide logo from new tab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T14:13:24Z",
-    "resolvedAt": "2026-05-23T09:55:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041711,
-    "summary": "Manually bump the minor version number of New tab from 153.0.0 to 153.1.0",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T14:26:25Z",
-    "resolvedAt": "2026-05-23T09:55:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041727,
     "summary": "Newtab widgets limit to 1 row, and have a show more widgets button",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-22T15:07:13Z",
     "resolvedAt": "2026-05-26T21:39:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041730,
-    "summary": "When a user has more than two rows of shortcuts, the logo should be in the inline-start sidebar",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T15:19:38Z",
-    "resolvedAt": "2026-05-23T09:55:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041757,
-    "summary": "Run newtab jest tests as part of node tests Tier 1 job",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T16:19:09Z",
-    "resolvedAt": "2026-05-23T09:55:22Z"
   },
   {
     "source": "bugzilla",
@@ -2530,6 +2458,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056249,
+    "summary": "Briefing card SCSS has root level <hr> styles",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T13:32:27Z",
+    "resolvedAt": "2026-08-20T20:14:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056255,
     "summary": "Weather forecast widget SCSS has root level <hr> styles",
     "product": "Firefox",
@@ -3043,12 +2980,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063205,
+    "summary": "Privacy widget \"Nightly blocks trackers as you browse. You will see them here.\" text should be grey",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T09:04:36Z",
+    "resolvedAt": "2026-08-20T21:50:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063207,
     "summary": "Number of trackers blocked across 0 sites is displayed in the widget after clearing all the browser data",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-13T09:25:01Z",
     "resolvedAt": "2026-08-19T09:40:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063274,
+    "summary": "[macOS][Voiceover] Privacy widget is seen as article, and nearly all the content inside is seen as clickable",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T13:00:31Z",
+    "resolvedAt": "2026-08-20T09:42:11Z"
   },
   {
     "source": "bugzilla",
@@ -3175,5 +3130,23 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-18T12:52:55Z",
     "resolvedAt": "2026-08-20T04:58:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064564,
+    "summary": "Wallpapers: Orphaned wallpaper cleanup",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-18T23:13:57Z",
+    "resolvedAt": "2026-08-21T04:22:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064914,
+    "summary": "Stocks widget: add plural selector to Fluent string newtab-stocks-watchlist-full",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-19T21:05:19Z",
+    "resolvedAt": "2026-08-20T16:30:38Z"
   }
 ]
