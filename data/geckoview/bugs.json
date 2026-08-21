@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041553,
-    "summary": "Fix broken CHANGELOG.md entries",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-05-22T05:07:06Z",
-    "resolvedAt": "2026-05-23T21:27:09Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043114,
     "summary": "`stopPropagation` prevents context menu from shown",
     "product": "GeckoView",
@@ -262,6 +253,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2054917,
+    "summary": "[UI] Add print button to Android PDF viewer",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-07-14T13:19:50Z",
+    "resolvedAt": "2026-08-20T16:28:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054918,
+    "summary": "[UI] Add share button to Android PDF viewer",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-07-14T13:20:03Z",
+    "resolvedAt": "2026-08-20T16:28:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055101,
     "summary": "[2.1.1] Add screenshot taking functionality to GVE for testing purposes",
     "product": "GeckoView",
@@ -367,5 +376,14 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-11T13:25:51Z",
     "resolvedAt": "2026-08-19T09:38:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064162,
+    "summary": "[GeckoView] `saveAsPdf` should check if it is a PDF document and use `getPdfFileSaver`",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-17T18:47:34Z",
+    "resolvedAt": "2026-08-20T16:29:35Z"
   }
 ]
