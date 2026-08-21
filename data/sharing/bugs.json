@@ -10,15 +10,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2025893,
-    "summary": "Implement telemetry for modal and creation flow",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-03-24T16:29:20Z",
-    "resolvedAt": "2026-05-23T09:48:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2025996,
     "summary": "Create any triggers needed for sharing callouts",
     "product": "Firefox",
@@ -358,15 +349,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-20T12:41:00Z",
     "resolvedAt": "2026-05-30T21:05:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040961,
-    "summary": "[Link Collections] Share modal warning message does not match Figma specifications when more than 30 links are selected",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-20T13:39:33Z",
-    "resolvedAt": "2026-05-23T09:52:13Z"
   },
   {
     "source": "bugzilla",
@@ -955,6 +937,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058696,
+    "summary": "Add Mail button to panel (linux)",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-28T20:23:24Z",
+    "resolvedAt": "2026-08-20T09:41:57Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2059557,
     "summary": "Create new /sharing directory and move /contentsharing and SharingUtils into it",
     "product": "Firefox",
@@ -1006,5 +997,14 @@
     "component": "Sharing",
     "filedAt": "2026-08-19T15:19:04Z",
     "resolvedAt": "2026-08-20T04:22:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064925,
+    "summary": "The strings should be \"Share Firefox\" on all channels",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-19T21:32:36Z",
+    "resolvedAt": "2026-08-20T21:54:24Z"
   }
 ]
