@@ -205,30 +205,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-h2zle6c3qhd67y4bmkz5",
-    "revisionId": 302041,
-    "author": "ohall",
-    "createdAt": "2026-05-22T14:20:49.000Z",
-    "firstReviewAt": "2026-05-22T14:45:18.000Z",
-    "landedAt": "2026-05-26T11:11:22.000Z",
-    "cycleBusinessHours": 14.653055555555557,
-    "postReviewBusinessHours": 14.245000000000001,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-pqguzr66atlyqpum2fsx",
-    "revisionId": 301761,
-    "author": "m_kato",
-    "createdAt": "2026-05-21T13:15:38.000Z",
-    "firstReviewAt": "2026-05-22T11:48:05.000Z",
-    "landedAt": "2026-05-25T02:02:54.000Z",
-    "cycleBusinessHours": 15.739444444444445,
-    "postReviewBusinessHours": 8,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-5lm5ocmu6aal5glqdycb",
     "revisionId": 301665,
     "author": "hiro",
@@ -241,18 +217,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-66mmssfnd7zfhsndis2p",
-    "revisionId": 300235,
-    "author": "m_kato",
-    "createdAt": "2026-05-13T07:14:00.000Z",
-    "firstReviewAt": "2026-05-25T17:29:28.000Z",
-    "landedAt": "2026-05-26T01:20:19.000Z",
-    "cycleBusinessHours": 72,
-    "postReviewBusinessHours": 3.508888888888889,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-zp4e44ycubqimfnc7gn7",
     "revisionId": 298723,
     "author": "hiro",
@@ -261,30 +225,6 @@
     "landedAt": "2026-05-29T23:28:12.000Z",
     "cycleBusinessHours": 144,
     "postReviewBusinessHours": 0.7325,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-h36lxn3hyslv53berfvc",
-    "revisionId": 297842,
-    "author": "hiro",
-    "createdAt": "2026-05-01T08:34:54.000Z",
-    "firstReviewAt": "2026-05-01T09:10:41.000Z",
-    "landedAt": "2026-05-26T07:55:28.000Z",
-    "cycleBusinessHours": 136,
-    "postReviewBusinessHours": 136,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-ajhd4apwvhzlyrfwoxjy",
-    "revisionId": 297841,
-    "author": "hiro",
-    "createdAt": "2026-05-01T08:34:50.000Z",
-    "firstReviewAt": "2026-05-01T10:39:51.000Z",
-    "landedAt": "2026-05-26T07:55:28.000Z",
-    "cycleBusinessHours": 136,
-    "postReviewBusinessHours": 136,
     "reviewRounds": 1
   },
   {
@@ -907,9 +847,9 @@
     "createdAt": "2026-08-13T19:18:07.000Z",
     "firstReviewAt": "2026-08-13T19:34:04.000Z",
     "landedAt": "2026-08-18T23:02:38.000Z",
-    "reviewRounds": 2,
     "cycleBusinessHours": 25.698055555555552,
-    "postReviewBusinessHours": 25.432222222222222
+    "postReviewBusinessHours": 25.432222222222222,
+    "reviewRounds": 2
   },
   {
     "source": "phab",
@@ -919,9 +859,9 @@
     "createdAt": "2026-08-17T19:49:54.000Z",
     "firstReviewAt": "2026-08-17T19:50:56.000Z",
     "landedAt": "2026-08-18T23:02:38.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 9.168333333333333,
-    "postReviewBusinessHours": 9.15111111111111
+    "postReviewBusinessHours": 9.15111111111111,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -931,9 +871,9 @@
     "createdAt": "2026-08-18T19:21:30.000Z",
     "firstReviewAt": "2026-08-19T10:31:17.000Z",
     "landedAt": "2026-08-20T05:12:10.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 9.641666666666667,
-    "postReviewBusinessHours": 8
+    "postReviewBusinessHours": 8,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -943,9 +883,9 @@
     "createdAt": "2026-08-19T14:40:27.000Z",
     "firstReviewAt": "2026-08-19T14:43:45.000Z",
     "landedAt": "2026-08-20T05:10:21.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 6.325833333333334,
-    "postReviewBusinessHours": 6.270833333333333
+    "postReviewBusinessHours": 6.270833333333333,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -955,8 +895,8 @@
     "createdAt": "2026-08-19T12:08:41.000Z",
     "firstReviewAt": "2026-08-19T12:11:25.000Z",
     "landedAt": "2026-08-20T05:10:21.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 8,
-    "postReviewBusinessHours": 8
+    "postReviewBusinessHours": 8,
+    "reviewRounds": 1
   }
 ]

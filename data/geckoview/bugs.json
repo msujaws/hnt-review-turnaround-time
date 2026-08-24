@@ -73,39 +73,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2021077,
-    "summary": "Use TestLooperManager instead of reflection in UiThreadUtils",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-03-04T18:11:37Z",
-    "resolvedAt": "2026-05-25T09:31:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036411,
     "summary": "Intermittent [tier 2] package> /builds/worker/workspace/obj-build/gradle/build/mobile/android/android-components/components/concept/base/generated/source/buildConfig/androidTest/debug/mozilla/components/concept/base/test/BuildConfig | single tracking bug",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-05-01T18:01:19Z",
     "resolvedAt": "2026-06-24T04:00:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038467,
-    "summary": "Typing gets repeated when entering text 2 characters after @ in email fields",
-    "product": "GeckoView",
-    "component": "IME",
-    "filedAt": "2026-05-09T22:33:16Z",
-    "resolvedAt": "2026-05-26T09:01:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041507,
-    "summary": "Crash in [@ java.lang.NullPointerException: at org.mozilla.geckoview.GeckoRuntime$1.handleMessage(GeckoRuntime.java)] with GeckoPreferenceController",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-05-22T00:25:14Z",
-    "resolvedAt": "2026-05-26T21:39:25Z"
   },
   {
     "source": "bugzilla",
