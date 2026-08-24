@@ -325,6 +325,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058523,
+    "summary": "[Nova] Grey color group is not available, as per figma, in Dark theme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-28T14:37:34Z",
+    "resolvedAt": "2026-08-21T09:57:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058525,
     "summary": "Inconsistent color scheme between context menu and its submenu",
     "product": "Firefox",
@@ -394,5 +403,14 @@
     "component": "Theme",
     "filedAt": "2026-08-19T10:11:06Z",
     "resolvedAt": "2026-08-19T21:28:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065563,
+    "summary": "Remove Jules from theme triage owner rotation",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-21T15:40:58Z",
+    "resolvedAt": "2026-08-23T21:44:01Z"
   }
 ]
