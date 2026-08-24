@@ -19,15 +19,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018054,
-    "summary": "Create end-to-end tool calling tests with a mocked LLM call and response.",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-02-19T22:32:13Z",
-    "resolvedAt": "2026-05-24T19:26:27Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2021002,
     "summary": "chat model did not get the context right about user asked location of memories",
     "product": "Core",
@@ -190,15 +181,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036857,
-    "summary": "Add parseable token output from Kit easter egg responses 🦊",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-04T17:01:37Z",
-    "resolvedAt": "2026-05-26T03:18:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037171,
     "summary": "[Models] Re-architect Prompts",
     "product": "Core",
@@ -271,15 +253,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040432,
-    "summary": "[Models] Add scorer post process functions to evaluation framework",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-18T17:19:45Z",
-    "resolvedAt": "2026-05-26T16:45:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040433,
     "summary": "[Models] Allow single configured tasks in the eval framework to load and run multiple datsets",
     "product": "Core",
@@ -307,15 +280,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040996,
-    "summary": "[Models] Set up instructions for pilot eval data collection",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-20T15:07:47Z",
-    "resolvedAt": "2026-05-24T18:52:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041770,
     "summary": "Memories generation - unifying sources effort  - part 1",
     "product": "Core",
@@ -331,24 +295,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-25T21:18:43Z",
     "resolvedAt": "2026-06-02T22:00:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042399,
-    "summary": "[Models] Update model choice ID pref in ml_driver from 2 to 0",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-26T13:34:52Z",
-    "resolvedAt": "2026-05-26T16:39:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042400,
-    "summary": "[Models] Update ml_driver's submitTurn to use the user query as the run_search query arg on the first turn",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-26T13:35:48Z",
-    "resolvedAt": "2026-05-26T16:41:25Z"
   },
   {
     "source": "bugzilla",
@@ -487,6 +433,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2047711,
+    "summary": "[AI Window] Tool Use - Delete memories from natural language in chat",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-06-15T19:34:37Z",
+    "resolvedAt": "2026-08-21T15:02:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2048023,
     "summary": "Adding user agent to the MLPA calls from Smart Window",
     "product": "Core",
@@ -574,6 +529,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-23T21:31:52Z",
     "resolvedAt": "2026-08-10T17:13:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2050910,
+    "summary": "[AI Window] Tool Use - Update memories with natural language in chat",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-06-26T17:20:02Z",
+    "resolvedAt": "2026-08-21T15:02:00Z"
   },
   {
     "source": "bugzilla",
@@ -811,6 +775,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058699,
+    "summary": "Develop design of passive conversation-based memories",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-28T20:32:34Z",
+    "resolvedAt": "2026-08-21T15:31:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058810,
     "summary": "Intermittent TV browser/components/aiwindow/models/tests/browser/browser_monitor_agent.js | single tracking bug",
     "product": "Core",
@@ -919,6 +892,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063650,
+    "summary": "Develop shared memories evaluation data model components",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T16:03:56Z",
+    "resolvedAt": "2026-08-21T14:46:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063727,
     "summary": "PUWYLO v0 Fast Follow : Reduce mismatch between follow up message and links contained in preview",
     "product": "Core",
@@ -970,15 +952,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-19T19:04:59Z",
     "resolvedAt": "2026-08-21T04:22:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 1912048,
-    "summary": "isReady status not updated correctly for genericPipelineFunction in pipeline",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2024-08-07T13:48:49Z",
-    "resolvedAt": "2026-05-24T19:26:23Z"
   },
   {
     "source": "bugzilla",
@@ -1297,12 +1270,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061823,
+    "summary": "Add pref for two head design for ML Form Autofill",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-07T18:06:40Z",
+    "resolvedAt": "2026-08-22T21:27:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062321,
     "summary": "Investigate the embeddings engine performance",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-10T16:19:51Z",
     "resolvedAt": "2026-08-13T14:47:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062422,
+    "summary": "Migrate handrolled onnx fallbacks to best-onnx",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-10T20:17:02Z",
+    "resolvedAt": "2026-08-22T09:53:09Z"
   },
   {
     "source": "bugzilla",
@@ -1330,6 +1321,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-12T16:24:04Z",
     "resolvedAt": "2026-08-20T21:53:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063024,
+    "summary": "Introduce a telemetry probe for native ONNX runtime availability",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-12T16:27:04Z",
+    "resolvedAt": "2026-08-22T09:53:25Z"
   },
   {
     "source": "bugzilla",
@@ -1765,15 +1765,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035339,
-    "summary": "Implement conversation state and tool action state management",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-27T23:13:35Z",
-    "resolvedAt": "2026-05-25T09:31:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035893,
     "summary": "Handle new prompts while disambiguation/confirmation UI is active",
     "product": "Core",
@@ -2005,15 +1996,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-19T16:29:21Z",
     "resolvedAt": "2026-06-13T22:06:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040721,
-    "summary": "Integrate round 1 feedback UI with Glean submission flow",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T16:51:37Z",
-    "resolvedAt": "2026-05-25T09:31:51Z"
   },
   {
     "source": "bugzilla",
@@ -3493,6 +3475,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058221,
+    "summary": "Smart Form Fill autocomplete fill option trigger UI",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-27T17:24:53Z",
+    "resolvedAt": "2026-08-22T21:26:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058227,
     "summary": "Smart Form Fill integrate LLM requests for classification, tab relevancy, value generation",
     "product": "Core",
@@ -3763,6 +3754,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061847,
+    "summary": "Show the address bar consistently on the first New Tab, new windows, and about:home",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-07T19:55:14Z",
+    "resolvedAt": "2026-08-22T09:53:03Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061853,
     "summary": "Add Auto Tab Grouping local model for group name generation",
     "product": "Core",
@@ -3778,6 +3778,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-07T21:52:31Z",
     "resolvedAt": "2026-08-14T04:18:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061886,
+    "summary": "[Spike] Understand how to track users by acquisition channel – to measure conversion metrics and customize onboarding per channel",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-07T22:34:54Z",
+    "resolvedAt": "2026-08-21T17:24:20Z"
   },
   {
     "source": "bugzilla",
@@ -3880,6 +3889,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062904,
+    "summary": "Mochitest browser_smartwindow_chip_overflow.js timing out",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-12T09:19:12Z",
+    "resolvedAt": "2026-08-21T15:51:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063308,
     "summary": "[Monitor Agent][FE] gate /command palette dispay for smartwindow.agent.enabled and region",
     "product": "Core",
@@ -3898,6 +3916,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064096,
+    "summary": "[Models] End to End evals for Smart Form Fill calls",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-17T15:28:43Z",
+    "resolvedAt": "2026-08-21T19:28:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064410,
     "summary": "Expand available component list for AITab protyping json",
     "product": "Core",
@@ -3913,6 +3940,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T18:06:23Z",
     "resolvedAt": "2026-08-19T10:25:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064522,
+    "summary": "[Monitor Agent][FE] Make read url pills clickable on monitor cards",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T20:39:14Z",
+    "resolvedAt": "2026-08-22T09:53:43Z"
   },
   {
     "source": "bugzilla",
@@ -3940,6 +3976,15 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-14T15:07:48Z",
     "resolvedAt": "2026-08-18T09:27:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063685,
+    "summary": "Remove world cup tool calling code from Smart Window",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-14T17:52:39Z",
+    "resolvedAt": "2026-08-21T15:52:18Z"
   },
   {
     "source": "bugzilla",
