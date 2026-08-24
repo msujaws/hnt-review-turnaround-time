@@ -199,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039735,
-    "summary": "Handle static files correctly",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-14T22:17:36Z",
-    "resolvedAt": "2026-05-26T16:15:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040042,
     "summary": "Share modal styling does not match design",
     "product": "Firefox",
@@ -394,15 +385,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-21T06:34:37Z",
     "resolvedAt": "2026-05-29T09:23:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041461,
-    "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/contentsharing/tests/browser/browser_testLoadingState.js | application timed out after 740.0 seconds with no output",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-21T19:54:06Z",
-    "resolvedAt": "2026-05-26T21:39:17Z"
   },
   {
     "source": "bugzilla",
@@ -898,6 +880,15 @@
     "component": "Sharing",
     "filedAt": "2026-07-02T16:27:21Z",
     "resolvedAt": "2026-08-19T09:35:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052266,
+    "summary": "Add send to other devices button to panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:28:36Z",
+    "resolvedAt": "2026-08-21T09:56:54Z"
   },
   {
     "source": "bugzilla",
