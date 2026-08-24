@@ -343,15 +343,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038732,
-    "summary": "Update region/locale defaults for Weather widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-11T16:47:29Z",
-    "resolvedAt": "2026-05-26T21:38:30Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038816,
     "summary": "Widget telemetry sends incorrect size data",
     "product": "Firefox",
@@ -505,15 +496,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041651,
-    "summary": "View Upcoming menu option does not redirect to the Upcoming tab after refreshing the page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T10:45:35Z",
-    "resolvedAt": "2026-05-26T03:19:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041682,
     "summary": "Menu options are no longer focused after mouse cursor leaves the menu area",
     "product": "Firefox",
@@ -523,48 +505,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041727,
-    "summary": "Newtab widgets limit to 1 row, and have a show more widgets button",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T15:07:13Z",
-    "resolvedAt": "2026-05-26T21:39:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041765,
-    "summary": "Sports widget - various visual fixes",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T16:58:36Z",
-    "resolvedAt": "2026-05-25T09:32:03Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041781,
     "summary": "Create 2 new widget Callout messages",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-22T18:29:00Z",
     "resolvedAt": "2026-05-28T09:18:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041814,
-    "summary": "Add additional branding variations for newtab logo",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T20:42:03Z",
-    "resolvedAt": "2026-05-26T09:01:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042054,
-    "summary": "Sports widget - match list view should make the widget expand to the large size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-25T00:30:09Z",
-    "resolvedAt": "2026-05-26T03:19:55Z"
   },
   {
     "source": "bugzilla",
@@ -583,15 +529,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-26T04:11:48Z",
     "resolvedAt": "2026-05-27T08:59:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042282,
-    "summary": "Newtab widgets limit to 1 row, and have a show more widgets button strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T05:35:41Z",
-    "resolvedAt": "2026-05-26T21:40:24Z"
   },
   {
     "source": "bugzilla",
@@ -2782,6 +2719,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061742,
+    "summary": "Create spaces content layout variant",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-07T15:09:27Z",
+    "resolvedAt": "2026-08-22T21:27:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061828,
     "summary": "Add support for five column content feed layouts",
     "product": "Firefox",
@@ -3148,5 +3094,32 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-19T21:05:19Z",
     "resolvedAt": "2026-08-20T16:30:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065011,
+    "summary": "Create blank widget for the Search team",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-20T04:29:29Z",
+    "resolvedAt": "2026-08-21T09:58:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065281,
+    "summary": "Use the ads-client's SQLite HTTP cache for New Tab ads instead of the feed-level PersistentCache",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-20T20:30:30Z",
+    "resolvedAt": "2026-08-22T09:54:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065554,
+    "summary": "Implement carousel card type",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-21T15:26:20Z",
+    "resolvedAt": "2026-08-22T09:54:24Z"
   }
 ]
