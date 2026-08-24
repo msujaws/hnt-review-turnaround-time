@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041273,
-    "summary": "Fix intermittent failures: test_logins_decrypt_failure.js fails due to race between Rust mirror and NSS token reset",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-21T11:01:17Z",
-    "resolvedAt": "2026-05-26T21:39:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041348,
     "summary": "Fix generated password cache not cleared for Container Tab users after autosaved login is updated with username",
     "product": "Toolkit",
@@ -97,24 +88,6 @@
     "component": "Password Manager",
     "filedAt": "2026-05-21T14:43:11Z",
     "resolvedAt": "2026-06-30T21:15:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041356,
-    "summary": "Fix `searchAndDedupeLogins` to explicitly sort results by matching scheme instead of relying on storage insertion order",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-21T14:51:38Z",
-    "resolvedAt": "2026-05-26T21:39:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041358,
-    "summary": "Fire `passwordmgr-storage-changed` notifications from Rust login storage backend and gate events to active backend only",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-21T14:54:56Z",
-    "resolvedAt": "2026-05-26T21:39:14Z"
   },
   {
     "source": "bugzilla",
@@ -415,11 +388,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064411,
+    "summary": "After each browser launch, a window for entering the main password opens.",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-18T15:06:36Z",
+    "resolvedAt": "2026-08-24T01:27:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064491,
+    "summary": "Primary Password prompt on first PDF open per session (Firefox 154, Windows)",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-18T19:07:19Z",
+    "resolvedAt": "2026-08-24T01:26:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065203,
     "summary": "Fix test regression",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-08-20T15:55:47Z",
     "resolvedAt": "2026-08-21T09:59:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065593,
+    "summary": "Restore logins from SQLite after swithching back to JSON",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-21T17:02:21Z",
+    "resolvedAt": "2026-08-22T21:28:18Z"
   }
 ]
