@@ -235,15 +235,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034393,
-    "summary": "Stories cannot be enabled again with mouse pointer when customization panel is in fading state",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-23T09:57:57Z",
-    "resolvedAt": "2026-05-27T08:57:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034857,
     "summary": "New-tab page placeholder-image thumbnail content have sharp bottom corners, which look inconsistent with top corners and with the nearby rounded tile-corners",
     "product": "Firefox",
@@ -424,15 +415,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040483,
-    "summary": "Add WCW API Status strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T19:43:15Z",
-    "resolvedAt": "2026-05-27T08:58:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040519,
     "summary": "Add logic to feed data to display correct translated strings",
     "product": "Firefox",
@@ -442,30 +424,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040835,
-    "summary": "Sports widget - remove temporary date parameter from SportsFeed.sys.mjs when we're ready to ship",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-20T03:08:51Z",
-    "resolvedAt": "2026-05-27T08:58:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040843,
     "summary": "Sports widget - Add pagination when there are 2 or more live games happening",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-20T04:37:35Z",
     "resolvedAt": "2026-06-01T08:46:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041094,
-    "summary": "New Callout message for World Cup wallpapers",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-20T19:41:00Z",
-    "resolvedAt": "2026-05-27T08:58:46Z"
   },
   {
     "source": "bugzilla",
@@ -496,15 +460,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041682,
-    "summary": "Menu options are no longer focused after mouse cursor leaves the menu area",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T12:31:31Z",
-    "resolvedAt": "2026-05-27T15:10:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041781,
     "summary": "Create 2 new widget Callout messages",
     "product": "Firefox",
@@ -520,15 +475,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-25T13:41:36Z",
     "resolvedAt": "2026-06-05T01:31:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042271,
-    "summary": "Sports widget - add /wcs/live endpoint",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T04:11:48Z",
-    "resolvedAt": "2026-05-27T08:59:41Z"
   },
   {
     "source": "bugzilla",
@@ -574,15 +520,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-26T19:41:17Z",
     "resolvedAt": "2026-05-29T09:23:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042524,
-    "summary": "Update runtime-metrics for Firefox 151.0.2 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T19:52:42Z",
-    "resolvedAt": "2026-05-27T19:45:34Z"
   },
   {
     "source": "bugzilla",
@@ -3088,6 +3025,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064767,
+    "summary": "Upload new wallpapers to match new margins",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-19T15:50:34Z",
+    "resolvedAt": "2026-08-24T22:55:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064914,
     "summary": "Stocks widget: add plural selector to Fluent string newtab-stocks-watchlist-full",
     "product": "Firefox",
@@ -3121,5 +3067,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-21T15:26:20Z",
     "resolvedAt": "2026-08-22T09:54:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066144,
+    "summary": "Enable remote settings driven sections layout by default",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T15:32:26Z",
+    "resolvedAt": "2026-08-24T21:48:36Z"
   }
 ]
