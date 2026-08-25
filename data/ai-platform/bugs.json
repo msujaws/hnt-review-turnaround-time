@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2023259,
-    "summary": "System hallucinates unsupported \"memory saving\" when user uses natural language input for new memories",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-13T18:53:52Z",
-    "resolvedAt": "2026-05-27T23:51:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2026393,
     "summary": "[Models] Set up automated running of production chat evaluation suite daily with alerts",
     "product": "Core",
@@ -253,15 +244,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040433,
-    "summary": "[Models] Allow single configured tasks in the eval framework to load and run multiple datsets",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-18T17:22:53Z",
-    "resolvedAt": "2026-05-27T14:31:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040435,
     "summary": "[Models] Fix tool rounds in evaluation framework",
     "product": "Core",
@@ -295,15 +277,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-25T21:18:43Z",
     "resolvedAt": "2026-06-02T22:00:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042798,
-    "summary": "[Models] Expose the nagivate_first param in ml_driver's add_tab function",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-27T13:20:04Z",
-    "resolvedAt": "2026-05-27T13:21:11Z"
   },
   {
     "source": "bugzilla",
@@ -586,6 +559,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052357,
+    "summary": "Smart Window perf: stop deep-cloning history and tools config per request",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-02T21:12:50Z",
+    "resolvedAt": "2026-08-24T21:46:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052685,
     "summary": "the summarize page button in ai sidebar with gemini fails without an error",
     "product": "Core",
@@ -865,6 +847,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062354,
+    "summary": "[Models] Smart Form Fill background tabs de-risk",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T17:31:54Z",
+    "resolvedAt": "2026-08-24T17:39:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062383,
     "summary": "[Models] Check SFF field alignment in evals",
     "product": "Core",
@@ -952,6 +943,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-19T19:04:59Z",
     "resolvedAt": "2026-08-21T04:22:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066286,
+    "summary": "Perma TV browser/components/aiwindow/models/tests/browser/browser_monitor_errors.js | test_timed_out_run_records_timeout_code - Uncaught exception in test - [MockEngineManager]",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-24T23:03:39Z",
+    "resolvedAt": "2026-08-25T00:21:52Z"
   },
   {
     "source": "bugzilla",
@@ -1567,15 +1567,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2028662,
-    "summary": "Smart Window dropdown-menu's buttons cannot be clicked when the dropdown is open. (Clicking them just dismisses the menu-popup.)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-01T22:32:11Z",
-    "resolvedAt": "2026-05-27T08:57:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2028666,
     "summary": "[a11y] Button is not mouse-clickable but remains triggerable via keyboard.",
     "product": "Core",
@@ -1807,15 +1798,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-06T08:52:15Z",
     "resolvedAt": "2026-06-22T20:02:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037378,
-    "summary": "The Assistant Sidebar reopens Automatically when switching tabs after closing it from the X Close button",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-06T10:31:04Z",
-    "resolvedAt": "2026-05-27T08:57:58Z"
   },
   {
     "source": "bugzilla",
@@ -2602,6 +2584,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2048067,
+    "summary": "[meta] Auto Tab Grouping v0 (with user intervention step)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-16T19:45:27Z",
+    "resolvedAt": "2026-08-24T23:20:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2048336,
     "summary": "Make show/hide of Smart Window first run onboarding screen nimbus configurable",
     "product": "Core",
@@ -2923,6 +2914,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T17:23:06Z",
     "resolvedAt": "2026-07-21T10:18:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052362,
+    "summary": "Smart Window perf: add missing ChatSql indexes and fix the correlated history subquery",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:13:11Z",
+    "resolvedAt": "2026-08-24T21:46:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052364,
+    "summary": "Smart Window perf: avoid SELECT-parse-merge-stringify-UPSERT in the LLM telemetry update",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:13:18Z",
+    "resolvedAt": "2026-08-24T21:46:43Z"
   },
   {
     "source": "bugzilla",
@@ -3358,6 +3367,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057151,
+    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_ai_action_result.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-23T06:40:36Z",
+    "resolvedAt": "2026-08-25T09:08:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057237,
     "summary": "Connect citation component with assistant Exa source citations (v1)",
     "product": "Core",
@@ -3700,12 +3718,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061030,
+    "summary": "Show or hide Smart Window shortcuts based on the Classic Window Shortcuts setting",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T00:04:22Z",
+    "resolvedAt": "2026-08-25T09:09:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061038,
     "summary": "AITab - Finalize table structures needed to create AITab database",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T00:52:08Z",
     "resolvedAt": "2026-08-11T05:51:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061040,
+    "summary": "AITab - create db for AITab data storage",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T00:56:17Z",
+    "resolvedAt": "2026-08-24T21:46:55Z"
   },
   {
     "source": "bugzilla",
@@ -3799,6 +3835,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062113,
+    "summary": "Create Monitor Tool bar button",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T03:46:14Z",
+    "resolvedAt": "2026-08-25T09:09:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062115,
     "summary": "[Monitor Agent][FE] Add monitor icon near form title",
     "product": "Core",
@@ -3832,6 +3877,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T00:56:42Z",
     "resolvedAt": "2026-08-11T13:57:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062513,
+    "summary": "[meta] Exa Integration v1: Web-Grounded Answers & Source Citations",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T05:57:23Z",
+    "resolvedAt": "2026-08-24T23:25:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062514,
+    "summary": "[meta] Smart Window 154.0.x uplifts",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T06:03:52Z",
+    "resolvedAt": "2026-08-24T22:28:25Z"
   },
   {
     "source": "bugzilla",
@@ -3943,12 +4006,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064485,
+    "summary": "remove the \"Pick up\" prefix from PUWYLO tab group title",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T18:34:31Z",
+    "resolvedAt": "2026-08-25T09:09:55Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064522,
     "summary": "[Monitor Agent][FE] Make read url pills clickable on monitor cards",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:39:14Z",
     "resolvedAt": "2026-08-22T09:53:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064531,
+    "summary": "[Monitor Agent][FE] Move the agent monitor item into the dialog about page component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T20:56:15Z",
+    "resolvedAt": "2026-08-25T09:09:57Z"
   },
   {
     "source": "bugzilla",
