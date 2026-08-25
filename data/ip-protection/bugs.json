@@ -388,15 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042454,
-    "summary": "VPN button icon abnormally large",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-26T15:34:44Z",
-    "resolvedAt": "2026-05-27T17:51:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042691,
     "summary": "[a11y] Unavailable locations are completely skipped by keyboard navigation and screen readers",
     "product": "Firefox",
@@ -1042,6 +1033,15 @@
     "component": "IP Protection",
     "filedAt": "2026-07-27T19:00:56Z",
     "resolvedAt": "2026-07-28T21:57:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059662,
+    "summary": "[a11y] Screen reader announces Firefox VPN location list items as radio buttons",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-31T07:34:34Z",
+    "resolvedAt": "2026-08-24T21:46:50Z"
   },
   {
     "source": "bugzilla",
