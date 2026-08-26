@@ -262,15 +262,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041770,
-    "summary": "Memories generation - unifying sources effort  - part 1",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-22T17:12:03Z",
-    "resolvedAt": "2026-05-29T00:36:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042231,
     "summary": "Memories v2: Fuse Memories quality and sensitivity filters",
     "product": "Core",
@@ -1090,6 +1081,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2047026,
+    "summary": "Create a Glean telemetry probe that tests model fidelity on known input/output (Category 1 \"technical data\").",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T23:42:06Z",
+    "resolvedAt": "2026-08-26T04:23:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2048967,
     "summary": "browser_ml_native.js leaves an intentional-crash minidump behind, causing PROCESS-CRASH failures at high frequency with the profiler enabled",
     "product": "Core",
@@ -1495,15 +1495,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2026751,
-    "summary": "[SPIKE] Audit Smart Window components for Nova design update",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-26T18:32:59Z",
-    "resolvedAt": "2026-05-28T17:58:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2026775,
     "summary": "[Nova] Implement detached anchor bar container",
     "product": "Core",
@@ -1654,15 +1645,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-17T19:06:47Z",
     "resolvedAt": "2026-06-02T09:37:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033136,
-    "summary": "[a11y] Smart window - No hover or focus indicators on search results from main searchbar in HCM",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T20:50:30Z",
-    "resolvedAt": "2026-05-28T04:06:02Z"
   },
   {
     "source": "bugzilla",
@@ -1963,48 +1945,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040509,
-    "summary": "Add Nimbus/configuration support for Smart Window default experiment",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-18T20:52:51Z",
-    "resolvedAt": "2026-05-29T00:35:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040712,
     "summary": "[meta] Smart Window 152 uplifts",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-19T16:29:21Z",
     "resolvedAt": "2026-06-13T22:06:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040769,
-    "summary": "Handle direct tab close action without confirmation card",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T20:05:31Z",
-    "resolvedAt": "2026-05-28T09:16:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040800,
-    "summary": "Improve model error classification and telemetry labeling",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T22:28:16Z",
-    "resolvedAt": "2026-05-29T00:35:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040801,
-    "summary": "Instrument retry failures and retry state in model telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T22:30:07Z",
-    "resolvedAt": "2026-05-29T00:35:38Z"
   },
   {
     "source": "bugzilla",
@@ -2050,24 +1996,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-22T22:58:54Z",
     "resolvedAt": "2026-05-30T18:36:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042051,
-    "summary": "Perma browser_aiwindow_smartbar_telemetry.js , browser_aiFeatures_smart_window_telemetry.js caused by the latest ai-window-prompts.json remote settings update",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-25T00:04:43Z",
-    "resolvedAt": "2026-05-28T09:19:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042497,
-    "summary": "Remove userFeedbackCollection pref gating for Smart Window feedback UI",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-26T17:51:46Z",
-    "resolvedAt": "2026-05-28T09:20:06Z"
   },
   {
     "source": "bugzilla",
@@ -2728,6 +2656,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2050017,
+    "summary": "Permanent beta-as-esr153 Hit MOZ_CRASH(Attempting to connect to non-local address! opener is [chrome://browser/content/tabbrowser/tabbrowser.js:9933:33], uri is [https://www.google.com/search?client=firefox-b-1-e&channel=entpr&q=Hello])",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-24T11:09:12Z",
+    "resolvedAt": "2026-08-25T21:42:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2050022,
     "summary": "The Added Tabs Context chips are spilling over the Smart Bar animation border",
     "product": "Core",
@@ -2923,6 +2860,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T21:13:11Z",
     "resolvedAt": "2026-08-24T21:46:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052363,
+    "summary": "Smart Window perf: batch ChatStore prune deletes and throttle the per-write stat",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:13:15Z",
+    "resolvedAt": "2026-08-25T21:42:08Z"
   },
   {
     "source": "bugzilla",
@@ -3205,6 +3151,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055066,
+    "summary": "Smart Form Fill: add telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-14T21:22:24Z",
+    "resolvedAt": "2026-08-26T04:24:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055160,
     "summary": "Smart Window firstrun explainer URL is not locale aware",
     "product": "Core",
@@ -3463,6 +3418,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-27T09:18:15Z",
     "resolvedAt": "2026-08-10T20:48:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058016,
+    "summary": "Smart Window assistant can’t see tabs in a second window opened right after onboarding",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-27T09:18:28Z",
+    "resolvedAt": "2026-08-26T04:24:08Z"
   },
   {
     "source": "bugzilla",
@@ -3961,6 +3925,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063009,
+    "summary": "[Models] Evaluate LLM based Auto Tab Grouping",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-12T15:31:08Z",
+    "resolvedAt": "2026-08-25T14:33:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063308,
     "summary": "[Monitor Agent][FE] gate /command palette dispay for smartwindow.agent.enabled and region",
     "product": "Core",
@@ -3988,12 +3961,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064226,
+    "summary": "Show Duplicate Tabs on Hover in Organize Tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-17T21:22:24Z",
+    "resolvedAt": "2026-08-26T04:24:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064410,
     "summary": "Expand available component list for AITab protyping json",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T15:00:06Z",
     "resolvedAt": "2026-08-21T09:58:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064452,
+    "summary": "Hide retry on the initial PUWYLO assistant response",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T16:59:25Z",
+    "resolvedAt": "2026-08-25T21:42:45Z"
   },
   {
     "source": "bugzilla",
@@ -4021,6 +4012,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:39:14Z",
     "resolvedAt": "2026-08-22T09:53:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064530,
+    "summary": "[Monitor Agent][FE] Monitor /watch command opens a blank monitor form on SW full page",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T20:54:58Z",
+    "resolvedAt": "2026-08-26T04:24:45Z"
   },
   {
     "source": "bugzilla",

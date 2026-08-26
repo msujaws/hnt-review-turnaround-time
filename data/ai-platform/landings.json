@@ -1642,5 +1642,41 @@
     "cycleBusinessHours": 63.230000000000004,
     "postReviewBusinessHours": 40,
     "reviewRounds": 2
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-tdzi34kdng6dvg3gszmm",
+    "revisionId": 311308,
+    "author": "jbowser",
+    "createdAt": "2026-07-09T14:52:07.000Z",
+    "firstReviewAt": "2026-07-13T20:45:53.000Z",
+    "landedAt": "2026-08-26T00:03:42.000Z",
+    "reviewRounds": 4,
+    "cycleBusinessHours": 270.13138888888886,
+    "postReviewBusinessHours": 248.23527777777778
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-2jaugsrbtxdb6ug3xg5s",
+    "revisionId": 318281,
+    "author": "gregtatum",
+    "createdAt": "2026-08-12T21:51:58.000Z",
+    "firstReviewAt": "2026-08-21T14:25:57.000Z",
+    "landedAt": "2026-08-25T18:15:25.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 69.25694444444444,
+    "postReviewBusinessHours": 19.824444444444445
+  },
+  {
+    "source": "github",
+    "id": 234,
+    "author": "subpath",
+    "createdAt": "2026-08-24T10:25:51Z",
+    "firstReviewAt": "2026-08-24T16:41:17Z",
+    "landedAt": "2026-08-25T14:47:20Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 9.78888888888889,
+    "postReviewBusinessHours": 6.100833333333332
   }
 ]

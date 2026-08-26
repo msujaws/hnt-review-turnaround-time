@@ -11,16 +11,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-b4dlpq55d572mcvbbatz",
-    "revisionId": 303228,
-    "author": "thasan",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-05-28T23:26:06.000Z",
-    "firstActionAt": "2026-06-04T20:40:46.000Z",
-    "tatBusinessHours": 39.67944444444444
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-czpxhpceoe274sieftix",
     "revisionId": 302172,
     "author": "thasan",
@@ -1078,5 +1068,15 @@
     "firstActionAt": "2026-08-24T16:41:17Z",
     "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 3.6880555555555556
+  },
+  {
+    "source": "github",
+    "id": 235,
+    "author": "noahpodgurski",
+    "reviewer": "subpath",
+    "requestedAt": "2026-08-25T13:12:32Z",
+    "firstActionAt": "2026-08-25T16:40:52Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 3.4722222222222223
   }
 ]
