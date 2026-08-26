@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037036,
-    "summary": "Use GUID for remove/modify in LoginManagerRustMirror to prevent operating on wrong login when origins collide",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-05T10:52:07Z",
-    "resolvedAt": "2026-05-29T00:34:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040672,
     "summary": "LoginManagerRustMirror: Update version to trigger re-migration",
     "product": "Toolkit",
