@@ -280,15 +280,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036238,
-    "summary": "Sports widget - Add Kit animation on hover/focus on intro state of widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-01T03:11:49Z",
-    "resolvedAt": "2026-05-28T09:13:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036865,
     "summary": "Refactor WallpaperFeatureHighlight arrow to use clip-path instead of SVG",
     "product": "Firefox",
@@ -460,30 +451,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041781,
-    "summary": "Create 2 new widget Callout messages",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T18:29:00Z",
-    "resolvedAt": "2026-05-28T09:18:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042158,
     "summary": "Keyboard focus on some elements in World cup widget is either cutoff and/or overlaps other elements",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-25T13:41:36Z",
     "resolvedAt": "2026-06-05T01:31:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042325,
-    "summary": "World clock - Longer city names are truncated",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T08:59:40Z",
-    "resolvedAt": "2026-05-28T09:19:48Z"
   },
   {
     "source": "bugzilla",
@@ -523,24 +496,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042525,
-    "summary": "Update locales for Firefox 151.0.2 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T19:53:24Z",
-    "resolvedAt": "2026-05-28T09:20:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042550,
-    "summary": "Fix scrollbar from appearing when there is no content on the New Tab page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T21:55:23Z",
-    "resolvedAt": "2026-05-28T09:20:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042815,
     "summary": "Sticky search on scroll is no longer working",
     "product": "Firefox",
@@ -550,30 +505,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042866,
-    "summary": "Replace kit animated GIF with webm video",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-27T15:31:08Z",
-    "resolvedAt": "2026-05-28T09:20:53Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042885,
     "summary": "[meta] Firefox 151.0.3 train-hop metabug",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-27T16:02:24Z",
     "resolvedAt": "2026-06-12T12:47:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043088,
-    "summary": "Sports widget - Don't show the live endpoint data until kick-off",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T01:39:42Z",
-    "resolvedAt": "2026-05-28T09:21:10Z"
   },
   {
     "source": "bugzilla",
@@ -2548,6 +2485,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2060343,
+    "summary": "Add `scroll100` and `scroll250` boolean metrics to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-03T19:24:10Z",
+    "resolvedAt": "2026-08-25T09:08:55Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060664,
     "summary": "Use MAC for callbacks in HNT TelemetryFeed",
     "product": "Firefox",
@@ -3043,12 +2989,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064965,
+    "summary": "Wallpaper attribution is not rendered when Nova is enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-20T01:25:31Z",
+    "resolvedAt": "2026-08-26T04:24:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065011,
     "summary": "Create blank widget for the Search team",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-20T04:29:29Z",
     "resolvedAt": "2026-08-21T09:58:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065170,
+    "summary": "New Tab's unscoped panel-item::part(button) rule strips the icon slot from panel-items it doesn't own",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-20T14:25:34Z",
+    "resolvedAt": "2026-08-25T21:42:57Z"
   },
   {
     "source": "bugzilla",
@@ -3067,6 +3031,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-21T15:26:20Z",
     "resolvedAt": "2026-08-22T09:54:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065645,
+    "summary": "Missing Fluent variable $title for newtab-menu-content-tooltip causes debug build newtab content crashes on startup",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-21T20:00:05Z",
+    "resolvedAt": "2026-08-25T09:10:18Z"
   },
   {
     "source": "bugzilla",
