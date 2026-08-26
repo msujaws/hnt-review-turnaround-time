@@ -226,15 +226,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039036,
-    "summary": "IP-Protection: use a dummy auth provider for tests",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-12T17:23:17Z",
-    "resolvedAt": "2026-05-29T00:34:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039181,
     "summary": "Incorrect text color in VPN panels under High Contrast Mode",
     "product": "Firefox",
@@ -268,42 +259,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-15T12:48:11Z",
     "resolvedAt": "2026-06-04T14:25:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040063,
-    "summary": "Add \"unlimited\" to the IPP entitlement",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-15T23:20:53Z",
-    "resolvedAt": "2026-05-28T09:15:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040065,
-    "summary": "Update IPP bandwidth enabled pref",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-15T23:31:48Z",
-    "resolvedAt": "2026-05-28T09:15:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040511,
-    "summary": "Return early in IPPUsageHelper and IPProtectionInfobarManager when not tracking bandwidth",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-18T21:07:26Z",
-    "resolvedAt": "2026-05-28T09:15:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040512,
-    "summary": "Guard IPProtectionPanel usage changed handling when not tracking bandwidth",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-18T21:12:14Z",
-    "resolvedAt": "2026-05-28T09:15:55Z"
   },
   {
     "source": "bugzilla",
@@ -343,48 +298,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041794,
-    "summary": "VPN whitelist",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-22T19:01:59Z",
-    "resolvedAt": "2026-05-28T09:18:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041803,
     "summary": "IPProtection does not reconnect or update when the AccessConnector policy is modified live",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-05-22T19:31:09Z",
     "resolvedAt": "2026-06-02T22:00:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042286,
-    "summary": "Addon message incorrectly displayed on unauthorized URL paths for domain-restricted rules",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-26T05:57:12Z",
-    "resolvedAt": "2026-05-28T09:19:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042289,
-    "summary": "Messaging addon (infobar) is not displayed on magenta.tv when VPN is enabled during the World Cup time range",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-26T06:10:27Z",
-    "resolvedAt": "2026-05-28T09:19:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042407,
-    "summary": "IPPEnterpriseAuthProvider does not notify listeners after policy activation",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-26T13:53:19Z",
-    "resolvedAt": "2026-05-29T00:36:44Z"
   },
   {
     "source": "bugzilla",
@@ -412,15 +331,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-27T15:12:12Z",
     "resolvedAt": "2026-06-10T10:09:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042992,
-    "summary": "Add a safeguard to VPN toolbar logo size",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-27T21:28:56Z",
-    "resolvedAt": "2026-05-28T09:21:02Z"
   },
   {
     "source": "bugzilla",
