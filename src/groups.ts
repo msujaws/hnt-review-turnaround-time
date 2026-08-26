@@ -33,8 +33,8 @@ export interface BugzillaScopeConfig {
 // A single review group the dashboard can track. Data for distinct groups is
 // never merged: each group owns a `data/<id>/` directory and renders at its
 // own URL. Most groups are Phabricator-only; Home-NewTab (Pocket
-// content-monorepo + merino-py) and AI Platform and Experience (Firefox-AI/MLPA)
-// also pull GitHub.
+// content-monorepo, mozilla/hnt-content, merino-py) and AI Platform and
+// Experience (Firefox-AI/MLPA) also pull GitHub.
 export interface GroupConfig {
   readonly id: GroupId;
   // Short display name used in the dropdown and metadata titles.
@@ -85,6 +85,11 @@ const HOME_NEWTAB: GroupConfig = {
   github: [
     // content-monorepo: gate by the people.json github roster on both sides.
     { owner: GITHUB_OWNER, repo: GITHUB_REPO },
+    // hnt-content: same roster gate on both sides. That gate is load-bearing
+    // here, not just conventional — hnt-content is reviewed by
+    // copilot-pull-request-reviewer, whose login has no `[bot]` suffix, so
+    // isBot in src/scripts/github.ts does not filter it.
+    { owner: 'mozilla', repo: 'hnt-content' },
     // merino-py: only the backend team's PRs, reviewed by anyone.
     {
       owner: 'mozilla-services',

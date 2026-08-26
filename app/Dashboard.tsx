@@ -97,10 +97,10 @@ export const Dashboard: FC<DashboardProps> = ({
     );
   const githubRepos = group.github ?? [];
   const hasGithub = githubRepos.length > 0;
-  // Each repo can gate differently: content-monorepo counts team-member
-  // reviewers; merino-py is scoped to the backend team's own PRs but counts
-  // any reviewer. Describe each repo's scope from its config so the copy stays
-  // accurate as the roster/repos change.
+  // Each repo can gate differently: content-monorepo and hnt-content count
+  // team-member reviewers; merino-py is scoped to the backend team's own PRs
+  // but counts any reviewer. Describe each repo's scope from its config so the
+  // copy stays accurate as the roster/repos change.
   const describeRepoScope = (repo: (typeof githubRepos)[number]): ReactElement =>
     repo.authorLogins === undefined ? (
       <>where a team member is a requested reviewer</>
