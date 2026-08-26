@@ -428,6 +428,8 @@ describe('Dashboard', () => {
     expect(link).toHaveAttribute('href', 'https://github.com/Pocket/content-monorepo');
     const merinoLink = within(ghSection!).getByRole('link', { name: 'mozilla-services/merino-py' });
     expect(merinoLink).toHaveAttribute('href', 'https://github.com/mozilla-services/merino-py');
+    const contentLink = within(ghSection!).getByRole('link', { name: 'mozilla/hnt-content' });
+    expect(contentLink).toHaveAttribute('href', 'https://github.com/mozilla/hnt-content');
   });
 });
 

@@ -16,6 +16,24 @@ describe('group registry', () => {
     const ids = allGroups().map((group) => group.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  // Guards the hnt-content gating decision as much as the repo list: leaving
+  // authorLogins/gateReviewersByRoster off is what keeps the roster gate on both
+  // sides, and that gate is the only thing excluding hnt-content's
+  // copilot-pull-request-reviewer reviews, whose login has no `[bot]` suffix for
+  // isBot to catch.
+  it('tracks three GitHub repos on the default group', () => {
+    expect(defaultGroup().github).toEqual([
+      { owner: 'Pocket', repo: 'content-monorepo' },
+      { owner: 'mozilla', repo: 'hnt-content' },
+      {
+        owner: 'mozilla-services',
+        repo: 'merino-py',
+        authorLogins: ['jpetto', 'mmiermans', 'Herraj'],
+        gateReviewersByRoster: false,
+      },
+    ]);
+  });
 });
 
 describe('bugzilla scoping', () => {
