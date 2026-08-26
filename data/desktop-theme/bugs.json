@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042859,
-    "summary": "Don't reference Linux-unavailable warning-large.png in sanitize dialog CSS",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-05-27T15:18:44Z",
-    "resolvedAt": "2026-05-28T09:20:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043602,
     "summary": "Run automated browser-chrome and mochitest-chrome and talos tests with Nova enabled",
     "product": "Firefox",
@@ -358,6 +349,15 @@
     "component": "Theme",
     "filedAt": "2026-07-28T16:40:20Z",
     "resolvedAt": "2026-08-19T03:09:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059330,
+    "summary": "[Nova] Tab height with Touch density is not taller than Standard density",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-30T06:36:06Z",
+    "resolvedAt": "2026-08-25T21:42:13Z"
   },
   {
     "source": "bugzilla",
