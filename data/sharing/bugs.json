@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036478,
-    "summary": "Implement interstitial \"auth complete\" page design",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-01T22:50:17Z",
-    "resolvedAt": "2026-05-28T18:56:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036481,
     "summary": "Decide if the /admin dashboard should be exposed in production",
     "product": "Firefox",
@@ -145,15 +136,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037557,
-    "summary": "Decide if we should set the server path via a pref",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-06T17:41:13Z",
-    "resolvedAt": "2026-05-28T17:04:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037559,
     "summary": "Drop the migrations before we launch",
     "product": "Firefox",
@@ -178,15 +160,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-14T16:58:03Z",
     "resolvedAt": "2026-06-22T15:54:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040042,
-    "summary": "Share modal styling does not match design",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-15T22:21:33Z",
-    "resolvedAt": "2026-05-28T09:15:17Z"
   },
   {
     "source": "bugzilla",
@@ -268,15 +241,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-18T15:54:43Z",
     "resolvedAt": "2026-06-18T00:05:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040578,
-    "summary": "\"Share folder\" context menu has different position and is missing the \"New\" badge",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-19T08:18:31Z",
-    "resolvedAt": "2026-05-28T09:16:02Z"
   },
   {
     "source": "bugzilla",
@@ -466,15 +430,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-26T23:20:41Z",
     "resolvedAt": "2026-06-15T18:37:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043066,
-    "summary": "The share should load in the post-login page if that tab is still open",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-27T22:44:15Z",
-    "resolvedAt": "2026-05-29T00:37:43Z"
   },
   {
     "source": "bugzilla",
@@ -874,6 +829,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052270,
+    "summary": "Add telemetry for the share button in the url bar",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:32:51Z",
+    "resolvedAt": "2026-08-26T04:24:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055255,
     "summary": "Referrals: Use referral attribution in startup ping and then remove",
     "product": "Firefox",
@@ -916,6 +880,15 @@
     "component": "Sharing",
     "filedAt": "2026-07-30T19:54:41Z",
     "resolvedAt": "2026-08-05T04:30:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061744,
+    "summary": "Confirm icons are correct for sharing panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-07T15:14:47Z",
+    "resolvedAt": "2026-08-26T04:24:22Z"
   },
   {
     "source": "bugzilla",
