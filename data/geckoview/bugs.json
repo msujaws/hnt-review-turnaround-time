@@ -307,6 +307,51 @@
   },
   {
     "source": "bugzilla",
+    "id": 2060197,
+    "summary": "The variant `aab` expiration is on 2026-09-01",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-03T12:34:02Z",
+    "resolvedAt": "2026-08-25T13:16:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060198,
+    "summary": "The variant `geckoview-no-fission` expiration is on 2026-09-01",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-03T12:34:13Z",
+    "resolvedAt": "2026-08-25T21:42:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060199,
+    "summary": "The variant `geckoview-fission` expiration is on 2026-09-01",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-03T12:34:23Z",
+    "resolvedAt": "2026-08-25T13:16:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060200,
+    "summary": "The variant `geckoview-fission-isolate-high-value` expiration is on 2026-09-01",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-03T12:34:34Z",
+    "resolvedAt": "2026-08-25T13:16:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060202,
+    "summary": "The variant `geckoview-zygote` expiration is on 2026-09-01",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-03T12:34:57Z",
+    "resolvedAt": "2026-08-25T13:16:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060976,
     "summary": "Build the apilint plugin with the Kotlin DSL and enforce its Kotlin formatting",
     "product": "GeckoView",
