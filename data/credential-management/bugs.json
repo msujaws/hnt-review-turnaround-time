@@ -352,6 +352,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058409,
+    "summary": "Edit icon does not display a hover highlight in the Passwords autocomplete dropdown",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-28T08:13:27Z",
+    "resolvedAt": "2026-08-27T09:54:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2059294,
     "summary": "[contextual-password-manager] Double border around the notification message bar in the password card",
     "product": "Toolkit",
@@ -406,11 +415,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065558,
+    "summary": "Passwords dropdown - Items remain selected when hovering inbetween items",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-21T15:35:25Z",
+    "resolvedAt": "2026-08-27T03:43:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065593,
     "summary": "Restore logins from SQLite after swithching back to JSON",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-08-21T17:02:21Z",
     "resolvedAt": "2026-08-22T21:28:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065804,
+    "summary": "Logon credentials slow",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-22T17:07:08Z",
+    "resolvedAt": "2026-08-27T15:30:45Z"
   }
 ]
