@@ -1,24 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 2028261,
-    "summary": "Add /report endpoint",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-03-31T20:19:53Z",
-    "resolvedAt": "2026-05-29T14:26:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2028265,
-    "summary": "Implement Celery workers",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-03-31T20:32:30Z",
-    "resolvedAt": "2026-05-29T14:21:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036462,
     "summary": "Disable unneeded django-allauth routes",
     "product": "Firefox",
@@ -34,33 +16,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-01T22:57:31Z",
     "resolvedAt": "2026-06-19T05:44:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2036485,
-    "summary": "Implement landing page design",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-01T23:04:00Z",
-    "resolvedAt": "2026-05-29T14:30:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037233,
-    "summary": "Wire GCP Secret Manager secrets to app and worker environments",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T19:47:10Z",
-    "resolvedAt": "2026-05-29T14:26:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037234,
-    "summary": "Update allowed hosts to match dev, stage and prod",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T19:47:48Z",
-    "resolvedAt": "2026-05-29T14:26:41Z"
   },
   {
     "source": "bugzilla",
@@ -82,24 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037261,
-    "summary": "Add celery worker workload to helm chart",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T21:31:47Z",
-    "resolvedAt": "2026-05-29T14:26:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037263,
-    "summary": "Provision cloud Memorystore for celery broker in all environments",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T21:33:30Z",
-    "resolvedAt": "2026-05-29T14:26:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037265,
     "summary": "Enforce per-user share limit",
     "product": "Firefox",
@@ -118,39 +55,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037268,
-    "summary": "Implement report endpoint",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T21:59:55Z",
-    "resolvedAt": "2026-05-29T14:26:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037270,
-    "summary": "Create share status-aware API response",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T22:06:46Z",
-    "resolvedAt": "2026-05-29T14:26:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037559,
     "summary": "Drop the migrations before we launch",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-05-06T17:46:36Z",
     "resolvedAt": "2026-06-10T17:49:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039018,
-    "summary": "Provsision redis for dev and prod as celery broker",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-12T15:49:45Z",
-    "resolvedAt": "2026-05-29T14:21:02Z"
   },
   {
     "source": "bugzilla",
@@ -298,33 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041084,
-    "summary": "Add Celery worker info to database",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-20T19:12:07Z",
-    "resolvedAt": "2026-05-29T14:26:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041135,
-    "summary": "Update share pages",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-20T22:52:49Z",
-    "resolvedAt": "2026-05-29T14:20:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041213,
-    "summary": "'NEW' badge is missing from bookmark folder and tab groups",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-21T06:34:37Z",
-    "resolvedAt": "2026-05-29T09:23:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041777,
     "summary": "Final round of string updates",
     "product": "Firefox",
@@ -430,15 +313,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-26T23:20:41Z",
     "resolvedAt": "2026-06-15T18:37:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043437,
-    "summary": "Create feature entry for contentsharing experiment",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-28T21:43:58Z",
-    "resolvedAt": "2026-05-29T09:25:26Z"
   },
   {
     "source": "bugzilla",
@@ -838,6 +712,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052271,
+    "summary": "A11y fixes for the share button in the url bar",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-07-02T16:33:52Z",
+    "resolvedAt": "2026-08-27T09:54:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055255,
     "summary": "Referrals: Use referral attribution in startup ping and then remove",
     "product": "Firefox",
@@ -943,5 +826,14 @@
     "component": "Sharing",
     "filedAt": "2026-08-19T21:32:36Z",
     "resolvedAt": "2026-08-20T21:54:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066196,
+    "summary": "Hide share with os button on mac sharing panel",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-24T18:42:18Z",
+    "resolvedAt": "2026-08-27T09:56:14Z"
   }
 ]
