@@ -298,15 +298,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043590,
-    "summary": "[Models] Plan and align on \"basic view\" for smart-window-model-devtools extension",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-29T13:14:50Z",
-    "resolvedAt": "2026-05-29T13:17:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043592,
     "summary": "[Models] Implement smart-window-model-devtools extension \"basic view\"",
     "product": "Core",
@@ -829,6 +820,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062352,
+    "summary": "[Monitor Agent][Models] Breaking out errors into more specific error codes for UI to consume",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T17:28:43Z",
+    "resolvedAt": "2026-08-27T03:43:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062353,
     "summary": "[Models] Review and define telemetry for Smart Form Fill model performance",
     "product": "Core",
@@ -1348,6 +1348,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-19T12:03:27Z",
     "resolvedAt": "2026-08-20T04:22:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064967,
+    "summary": "Utilize Parent-Process Native ONNX Availability Cache in \"best-onnx\" Resolution",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T01:40:27Z",
+    "resolvedAt": "2026-08-27T03:43:36Z"
   },
   {
     "source": "bugzilla",
@@ -2854,6 +2863,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052359,
+    "summary": "Smart Window perf: stop re-serializing the full conversation to SQLite on every chunk",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:12:58Z",
+    "resolvedAt": "2026-08-27T03:42:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052362,
     "summary": "Smart Window perf: add missing ChatSql indexes and fix the correlated history subquery",
     "product": "Core",
@@ -3484,6 +3502,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058311,
+    "summary": "SW Organize Tabs v0 - UI Fixes for v0",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-27T21:40:21Z",
+    "resolvedAt": "2026-08-27T09:54:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058329,
     "summary": "[Monitor Agent][FE] Add about link to monitor create success",
     "product": "Core",
@@ -3706,6 +3733,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T00:56:17Z",
     "resolvedAt": "2026-08-24T21:46:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061357,
+    "summary": "Smart Form Fill: Add dialog for user to select context tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T16:20:20Z",
+    "resolvedAt": "2026-08-27T09:54:49Z"
   },
   {
     "source": "bugzilla",
@@ -4030,6 +4066,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:56:15Z",
     "resolvedAt": "2026-08-25T09:09:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065292,
+    "summary": "Smart Form Fill - change order of autocomplete row items when SFF is enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-20T20:43:40Z",
+    "resolvedAt": "2026-08-26T21:05:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065555,
+    "summary": "Add smart window launch command invoked glean telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-21T15:26:21Z",
+    "resolvedAt": "2026-08-27T03:43:39Z"
   },
   {
     "source": "bugzilla",
