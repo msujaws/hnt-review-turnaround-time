@@ -343,15 +343,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043024,
-    "summary": "Check for entitlement changes after startup",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-27T21:57:12Z",
-    "resolvedAt": "2026-05-29T20:10:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043166,
     "summary": "“Get Started” panel is displayed after browser restart while browser.ipProtection.guardian.endpoint pref has an invalid value",
     "product": "Firefox",
