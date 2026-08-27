@@ -10,6 +10,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1983258,
+    "summary": "New Tab Settings should honor Locked Preferences in policy",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-08-15T13:45:04Z",
+    "resolvedAt": "2026-08-26T21:04:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1995391,
     "summary": "newtabTrainhopAddon should allow co-enrollment, prioritizing the enrollment with the highest version number",
     "product": "Firefox",
@@ -316,30 +325,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038261,
-    "summary": "Newtab add widget button",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-08T15:11:38Z",
-    "resolvedAt": "2026-05-29T09:22:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038816,
     "summary": "Widget telemetry sends incorrect size data",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-11T21:08:20Z",
     "resolvedAt": "2026-06-02T09:38:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038880,
-    "summary": "Sports widget - Add \"Live watch\" dialog",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-12T06:54:45Z",
-    "resolvedAt": "2026-05-29T09:22:15Z"
   },
   {
     "source": "bugzilla",
@@ -487,24 +478,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042522,
-    "summary": "Newtab Connect OMC asrouter message component to allow widget s to be turned on",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T19:41:17Z",
-    "resolvedAt": "2026-05-29T09:23:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042815,
-    "summary": "Sticky search on scroll is no longer working",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-27T14:09:22Z",
-    "resolvedAt": "2026-05-29T09:24:03Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042885,
     "summary": "[meta] Firefox 151.0.3 train-hop metabug",
     "product": "Firefox",
@@ -520,15 +493,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-28T05:02:24Z",
     "resolvedAt": "2026-06-01T08:47:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043316,
-    "summary": "Add final branding variation for New Tab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T15:37:28Z",
-    "resolvedAt": "2026-05-29T09:25:03Z"
   },
   {
     "source": "bugzilla",
@@ -2665,6 +2629,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062392,
+    "summary": "Add newtab.dwell_time metric to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T18:54:58Z",
+    "resolvedAt": "2026-08-26T09:14:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062434,
     "summary": "New Tab topsite context menu button should obey prefers-reduced-motion",
     "product": "Firefox",
@@ -2863,6 +2836,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063525,
+    "summary": "Missing ETP OFF state on the Privacy widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T08:18:53Z",
+    "resolvedAt": "2026-08-27T09:55:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063604,
     "summary": "Whene side-by-side exp layout is enabled, the \"Change size\" widget context menu item is missing",
     "product": "Firefox",
@@ -2950,6 +2932,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-17T06:23:21Z",
     "resolvedAt": "2026-08-19T21:27:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063963,
+    "summary": "The number of blocked trackers in the widget is not always correct after opening a new tab page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-17T06:39:32Z",
+    "resolvedAt": "2026-08-27T09:55:25Z"
   },
   {
     "source": "bugzilla",
@@ -3049,5 +3040,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-24T15:32:26Z",
     "resolvedAt": "2026-08-24T21:48:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066504,
+    "summary": "Dedupe impressions for a carousel slide that cycles back into view",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T16:28:39Z",
+    "resolvedAt": "2026-08-27T03:43:59Z"
   }
 ]
