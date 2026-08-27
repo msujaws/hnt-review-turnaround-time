@@ -370,6 +370,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061279,
+    "summary": "[UI] Add \"Add a signature\" box",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-06T14:58:02Z",
+    "resolvedAt": "2026-08-26T16:11:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061281,
+    "summary": "[Telemetry] Add telemetry for signature box",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-06T14:59:10Z",
+    "resolvedAt": "2026-08-27T03:43:12Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061549,
     "summary": "Expand the apilint plugin's test coverage and make its test tasks skippable",
     "product": "GeckoView",
