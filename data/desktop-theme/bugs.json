@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2032240,
-    "summary": "Add Nova icons for Firefox :: Theme",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-04-16T00:15:28Z",
-    "resolvedAt": "2026-05-29T09:20:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034863,
     "summary": "Decide how webextension themes will appear in Nova floating chrome mode",
     "product": "Firefox",
@@ -298,6 +289,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057212,
+    "summary": "[Nova] No hover state for the \"X\" button in Recent Tabs with the System/Light/Dark themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-23T13:28:00Z",
+    "resolvedAt": "2026-08-26T15:45:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058235,
     "summary": "browser_ext_management_themes.js fails when browser.nova.enabled is true",
     "product": "Firefox",
@@ -385,6 +385,15 @@
     "component": "Theme",
     "filedAt": "2026-08-10T14:10:16Z",
     "resolvedAt": "2026-08-17T15:51:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063282,
+    "summary": "Let the HTML-based color picker use content's preferred color scheme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-13T13:15:48Z",
+    "resolvedAt": "2026-08-27T09:55:06Z"
   },
   {
     "source": "bugzilla",
