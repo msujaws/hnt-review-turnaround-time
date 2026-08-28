@@ -181,6 +181,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2031465,
+    "summary": "White flash on startup caused by abouthome_cache storing  incompatible startup frame",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-13T21:20:31Z",
+    "resolvedAt": "2026-08-27T18:29:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2031665,
     "summary": "AccuWeather sponsored text is overlapping the \"Tell us what you think link\" when medium weather card is hovered",
     "product": "Firefox",
@@ -280,6 +289,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2035622,
+    "summary": "Always show an add shortcut button for New Tab shortcuts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-28T22:05:29Z",
+    "resolvedAt": "2026-08-27T18:27:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2035923,
     "summary": "Vertical scrollbar appears unnecessarily on Firefox Home Page",
     "product": "Firefox",
@@ -295,15 +313,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-04T17:28:07Z",
     "resolvedAt": "2026-06-09T09:10:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037169,
-    "summary": "Newtab widgets drag n drop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-05T16:43:40Z",
-    "resolvedAt": "2026-05-30T21:05:38Z"
   },
   {
     "source": "bugzilla",
@@ -451,24 +460,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042487,
-    "summary": "Sports widget: Adaptive polling state machine in SportsFeed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T17:18:40Z",
-    "resolvedAt": "2026-05-30T21:06:27Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042488,
-    "summary": "Sports widget: Dispatch IntersectionObserver visibility for live polling",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T17:19:20Z",
-    "resolvedAt": "2026-05-30T21:06:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042519,
     "summary": "[meta] Firefox 151.0.2 train-hop metabug",
     "product": "Firefox",
@@ -496,15 +487,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043386,
-    "summary": "Standardize New Tab widgets hover background",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T19:30:22Z",
-    "resolvedAt": "2026-05-30T09:33:57Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043405,
     "summary": "Remove all (Legacy) Telemetry probes for Activity Stream",
     "product": "Firefox",
@@ -514,30 +496,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043408,
-    "summary": "Update default widget order and default sizes",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T20:10:10Z",
-    "resolvedAt": "2026-05-30T09:34:01Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043412,
     "summary": "Weather widget should return localized conditions from AccuWeather",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-28T20:22:16Z",
     "resolvedAt": "2026-06-03T04:10:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043431,
-    "summary": "Improve world cup widget intro state poster image quality",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T20:59:32Z",
-    "resolvedAt": "2026-05-30T09:34:04Z"
   },
   {
     "source": "bugzilla",
@@ -574,24 +538,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-29T12:49:15Z",
     "resolvedAt": "2026-06-03T04:10:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043639,
-    "summary": "Disable branding variations if the sports widget is disabled",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T15:18:23Z",
-    "resolvedAt": "2026-05-30T21:07:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043665,
-    "summary": "Size submenu for some New Tab widgets doesn't work on initial browser load",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T16:49:29Z",
-    "resolvedAt": "2026-05-30T21:07:34Z"
   },
   {
     "source": "bugzilla",
