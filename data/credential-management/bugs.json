@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041348,
-    "summary": "Fix generated password cache not cleared for Container Tab users after autosaved login is updated with username",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-21T14:39:49Z",
-    "resolvedAt": "2026-05-30T09:28:32Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041353,
     "summary": "Application Services Rust storage as primary login store on Desktop",
     "product": "Toolkit",
@@ -349,6 +340,15 @@
     "component": "Password Manager",
     "filedAt": "2026-07-26T16:22:31Z",
     "resolvedAt": "2026-08-07T04:27:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058133,
+    "summary": "Passwords dropdown - Edit icon briefly remains visible on the previously hovered item while scrolling",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-27T12:56:33Z",
+    "resolvedAt": "2026-08-28T09:46:56Z"
   },
   {
     "source": "bugzilla",
