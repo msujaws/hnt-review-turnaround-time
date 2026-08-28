@@ -127,15 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033537,
-    "summary": "[LLM-telemetry] Implement telemetry sampling",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-20T17:41:10Z",
-    "resolvedAt": "2026-05-30T09:27:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034844,
     "summary": "Evaluate Mistral 4",
     "product": "Core",
@@ -937,6 +928,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066187,
+    "summary": "[Monitor Agent] Explore whether pinning Mistral makes sense for monitor agent [Update: Pinning Qwen3 for monitor agent]",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-24T18:27:17Z",
+    "resolvedAt": "2026-08-27T21:17:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066286,
     "summary": "Perma TV browser/components/aiwindow/models/tests/browser/browser_monitor_errors.js | test_timed_out_run_records_timeout_code - Uncaught exception in test - [MockEngineManager]",
     "product": "Core",
@@ -1711,15 +1711,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034643,
-    "summary": "Add inline model picker to Smartbar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-23T22:23:37Z",
-    "resolvedAt": "2026-05-30T09:27:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034921,
     "summary": "Re-enable smart cursor and integrate with Smart Window",
     "product": "Core",
@@ -1996,15 +1987,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-22T22:10:57Z",
     "resolvedAt": "2026-06-16T08:46:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041850,
-    "summary": "Perma Assertion failure: principal, at checkouts/gecko/dom/storage/StorageActivityService.cpp:X when Gecko 153 merges to beta on 2026-06-15",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-22T22:58:54Z",
-    "resolvedAt": "2026-05-30T18:36:38Z"
   },
   {
     "source": "bugzilla",
@@ -3745,6 +3727,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061360,
+    "summary": "Smart Form Fill: Add dialog for form fill completion",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T16:25:32Z",
+    "resolvedAt": "2026-08-28T16:19:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061477,
     "summary": "SW ATG: Create 'View Tab Groups' Dropdown",
     "product": "Core",
@@ -3979,12 +3970,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063555,
+    "summary": "Recently created Tab groups are not clickable and cannot be reached with keyboard navigation inside the Organize tabs panel",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-14T10:19:23Z",
+    "resolvedAt": "2026-08-28T09:47:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063876,
     "summary": "Update third_party/js/prosemirror/LICENSE to the revision it is vendored from",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-16T05:37:41Z",
     "resolvedAt": "2026-08-17T21:18:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064008,
+    "summary": "The View tab groups sub-panel is dismissed after deleting a tab group",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-17T10:02:59Z",
+    "resolvedAt": "2026-08-28T09:47:18Z"
   },
   {
     "source": "bugzilla",
@@ -4012,6 +4021,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T15:00:06Z",
     "resolvedAt": "2026-08-21T09:58:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064442,
+    "summary": "remove copilot from chatbot",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T16:39:54Z",
+    "resolvedAt": "2026-08-28T09:47:24Z"
   },
   {
     "source": "bugzilla",
@@ -4069,6 +4087,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064553,
+    "summary": "Create a ConversationStore module for Conversation.sys.mjs to persist conversations in their own DB",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T22:27:48Z",
+    "resolvedAt": "2026-08-28T09:47:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065292,
     "summary": "Smart Form Fill - change order of autocomplete row items when SFF is enabled",
     "product": "Core",
@@ -4078,12 +4105,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065422,
+    "summary": "The View All Groups submenu does not close when moving away and it blocks the Suggested Tab group submenus from showing their tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-21T09:26:36Z",
+    "resolvedAt": "2026-08-28T09:47:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065555,
     "summary": "Add smart window launch command invoked glean telemetry",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-21T15:26:21Z",
     "resolvedAt": "2026-08-27T03:43:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066412,
+    "summary": "Users are unable to open the Smart Bar URL suggestion submenus",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-25T12:05:56Z",
+    "resolvedAt": "2026-08-28T11:37:10Z"
   },
   {
     "source": "bugzilla",
