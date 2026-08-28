@@ -811,6 +811,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052864,
+    "summary": "Stale / Erronus ServerList Cache is persisted until the next Bucket update",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-06T14:08:25Z",
+    "resolvedAt": "2026-08-27T18:29:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2053491,
     "summary": "Fix heading regression for VPN status box",
     "product": "Firefox",
