@@ -298,15 +298,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041803,
-    "summary": "IPProtection does not reconnect or update when the AccessConnector policy is modified live",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-22T19:31:09Z",
-    "resolvedAt": "2026-06-02T22:00:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042691,
     "summary": "[a11y] Unavailable locations are completely skipped by keyboard navigation and screen readers",
     "product": "Firefox",
@@ -361,30 +352,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043999,
-    "summary": "ipp-protection: add telemetry for the ipp-activator messaging",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-01T10:04:53Z",
-    "resolvedAt": "2026-06-02T22:05:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044130,
     "summary": "Remove mentions of 50 GB bandwidth limit",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-06-01T18:32:15Z",
     "resolvedAt": "2026-06-03T15:21:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044131,
-    "summary": "Add browser.ipProtection.bandwidth.enabled prefs to allowed prefs for feature callout CTA",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-01T18:33:39Z",
-    "resolvedAt": "2026-06-02T22:05:44Z"
   },
   {
     "source": "bugzilla",
