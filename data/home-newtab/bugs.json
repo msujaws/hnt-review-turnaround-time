@@ -217,15 +217,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033581,
-    "summary": "Implement adaptive polling logic to query sports data more frequently during live events",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-20T19:44:12Z",
-    "resolvedAt": "2026-05-31T22:49:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033841,
     "summary": "Newtab Nova mixin for col span and any other common helpful mixins we can find",
     "product": "Firefox",
@@ -334,15 +325,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038816,
-    "summary": "Widget telemetry sends incorrect size data",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-11T21:08:20Z",
-    "resolvedAt": "2026-06-02T09:38:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039335,
     "summary": "[meta] Firefox 151 train-hop metabug",
     "product": "Firefox",
@@ -358,15 +340,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-13T21:21:27Z",
     "resolvedAt": "2026-06-25T04:42:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039703,
-    "summary": "widgets_enabled_list string_list telemetery event does not count trainhopConfig enabled widgets",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-14T20:12:23Z",
-    "resolvedAt": "2026-06-02T09:38:38Z"
   },
   {
     "source": "bugzilla",
@@ -415,24 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040843,
-    "summary": "Sports widget - Add pagination when there are 2 or more live games happening",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-20T04:37:35Z",
-    "resolvedAt": "2026-06-01T08:46:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041105,
-    "summary": "Update telemetry value for Sports widget name to be \"sports\"",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-20T20:28:34Z",
-    "resolvedAt": "2026-06-01T00:10:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041203,
     "summary": "[meta] Firefox 151.0.1 train-hop metabug",
     "product": "Firefox",
@@ -478,15 +433,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043106,
-    "summary": "Sports widget - Add strings for pagination feature",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T05:02:24Z",
-    "resolvedAt": "2026-06-01T08:47:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043405,
     "summary": "Remove all (Legacy) Telemetry probes for Activity Stream",
     "product": "Firefox",
@@ -514,24 +460,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043495,
-    "summary": "Sports widget: emit widgets_error on endpoint failures, align widget_source on click telemetry",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T06:48:32Z",
-    "resolvedAt": "2026-06-02T09:41:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043537,
-    "summary": "2.4 - 1.27% installer size + 2 more (Linux, Windows) regression on Wed May 27 2026",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T09:19:17Z",
-    "resolvedAt": "2026-06-02T15:10:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043586,
     "summary": "World cup medium view layout is affected by longer strings on other locales than en-US",
     "product": "Firefox",
@@ -550,57 +478,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043944,
-    "summary": "Sports widget - Upcoming matches alone should not be used to determine kick-off",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-31T22:04:23Z",
-    "resolvedAt": "2026-06-01T08:47:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044093,
-    "summary": "Newtab sports widget watch live button is missing",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T16:42:40Z",
-    "resolvedAt": "2026-06-02T09:43:01Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044100,
-    "summary": "Sort matches chronologically when sports widget followed-only toggle is off",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T17:14:38Z",
-    "resolvedAt": "2026-06-02T09:43:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044115,
     "summary": "World Cup Widget: Celebration animation",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-01T17:38:05Z",
     "resolvedAt": "2026-06-09T09:11:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044132,
-    "summary": "Update locales for Firefox 151.0.3 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T18:33:56Z",
-    "resolvedAt": "2026-06-02T22:05:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044180,
-    "summary": "Update default live polling time from 60s to 180s",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T22:14:17Z",
-    "resolvedAt": "2026-06-02T22:05:52Z"
   },
   {
     "source": "bugzilla",
