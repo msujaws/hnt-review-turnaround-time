@@ -100,15 +100,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033524,
-    "summary": "Memories V2 - Interaction extraction from Browsing history",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-20T17:21:03Z",
-    "resolvedAt": "2026-06-03T01:10:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033525,
     "summary": "Memories V2 - Interaction extraction from Conversation",
     "product": "Core",
@@ -253,15 +244,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042231,
-    "summary": "Memories v2: Fuse Memories quality and sensitivity filters",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-25T21:18:43Z",
-    "resolvedAt": "2026-06-02T22:00:53Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043274,
     "summary": "Mistral 4 memory usage prompt tuning",
     "product": "Core",
@@ -286,15 +268,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-28T17:31:15Z",
     "resolvedAt": "2026-06-15T19:08:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043592,
-    "summary": "[Models] Implement smart-window-model-devtools extension \"basic view\"",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-29T13:18:21Z",
-    "resolvedAt": "2026-06-02T13:58:22Z"
   },
   {
     "source": "bugzilla",
@@ -928,6 +901,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066148,
+    "summary": "[Models] self-QA Smart form fill to identify weak scenarios and areas for prompt tuning",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-24T15:38:14Z",
+    "resolvedAt": "2026-08-31T13:07:01Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066187,
     "summary": "[Monitor Agent] Explore whether pinning Mistral makes sense for monitor agent [Update: Pinning Qwen3 for monitor agent]",
     "product": "Core",
@@ -1015,15 +997,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-02-11T19:17:00Z",
     "resolvedAt": "2026-07-14T09:46:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041607,
-    "summary": "Stop using blob based Workers for ML tests",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-05-22T08:17:47Z",
-    "resolvedAt": "2026-06-02T09:39:24Z"
   },
   {
     "source": "bugzilla",
@@ -1513,15 +1486,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2027035,
-    "summary": "Add “Copy Table” action to Assistant responses",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-27T16:21:06Z",
-    "resolvedAt": "2026-06-02T09:37:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2027850,
     "summary": "Manual Smart bar intent Configuration",
     "product": "Core",
@@ -1648,24 +1612,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033109,
-    "summary": "New Tab Smartbar - Action callout carousel",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T19:06:47Z",
-    "resolvedAt": "2026-06-02T09:37:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033142,
-    "summary": "[a11y] Smart window - No visual indicator for the main search box in smart window in Windows HCM",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T21:10:11Z",
-    "resolvedAt": "2026-05-31T21:22:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033588,
     "summary": "[a11y] Smart window - Links within chat messages are difficult to distinguish when focused",
     "product": "Core",
@@ -1681,15 +1627,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-22T19:40:12Z",
     "resolvedAt": "2026-06-27T08:45:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034438,
-    "summary": "The Google Search page performed by the AI assistant is missing from history when navigating back",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-23T12:19:04Z",
-    "resolvedAt": "2026-06-02T21:59:08Z"
   },
   {
     "source": "bugzilla",
@@ -1753,15 +1690,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-05T16:57:18Z",
     "resolvedAt": "2026-07-31T19:05:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037203,
-    "summary": "Add telemetry for natural language browser actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-05T18:10:06Z",
-    "resolvedAt": "2026-06-02T09:38:21Z"
   },
   {
     "source": "bugzilla",
