@@ -397,6 +397,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062521,
+    "summary": "Intermittent org.mozilla.geckoview.test.TextInputDelegateTest#noDismissKeyboardAfterlostFocus[#input] | single tracking bug",
+    "product": "GeckoView",
+    "component": "IME",
+    "filedAt": "2026-08-11T06:57:43Z",
+    "resolvedAt": "2026-09-01T04:17:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062612,
     "summary": "[UI] Wireframe in FAB / Toolbar for tools",
     "product": "GeckoView",
@@ -412,5 +421,14 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-17T18:47:34Z",
     "resolvedAt": "2026-08-20T16:29:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067604,
+    "summary": "TextInputDelegateTest does not compile against Android SDK 37.2 due to @Nullable getExtractedText()",
+    "product": "GeckoView",
+    "component": "IME",
+    "filedAt": "2026-08-30T20:00:58Z",
+    "resolvedAt": "2026-09-01T04:20:55Z"
   }
 ]
