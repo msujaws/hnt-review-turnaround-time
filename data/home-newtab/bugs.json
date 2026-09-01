@@ -1,15 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 1981986,
-    "summary": "Lists widget - lists and tasks context menus are visible for a split second when refreshing NTP",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-08-08T10:31:18Z",
-    "resolvedAt": "2026-06-03T20:49:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 1983258,
     "summary": "New Tab Settings should honor Locked Preferences in policy",
     "product": "Firefox",
@@ -61,6 +52,15 @@
     "component": "New Tab Page",
     "filedAt": "2025-12-31T18:47:23Z",
     "resolvedAt": "2026-06-10T10:07:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2016440,
+    "summary": "Stalled out download of trainhop XPI can still cause shutdown hangs / crashes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-12T14:25:45Z",
+    "resolvedAt": "2026-09-01T04:16:13Z"
   },
   {
     "source": "bugzilla",
@@ -289,15 +289,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035923,
-    "summary": "Vertical scrollbar appears unnecessarily on Firefox Home Page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-29T19:18:38Z",
-    "resolvedAt": "2026-06-03T20:35:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036865,
     "summary": "Refactor WallpaperFeatureHighlight arrow to use clip-path instead of SVG",
     "product": "Firefox",
@@ -442,30 +433,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043412,
-    "summary": "Weather widget should return localized conditions from AccuWeather",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T20:22:16Z",
-    "resolvedAt": "2026-06-03T04:10:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043478,
     "summary": "Sports widget - Show matches beyond the 21 day limit",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-29T03:46:14Z",
     "resolvedAt": "2026-06-18T09:48:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043586,
-    "summary": "World cup medium view layout is affected by longer strings on other locales than en-US",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T12:49:15Z",
-    "resolvedAt": "2026-06-03T04:10:24Z"
   },
   {
     "source": "bugzilla",
@@ -520,15 +493,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-02T18:03:04Z",
     "resolvedAt": "2026-06-09T09:11:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044456,
-    "summary": "widget.*.interacted pref is flipped when user turns off a widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T20:10:24Z",
-    "resolvedAt": "2026-06-03T04:12:11Z"
   },
   {
     "source": "bugzilla",
@@ -2107,6 +2071,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056347,
+    "summary": "Weather widget [a11y] Missing alternative text",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T18:01:11Z",
+    "resolvedAt": "2026-09-01T04:16:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056937,
     "summary": "Expose trainhopConfig values in Discovery Stream Admin tooling",
     "product": "Firefox",
@@ -2878,5 +2851,41 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-25T16:28:39Z",
     "resolvedAt": "2026-08-27T03:43:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066527,
+    "summary": "Auto-minimize the newtab widgets section after a short delay",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T17:28:25Z",
+    "resolvedAt": "2026-09-01T04:19:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066890,
+    "summary": "Newtab's npm run testmc is doing a bundle and probably doesn't need to",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-26T19:12:10Z",
+    "resolvedAt": "2026-09-01T04:19:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066897,
+    "summary": "Implement topic navigation strip V1",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-26T19:30:43Z",
+    "resolvedAt": "2026-09-01T04:19:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067758,
+    "summary": "Remove version 155 train-hop fallback for --panel-background-color in the Nova Top Sites dialog",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T14:01:57Z",
+    "resolvedAt": "2026-09-01T04:21:10Z"
   }
 ]
