@@ -37,15 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040598,
-    "summary": "[Ubuntu] Settings ‘browser.nova.enabled’ on true renders the browser window borders transparent",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-05-19T09:23:48Z",
-    "resolvedAt": "2026-06-03T09:40:06Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041479,
     "summary": "Firefox shows inconsistent tooltip colors when themed",
     "product": "Firefox",
@@ -259,6 +250,15 @@
     "component": "Theme",
     "filedAt": "2026-07-13T14:29:18Z",
     "resolvedAt": "2026-07-17T21:32:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055043,
+    "summary": "browser_test_position_sticky.js reftest comparison fails when Nova is enabled",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-14T19:53:10Z",
+    "resolvedAt": "2026-08-31T16:35:36Z"
   },
   {
     "source": "bugzilla",
