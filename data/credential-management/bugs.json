@@ -1,24 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 1715736,
-    "summary": "New generated password for a site opened in container tab is not auto-saved if it previously had a password generated and auto-saved in any kind of tab",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2021-06-10T09:15:41Z",
-    "resolvedAt": "2026-06-03T13:53:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 1767002,
-    "summary": "Generated passwords are some times reused",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2022-04-29T10:58:13Z",
-    "resolvedAt": "2026-06-03T14:10:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 1788917,
     "summary": "Intermittent toolkit/components/passwordmgr/test/browser/browser_doorhanger_form_password_edit.js | single tracking bug",
     "product": "Toolkit",
