@@ -136,30 +136,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033122,
-    "summary": "[experimenter] Add IP Protection location switching CFR",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-17T20:00:16Z",
-    "resolvedAt": "2026-06-03T12:58:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033128,
     "summary": "[meta] Implement location picker subview",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-04-17T20:26:52Z",
     "resolvedAt": "2026-07-02T13:27:01Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033131,
-    "summary": "[experimenter] Update existing IP Protection discovery CFRs",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-17T20:34:12Z",
-    "resolvedAt": "2026-06-03T13:09:58Z"
   },
   {
     "source": "bugzilla",
@@ -217,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037952,
-    "summary": "[experimenter] Add new nth tab discovery CFR with 2nd and 3rd tab variants",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-07T16:43:04Z",
-    "resolvedAt": "2026-06-03T13:05:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039181,
     "summary": "Incorrect text color in VPN panels under High Contrast Mode",
     "product": "Firefox",
@@ -268,15 +241,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-20T08:37:00Z",
     "resolvedAt": "2026-08-17T10:16:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040881,
-    "summary": "The \"Get extra privacy\" link in the discovery CFRs is not rendered correctly",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-20T08:43:19Z",
-    "resolvedAt": "2026-06-03T13:16:41Z"
   },
   {
     "source": "bugzilla",
@@ -325,15 +289,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043020,
-    "summary": "Set bandwidth.enabled pref in IPPProxyManager",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-27T21:53:42Z",
-    "resolvedAt": "2026-06-03T09:32:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043166,
     "summary": "“Get Started” panel is displayed after browser restart while browser.ipProtection.guardian.endpoint pref has an invalid value",
     "product": "Firefox",
@@ -349,15 +304,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-29T21:53:44Z",
     "resolvedAt": "2026-06-05T01:32:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044130,
-    "summary": "Remove mentions of 50 GB bandwidth limit",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-01T18:32:15Z",
-    "resolvedAt": "2026-06-03T15:21:53Z"
   },
   {
     "source": "bugzilla",
@@ -385,15 +331,6 @@
     "component": "IP Protection",
     "filedAt": "2026-06-02T18:05:55Z",
     "resolvedAt": "2026-06-18T09:49:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044432,
-    "summary": "Add a Nimbus variable to set the IPP upgradeNotAvailable pref",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-02T18:09:29Z",
-    "resolvedAt": "2026-06-03T09:33:11Z"
   },
   {
     "source": "bugzilla",
@@ -943,6 +880,15 @@
     "component": "IP Protection",
     "filedAt": "2026-08-03T13:58:55Z",
     "resolvedAt": "2026-08-13T04:27:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060516,
+    "summary": "\"Website address\" label is placed too close to the URL field in about:preferences#privacy VPN -> Manage Websites",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-04T13:25:05Z",
+    "resolvedAt": "2026-09-01T04:17:19Z"
   },
   {
     "source": "bugzilla",
