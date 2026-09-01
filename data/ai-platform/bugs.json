@@ -55,6 +55,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2029729,
+    "summary": "Remove unused security layer components",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-04-06T20:42:34Z",
+    "resolvedAt": "2026-09-01T04:16:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2030307,
     "summary": "Create a mochitest for get_open_tabs",
     "product": "Core",
@@ -124,15 +133,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-04-24T14:55:12Z",
     "resolvedAt": "2026-08-13T16:16:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034914,
-    "summary": "[Models] Allowing assistant to view pages from the SERP",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-24T21:00:25Z",
-    "resolvedAt": "2026-06-03T09:31:54Z"
   },
   {
     "source": "bugzilla",
@@ -529,6 +529,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-08T15:36:36Z",
     "resolvedAt": "2026-07-09T16:10:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054091,
+    "summary": "Define and agree on PUWYLO contract with FE",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-10T14:51:59Z",
+    "resolvedAt": "2026-08-31T19:04:59Z"
   },
   {
     "source": "bugzilla",
@@ -1333,6 +1342,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065689,
+    "summary": "PageExtractor waits for the page to be ready twice during headless extraction",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-21T23:04:23Z",
+    "resolvedAt": "2026-09-01T04:18:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1982104,
     "summary": "[GenAI Chat Sidebar] The group of radio controls to select an AI provider is not labeled",
     "product": "Core",
@@ -1708,24 +1726,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-06T08:52:15Z",
     "resolvedAt": "2026-06-22T20:02:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037611,
-    "summary": "Replace thinking indicator with action log container",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-06T20:01:58Z",
-    "resolvedAt": "2026-06-03T20:50:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037612,
-    "summary": "Render tool call rows in action log",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-06T20:04:00Z",
-    "resolvedAt": "2026-06-03T20:50:23Z"
   },
   {
     "source": "bugzilla",
@@ -2890,6 +2890,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2053936,
+    "summary": "Define and implement Pickup Where You Left Off data contract",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-09T22:02:44Z",
+    "resolvedAt": "2026-08-31T19:05:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2053939,
     "summary": "Support reopening browsing context from Pickup Where You Left Off",
     "product": "Core",
@@ -4030,6 +4039,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-20T20:43:40Z",
     "resolvedAt": "2026-08-26T21:05:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065311,
+    "summary": "Make the starter prompts row scrollable",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-20T21:45:11Z",
+    "resolvedAt": "2026-09-01T04:18:26Z"
   },
   {
     "source": "bugzilla",

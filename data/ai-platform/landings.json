@@ -1447,9 +1447,9 @@
     "createdAt": "2026-08-10T15:42:14.000Z",
     "firstReviewAt": "2026-08-10T20:46:23.000Z",
     "landedAt": "2026-08-10T22:08:10.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 5.296111111111111,
-    "postReviewBusinessHours": 0.22694444444444445,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 0.22694444444444445
   },
   {
     "source": "phab",
@@ -1846,5 +1846,17 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 0.07166666666666667,
     "postReviewBusinessHours": 0.07166666666666667
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ogrechd434n5krqiqu46",
+    "revisionId": 320622,
+    "author": "thasan",
+    "createdAt": "2026-08-21T23:47:56.000Z",
+    "firstReviewAt": "2026-08-24T19:48:24.000Z",
+    "landedAt": "2026-08-31T20:10:38.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 47.17722222222222,
+    "postReviewBusinessHours": 40.370555555555555
   }
 ]
