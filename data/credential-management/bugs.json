@@ -10,6 +10,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1935395,
+    "summary": "PasswordRulesManager use of nsIURI.displayHost may be incorrect",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2024-12-05T13:55:17Z",
+    "resolvedAt": "2026-09-01T21:32:55Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1984820,
     "summary": "Intermittent toolkit/components/passwordmgr/test/browser/browser_formless_submit_chrome.js | single tracking bug",
     "product": "Toolkit",
