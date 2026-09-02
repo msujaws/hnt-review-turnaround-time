@@ -352,6 +352,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061701,
+    "summary": "[Nova] Top right corner and right border of .browserContainer overlooked on maximized mode when sidebar on right and hidden",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-07T13:31:38Z",
+    "resolvedAt": "2026-09-02T08:50:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062042,
     "summary": "Minor follow-ups for the native theme on nova",
     "product": "Firefox",
@@ -421,5 +430,14 @@
     "component": "Theme",
     "filedAt": "2026-08-26T19:16:07Z",
     "resolvedAt": "2026-08-28T11:37:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068136,
+    "summary": "[Nova] Sidebar icons have become low contrast with some themes and are inconsistent with toolbar icons",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-01T15:28:05Z",
+    "resolvedAt": "2026-09-02T08:53:26Z"
   }
 ]
