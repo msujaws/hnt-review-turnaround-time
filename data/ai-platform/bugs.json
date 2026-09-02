@@ -280,15 +280,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044484,
-    "summary": "Model prompt version isn't passed after decoupling",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-02T21:55:54Z",
-    "resolvedAt": "2026-06-05T01:35:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044529,
     "summary": "Memories v2: Generate from sessions and establish lineage",
     "product": "Core",
@@ -883,6 +874,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064508,
+    "summary": "AITab Evals - Validate path with OpenGraph images, page favicons and other page Metadata",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-18T19:55:58Z",
+    "resolvedAt": "2026-09-02T08:50:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064838,
     "summary": "Reduce PUWYLO URL semantic similarity threshold and expose as a pref",
     "product": "Core",
@@ -907,6 +907,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-19T19:04:59Z",
     "resolvedAt": "2026-08-21T04:22:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065259,
+    "summary": "PUWYLO returns same pills over long periods of times",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-20T19:13:51Z",
+    "resolvedAt": "2026-09-01T21:49:51Z"
   },
   {
     "source": "bugzilla",
@@ -937,6 +946,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066538,
+    "summary": "SmartWindow BYOE routes some requests with pinned models to set custom endpoint",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-25T17:53:47Z",
+    "resolvedAt": "2026-09-02T08:51:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067986,
+    "summary": "Perma ml-security-perf |  FileNotFoundError: /opt/worker/tasks/cltbld/fetches/mochitest/browser/toolkit/components/ml/tests/browser/browser_ml_security_perf.js",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-01T07:12:21Z",
+    "resolvedAt": "2026-09-02T08:53:11Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2005365,
     "summary": "Add inference performance metrics collection to llama.cpp runtime",
     "product": "Core",
@@ -952,15 +979,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2025-12-10T23:57:16Z",
     "resolvedAt": "2026-06-11T04:13:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2006436,
-    "summary": "[AI Window][get_page_content] Implement text cleaning directly in pageExtractor",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2025-12-16T18:56:32Z",
-    "resolvedAt": "2026-06-04T19:00:29Z"
   },
   {
     "source": "bugzilla",
@@ -1564,15 +1582,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-01T23:08:27Z",
     "resolvedAt": "2026-06-16T18:51:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2028997,
-    "summary": "Remove redundant applied memories functionality from the assistant message footer",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-02T19:59:16Z",
-    "resolvedAt": "2026-06-05T01:29:53Z"
   },
   {
     "source": "bugzilla",
@@ -4033,6 +4042,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064902,
+    "summary": "register about: for aitab pages with actors and appears in history",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T20:27:41Z",
+    "resolvedAt": "2026-09-02T08:50:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065292,
     "summary": "Smart Form Fill - change order of autocomplete row items when SFF is enabled",
     "product": "Core",
@@ -4075,6 +4093,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-25T12:05:56Z",
     "resolvedAt": "2026-08-28T11:37:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067823,
+    "summary": "[Monitor Agent] [FE] Monitor time default to user's current half hour",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T16:10:12Z",
+    "resolvedAt": "2026-09-02T08:52:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068106,
+    "summary": "The Organize tabs menu does not work when moved to the Overflow panel",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T14:06:50Z",
+    "resolvedAt": "2026-09-02T08:53:22Z"
   },
   {
     "source": "bugzilla",
