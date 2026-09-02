@@ -388,24 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041573,
-    "summary": "Sports widget - Add in TBD state",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-22T06:48:14Z",
-    "resolvedAt": "2026-06-05T01:31:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042158,
-    "summary": "Keyboard focus on some elements in World cup widget is either cutoff and/or overlaps other elements",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-25T13:41:36Z",
-    "resolvedAt": "2026-06-05T01:31:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042519,
     "summary": "[meta] Firefox 151.0.2 train-hop metabug",
     "product": "Firefox",
@@ -514,15 +496,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044732,
-    "summary": "New-tab world-cup widget animation plays too eagerly/repeatedly (on every mouseover)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-03T16:28:50Z",
-    "resolvedAt": "2026-06-05T01:36:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044744,
     "summary": "Newtab list widget add item button background flashes background on refresh",
     "product": "Firefox",
@@ -538,15 +511,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-03T20:38:53Z",
     "resolvedAt": "2026-06-22T11:07:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044816,
-    "summary": "Sports widget: emit widgets_user_event telemetry on live carousel navigation",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-03T21:26:14Z",
-    "resolvedAt": "2026-06-05T01:36:24Z"
   },
   {
     "source": "bugzilla",
@@ -574,42 +538,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-04T09:47:39Z",
     "resolvedAt": "2026-06-12T21:20:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045034,
-    "summary": "Update text string for \"Show less widgets\" to be \"Show fewer widgets\"",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T14:56:05Z",
-    "resolvedAt": "2026-06-05T01:37:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045035,
-    "summary": "The sports widget match row, when hovered, overlaps the \"view all\" button in medium size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T14:58:18Z",
-    "resolvedAt": "2026-06-05T01:37:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045049,
-    "summary": "Add error boundary around each widget to contain component errors to only that specific widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T15:35:50Z",
-    "resolvedAt": "2026-06-05T01:37:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045101,
-    "summary": "Update locales for Firefox 151.0.3 train-hop (June 4)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T19:15:10Z",
-    "resolvedAt": "2026-06-05T01:37:37Z"
   },
   {
     "source": "bugzilla",
@@ -2674,6 +2602,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063708,
+    "summary": "Remove version 154 train-hop shim for TOP_SITES_MAX_ROWS in newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T19:30:35Z",
+    "resolvedAt": "2026-09-02T08:50:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063709,
     "summary": "Remove version 154 train-hop shims for contextual ads region/locale defaults",
     "product": "Firefox",
@@ -2887,5 +2824,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-31T14:01:57Z",
     "resolvedAt": "2026-09-01T04:21:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067903,
+    "summary": "Back out newtab bundle during build for beta 156",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T19:54:11Z",
+    "resolvedAt": "2026-09-01T15:43:47Z"
   }
 ]

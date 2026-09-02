@@ -1,11 +1,43 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-fwukstewlsn2s4glhcje",
-    "revisionId": 322535,
+    "id": "PHID-DREV-zinza7x2xkskt57jfsoa",
+    "revisionId": 322235,
+    "author": "reemhamz",
+    "reviewer": "maxx",
+    "requestedAt": "2026-09-02T02:40:08.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-zmjnkzxxsogldpd7t2mt",
+    "revisionId": 322822,
+    "author": "reemhamz",
+    "reviewer": "fchasen",
+    "requestedAt": "2026-09-02T05:18:35.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-64vgg36tvp3krurcuqxl",
+    "revisionId": 322085,
+    "author": "jbrown",
+    "reviewer": "mconley",
+    "requestedAt": "2026-08-28T20:50:57.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7kutldmktjtssvr7jmxc",
+    "revisionId": 321453,
+    "author": "reemhamz",
+    "reviewer": "nina-py",
+    "requestedAt": "2026-08-27T05:56:58.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-pphf22x4z45ulpmetn3r",
+    "revisionId": 322745,
     "author": "Dre",
     "reviewer": "mconley",
-    "requestedAt": "2026-09-01T05:06:52.000Z"
+    "requestedAt": "2026-09-02T01:19:36.000Z"
   },
   {
     "source": "phab",
@@ -14,6 +46,22 @@
     "author": "Dre",
     "reviewer": "maxx",
     "requestedAt": "2026-09-01T05:06:52.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-g46h5hwfbntbkzka63ek",
+    "revisionId": 322323,
+    "author": "thecount",
+    "reviewer": "ini",
+    "requestedAt": "2026-09-01T19:47:04.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-j3aaa2lmsau4xrnrem73",
+    "revisionId": 314054,
+    "author": "maxx",
+    "reviewer": "mconley",
+    "requestedAt": "2026-09-01T18:44:16.000Z"
   },
   {
     "source": "phab",
@@ -46,14 +94,6 @@
     "author": "ini",
     "reviewer": "thecount",
     "requestedAt": "2026-07-27T20:27:54.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7kutldmktjtssvr7jmxc",
-    "revisionId": 321453,
-    "author": "reemhamz",
-    "reviewer": "nina-py",
-    "requestedAt": "2026-08-27T05:56:58.000Z"
   },
   {
     "source": "phab",
@@ -182,5 +222,21 @@
     "author": "thecount",
     "reviewer": "Dre",
     "requestedAt": "2026-08-10T19:16:44.000Z"
+  },
+  {
+    "source": "github",
+    "id": 1765,
+    "author": "mmiermans",
+    "reviewer": "ncloudioj",
+    "requestedAt": "2026-09-01T23:14:52Z",
+    "repo": "mozilla-services/merino-py"
+  },
+  {
+    "source": "github",
+    "id": 1765,
+    "author": "mmiermans",
+    "reviewer": "kschelonka",
+    "requestedAt": "2026-09-01T23:14:58Z",
+    "repo": "mozilla-services/merino-py"
   }
 ]
