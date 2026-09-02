@@ -226,15 +226,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039861,
-    "summary": "Clicking the \"Next\" button from VPN Discovery CFR does not close the panel",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-15T12:48:11Z",
-    "resolvedAt": "2026-06-04T14:25:06Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040879,
     "summary": "[META] [QA] [QA-5254] QA request for Free VPN integration (Fx 153)",
     "product": "Firefox",
@@ -295,15 +286,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-28T09:29:31Z",
     "resolvedAt": "2026-06-30T13:35:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043755,
-    "summary": "Check usage on IPP panel open when paused",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-29T21:53:44Z",
-    "resolvedAt": "2026-06-05T01:32:57Z"
   },
   {
     "source": "bugzilla",
@@ -979,5 +961,14 @@
     "component": "IP Protection",
     "filedAt": "2026-08-18T18:32:29Z",
     "resolvedAt": "2026-08-19T21:28:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066792,
+    "summary": "[Nova] Excessive bottom spacing inside warning banner when title wraps to two lines",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-26T13:32:32Z",
+    "resolvedAt": "2026-09-02T08:51:56Z"
   }
 ]
