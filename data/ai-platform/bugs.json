@@ -838,6 +838,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063646,
+    "summary": "Create curated memories usage dataset",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T15:59:56Z",
+    "resolvedAt": "2026-09-02T16:03:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063650,
     "summary": "Develop shared memories evaluation data model components",
     "product": "Core",
@@ -964,15 +973,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2005365,
-    "summary": "Add inference performance metrics collection to llama.cpp runtime",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2025-12-10T23:44:17Z",
-    "resolvedAt": "2026-06-05T09:37:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2005369,
     "summary": "Add inference performance metrics collection to StaticEmbeddingsPipeline",
     "product": "Core",
@@ -988,15 +988,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-01-22T21:51:52Z",
     "resolvedAt": "2026-06-29T14:30:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2012177,
-    "summary": "Introduce & use a best-onnx backend",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-01-23T18:19:53Z",
-    "resolvedAt": "2026-06-05T09:37:45Z"
   },
   {
     "source": "bugzilla",
@@ -1132,6 +1123,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-01T16:21:15Z",
     "resolvedAt": "2026-08-19T09:35:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2051973,
+    "summary": "Vendor an enable the Metal GGML backend",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-01T16:24:26Z",
+    "resolvedAt": "2026-09-02T21:27:08Z"
   },
   {
     "source": "bugzilla",
@@ -1366,6 +1366,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-21T23:04:23Z",
     "resolvedAt": "2026-09-01T04:18:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066218,
+    "summary": "Update models, add smoke tests for ML Form Autofill",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-24T19:59:16Z",
+    "resolvedAt": "2026-09-03T04:23:28Z"
   },
   {
     "source": "bugzilla",
@@ -1999,15 +2008,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044098,
-    "summary": "reuse chatbot keyboard shortcut for smart window assistant sidebar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-01T17:13:49Z",
-    "resolvedAt": "2026-06-05T09:37:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044112,
     "summary": "adjust smart cursor behaviors for smart window: usage telemetry, setting to disable, default enable",
     "product": "Core",
@@ -2053,15 +2053,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044411,
-    "summary": "Remove \"report issues\" feedback link from disclaimer",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-02T16:58:42Z",
-    "resolvedAt": "2026-06-05T09:38:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044641,
     "summary": "Changing the AI model inside a tab will change the Ai model for every other open tab",
     "product": "Core",
@@ -2071,30 +2062,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045058,
-    "summary": "Make Smart Window feedback form fields optional",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-04T16:10:22Z",
-    "resolvedAt": "2026-06-05T21:14:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045076,
     "summary": "Apply Action Log polish updates",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-04T17:26:22Z",
     "resolvedAt": "2026-06-16T08:47:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045124,
-    "summary": "Gate smart_window_user_feedback_data to primary button submit event only",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-04T20:43:29Z",
-    "resolvedAt": "2026-06-05T21:14:15Z"
   },
   {
     "source": "bugzilla",
@@ -2518,6 +2491,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-19T09:32:07Z",
     "resolvedAt": "2026-07-16T21:23:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048916,
+    "summary": "The AI logging Completed Steps text is not visible on Hover with High Contrast enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-19T11:26:51Z",
+    "resolvedAt": "2026-09-03T04:23:00Z"
   },
   {
     "source": "bugzilla",
@@ -3538,6 +3520,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2059870,
+    "summary": "Smart Form Fill: determine a max fields cap and concurrency limit when generating values",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T21:14:06Z",
+    "resolvedAt": "2026-09-03T09:15:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060251,
     "summary": "The Gemini Ai model will provide answers in french instead of English",
     "product": "Core",
@@ -3670,6 +3661,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T16:20:20Z",
     "resolvedAt": "2026-08-27T09:54:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061358,
+    "summary": "Smart Form Fill: Apply styling to tab context dialog",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T16:23:15Z",
+    "resolvedAt": "2026-09-02T21:27:37Z"
   },
   {
     "source": "bugzilla",
@@ -3907,6 +3907,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063257,
+    "summary": "The Mistral AI model will not show the Memories used panel even though its using saved memories",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-13T12:30:48Z",
+    "resolvedAt": "2026-09-02T23:03:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063308,
     "summary": "[Monitor Agent][FE] gate /command palette dispay for smartwindow.agent.enabled and region",
     "product": "Core",
@@ -4042,12 +4051,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064739,
+    "summary": "Add dismiss action to PUWYLO resume pills",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T15:16:48Z",
+    "resolvedAt": "2026-09-03T09:15:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064902,
     "summary": "register about: for aitab pages with actors and appears in history",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-19T20:27:41Z",
     "resolvedAt": "2026-09-02T08:50:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064927,
+    "summary": "AITab - SPIKE: explore CSS approach for implementing Flare styles in AITab component context",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T21:45:54Z",
+    "resolvedAt": "2026-09-02T22:10:19Z"
   },
   {
     "source": "bugzilla",
@@ -4087,12 +4114,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065639,
+    "summary": "Show 3 resume-activity pills from an undismissed candidate pool",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-21T19:50:09Z",
+    "resolvedAt": "2026-09-03T09:15:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066412,
     "summary": "Users are unable to open the Smart Bar URL suggestion submenus",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-25T12:05:56Z",
     "resolvedAt": "2026-08-28T11:37:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066576,
+    "summary": "[Monitor Agent] [FE] The Dot indicator",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-25T19:05:05Z",
+    "resolvedAt": "2026-09-02T21:36:33Z"
   },
   {
     "source": "bugzilla",
@@ -4111,6 +4156,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-01T14:06:50Z",
     "resolvedAt": "2026-09-02T08:53:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068789,
+    "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_smartwindow_smartformfill_autocomplete.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-02T23:02:45Z",
+    "resolvedAt": "2026-09-02T23:22:22Z"
   },
   {
     "source": "bugzilla",

@@ -1814,14 +1814,14 @@
   {
     "source": "github",
     "id": 245,
+    "repo": "Firefox-AI/MLPA",
     "author": "subpath",
     "createdAt": "2026-08-31T12:52:46Z",
     "firstReviewAt": "2026-08-31T12:58:54Z",
     "landedAt": "2026-08-31T13:04:18Z",
-    "reviewRounds": 1,
-    "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 0.07166666666666667,
-    "postReviewBusinessHours": 0.07166666666666667
+    "postReviewBusinessHours": 0.07166666666666667,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1834,5 +1834,113 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 47.17722222222222,
     "postReviewBusinessHours": 40.370555555555555
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-vxprgsbwh2jn5rgwo6ks",
+    "revisionId": 322761,
+    "author": "nordzilla",
+    "createdAt": "2026-09-01T21:31:28.000Z",
+    "firstReviewAt": "2026-09-02T16:19:40.000Z",
+    "landedAt": "2026-09-02T22:53:31.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 4.672222222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-inxgo5r6lornxcl5h64u",
+    "revisionId": 322760,
+    "author": "nordzilla",
+    "createdAt": "2026-09-01T21:31:23.000Z",
+    "firstReviewAt": "2026-09-02T16:21:53.000Z",
+    "landedAt": "2026-09-02T22:53:30.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 4.635277777777778
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-5ypf3zsc7sb4rwg2wnoy",
+    "revisionId": 317556,
+    "author": "nordzilla",
+    "createdAt": "2026-08-10T15:42:56.000Z",
+    "firstReviewAt": "2026-09-02T16:15:48.000Z",
+    "landedAt": "2026-09-02T22:53:30.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 141.28444444444443,
+    "postReviewBusinessHours": 4.736666666666666
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-6uyf57opirj3zyo2lbrl",
+    "revisionId": 322759,
+    "author": "nordzilla",
+    "createdAt": "2026-09-01T21:31:20.000Z",
+    "firstReviewAt": "2026-09-02T16:21:10.000Z",
+    "landedAt": "2026-09-02T22:53:30.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8,
+    "postReviewBusinessHours": 4.647222222222222
+  },
+  {
+    "source": "github",
+    "id": 249,
+    "author": "FieldMarshallObvious",
+    "createdAt": "2026-09-01T17:45:34Z",
+    "firstReviewAt": "2026-09-01T17:58:15Z",
+    "landedAt": "2026-09-03T14:36:27Z",
+    "reviewRounds": 2,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 12.848055555555558,
+    "postReviewBusinessHours": 12.636666666666667
+  },
+  {
+    "source": "github",
+    "id": 246,
+    "author": "github-actions",
+    "createdAt": "2026-08-31T13:07:31Z",
+    "firstReviewAt": null,
+    "landedAt": "2026-09-02T18:28:41Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 21.352777777777778,
+    "postReviewBusinessHours": null
+  },
+  {
+    "source": "github",
+    "id": 237,
+    "author": "jgauf",
+    "createdAt": "2026-08-26T17:20:05Z",
+    "firstReviewAt": "2026-08-26T18:47:48Z",
+    "landedAt": "2026-09-02T16:27:28Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 39.12305555555555,
+    "postReviewBusinessHours": 37.66111111111111
+  },
+  {
+    "source": "github",
+    "id": 247,
+    "author": "jgauf",
+    "createdAt": "2026-08-31T13:44:10Z",
+    "firstReviewAt": "2026-08-31T18:33:04Z",
+    "landedAt": "2026-09-02T16:26:42Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 18.70888888888889,
+    "postReviewBusinessHours": 13.89388888888889
+  },
+  {
+    "source": "github",
+    "id": 250,
+    "author": "noahpodgurski",
+    "createdAt": "2026-09-01T17:47:56Z",
+    "firstReviewAt": "2026-09-01T18:37:01Z",
+    "landedAt": "2026-09-02T16:26:12Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 6.637777777777777,
+    "postReviewBusinessHours": 5.819722222222222
   }
 ]

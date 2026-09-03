@@ -1132,11 +1132,11 @@
   {
     "source": "github",
     "id": 245,
+    "repo": "Firefox-AI/MLPA",
     "author": "subpath",
     "reviewer": "noahpodgurski",
     "requestedAt": "2026-08-31T12:52:47Z",
     "firstActionAt": "2026-08-31T12:58:54Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 0
   },
   {
@@ -1208,5 +1208,25 @@
     "firstActionAt": "2026-09-01T17:58:15Z",
     "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 0.2111111111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-w2qxshk2lx74nyh3t7mp",
+    "revisionId": 322897,
+    "author": "valentinp",
+    "reviewer": "jbowser",
+    "requestedAt": "2026-09-02T12:48:51.000Z",
+    "firstActionAt": "2026-09-03T00:00:51.000Z",
+    "tatBusinessHours": 8
+  },
+  {
+    "source": "github",
+    "id": 249,
+    "author": "FieldMarshallObvious",
+    "reviewer": "subpath",
+    "requestedAt": "2026-09-01T17:45:35Z",
+    "firstActionAt": "2026-09-03T14:13:14Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 12.460833333333333
   }
 ]
