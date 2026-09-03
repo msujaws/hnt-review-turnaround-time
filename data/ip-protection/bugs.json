@@ -970,5 +970,14 @@
     "component": "IP Protection",
     "filedAt": "2026-08-26T13:32:32Z",
     "resolvedAt": "2026-09-02T08:51:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068547,
+    "summary": "VPN location list fails to update dynamically after default browser change without a browser restart",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-02T11:34:49Z",
+    "resolvedAt": "2026-09-02T21:40:14Z"
   }
 ]
