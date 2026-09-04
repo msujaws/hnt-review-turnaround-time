@@ -379,6 +379,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063281,
+    "summary": "Let content alert, confirm, and prompt dialogs use content's preferred color scheme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-13T13:13:39Z",
+    "resolvedAt": "2026-09-04T09:24:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063282,
     "summary": "Let the HTML-based color picker use content's preferred color scheme",
     "product": "Firefox",
@@ -421,6 +430,15 @@
     "component": "Theme",
     "filedAt": "2026-08-24T12:39:14Z",
     "resolvedAt": "2026-08-24T21:48:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066568,
+    "summary": "Form result icons dominate suggestions too much",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-25T18:53:56Z",
+    "resolvedAt": "2026-09-04T04:15:01Z"
   },
   {
     "source": "bugzilla",
