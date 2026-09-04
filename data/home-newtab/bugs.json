@@ -307,6 +307,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2037467,
+    "summary": "Lists widget - The completed items does not have focus indicating that they are selected via keyboard controls",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-06T14:43:22Z",
+    "resolvedAt": "2026-09-03T16:31:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2038098,
     "summary": "Newtab Remove region and locale prefs for contextual sponsored content",
     "product": "Firefox",
@@ -2854,6 +2863,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066891,
+    "summary": "Use of \"100%\" value for height and width of CSS element \".top-site-outer .tile .icon-wrapper\" produces BLANK tiles, with NO ICONSe",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-26T19:13:38Z",
+    "resolvedAt": "2026-09-03T18:27:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066897,
     "summary": "Implement topic navigation strip V1",
     "product": "Firefox",
@@ -2869,6 +2887,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-31T14:01:57Z",
     "resolvedAt": "2026-09-01T04:21:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067812,
+    "summary": "Update newtab trainhop documentation to refer to the new 2 week release cadence",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T15:47:41Z",
+    "resolvedAt": "2026-09-04T04:15:12Z"
   },
   {
     "source": "bugzilla",
