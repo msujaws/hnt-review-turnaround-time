@@ -775,6 +775,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062292,
+    "summary": "Write new memories usage evaluation scripts",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-10T15:04:41Z",
+    "resolvedAt": "2026-09-03T16:15:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062346,
     "summary": "[Monitor Agent][Models] Add the historical page snapshots to the runtime and prompt",
     "product": "Core",
@@ -916,6 +925,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-19T19:04:59Z",
     "resolvedAt": "2026-08-21T04:22:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065130,
+    "summary": "The Mistral AI model will show unrelated memories in the memories used panel",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-20T12:56:07Z",
+    "resolvedAt": "2026-09-03T16:10:45Z"
   },
   {
     "source": "bugzilla",
@@ -1222,6 +1240,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-29T01:02:20Z",
     "resolvedAt": "2026-08-13T04:26:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059534,
+    "summary": "Autofill spawns an unlimted number of ONNX workers when invoked",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-30T18:33:59Z",
+    "resolvedAt": "2026-09-03T16:23:28Z"
   },
   {
     "source": "bugzilla",
@@ -3088,6 +3115,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055068,
+    "summary": "Smart Form Fill: implement tests for core form fill functionality",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-14T21:27:58Z",
+    "resolvedAt": "2026-09-04T09:24:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055160,
     "summary": "Smart Window firstrun explainer URL is not locale aware",
     "product": "Core",
@@ -3682,6 +3718,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061361,
+    "summary": "Smart Form Fill: Apply styling to form fill review and completion dialog",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T16:35:00Z",
+    "resolvedAt": "2026-09-03T22:08:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061477,
     "summary": "SW ATG: Create 'View Tab Groups' Dropdown",
     "product": "Core",
@@ -3961,6 +4006,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064101,
+    "summary": "[Models] Identify various types of contextual inputs for SFF",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-17T15:37:51Z",
+    "resolvedAt": "2026-09-03T21:02:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064226,
     "summary": "Show Duplicate Tabs on Hover in Organize Tabs",
     "product": "Core",
@@ -4141,6 +4195,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066894,
+    "summary": "smart window toggle / switcher disappears when updating from 153 with vertical tabs enabled until next restart",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-26T19:18:14Z",
+    "resolvedAt": "2026-09-03T16:32:01Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067823,
     "summary": "[Monitor Agent] [FE] Monitor time default to user's current half hour",
     "product": "Core",
@@ -4165,6 +4228,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-02T23:02:45Z",
     "resolvedAt": "2026-09-02T23:22:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069093,
+    "summary": "Report Split View usage preference in Nimbus targeting telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T19:02:26Z",
+    "resolvedAt": "2026-09-04T04:15:47Z"
   },
   {
     "source": "bugzilla",
@@ -4210,5 +4282,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-19T17:09:01Z",
     "resolvedAt": "2026-08-20T04:22:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065298,
+    "summary": "Allow configuring maxRetries in OpenAI client via openaiEngine",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-20T20:58:37Z",
+    "resolvedAt": "2026-09-03T22:08:19Z"
   }
 ]
