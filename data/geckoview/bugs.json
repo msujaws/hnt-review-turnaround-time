@@ -181,6 +181,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2051026,
+    "summary": "Problem with opening a local pdf file with FF 151 for Android 9",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-06-27T10:39:38Z",
+    "resolvedAt": "2026-09-04T09:24:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2051418,
     "summary": "Add `download` attribute to WebResponse",
     "product": "GeckoView",
@@ -460,11 +469,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067339,
+    "summary": "Call DateFormat.is24HourFormat on non-UI/non-Gecko thread",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-28T05:26:35Z",
+    "resolvedAt": "2026-09-03T16:32:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067604,
     "summary": "TextInputDelegateTest does not compile against Android SDK 37.2 due to @Nullable getExtractedText()",
     "product": "GeckoView",
     "component": "IME",
     "filedAt": "2026-08-30T20:00:58Z",
     "resolvedAt": "2026-09-01T04:20:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067881,
+    "summary": "Remove deprecated geckoview telemetry mirrors",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-31T18:33:49Z",
+    "resolvedAt": "2026-09-04T09:25:54Z"
   }
 ]
