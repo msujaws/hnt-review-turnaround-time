@@ -37,15 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2006299,
-    "summary": "[meta] Make LoginStore API Async",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2025-12-16T10:37:32Z",
-    "resolvedAt": "2026-06-09T16:25:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2022270,
     "summary": "Remove  JSON Storage Sync API Methods",
     "product": "Toolkit",
@@ -88,15 +79,6 @@
     "component": "Password Manager",
     "filedAt": "2026-06-03T12:11:22Z",
     "resolvedAt": "2026-06-10T22:03:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045032,
-    "summary": "AS: logins update() incorrectly bumps times_used and time_last_used",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-04T14:54:59Z",
-    "resolvedAt": "2026-06-08T14:27:34Z"
   },
   {
     "source": "bugzilla",
