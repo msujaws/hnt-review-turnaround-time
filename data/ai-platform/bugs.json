@@ -19,6 +19,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2019686,
+    "summary": "[Models] Seeing markdown in a Smart Window chat",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-02-26T16:50:49Z",
+    "resolvedAt": "2026-09-04T19:04:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2021002,
     "summary": "chat model did not get the context right about user asked location of memories",
     "product": "Core",
@@ -214,15 +223,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-14T20:28:07Z",
     "resolvedAt": "2026-06-13T21:05:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040008,
-    "summary": "Add an ai-platform-perf mach try preset for the ai perftests on Linux",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-15T19:44:05Z",
-    "resolvedAt": "2026-06-09T09:10:38Z"
   },
   {
     "source": "bugzilla",
@@ -964,6 +964,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066194,
+    "summary": "Create reproducible smoke test for testing smart window intent model outputs in Fx CI",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-24T18:41:27Z",
+    "resolvedAt": "2026-09-05T09:07:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066286,
     "summary": "Perma TV browser/components/aiwindow/models/tests/browser/browser_monitor_errors.js | test_timed_out_run_records_timeout_code - Uncaught exception in test - [MockEngineManager]",
     "product": "Core",
@@ -1054,15 +1063,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044189,
-    "summary": "change telemetry notification_emails",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-01T22:49:15Z",
-    "resolvedAt": "2026-06-09T09:11:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046861,
     "summary": "Crash in [@ OOM | unknown | mozilla::dom::InferenceSession::Init]",
     "product": "Core",
@@ -1114,6 +1114,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-22T19:07:35Z",
     "resolvedAt": "2026-06-27T08:47:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049666,
+    "summary": "PROCESS-CRASH | MozPromise::ThenValue created from 'PullCallbackImpl' (dispatchRv: not dispatched) [@ mozilla::MozPromise<bool, nsresult, false>::ThenValueBase::AssertIsDead] | toolkit/components/ml/tests/browser/browser.toml",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-23T12:31:29Z",
+    "resolvedAt": "2026-09-04T16:08:37Z"
   },
   {
     "source": "bugzilla",
@@ -1378,12 +1387,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064737,
+    "summary": "onnxruntime toolchain task should use the sysroot",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-19T15:13:22Z",
+    "resolvedAt": "2026-09-04T16:09:03Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064967,
     "summary": "Utilize Parent-Process Native ONNX Availability Cache in \"best-onnx\" Resolution",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-20T01:40:27Z",
     "resolvedAt": "2026-08-27T03:43:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065269,
+    "summary": "Decide Whether to Retain the Generic ML Engine Performance Tests",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T19:40:59Z",
+    "resolvedAt": "2026-09-04T17:33:05Z"
   },
   {
     "source": "bugzilla",
@@ -1720,15 +1747,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035139,
-    "summary": "Typing inside the smart bar during an AI response will no longer show the Go/Ask Dropdown",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-27T09:59:52Z",
-    "resolvedAt": "2026-06-08T21:34:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035312,
     "summary": "Disable Suggestions Dropdown in Sidebar",
     "product": "Core",
@@ -1873,15 +1891,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039367,
-    "summary": "Move app menu button when Smart Window is enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-13T18:00:31Z",
-    "resolvedAt": "2026-06-09T09:10:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039835,
     "summary": "Remove browser.smartwindow.allowTables pref and deprecated code paths",
     "product": "Core",
@@ -1960,15 +1969,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-22T22:10:57Z",
     "resolvedAt": "2026-06-16T08:46:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042518,
-    "summary": "Remove extra spacing after stopping assistant response generation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-26T19:30:56Z",
-    "resolvedAt": "2026-06-09T09:10:41Z"
   },
   {
     "source": "bugzilla",
@@ -2113,15 +2113,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-05T23:05:29Z",
     "resolvedAt": "2026-06-12T21:20:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045827,
-    "summary": "Mark Smart Window test helper stubEngineNetworkBoundaries as @deprecated",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-08T16:52:52Z",
-    "resolvedAt": "2026-06-09T21:12:04Z"
   },
   {
     "source": "bugzilla",
@@ -2824,6 +2815,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T21:13:18Z",
     "resolvedAt": "2026-08-24T21:46:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052369,
+    "summary": "Smart Window perf: eliminate per-keystroke full-doc work in the smartbar / multiline editor",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:13:39Z",
+    "resolvedAt": "2026-09-06T09:35:37Z"
   },
   {
     "source": "bugzilla",
@@ -3691,6 +3691,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061059,
+    "summary": "Smart Form Fill - style SFF UI trigger autocomplete row item",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T01:56:55Z",
+    "resolvedAt": "2026-09-05T21:00:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061357,
     "summary": "Smart Form Fill: Add dialog for user to select context tabs",
     "product": "Core",
@@ -3724,6 +3733,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T16:35:00Z",
     "resolvedAt": "2026-09-03T22:08:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061458,
+    "summary": "Smart Window NL action telemetry gaps",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T19:01:59Z",
+    "resolvedAt": "2026-09-06T20:39:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061465,
+    "summary": "Add the browser action `close_tabs` and `group_tabs` to NL actions telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T19:10:53Z",
+    "resolvedAt": "2026-09-06T20:39:29Z"
   },
   {
     "source": "bugzilla",
@@ -3952,6 +3979,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063153,
+    "summary": "Resume-activity prompts use a different chat_id from the originating conversation",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-13T03:05:57Z",
+    "resolvedAt": "2026-09-05T21:00:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063257,
     "summary": "The Mistral AI model will not show the Memories used panel even though its using saved memories",
     "product": "Core",
@@ -4105,6 +4141,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064649,
+    "summary": "The Exa Source Citations More panel will now show all citations after resizing the Sidebar",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T10:11:01Z",
+    "resolvedAt": "2026-09-06T20:39:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064739,
     "summary": "Add dismiss action to PUWYLO resume pills",
     "product": "Core",
@@ -4120,6 +4165,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-19T20:27:41Z",
     "resolvedAt": "2026-09-02T08:50:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064907,
+    "summary": "Smart Form Fill: update form fill process to determine success more accurately",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T20:40:10Z",
+    "resolvedAt": "2026-09-05T21:00:53Z"
   },
   {
     "source": "bugzilla",
@@ -4177,6 +4231,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066287,
+    "summary": "AITab - hydrate about:aitab page with AITab JSON data",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-24T23:07:53Z",
+    "resolvedAt": "2026-09-05T21:01:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066412,
     "summary": "Users are unable to open the Smart Bar URL suggestion submenus",
     "product": "Core",
@@ -4204,6 +4267,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067217,
+    "summary": "Make the chat tab card responsive with a max width in full-width chat",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-27T16:06:48Z",
+    "resolvedAt": "2026-09-05T21:01:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067823,
     "summary": "[Monitor Agent] [FE] Monitor time default to user's current half hour",
     "product": "Core",
@@ -4213,12 +4285,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067905,
+    "summary": "Transition AITab schema to A2UI type schema for a more LLM friendly architecture",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T19:56:11Z",
+    "resolvedAt": "2026-09-06T09:35:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068106,
     "summary": "The Organize tabs menu does not work when moved to the Overflow panel",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-01T14:06:50Z",
     "resolvedAt": "2026-09-02T08:53:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068218,
+    "summary": "browser_aiwindow_*.js leak windows until shutdown, tripping the shutdown hang watchdog",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T18:52:43Z",
+    "resolvedAt": "2026-09-04T16:09:46Z"
   },
   {
     "source": "bugzilla",
@@ -4237,6 +4327,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-03T19:02:26Z",
     "resolvedAt": "2026-09-04T04:15:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069453,
+    "summary": "[Monitor Agent][FE] launch nimbus experiment for promo card v0 by 9/1",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-04T17:21:31Z",
+    "resolvedAt": "2026-09-04T17:24:15Z"
   },
   {
     "source": "bugzilla",
