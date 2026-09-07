@@ -100,15 +100,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045597,
-    "summary": "Disble HLS player with isolated process",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-08T03:41:33Z",
-    "resolvedAt": "2026-06-09T09:12:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045663,
     "summary": "Improve Magnifier area for <textarea>",
     "product": "GeckoView",
@@ -394,6 +385,15 @@
     "component": "General",
     "filedAt": "2026-08-06T23:48:32Z",
     "resolvedAt": "2026-08-07T20:13:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061832,
+    "summary": "[Toolkit] Turn on pdfjs.annotationEditorMode for Nightly",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-07T19:00:41Z",
+    "resolvedAt": "2026-09-05T09:07:25Z"
   },
   {
     "source": "bugzilla",
