@@ -181,15 +181,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041016,
-    "summary": "Create Seed File",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-20T15:50:16Z",
-    "resolvedAt": "2026-06-08T18:44:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041067,
     "summary": "provision share.firefox.com subdomain + connect to prod environment",
     "product": "Firefox",
@@ -826,6 +817,15 @@
     "component": "Sharing",
     "filedAt": "2026-08-26T13:42:08Z",
     "resolvedAt": "2026-08-28T11:37:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067843,
+    "summary": "Update Kit illustration at wide message breakpoint to be centered",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-31T17:01:55Z",
+    "resolvedAt": "2026-09-05T21:01:36Z"
   },
   {
     "source": "bugzilla",
