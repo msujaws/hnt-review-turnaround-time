@@ -325,15 +325,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044520,
-    "summary": "Disable location button when VPN is in the process of being activated",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-03T00:30:29Z",
-    "resolvedAt": "2026-06-09T09:11:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044522,
     "summary": "Increase VPN panel max-height so that the location selector upgrade promo is visible with minimum 5 locations",
     "product": "Firefox",
@@ -379,48 +370,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045636,
-    "summary": "[META][QA][QA-5314] Testing for Discovery CFR for Built-in VPN experiment",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-08T08:00:06Z",
-    "resolvedAt": "2026-06-09T13:50:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045641,
-    "summary": "[Experiment] Control branch messages not triggering while enrolled in the “Discovery CFR for Built-in VPN” experiment, and “Unexpected end of expressions” error is shown in Browser Console",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-08T08:32:27Z",
-    "resolvedAt": "2026-06-08T18:21:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045761,
-    "summary": "[Experiment] No description text is displayed on the first and second callouts while enrolled in Treatment B branch of the experiment",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-08T14:33:49Z",
-    "resolvedAt": "2026-06-08T17:37:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045856,
     "summary": "Update VPN panel width to smaller size",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-06-08T18:36:03Z",
     "resolvedAt": "2026-06-18T09:49:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045991,
-    "summary": "[Rollout] The first captive portal callout cannot be dismissed using the \"Not now\" button",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-09T09:11:04Z",
-    "resolvedAt": "2026-06-09T12:47:58Z"
   },
   {
     "source": "bugzilla",
