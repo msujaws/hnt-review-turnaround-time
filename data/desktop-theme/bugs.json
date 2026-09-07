@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043602,
-    "summary": "Run automated browser-chrome and mochitest-chrome and talos tests with Nova enabled",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-05-29T13:41:24Z",
-    "resolvedAt": "2026-06-09T21:11:22Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046132,
     "summary": "Additional Nova icon pass on Toolkit and Firefox Theme",
     "product": "Firefox",
@@ -457,5 +448,14 @@
     "component": "Theme",
     "filedAt": "2026-09-01T15:28:05Z",
     "resolvedAt": "2026-09-02T08:53:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068635,
+    "summary": "[Nova][HCM] \"Sign in to sync\" promo card is not visible when switching between Light/Dark mode with HCM themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-02T15:16:13Z",
+    "resolvedAt": "2026-09-05T09:08:26Z"
   }
 ]
