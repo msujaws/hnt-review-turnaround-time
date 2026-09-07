@@ -37,15 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2008158,
-    "summary": "Decorative image not programmatically identified (Customize button)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-12-31T18:23:55Z",
-    "resolvedAt": "2026-06-09T09:09:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2008199,
     "summary": "Disclosure button expanded/collapsed state not programmatically defined (Weather card > ••• button)",
     "product": "Firefox",
@@ -217,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033841,
-    "summary": "Newtab Nova mixin for col span and any other common helpful mixins we can find",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-21T16:10:55Z",
-    "resolvedAt": "2026-06-09T09:10:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034105,
     "summary": "Disabled toggles from the Customize menu of the New Tab have insufficient contrast and are barely visible in Dark Theme",
     "product": "Firefox",
@@ -286,15 +268,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-28T22:05:29Z",
     "resolvedAt": "2026-08-27T18:27:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2036865,
-    "summary": "Refactor WallpaperFeatureHighlight arrow to use clip-path instead of SVG",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-04T17:28:07Z",
-    "resolvedAt": "2026-06-09T09:10:22Z"
   },
   {
     "source": "bugzilla",
@@ -442,24 +415,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044115,
-    "summary": "World Cup Widget: Celebration animation",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T17:38:05Z",
-    "resolvedAt": "2026-06-09T09:11:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044196,
-    "summary": "World Cup Widget: Celebration animation trigger",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-01T23:54:41Z",
-    "resolvedAt": "2026-06-09T09:11:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044326,
     "summary": "Extend ./mach newtab locales-report to accept a --string ID argument to see the coverage for a specific string",
     "product": "Firefox",
@@ -478,15 +433,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044430,
-    "summary": "World Cup Widget: Celebration animation Intersection Observer",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T18:03:04Z",
-    "resolvedAt": "2026-06-09T09:11:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044483,
     "summary": "World Clocks widget is missing the widgets.clocks.interaction pref and   interaction tracking entirely",
     "product": "Firefox",
@@ -502,15 +448,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-02T23:52:11Z",
     "resolvedAt": "2026-06-18T09:49:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044744,
-    "summary": "Newtab list widget add item button background flashes background on refresh",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-03T17:02:16Z",
-    "resolvedAt": "2026-06-08T21:36:08Z"
   },
   {
     "source": "bugzilla",
@@ -595,15 +532,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045872,
-    "summary": "World Cup Widget: Celebration pref should be triggered by custom trainhopConfig payload",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T19:27:56Z",
-    "resolvedAt": "2026-06-09T09:13:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045893,
     "summary": "Crossword game has CSP violation blocking image load",
     "product": "Firefox",
@@ -631,30 +559,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046085,
-    "summary": "Widgets callout is rendered underneath the search bar in NTP",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-09T14:45:28Z",
-    "resolvedAt": "2026-06-10T03:32:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046124,
     "summary": "[meta] Firefox 151.0.4 train-hop metabug",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-09T16:17:57Z",
     "resolvedAt": "2026-06-12T12:41:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046125,
-    "summary": "Update locales for Firefox 151.0.4 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-09T16:18:24Z",
-    "resolvedAt": "2026-06-10T03:32:07Z"
   },
   {
     "source": "bugzilla",
@@ -2197,6 +2107,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2059851,
+    "summary": "[a11y] HNT Customize panel back buttons lack accessible name",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-31T20:02:01Z",
+    "resolvedAt": "2026-09-07T09:28:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060320,
     "summary": "Fix `newtab.closed` and `newtab.sections_impression` firing unexpectedly",
     "product": "Firefox",
@@ -2230,6 +2149,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-04T20:58:46Z",
     "resolvedAt": "2026-08-14T04:17:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060731,
+    "summary": "Widgets that show content in an iframe appear blank while being dragged on New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T03:27:50Z",
+    "resolvedAt": "2026-09-07T09:28:18Z"
   },
   {
     "source": "bugzilla",
@@ -2629,6 +2557,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063662,
+    "summary": "Add number of columns to Glean telemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T16:21:31Z",
+    "resolvedAt": "2026-09-05T21:00:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063684,
     "summary": "Update the 7-double-row-2-ad fallback in SectionsLayoutFeed to match Remote Settings",
     "product": "Firefox",
@@ -2809,6 +2746,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066039,
+    "summary": "Searching for a long characters query overflows the results text in the stocks widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T08:58:10Z",
+    "resolvedAt": "2026-09-07T09:28:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066144,
     "summary": "Enable remote settings driven sections layout by default",
     "product": "Firefox",
@@ -2845,6 +2791,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066559,
+    "summary": "Newtab stories unblock global Spanish and global English feeds client-side",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:39:56Z",
+    "resolvedAt": "2026-09-04T09:25:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066846,
     "summary": "Update the zero state copy for the New Tab Privacy widget",
     "product": "Firefox",
@@ -2878,6 +2833,24 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-26T19:30:43Z",
     "resolvedAt": "2026-09-01T04:19:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067754,
+    "summary": "Remove version 155 train-hop shims for the homepage/customHomepage fallback in AboutPreferences",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T13:57:01Z",
+    "resolvedAt": "2026-09-04T09:25:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067755,
+    "summary": "Remove version 155 train-hop plumbing that re-injects preferences.ftl strings into the newtab XPI",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T13:58:36Z",
+    "resolvedAt": "2026-09-04T09:25:50Z"
   },
   {
     "source": "bugzilla",
