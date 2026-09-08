@@ -37,15 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2022270,
-    "summary": "Remove  JSON Storage Sync API Methods",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-03-10T16:25:58Z",
-    "resolvedAt": "2026-06-10T22:02:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2041353,
     "summary": "Application Services Rust storage as primary login store on Desktop",
     "product": "Toolkit",
@@ -73,30 +64,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044645,
-    "summary": "Move LoginHelper.checkLoginValues() to LoginManager._checkLogin() to validate logins for all storage backends",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-03T12:11:22Z",
-    "resolvedAt": "2026-06-10T22:03:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045696,
     "summary": "Remove LoginManager Sync API Methods",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-06-08T12:16:50Z",
     "resolvedAt": "2026-06-11T13:42:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046055,
-    "summary": "Rust login storage throws a non-Error object on bulk operation failure",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-09T12:54:47Z",
-    "resolvedAt": "2026-06-10T22:04:06Z"
   },
   {
     "source": "bugzilla",
