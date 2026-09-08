@@ -37,15 +37,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2008199,
-    "summary": "Disclosure button expanded/collapsed state not programmatically defined (Weather card > ••• button)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-12-31T18:47:23Z",
-    "resolvedAt": "2026-06-10T10:07:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2016440,
     "summary": "Stalled out download of trainhop XPI can still cause shutdown hangs / crashes",
     "product": "Firefox",
@@ -520,15 +511,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-08T14:33:27Z",
     "resolvedAt": "2026-06-11T14:09:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045817,
-    "summary": "Newtab devtools toggle allizom for ads no longer works",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T16:19:41Z",
-    "resolvedAt": "2026-06-10T10:12:30Z"
   },
   {
     "source": "bugzilla",
@@ -2743,6 +2725,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-21T20:00:05Z",
     "resolvedAt": "2026-08-25T09:10:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066037,
+    "summary": "Stocks widget drop down and menu not visible with HCM",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T08:45:40Z",
+    "resolvedAt": "2026-09-08T04:28:49Z"
   },
   {
     "source": "bugzilla",
