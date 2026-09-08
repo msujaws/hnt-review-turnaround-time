@@ -217,15 +217,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039551,
-    "summary": "With VPN on across macOS suspend, networking breaks",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-14T12:33:41Z",
-    "resolvedAt": "2026-06-10T10:08:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040879,
     "summary": "[META] [QA] [QA-5254] QA request for Free VPN integration (Fx 153)",
     "product": "Firefox",
@@ -268,15 +259,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-27T13:21:37Z",
     "resolvedAt": "2026-06-22T20:02:27Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042852,
-    "summary": "(Android) - FxA Active auth provider handles updateEntitlement diffrent",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-27T15:12:12Z",
-    "resolvedAt": "2026-06-10T10:09:06Z"
   },
   {
     "source": "bugzilla",
@@ -934,5 +916,14 @@
     "component": "IP Protection",
     "filedAt": "2026-09-02T11:34:49Z",
     "resolvedAt": "2026-09-02T21:40:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068550,
+    "summary": "Not all Fetch() throws map to a NetworkError",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-02T11:36:58Z",
+    "resolvedAt": "2026-09-07T16:07:13Z"
   }
 ]
