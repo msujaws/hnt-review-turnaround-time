@@ -348,18 +348,6 @@
     "reviewRounds": 2
   },
   {
-    "source": "phab",
-    "id": "PHID-DREV-bm5intyxgthrphnptohf",
-    "revisionId": 305384,
-    "author": "jbowser",
-    "createdAt": "2026-06-08T20:44:01.000Z",
-    "firstReviewAt": "2026-06-09T21:26:38.000Z",
-    "landedAt": "2026-06-10T22:18:51.000Z",
-    "cycleBusinessHours": 16.26638888888889,
-    "postReviewBusinessHours": 8,
-    "reviewRounds": 1
-  },
-  {
     "source": "github",
     "id": 211,
     "repo": "Firefox-AI/MLPA",
@@ -765,54 +753,6 @@
     "landedAt": "2026-06-12T14:24:12Z",
     "cycleBusinessHours": 1.4033333333333333,
     "postReviewBusinessHours": 1.1944444444444444,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 171,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "createdAt": "2026-06-10T18:55:47Z",
-    "firstReviewAt": null,
-    "landedAt": "2026-06-10T19:12:44Z",
-    "cycleBusinessHours": 0.2825,
-    "postReviewBusinessHours": null,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 170,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "createdAt": "2026-06-10T18:42:22Z",
-    "firstReviewAt": null,
-    "landedAt": "2026-06-10T18:42:29Z",
-    "cycleBusinessHours": 0.0019444444444444444,
-    "postReviewBusinessHours": null,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 169,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "createdAt": "2026-06-10T18:25:41Z",
-    "firstReviewAt": null,
-    "landedAt": "2026-06-10T18:36:13Z",
-    "cycleBusinessHours": 0.17555555555555555,
-    "postReviewBusinessHours": null,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 168,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "createdAt": "2026-06-08T19:23:16Z",
-    "firstReviewAt": "2026-06-09T12:02:53Z",
-    "landedAt": "2026-06-10T18:18:14Z",
-    "cycleBusinessHours": 14.916111111111112,
-    "postReviewBusinessHours": 13.303888888888888,
     "reviewRounds": 1
   },
   {
@@ -1966,5 +1906,29 @@
     "cycleBusinessHours": 0.35055555555555556,
     "postReviewBusinessHours": null,
     "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-lgbgforift5u7forrkpe",
+    "revisionId": 322292,
+    "author": "valentinp",
+    "createdAt": "2026-08-31T12:12:21.000Z",
+    "firstReviewAt": "2026-08-31T12:12:35.000Z",
+    "landedAt": "2026-09-08T13:33:16.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 48.55444444444445,
+    "postReviewBusinessHours": 48.55444444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7iv3t4glgw65g4444caq",
+    "revisionId": 321940,
+    "author": "valentinp",
+    "createdAt": "2026-08-27T16:28:15.000Z",
+    "firstReviewAt": "2026-08-27T16:54:58.000Z",
+    "landedAt": "2026-09-08T13:33:16.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 61.08361111111112,
+    "postReviewBusinessHours": 60.638333333333335
   }
 ]

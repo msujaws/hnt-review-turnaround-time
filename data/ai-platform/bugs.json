@@ -1504,15 +1504,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018052,
-    "summary": "Handle error code 406 from the LLM backend",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-19T22:28:10Z",
-    "resolvedAt": "2026-06-10T10:07:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2019042,
     "summary": "smartbar suggestion list is shorter than address bar making it hard to switch to open tabs, other suggest results further down",
     "product": "Core",
@@ -1618,15 +1609,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-30T23:35:29Z",
     "resolvedAt": "2026-06-27T08:44:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2028306,
-    "summary": "[Nova] Implement Smartbar gradient motion (exploratory)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-31T23:34:27Z",
-    "resolvedAt": "2026-06-10T10:07:47Z"
   },
   {
     "source": "bugzilla",
@@ -1756,15 +1738,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2035893,
-    "summary": "Handle new prompts while disambiguation/confirmation UI is active",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-29T17:24:15Z",
-    "resolvedAt": "2026-06-10T10:08:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037179,
     "summary": "Track data review for rescoped feedback launch",
     "product": "Core",
@@ -1792,15 +1765,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037648,
-    "summary": "[a11y] Smart window - Screen reader loses focus when Smart Window assistant triggers web search",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-06T21:25:31Z",
-    "resolvedAt": "2026-06-10T10:08:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038069,
     "summary": "Render History Grid in Smart Window Responses",
     "product": "Core",
@@ -1825,15 +1789,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-07T23:03:00Z",
     "resolvedAt": "2026-06-11T08:28:30Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038130,
-    "summary": "The Keep Closed? callout is displayed when closing a Sidebar with a started conversation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-08T08:26:01Z",
-    "resolvedAt": "2026-06-10T10:08:15Z"
   },
   {
     "source": "bugzilla",
@@ -1879,15 +1834,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-13T16:57:48Z",
     "resolvedAt": "2026-07-15T09:36:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039365,
-    "summary": "Adjust Default Smart Window startup screen",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-13T17:54:28Z",
-    "resolvedAt": "2026-06-10T10:08:27Z"
   },
   {
     "source": "bugzilla",
@@ -2968,6 +2914,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-10T23:08:18Z",
     "resolvedAt": "2026-08-21T09:57:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054460,
+    "summary": "The Tab groups are not properly displayed for the Smart bar suggestions list",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-13T12:36:21Z",
+    "resolvedAt": "2026-09-07T21:12:49Z"
   },
   {
     "source": "bugzilla",
