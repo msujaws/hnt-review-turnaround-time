@@ -1,27 +1,35 @@
 [
   {
     "source": "phab",
+    "id": "PHID-DREV-tvzshk7isu7vtkn7gfkg",
+    "revisionId": 324515,
+    "author": "nina-py",
+    "reviewer": "Dre",
+    "requestedAt": "2026-09-09T03:23:20.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-5p4lkeyyfe2wj3dj4gwn",
+    "revisionId": 324442,
+    "author": "ini",
+    "reviewer": "jbrown",
+    "requestedAt": "2026-09-08T21:28:51.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-fmohq2vdf7dldlqeiwdd",
+    "revisionId": 323278,
+    "author": "maxx",
+    "reviewer": "nina-py",
+    "requestedAt": "2026-09-03T20:13:05.000Z"
+  },
+  {
+    "source": "phab",
     "id": "PHID-DREV-ev4cesute2j2rc57ujtp",
     "revisionId": 322516,
     "author": "thecount",
     "reviewer": "nina-py",
     "requestedAt": "2026-09-04T23:47:16.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-pphf22x4z45ulpmetn3r",
-    "revisionId": 322745,
-    "author": "Dre",
-    "reviewer": "mconley",
-    "requestedAt": "2026-09-02T01:19:36.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-pphf22x4z45ulpmetn3r",
-    "revisionId": 322745,
-    "author": "Dre",
-    "reviewer": "maxx",
-    "requestedAt": "2026-09-02T17:56:11.000Z"
   },
   {
     "source": "phab",
@@ -41,59 +49,11 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-va6cvqy3sldtagcwkth7",
-    "revisionId": 323449,
-    "author": "Dre",
-    "reviewer": "maxx",
-    "requestedAt": "2026-09-04T01:40:15.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-zzioopuebjd4skbcsvwd",
-    "revisionId": 323110,
-    "author": "Dre",
-    "reviewer": "maxx",
-    "requestedAt": "2026-09-03T22:23:03.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-idag5pepjzmyc5y3h3ce",
-    "revisionId": 322806,
-    "author": "Dre",
-    "reviewer": "maxx",
-    "requestedAt": "2026-09-02T17:54:47.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-fwukstewlsn2s4glhcje",
-    "revisionId": 322535,
-    "author": "Dre",
-    "reviewer": "maxx",
-    "requestedAt": "2026-09-01T05:06:52.000Z"
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-em4w2sfo53bpzvdwbvvk",
     "revisionId": 323418,
     "author": "mconley",
     "reviewer": "thecount",
     "requestedAt": "2026-09-03T21:29:59.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-fmohq2vdf7dldlqeiwdd",
-    "revisionId": 323278,
-    "author": "maxx",
-    "reviewer": "nina-py",
-    "requestedAt": "2026-09-03T20:13:05.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-64vgg36tvp3krurcuqxl",
-    "revisionId": 322085,
-    "author": "jbrown",
-    "reviewer": "mconley",
-    "requestedAt": "2026-08-28T20:50:57.000Z"
   },
   {
     "source": "phab",
@@ -209,18 +169,18 @@
   },
   {
     "source": "github",
-    "id": 42,
-    "author": "mmiermans",
+    "id": 1770,
+    "author": "Herraj",
     "reviewer": "jpetto",
-    "requestedAt": "2026-09-03T19:55:20Z",
-    "repo": "mozilla/hnt-content"
+    "requestedAt": "2026-09-04T21:06:28Z",
+    "repo": "mozilla-services/merino-py"
   },
   {
     "source": "github",
-    "id": 1765,
-    "author": "mmiermans",
-    "reviewer": "ncloudioj",
-    "requestedAt": "2026-09-01T23:14:52Z",
+    "id": 1770,
+    "author": "Herraj",
+    "reviewer": "mmiermans",
+    "requestedAt": "2026-09-04T21:06:28Z",
     "repo": "mozilla-services/merino-py"
   }
 ]

@@ -226,30 +226,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034869,
-    "summary": "Add \"Learn more\" link to New Tab sections context menu",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-24T16:55:48Z",
-    "resolvedAt": "2026-06-11T04:13:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035221,
     "summary": "If wallpaper list can't be queried from remote settings, wallpapers can't be uploaded.",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-04-27T14:49:08Z",
     "resolvedAt": "2026-08-01T09:55:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2035296,
-    "summary": "prefers-reduced-motion ignored for tile hover/focus transition effect in about:newtab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-27T19:25:26Z",
-    "resolvedAt": "2026-06-11T04:13:58Z"
   },
   {
     "source": "bugzilla",
@@ -358,6 +340,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-21T04:55:08Z",
     "resolvedAt": "2026-06-12T12:41:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042496,
+    "summary": "Fx wallpapers lack accessible names in Customize panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-26T17:46:04Z",
+    "resolvedAt": "2026-09-09T04:17:08Z"
   },
   {
     "source": "bugzilla",
@@ -487,33 +478,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045758,
-    "summary": "[Rollout] The large clocks widget is displayed instead of the medium one after enrollment",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T14:30:38Z",
-    "resolvedAt": "2026-06-11T14:08:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045759,
-    "summary": "[Rollout] The wrong callout is displayed for multiple World Cup rollouts",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T14:32:30Z",
-    "resolvedAt": "2026-06-11T14:08:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045760,
-    "summary": "[Rollout] The WCW callout is not displayed for multiple World Cup rollouts",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T14:33:27Z",
-    "resolvedAt": "2026-06-11T14:09:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045893,
     "summary": "Crossword game has CSP violation blocking image load",
     "product": "Firefox",
@@ -595,30 +559,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046717,
-    "summary": "sports widget: first game of soccer/football worldcup (Mexico - South Africa) missing/not shown as Upcoming but Korea - Czechia instead",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T09:00:18Z",
-    "resolvedAt": "2026-06-11T14:42:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046913,
     "summary": "Widget settings should be visible (but not enabled) for users in Nimbus experiments",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-11T18:39:35Z",
     "resolvedAt": "2026-06-12T07:53:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046930,
-    "summary": "sports widget: first game MEX - RSA shown as '0-0 Full Time' under 'Results' because data still shows it as scheduled at kickoff time",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T19:07:05Z",
-    "resolvedAt": "2026-06-12T00:41:20Z"
   },
   {
     "source": "bugzilla",
@@ -2887,5 +2833,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-02T05:33:13Z",
     "resolvedAt": "2026-09-03T09:16:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070290,
+    "summary": "Newtab context menus no longer match user theme",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T17:19:33Z",
+    "resolvedAt": "2026-09-09T04:19:47Z"
   }
 ]
