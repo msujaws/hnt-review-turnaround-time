@@ -13,18 +13,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-lukcpwrwaflewrijslek",
-    "revisionId": 305576,
-    "author": "joschmidt",
-    "createdAt": "2026-06-09T13:03:45.000Z",
-    "firstReviewAt": "2026-06-11T10:46:41.000Z",
-    "landedAt": "2026-06-11T11:43:48.000Z",
-    "cycleBusinessHours": 15.9375,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-x273hnic4fwg7lwm2w2l",
     "revisionId": 305256,
     "author": "mtigley",
@@ -57,18 +45,6 @@
     "landedAt": "2026-06-12T09:57:52.000Z",
     "cycleBusinessHours": 95.06416666666668,
     "postReviewBusinessHours": 4.860833333333333,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-nzl5nmteds3sj4kxvgz6",
-    "revisionId": 297575,
-    "author": "joschmidt",
-    "createdAt": "2026-04-30T07:44:04.000Z",
-    "firstReviewAt": "2026-06-11T13:22:02.000Z",
-    "landedAt": "2026-06-11T14:02:37.000Z",
-    "cycleBusinessHours": 241.04361111111112,
-    "postReviewBusinessHours": 0.6763888888888889,
     "reviewRounds": 1
   },
   {
@@ -1387,9 +1363,9 @@
     "createdAt": "2026-07-22T08:01:38.000Z",
     "firstReviewAt": "2026-07-23T23:29:50.000Z",
     "landedAt": "2026-08-27T10:47:57.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 208,
-    "postReviewBusinessHours": 192,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 192
   },
   {
     "source": "phab",
@@ -1570,5 +1546,29 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 7.917222222222223,
     "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-p2jeedsnxajyxurk7ct3",
+    "revisionId": 323711,
+    "author": "kalenlu",
+    "createdAt": "2026-09-04T18:02:53.000Z",
+    "firstReviewAt": "2026-09-04T18:31:19.000Z",
+    "landedAt": "2026-09-08T23:52:49.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 18.951944444444447,
+    "postReviewBusinessHours": 18.478055555555557
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-n6w4dklurwrjgeoss7ik",
+    "revisionId": 323053,
+    "author": "kalenlu",
+    "createdAt": "2026-09-02T20:33:53.000Z",
+    "firstReviewAt": "2026-09-04T00:23:20.000Z",
+    "landedAt": "2026-09-08T15:07:30.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 26.56027777777778,
+    "postReviewBusinessHours": 18.125
   }
 ]
