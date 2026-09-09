@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046379,
-    "summary": "Migrate the apilint Gradle plugin off the legacy Android variant API",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-10T11:47:44Z",
-    "resolvedAt": "2026-06-11T16:36:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047296,
     "summary": "Make Android audio-focus requests reflect a tab's Audio Session type, and relay system focus changes back to the tab",
     "product": "GeckoView",
@@ -268,6 +259,15 @@
     "component": "General",
     "filedAt": "2026-07-24T22:36:20Z",
     "resolvedAt": "2026-07-29T18:36:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057685,
+    "summary": "[2.5] Define GeckoView API endpoint with supporting backend",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-24T22:42:07Z",
+    "resolvedAt": "2026-09-09T04:17:21Z"
   },
   {
     "source": "bugzilla",
@@ -493,5 +493,32 @@
     "component": "General",
     "filedAt": "2026-08-31T18:33:49Z",
     "resolvedAt": "2026-09-04T09:25:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069043,
+    "summary": "[GeckoView] Implement GeckoView API to pass typed signature to PDF.js",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-03T16:22:32Z",
+    "resolvedAt": "2026-09-09T04:18:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069060,
+    "summary": "[AC/Fenix] Wire through signature API for Fenix use",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-03T17:00:31Z",
+    "resolvedAt": "2026-09-09T04:18:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069463,
+    "summary": "Make the widget/android JNI helper templates inline to fix -Wunused-template with clang 23",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-04T17:56:54Z",
+    "resolvedAt": "2026-09-08T15:41:51Z"
   }
 ]
