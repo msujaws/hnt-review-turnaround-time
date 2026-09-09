@@ -28,33 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2021002,
-    "summary": "chat model did not get the context right about user asked location of memories",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-04T14:23:18Z",
-    "resolvedAt": "2026-06-11T14:11:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2021115,
-    "summary": "reduce generic memories",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-04T20:11:42Z",
-    "resolvedAt": "2026-06-11T14:11:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2023256,
-    "summary": "Memory Tool Fails to Retrieve All Memories and Succeeds Only After Deletion",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-13T18:49:20Z",
-    "resolvedAt": "2026-06-11T14:10:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2026393,
     "summary": "[Models] Set up automated running of production chat evaluation suite daily with alerts",
     "product": "Core",
@@ -118,24 +91,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033525,
-    "summary": "Memories V2 - Interaction extraction from Conversation",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-20T17:22:14Z",
-    "resolvedAt": "2026-06-11T13:59:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033527,
-    "summary": "memories v2 - collect, clean, normalize, filter and sessionize",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-20T17:25:40Z",
-    "resolvedAt": "2026-06-11T13:55:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034844,
     "summary": "Evaluate Mistral 4",
     "product": "Core",
@@ -178,15 +133,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-05-06T20:20:32Z",
     "resolvedAt": "2026-07-31T19:05:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037624,
-    "summary": "Implement NL browser actions tool and integrate with front-end work",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-06T20:22:02Z",
-    "resolvedAt": "2026-06-11T21:50:01Z"
   },
   {
     "source": "bugzilla",
@@ -289,15 +235,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046151,
-    "summary": "modelId not being persisted in messages db",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-09T18:22:24Z",
-    "resolvedAt": "2026-06-11T04:15:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046183,
     "summary": "Implement V0 Search Loop validation, orchestration, and tool gating for search_the_web",
     "product": "Core",
@@ -376,6 +313,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-17T19:08:26Z",
     "resolvedAt": "2026-06-25T17:26:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2048659,
+    "summary": "Add 'topic' argument to get_topn_tabs tool",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-06-18T14:53:12Z",
+    "resolvedAt": "2026-09-08T22:17:21Z"
   },
   {
     "source": "bugzilla",
@@ -1000,15 +946,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2005369,
-    "summary": "Add inference performance metrics collection to StaticEmbeddingsPipeline",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2025-12-10T23:57:16Z",
-    "resolvedAt": "2026-06-11T04:13:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2011985,
     "summary": "Always wait for the page to be ready before running \"getText\" on page extractor",
     "product": "Core",
@@ -1432,6 +1369,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067113,
+    "summary": "Implement End-to-End Performance Coverage for Smart Window overhead",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-27T12:28:31Z",
+    "resolvedAt": "2026-09-08T22:23:03Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1982104,
     "summary": "[GenAI Chat Sidebar] The group of radio controls to select an AI provider is not labeled",
     "product": "Core",
@@ -1510,15 +1456,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-02-24T18:24:22Z",
     "resolvedAt": "2026-07-16T03:51:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2021887,
-    "summary": "The Smart bar suggestions scrollbar spills out of the frame in the Ask assistant sidebar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-09T13:17:12Z",
-    "resolvedAt": "2026-06-11T04:13:31Z"
   },
   {
     "source": "bugzilla",
@@ -1639,15 +1576,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2030313,
-    "summary": "The Ask Assistant Sidebar is still displayed when playing videos in Full screen",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-08T13:19:35Z",
-    "resolvedAt": "2026-06-11T04:13:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2030683,
     "summary": "Show Bookmark Bar on Smart Window New Tab when \"Only Show on New Tab\" setting enabled",
     "product": "Core",
@@ -1747,48 +1675,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037215,
-    "summary": "Fix sidebar reopening after close on Google Maps",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-05T18:47:14Z",
-    "resolvedAt": "2026-06-11T19:08:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037360,
     "summary": "Add horizontal scroll indicator to assistant markdown table",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-06T08:52:15Z",
     "resolvedAt": "2026-06-22T20:02:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038069,
-    "summary": "Render History Grid in Smart Window Responses",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-07T22:56:55Z",
-    "resolvedAt": "2026-06-11T08:28:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038071,
-    "summary": "Display Metadata-Based Thumbnails with Fallbacks",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-07T22:58:58Z",
-    "resolvedAt": "2026-06-11T08:28:27Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038073,
-    "summary": "Add History Grid Interaction Telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-07T23:03:00Z",
-    "resolvedAt": "2026-06-11T08:28:30Z"
   },
   {
     "source": "bugzilla",
@@ -1936,15 +1828,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042865,
-    "summary": "Add test coverage for history grid thumbnails",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-27T15:30:10Z",
-    "resolvedAt": "2026-06-11T08:28:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042932,
     "summary": "Spike: Evaluate bringing Classic Window shortcuts to Smart Window new tab",
     "product": "Core",
@@ -2005,15 +1888,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-01T21:15:52Z",
     "resolvedAt": "2026-06-23T22:00:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044363,
-    "summary": "Smartbar “Search with” actions defaults to “Ask” when intent is chat",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-02T15:10:22Z",
-    "resolvedAt": "2026-06-11T04:14:32Z"
   },
   {
     "source": "bugzilla",
@@ -4291,6 +4165,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-04T17:21:31Z",
     "resolvedAt": "2026-09-04T17:24:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070138,
+    "summary": "Black border around smartbar",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-08T10:54:40Z",
+    "resolvedAt": "2026-09-08T22:28:46Z"
   },
   {
     "source": "bugzilla",
