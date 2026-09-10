@@ -271,39 +271,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039335,
-    "summary": "[meta] Firefox 151 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-13T15:54:23Z",
-    "resolvedAt": "2026-06-12T12:50:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039423,
     "summary": "Update default prefs for widgets",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-13T21:21:27Z",
     "resolvedAt": "2026-06-25T04:42:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039925,
-    "summary": "Move New Tab preference strings to a trainhoppable FTL file",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T15:22:30Z",
-    "resolvedAt": "2026-06-12T07:50:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040009,
-    "summary": "Create useWidgetTelemetry hook",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T19:47:55Z",
-    "resolvedAt": "2026-06-12T21:18:40Z"
   },
   {
     "source": "bugzilla",
@@ -325,48 +298,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040519,
-    "summary": "Add logic to feed data to display correct translated strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-18T21:48:01Z",
-    "resolvedAt": "2026-06-12T21:18:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041203,
-    "summary": "[meta] Firefox 151.0.1 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-21T04:55:08Z",
-    "resolvedAt": "2026-06-12T12:41:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042496,
     "summary": "Fx wallpapers lack accessible names in Customize panel",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-26T17:46:04Z",
     "resolvedAt": "2026-09-09T04:17:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042519,
-    "summary": "[meta] Firefox 151.0.2 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-26T19:35:05Z",
-    "resolvedAt": "2026-06-12T12:47:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042885,
-    "summary": "[meta] Firefox 151.0.3 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-27T16:02:24Z",
-    "resolvedAt": "2026-06-12T12:47:00Z"
   },
   {
     "source": "bugzilla",
@@ -394,15 +331,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-29T20:06:36Z",
     "resolvedAt": "2026-07-12T11:36:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044326,
-    "summary": "Extend ./mach newtab locales-report to accept a --string ID argument to see the coverage for a specific string",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T13:51:53Z",
-    "resolvedAt": "2026-06-12T21:19:48Z"
   },
   {
     "source": "bugzilla",
@@ -460,15 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044939,
-    "summary": "Sports widget refresh button is missing",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T09:47:39Z",
-    "resolvedAt": "2026-06-12T21:20:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045630,
     "summary": "[Wayland] Wrong pointer position when long press and move on new tab and history buttons",
     "product": "Firefox",
@@ -505,15 +424,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046124,
-    "summary": "[meta] Firefox 151.0.4 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-09T16:17:57Z",
-    "resolvedAt": "2026-06-12T12:41:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046143,
     "summary": "weather widget activate without user opt-in",
     "product": "Firefox",
@@ -532,15 +442,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046444,
-    "summary": "about:preferences#home does not show Widget toggle options when widgets are enabled via Nimbus",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-10T14:31:17Z",
-    "resolvedAt": "2026-06-12T07:52:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046594,
     "summary": "Include Small size widgets in the \"Maximize\" action when in the widget row",
     "product": "Firefox",
@@ -556,15 +457,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-11T08:06:01Z",
     "resolvedAt": "2026-07-03T21:45:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046913,
-    "summary": "Widget settings should be visible (but not enabled) for users in Nimbus experiments",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T18:39:35Z",
-    "resolvedAt": "2026-06-12T07:53:40Z"
   },
   {
     "source": "bugzilla",
@@ -610,24 +502,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-12T06:42:38Z",
     "resolvedAt": "2026-06-15T19:56:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047209,
-    "summary": "Sports refresh button should spin when actively requesting an update",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-12T14:57:56Z",
-    "resolvedAt": "2026-06-12T21:21:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047216,
-    "summary": "Newtab sports widget change watch live links to new tab target",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-12T15:21:40Z",
-    "resolvedAt": "2026-06-12T21:21:39Z"
   },
   {
     "source": "bugzilla",
@@ -1900,6 +1774,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057274,
+    "summary": "Add \"sponsored position\" Flag to pocket.impression Glean event",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T16:07:48Z",
+    "resolvedAt": "2026-09-10T09:10:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057279,
+    "summary": "Add \"sponsored position\" Flag to topsites.impression Glean event",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T16:27:23Z",
+    "resolvedAt": "2026-09-10T04:45:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057286,
     "summary": "Newtab make ad allowed ranks configurable via trainhopConfig",
     "product": "Firefox",
@@ -2593,6 +2485,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064543,
+    "summary": "Ads telemetry UniFFI callback leak on quit",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-18T21:38:15Z",
+    "resolvedAt": "2026-09-10T09:11:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064564,
     "summary": "Wallpapers: Orphaned wallpaper cleanup",
     "product": "Firefox",
@@ -2728,12 +2629,75 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066557,
+    "summary": "Support Multiple Custom Wallpapers: Storage and migration",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:38:24Z",
+    "resolvedAt": "2026-09-10T04:45:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066559,
     "summary": "Newtab stories unblock global Spanish and global English feeds client-side",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-25T18:39:56Z",
     "resolvedAt": "2026-09-04T09:25:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066561,
+    "summary": "Support Multiple Custom Wallpapers: Add a \"Your images\" folder to the wallpaper picker",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:40:58Z",
+    "resolvedAt": "2026-09-10T04:45:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066562,
+    "summary": "Support Multiple Custom Wallpapers: Allow deleting a saved custom wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:42:16Z",
+    "resolvedAt": "2026-09-10T04:45:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066565,
+    "summary": "Support Multiple Custom Wallpapers: Preserve retired shipped used wallpapers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:46:33Z",
+    "resolvedAt": "2026-09-10T04:45:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066566,
+    "summary": "Support Multiple Custom Wallpapers: Back up every saved custom wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:48:18Z",
+    "resolvedAt": "2026-09-10T04:45:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066567,
+    "summary": "Support Multiple Custom Wallpapers: Save POTD images into \"Your images\"",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:50:00Z",
+    "resolvedAt": "2026-09-10T04:46:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066639,
+    "summary": "Privacy widget - Update CTA and spacing around the widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T23:58:11Z",
+    "resolvedAt": "2026-09-09T16:33:58Z"
   },
   {
     "source": "bugzilla",
@@ -2791,6 +2755,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067757,
+    "summary": "Remove version 155 train-hop shim for the trending.svg icon rename in newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T14:01:19Z",
+    "resolvedAt": "2026-09-09T21:13:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067758,
     "summary": "Remove version 155 train-hop fallback for --panel-background-color in the Nova Top Sites dialog",
     "product": "Firefox",
@@ -2806,6 +2779,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-31T15:47:41Z",
     "resolvedAt": "2026-09-04T04:15:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067845,
+    "summary": "Support Multiple Custom Wallpapers: Add telemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T17:10:55Z",
+    "resolvedAt": "2026-09-10T04:46:17Z"
   },
   {
     "source": "bugzilla",
@@ -2836,11 +2818,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069119,
+    "summary": "Remove the unused partner link attribution paths from newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-03T21:02:19Z",
+    "resolvedAt": "2026-09-10T09:12:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070284,
+    "summary": "The customization panel should reset when closed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T17:05:46Z",
+    "resolvedAt": "2026-09-10T09:12:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070290,
     "summary": "Newtab context menus no longer match user theme",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-08T17:19:33Z",
     "resolvedAt": "2026-09-09T04:19:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070615,
+    "summary": "Remove leftover comment",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-09T16:46:52Z",
+    "resolvedAt": "2026-09-10T09:12:49Z"
   }
 ]
