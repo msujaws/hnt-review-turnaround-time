@@ -28,30 +28,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037267,
-    "summary": "Implement celery task retry with backoff and DLQ",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T21:53:03Z",
-    "resolvedAt": "2026-06-12T16:31:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039649,
     "summary": "Implement report endpoint rate limiting",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-05-14T16:58:03Z",
     "resolvedAt": "2026-06-22T15:54:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040064,
-    "summary": "Follow up to 5 redirects",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-15T23:29:17Z",
-    "resolvedAt": "2026-06-12T18:00:59Z"
   },
   {
     "source": "bugzilla",
@@ -649,6 +631,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063777,
+    "summary": "Remove about:referrals from urlbar autocomplete",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-15T02:15:55Z",
+    "resolvedAt": "2026-09-10T04:45:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064156,
     "summary": "Unify entrypoint telemetry under a single metric",
     "product": "Firefox",
@@ -727,5 +718,14 @@
     "component": "Sharing",
     "filedAt": "2026-08-31T20:10:57Z",
     "resolvedAt": "2026-09-02T08:53:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067914,
+    "summary": "Share panel devices subview width should match main view",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-31T20:17:46Z",
+    "resolvedAt": "2026-09-09T16:34:15Z"
   }
 ]
