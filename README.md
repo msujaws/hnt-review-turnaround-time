@@ -28,7 +28,8 @@ Each group's page surfaces:
 
 - **Rolling stats** — 7d / 14d / 30d p50 / mean / p90 / %-under-SLA per source,
   with trendlines and an expandable list of the individual reviews behind each window.
-- **Overdue callout** — pending reviews that have been waiting 10× the SLA or longer.
+- **Overdue callout** — pending reviews that have been waiting 8× the SLA (32 business
+  hours) or longer.
 - **Fast-review celebration** — reviews that finished in under 2 business hours are
   counted and celebrated in the Slack unfurl (see below).
 - **Bug fix time** — how long a bug takes from filing to `RESOLVED FIXED`.
@@ -84,7 +85,7 @@ group's URL (the bare URL for Home-NewTab, `/g/<id>` for the rest) surfaces that
 group's current numbers with no bot token required.
 
 The unfurl headline can carry two prefixes ahead of the median figures: a
-`⚠ N overdue ·` warning when pending reviews have blown past 10× the SLA, and a
+`⚠ N overdue ·` warning when pending reviews have blown past 8× the SLA, and a
 `🎉 N under 2h ·` celebration counting reviews that finished in under 2 business
 hours within the headline window. The warning leads; the celebration follows.
 

@@ -11,7 +11,10 @@ import { asMaterialSymbolName, Icon } from './Icon';
 
 const WARNING_ICON = asMaterialSymbolName('warning');
 
-const OVERDUE_MULTIPLIER = 10;
+// Multiples of SLA_HOURS (4), so 32 business hours to enter the red callout
+// and 80 to start wiggling. SEVERE stays at 20 deliberately: dropping the
+// overdue bar is about catching waits earlier, not about shouting sooner.
+const OVERDUE_MULTIPLIER = 8;
 const SEVERE_MULTIPLIER = 20;
 
 const waitingHoursFor = (sample: PendingSample, now: Date, peopleMap: PeopleMap): number =>
