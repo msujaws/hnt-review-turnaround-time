@@ -56,7 +56,7 @@ describe('buildMetadataSummary', () => {
     expect(summary.description).not.toMatch(/overdue/i);
   });
 
-  it('prepends a warning and count when any pending item is overdue (≥ 40 business hours)', () => {
+  it('prepends a warning and count when any pending item is past the overdue threshold', () => {
     const summary = buildMetadataSummary([row()], 4, {
       // Mon 09:00 ET → Fri 17:00 ET is exactly 40 business hours.
       pending: [pendingGh('2026-04-13T13:00:00Z')],
@@ -66,7 +66,7 @@ describe('buildMetadataSummary', () => {
     expect(summary.description.startsWith('⚠ 1 overdue · ')).toBe(true);
   });
 
-  it('does not flag when no pending item exceeds the 10x SLA threshold', () => {
+  it('does not flag when no pending item exceeds the 8x SLA threshold', () => {
     const summary = buildMetadataSummary([row()], 4, {
       pending: [pendingGh('2026-04-20T13:00:00Z')], // Mon 09:00 ET
       now: new Date('2026-04-21T15:00:00Z'), // Tue 11:00 ET → 10h waiting

@@ -37,7 +37,7 @@ const pendingPhab = (overrides: Partial<PendingSample> & { source?: 'phab' } = {
   }) as PendingSample;
 
 describe('isOverduePending', () => {
-  it('returns true when business hours waiting meet or exceed 10x the SLA', () => {
+  it('returns true when business hours waiting meet or exceed 8x the SLA', () => {
     // Mon 2026-04-13 13:00 UTC = Mon 09:00 ET. Now = Fri 2026-04-17 21:00 UTC
     // = Fri 17:00 ET. That's exactly 5 business days × 8 hours = 40 hours.
     const sample = pendingGh();
@@ -45,7 +45,18 @@ describe('isOverduePending', () => {
     expect(isOverduePending(sample, now, EMPTY_PEOPLE_MAP, 4)).toBe(true);
   });
 
-  it('returns false when business hours waiting are below 10x the SLA', () => {
+  it('is overdue at exactly 32 business hours, and not at 31', () => {
+    // Mon 09:00 ET start. Thu 17:00 ET is 4 × 8h = 32h; Thu 16:00 ET is 31h.
+    const sample = pendingGh();
+    expect(isOverduePending(sample, new Date('2026-04-16T21:00:00Z'), EMPTY_PEOPLE_MAP, 4)).toBe(
+      true,
+    );
+    expect(isOverduePending(sample, new Date('2026-04-16T20:00:00Z'), EMPTY_PEOPLE_MAP, 4)).toBe(
+      false,
+    );
+  });
+
+  it('returns false when business hours waiting are below 8x the SLA', () => {
     const sample = pendingGh({
       requestedAt: asIsoTimestamp('2026-04-20T13:00:00Z'), // Mon 09:00 ET
     });
@@ -53,7 +64,7 @@ describe('isOverduePending', () => {
     expect(isOverduePending(sample, now, EMPTY_PEOPLE_MAP, 4)).toBe(false);
   });
 
-  it('returns false for an acceptedByTeam pending entry even when its age is over 10x the SLA', () => {
+  it('returns false for an acceptedByTeam pending entry even when its age is over 8x the SLA', () => {
     // The team has accepted; the revision is still in needs-review because
     // an external reviewer is blocking. We don't want to alarm the team's
     // page about a wait they've already discharged — Backlog surfaces these
@@ -93,7 +104,7 @@ describe('OverdueCallout', () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it('renders nothing when no pending item has waited 40+ business hours', () => {
+  it('renders nothing when no pending item has waited 32+ business hours', () => {
     const pending = [
       pendingGh({
         requestedAt: asIsoTimestamp('2026-04-20T13:00:00Z'), // Mon 09:00 ET
@@ -186,6 +197,20 @@ describe('OverdueCallout', () => {
     const rows = screen.getAllByTestId('overdue-row');
     expect(within(rows[0]!).getByText('older')).toBeInTheDocument();
     expect(within(rows[1]!).getByText('younger')).toBeInTheDocument();
+  });
+
+  it('states the 32-hour threshold in the heading', () => {
+    render(
+      <OverdueCallout
+        pending={[pendingGh()]}
+        now={new Date('2026-04-17T21:00:00Z')}
+        slaHours={4}
+        peopleMap={EMPTY_PEOPLE_MAP}
+      />,
+    );
+    expect(screen.getByRole('heading', { name: /overdue/i })).toHaveTextContent(
+      'waiting 32h+ business hours',
+    );
   });
 
   it('includes a visible count of overdue items in the heading', () => {
