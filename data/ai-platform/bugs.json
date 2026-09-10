@@ -100,15 +100,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036795,
-    "summary": "[Models] Update BigQuery tables and Dashboard plots after consolidation",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-04T14:23:42Z",
-    "resolvedAt": "2026-06-12T19:16:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036831,
     "summary": "Intent model classifies comparison queries w/ @mentions as search instead of ask",
     "product": "Core",
@@ -1378,12 +1369,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 1982104,
-    "summary": "[GenAI Chat Sidebar] The group of radio controls to select an AI provider is not labeled",
+    "id": 2070374,
+    "summary": "Update ML Form Autofill processing achiecture to remove tags that appear in all fields in the form",
     "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2025-08-08T19:56:03Z",
-    "resolvedAt": "2026-06-12T07:49:16Z"
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-08T22:34:08Z",
+    "resolvedAt": "2026-09-10T04:47:10Z"
   },
   {
     "source": "bugzilla",
@@ -1456,15 +1447,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-02-24T18:24:22Z",
     "resolvedAt": "2026-07-16T03:51:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2022507,
-    "summary": "The Assistant does not recognize the users intention to reach a Website in a follow up conversation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-11T11:15:25Z",
-    "resolvedAt": "2026-06-12T07:49:34Z"
   },
   {
     "source": "bugzilla",
@@ -1585,15 +1567,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2031459,
-    "summary": "Abort in-progress AI responses when browsingContext is destroyed (tab close/navigation)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-13T20:59:03Z",
-    "resolvedAt": "2026-06-12T07:49:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2032199,
     "summary": "Spike: Align on technical approach for history thumbnails",
     "product": "Core",
@@ -1684,15 +1657,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038242,
-    "summary": "Replace hardcoded strings with L10n strings",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-08T14:26:14Z",
-    "resolvedAt": "2026-06-12T07:50:03Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038267,
     "summary": "Spike: Investigate generic error spikes and improve error visibility",
     "product": "Core",
@@ -1756,15 +1720,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040449,
-    "summary": "Handle restored chats with incomplete or abandoned browser actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-18T18:12:04Z",
-    "resolvedAt": "2026-06-12T21:18:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040712,
     "summary": "[meta] Smart Window 152 uplifts",
     "product": "Core",
@@ -1789,15 +1744,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-20T18:58:58Z",
     "resolvedAt": "2026-06-19T15:50:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041178,
-    "summary": "Remove or update metrics expiring at the end of Firefox 153: genai.chatbot.* before Gecko switches to version 154 on 2026-06-15",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-21T02:39:47Z",
-    "resolvedAt": "2026-06-12T21:18:57Z"
   },
   {
     "source": "bugzilla",
@@ -1837,24 +1783,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042936,
-    "summary": "Respect Smart Window default setting for Cmd/Ctrl + N",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-27T19:19:10Z",
-    "resolvedAt": "2026-06-12T07:50:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043323,
-    "summary": "Prevent Fx Suggest navigation results from appearing as Ask items",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-28T16:04:43Z",
-    "resolvedAt": "2026-06-12T21:19:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044078,
     "summary": "Smartbar model picker for BYOM does not work as expected",
     "product": "Core",
@@ -1870,15 +1798,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-01T17:31:31Z",
     "resolvedAt": "2026-07-10T10:22:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044126,
-    "summary": "add event extras to firstrun reflecting selections and metric for default",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-01T18:13:03Z",
-    "resolvedAt": "2026-06-12T21:19:41Z"
   },
   {
     "source": "bugzilla",
@@ -1924,15 +1843,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-04T23:41:38Z",
     "resolvedAt": "2026-07-04T21:38:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045362,
-    "summary": "Frequent browser/components/aiwindow/ui/test/browser/browser_sidebar_aiwindow.js | test_aichat_sidebar_toggle_keybinding_in_smartwindow_sidebar - Should toggle sidebar closed - false == true | single tracking bug",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-05T23:05:29Z",
-    "resolvedAt": "2026-06-12T21:20:11Z"
   },
   {
     "source": "bugzilla",
@@ -2041,15 +1951,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-11T15:18:41Z",
     "resolvedAt": "2026-06-23T22:00:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046845,
-    "summary": "[Nova] Add gradient borders for Smart Window chat buttons",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-11T15:22:31Z",
-    "resolvedAt": "2026-06-12T21:21:02Z"
   },
   {
     "source": "bugzilla",
@@ -3223,6 +3124,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058028,
+    "summary": "The Menus/Panels from the Smart Window homepage will move position if the user Holds the left mouse click and releases it anywhere else",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-27T09:35:10Z",
+    "resolvedAt": "2026-09-10T04:45:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058205,
     "summary": "Complete SW Organize Tabs v0 Styling",
     "product": "Core",
@@ -3817,6 +3727,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063156,
+    "summary": "Audit skipped submitChatMessage behavior for resume conversations",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-13T03:33:09Z",
+    "resolvedAt": "2026-09-10T09:10:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063257,
     "summary": "The Mistral AI model will not show the Memories used panel even though its using saved memories",
     "product": "Core",
@@ -4105,6 +4024,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067813,
+    "summary": "Make \"Pages to watch\" URL a clickable context chip in the monitor task flow",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T15:48:12Z",
+    "resolvedAt": "2026-09-10T04:46:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067823,
     "summary": "[Monitor Agent] [FE] Monitor time default to user's current half hour",
     "product": "Core",
@@ -4120,6 +4048,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-31T19:56:11Z",
     "resolvedAt": "2026-09-06T09:35:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067919,
+    "summary": "Frequent out of memory: 0x0000000000101000 bytes requested [@ mozalloc_handle_oom] | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T20:22:54Z",
+    "resolvedAt": "2026-09-10T04:46:21Z"
   },
   {
     "source": "bugzilla",
