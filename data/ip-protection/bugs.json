@@ -226,15 +226,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2041521,
-    "summary": "Add Nova icons for Firefox :: IP Protection",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-22T01:21:10Z",
-    "resolvedAt": "2026-06-12T21:19:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042691,
     "summary": "[a11y] Unavailable locations are completely skipped by keyboard navigation and screen readers",
     "product": "Firefox",
@@ -259,15 +250,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-28T09:29:31Z",
     "resolvedAt": "2026-06-30T13:35:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044420,
-    "summary": "Unset button width for unauthenticated state",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-02T17:46:09Z",
-    "resolvedAt": "2026-06-12T21:19:52Z"
   },
   {
     "source": "bugzilla",
@@ -316,24 +298,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044825,
-    "summary": "Remove borders for location buttons in locations subview",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-03T22:34:27Z",
-    "resolvedAt": "2026-06-12T07:51:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045154,
-    "summary": "Text color for selected location has poor contrast with dark mode and nova enabled",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-04T23:25:14Z",
-    "resolvedAt": "2026-06-12T07:51:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045856,
     "summary": "Update VPN panel width to smaller size",
     "product": "Firefox",
@@ -376,15 +340,6 @@
     "component": "IP Protection",
     "filedAt": "2026-06-10T20:49:12Z",
     "resolvedAt": "2026-06-23T09:44:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047020,
-    "summary": "Apply bold font weight for Recommended label in locations subview",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-11T23:30:10Z",
-    "resolvedAt": "2026-06-12T21:21:29Z"
   },
   {
     "source": "bugzilla",
@@ -892,6 +847,51 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068264,
+    "summary": "Add a new component to the IP Protection panel for rule applied",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-01T20:56:17Z",
+    "resolvedAt": "2026-09-10T04:46:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068268,
+    "summary": "Add a new section to the IP Protection panel for setting/managing site rules",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-01T21:01:27Z",
+    "resolvedAt": "2026-09-10T04:46:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068276,
+    "summary": "Add new toolbar icon state for applied inclusion",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-01T21:25:50Z",
+    "resolvedAt": "2026-09-10T04:46:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068281,
+    "summary": "Update copy for the Get Started state of the IP Protection panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-01T21:49:31Z",
+    "resolvedAt": "2026-09-10T04:46:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068287,
+    "summary": "Create a new sub-pane for built-in VPN rules in settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-01T22:13:32Z",
+    "resolvedAt": "2026-09-10T04:46:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068547,
     "summary": "VPN location list fails to update dynamically after default browser change without a browser restart",
     "product": "Firefox",
@@ -907,5 +907,14 @@
     "component": "IP Protection",
     "filedAt": "2026-09-02T11:36:58Z",
     "resolvedAt": "2026-09-07T16:07:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068640,
+    "summary": "VPN location list fails to update dynamically after account switch without a browser restart",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-02T15:29:33Z",
+    "resolvedAt": "2026-09-09T14:12:03Z"
   }
 ]
