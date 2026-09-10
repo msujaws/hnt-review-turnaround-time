@@ -91,15 +91,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044859,
-    "summary": "Remove unused contextmenu event handler from GeckoViewPromptChild",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-04T01:55:01Z",
-    "resolvedAt": "2026-06-12T07:51:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2045663,
     "summary": "Improve Magnifier area for <textarea>",
     "product": "GeckoView",
@@ -259,15 +250,6 @@
     "component": "General",
     "filedAt": "2026-07-24T22:36:20Z",
     "resolvedAt": "2026-07-29T18:36:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057685,
-    "summary": "[2.5] Define GeckoView API endpoint with supporting backend",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-24T22:42:07Z",
-    "resolvedAt": "2026-09-09T04:17:21Z"
   },
   {
     "source": "bugzilla",
@@ -514,11 +496,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069407,
+    "summary": "[UI] Change color when typed to primary",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-04T15:19:49Z",
+    "resolvedAt": "2026-09-10T04:46:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069463,
     "summary": "Make the widget/android JNI helper templates inline to fix -Wunused-template with clang 23",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-09-04T17:56:54Z",
     "resolvedAt": "2026-09-08T15:41:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069485,
+    "summary": "[PDF.js] Logic for placing a signature on Android in viewer-geckoview.mjs",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-04T18:52:25Z",
+    "resolvedAt": "2026-09-09T20:22:35Z"
   }
 ]
