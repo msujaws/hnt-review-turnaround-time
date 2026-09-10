@@ -154,6 +154,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2051212,
+    "summary": "[Nova] Split view size inconsistent between selected and non-selected causing layout changes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-06-29T07:48:10Z",
+    "resolvedAt": "2026-09-10T04:44:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2051246,
     "summary": "Panel headers have become oversized",
     "product": "Firefox",
@@ -466,5 +475,14 @@
     "component": "Theme",
     "filedAt": "2026-09-08T15:47:58Z",
     "resolvedAt": "2026-09-08T22:28:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070261,
+    "summary": "Tweak chrome-content separator color defaults for nova.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-08T16:14:29Z",
+    "resolvedAt": "2026-09-10T09:12:26Z"
   }
 ]
