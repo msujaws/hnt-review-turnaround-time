@@ -748,6 +748,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2060820,
+    "summary": "[META][QA][QA-5543] Built-in VPN summer promo offramp messaging rollout",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-05T10:42:54Z",
+    "resolvedAt": "2026-09-11T06:46:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2060821,
     "summary": "[Rollout] The messages of the “Built‑in VPN Beta – Summer promo off‑ramp messaging rollout” have no chance to be shown to clients, as there is no VPN Toolbar button available after enrolling in the rollout",
     "product": "Firefox",
