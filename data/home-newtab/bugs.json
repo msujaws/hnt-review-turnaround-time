@@ -280,15 +280,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040014,
-    "summary": "Migrate Lists widget to useWidgetTelemetry",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T20:00:46Z",
-    "resolvedAt": "2026-06-13T21:05:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040024,
     "summary": "Migrate World Clock widget to useWidgetTelemetry",
     "product": "Firefox",
@@ -2314,6 +2305,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063266,
+    "summary": "error installing newtab after bug 2025793",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T12:48:35Z",
+    "resolvedAt": "2026-09-10T19:35:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063274,
     "summary": "[macOS][Voiceover] Privacy widget is seen as article, and nearly all the content inside is seen as clickable",
     "product": "Firefox",
@@ -2827,6 +2827,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069383,
+    "summary": "New Tab does not pick up High Contrast Mode on Linux and macOS",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-04T14:37:13Z",
+    "resolvedAt": "2026-09-10T16:31:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070284,
     "summary": "The customization panel should reset when closed",
     "product": "Firefox",
@@ -2842,6 +2851,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-08T17:19:33Z",
     "resolvedAt": "2026-09-09T04:19:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070362,
+    "summary": "Add section variantId and sourceSectionId telemetry to newtab content impression & click events",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T21:27:30Z",
+    "resolvedAt": "2026-09-10T21:48:30Z"
   },
   {
     "source": "bugzilla",
