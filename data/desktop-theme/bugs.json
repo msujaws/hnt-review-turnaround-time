@@ -28,6 +28,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2037167,
+    "summary": "Problems with menus and Windows (High) Contrast themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-05-05T16:30:29Z",
+    "resolvedAt": "2026-09-11T04:24:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2038764,
     "summary": "Remove Nova outer window padding when the window is fullscreen",
     "product": "Firefox",
@@ -52,15 +61,6 @@
     "component": "Theme",
     "filedAt": "2026-06-09T16:59:41Z",
     "resolvedAt": "2026-06-18T09:49:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046822,
-    "summary": "Use `background-clip: border-area` to implement the selected tab border gradient",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-11T14:33:29Z",
-    "resolvedAt": "2026-06-13T21:06:32Z"
   },
   {
     "source": "bugzilla",
@@ -469,6 +469,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069497,
+    "summary": "[Nova] Visual refinements by updating default themes for light and dark",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-04T19:29:24Z",
+    "resolvedAt": "2026-09-10T16:32:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070251,
     "summary": "Remove PersonalToolbar top border from nova.",
     "product": "Firefox",
@@ -484,5 +493,32 @@
     "component": "Theme",
     "filedAt": "2026-09-08T16:14:29Z",
     "resolvedAt": "2026-09-10T09:12:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070550,
+    "summary": "Nova background color does not apply to expand-on-hover sidebar",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-09T14:15:36Z",
+    "resolvedAt": "2026-09-10T16:32:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070969,
+    "summary": "window inactive change in bug 2069497 kills performance.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-10T15:16:11Z",
+    "resolvedAt": "2026-09-11T04:25:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070971,
+    "summary": "Native theme toolbox is incorrectly black.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-10T15:30:42Z",
+    "resolvedAt": "2026-09-10T21:49:01Z"
   }
 ]
