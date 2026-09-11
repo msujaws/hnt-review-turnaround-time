@@ -154,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039709,
-    "summary": "Refresh models cache in about:preferences with RS update",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-14T20:28:07Z",
-    "resolvedAt": "2026-06-13T21:05:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040435,
     "summary": "[Models] Fix tool rounds in evaluation framework",
     "product": "Core",
@@ -1369,6 +1360,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068580,
+    "summary": "Update llama.cpp metal backend",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-02T13:02:21Z",
+    "resolvedAt": "2026-09-10T21:47:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068758,
+    "summary": "Perma macosx 15 opt toolkit/components/ml/tests/browser/browser_ml_native.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-02T20:32:06Z",
+    "resolvedAt": "2026-09-10T21:47:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070374,
     "summary": "Update ML Form Autofill processing achiecture to remove tags that appear in all fields in the form",
     "product": "Core",
@@ -1549,15 +1558,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2029031,
-    "summary": "Empty Chat View when loading Chats in Firefox View",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-02T22:54:20Z",
-    "resolvedAt": "2026-06-13T21:04:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2030683,
     "summary": "Show Bookmark Bar on Smart Window New Tab when \"Only Show on New Tab\" setting enabled",
     "product": "Core",
@@ -1609,15 +1609,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-23T16:39:26Z",
     "resolvedAt": "2026-06-23T21:59:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034586,
-    "summary": "[meta] Smart Window 151.0.x uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-23T18:58:32Z",
-    "resolvedAt": "2026-06-13T21:59:01Z"
   },
   {
     "source": "bugzilla",
@@ -1693,15 +1684,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039835,
-    "summary": "Remove browser.smartwindow.allowTables pref and deprecated code paths",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-15T10:14:50Z",
-    "resolvedAt": "2026-06-13T21:05:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040041,
     "summary": "Expose Mistral strings to localization",
     "product": "Core",
@@ -1717,15 +1699,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-15T22:26:18Z",
     "resolvedAt": "2026-07-31T22:06:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040712,
-    "summary": "[meta] Smart Window 152 uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T16:29:21Z",
-    "resolvedAt": "2026-06-13T22:06:50Z"
   },
   {
     "source": "bugzilla",
@@ -1753,15 +1726,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-22T22:10:57Z",
     "resolvedAt": "2026-06-16T08:46:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042679,
-    "summary": "Duplicate Firefox Suggest section in smartbar suggestions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-27T09:41:24Z",
-    "resolvedAt": "2026-06-13T21:05:28Z"
   },
   {
     "source": "bugzilla",
@@ -3709,6 +3673,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062965,
+    "summary": "The Organize tabs panels sees new Tabs with different conversations started as duplicated tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-12T13:15:57Z",
+    "resolvedAt": "2026-09-11T09:44:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063009,
     "summary": "[Models] Evaluate LLM based Auto Tab Grouping",
     "product": "Core",
@@ -3796,6 +3769,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-17T15:37:51Z",
     "resolvedAt": "2026-09-03T21:02:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064128,
+    "summary": "Show the Memories Applied button for PUWYLO responses",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-17T16:32:32Z",
+    "resolvedAt": "2026-09-11T04:24:43Z"
   },
   {
     "source": "bugzilla",
@@ -3895,6 +3877,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-19T10:11:01Z",
     "resolvedAt": "2026-09-06T20:39:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064735,
+    "summary": "PUWYLO confirmation cards become non-functional \"Retry\" prompts after restart",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T15:10:23Z",
+    "resolvedAt": "2026-09-11T09:44:21Z"
   },
   {
     "source": "bugzilla",
@@ -4015,6 +4006,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067076,
+    "summary": "The Jump to Bottom button cannot be clicked and does not have any hover or pressed states",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-27T10:47:41Z",
+    "resolvedAt": "2026-09-11T09:44:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067140,
+    "summary": "The Classic Sidebar panel does not have the same color as the Toolbar in Smart Window with Nova enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-27T12:58:29Z",
+    "resolvedAt": "2026-09-11T04:25:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067217,
     "summary": "Make the chat tab card responsive with a max width in full-width chat",
     "product": "Core",
@@ -4111,6 +4120,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-08T10:54:40Z",
     "resolvedAt": "2026-09-08T22:28:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070652,
+    "summary": "Record Glean events for the Smart Window Firefox Accounts sign-in flow",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-09T18:24:47Z",
+    "resolvedAt": "2026-09-11T09:45:38Z"
   },
   {
     "source": "bugzilla",

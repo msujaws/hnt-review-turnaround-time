@@ -331,16 +331,6 @@
   },
   {
     "source": "github",
-    "id": 173,
-    "repo": "Firefox-AI/MLPA",
-    "author": "randy-concepcion",
-    "reviewer": "noahpodgurski",
-    "requestedAt": "2026-06-13T05:12:24Z",
-    "firstActionAt": "2026-06-15T17:21:42Z",
-    "tatBusinessHours": 4.361666666666666
-  },
-  {
-    "source": "github",
     "id": 180,
     "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
@@ -1268,5 +1258,125 @@
     "firstActionAt": "2026-09-09T15:33:21Z",
     "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 0.03833333333333333
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-4d5kg2hj6jo2itvxpwmd",
+    "revisionId": 323351,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-09T12:26:12.000Z",
+    "firstActionAt": "2026-09-10T22:42:28.000Z",
+    "tatBusinessHours": 16
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-tf3tcb23ukfuj3wp3nhe",
+    "revisionId": 322474,
+    "author": "nordzilla",
+    "reviewer": "valentinp",
+    "requestedAt": "2026-09-10T17:31:11.000Z",
+    "firstActionAt": "2026-09-11T14:08:37.000Z",
+    "tatBusinessHours": 4.623888888888889
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ho5jskwvvkivii2pqcsd",
+    "revisionId": 323155,
+    "author": "nordzilla",
+    "reviewer": "valentinp",
+    "requestedAt": "2026-09-10T17:31:13.000Z",
+    "firstActionAt": "2026-09-11T14:08:12.000Z",
+    "tatBusinessHours": 4.616388888888889
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-b6jpkwynv2qhrlxls4oe",
+    "revisionId": 322000,
+    "author": "nordzilla",
+    "reviewer": "valentinp",
+    "requestedAt": "2026-09-01T04:18:26.000Z",
+    "firstActionAt": "2026-09-03T18:39:13.000Z",
+    "tatBusinessHours": 21.65361111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-z57cnwpsdkli4zjzfesl",
+    "revisionId": 323352,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-09T12:26:29.000Z",
+    "firstActionAt": "2026-09-10T22:47:19.000Z",
+    "tatBusinessHours": 16
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-yolbjp5e4jjcxjbvjq4n",
+    "revisionId": 322589,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-09T12:25:46.000Z",
+    "firstActionAt": "2026-09-10T22:41:07.000Z",
+    "tatBusinessHours": 16
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-nm73duzdnktukxqxa5wb",
+    "revisionId": 325375,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-11T12:45:23.000Z",
+    "firstActionAt": "2026-09-11T13:15:06.000Z",
+    "tatBusinessHours": 0.25166666666666665
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-s5mesg4gapw5q4y2ly5p",
+    "revisionId": 323350,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-08T13:31:26.000Z",
+    "firstActionAt": "2026-09-10T22:38:57.000Z",
+    "tatBusinessHours": 23.47611111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-jibbycdaiqkohm5ihcpr",
+    "revisionId": 323349,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-08T13:31:23.000Z",
+    "firstActionAt": "2026-09-10T22:36:59.000Z",
+    "tatBusinessHours": 23.476944444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ngrnfie6aa54qiqb7lmm",
+    "revisionId": 322590,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-08T13:31:18.000Z",
+    "firstActionAt": "2026-09-10T22:31:02.000Z",
+    "tatBusinessHours": 23.478333333333335
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ya7grjiiwafcrpfgaeoc",
+    "revisionId": 322588,
+    "author": "valentinp",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-08T13:31:14.000Z",
+    "firstActionAt": "2026-09-10T22:00:05.000Z",
+    "tatBusinessHours": 23.479444444444443
+  },
+  {
+    "source": "github",
+    "id": 260,
+    "author": "noahpodgurski",
+    "reviewer": "subpath",
+    "requestedAt": "2026-09-11T13:14:59Z",
+    "firstActionAt": "2026-09-11T13:22:41Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 0.12833333333333333
   }
 ]
