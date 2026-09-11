@@ -37,6 +37,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2040812,
+    "summary": "Passkey autofill entries not shown on autocomplete=\"webauthn\" form",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-05-19T23:37:11Z",
+    "resolvedAt": "2026-09-10T21:47:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2041353,
     "summary": "Application Services Rust storage as primary login store on Desktop",
     "product": "Toolkit",
@@ -385,5 +394,14 @@
     "component": "Password Manager",
     "filedAt": "2026-08-21T17:02:21Z",
     "resolvedAt": "2026-08-22T21:28:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070108,
+    "summary": "Improve Primary Password telemetry",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-08T08:46:04Z",
+    "resolvedAt": "2026-09-10T16:32:14Z"
   }
 ]
