@@ -10,24 +10,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037237,
-    "summary": "Remove or gate unused endpoints",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T19:51:49Z",
-    "resolvedAt": "2026-06-16T15:53:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037265,
-    "summary": "Enforce per-user share limit",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-05T21:36:29Z",
-    "resolvedAt": "2026-06-15T19:10:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039649,
     "summary": "Implement report endpoint rate limiting",
     "product": "Firefox",
@@ -145,51 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042562,
-    "summary": "Wrong execution of naming when page has no name",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-26T23:19:20Z",
-    "resolvedAt": "2026-06-16T13:19:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042564,
-    "summary": "Report unsafe page tweaks",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-26T23:20:41Z",
-    "resolvedAt": "2026-06-15T18:37:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044458,
-    "summary": "Add download firefox banner to link page",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-02T20:21:29Z",
-    "resolvedAt": "2026-06-16T14:47:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044488,
-    "summary": "<Enter> doesn't copy the QR code by default",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-02T21:59:37Z",
-    "resolvedAt": "2026-06-16T08:46:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044511,
-    "summary": "\".png\" not appended to saved generated QR codes",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-03T00:06:08Z",
-    "resolvedAt": "2026-06-16T08:46:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044674,
     "summary": "The url from the QR code pop-up is displayed incorrectly on RTL builds",
     "product": "Firefox",
@@ -217,24 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047024,
-    "summary": "Github complaints: Update Dockerfile to use node.js 24 before June 16",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-11T23:39:02Z",
-    "resolvedAt": "2026-06-16T15:57:27Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047276,
-    "summary": "Add Fastly WAF to prod env",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-12T19:33:42Z",
-    "resolvedAt": "2026-06-16T20:46:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048017,
     "summary": "Add Otel custom metrics to",
     "product": "Firefox",
@@ -250,15 +169,6 @@
     "component": "Sharing",
     "filedAt": "2026-06-16T23:34:08Z",
     "resolvedAt": "2026-06-17T22:31:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048116,
-    "summary": "add FxA prod URLs to k8s config",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-17T00:32:57Z",
-    "resolvedAt": "2026-06-17T00:43:26Z"
   },
   {
     "source": "bugzilla",
@@ -700,6 +610,15 @@
     "component": "Sharing",
     "filedAt": "2026-08-26T13:42:08Z",
     "resolvedAt": "2026-08-28T11:37:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067093,
+    "summary": "The Referral Message displayed on the New Tab Page is positioned incorrectly",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-27T11:29:56Z",
+    "resolvedAt": "2026-09-11T16:57:42Z"
   },
   {
     "source": "bugzilla",
