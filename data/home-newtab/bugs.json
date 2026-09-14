@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2018708,
+    "summary": "Migrate TopSites unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:14:25Z",
+    "resolvedAt": "2026-09-11T20:14:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2018709,
     "summary": "Migrate Base unit test to Jest/RTL",
     "product": "Firefox",
@@ -82,12 +91,30 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018751,
-    "summary": "Update Content Feed / Section UI to Nova",
+    "id": 2018711,
+    "summary": "Migrate Widgets unit tests to Jest/RTL",
     "product": "Firefox",
     "component": "New Tab Page",
-    "filedAt": "2026-02-23T19:52:03Z",
-    "resolvedAt": "2026-06-16T21:08:17Z"
+    "filedAt": "2026-02-23T18:16:04Z",
+    "resolvedAt": "2026-09-11T20:14:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018712,
+    "summary": "Migrate CustomizeMenu unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:16:35Z",
+    "resolvedAt": "2026-09-11T20:14:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018713,
+    "summary": "Migrate DiscoveryStreamComponents unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:17:13Z",
+    "resolvedAt": "2026-09-11T20:14:22Z"
   },
   {
     "source": "bugzilla",
@@ -109,30 +136,21 @@
   },
   {
     "source": "bugzilla",
-    "id": 2020418,
-    "summary": "Create Claude skill for @nova-cleanup code comments",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-02T17:52:22Z",
-    "resolvedAt": "2026-06-16T21:12:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2022046,
-    "summary": "Integrate new Nova design tokens into newtab",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-09T21:12:59Z",
-    "resolvedAt": "2026-06-16T21:20:09Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2022264,
     "summary": "IAB Ads Devtools toggle fix",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-03-10T16:10:04Z",
     "resolvedAt": "2026-08-18T09:24:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2024070,
+    "summary": "Migrate common/ Enzyme unit tests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-17T22:37:36Z",
+    "resolvedAt": "2026-09-11T20:14:26Z"
   },
   {
     "source": "bugzilla",
@@ -151,15 +169,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-03-24T14:18:11Z",
     "resolvedAt": "2026-08-07T20:08:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2030876,
-    "summary": "Nova customization panel - Upload Nova wallpapers",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-10T04:51:35Z",
-    "resolvedAt": "2026-06-16T21:09:15Z"
   },
   {
     "source": "bugzilla",
@@ -196,15 +205,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-20T19:30:52Z",
     "resolvedAt": "2026-07-01T09:31:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034105,
-    "summary": "Disabled toggles from the Customize menu of the New Tab have insufficient contrast and are barely visible in Dark Theme",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-22T14:32:19Z",
-    "resolvedAt": "2026-06-16T21:09:45Z"
   },
   {
     "source": "bugzilla",
@@ -259,6 +259,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-06T14:43:22Z",
     "resolvedAt": "2026-09-03T16:31:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2037472,
+    "summary": "Timer widget - Cannot switch between focus / break via keyboard controls",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-06T14:52:54Z",
+    "resolvedAt": "2026-09-11T09:43:43Z"
   },
   {
     "source": "bugzilla",
@@ -322,15 +331,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-05-29T20:06:36Z",
     "resolvedAt": "2026-07-12T11:36:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044372,
-    "summary": "If a match ended in penalties, the penalties text is visible when the WCW is in medium size layout",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T15:37:56Z",
-    "resolvedAt": "2026-06-15T02:18:25Z"
   },
   {
     "source": "bugzilla",
@@ -424,15 +424,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046439,
-    "summary": "Update locales for Firefox 152 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-10T14:22:46Z",
-    "resolvedAt": "2026-06-15T02:18:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046594,
     "summary": "Include Small size widgets in the \"Maximize\" action when in the widget row",
     "product": "Firefox",
@@ -487,48 +478,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047068,
-    "summary": "world cup widget doesn't show last result by default",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-12T06:42:38Z",
-    "resolvedAt": "2026-06-15T19:56:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047272,
     "summary": "Firefox restart required to see \"live\" tab in world cup widget",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-12T19:17:17Z",
     "resolvedAt": "2026-06-18T09:50:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047453,
-    "summary": "Update runtime-metrics for Firefox 152 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-14T20:16:40Z",
-    "resolvedAt": "2026-06-15T02:18:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047456,
-    "summary": "WCW Blank page after matches end",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-14T21:50:39Z",
-    "resolvedAt": "2026-06-15T21:16:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047457,
-    "summary": "Minimizing widgets with the ^ button doesn't work with View All",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-14T21:55:19Z",
-    "resolvedAt": "2026-06-15T21:16:46Z"
   },
   {
     "source": "bugzilla",
@@ -2107,6 +2062,87 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062299,
+    "summary": "Migrate DiscoveryStreamFeed unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:32:53Z",
+    "resolvedAt": "2026-09-11T20:15:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062300,
+    "summary": "Migrate PrefsFeed unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:33:41Z",
+    "resolvedAt": "2026-09-11T20:15:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062301,
+    "summary": "Migrate ActivityStream unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:33:56Z",
+    "resolvedAt": "2026-09-11T20:15:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062302,
+    "summary": "Migrate AboutPreferences and SectionsManager unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:34:14Z",
+    "resolvedAt": "2026-09-11T20:15:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062303,
+    "summary": "Migrate ActivityStreamMessageChannel and DownloadsManager unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:34:30Z",
+    "resolvedAt": "2026-09-11T20:15:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062304,
+    "summary": "Migrate simple lib/ unit tests to Jest",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:34:48Z",
+    "resolvedAt": "2026-09-11T20:15:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062305,
+    "summary": "Migrate Widgets container and Nova WidgetsManagementPanel unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:35:06Z",
+    "resolvedAt": "2026-09-11T20:15:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062306,
+    "summary": "Migrate TopSites hover card and web notification unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:35:23Z",
+    "resolvedAt": "2026-09-11T20:15:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062307,
+    "summary": "Migrate content-src/lib unit tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:35:37Z",
+    "resolvedAt": "2026-09-11T20:15:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062360,
     "summary": "Widget size 'medium' isn't usable for all widgets",
     "product": "Firefox",
@@ -2602,6 +2638,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066344,
+    "summary": "Add telemetry for theme selection in the New Tab customization panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T04:40:39Z",
+    "resolvedAt": "2026-09-11T09:44:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066474,
+    "summary": "Lists widget switcher menu no longer shows a checkmark on the selected list",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T15:07:25Z",
+    "resolvedAt": "2026-09-12T09:40:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066504,
     "summary": "Dedupe impressions for a carousel slide that cycles back into view",
     "product": "Firefox",
@@ -2818,6 +2872,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068811,
+    "summary": "Land Fluent strings for the Nova launch New Tab customization callout",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-03T01:56:36Z",
+    "resolvedAt": "2026-09-12T09:41:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069119,
     "summary": "Remove the unused partner link attribution paths from newtab",
     "product": "Firefox",
@@ -2854,6 +2917,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070294,
+    "summary": "Newtab section context menu buttons are wrong colour",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T17:24:32Z",
+    "resolvedAt": "2026-09-11T09:45:19Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070362,
     "summary": "Add section variantId and sourceSectionId telemetry to newtab content impression & click events",
     "product": "Firefox",
@@ -2869,5 +2941,41 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-09T16:46:52Z",
     "resolvedAt": "2026-09-10T09:12:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070627,
+    "summary": "New Tab serves MARS and cached ads when the ads-client is enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-09T17:13:52Z",
+    "resolvedAt": "2026-09-11T09:45:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070696,
+    "summary": "Newtab sections pref for all launched markets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-09T20:48:28Z",
+    "resolvedAt": "2026-09-11T09:45:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071368,
+    "summary": "Newtab tests are reporting a lint error that slipped through",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T15:38:57Z",
+    "resolvedAt": "2026-09-11T20:21:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071406,
+    "summary": "Restore transparency to New Tab card backgrounds",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T17:06:10Z",
+    "resolvedAt": "2026-09-12T09:43:16Z"
   }
 ]
