@@ -748,6 +748,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064098,
+    "summary": "[Models] Implement telemetry for tracking SFF model performance",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-17T15:32:58Z",
+    "resolvedAt": "2026-09-15T04:36:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064196,
     "summary": "PUWYLO v0 Fast Follow: Filter out memories with no associated pages",
     "product": "Core",
@@ -790,6 +799,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-19T19:04:59Z",
     "resolvedAt": "2026-08-21T04:22:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065119,
+    "summary": "Crash in [@ AsyncShutdownTimeout | profile-before-change | MonitorStore: Shutdown]",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-20T12:31:41Z",
+    "resolvedAt": "2026-09-14T21:48:23Z"
   },
   {
     "source": "bugzilla",
@@ -1270,6 +1288,51 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065012,
+    "summary": "Implement End-to-End Performance Coverage for ML Form Autofill",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T04:32:48Z",
+    "resolvedAt": "2026-09-15T04:36:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065247,
+    "summary": "Implement End-to-End Performance Coverage for Link Preview",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T18:37:23Z",
+    "resolvedAt": "2026-09-15T04:36:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065253,
+    "summary": "Implement End-to-End Performance Coverage for Semantic History Search",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T18:54:13Z",
+    "resolvedAt": "2026-09-15T04:36:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065257,
+    "summary": "Implement End-to-End Performance Coverage for Smart Tab Grouping",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T19:07:36Z",
+    "resolvedAt": "2026-09-15T04:36:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065260,
+    "summary": "Implement End-to-End Performance Coverage for ML-Backed Firefox Suggest",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T19:18:07Z",
+    "resolvedAt": "2026-09-15T04:36:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065269,
     "summary": "Decide Whether to Retain the Generic ML Engine Performance Tests",
     "product": "Core",
@@ -1321,6 +1384,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-09-02T20:32:06Z",
     "resolvedAt": "2026-09-10T21:47:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069021,
+    "summary": "Add perftesting utilities to support end-to-end performance testing",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-03T15:28:45Z",
+    "resolvedAt": "2026-09-15T04:37:02Z"
   },
   {
     "source": "bugzilla",
@@ -1495,15 +1567,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2032199,
-    "summary": "Spike: Align on technical approach for history thumbnails",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-15T20:58:56Z",
-    "resolvedAt": "2026-06-17T16:35:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033002,
     "summary": "Build feedback modal shell and wire to thumbs actions",
     "product": "Core",
@@ -1585,24 +1648,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038353,
-    "summary": "Investigate ChatGPT 431 error when summarizing long pages",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-08T21:40:09Z",
-    "resolvedAt": "2026-06-17T22:09:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038361,
-    "summary": "Investigate and resolve Smart Bar vs Address Bar suggestion discrepancies",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-08T22:52:23Z",
-    "resolvedAt": "2026-06-17T10:44:27Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039351,
     "summary": "Smart Window tab restore should restore the tab's chat conversation",
     "product": "Core",
@@ -1648,15 +1693,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042830,
-    "summary": "Smart Window: @-mentioned tabs not propagated to model - contextMentions arrives empty at prompt building",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-27T14:26:54Z",
-    "resolvedAt": "2026-06-17T10:45:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042932,
     "summary": "Spike: Evaluate bringing Classic Window shortcuts to Smart Window new tab",
     "product": "Core",
@@ -1699,15 +1735,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-04T23:41:38Z",
     "resolvedAt": "2026-07-04T21:38:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045888,
-    "summary": "Restore Smartbar focus when opening sidebar via Ask button",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-08T20:39:58Z",
-    "resolvedAt": "2026-06-17T22:09:58Z"
   },
   {
     "source": "bugzilla",
@@ -1906,24 +1933,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-12T21:33:49Z",
     "resolvedAt": "2026-07-14T21:42:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047305,
-    "summary": "Add remoteTypes for AISmartBar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T21:35:22Z",
-    "resolvedAt": "2026-06-17T10:49:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047325,
-    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_smartwindow_smartbar_model_select.js | application timed out after 740.0 seconds with no output",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-13T00:12:57Z",
-    "resolvedAt": "2026-06-17T22:10:36Z"
   },
   {
     "source": "bugzilla",
@@ -3286,6 +3295,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061046,
+    "summary": "AITab - Overview / Header Page Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T01:12:14Z",
+    "resolvedAt": "2026-09-15T04:35:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061059,
     "summary": "Smart Form Fill - style SFF UI trigger autocomplete row item",
     "product": "Core",
@@ -3436,6 +3454,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-07T22:37:03Z",
     "resolvedAt": "2026-08-14T21:14:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062112,
+    "summary": "[Monitor Agent][FE] Create monitor component in tool bar panel",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T03:43:41Z",
+    "resolvedAt": "2026-09-15T04:35:59Z"
   },
   {
     "source": "bugzilla",
@@ -4033,6 +4060,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068258,
+    "summary": "[Monitor Agent][FE] Update panel empty state",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T20:35:44Z",
+    "resolvedAt": "2026-09-15T14:01:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068325,
     "summary": "Move selection shortcuts panel state off the AI action button",
     "product": "Core",
@@ -4048,6 +4084,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-02T23:02:45Z",
     "resolvedAt": "2026-09-02T23:22:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069071,
+    "summary": "Smart Form Fill: Update the ESC handling for autocomplete row item",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T17:31:29Z",
+    "resolvedAt": "2026-09-15T09:19:41Z"
   },
   {
     "source": "bugzilla",
@@ -4084,6 +4129,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-08T16:16:43Z",
     "resolvedAt": "2026-09-12T09:41:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070266,
+    "summary": "Smart Form Fill: update threshold of model generated values to \"medium\"",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-08T16:27:06Z",
+    "resolvedAt": "2026-09-15T04:37:17Z"
   },
   {
     "source": "bugzilla",
