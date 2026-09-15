@@ -55,30 +55,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042808,
-    "summary": "Refactor `LoginManagerStorage.create()` to return a Promise instead of using a callback",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-05-27T13:50:12Z",
-    "resolvedAt": "2026-06-17T10:44:57Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042816,
     "summary": "Remove LoginManagerRustMirror",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-05-27T14:09:37Z",
     "resolvedAt": "2026-06-23T09:29:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047975,
-    "summary": "[contextual-password-manager] Add new fox illustration for empty state",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-16T14:26:54Z",
-    "resolvedAt": "2026-06-17T22:11:21Z"
   },
   {
     "source": "bugzilla",
@@ -403,5 +385,23 @@
     "component": "Password Manager",
     "filedAt": "2026-09-08T08:46:04Z",
     "resolvedAt": "2026-09-10T16:32:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070129,
+    "summary": "Password manager never becomes available when the Rust login store fails to initialize",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-08T10:17:01Z",
+    "resolvedAt": "2026-09-14T16:22:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070466,
+    "summary": "Measure time until the login autocomplete popup is usable",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-09T09:01:54Z",
+    "resolvedAt": "2026-09-15T04:37:23Z"
   }
 ]
