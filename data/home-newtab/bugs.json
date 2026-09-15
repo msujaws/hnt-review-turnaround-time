@@ -271,30 +271,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038098,
-    "summary": "Newtab Remove region and locale prefs for contextual sponsored content",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-08T02:39:12Z",
-    "resolvedAt": "2026-06-17T10:44:21Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039423,
     "summary": "Update default prefs for widgets",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-05-13T21:21:27Z",
     "resolvedAt": "2026-06-25T04:42:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040024,
-    "summary": "Migrate World Clock widget to useWidgetTelemetry",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-15T20:24:24Z",
-    "resolvedAt": "2026-06-17T10:44:36Z"
   },
   {
     "source": "bugzilla",
@@ -487,24 +469,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047703,
-    "summary": "football/soccer widget: country names in tooltip remain English (en-US) but should be localized",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-15T19:18:00Z",
-    "resolvedAt": "2026-06-17T10:51:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047765,
-    "summary": "Fix Add/Edit Clcoks background",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-15T21:53:35Z",
-    "resolvedAt": "2026-06-17T22:11:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047788,
     "summary": "Show less/more transition animation",
     "product": "Firefox",
@@ -529,15 +493,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-16T20:29:07Z",
     "resolvedAt": "2026-08-06T16:11:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048092,
-    "summary": "WorldCW - Celebration animation phase 2 STRINGS",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-16T21:10:29Z",
-    "resolvedAt": "2026-06-17T22:11:38Z"
   },
   {
     "source": "bugzilla",
@@ -2143,6 +2098,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062310,
+    "summary": "[meta] Migrate Karma tests to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T15:39:25Z",
+    "resolvedAt": "2026-09-14T18:54:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062360,
     "summary": "Widget size 'medium' isn't usable for all widgets",
     "product": "Firefox",
@@ -2878,6 +2842,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-03T01:56:36Z",
     "resolvedAt": "2026-09-12T09:41:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068990,
+    "summary": "DiscoveryStreamFeed still sends `impressionId` as `pocket_id` to the decommissioned spocs.getpocket.com endpoints",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-03T14:16:27Z",
+    "resolvedAt": "2026-09-15T04:36:56Z"
   },
   {
     "source": "bugzilla",
