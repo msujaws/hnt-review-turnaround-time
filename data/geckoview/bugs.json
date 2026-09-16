@@ -235,12 +235,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057683,
+    "summary": "[2.3] Streamline screenshot tiling",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-24T22:30:25Z",
+    "resolvedAt": "2026-09-15T19:46:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057684,
     "summary": "[2.4] Research tasks",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-07-24T22:36:20Z",
     "resolvedAt": "2026-07-29T18:36:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057685,
+    "summary": "[2.5] Define GeckoView API endpoint with supporting backend",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-24T22:42:07Z",
+    "resolvedAt": "2026-09-15T18:36:04Z"
   },
   {
     "source": "bugzilla",
@@ -511,6 +529,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-09-04T18:52:25Z",
     "resolvedAt": "2026-09-09T20:22:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069801,
+    "summary": "Get cursor blink time from ViewConfiguration",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-07T07:36:15Z",
+    "resolvedAt": "2026-09-15T15:33:19Z"
   },
   {
     "source": "bugzilla",
