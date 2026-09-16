@@ -1,26 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-7xppfajdks264jupymj7",
-    "revisionId": 307474,
-    "author": "reemhamz",
-    "reviewer": "nina-py",
-    "requestedAt": "2026-06-18T04:52:47.000Z",
-    "firstActionAt": "2026-06-18T05:13:05.000Z",
-    "tatBusinessHours": 0.3383333333333333
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-ypreesxf3tbzu2l4xl6h",
-    "revisionId": 307667,
-    "author": "reemhamz",
-    "reviewer": "nina-py",
-    "requestedAt": "2026-06-18T22:49:30.000Z",
-    "firstActionAt": "2026-06-18T23:41:14.000Z",
-    "tatBusinessHours": 0.6872222222222223
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-nkuhijdbtjw5vqvwd7gk",
     "revisionId": 307703,
     "author": "nina-py",
@@ -38,16 +18,6 @@
     "requestedAt": "2026-06-22T01:31:12.000Z",
     "firstActionAt": "2026-06-22T14:08:47.000Z",
     "tatBusinessHours": 1.146388888888889
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-eb2qthi573lf5puu32v4",
-    "revisionId": 307575,
-    "author": "maxx",
-    "reviewer": "reemhamz",
-    "requestedAt": "2026-06-18T14:30:40.000Z",
-    "firstActionAt": "2026-06-23T03:59:56.000Z",
-    "tatBusinessHours": 20.99888888888889
   },
   {
     "source": "phab",
@@ -2761,6 +2731,56 @@
   },
   {
     "source": "phab",
+    "id": "PHID-DREV-ny2qycm7ybg76b7q6wwp",
+    "revisionId": 325918,
+    "author": "mconley",
+    "reviewer": "thecount",
+    "requestedAt": "2026-09-14T16:05:11.000Z",
+    "firstActionAt": "2026-09-14T20:57:54.000Z",
+    "tatBusinessHours": 4.878611111111111
+  },
+  {
+    "source": "github",
+    "id": 1746,
+    "author": "mmiermans",
+    "reviewer": "Herraj",
+    "requestedAt": "2026-08-24T16:14:11Z",
+    "firstActionAt": "2026-09-14T19:24:57Z",
+    "repo": "mozilla-services/merino-py",
+    "tatBusinessHours": 123.17944444444444
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-eetpsknhv4qvxsu37c5l",
+    "revisionId": 322507,
+    "author": "mconley",
+    "reviewer": "maxx",
+    "requestedAt": "2026-09-10T15:55:19.000Z",
+    "firstActionAt": "2026-09-15T22:17:48.000Z",
+    "tatBusinessHours": 30.078055555555558
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ycmdnerwxyzkht7ockmg",
+    "revisionId": 326285,
+    "author": "mconley",
+    "reviewer": "thecount",
+    "requestedAt": "2026-09-15T18:52:20.000Z",
+    "firstActionAt": "2026-09-15T21:49:09.000Z",
+    "tatBusinessHours": 2.1277777777777778
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xrly7clpuigejeqardbd",
+    "revisionId": 326239,
+    "author": "thecount",
+    "reviewer": "ini",
+    "requestedAt": "2026-09-15T16:53:13.000Z",
+    "firstActionAt": "2026-09-15T17:52:45.000Z",
+    "tatBusinessHours": 0.9922222222222222
+  },
+  {
+    "source": "phab",
     "id": "PHID-DREV-f23cnisz3xoawlt2tcdj",
     "revisionId": 324424,
     "author": "mconley",
@@ -2778,16 +2798,6 @@
     "requestedAt": "2026-07-03T20:25:46.000Z",
     "firstActionAt": "2026-07-09T21:47:00.000Z",
     "tatBusinessHours": 32.57055555555556
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-ny2qycm7ybg76b7q6wwp",
-    "revisionId": 325918,
-    "author": "mconley",
-    "reviewer": "thecount",
-    "requestedAt": "2026-09-14T16:05:11.000Z",
-    "firstActionAt": "2026-09-14T20:57:54.000Z",
-    "tatBusinessHours": 4.878611111111111
   },
   {
     "source": "phab",
@@ -2821,12 +2831,22 @@
   },
   {
     "source": "github",
-    "id": 1746,
+    "id": 52,
+    "author": "jpetto",
+    "reviewer": "mmiermans",
+    "requestedAt": "2026-09-10T18:21:15Z",
+    "firstActionAt": "2026-09-15T21:49:06Z",
+    "repo": "mozilla/hnt-content",
+    "tatBusinessHours": 27.464166666666664
+  },
+  {
+    "source": "github",
+    "id": 31,
     "author": "mmiermans",
     "reviewer": "Herraj",
-    "requestedAt": "2026-08-24T16:14:11Z",
-    "firstActionAt": "2026-09-14T19:24:57Z",
-    "repo": "mozilla-services/merino-py",
-    "tatBusinessHours": 123.17944444444444
+    "requestedAt": "2026-07-06T11:27:14Z",
+    "firstActionAt": "2026-09-15T18:42:48Z",
+    "repo": "mozilla/hnt-content",
+    "tatBusinessHours": 413.7133333333333
   }
 ]

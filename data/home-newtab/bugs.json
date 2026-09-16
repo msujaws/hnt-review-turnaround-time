@@ -217,15 +217,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034857,
-    "summary": "New-tab page placeholder-image thumbnail content have sharp bottom corners, which look inconsistent with top corners and with the nearby rounded tile-corners",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-24T15:45:03Z",
-    "resolvedAt": "2026-06-18T20:12:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2035221,
     "summary": "If wallpaper list can't be queried from remote settings, wallpapers can't be uploaded.",
     "product": "Firefox",
@@ -298,15 +289,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043478,
-    "summary": "Sports widget - Show matches beyond the 21 day limit",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T03:46:14Z",
-    "resolvedAt": "2026-06-18T09:48:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043730,
     "summary": "Add WebNotifications to newtab state",
     "product": "Firefox",
@@ -322,15 +304,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-02T21:54:50Z",
     "resolvedAt": "2026-07-31T04:33:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044506,
-    "summary": "Intermittent TV browser/extensions/newtab/test/xpcshell/test_WeatherFeed.js | single tracking bug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T23:52:11Z",
-    "resolvedAt": "2026-06-18T09:49:04Z"
   },
   {
     "source": "bugzilla",
@@ -388,15 +361,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046057,
-    "summary": "Widget layout issues when moving the sports widget with drag and drop while the Link watching list is open",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-09T13:09:02Z",
-    "resolvedAt": "2026-06-18T20:13:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046143,
     "summary": "weather widget activate without user opt-in",
     "product": "Firefox",
@@ -424,15 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046945,
-    "summary": "Widgets doesn't match UI locale after switching language from settings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T19:48:17Z",
-    "resolvedAt": "2026-06-18T09:50:09Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046946,
     "summary": "Add WebNotifications badge to top sites",
     "product": "Firefox",
@@ -451,39 +406,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046956,
-    "summary": "Add shortcut button disappears when Top Sites rows are set to 1 on Firefox New Tab page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T20:31:38Z",
-    "resolvedAt": "2026-06-18T09:50:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047272,
-    "summary": "Firefox restart required to see \"live\" tab in world cup widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-12T19:17:17Z",
-    "resolvedAt": "2026-06-18T09:50:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047788,
     "summary": "Show less/more transition animation",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-16T00:27:14Z",
     "resolvedAt": "2026-07-21T10:17:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047965,
-    "summary": "Overlapping elements for sports widget statuses in medium size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-16T13:54:08Z",
-    "resolvedAt": "2026-06-18T09:51:13Z"
   },
   {
     "source": "bugzilla",
@@ -2872,6 +2800,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070102,
+    "summary": "Newtab wallpapers aren't keyboard navigation-friendly with MacOS Voiceover",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T08:09:12Z",
+    "resolvedAt": "2026-09-16T04:15:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070284,
     "summary": "The customization panel should reset when closed",
     "product": "Firefox",
@@ -2950,5 +2887,32 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-11T17:06:10Z",
     "resolvedAt": "2026-09-12T09:43:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071481,
+    "summary": "Enable the typescript linter for newtab/common",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T20:50:26Z",
+    "resolvedAt": "2026-09-16T04:15:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072031,
+    "summary": "Pass blocked ads to MARS when called via MAC",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-14T21:40:31Z",
+    "resolvedAt": "2026-09-16T04:15:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072308,
+    "summary": "Newtab move grouped pin to beta",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T16:10:20Z",
+    "resolvedAt": "2026-09-16T04:16:02Z"
   }
 ]
