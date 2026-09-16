@@ -10,15 +10,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2003690,
-    "summary": "Natural Language Add Memory",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2025-12-03T00:40:03Z",
-    "resolvedAt": "2026-06-18T09:47:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2019686,
     "summary": "[Models] Seeing markdown in a Smart Window chat",
     "product": "Core",
@@ -892,6 +883,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068252,
+    "summary": "Update search_the_web telemetry for the snippets-based Exa flow",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-01T20:23:43Z",
+    "resolvedAt": "2026-09-16T04:15:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069123,
+    "summary": "SFF relevant tab selection isn't strict enough",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-03T21:07:33Z",
+    "resolvedAt": "2026-09-16T04:15:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2011985,
     "summary": "Always wait for the page to be ready before running \"getText\" on page extractor",
     "product": "Core",
@@ -907,15 +916,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-02-10T14:11:35Z",
     "resolvedAt": "2026-07-14T09:46:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2015887,
-    "summary": "llama.cpp leaks ~500mb for each link preview performed until threads are exhausted",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-02-10T17:50:10Z",
-    "resolvedAt": "2026-06-18T20:11:47Z"
   },
   {
     "source": "bugzilla",
@@ -1342,6 +1342,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065320,
+    "summary": "Enable Youtube support in pageextractor.",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-20T22:29:54Z",
+    "resolvedAt": "2026-09-15T15:32:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065689,
     "summary": "PageExtractor waits for the page to be ready twice during headless extraction",
     "product": "Core",
@@ -1600,15 +1609,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-23T16:39:26Z",
     "resolvedAt": "2026-06-23T21:59:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034921,
-    "summary": "Re-enable smart cursor and integrate with Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-24T21:53:09Z",
-    "resolvedAt": "2026-06-18T20:12:08Z"
   },
   {
     "source": "bugzilla",
@@ -1978,15 +1978,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-15T12:15:57Z",
     "resolvedAt": "2026-08-08T09:41:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047630,
-    "summary": "TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_placeholder.js | application timed out after 740.0 seconds with no output",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-15T15:12:39Z",
-    "resolvedAt": "2026-06-18T20:14:24Z"
   },
   {
     "source": "bugzilla",
@@ -2737,6 +2728,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055336,
+    "summary": "[Monitor Agent][FE] Add Monitor cancel view",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-15T20:54:23Z",
+    "resolvedAt": "2026-09-15T21:44:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055341,
     "summary": "Update SmartWindow to use AboutNewTab TopSites API",
     "product": "Core",
@@ -2860,6 +2860,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-22T16:47:27Z",
     "resolvedAt": "2026-08-08T09:42:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057007,
+    "summary": "[Monitor Agent][FE] When monitor agent fails in a run, there should be some warning sent to the user",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-22T20:34:38Z",
+    "resolvedAt": "2026-09-16T04:14:36Z"
   },
   {
     "source": "bugzilla",
@@ -3295,6 +3304,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061043,
+    "summary": "AITab - Add tab menu trigger",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T01:02:37Z",
+    "resolvedAt": "2026-09-16T04:14:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061046,
     "summary": "AITab - Overview / Header Page Component",
     "product": "Core",
@@ -3490,6 +3508,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-10T07:23:11Z",
     "resolvedAt": "2026-08-18T09:26:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062308,
+    "summary": "Smartbar “Ask” CTA does not workwhen suggestions is closed",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T15:36:19Z",
+    "resolvedAt": "2026-09-15T15:32:30Z"
   },
   {
     "source": "bugzilla",
@@ -3799,6 +3826,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064527,
+    "summary": "[Monitor Agent][FE] Add error states to monitor create",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-18T20:47:33Z",
+    "resolvedAt": "2026-09-16T04:14:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064530,
     "summary": "[Monitor Agent][FE] Monitor /watch command opens a blank monitor form on SW full page",
     "product": "Core",
@@ -3823,6 +3859,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T22:27:48Z",
     "resolvedAt": "2026-08-28T09:47:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064643,
+    "summary": "The Text from the Citation chips is misaligned inside the chip",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-19T09:40:03Z",
+    "resolvedAt": "2026-09-15T15:32:33Z"
   },
   {
     "source": "bugzilla",
@@ -3979,6 +4024,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067211,
+    "summary": "Render Organize Tabs button to the left of (or before) SW switcher by default",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-27T15:51:33Z",
+    "resolvedAt": "2026-09-16T04:14:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067217,
     "summary": "Make the chat tab card responsive with a max width in full-width chat",
     "product": "Core",
@@ -4012,6 +4066,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-31T16:10:12Z",
     "resolvedAt": "2026-09-02T08:52:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067865,
+    "summary": "PUWYLO: card component on New Tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:28Z",
+    "resolvedAt": "2026-09-16T09:59:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067866,
+    "summary": "PUWYLO: New Tab section and layout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:30Z",
+    "resolvedAt": "2026-09-16T09:59:03Z"
   },
   {
     "source": "bugzilla",
@@ -4174,6 +4246,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-11T23:57:37Z",
     "resolvedAt": "2026-09-12T04:07:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072428,
+    "summary": "Dropdowns shouldn't be filled for Smart Form Fill",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-15T22:10:57Z",
+    "resolvedAt": "2026-09-16T09:59:38Z"
   },
   {
     "source": "bugzilla",
