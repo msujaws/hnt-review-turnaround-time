@@ -199,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039181,
-    "summary": "Incorrect text color in VPN panels under High Contrast Mode",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-13T06:42:21Z",
-    "resolvedAt": "2026-06-18T15:35:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039487,
     "summary": "Site exclusion description alignment is slightly offset in the VPN main panel",
     "product": "Firefox",
@@ -253,39 +244,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044431,
-    "summary": "Update isEnrolling / loading template",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-02T18:05:55Z",
-    "resolvedAt": "2026-06-18T09:49:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2044522,
-    "summary": "Increase VPN panel max-height so that the location selector upgrade promo is visible with minimum 5 locations",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-03T00:37:11Z",
-    "resolvedAt": "2026-06-18T20:12:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044660,
     "summary": "Default \"Not now\" option of the Captive Portal first VPN Discovery CFR does not dismiss the panel",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-06-03T13:15:14Z",
     "resolvedAt": "2026-07-01T10:35:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045856,
-    "summary": "Update VPN panel width to smaller size",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-08T18:36:03Z",
-    "resolvedAt": "2026-06-18T09:49:33Z"
   },
   {
     "source": "bugzilla",
@@ -808,6 +772,15 @@
     "component": "IP Protection",
     "filedAt": "2026-08-26T13:32:32Z",
     "resolvedAt": "2026-09-02T08:51:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066802,
+    "summary": "Expand the ExceptionsManager to handle Inclusions",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-26T14:04:15Z",
+    "resolvedAt": "2026-09-15T15:32:46Z"
   },
   {
     "source": "bugzilla",
