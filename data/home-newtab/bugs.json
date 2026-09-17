@@ -19,6 +19,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2002685,
+    "summary": "Firefox new-tab news-story-tiles from CBC are shown with the wrong favicon in the tile",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-11-27T02:27:33Z",
+    "resolvedAt": "2026-09-16T22:59:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2008125,
     "summary": "Button lacks accessible name (Timer widget > ••• button)",
     "product": "Firefox",
@@ -457,33 +466,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-17T20:49:06Z",
     "resolvedAt": "2026-07-09T16:07:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048712,
-    "summary": "WCW: View schedule's Key Dates are off sometimes",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-18T17:50:15Z",
-    "resolvedAt": "2026-06-19T04:14:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048751,
-    "summary": "Update locales for Firefox 152.0.1 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-18T20:19:55Z",
-    "resolvedAt": "2026-06-19T04:14:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048752,
-    "summary": "Update runtime-metrics for Firefox 152.0.1 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-18T20:30:40Z",
-    "resolvedAt": "2026-06-19T04:14:31Z"
   },
   {
     "source": "bugzilla",
