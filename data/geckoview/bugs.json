@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043114,
-    "summary": "`stopPropagation` prevents context menu from shown",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-05-28T06:12:46Z",
-    "resolvedAt": "2026-06-19T04:11:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044409,
     "summary": "Monkey test crash IllegalStateException",
     "product": "GeckoView",
@@ -424,6 +415,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064934,
+    "summary": "Saving a PDF from the menu on a content (local) PDF fails",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-19T22:14:35Z",
+    "resolvedAt": "2026-09-17T13:19:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067164,
     "summary": "Improve JavaCallbackDelegate Crash Stacks",
     "product": "GeckoView",
@@ -532,6 +532,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069504,
+    "summary": "[Telemetry] Add telemetry if signature succeedes or fails to add",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-04T19:46:45Z",
+    "resolvedAt": "2026-09-17T13:20:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069801,
     "summary": "Get cursor blink time from ViewConfiguration",
     "product": "GeckoView",
@@ -547,5 +556,14 @@
     "component": "Media",
     "filedAt": "2026-09-11T16:34:02Z",
     "resolvedAt": "2026-09-11T17:34:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072582,
+    "summary": "pressKey in TextInputDelegateTest should wait for Editable changes",
+    "product": "GeckoView",
+    "component": "IME",
+    "filedAt": "2026-09-16T11:15:51Z",
+    "resolvedAt": "2026-09-17T13:22:30Z"
   }
 ]
