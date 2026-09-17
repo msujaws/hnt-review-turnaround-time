@@ -379,6 +379,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069954,
+    "summary": "Add performance telemetry for login storage operations and initialization",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-07T16:10:32Z",
+    "resolvedAt": "2026-09-16T20:24:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070108,
     "summary": "Improve Primary Password telemetry",
     "product": "Toolkit",
