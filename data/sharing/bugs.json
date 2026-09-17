@@ -1,15 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 2036481,
-    "summary": "Decide if the /admin dashboard should be exposed in production",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-01T22:57:31Z",
-    "resolvedAt": "2026-06-19T05:44:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2039649,
     "summary": "Implement report endpoint rate limiting",
     "product": "Firefox",
@@ -43,15 +34,6 @@
     "component": "Sharing",
     "filedAt": "2026-05-20T09:54:24Z",
     "resolvedAt": "2026-06-22T16:52:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2041067,
-    "summary": "provision share.firefox.com subdomain + connect to prod environment",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-20T18:04:54Z",
-    "resolvedAt": "2026-06-19T05:45:28Z"
   },
   {
     "source": "bugzilla",

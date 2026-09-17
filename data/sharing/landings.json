@@ -331,9 +331,9 @@
     "createdAt": "2026-08-20T21:30:35.000Z",
     "firstReviewAt": "2026-08-21T11:55:09.000Z",
     "landedAt": "2026-08-31T15:14:16.000Z",
-    "reviewRounds": 4,
     "cycleBusinessHours": 50.23777777777778,
-    "postReviewBusinessHours": 50.23777777777778
+    "postReviewBusinessHours": 50.23777777777778,
+    "reviewRounds": 4
   },
   {
     "source": "phab",
@@ -382,5 +382,17 @@
     "cycleBusinessHours": 48.95972222222222,
     "postReviewBusinessHours": 48.65694444444444,
     "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-g7ymzlu2iuo4nyv7iujq",
+    "revisionId": 325134,
+    "author": "fterdal",
+    "createdAt": "2026-09-10T19:56:41.000Z",
+    "firstReviewAt": "2026-09-15T12:57:09.000Z",
+    "landedAt": "2026-09-16T20:24:25.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 32.46222222222222,
+    "postReviewBusinessHours": 15.406944444444445
   }
 ]
