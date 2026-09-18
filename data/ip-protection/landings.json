@@ -799,9 +799,9 @@
     "createdAt": "2026-09-03T19:41:12.000Z",
     "firstReviewAt": "2026-09-09T14:49:34.000Z",
     "landedAt": "2026-09-09T19:02:56.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 31.362222222222222,
-    "postReviewBusinessHours": 4.222777777777778
+    "postReviewBusinessHours": 4.222777777777778,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -811,9 +811,9 @@
     "createdAt": "2026-09-03T20:28:46.000Z",
     "firstReviewAt": "2026-09-04T00:29:33.000Z",
     "landedAt": "2026-09-09T19:02:02.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 30.554444444444446,
-    "postReviewBusinessHours": 30.03388888888889
+    "postReviewBusinessHours": 30.03388888888889,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -835,9 +835,9 @@
     "createdAt": "2026-09-02T22:12:49.000Z",
     "firstReviewAt": "2026-09-03T11:37:17.000Z",
     "landedAt": "2026-09-09T17:04:19.000Z",
-    "reviewRounds": 3,
     "cycleBusinessHours": 36.07194444444444,
-    "postReviewBusinessHours": 36.07194444444444
+    "postReviewBusinessHours": 36.07194444444444,
+    "reviewRounds": 3
   },
   {
     "source": "phab",
@@ -847,9 +847,9 @@
     "createdAt": "2026-09-02T17:36:31.000Z",
     "firstReviewAt": "2026-09-02T22:05:55.000Z",
     "landedAt": "2026-09-09T17:04:19.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 39.46333333333334,
-    "postReviewBusinessHours": 36.07194444444444
+    "postReviewBusinessHours": 36.07194444444444,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -934,5 +934,17 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 29.95638888888889,
     "postReviewBusinessHours": 29.329166666666666
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-v3gkvi6ycqclf2bat4ch",
+    "revisionId": 326310,
+    "author": "kpatenio",
+    "createdAt": "2026-09-15T20:31:27.000Z",
+    "firstReviewAt": "2026-09-17T18:51:30.000Z",
+    "landedAt": "2026-09-18T07:17:22.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 16.475833333333334,
+    "postReviewBusinessHours": 2.1416666666666666
   }
 ]
