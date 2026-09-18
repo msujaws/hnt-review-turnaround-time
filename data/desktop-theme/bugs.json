@@ -523,6 +523,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071752,
+    "summary": "\"List all tabs\" button look the same as the minimize button next to it on the default KDE theme (Plasma Breeze)",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-14T07:12:29Z",
+    "resolvedAt": "2026-09-17T20:39:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072228,
     "summary": "[nova] Fix mica / accent-color-in-tabs rendering.",
     "product": "Firefox",
