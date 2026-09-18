@@ -1,6 +1,15 @@
 [
   {
     "source": "bugzilla",
+    "id": 1554779,
+    "summary": "Intermittent TEST-UNEXPECTED-TIMEOUT | runjunit.py | Timed out after 3000 seconds",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2019-05-27T19:21:51Z",
+    "resolvedAt": "2026-09-18T04:24:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1748526,
     "summary": "BrowserAction popup always opens as non-private tab on Fenix",
     "product": "GeckoView",
@@ -547,6 +556,15 @@
     "component": "General",
     "filedAt": "2026-09-07T07:36:15Z",
     "resolvedAt": "2026-09-15T15:33:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071386,
+    "summary": "[UI] Disable autocorrect / helper  on text entry for signature",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-11T16:24:54Z",
+    "resolvedAt": "2026-09-17T20:39:44Z"
   },
   {
     "source": "bugzilla",
