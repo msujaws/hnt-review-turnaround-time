@@ -703,6 +703,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063638,
+    "summary": "Review and revamp the synthetic memories generation eval dataset",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T15:52:48Z",
+    "resolvedAt": "2026-09-17T19:31:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063646,
     "summary": "Create curated memories usage dataset",
     "product": "Core",
@@ -910,6 +919,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071435,
+    "summary": "[Monitor Agent][Models] Raise the maximum number of monitors from 5 to 15",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-11T18:24:18Z",
+    "resolvedAt": "2026-09-18T09:38:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2011985,
     "summary": "Always wait for the page to be ready before running \"getText\" on page extractor",
     "product": "Core",
@@ -934,6 +952,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-02-11T19:17:00Z",
     "resolvedAt": "2026-07-14T09:46:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2039862,
+    "summary": "Update ONNX Runtime to v1.30.0",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-05-15T12:50:54Z",
+    "resolvedAt": "2026-09-18T04:24:41Z"
   },
   {
     "source": "bugzilla",
@@ -1262,7 +1289,7 @@
   {
     "source": "bugzilla",
     "id": 2063024,
-    "summary": "Introduce a telemetry probe for native ONNX runtime availability",
+    "summary": "Introduce a telemetry probe for native ONNX runtime availability v1.22",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-12T16:27:04Z",
@@ -2989,6 +3016,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057573,
+    "summary": "[Monitor Agent][FE] Add Monitor Feature callout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-24T14:32:12Z",
+    "resolvedAt": "2026-09-18T04:24:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057599,
     "summary": "[Monitor Agent][FE] Prefill condition into the create form  from /monitor command in assistant chat",
     "product": "Core",
@@ -4222,6 +4258,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068782,
+    "summary": "AITab - Implement style guide",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-02T22:12:06Z",
+    "resolvedAt": "2026-09-18T04:25:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068789,
     "summary": "Intermittent TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_smartwindow_smartformfill_autocomplete.js | application timed out after 740.0 seconds with no output",
     "product": "Core",
@@ -4246,6 +4291,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-03T19:02:26Z",
     "resolvedAt": "2026-09-04T04:15:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069149,
+    "summary": "Build out the selection menu panel to hold multiple actions",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T22:00:06Z",
+    "resolvedAt": "2026-09-18T04:34:13Z"
   },
   {
     "source": "bugzilla",
@@ -4408,5 +4462,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-09-09T16:55:28Z",
     "resolvedAt": "2026-09-12T09:41:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071438,
+    "summary": "[Monitor Agent][Models] Show a desktop notification when a monitor is created",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-09-11T18:28:26Z",
+    "resolvedAt": "2026-09-18T04:35:07Z"
   }
 ]
