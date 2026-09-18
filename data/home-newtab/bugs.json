@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2008125,
-    "summary": "Button lacks accessible name (Timer widget > ••• button)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-12-31T17:58:55Z",
-    "resolvedAt": "2026-06-20T09:56:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2008143,
     "summary": "Button lacks accessible name (Task list widget > ••• button)",
     "product": "Firefox",
@@ -2683,6 +2674,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067756,
+    "summary": "Remove version 155 train-hop host gate for the New Tab theme picker",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T13:59:26Z",
+    "resolvedAt": "2026-09-17T13:19:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067757,
     "summary": "Remove version 155 train-hop shim for the trending.svg icon rename in newtab",
     "product": "Firefox",
@@ -2896,5 +2896,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-15T16:10:20Z",
     "resolvedAt": "2026-09-16T04:16:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072362,
+    "summary": "Remove additional unnecessary metrics now that we're using MARS for sponsored topsites",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T18:44:46Z",
+    "resolvedAt": "2026-09-17T13:21:47Z"
   }
 ]
