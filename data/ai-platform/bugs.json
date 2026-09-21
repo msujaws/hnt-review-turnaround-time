@@ -199,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048023,
-    "summary": "Adding user agent to the MLPA calls from Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-16T16:44:11Z",
-    "resolvedAt": "2026-06-23T09:29:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048357,
     "summary": "[Monitor Agent][Models] Security Review",
     "product": "Core",
@@ -811,21 +802,21 @@
   },
   {
     "source": "bugzilla",
-    "id": 2065130,
-    "summary": "The Mistral AI model will show unrelated memories in the memories used panel",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-20T12:56:07Z",
-    "resolvedAt": "2026-09-03T16:10:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2065259,
     "summary": "PUWYLO returns same pills over long periods of times",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-08-20T19:13:51Z",
     "resolvedAt": "2026-09-01T21:49:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066110,
+    "summary": "Design Journey object and storage",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-24T13:17:56Z",
+    "resolvedAt": "2026-09-21T14:10:39Z"
   },
   {
     "source": "bugzilla",
@@ -916,6 +907,33 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-09-03T21:07:33Z",
     "resolvedAt": "2026-09-16T04:15:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069246,
+    "summary": "2.12% JS (Linux) regression on Thu August 20 2026",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-04T07:47:26Z",
+    "resolvedAt": "2026-09-19T09:09:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070352,
+    "summary": "Browsing history get and add state methods to ml_driver",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-08T21:06:56Z",
+    "resolvedAt": "2026-09-21T13:07:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070354,
+    "summary": "Modify evals standard_chat task to load chat and browsing history into fx state when included as source",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-08T21:08:13Z",
+    "resolvedAt": "2026-09-21T13:18:51Z"
   },
   {
     "source": "bugzilla",
@@ -1015,15 +1033,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-11T23:42:06Z",
     "resolvedAt": "2026-08-26T04:23:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048967,
-    "summary": "browser_ml_native.js leaves an intentional-crash minidump behind, causing PROCESS-CRASH failures at high frequency with the profiler enabled",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-19T15:06:17Z",
-    "resolvedAt": "2026-06-23T22:03:39Z"
   },
   {
     "source": "bugzilla",
@@ -1486,6 +1495,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072818,
+    "summary": "Remove or update metrics expiring at the end of Firefox 159 (2026-10-08): firefox.ai.runtime.onnx_native_availability",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-17T02:18:50Z",
+    "resolvedAt": "2026-09-18T16:42:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073175,
+    "summary": "Native ONNX Availability Test Fails After ML Engine Interceptor Test",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-17T16:27:00Z",
+    "resolvedAt": "2026-09-18T16:42:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1981904,
     "summary": "[GenAI Chat Sidebar] Choose a chatbot combobox and provider's frame content are visually hidden but still focusable and accessible with assistive technology",
     "product": "Core",
@@ -1510,15 +1537,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2025-11-28T18:50:35Z",
     "resolvedAt": "2026-06-26T04:12:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2005411,
-    "summary": "Update ChatStore.pruneDatabase with dbstat and schedule",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2025-12-11T03:28:04Z",
-    "resolvedAt": "2026-06-23T09:28:37Z"
   },
   {
     "source": "bugzilla",
@@ -1639,15 +1657,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033002,
-    "summary": "Build feedback modal shell and wire to thumbs actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-17T14:37:34Z",
-    "resolvedAt": "2026-06-23T21:59:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033588,
     "summary": "[a11y] Smart window - Links within chat messages are difficult to distinguish when focused",
     "product": "Core",
@@ -1666,39 +1675,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034541,
-    "summary": "Send user feedback payload via Glean",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-23T16:39:26Z",
-    "resolvedAt": "2026-06-23T21:59:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2035312,
-    "summary": "Disable Suggestions Dropdown in Sidebar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-27T20:39:40Z",
-    "resolvedAt": "2026-06-23T09:28:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037179,
     "summary": "Track data review for rescoped feedback launch",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-05T16:57:18Z",
     "resolvedAt": "2026-07-31T19:05:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037360,
-    "summary": "Add horizontal scroll indicator to assistant markdown table",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-06T08:52:15Z",
-    "resolvedAt": "2026-06-22T20:02:14Z"
   },
   {
     "source": "bugzilla",
@@ -1765,15 +1747,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044164,
-    "summary": "Add smooth transition for Assistant sidebar open/close",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-01T21:15:52Z",
-    "resolvedAt": "2026-06-23T22:00:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044385,
     "summary": "Add Exa action log entry for web search tool calls (v0)",
     "product": "Core",
@@ -1798,15 +1771,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-08T23:17:02Z",
     "resolvedAt": "2026-06-27T08:45:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046164,
-    "summary": "Customize Toolbar page's \"Overflow Menu\" door hanger's arrow is no longer attached to the door hanger rectangle",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-09T18:51:51Z",
-    "resolvedAt": "2026-06-23T22:00:45Z"
   },
   {
     "source": "bugzilla",
@@ -1870,15 +1834,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-10T22:34:47Z",
     "resolvedAt": "2026-07-13T18:43:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046844,
-    "summary": "Adjust minor UI issues for Smart Window Nova",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-11T15:18:41Z",
-    "resolvedAt": "2026-06-23T22:00:55Z"
   },
   {
     "source": "bugzilla",
@@ -1960,15 +1915,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-12T15:20:56Z",
     "resolvedAt": "2026-07-24T16:41:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047288,
-    "summary": "TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_suggestions.js | application timed out after 740.0 seconds with no output",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T20:23:41Z",
-    "resolvedAt": "2026-06-23T22:01:01Z"
   },
   {
     "source": "bugzilla",
@@ -2095,24 +2041,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-18T11:42:09Z",
     "resolvedAt": "2026-07-09T22:57:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048606,
-    "summary": "The Go/Arrow disabled state from the Smart bar shows a background",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-18T12:38:34Z",
-    "resolvedAt": "2026-06-23T22:01:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048695,
-    "summary": "Revert app menu relocation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-18T16:40:33Z",
-    "resolvedAt": "2026-06-23T22:02:03Z"
   },
   {
     "source": "bugzilla",
@@ -2410,6 +2338,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T17:23:06Z",
     "resolvedAt": "2026-07-21T10:18:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2052358,
+    "summary": "Smart Window perf: eliminate per-chunk full-document work in chat rendering",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-02T21:12:54Z",
+    "resolvedAt": "2026-09-21T09:19:36Z"
   },
   {
     "source": "bugzilla",
@@ -3763,15 +3700,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063257,
-    "summary": "The Mistral AI model will not show the Memories used panel even though its using saved memories",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-13T12:30:48Z",
-    "resolvedAt": "2026-09-02T23:03:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063308,
     "summary": "[Monitor Agent][FE] gate /command palette dispay for smartwindow.agent.enabled and region",
     "product": "Core",
@@ -4249,6 +4177,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068261,
+    "summary": "[Monitor Agent] [FE] Open monitor alert URLs into new tab group",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T20:42:15Z",
+    "resolvedAt": "2026-09-18T16:40:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068325,
     "summary": "Move selection shortcuts panel state off the AI action button",
     "product": "Core",
@@ -4384,6 +4321,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072378,
+    "summary": "[Monitor Agent][FE] support adding URL without http://",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-15T19:37:44Z",
+    "resolvedAt": "2026-09-18T16:41:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072428,
     "summary": "Dropdowns shouldn't be filled for Smart Form Fill",
     "product": "Core",
@@ -4399,6 +4345,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-16T15:30:46Z",
     "resolvedAt": "2026-09-16T20:05:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072791,
+    "summary": "AITab [FE] - Update about:aitab URL to about:smartpage",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-17T00:36:22Z",
+    "resolvedAt": "2026-09-19T09:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073203,
+    "summary": "Smart Form Fill row not showing up for a greenhouse url",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-17T17:22:12Z",
+    "resolvedAt": "2026-09-19T09:11:10Z"
   },
   {
     "source": "bugzilla",
@@ -4471,5 +4435,23 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-09-11T18:28:26Z",
     "resolvedAt": "2026-09-18T04:35:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071441,
+    "summary": "[Monitor Agent][Models] Auto-expire long-running monitors",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-09-11T18:37:27Z",
+    "resolvedAt": "2026-09-19T09:10:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072622,
+    "summary": "URL tokens aren't being parsed in smart form fill",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-09-16T13:26:20Z",
+    "resolvedAt": "2026-09-18T22:04:55Z"
   }
 ]
