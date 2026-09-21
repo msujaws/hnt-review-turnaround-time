@@ -280,15 +280,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043405,
-    "summary": "Remove all (Legacy) Telemetry probes for Activity Stream",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-28T20:01:13Z",
-    "resolvedAt": "2026-06-22T20:02:30Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043730,
     "summary": "Add WebNotifications to newtab state",
     "product": "Firefox",
@@ -307,15 +298,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044808,
-    "summary": "Hiding the new widgets from ... button leaves widgets in the customize sidebar enabled",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-03T20:38:53Z",
-    "resolvedAt": "2026-06-22T11:07:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044826,
     "summary": "New-Tab Widgets 3-dot menu entries aren't vertically centered in their hover-granted colorful stripe",
     "product": "Firefox",
@@ -331,24 +313,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-04T08:49:29Z",
     "resolvedAt": "2026-06-26T07:47:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045630,
-    "summary": "[Wayland] Wrong pointer position when long press and move on new tab and history buttons",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T06:52:53Z",
-    "resolvedAt": "2026-06-23T01:22:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045893,
-    "summary": "Crossword game has CSP violation blocking image load",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-08T20:57:50Z",
-    "resolvedAt": "2026-06-22T18:07:46Z"
   },
   {
     "source": "bugzilla",
@@ -457,15 +421,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-17T20:49:06Z",
     "resolvedAt": "2026-07-09T16:07:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049032,
-    "summary": "Get rid of a bunch of now-uneeded trainhop compatibility shims that have expired",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-19T20:49:58Z",
-    "resolvedAt": "2026-06-23T22:04:05Z"
   },
   {
     "source": "bugzilla",
@@ -1855,6 +1810,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061155,
+    "summary": "Last item in customization panel (\"Recommended stories\") is faded despite being fully scrolled to bottom",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T10:54:35Z",
+    "resolvedAt": "2026-09-18T16:40:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061524,
     "summary": "[Privacy widget] Add UTM params for external CTA actions",
     "product": "Firefox",
@@ -2185,15 +2149,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-13T05:50:51Z",
     "resolvedAt": "2026-08-19T09:40:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063205,
-    "summary": "Privacy widget \"Nightly blocks trackers as you browse. You will see them here.\" text should be grey",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T09:04:36Z",
-    "resolvedAt": "2026-08-20T21:50:58Z"
   },
   {
     "source": "bugzilla",
@@ -2656,6 +2611,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067467,
+    "summary": "Privacy widget [a11y] Context menu button lacks accessible name",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-28T22:21:45Z",
+    "resolvedAt": "2026-09-21T09:19:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067754,
     "summary": "Remove version 155 train-hop shims for the homepage/customHomepage fallback in AboutPreferences",
     "product": "Firefox",
@@ -2737,6 +2701,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068165,
+    "summary": "Newtab stories can come back on if were previously turned off",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-01T16:43:38Z",
+    "resolvedAt": "2026-09-19T09:09:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068409,
     "summary": "Weather widget - remove dead CSS code for weather description",
     "product": "Firefox",
@@ -2782,6 +2755,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069430,
+    "summary": "Newtab layouts with different number of rows/cards per col breakpoints",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-04T16:34:04Z",
+    "resolvedAt": "2026-09-19T09:09:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070102,
     "summary": "Newtab wallpapers aren't keyboard navigation-friendly with MacOS Voiceover",
     "product": "Firefox",
@@ -2815,6 +2797,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-08T17:24:32Z",
     "resolvedAt": "2026-09-11T09:45:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070359,
+    "summary": "Stocks widget: show multiple matches for a ticker search instead of a single result",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T21:21:31Z",
+    "resolvedAt": "2026-09-21T09:31:20Z"
   },
   {
     "source": "bugzilla",
@@ -2872,12 +2863,48 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071407,
+    "summary": "Widgets 4x4 ad: Add the widgets-ad-large New Tab layout",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T17:07:14Z",
+    "resolvedAt": "2026-09-19T09:10:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071410,
+    "summary": "Widgets 4x4 ad: Show a 4x4 sponsored card in the Widgets row",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T17:07:24Z",
+    "resolvedAt": "2026-09-19T09:10:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071481,
     "summary": "Enable the typescript linter for newtab/common",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-11T20:50:26Z",
     "resolvedAt": "2026-09-16T04:15:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071583,
+    "summary": "Search bar briefly appears unstyled on about:newtab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-12T13:24:19Z",
+    "resolvedAt": "2026-09-18T22:04:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071982,
+    "summary": "Newtab thematic spaces experiment",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-14T18:26:34Z",
+    "resolvedAt": "2026-09-19T09:10:33Z"
   },
   {
     "source": "bugzilla",
@@ -2905,5 +2932,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-15T18:44:46Z",
     "resolvedAt": "2026-09-17T13:21:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072394,
+    "summary": "Keep New Tab hidden story cards out of roving tabindex for keyboard navigation",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T20:28:40Z",
+    "resolvedAt": "2026-09-19T09:10:45Z"
   }
 ]
