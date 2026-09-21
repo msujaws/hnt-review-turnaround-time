@@ -118,6 +118,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2049804,
+    "summary": "GeckoView:MediaPermission trusts child-supplied uri for camera/mic prompt origin and SitePermissions storage key (Android, variant of bmo-2003171)",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-06-23T18:16:30Z",
+    "resolvedAt": "2026-07-09T23:00:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2049865,
     "summary": "Disable MOZ_LINKER on GeckoView",
     "product": "GeckoView",
@@ -217,6 +226,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055683,
+    "summary": "Compromised content process can read arbitrary files at parent privilege via forged PGeckoViewContentChannel open [@ GeckoViewContentChannelParent::Init]",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-16T22:17:42Z",
+    "resolvedAt": "2026-07-28T22:50:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056901,
     "summary": "Privileged content process crashes when \"EventDispatcher.instance\" is accessed from GeckoViewStartup during \"content-process-ready-for-script\"",
     "product": "GeckoView",
@@ -259,6 +277,15 @@
     "component": "General",
     "filedAt": "2026-07-24T22:42:07Z",
     "resolvedAt": "2026-09-15T18:36:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057686,
+    "summary": "[2.6] Add AC implementation of the GV API to expose it to Fenix",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-24T22:45:08Z",
+    "resolvedAt": "2026-09-19T09:09:08Z"
   },
   {
     "source": "bugzilla",
@@ -496,6 +523,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068644,
+    "summary": "The composables `SignatureDialogContent` and `PdfToolsContent` are intertwined",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-02T15:40:12Z",
+    "resolvedAt": "2026-09-19T09:09:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069043,
     "summary": "[GeckoView] Implement GeckoView API to pass typed signature to PDF.js",
     "product": "GeckoView",
@@ -577,11 +613,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071616,
+    "summary": "Update to Android NDK r30",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-12T17:33:34Z",
+    "resolvedAt": "2026-09-19T09:10:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072582,
     "summary": "pressKey in TextInputDelegateTest should wait for Editable changes",
     "product": "GeckoView",
     "component": "IME",
     "filedAt": "2026-09-16T11:15:51Z",
     "resolvedAt": "2026-09-17T13:22:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073274,
+    "summary": "geckoview-junit run aborts on ccov when lmkd kills a utility child process and the runtime shuts down",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-17T20:58:56Z",
+    "resolvedAt": "2026-09-18T16:42:54Z"
   }
 ]
