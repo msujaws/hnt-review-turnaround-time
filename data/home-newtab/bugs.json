@@ -1,6 +1,42 @@
 [
   {
     "source": "bugzilla",
+    "id": 1781344,
+    "summary": "Intermittent browser/components/newtab/test/browser/browser_getScreenshots.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2022-07-26T16:51:16Z",
+    "resolvedAt": "2026-09-21T20:03:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1958336,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_newtab_towindow.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-04-03T16:31:44Z",
+    "resolvedAt": "2026-09-21T20:04:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1960245,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_discovery_card.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-04-13T23:04:14Z",
+    "resolvedAt": "2026-09-21T20:04:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1970996,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_highlights_section.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-06-07T11:18:07Z",
+    "resolvedAt": "2026-09-21T20:04:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1983258,
     "summary": "New Tab Settings should honor Locked Preferences in policy",
     "product": "Firefox",
@@ -34,6 +70,15 @@
     "component": "New Tab Page",
     "filedAt": "2025-12-31T18:09:20Z",
     "resolvedAt": "2026-07-12T04:36:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2011958,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_topsites_sponsored.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-01-22T19:50:53Z",
+    "resolvedAt": "2026-09-21T20:04:27Z"
   },
   {
     "source": "bugzilla",
@@ -145,6 +190,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2022285,
+    "summary": "Intermittent TV browser/extensions/newtab/test/browser/browser_activation_window.js | waiting for vsync to be disabled - timed out after 50 tries. - false == true",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-10T17:08:19Z",
+    "resolvedAt": "2026-09-21T20:04:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2023930,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_as_render.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-17T15:24:08Z",
+    "resolvedAt": "2026-09-21T20:04:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2024070,
     "summary": "Migrate common/ Enzyme unit tests",
     "product": "Firefox",
@@ -163,6 +226,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2025752,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_topsites_section.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-24T12:29:55Z",
+    "resolvedAt": "2026-09-21T20:04:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2025793,
     "summary": "Stop including activity-stream.bundle.js and vendor.bundle.js in the source tree",
     "product": "Firefox",
@@ -178,6 +250,24 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-13T21:20:31Z",
     "resolvedAt": "2026-08-27T18:29:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2031557,
+    "summary": "Perma [tier2] browser/extensions/newtab/test/browser/browser_topsites_contextMenu_options.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-14T02:00:57Z",
+    "resolvedAt": "2026-09-21T20:12:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2031620,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_open_tab_focus.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-14T10:12:41Z",
+    "resolvedAt": "2026-09-21T20:12:54Z"
   },
   {
     "source": "bugzilla",
@@ -331,6 +421,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-09T17:53:49Z",
     "resolvedAt": "2026-07-27T08:20:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046503,
+    "summary": "Widgets listed in about:preferences should be dynamically rendered from WidgetsRegistry.mjs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-06-10T16:26:06Z",
+    "resolvedAt": "2026-09-22T04:36:21Z"
   },
   {
     "source": "bugzilla",
@@ -505,39 +604,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049800,
-    "summary": "Medium size widgets limit to 1 row, and have a show more widgets button",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T18:07:12Z",
-    "resolvedAt": "2026-06-24T04:02:03Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049845,
     "summary": "Firefox 152.0.2 extreme memory usage and complete freeze on startup (regression from 152.0.1)",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-23T19:48:38Z",
     "resolvedAt": "2026-06-25T05:33:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049875,
-    "summary": "Update locales for Firefox 152.0.1 v2 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T21:15:05Z",
-    "resolvedAt": "2026-06-24T04:02:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049886,
-    "summary": "Sports widget - Remove Watch LIve button and modal from countries not included in the /watch-links endpoint",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T21:38:28Z",
-    "resolvedAt": "2026-06-24T04:11:23Z"
   },
   {
     "source": "bugzilla",
@@ -1792,6 +1864,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061014,
+    "summary": "Intermittent TV browser/extensions/newtab/test/browser/browser_newtab_last_LinkMenu.js | test_newtab_last_LinkMenu - Test timed out",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-05T22:30:50Z",
+    "resolvedAt": "2026-09-21T20:13:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061063,
     "summary": "Stocks widget: show a \"New\" badge until first interaction",
     "product": "Firefox",
@@ -2350,6 +2431,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064559,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_newtab_side_by_side_layout.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-18T22:45:28Z",
+    "resolvedAt": "2026-09-21T20:13:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064564,
     "summary": "Wallpapers: Orphaned wallpaper cleanup",
     "product": "Firefox",
@@ -2455,6 +2545,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-24T15:32:26Z",
     "resolvedAt": "2026-08-24T21:48:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066334,
+    "summary": "Sort newtab widget lists alphabetically",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T03:02:27Z",
+    "resolvedAt": "2026-09-22T04:37:11Z"
   },
   {
     "source": "bugzilla",
@@ -2737,6 +2836,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069075,
+    "summary": "Stocks: switch Merino calls to the new API",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-03T17:44:57Z",
+    "resolvedAt": "2026-09-22T04:37:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069119,
     "summary": "Remove the unused partner link attribution paths from newtab",
     "product": "Firefox",
@@ -2761,6 +2869,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-04T16:34:04Z",
     "resolvedAt": "2026-09-19T09:09:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069512,
+    "summary": "Stocks widget: add an in-widget search entry point",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-04T19:53:45Z",
+    "resolvedAt": "2026-09-22T04:37:59Z"
   },
   {
     "source": "bugzilla",
@@ -2917,6 +3034,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072037,
+    "summary": "Sort sponsored tiles in TopSitesFeed when MAC is enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-14T22:00:32Z",
+    "resolvedAt": "2026-09-22T04:39:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072062,
+    "summary": "Enable the wallpaper library in Nightly",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T01:32:50Z",
+    "resolvedAt": "2026-09-22T04:39:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072308,
     "summary": "Newtab move grouped pin to beta",
     "product": "Firefox",
@@ -2941,5 +3076,68 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-15T20:28:40Z",
     "resolvedAt": "2026-09-19T09:10:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072905,
+    "summary": "Newtab browser tests throw \"AboutNewTab.activityStream is null\" during setup",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T07:30:13Z",
+    "resolvedAt": "2026-09-21T20:26:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072913,
+    "summary": "Repair the newtab browser-chrome assertions that cannot fail",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T07:40:47Z",
+    "resolvedAt": "2026-09-21T20:27:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072915,
+    "summary": "Clear the pinned top sites preferences between newtab browser tests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T07:43:06Z",
+    "resolvedAt": "2026-09-22T04:39:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073001,
+    "summary": "browser_context_menu_item.js checks a search shortcut's context menu rather than a top site's",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T12:51:30Z",
+    "resolvedAt": "2026-09-21T20:27:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073002,
+    "summary": "Isolate each newtab feed's onAction so one feed's error cannot withhold an action from the others",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T12:52:23Z",
+    "resolvedAt": "2026-09-21T20:27:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073009,
+    "summary": "browser_attribution_actor.js opens eight tabs it does not need",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T12:57:20Z",
+    "resolvedAt": "2026-09-21T20:27:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073436,
+    "summary": "Firefox logo and wordmark overlap the search bar in HNT Search Logos Experiment Variant B",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-18T10:54:50Z",
+    "resolvedAt": "2026-09-21T20:27:40Z"
   }
 ]
