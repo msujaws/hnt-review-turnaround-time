@@ -1,16 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-vqk2w7gj77hp5c2x7fkq",
-    "revisionId": 308538,
-    "author": "dao",
-    "reviewer": "mstriemer",
-    "requestedAt": "2026-06-24T13:35:57.000Z",
-    "firstActionAt": "2026-06-25T03:19:51.000Z",
-    "tatBusinessHours": 7.400833333333334
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-7rrjoalaaqetu3st7aru",
     "revisionId": 308778,
     "author": "emilio",
@@ -98,36 +88,6 @@
     "requestedAt": "2026-06-26T22:06:15.000Z",
     "firstActionAt": "2026-07-02T21:24:56.000Z",
     "tatBusinessHours": 32
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-jej2ggqnty5d55tgamgv",
-    "revisionId": 308415,
-    "author": "Juliana",
-    "reviewer": "hjones",
-    "requestedAt": "2026-06-24T20:36:45.000Z",
-    "firstActionAt": "2026-07-03T19:46:48.000Z",
-    "tatBusinessHours": 55.167500000000004
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-fotosw4obgalyjy6os3t",
-    "revisionId": 308663,
-    "author": "mstriemer",
-    "reviewer": "dao",
-    "requestedAt": "2026-06-24T23:35:11.000Z",
-    "firstActionAt": "2026-07-02T19:24:15.000Z",
-    "tatBusinessHours": 46.40416666666667
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-fotosw4obgalyjy6os3t",
-    "revisionId": 308663,
-    "author": "mstriemer",
-    "reviewer": "hjones",
-    "requestedAt": "2026-06-24T23:35:18.000Z",
-    "firstActionAt": "2026-07-03T16:35:01.000Z",
-    "tatBusinessHours": 51.58361111111112
   },
   {
     "source": "phab",
@@ -2198,5 +2158,35 @@
     "requestedAt": "2026-09-18T04:55:30.000Z",
     "firstActionAt": "2026-09-18T15:52:59.000Z",
     "tatBusinessHours": 2.8830555555555555
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-meiptq75vun3jdsiftti",
+    "revisionId": 327705,
+    "author": "dao",
+    "reviewer": "tgiles",
+    "requestedAt": "2026-09-21T02:40:06.000Z",
+    "firstActionAt": "2026-09-21T16:16:26.000Z",
+    "tatBusinessHours": 3.273888888888889
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-a5w3s7t5ny64v6ce62m5",
+    "revisionId": 328083,
+    "author": "emilio",
+    "reviewer": "dao",
+    "requestedAt": "2026-09-22T09:28:34.000Z",
+    "firstActionAt": "2026-09-22T10:04:31.000Z",
+    "tatBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ffpkw72fmh6ilj6ylo2w",
+    "revisionId": 327661,
+    "author": "dao",
+    "reviewer": "tgiles",
+    "requestedAt": "2026-09-20T03:19:03.000Z",
+    "firstActionAt": "2026-09-21T22:01:54.000Z",
+    "tatBusinessHours": 8
   }
 ]
