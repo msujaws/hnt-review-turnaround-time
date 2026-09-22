@@ -394,5 +394,23 @@
     "component": "Password Manager",
     "filedAt": "2026-09-09T09:01:54Z",
     "resolvedAt": "2026-09-15T04:37:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072278,
+    "summary": "Handle deletions during restore",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-15T15:08:31Z",
+    "resolvedAt": "2026-09-21T20:24:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072671,
+    "summary": "Perma TV toolkit/components/passwordmgr/test/browser/browser_login_storage_migrator.js | test_storage_operation_time_skips_locked_store - the search that started locked recorded no event - 1 == 0",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-16T15:24:56Z",
+    "resolvedAt": "2026-09-21T20:26:25Z"
   }
 ]
