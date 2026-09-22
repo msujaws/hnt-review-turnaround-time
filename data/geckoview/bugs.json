@@ -19,6 +19,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 1902103,
+    "summary": "Intermittent org.mozilla.geckoview.test.GeolocationTest#jsContentRequestForLocation | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2024-06-12T18:52:15Z",
+    "resolvedAt": "2026-09-21T20:03:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1921935,
+    "summary": "Intermittent org.mozilla.geckoview.test.DynamicToolbarTest#hitTestOnPositionSticky | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2024-10-01T07:15:15Z",
+    "resolvedAt": "2026-09-22T09:54:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1958025,
+    "summary": "Intermittent org.mozilla.geckoview.test.WebExecutorOhttpTest#testOhttp | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-04-02T17:01:53Z",
+    "resolvedAt": "2026-09-21T20:04:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1958658,
     "summary": "Keyboard is hidden when using \"find in page\"",
     "product": "GeckoView",
@@ -64,12 +91,21 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036411,
-    "summary": "Intermittent [tier 2] package> /builds/worker/workspace/obj-build/gradle/build/mobile/android/android-components/components/concept/base/generated/source/buildConfig/androidTest/debug/mozilla/components/concept/base/test/BuildConfig | single tracking bug",
+    "id": 2029263,
+    "summary": "Intermittent org.mozilla.geckoview.test.PanZoomControllerTest#touchEventWithXOrigin | single tracking bug",
     "product": "GeckoView",
     "component": "General",
-    "filedAt": "2026-05-01T18:01:19Z",
-    "resolvedAt": "2026-06-24T04:00:50Z"
+    "filedAt": "2026-04-04T00:00:50Z",
+    "resolvedAt": "2026-09-22T09:54:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2033703,
+    "summary": "Intermittent org.mozilla.geckoview.test.DynamicToolbarTest#showDynamicToolbarOnFrameReconstruction | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-04-21T08:12:41Z",
+    "resolvedAt": "2026-09-22T09:54:50Z"
   },
   {
     "source": "bugzilla",
@@ -79,15 +115,6 @@
     "component": "General",
     "filedAt": "2026-06-02T16:54:29Z",
     "resolvedAt": "2026-08-12T04:01:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2045663,
-    "summary": "Improve Magnifier area for <textarea>",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-08T09:52:57Z",
-    "resolvedAt": "2026-06-24T04:01:12Z"
   },
   {
     "source": "bugzilla",
@@ -142,15 +169,6 @@
     "component": "General",
     "filedAt": "2026-06-23T23:51:03Z",
     "resolvedAt": "2026-07-22T04:29:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050287,
-    "summary": "High freq org.mozilla.geckoview.test.PromptDelegateTest | single tracking bug",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-24T23:21:08Z",
-    "resolvedAt": "2026-06-25T00:11:55Z"
   },
   {
     "source": "bugzilla",
@@ -226,6 +244,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055366,
+    "summary": "Intermittent org.mozilla.geckoview.test.NavigationDelegateTest#locationReplaceOnUserGesture | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-15T23:48:48Z",
+    "resolvedAt": "2026-09-21T20:13:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055683,
     "summary": "Compromised content process can read arbitrary files at parent privilege via forged PGeckoViewContentChannel open [@ GeckoViewContentChannelParent::Init]",
     "product": "GeckoView",
@@ -295,6 +322,15 @@
     "component": "General",
     "filedAt": "2026-07-27T18:08:35Z",
     "resolvedAt": "2026-07-28T10:01:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058553,
+    "summary": "Intermittent org.mozilla.geckoview.test.AutocompleteTest#addressSelectCoalescesAcrossSameTypeFields | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-28T15:48:12Z",
+    "resolvedAt": "2026-09-21T20:13:28Z"
   },
   {
     "source": "bugzilla",
@@ -637,5 +673,23 @@
     "component": "General",
     "filedAt": "2026-09-17T20:58:56Z",
     "resolvedAt": "2026-09-18T16:42:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073663,
+    "summary": "Open the pickers in PromptDelegateTest with the user gesture and showPicker() in one content turn",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-18T20:01:13Z",
+    "resolvedAt": "2026-09-21T20:27:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073669,
+    "summary": "Intermittent org.mozilla.geckoview.test.GeolocationTest#startGeolocationOnBackground | org.mozilla.geckoview.test.util.UiThreadUtils$TimeoutException: Timed out after 6000ms",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-18T20:03:12Z",
+    "resolvedAt": "2026-09-21T20:27:56Z"
   }
 ]
