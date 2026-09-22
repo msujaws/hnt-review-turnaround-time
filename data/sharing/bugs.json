@@ -388,6 +388,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066543,
+    "summary": "The \"share Firefox\" link from the About Firefox window is not read automatically by any screen reader",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-08-25T18:04:18Z",
+    "resolvedAt": "2026-09-22T04:37:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066795,
     "summary": "Update strings in share panel",
     "product": "Firefox",
