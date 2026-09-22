@@ -3718,6 +3718,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063562,
+    "summary": "Restoring a Closed Tab group from the Organize Tabs panel will see some tabs as dupes",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-14T10:40:52Z",
+    "resolvedAt": "2026-09-22T09:54:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063568,
     "summary": "The Organize tabs panel will suggest a Tab group with the same name as an already existing Tab group",
     "product": "Core",
@@ -4240,12 +4249,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069150,
+    "summary": "Show the selection menu without a configured chatbot provider",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T22:03:32Z",
+    "resolvedAt": "2026-09-22T04:37:45Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069453,
     "summary": "[Monitor Agent][FE] launch nimbus experiment for promo card v0 by 9/1",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-04T17:21:31Z",
     "resolvedAt": "2026-09-04T17:24:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069516,
+    "summary": "Use documentGlobal instead of the removed ownerGlobal in SidebarChatBotPromo",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-04T19:56:57Z",
+    "resolvedAt": "2026-09-22T04:38:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069683,
+    "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_inline_mentions.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only as",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-06T04:23:26Z",
+    "resolvedAt": "2026-09-21T20:14:11Z"
   },
   {
     "source": "bugzilla",
@@ -4339,12 +4375,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072664,
+    "summary": "The Edit Sources button from the Smart autofill should be disabled when there are no sources available",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-16T15:11:46Z",
+    "resolvedAt": "2026-09-22T04:39:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072675,
     "summary": "Smart Form Fill for a user with a relevant tab but no saved autofill never fills",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-16T15:30:46Z",
     "resolvedAt": "2026-09-16T20:05:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072692,
+    "summary": "[Monitor Agent] [FE] Notificaiton when error happens",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-16T16:02:16Z",
+    "resolvedAt": "2026-09-22T04:39:29Z"
   },
   {
     "source": "bugzilla",
@@ -4363,6 +4417,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-17T17:22:12Z",
     "resolvedAt": "2026-09-19T09:11:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073461,
+    "summary": "The First time option from the top of the Time dropdown panel cannot be selected inside the Create a task modal in the sidebar",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-18T12:14:17Z",
+    "resolvedAt": "2026-09-22T04:39:57Z"
   },
   {
     "source": "bugzilla",
@@ -4444,6 +4507,15 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-09-11T18:37:27Z",
     "resolvedAt": "2026-09-19T09:10:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072399,
+    "summary": "[Monitor Agent] [MOD] Update Telemetry per DS spec",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-09-15T20:56:40Z",
+    "resolvedAt": "2026-09-22T04:39:15Z"
   },
   {
     "source": "bugzilla",
