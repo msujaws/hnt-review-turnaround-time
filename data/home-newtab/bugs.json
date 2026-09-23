@@ -91,6 +91,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2016854,
+    "summary": "In new-tab medium & large tiles, the publisher name is shortened with ellipsis",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-13T22:46:04Z",
+    "resolvedAt": "2026-09-22T19:24:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2018699,
     "summary": "Migrate simple unit tests to Jest/RTL",
     "product": "Firefox",
@@ -163,6 +172,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2018754,
+    "summary": "Update Content Feed Cards and SPOCs UI to Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T19:53:40Z",
+    "resolvedAt": "2026-09-22T19:16:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2018762,
     "summary": "Project Nova, Shortcuts - Update pinning behavior",
     "product": "Firefox",
@@ -205,6 +223,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-03-17T15:24:08Z",
     "resolvedAt": "2026-09-21T20:04:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2024048,
+    "summary": "DiscoveryStreamAdmin should use pref values, not pref key strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-17T20:27:35Z",
+    "resolvedAt": "2026-09-22T19:16:18Z"
   },
   {
     "source": "bugzilla",
@@ -352,15 +379,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2039423,
-    "summary": "Update default prefs for widgets",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-13T21:21:27Z",
-    "resolvedAt": "2026-06-25T04:42:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042496,
     "summary": "Fx wallpapers lack accessible names in Customize panel",
     "product": "Firefox",
@@ -433,15 +451,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046594,
-    "summary": "Include Small size widgets in the \"Maximize\" action when in the widget row",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-10T21:19:16Z",
-    "resolvedAt": "2026-06-25T04:44:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046707,
     "summary": "newtab thumbnails are downloaded as 296px wide and stretched to 298.133px (nova)",
     "product": "Firefox",
@@ -484,15 +493,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-16T20:29:07Z",
     "resolvedAt": "2026-08-06T16:11:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048386,
-    "summary": "Set up boilerplate Privacy widget (prefs/UI) for the New Tab page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-17T20:48:53Z",
-    "resolvedAt": "2026-06-25T05:26:30Z"
   },
   {
     "source": "bugzilla",
@@ -541,39 +541,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049488,
-    "summary": "Scaffold the Daily Crossword widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-22T19:40:09Z",
-    "resolvedAt": "2026-06-25T09:57:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049489,
     "summary": "Render the Daily Crossword in a sandboxed iframe",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-22T19:41:53Z",
     "resolvedAt": "2026-07-09T16:08:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049528,
-    "summary": "Add topsites.pinned_count metric to newtab ping",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T00:32:03Z",
-    "resolvedAt": "2026-06-25T05:27:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049535,
-    "summary": "render-activity-stream-html.js fails with \"Cannot find package 'meow'\" after fresh npm install",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T01:40:39Z",
-    "resolvedAt": "2026-06-25T05:27:18Z"
   },
   {
     "source": "bugzilla",
@@ -595,21 +568,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049798,
-    "summary": "World Cup Wallpapers: Semi-finals Message",
+    "id": 2049768,
+    "summary": "Document useWidgetTelemetry hook in widgets-scaffold skill",
     "product": "Firefox",
     "component": "New Tab Page",
-    "filedAt": "2026-06-23T18:04:38Z",
-    "resolvedAt": "2026-06-25T05:33:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049845,
-    "summary": "Firefox 152.0.2 extreme memory usage and complete freeze on startup (regression from 152.0.1)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T19:48:38Z",
-    "resolvedAt": "2026-06-25T05:33:21Z"
+    "filedAt": "2026-06-23T16:40:12Z",
+    "resolvedAt": "2026-09-22T19:19:12Z"
   },
   {
     "source": "bugzilla",
@@ -619,15 +583,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-23T22:38:01Z",
     "resolvedAt": "2026-06-27T08:47:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049914,
-    "summary": "Hard-code in 11px as the font-size for the Sponsored text in Topsites",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-24T01:17:53Z",
-    "resolvedAt": "2026-06-25T05:33:44Z"
   },
   {
     "source": "bugzilla",
@@ -673,15 +628,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-24T19:35:29Z",
     "resolvedAt": "2026-06-30T03:15:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050299,
-    "summary": "FocusTimer: Fix progress circle on transition",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-25T00:09:06Z",
-    "resolvedAt": "2026-06-25T05:34:35Z"
   },
   {
     "source": "bugzilla",
@@ -2458,6 +2404,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2064769,
+    "summary": "POTD: Address alignment of Picture of the day in widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-19T15:53:54Z",
+    "resolvedAt": "2026-09-22T19:20:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064914,
     "summary": "Stocks widget: add plural selector to Fluent string newtab-stocks-watchlist-full",
     "product": "Firefox",
@@ -2719,6 +2674,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067468,
+    "summary": "Crossword widget [a11y] Context menu button lacks accessible name",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-28T22:22:30Z",
+    "resolvedAt": "2026-09-22T20:09:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067754,
     "summary": "Remove version 155 train-hop shims for the homepage/customHomepage fallback in AboutPreferences",
     "product": "Firefox",
@@ -2782,6 +2746,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067846,
+    "summary": "Support Multiple Custom Wallpapers: Retire World Cup wallpapers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T17:12:23Z",
+    "resolvedAt": "2026-09-22T19:21:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067903,
     "summary": "Back out newtab bundle during build for beta 156",
     "product": "Firefox",
@@ -2806,6 +2779,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-01T16:43:38Z",
     "resolvedAt": "2026-09-19T09:09:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068272,
+    "summary": "Load saved wallpapers straight from the library folder and drop the applied copy",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-01T21:18:24Z",
+    "resolvedAt": "2026-09-23T04:32:50Z"
   },
   {
     "source": "bugzilla",
@@ -3061,6 +3043,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072361,
+    "summary": "Newtab score-based selection new JS Module",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T18:43:11Z",
+    "resolvedAt": "2026-09-23T04:33:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072362,
     "summary": "Remove additional unnecessary metrics now that we're using MARS for sponsored topsites",
     "product": "Firefox",
@@ -3106,6 +3097,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072918,
+    "summary": "browser_customize_menu_content.js waits for a CSS transition to end rather than for the customize panel to open",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T07:48:07Z",
+    "resolvedAt": "2026-09-23T09:17:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072951,
+    "summary": "Browsing through \"Your Images\" section will result in a flicker when selecting images",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T09:32:34Z",
+    "resolvedAt": "2026-09-22T09:55:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073001,
     "summary": "browser_context_menu_item.js checks a search shortcut's context menu rather than a top site's",
     "product": "Firefox",
@@ -3133,11 +3142,47 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073418,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_newtab_ping.js | test_newtab_dwell_time_in_ping - dwell_time is in the newtab ping - null == true",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-18T09:31:28Z",
+    "resolvedAt": "2026-09-23T09:17:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073419,
+    "summary": "The newtab customize panel can open without moving focus to its close button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-18T09:32:00Z",
+    "resolvedAt": "2026-09-23T09:17:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073421,
+    "summary": "TopSitesFeed keeps broadcasting a top sites row after uninit(), so toggling feeds.system.topsites can leave every about:newtab showing the old row",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-18T09:32:19Z",
+    "resolvedAt": "2026-09-23T09:18:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073436,
     "summary": "Firefox logo and wordmark overlap the search bar in HNT Search Logos Experiment Variant B",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-18T10:54:50Z",
     "resolvedAt": "2026-09-21T20:27:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074268,
+    "summary": "The widgets listed in DevTools should mirror the same sorting as the Customize panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-21T19:41:49Z",
+    "resolvedAt": "2026-09-23T04:35:19Z"
   }
 ]
