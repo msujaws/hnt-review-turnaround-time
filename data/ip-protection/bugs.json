@@ -235,15 +235,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049469,
-    "summary": "Location button in VPN panel is missing borders when Nova is enabled",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-22T18:07:20Z",
-    "resolvedAt": "2026-06-25T17:04:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049599,
     "summary": "Selected location text is unreadable (black text on purple background) with Alpenglow theme in Location subview",
     "product": "Firefox",
@@ -478,6 +469,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2054352,
+    "summary": "Firefox VPN location not working properly on Firefox Nightly",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-12T11:03:14Z",
+    "resolvedAt": "2026-09-22T12:23:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2054514,
     "summary": "ProxyPass infinite refresh-loop when the System-Clock has drifted more then 15minutes.",
     "product": "Firefox",
@@ -538,6 +538,24 @@
     "component": "IP Protection",
     "filedAt": "2026-07-22T12:47:19Z",
     "resolvedAt": "2026-07-30T17:13:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057148,
+    "summary": "VPN connects to US node, despite, what country is selected",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-23T06:29:25Z",
+    "resolvedAt": "2026-09-22T14:02:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057313,
+    "summary": "Remove notification dot on VPN toolbar icon",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-23T18:47:05Z",
+    "resolvedAt": "2026-09-23T04:31:55Z"
   },
   {
     "source": "bugzilla",
@@ -676,15 +694,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063725,
-    "summary": "Understand root cause behind persistent authentication problems",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-14T20:34:44Z",
-    "resolvedAt": "2026-09-21T20:13:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064482,
     "summary": "empty browser/components/ipprotection/tests/browser/browser_ipprotection_usage.js",
     "product": "Firefox",
@@ -781,5 +790,23 @@
     "component": "IP Protection",
     "filedAt": "2026-09-02T15:29:33Z",
     "resolvedAt": "2026-09-09T14:12:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069911,
+    "summary": "[IPProtection] Selecting United States routes traffic through Austria on Linux",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-07T12:51:14Z",
+    "resolvedAt": "2026-09-22T13:57:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074264,
+    "summary": "[Android] Enable VPN by default (via Nimbus YAML) and add the following locations list.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-21T19:28:40Z",
+    "resolvedAt": "2026-09-23T04:35:14Z"
   }
 ]
