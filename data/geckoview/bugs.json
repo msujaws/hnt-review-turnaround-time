@@ -154,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049865,
-    "summary": "Disable MOZ_LINKER on GeckoView",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-23T20:58:43Z",
-    "resolvedAt": "2026-06-25T05:33:30Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049904,
     "summary": "Avoid to read content on main thread when using <input type=file webkitdirectory>",
     "product": "GeckoView",
@@ -496,6 +487,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066197,
+    "summary": "[A11y] Focus order on PDF FAB is incorrect",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-24T18:44:44Z",
+    "resolvedAt": "2026-09-23T04:32:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067164,
     "summary": "Improve JavaCallbackDelegate Crash Stacks",
     "product": "GeckoView",
@@ -691,5 +691,14 @@
     "component": "General",
     "filedAt": "2026-09-18T20:03:12Z",
     "resolvedAt": "2026-09-21T20:27:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073789,
+    "summary": "ContentCrashTest kills the test process with a NullPointerException in TestCrashHandler.Client when the test is skipped by an assumption",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-19T14:35:48Z",
+    "resolvedAt": "2026-09-22T21:18:13Z"
   }
 ]
