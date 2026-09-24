@@ -415,15 +415,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044923,
-    "summary": "[META] [QA] [QA-5287] Testing New Tab train-hop for Firefox 151.0.3 Release",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-04T08:49:29Z",
-    "resolvedAt": "2026-06-26T07:47:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046045,
     "summary": "Make \"Hide widget\" consistent",
     "product": "Firefox",
@@ -550,15 +541,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049545,
-    "summary": "Newtab clean shortcuts list and shortcuts drag n drop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T04:02:28Z",
-    "resolvedAt": "2026-06-26T04:17:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049700,
     "summary": "[Experiment] The title and secondary button of the Tab Groups Promo message from treatment-a are cropped on Spanish locales after resizing the browser window",
     "product": "Firefox",
@@ -601,24 +583,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-24T15:01:24Z",
     "resolvedAt": "2026-07-06T21:44:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050190,
-    "summary": "Use border-radius-medium for New Tab topsite tiles",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-24T17:23:10Z",
-    "resolvedAt": "2026-06-26T04:19:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050235,
-    "summary": "WCW: sportsWidget.interaction pref not set by Results, Upcoming navigations",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-24T19:18:55Z",
-    "resolvedAt": "2026-06-26T04:19:24Z"
   },
   {
     "source": "bugzilla",
@@ -1846,6 +1810,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061234,
+    "summary": "\"Show more widgets\" button has no padding from bottom of new tab page",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T13:57:08Z",
+    "resolvedAt": "2026-09-23T21:41:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061524,
     "summary": "[Privacy widget] Add UTM params for external CTA actions",
     "product": "Firefox",
@@ -2239,6 +2212,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-14T08:18:53Z",
     "resolvedAt": "2026-08-27T09:55:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063550,
+    "summary": "[Windows] Trackers # is not announced on mouseover in the Privacy Widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T10:02:00Z",
+    "resolvedAt": "2026-09-24T08:56:50Z"
   },
   {
     "source": "bugzilla",
@@ -2665,6 +2647,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067207,
+    "summary": "Perma [tier2] browser/extensions/newtab/test/browser/browser_newtab_ping.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-27T15:29:45Z",
+    "resolvedAt": "2026-09-24T08:57:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067467,
     "summary": "Privacy widget [a11y] Context menu button lacks accessible name",
     "product": "Firefox",
@@ -3026,7 +3017,7 @@
   {
     "source": "bugzilla",
     "id": 2072062,
-    "summary": "Enable the wallpaper library in Nightly",
+    "summary": "Enable the wallpaper library in all channels",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-15T01:32:50Z",
