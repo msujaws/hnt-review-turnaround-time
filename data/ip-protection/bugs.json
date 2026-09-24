@@ -136,15 +136,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033814,
-    "summary": "bait and switch Free VPN becomes €9.99/month (What's New page advertises feature to users who haven't gotten the roll-out yet)",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-21T15:07:00Z",
-    "resolvedAt": "2026-06-26T17:58:09Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034088,
     "summary": "VPN toolbar button shows incorrect state and excludes wrong URL for JSON/PDF viewer pages",
     "product": "Firefox",
@@ -550,6 +541,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057242,
+    "summary": "Improve the Logging/Debugging situation for Users & QA",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-23T14:38:24Z",
+    "resolvedAt": "2026-09-23T21:41:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057313,
     "summary": "Remove notification dot on VPN toolbar icon",
     "product": "Firefox",
@@ -694,6 +694,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063725,
+    "summary": "Understand root cause behind persistent authentication problems",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-14T20:34:44Z",
+    "resolvedAt": "2026-09-24T04:56:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2064482,
     "summary": "empty browser/components/ipprotection/tests/browser/browser_ipprotection_usage.js",
     "product": "Firefox",
@@ -808,5 +817,14 @@
     "component": "IP Protection",
     "filedAt": "2026-09-21T19:28:40Z",
     "resolvedAt": "2026-09-23T04:35:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074374,
+    "summary": "[a11y]Main VPN panel is broken when Light theme and High Contrast Mode (Aquatic, Night Sky, Dusk) are active",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T08:38:22Z",
+    "resolvedAt": "2026-09-24T04:57:51Z"
   }
 ]
