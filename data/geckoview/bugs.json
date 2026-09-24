@@ -10,6 +10,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1607766,
+    "summary": "Intermittent org.mozilla.geckoview.test.ExtensionActionTest <test name> | single tracking bug",
+    "product": "GeckoView",
+    "component": "Extensions",
+    "filedAt": "2020-01-08T14:10:27Z",
+    "resolvedAt": "2026-09-23T21:40:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1748526,
     "summary": "BrowserAction popup always opens as non-private tab on Fenix",
     "product": "GeckoView",
@@ -25,6 +34,15 @@
     "component": "General",
     "filedAt": "2024-06-12T18:52:15Z",
     "resolvedAt": "2026-09-21T20:03:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1906135,
+    "summary": "Intermittent org.mozilla.geckoview.test.AutocompleteTest#loginSelectModifyAccept | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2024-07-03T16:05:31Z",
+    "resolvedAt": "2026-09-24T04:55:49Z"
   },
   {
     "source": "bugzilla",
@@ -307,6 +325,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2057687,
+    "summary": "[2.7] Add telemetry",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-24T22:48:42Z",
+    "resolvedAt": "2026-09-24T08:56:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058244,
     "summary": "Use Gradle's embedded Kotlin version for the build-logic plugin builds",
     "product": "GeckoView",
@@ -475,6 +502,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-17T18:47:34Z",
     "resolvedAt": "2026-08-20T16:29:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064852,
+    "summary": "Intermittent org.mozilla.geckoview.test.WebExtensionTest#testBrowserTabsRemove | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-08-19T19:12:19Z",
+    "resolvedAt": "2026-09-23T21:41:38Z"
   },
   {
     "source": "bugzilla",
