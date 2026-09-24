@@ -397,6 +397,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072199,
+    "summary": "Hover and focus states of the Close (X) button in the \"Close without saving?\" alert of the Update password card are clipped when sidebar is minimized",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-15T11:05:54Z",
+    "resolvedAt": "2026-09-24T04:56:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072278,
     "summary": "Handle deletions during restore",
     "product": "Toolkit",
