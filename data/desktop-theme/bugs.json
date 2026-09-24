@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050419,
-    "summary": "Tweak and improve manifest token interpolation syntax",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-25T12:48:33Z",
-    "resolvedAt": "2026-06-26T04:49:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050546,
     "summary": "Remove dead CSS rule .alltabs-item[selected=\"true\"]",
     "product": "Firefox",
@@ -451,6 +442,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070271,
+    "summary": "[Nova] Hover state of tab content buttons is difficult to see with Nova themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-08T16:36:08Z",
+    "resolvedAt": "2026-09-23T21:42:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070550,
     "summary": "Nova background color does not apply to expand-on-hover sidebar",
     "product": "Firefox",
@@ -538,5 +538,14 @@
     "component": "Theme",
     "filedAt": "2026-09-15T12:54:28Z",
     "resolvedAt": "2026-09-15T21:48:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074394,
+    "summary": "In-tab media button should not be a toolbar button.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-22T09:20:22Z",
+    "resolvedAt": "2026-09-23T21:43:22Z"
   }
 ]
