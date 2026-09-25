@@ -4,15 +4,16 @@ Daily dashboard that tracks code-review turnaround time (TAT) for several Firefo
 review groups. A dropdown at the top switches between them; each group's data is
 tracked independently and never merged.
 
-| Group                      | Phabricator project tag           | GitHub                        | Bugzilla scope               | URL                        |
-| -------------------------- | --------------------------------- | ----------------------------- | ---------------------------- | -------------------------- |
-| Home-NewTab                | `home-newtab-reviewers`           | `Pocket/content-monorepo` + 2 | Firefox :: New Tab Page      | `/` (default)              |
-| IP Protection              | `ip-protection-reviewers`         | —                             | Firefox :: IP Protection     | `/g/ip-protection`         |
-| Desktop Theme              | `desktop-theme-reviewers`         | —                             | Firefox :: Theme             | `/g/desktop-theme`         |
-| Sharing                    | `sharing-reviewers`               | —                             | Firefox :: Sharing           | `/g/sharing`               |
-| GeckoView                  | `geckoview-reviewers`             | —                             | GeckoView (whole product)    | `/g/geckoview`             |
-| Credential Management      | `credential-management-reviewers` | —                             | Toolkit :: Password Manager  | `/g/credential-management` |
-| AI Platform and Experience | `ai-platform-reviewers`           | `Firefox-AI/MLPA`             | Core :: Machine Learning: \* | `/g/ai-platform`           |
+| Group                      | Phabricator project tag           | GitHub                        | Bugzilla scope                | URL                        |
+| -------------------------- | --------------------------------- | ----------------------------- | ----------------------------- | -------------------------- |
+| Home-NewTab                | `home-newtab-reviewers`           | `Pocket/content-monorepo` + 2 | Firefox :: New Tab Page       | `/` (default)              |
+| IP Protection              | `ip-protection-reviewers`         | —                             | Firefox :: IP Protection      | `/g/ip-protection`         |
+| Desktop Theme              | `desktop-theme-reviewers`         | —                             | Firefox :: Theme              | `/g/desktop-theme`         |
+| Sharing                    | `sharing-reviewers`               | —                             | Firefox :: Sharing            | `/g/sharing`               |
+| GeckoView                  | `geckoview-reviewers`             | —                             | GeckoView (whole product)     | `/g/geckoview`             |
+| Credential Management      | `credential-management-reviewers` | —                             | Toolkit :: Password Manager   | `/g/credential-management` |
+| AI Platform and Experience | `ai-platform-reviewers`           | `Firefox-AI/MLPA`             | Core :: Machine Learning: \*  | `/g/ai-platform`           |
+| Application Update         | `application-update-reviewers`    | —                             | Toolkit :: Application Update | `/g/application-update`    |
 
 Home-NewTab and AI Platform and Experience review on both Phabricator and GitHub;
 the other groups are Phabricator-only. Home-NewTab pulls `Pocket/content-monorepo`

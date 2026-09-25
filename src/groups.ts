@@ -182,6 +182,15 @@ export const ALL_GROUPS: readonly GroupConfig[] = [
     // to gate and to give reviewers non-ET timezones.
     github: [{ owner: 'Firefox-AI', repo: 'MLPA' }],
   },
+  {
+    id: asGroupId('application-update'),
+    label: 'Application Update',
+    title: 'Application Update Review Turnaround',
+    description: phabOnlyDescription('Application Update'),
+    phabProjectSlugs: ['application-update-reviewers'],
+    phabProjectUrl: phabProjectUrl('application-update-reviewers'),
+    bugzilla: [{ product: 'Toolkit', components: ['Application Update'] }],
+  },
 ];
 
 export const DEFAULT_GROUP_ID: GroupId = HOME_NEWTAB.id;
