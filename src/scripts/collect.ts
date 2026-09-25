@@ -63,7 +63,7 @@ import { computeStats, type WindowStats } from './stats';
 
 export const RETENTION_DAYS = 90;
 const FOLLOWUP_LOOKBACK_DAYS = 3;
-const BACKFILL_LOOKBACK_DAYS = 45;
+const BACKFILL_LOOKBACK_DAYS = 60;
 const WINDOW_7_DAYS = 7;
 const WINDOW_14_DAYS = 14;
 export const WINDOW_30_DAYS = 30;
@@ -944,7 +944,7 @@ export const runCollectionFromDisk = async (
     // before another 429. Cede the budget voluntarily at 75 so the pause
     // lands with margin under the ceiling instead of racing it. Daily
     // follow-up runs process far fewer revisions than this, so the cooldown
-    // only trips during the initial 45-day backfill.
+    // only trips during the initial 60-day backfill.
     methodCooldowns: [{ method: 'transaction.search', every: 75, cooldownMs: 30 * 60 * 1000 }],
   });
   // Phab-only groups never touch GitHub — skip the client (and the GH_PAT
@@ -997,7 +997,7 @@ export const runCollectionFromDisk = async (
       const isBackfill = lookbackDaysArgument === BACKFILL_LOOKBACK_DAYS;
       const bugbugEnabled = process.env.BUGBUG_BACKFILL !== '0';
 
-      // On the 45-day first-run backfill, prefer the public bugbug dump —
+      // On the 60-day first-run backfill, prefer the public bugbug dump —
       // avoids ~100 rate-limited transaction.search calls and the 30-minute
       // Phab cooldowns they trigger. The dump refreshes twice a month so
       // the next daily follow-up (FOLLOWUP_LOOKBACK_DAYS=3) backfills
@@ -1101,7 +1101,7 @@ export const runCollectionFromDisk = async (
               client: bmo,
               scopes: bugzillaScopes,
               // The whole retention window, re-derived every run — not the
-              // 3-vs-45-day incremental lookback the other two fetchers use.
+              // 3-vs-60-day incremental lookback the other two fetchers use.
               lookbackDays: RETENTION_DAYS,
               now,
             }),

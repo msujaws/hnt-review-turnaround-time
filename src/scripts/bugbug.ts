@@ -18,7 +18,7 @@ import {
 // Mozilla bugbug publishes a combined differential.revision.search +
 // transaction.search dump as a zstd-compressed JSONL artifact. The pipeline
 // refreshes on the 1st and 16th of each month, so this path is only suitable
-// for the 45-day first-run backfill — daily follow-up runs keep using the
+// for the 60-day first-run backfill — daily follow-up runs keep using the
 // live Conduit endpoint. Auth-free, no rate limit.
 export const BUGBUG_REVISIONS_URL =
   'https://community-tc.services.mozilla.com/api/index/v1/task/project.bugbug.data_revisions.latest/artifacts/public/revisions.json.zst';

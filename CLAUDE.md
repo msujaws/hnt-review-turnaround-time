@@ -106,7 +106,7 @@ Key constants in `src/scripts/collect.ts`:
 - `FIXED_WITHIN_DAYS = 7` (the bug panel's "% fixed within" reading — deliberately
   NOT an SLA: no reference line, no tab tint, no `<title>` mention)
 - `RETENTION_DAYS = 90`
-- `BACKFILL_LOOKBACK_DAYS = 45` (first run only — no existing samples)
+- `BACKFILL_LOOKBACK_DAYS = 60` (first run only — no existing samples)
 - `FOLLOWUP_LOOKBACK_DAYS = 3` (every subsequent run)
 - `WINDOW_7_DAYS = 7`, `WINDOW_14_DAYS = 14`
 - `ET_ZONE = 'America/New_York'`

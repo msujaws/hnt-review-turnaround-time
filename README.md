@@ -118,7 +118,7 @@ an environment variable — add or edit an entry there to change the tracked gro
 
 ### First-run backfill data source
 
-The collector widens to a 45-day window on the very first run (empty
+The collector widens to a 60-day window on the very first run (empty
 `samples.json` or `landings.json`). That window hits Phabricator's
 `transaction.search` rate limit hard — each 30-minute cooldown pause makes
 a fresh backfill take hours. To avoid it, the backfill path downloads
@@ -202,13 +202,13 @@ See `src/scripts/collect.ts`. Each group owns a `data/<group-id>/` directory
 `backlog.json`, and `bugs.json` — group data is never merged. `history.json` is an append-only
 list of daily snapshots; `samples.json` retains individual per-review samples
 for 90 days (so window recomputes stay cheap and auditable in git history).
-First run for a group backfills the last 45 days; subsequent runs only query
+First run for a group backfills the last 60 days; subsequent runs only query
 3 days back. The collector loops over every group in `src/groups.ts` on each run.
 
 `bugs.json` is the exception to all of the above: it is **fully replaced** on
 every run, not merged, because the Bugzilla query re-derives the whole 90-day
 resolved set in one cheap request. That makes the first run self-backfilling with
-no 45-day special case, and it is also the only correct choice — a bug that gets
+no 60-day special case, and it is also the only correct choice — a bug that gets
 reopened, or re-resolved as `WONTFIX`, stops matching `resolution=FIXED` and has
 to leave the dataset, where a merge would pin the stale `FIXED` row forever. The
 tradeoff: `bugs.json` is a cache rather than an archive, and a past day's figure
@@ -222,7 +222,7 @@ the review-turnaround metrics.
 - Per-reviewer breakdowns (e.g. per-reviewer trendlines)
 - Cross-source reviewer identity merging
 - Alerting when SLA drops below a threshold
-- Backfill of samples older than 45 days on first run
+- Backfill of samples older than 60 days on first run
 - Restricted (security) bugs in the fix-time metric — Bugzilla is read
   unauthenticated
 - Back-dated `bugFix` history rows: `bugs.json` covers 90 days from the first run,
