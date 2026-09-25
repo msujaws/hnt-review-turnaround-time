@@ -1,0 +1,209 @@
+[
+  {
+    "source": "bugzilla",
+    "id": 1567396,
+    "summary": "String added in bug 1503341 is incorrect",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2019-07-19T07:57:23Z",
+    "resolvedAt": "2026-07-12T11:35:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1661556,
+    "summary": "Non-staged complete update does not recover backup files",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2020-08-27T19:29:44Z",
+    "resolvedAt": "2026-08-22T21:26:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1741675,
+    "summary": "Examine shutdown hangs caused by the updater (both background task and browser parent)",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2021-11-17T16:37:53Z",
+    "resolvedAt": "2026-09-23T16:00:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1975960,
+    "summary": "Add zucchini support for mingwclang builds",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2025-07-07T12:28:17Z",
+    "resolvedAt": "2026-09-15T21:44:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2031817,
+    "summary": "A previous fix broke install when running from inside a DMG",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-04-14T19:48:12Z",
+    "resolvedAt": "2026-07-16T03:51:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2034669,
+    "summary": "Give a grace period after waking from sleep before enforcing compulsory restart",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-04-24T00:36:20Z",
+    "resolvedAt": "2026-09-03T22:07:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2043122,
+    "summary": "Handle zucchini bad_alloc failures in the updater via C++ exceptions (SERVICE_STILL_APPLYING_ON_FAILURE) to avoid hard crashes on all platforms",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-05-28T06:46:20Z",
+    "resolvedAt": "2026-09-15T15:32:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046798,
+    "summary": "Broaden the __try scope for catching badalloc and CHECK failures in zucchini",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-06-11T13:47:45Z",
+    "resolvedAt": "2026-09-15T15:32:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056407,
+    "summary": "Perma [tier2] a11y toolkit/mozapps/update/tests/browser/browser_doorhanger_sp_patch_partialApplyFailure.js | single tracking bug",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-20T21:19:31Z",
+    "resolvedAt": "2026-07-21T04:04:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056652,
+    "summary": "Perma [Tier 2] toolkit/mozapps/update/tests/browser/browser_doorhanger_sp_patch_partialApplyFailure.js | single tracking bug",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-21T17:59:49Z",
+    "resolvedAt": "2026-07-30T21:47:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057244,
+    "summary": "Most tests in toolkit/mozapps/update/tests/unit_updater_binary fail when run locally",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-23T14:41:09Z",
+    "resolvedAt": "2026-08-01T09:56:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058173,
+    "summary": "Bound untrusted allocation sizes in libmar (Coverity CID 1459297, 1459486)",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-27T14:47:56Z",
+    "resolvedAt": "2026-08-11T09:22:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058359,
+    "summary": "Re-enable \"update service\" setting for auto-disabled installations",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-28T01:28:13Z",
+    "resolvedAt": "2026-08-18T09:25:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058860,
+    "summary": "Improve the reliability of update rollbacks, by trying renaming if deletion fails during rollback",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-29T09:53:38Z",
+    "resolvedAt": "2026-08-14T21:56:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059477,
+    "summary": "Remove Legacy mirrors of application update telemetry",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-07-30T15:49:55Z",
+    "resolvedAt": "2026-08-25T16:01:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060275,
+    "summary": "Split the Execute phase in non-staged updates to improve stability guarantees (Prepare / Draft / Execute / Finish)",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-03T16:11:54Z",
+    "resolvedAt": "2026-08-14T21:56:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061517,
+    "summary": "Fix -Wunused-but-set-global for `sTimerID` in progressui_gtk.cpp",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-06T21:05:32Z",
+    "resolvedAt": "2026-08-25T09:09:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062313,
+    "summary": "Use direct calls to method in UpdateTimerManager",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-10T15:48:23Z",
+    "resolvedAt": "2026-08-12T20:23:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063986,
+    "summary": "Check the return value of posix_fallocate and only preallocate when the destination file was opened in PatchFile::ApplyPatchTo",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-17T08:38:26Z",
+    "resolvedAt": "2026-08-20T04:22:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2065633,
+    "summary": "Remove Legacy Telemetry \"update\" ping",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-21T19:35:41Z",
+    "resolvedAt": "2026-09-01T04:18:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066420,
+    "summary": "update.status_error_code_*_startup has recorded no updater error code since bug 1928229",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-25T12:25:35Z",
+    "resolvedAt": "2026-09-02T08:51:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071880,
+    "summary": "update_telemetry.json placed in the app bundle root on macOS",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-09-14T13:30:53Z",
+    "resolvedAt": "2026-09-14T21:48:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072763,
+    "summary": "Improve the \"Restart Required\" messaging",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-09-16T21:59:16Z",
+    "resolvedAt": "2026-09-23T04:34:19Z"
+  }
+]
