@@ -99,4 +99,10 @@ describe('bugzilla scoping', () => {
       { product: 'Toolkit', components: ['Password Manager'] },
     ]);
   });
+
+  it('scopes application-update to Toolkit :: Application Update', () => {
+    expect(getGroup('application-update')?.bugzilla).toEqual([
+      { product: 'Toolkit', components: ['Application Update'] },
+    ]);
+  });
 });

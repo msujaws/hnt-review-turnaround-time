@@ -19,6 +19,7 @@ describe('group route', () => {
       'geckoview',
       'credential-management',
       'ai-platform',
+      'application-update',
     ]);
   });
 
