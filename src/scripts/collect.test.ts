@@ -101,9 +101,9 @@ describe('collect', () => {
       now: new Date('2026-04-20T13:00:00Z'),
     });
 
-    expect(fetchPhab).toHaveBeenCalledWith(45);
-    expect(fetchGithub).toHaveBeenCalledWith(45);
-    expect(result.lookbackDays).toBe(45);
+    expect(fetchPhab).toHaveBeenCalledWith(60);
+    expect(fetchGithub).toHaveBeenCalledWith(60);
+    expect(result.lookbackDays).toBe(60);
   });
 
   it('uses a 3-day lookback when both samples and landings already exist', async () => {
