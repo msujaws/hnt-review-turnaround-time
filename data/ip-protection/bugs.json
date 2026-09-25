@@ -289,24 +289,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050639,
-    "summary": "Border radius should be medium instead of xlarge for VPN panel",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-25T20:37:13Z",
-    "resolvedAt": "2026-06-27T08:48:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050652,
-    "summary": "VPN panel state illustration sizes don't match the spec",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-25T21:13:38Z",
-    "resolvedAt": "2026-06-27T08:49:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050761,
     "summary": "[Nova] VPN location list items permanently display hover effect styling without active hover in certain HCM themes (e.g., Dusk)",
     "product": "Firefox",
@@ -694,15 +676,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063725,
-    "summary": "Understand root cause behind persistent authentication problems",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-14T20:34:44Z",
-    "resolvedAt": "2026-09-24T04:56:22Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064482,
     "summary": "empty browser/components/ipprotection/tests/browser/browser_ipprotection_usage.js",
     "product": "Firefox",
@@ -817,6 +790,15 @@
     "component": "IP Protection",
     "filedAt": "2026-09-21T19:28:40Z",
     "resolvedAt": "2026-09-23T04:35:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074289,
+    "summary": "Land strings for inclusions CFRs",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-21T21:13:20Z",
+    "resolvedAt": "2026-09-25T09:02:37Z"
   },
   {
     "source": "bugzilla",
