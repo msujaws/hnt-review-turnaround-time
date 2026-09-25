@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2011433,
+    "summary": "Focus can visibly be on New Tab search box AND secondary search bar at the same time",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-01-20T14:55:10Z",
+    "resolvedAt": "2026-09-24T18:49:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2011958,
     "summary": "Intermittent browser/extensions/newtab/test/browser/browser_topsites_sponsored.js | single tracking bug",
     "product": "Firefox",
@@ -178,15 +187,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-02-23T19:53:40Z",
     "resolvedAt": "2026-09-22T19:16:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2018762,
-    "summary": "Project Nova, Shortcuts - Update pinning behavior",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-23T20:12:04Z",
-    "resolvedAt": "2026-06-27T08:44:36Z"
   },
   {
     "source": "bugzilla",
@@ -556,24 +556,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-23T16:40:12Z",
     "resolvedAt": "2026-09-22T19:19:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049897,
-    "summary": "Add newtab.scroll boolean metric to newtab ping",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T22:38:01Z",
-    "resolvedAt": "2026-06-27T08:47:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049936,
-    "summary": "Scaffold the Stocks widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-24T04:38:20Z",
-    "resolvedAt": "2026-06-27T08:47:46Z"
   },
   {
     "source": "bugzilla",
@@ -1015,6 +997,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-07T15:15:13Z",
     "resolvedAt": "2026-07-15T13:40:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053151,
+    "summary": "Clocks Widget: \"Edit Clocks\" UI doesn't match intended desigsn",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-07T15:41:02Z",
+    "resolvedAt": "2026-09-25T04:41:04Z"
   },
   {
     "source": "bugzilla",
@@ -2485,6 +2476,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066236,
+    "summary": "Add region/locales to dynamically control widget system pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:11:07Z",
+    "resolvedAt": "2026-09-25T09:59:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066240,
+    "summary": "Add region/locales dynamic control for Lists widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:14:05Z",
+    "resolvedAt": "2026-09-25T09:59:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066334,
     "summary": "Sort newtab widget lists alphabetically",
     "product": "Firefox",
@@ -2890,6 +2899,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070336,
+    "summary": "Remove non-co-enrolling newtabTrainhopAddon Nimbus deployment mechanism",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T19:34:50Z",
+    "resolvedAt": "2026-09-25T09:01:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070359,
     "summary": "Stocks widget: show multiple matches for a ticker search instead of a single result",
     "product": "Firefox",
@@ -3169,11 +3187,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073802,
+    "summary": "Remove vestigial sendAttributionRequest properties from newtab and topsites code",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-19T16:42:27Z",
+    "resolvedAt": "2026-09-25T09:02:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074268,
     "summary": "The widgets listed in DevTools should mirror the same sorting as the Customize panel",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-21T19:41:49Z",
     "resolvedAt": "2026-09-23T04:35:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074804,
+    "summary": "Let the Nova New Tab search bar grow with the page width rather than in fixed steps",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-23T11:23:07Z",
+    "resolvedAt": "2026-09-25T09:03:16Z"
   }
 ]
