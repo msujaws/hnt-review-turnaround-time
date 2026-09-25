@@ -136,15 +136,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047296,
-    "summary": "Make Android audio-focus requests reflect a tab's Audio Session type, and relay system focus changes back to the tab",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-12T20:54:57Z",
-    "resolvedAt": "2026-06-27T08:46:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047472,
     "summary": "Don't override AutofillHints and InputType when we already know the hint.",
     "product": "GeckoView",
@@ -214,6 +205,15 @@
     "component": "General",
     "filedAt": "2026-07-01T15:49:28Z",
     "resolvedAt": "2026-07-30T21:46:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2053907,
+    "summary": "[2] Add a new GeckoView API endpoint for full page screenshots",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-09T19:53:46Z",
+    "resolvedAt": "2026-09-24T20:30:31Z"
   },
   {
     "source": "bugzilla",
@@ -667,6 +667,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071217,
+    "summary": "Intermittent org.mozilla.geckoview.test.InteractiveWidgetTest#scrollIntoViewToPositionFixed | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-11T09:41:27Z",
+    "resolvedAt": "2026-09-24T16:48:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071386,
     "summary": "[UI] Disable autocorrect / helper  on text entry for signature",
     "product": "GeckoView",
@@ -736,5 +745,14 @@
     "component": "General",
     "filedAt": "2026-09-19T14:35:48Z",
     "resolvedAt": "2026-09-22T21:18:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075075,
+    "summary": "Restruct GeckoClipboardContentProvider setting",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-24T03:26:05Z",
+    "resolvedAt": "2026-09-24T16:49:39Z"
   }
 ]
