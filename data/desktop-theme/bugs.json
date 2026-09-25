@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050610,
-    "summary": "Mach buildtokens got out of date, update it",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-25T18:59:21Z",
-    "resolvedAt": "2026-06-27T20:36:16Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050655,
     "summary": "[Nova] Page blocks (sidebar/toolbar/content area) in dark theme should have light grey borders",
     "product": "Firefox",
@@ -388,6 +379,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067215,
+    "summary": "Don't force special colours for LWT in Nova",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-27T15:58:01Z",
+    "resolvedAt": "2026-09-25T09:59:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068136,
     "summary": "[Nova] Sidebar icons have become low contrast with some themes and are inconsistent with toolbar icons",
     "product": "Firefox",
@@ -538,6 +538,15 @@
     "component": "Theme",
     "filedAt": "2026-09-15T12:54:28Z",
     "resolvedAt": "2026-09-15T21:48:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072596,
+    "summary": "[Nova] No discernable hover state for tabstrip buttons in Nova themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-16T12:08:01Z",
+    "resolvedAt": "2026-09-25T01:29:04Z"
   },
   {
     "source": "bugzilla",
