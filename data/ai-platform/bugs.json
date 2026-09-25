@@ -658,6 +658,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063636,
+    "summary": "Create curated memories generation dataset",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T15:51:13Z",
+    "resolvedAt": "2026-09-24T16:44:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063638,
     "summary": "Review and revamp the synthetic memories generation eval dataset",
     "product": "Core",
@@ -673,6 +682,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-14T15:59:56Z",
     "resolvedAt": "2026-09-02T16:03:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063647,
+    "summary": "Review and revamp the synthetic memories usage dataset",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-08-14T16:01:31Z",
+    "resolvedAt": "2026-09-24T16:43:59Z"
   },
   {
     "source": "bugzilla",
@@ -928,6 +946,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2001646,
+    "summary": "Create policies and tests around redirects for headless extraction",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2025-11-21T14:53:54Z",
+    "resolvedAt": "2026-09-25T09:59:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2011985,
     "summary": "Always wait for the page to be ready before running \"getText\" on page extractor",
     "product": "Core",
@@ -973,15 +1000,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043658,
-    "summary": "[llama.cpp] Update third_party/llama.cpp",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-05-29T16:21:53Z",
-    "resolvedAt": "2026-06-27T08:45:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046861,
     "summary": "Crash in [@ OOM | unknown | mozilla::dom::InferenceSession::Init]",
     "product": "Core",
@@ -1015,15 +1033,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-11T23:42:06Z",
     "resolvedAt": "2026-08-26T04:23:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049478,
-    "summary": "[llama.cpp] llama_model_params::use_mmap is exposed but not honored properly",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-22T19:07:35Z",
-    "resolvedAt": "2026-06-27T08:47:16Z"
   },
   {
     "source": "bugzilla",
@@ -1414,6 +1423,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066288,
+    "summary": "MLEngine.runWithGenerator: abandoned generator leaves run active and skips engine_run telemetry",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-24T23:08:50Z",
+    "resolvedAt": "2026-09-25T04:41:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067113,
     "summary": "Implement End-to-End Performance Coverage for Smart Window overhead",
     "product": "Core",
@@ -1492,6 +1510,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-09-17T16:27:00Z",
     "resolvedAt": "2026-09-18T16:42:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073254,
+    "summary": "Add developer documentation for Page Extractor",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-17T20:28:28Z",
+    "resolvedAt": "2026-09-25T09:02:17Z"
   },
   {
     "source": "bugzilla",
@@ -1576,48 +1603,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2026775,
-    "summary": "[Nova] Implement detached anchor bar container",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-26T20:03:58Z",
-    "resolvedAt": "2026-06-27T08:44:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2027850,
     "summary": "Manual Smart bar intent Configuration",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-30T17:53:18Z",
     "resolvedAt": "2026-07-07T09:29:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2027881,
-    "summary": "[Nova] Add border, radius, and shadow to web content area",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-30T19:48:26Z",
-    "resolvedAt": "2026-06-27T08:44:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2027901,
-    "summary": "[Nova] Update application menu styling",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-30T21:03:08Z",
-    "resolvedAt": "2026-06-27T08:44:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2027942,
-    "summary": "[Nova] Update onboarding model chooser styling",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-30T23:35:29Z",
-    "resolvedAt": "2026-06-27T08:44:52Z"
   },
   {
     "source": "bugzilla",
@@ -1636,15 +1627,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-20T20:08:21Z",
     "resolvedAt": "2026-07-12T04:36:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034210,
-    "summary": "Move context chips outside Smartbar and support grouped expansion",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-22T19:40:12Z",
-    "resolvedAt": "2026-06-27T08:45:03Z"
   },
   {
     "source": "bugzilla",
@@ -1738,15 +1720,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2045925,
-    "summary": "Create Test for NL retry integration",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-08T23:17:02Z",
-    "resolvedAt": "2026-06-27T08:45:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046199,
     "summary": "[Nova] Update manifest.nova.in.json for Smart Window for remaining properties",
     "product": "Core",
@@ -1819,15 +1792,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047005,
-    "summary": "Instrument telemetry for tab grouping browser actions",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-11T22:42:41Z",
-    "resolvedAt": "2026-06-27T08:46:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047007,
     "summary": "Add a Smart Window enabled metric to accurately count clients with Smart Window enabled",
     "product": "Core",
@@ -1852,15 +1816,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-12T10:14:33Z",
     "resolvedAt": "2026-07-03T09:36:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047122,
-    "summary": "The X Close button from the AI Manage tabs tool call is transparent on hover",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T10:34:55Z",
-    "resolvedAt": "2026-06-27T08:46:07Z"
   },
   {
     "source": "bugzilla",
@@ -3268,6 +3223,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061052,
+    "summary": "AITab - Highlights component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-06T01:24:21Z",
+    "resolvedAt": "2026-09-25T04:41:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061059,
     "summary": "Smart Form Fill - style SFF UI trigger autocomplete row item",
     "product": "Core",
@@ -4069,6 +4033,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067870,
+    "summary": "PUWYLO: empty and loading states",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:40Z",
+    "resolvedAt": "2026-09-25T04:41:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067905,
     "summary": "Transition AITab schema to A2UI type schema for a more LLM friendly architecture",
     "product": "Core",
@@ -4201,6 +4174,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-03T20:24:27Z",
     "resolvedAt": "2026-09-24T08:57:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069112,
+    "summary": "AITab - Table Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T20:26:07Z",
+    "resolvedAt": "2026-09-25T04:42:03Z"
   },
   {
     "source": "bugzilla",
@@ -4339,6 +4321,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071887,
+    "summary": "The Menus/Panels from the Smart Window homepage will move position if the user Holds the left mouse click and releases it anywhere else",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-14T13:57:46Z",
+    "resolvedAt": "2026-09-25T10:00:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071928,
     "summary": "[Monitor Agent] [FE] flip pref ON for toolbar panel",
     "product": "Core",
@@ -4447,6 +4438,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073511,
+    "summary": "The /Watch prompt is added to the smart bar after creating a task and reaching a different product in the same tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-18T14:20:47Z",
+    "resolvedAt": "2026-09-25T10:00:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073611,
     "summary": "Enable SFF v0 pref",
     "product": "Core",
@@ -4471,6 +4471,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-20T09:39:17Z",
     "resolvedAt": "2026-09-23T04:34:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074496,
+    "summary": "Smart Window [FE] - Smart cursor hover text shows \"Ask ChatGPT\" while in Smart Window",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-22T14:43:10Z",
+    "resolvedAt": "2026-09-24T16:49:16Z"
   },
   {
     "source": "bugzilla",
