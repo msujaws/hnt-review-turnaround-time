@@ -361,6 +361,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069438,
+    "summary": "Login searches read every saved login, making password import quadratic",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-04T16:59:12Z",
+    "resolvedAt": "2026-09-25T12:26:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069954,
     "summary": "Add performance telemetry for login storage operations and initialization",
     "product": "Toolkit",
@@ -412,6 +421,15 @@
     "component": "Password Manager",
     "filedAt": "2026-09-15T15:08:31Z",
     "resolvedAt": "2026-09-21T20:24:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072545,
+    "summary": "[contextual-password-manager] Website address is cleared when entered manually without a protocol",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-16T09:16:18Z",
+    "resolvedAt": "2026-09-25T09:02:00Z"
   },
   {
     "source": "bugzilla",
