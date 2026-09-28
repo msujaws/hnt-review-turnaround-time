@@ -946,21 +946,21 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073208,
+    "summary": "SFF human evaluations",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-17T17:40:30Z",
+    "resolvedAt": "2026-09-28T17:13:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2001646,
     "summary": "Create policies and tests around redirects for headless extraction",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2025-11-21T14:53:54Z",
     "resolvedAt": "2026-09-25T09:59:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2011985,
-    "summary": "Always wait for the page to be ready before running \"getText\" on page extractor",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-01-22T21:51:52Z",
-    "resolvedAt": "2026-06-29T14:30:28Z"
   },
   {
     "source": "bugzilla",
@@ -979,6 +979,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-02-11T19:17:00Z",
     "resolvedAt": "2026-07-14T09:46:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2027882,
+    "summary": "`onnxruntime-aarch64-linux-android` dependency hash seems to depend on too much",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-03-30T19:50:54Z",
+    "resolvedAt": "2026-09-26T04:28:35Z"
   },
   {
     "source": "bugzilla",
@@ -1006,6 +1015,60 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-11T16:00:38Z",
     "resolvedAt": "2026-08-09T09:53:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046978,
+    "summary": "Add a text generation IPC protocol over HWInference",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:26:07Z",
+    "resolvedAt": "2026-09-25T21:50:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046979,
+    "summary": "Implement the text generation protocol with llama.cpp",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:28:25Z",
+    "resolvedAt": "2026-09-25T21:50:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046983,
+    "summary": "Wire the Accelerated Inference Process into the existing createEngine workflow.",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:33:55Z",
+    "resolvedAt": "2026-09-25T21:50:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046985,
+    "summary": "Come up with end to end testing plan that runs in CI and locally",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:44:11Z",
+    "resolvedAt": "2026-09-25T21:50:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046986,
+    "summary": "Ensure the accelerated inference process gracefully handles concurrency",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:47:17Z",
+    "resolvedAt": "2026-09-25T21:50:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046990,
+    "summary": "Gather in-Firefox performance numbers for the accelerated inference process",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T21:57:08Z",
+    "resolvedAt": "2026-09-25T21:51:01Z"
   },
   {
     "source": "bugzilla",
@@ -1168,6 +1231,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-28T20:00:30Z",
     "resolvedAt": "2026-07-31T04:34:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058754,
+    "summary": "Define what PageExtractor does when an origin blocks a headless read",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-29T01:01:54Z",
+    "resolvedAt": "2026-09-25T21:51:10Z"
   },
   {
     "source": "bugzilla",
@@ -1468,6 +1540,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070199,
+    "summary": "Create separate HWInference processes for browser and content initiated workloads",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-08T13:38:41Z",
+    "resolvedAt": "2026-09-25T21:52:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070374,
     "summary": "Update ML Form Autofill processing achiecture to remove tags that appear in all fields in the form",
     "product": "Core",
@@ -1519,6 +1600,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-09-17T20:28:28Z",
     "resolvedAt": "2026-09-25T09:02:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074143,
+    "summary": "Write a Design Document for Centralized AI-Controls Orchestration",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-21T15:28:46Z",
+    "resolvedAt": "2026-09-27T19:20:34Z"
   },
   {
     "source": "bugzilla",
@@ -1657,15 +1747,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2040041,
-    "summary": "Expose Mistral strings to localization",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-15T22:16:21Z",
-    "resolvedAt": "2026-06-29T21:52:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040044,
     "summary": "Support region-based Mistral availability in UI",
     "product": "Core",
@@ -1801,15 +1882,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047112,
-    "summary": "The AI Assistant Manage tabs tool will not close unloaded tabs or  tabs that are not fully loaded",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T10:09:46Z",
-    "resolvedAt": "2026-06-29T21:52:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047114,
     "summary": "The Blur effect from the bottom of the AI Manage tabs tool call panel is missing",
     "product": "Core",
@@ -1927,15 +1999,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048555,
-    "summary": "The Window Switcher options overlap when the user hovers over them",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-18T08:28:04Z",
-    "resolvedAt": "2026-06-29T19:59:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048595,
     "summary": "The Smart Window Switcher Icon is not displayed according to FIGMA",
     "product": "Core",
@@ -1987,15 +2050,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-23T11:53:02Z",
     "resolvedAt": "2026-07-12T11:37:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049689,
-    "summary": "The Smart bar is missing borders with High contrast and NOVA enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-23T13:31:42Z",
-    "resolvedAt": "2026-06-30T03:14:53Z"
   },
   {
     "source": "bugzilla",
@@ -2122,15 +2176,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-29T17:24:49Z",
     "resolvedAt": "2026-07-26T21:55:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051499,
-    "summary": "Fix minor issues and inconsistencies in Smart Window strings",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-30T07:39:45Z",
-    "resolvedAt": "2026-06-30T21:18:14Z"
   },
   {
     "source": "bugzilla",
@@ -2890,6 +2935,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2058135,
+    "summary": "The Chat History / More and Memories buttons from the Smart Window home page are not visible with High contrast enabled when pressed",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-27T13:05:47Z",
+    "resolvedAt": "2026-09-26T04:28:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058205,
     "summary": "Complete SW Organize Tabs v0 Styling",
     "product": "Core",
@@ -3112,6 +3166,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-04T15:39:21Z",
     "resolvedAt": "2026-08-08T09:43:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060584,
+    "summary": "[Monitor Agent][FE] Add Telemetry for /command after V0",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-04T15:39:50Z",
+    "resolvedAt": "2026-09-26T04:28:48Z"
   },
   {
     "source": "bugzilla",
@@ -4033,6 +4096,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067867,
+    "summary": "PUWYLO: Resume action",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:32Z",
+    "resolvedAt": "2026-09-25T21:51:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067870,
     "summary": "PUWYLO: empty and loading states",
     "product": "Core",
@@ -4093,6 +4165,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-01T18:52:43Z",
     "resolvedAt": "2026-09-04T16:09:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068246,
+    "summary": "Turn off PUWYLO suggestions remotely",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T20:17:51Z",
+    "resolvedAt": "2026-09-25T21:51:57Z"
   },
   {
     "source": "bugzilla",
@@ -4165,6 +4246,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-03T19:02:26Z",
     "resolvedAt": "2026-09-04T04:15:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069109,
+    "summary": "AITab [FE] - Text Blocks Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T20:19:55Z",
+    "resolvedAt": "2026-09-26T04:28:56Z"
   },
   {
     "source": "bugzilla",
@@ -4303,12 +4393,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071036,
+    "summary": "AITab [FE] - page unavailable state",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-10T18:24:55Z",
+    "resolvedAt": "2026-09-25T21:52:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071073,
     "summary": "Smart Window pref-state metrics only report on the first metrics ping of each session",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-10T19:44:26Z",
     "resolvedAt": "2026-09-11T16:29:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071362,
+    "summary": "High frequency MOZ_CRASH(OOM) [@ NS_ABORT_OOM] | browser/components/aiwindow/ui/test/browser/browser_smartwindow_uitool_telemetry.js (finished)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-11T15:23:28Z",
+    "resolvedAt": "2026-09-27T09:53:06Z"
   },
   {
     "source": "bugzilla",
@@ -4453,6 +4561,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-18T18:37:45Z",
     "resolvedAt": "2026-09-22T21:18:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073640,
+    "summary": "Bug: Exa action log entry for web search tool calls doesn't appear",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-18T19:46:29Z",
+    "resolvedAt": "2026-09-27T09:53:11Z"
   },
   {
     "source": "bugzilla",
