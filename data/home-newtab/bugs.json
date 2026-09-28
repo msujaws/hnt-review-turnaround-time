@@ -190,6 +190,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2019720,
+    "summary": "Update placement logic for spocs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-26T18:24:51Z",
+    "resolvedAt": "2026-09-25T15:05:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2019789,
     "summary": "`./mach newtab install` crashes on Windows with WinError 193 - ./mach cannot be spawned as a Win32 process.",
     "product": "Firefox",
@@ -307,15 +316,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2033418,
-    "summary": "The “Customize” button fails to render correctly, and overlaps on browser resize",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-20T11:15:38Z",
-    "resolvedAt": "2026-06-29T20:28:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2033573,
     "summary": "Privacy Notice at the bottom of New Tab page links to the wrong place (wrong fragment identifier)",
     "product": "Firefox",
@@ -349,15 +349,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-28T22:05:29Z",
     "resolvedAt": "2026-08-27T18:27:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037351,
-    "summary": "[Windows] Context menu button is not visible on Story cards when High Contrast #1 or #2 is enabled on Windows 10",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-06T08:21:33Z",
-    "resolvedAt": "2026-06-30T06:39:29Z"
   },
   {
     "source": "bugzilla",
@@ -514,15 +505,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049390,
-    "summary": "Create static UI message states",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-22T15:25:56Z",
-    "resolvedAt": "2026-06-29T09:38:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049472,
     "summary": "Newtab drag n drops could transition the movement of widgets",
     "product": "Firefox",
@@ -568,15 +550,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050239,
-    "summary": "Weather widget small card layout issues with opt-in location locales",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-24T19:35:29Z",
-    "resolvedAt": "2026-06-30T03:15:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050312,
     "summary": "Fix OFF timing of Widget resizing via Widget Header",
     "product": "Firefox",
@@ -610,24 +583,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-25T09:37:03Z",
     "resolvedAt": "2026-08-05T09:24:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050669,
-    "summary": "Add pref to control max number of trackers show in widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-25T22:15:04Z",
-    "resolvedAt": "2026-06-29T09:39:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050881,
-    "summary": "Use border-radius-xsmall for New Tab inferred personalization checkbox",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T15:06:47Z",
-    "resolvedAt": "2026-06-29T21:54:24Z"
   },
   {
     "source": "bugzilla",
@@ -712,39 +667,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051167,
-    "summary": "Weather widget not showing fahrenheit/celsius switch",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-28T22:25:14Z",
-    "resolvedAt": "2026-06-29T09:39:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051179,
     "summary": "Focus Timer widget: add small size in Nova",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-29T01:29:24Z",
     "resolvedAt": "2026-07-17T09:33:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051187,
-    "summary": "Focus Timer widget: make focus/break transition reliable (celebration completion not firing)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T04:15:03Z",
-    "resolvedAt": "2026-06-30T21:17:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051310,
-    "summary": "Newtab package.json node version is way out of date",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T14:57:29Z",
-    "resolvedAt": "2026-06-30T03:15:49Z"
   },
   {
     "source": "bugzilla",
@@ -757,30 +685,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051327,
-    "summary": "Newtab shortcuts ... button wallpaper contrast issue",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T15:51:27Z",
-    "resolvedAt": "2026-06-29T21:55:07Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051333,
     "summary": "Use moz-checkbox for New Tab inferred personalization checkbox",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-29T16:02:49Z",
     "resolvedAt": "2026-07-10T10:24:01Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051348,
-    "summary": "Add deep-linking for Highlights",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T16:45:30Z",
-    "resolvedAt": "2026-06-30T03:15:54Z"
   },
   {
     "source": "bugzilla",
@@ -838,24 +748,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051457,
-    "summary": "Sports widget - the \"Now\" tab missing live sub-state labels and live shootout score in the pill",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T00:03:51Z",
-    "resolvedAt": "2026-06-30T09:12:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051512,
-    "summary": "Sports widget - Remove \"penalties\" string from results match tile in when medium size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T08:49:44Z",
-    "resolvedAt": "2026-06-30T23:31:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051610,
     "summary": "Newtab shortcuts drag n drop updates to placeholder",
     "product": "Firefox",
@@ -889,15 +781,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-30T17:55:30Z",
     "resolvedAt": "2026-07-01T09:35:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051736,
-    "summary": "Update locales for Firefox 152.0.4 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T20:21:36Z",
-    "resolvedAt": "2026-06-30T23:31:24Z"
   },
   {
     "source": "bugzilla",
@@ -2494,6 +2377,60 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066242,
+    "summary": "Add region/locales dynamic control for Timer widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:16:53Z",
+    "resolvedAt": "2026-09-25T09:59:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066244,
+    "summary": "Add region/locales dynamic control for Clock widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:19:28Z",
+    "resolvedAt": "2026-09-25T09:59:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066245,
+    "summary": "Add region/locales dynamic control for Crossword widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:20:10Z",
+    "resolvedAt": "2026-09-25T09:59:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066246,
+    "summary": "Add region/locales dynamic control for Picture of the day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:20:24Z",
+    "resolvedAt": "2026-09-25T09:59:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066247,
+    "summary": "Add region/locales dynamic control for Stocks widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:20:48Z",
+    "resolvedAt": "2026-09-25T09:59:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066248,
+    "summary": "Add region/locales dynamic control for Privacy widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:20:52Z",
+    "resolvedAt": "2026-09-25T09:59:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066334,
     "summary": "Sort newtab widget lists alphabetically",
     "product": "Firefox",
@@ -2752,6 +2689,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-31T17:12:23Z",
     "resolvedAt": "2026-09-22T19:21:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067860,
+    "summary": "Picture-of-the-day \"set wallpaper\" button causes new-tab to briefly display unrelated/old wallpaper image (if you have ever tried wallpaper before) while the picture-of-the-day is being prepared",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-31T17:58:58Z",
+    "resolvedAt": "2026-09-25T09:59:59Z"
   },
   {
     "source": "bugzilla",
@@ -3115,6 +3061,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072941,
+    "summary": "Previously uploaded wallpaper flashes for a second before the new image is set as wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T09:07:34Z",
+    "resolvedAt": "2026-09-25T10:00:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072951,
     "summary": "Browsing through \"Your Images\" section will result in a flicker when selecting images",
     "product": "Firefox",
@@ -3205,11 +3160,65 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074282,
+    "summary": "MCW: Point the page at the wallpaper library file",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-21T20:28:22Z",
+    "resolvedAt": "2026-09-26T04:29:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074696,
+    "summary": "Remove stale dependencies from newtab and lint against the correct React version",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-23T00:06:17Z",
+    "resolvedAt": "2026-09-25T21:55:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074804,
     "summary": "Let the Nova New Tab search bar grow with the page width rather than in fixed steps",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-09-23T11:23:07Z",
     "resolvedAt": "2026-09-25T09:03:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074974,
+    "summary": "Add region/locales dynamic control for Recent Searches widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-23T19:25:43Z",
+    "resolvedAt": "2026-09-25T10:00:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075001,
+    "summary": "Add debug pref/setting to override Nightly enabled-by-default widgets setting",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-23T21:17:30Z",
+    "resolvedAt": "2026-09-25T10:01:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075271,
+    "summary": "Stub widget geo/locale control prefs in /ActivityStream.sys.mjs to preserve train-hopping parity",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-24T14:04:41Z",
+    "resolvedAt": "2026-09-25T10:01:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075682,
+    "summary": "newtab-content ping going to be broken in 157",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T17:54:39Z",
+    "resolvedAt": "2026-09-26T04:29:59Z"
   }
 ]
