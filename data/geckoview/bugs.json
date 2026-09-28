@@ -136,15 +136,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047472,
-    "summary": "Don't override AutofillHints and InputType when we already know the hint.",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-15T02:12:22Z",
-    "resolvedAt": "2026-06-29T21:52:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048732,
     "summary": "Route Android system audio-focus loss and gain to the Audio Session interrupt path",
     "product": "GeckoView",
