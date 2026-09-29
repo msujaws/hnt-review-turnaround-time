@@ -1,39 +1,12 @@
 [
   {
     "source": "bugzilla",
-    "id": 1985839,
-    "summary": "[meta] At-scale launch blockers",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2025-08-28T16:38:52Z",
-    "resolvedAt": "2026-07-01T14:41:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 1992379,
     "summary": "[META] [QA] [QA-4497] QA request for Free VPN integration (Fx 146)",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2025-10-03T11:29:05Z",
     "resolvedAt": "2026-08-17T10:17:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2000048,
-    "summary": "[meta] Update IPP metrics",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2025-11-13T19:16:23Z",
-    "resolvedAt": "2026-07-01T13:54:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2000053,
-    "summary": "[meta] IPP bandwidth monitoring",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2025-11-13T19:26:26Z",
-    "resolvedAt": "2026-07-01T13:55:12Z"
   },
   {
     "source": "bugzilla",
@@ -100,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2027927,
-    "summary": "[a11y] Keyboard operation: toggling Turn On/Off buttons is not possible while keeping the toggle focused",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-03-30T22:35:58Z",
-    "resolvedAt": "2026-07-01T19:18:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2028904,
     "summary": "Remove custom font sizing from all VPN elements besides status",
     "product": "Firefox",
@@ -142,15 +106,6 @@
     "component": "IP Protection",
     "filedAt": "2026-04-22T13:54:06Z",
     "resolvedAt": "2026-07-16T03:52:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034102,
-    "summary": "Expose proxy protection state as a reusable API",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-22T14:20:17Z",
-    "resolvedAt": "2026-07-01T09:31:52Z"
   },
   {
     "source": "bugzilla",
@@ -208,24 +163,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044660,
-    "summary": "Default \"Not now\" option of the Captive Portal first VPN Discovery CFR does not dismiss the panel",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-03T13:15:14Z",
-    "resolvedAt": "2026-07-01T10:35:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049674,
-    "summary": "LifecycleHelper is not reacting to Activity-Lifecycle events",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-23T12:50:45Z",
-    "resolvedAt": "2026-07-01T19:18:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049817,
     "summary": "Turn on/off VPN button in VPN panel is wrong color",
     "product": "Firefox",
@@ -277,15 +214,6 @@
     "component": "IP Protection",
     "filedAt": "2026-06-26T11:56:36Z",
     "resolvedAt": "2026-07-13T14:17:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051218,
-    "summary": "[Nova] VPN toolbar icon is dark black instead of matching the Nova theme when in Paused state",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-29T08:40:49Z",
-    "resolvedAt": "2026-07-01T19:19:27Z"
   },
   {
     "source": "bugzilla",
