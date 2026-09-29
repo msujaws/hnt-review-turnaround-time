@@ -1721,16 +1721,6 @@
   },
   {
     "source": "github",
-    "id": 14,
-    "repo": "mozilla/hnt-content",
-    "author": "mmiermans",
-    "reviewer": "jpetto",
-    "requestedAt": "2026-07-01T13:19:50Z",
-    "firstActionAt": "2026-08-07T19:07:40Z",
-    "tatBusinessHours": 221.12777777777777
-  },
-  {
-    "source": "github",
     "id": 1750,
     "repo": "mozilla-services/merino-py",
     "author": "mmiermans",
@@ -2951,26 +2941,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-4evgj3vbb7sbhkyjpiuh",
-    "revisionId": 327912,
-    "author": "fchasen",
-    "reviewer": "mconley",
-    "requestedAt": "2026-09-21T19:26:03.000Z",
-    "firstActionAt": "2026-09-22T14:31:00.000Z",
-    "tatBusinessHours": 3.0825
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-jpuq44i3oqvlxa6ixeyv",
-    "revisionId": 323770,
-    "author": "jbrown",
-    "reviewer": "thecount",
-    "requestedAt": "2026-09-04T20:52:32.000Z",
-    "firstActionAt": "2026-09-24T18:41:14.000Z",
-    "tatBusinessHours": 109.81166666666668
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-n4ho26cpzzyy3fejjg3e",
     "revisionId": 329269,
     "author": "thecount",
@@ -2988,6 +2958,56 @@
     "requestedAt": "2026-09-24T20:16:07.000Z",
     "firstActionAt": "2026-09-25T18:45:50.000Z",
     "tatBusinessHours": 6.495277777777777
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ybkyx25gbdjb2h5beuvm",
+    "revisionId": 328210,
+    "author": "jbrown",
+    "reviewer": "mconley",
+    "requestedAt": "2026-09-23T19:49:01.000Z",
+    "firstActionAt": "2026-09-28T17:52:07.000Z",
+    "tatBusinessHours": 22.051666666666666
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xzq2l6kkdyvk3pz2togk",
+    "revisionId": 329352,
+    "author": "fchasen",
+    "reviewer": "mconley",
+    "requestedAt": "2026-09-26T00:41:13.000Z",
+    "firstActionAt": "2026-09-28T15:06:00.000Z",
+    "tatBusinessHours": 2.1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-33yt5lui3hqotnw6xztw",
+    "revisionId": 328690,
+    "author": "fchasen",
+    "reviewer": "mconley",
+    "requestedAt": "2026-09-23T23:57:01.000Z",
+    "firstActionAt": "2026-09-28T14:34:00.000Z",
+    "tatBusinessHours": 17.566666666666666
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-4evgj3vbb7sbhkyjpiuh",
+    "revisionId": 327912,
+    "author": "fchasen",
+    "reviewer": "mconley",
+    "requestedAt": "2026-09-21T19:26:03.000Z",
+    "firstActionAt": "2026-09-22T14:31:00.000Z",
+    "tatBusinessHours": 3.0825
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-jpuq44i3oqvlxa6ixeyv",
+    "revisionId": 323770,
+    "author": "jbrown",
+    "reviewer": "thecount",
+    "requestedAt": "2026-09-04T20:52:32.000Z",
+    "firstActionAt": "2026-09-24T18:41:14.000Z",
+    "tatBusinessHours": 109.81166666666668
   },
   {
     "source": "phab",
