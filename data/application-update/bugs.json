@@ -205,5 +205,14 @@
     "component": "Application Update",
     "filedAt": "2026-09-16T21:59:16Z",
     "resolvedAt": "2026-09-23T04:34:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2076332,
+    "summary": "Only restore a .moz-backup file if it was created during the current run",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-09-29T03:01:17Z",
+    "resolvedAt": "2026-09-30T08:37:00Z"
   }
 ]
