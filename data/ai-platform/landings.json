@@ -1831,9 +1831,9 @@
     "createdAt": "2026-09-18T20:39:59.000Z",
     "firstReviewAt": "2026-09-18T20:42:06.000Z",
     "landedAt": "2026-09-18T23:04:23.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 0.3336111111111111,
-    "postReviewBusinessHours": 0.2983333333333333,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 0.2983333333333333
   },
   {
     "source": "github",
@@ -2002,5 +2002,17 @@
     "cycleBusinessHours": 19.468611111111112,
     "postReviewBusinessHours": 11.46861111111111,
     "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xxkji7bdhmmyjzy2t76l",
+    "revisionId": 329407,
+    "author": "valentinp",
+    "createdAt": "2026-09-26T11:24:23.000Z",
+    "firstReviewAt": "2026-09-29T15:44:46.000Z",
+    "landedAt": "2026-09-29T22:14:17.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 16,
+    "postReviewBusinessHours": 5.2538888888888895
   }
 ]
