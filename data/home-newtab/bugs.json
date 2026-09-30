@@ -514,15 +514,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049700,
-    "summary": "[Experiment] The title and secondary button of the Tab Groups Promo message from treatment-a are cropped on Spanish locales after resizing the browser window",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-23T14:06:13Z",
-    "resolvedAt": "2026-07-02T06:28:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049768,
     "summary": "Document useWidgetTelemetry hook in widgets-scaffold skill",
     "product": "Firefox",
@@ -601,15 +592,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-26T21:12:46Z",
     "resolvedAt": "2026-07-10T10:23:30Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050971,
-    "summary": "Add strings for the Picture of the Day widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:14:54Z",
-    "resolvedAt": "2026-07-02T09:53:18Z"
   },
   {
     "source": "bugzilla",
@@ -2041,6 +2023,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-13T13:29:31Z",
     "resolvedAt": "2026-08-19T09:40:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063320,
+    "summary": "Per-widget Jest fixtures for Stocks, Privacy and Picture of the Day omit widgets.enabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T14:34:33Z",
+    "resolvedAt": "2026-09-30T04:48:25Z"
   },
   {
     "source": "bugzilla",
