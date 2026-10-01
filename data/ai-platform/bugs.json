@@ -1630,6 +1630,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2014499,
+    "summary": "Add a Groups section to the Smart Window mentions panel",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-02-04T17:02:04Z",
+    "resolvedAt": "2026-10-01T04:19:01Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2015106,
     "summary": "The Assistant Sidebar should have a minimum width when resized",
     "product": "Core",
@@ -1654,15 +1663,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-02-24T18:24:22Z",
     "resolvedAt": "2026-07-16T03:51:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2023923,
-    "summary": "We should show the Paste and Go option for the Smart bar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-17T15:09:18Z",
-    "resolvedAt": "2026-07-03T09:35:20Z"
   },
   {
     "source": "bugzilla",
@@ -1861,15 +1861,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-11T22:52:28Z",
     "resolvedAt": "2026-08-19T09:35:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047114,
-    "summary": "The Blur effect from the bottom of the AI Manage tabs tool call panel is missing",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T10:14:33Z",
-    "resolvedAt": "2026-07-03T09:36:14Z"
   },
   {
     "source": "bugzilla",
@@ -2185,15 +2176,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-01T05:55:38Z",
     "resolvedAt": "2026-07-22T04:29:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051858,
-    "summary": "Smart Window sidebar jumps instead of sliding in while the left sidebar is open",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-01T08:51:53Z",
-    "resolvedAt": "2026-07-03T21:47:02Z"
   },
   {
     "source": "bugzilla",
@@ -3058,6 +3040,60 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-30T18:49:56Z",
     "resolvedAt": "2026-08-08T09:43:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059729,
+    "summary": "Add getTabGroups() to TabManagementService",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T12:47:37Z",
+    "resolvedAt": "2026-10-01T04:19:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059730,
+    "summary": "Add a tabGroup mention type to the Smart Window mention data model",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T12:47:47Z",
+    "resolvedAt": "2026-10-01T04:19:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059755,
+    "summary": "Expand tab group mentions to members at submit time",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T14:27:13Z",
+    "resolvedAt": "2026-10-01T04:19:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059782,
+    "summary": "Render tab group reference chips as single item",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T15:19:38Z",
+    "resolvedAt": "2026-10-01T04:19:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059783,
+    "summary": "Include tab group info in the browser context prompt",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T15:19:47Z",
+    "resolvedAt": "2026-10-01T04:19:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059787,
+    "summary": "Wire tab group selection through with mention entry points",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-31T15:38:18Z",
+    "resolvedAt": "2026-10-01T04:19:42Z"
   },
   {
     "source": "bugzilla",
@@ -4591,6 +4627,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075335,
+    "summary": "Selection shortcuts popup opens in the wrong place when the Firefox UI is right-to-left",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-24T16:36:14Z",
+    "resolvedAt": "2026-09-30T21:49:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056645,
     "summary": "remove world cup-related tool calls",
     "product": "Core",
@@ -4642,6 +4687,15 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-20T20:58:37Z",
     "resolvedAt": "2026-09-03T22:08:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069436,
+    "summary": "[models] add use /answers endpoint for search_the_web",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-09-04T16:54:06Z",
+    "resolvedAt": "2026-09-30T21:48:52Z"
   },
   {
     "source": "bugzilla",
