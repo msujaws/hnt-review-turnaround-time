@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048554,
-    "summary": "Add telemetry to login storage migrator",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-18T08:14:27Z",
-    "resolvedAt": "2026-07-03T21:45:53Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049698,
     "summary": "Clicking the address bar while the Password Save/Update doorhanger is open no longer selects the page URL",
     "product": "Toolkit",
@@ -340,6 +331,15 @@
     "component": "Password Manager",
     "filedAt": "2026-08-21T17:02:21Z",
     "resolvedAt": "2026-08-22T21:28:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069438,
+    "summary": "Login searches read every saved login, making password import quadratic",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-04T16:59:12Z",
+    "resolvedAt": "2026-09-30T21:48:56Z"
   },
   {
     "source": "bugzilla",
