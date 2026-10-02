@@ -682,5 +682,23 @@
     "component": "IP Protection",
     "filedAt": "2026-09-22T08:38:22Z",
     "resolvedAt": "2026-09-24T04:57:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2076213,
+    "summary": "[IP Protection] Routing loop on Fastly Masque relay (23.235.42.0/24) via Telstra transit in South Korea (KT)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-28T17:00:47Z",
+    "resolvedAt": "2026-10-01T19:38:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2077163,
+    "summary": "Turn IP protection location on by default",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-01T14:40:41Z",
+    "resolvedAt": "2026-10-02T09:44:42Z"
   }
 ]
