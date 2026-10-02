@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1977950,
+    "summary": "Investigate whether we can define both android:isolatedProcess on GeckoChildProcessServices",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-07-17T23:23:21Z",
+    "resolvedAt": "2026-10-02T14:53:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1994863,
     "summary": "Make ScrollPositionUpdate use a private constructor",
     "product": "GeckoView",
