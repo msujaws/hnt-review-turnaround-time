@@ -406,6 +406,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072593,
+    "summary": "[contextual-password-manager] Search keyword is cleared after closing Add/Edit form while results remain filtered",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-09-16T11:57:34Z",
+    "resolvedAt": "2026-10-01T21:42:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072671,
     "summary": "Perma TV toolkit/components/passwordmgr/test/browser/browser_login_storage_migrator.js | test_storage_operation_time_skips_locked_store - the search that started locked recorded no event - 1 == 0",
     "product": "Toolkit",
