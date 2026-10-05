@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048229,
-    "summary": "Make passwordmgr unit tests pass against Rust storage backend",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-17T12:19:43Z",
-    "resolvedAt": "2026-07-06T21:43:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048463,
     "summary": "Remove or update metrics expiring at the end of Firefox 154: pwmgr.doorhanger_submitted_* before Gecko switches to version 155 on 2026-07-20",
     "product": "Toolkit",
@@ -91,24 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051520,
-    "summary": "Ensure sync logs go to logins component",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-30T09:45:31Z",
-    "resolvedAt": "2026-07-06T07:51:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052145,
-    "summary": "Primary Password support for Login Storage Migrator",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-02T11:03:10Z",
-    "resolvedAt": "2026-07-06T09:57:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052153,
     "summary": "The edit button inside the passwords dropdown is not read by the screen reader upon hovering the mouse over it",
     "product": "Toolkit",
@@ -133,15 +106,6 @@
     "component": "Password Manager",
     "filedAt": "2026-07-03T12:46:15Z",
     "resolvedAt": "2026-07-22T11:09:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053044,
-    "summary": "Rust logins removal API does not emit event",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-07T08:18:45Z",
-    "resolvedAt": "2026-07-07T21:16:27Z"
   },
   {
     "source": "bugzilla",
@@ -430,5 +394,14 @@
     "component": "Password Manager",
     "filedAt": "2026-09-21T11:54:24Z",
     "resolvedAt": "2026-09-22T21:18:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078151,
+    "summary": "Look the mutated subtree root up in DOMLocalization::mRoots",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-05T09:46:01Z",
+    "resolvedAt": "2026-10-05T16:02:29Z"
   }
 ]
