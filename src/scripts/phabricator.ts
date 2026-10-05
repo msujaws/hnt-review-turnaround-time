@@ -204,6 +204,15 @@ export const extractSamplesFromTransactions = (
   // request resolves the team's pending response, but the team has not
   // ACCEPTED, so we don't surface it as "Accepted by us · waiting on others."
   const acceptedProjects = new Set<string>();
+  // Review rounds after the first response. The completed sample measures
+  // only the first response, but when the author re-requests review (a
+  // request-review transaction, usually from a diff update) every reviewer
+  // who already responded without accepting is waiting to be asked again.
+  // reRequestedAt holds the earliest unanswered re-request per reviewer and
+  // feeds pending only, never a second sample. Accepts are excluded because
+  // Phab keeps them on the reviewer row across diff updates.
+  const lastActionType = new Map<string, string>();
+  const reRequestedAt = new Map<string, number>();
 
   for (const tx of ordered) {
     if (tx.type === 'reviewers') {
@@ -215,7 +224,15 @@ export const extractSamplesFromTransactions = (
         } else if (op.operation === 'remove') {
           currentRequestAt.delete(op.phid);
           resolvedProjects.delete(op.phid);
+          reRequestedAt.delete(op.phid);
         }
+      }
+      continue;
+    }
+    if (tx.type === 'request-review') {
+      for (const [reviewerPhid, actionType] of lastActionType) {
+        if (actionType === 'accept' || reRequestedAt.has(reviewerPhid)) continue;
+        reRequestedAt.set(reviewerPhid, tx.dateCreated);
       }
       continue;
     }
@@ -237,10 +254,13 @@ export const extractSamplesFromTransactions = (
         projectRequestedAtForActor ??= projectRequestedAt;
       }
     }
-    if (emitted.has(tx.authorPhid)) continue;
-    const requestedAt = currentRequestAt.get(tx.authorPhid) ?? projectRequestedAtForActor;
-    if (requestedAt === undefined) continue;
-    emitted.set(tx.authorPhid, { requestedAt, firstActionAt: tx.dateCreated });
+    if (!emitted.has(tx.authorPhid)) {
+      const requestedAt = currentRequestAt.get(tx.authorPhid) ?? projectRequestedAtForActor;
+      if (requestedAt === undefined) continue;
+      emitted.set(tx.authorPhid, { requestedAt, firstActionAt: tx.dateCreated });
+    }
+    lastActionType.set(tx.authorPhid, tx.type);
+    reRequestedAt.delete(tx.authorPhid);
   }
 
   const samples: PhabSample[] = [];
@@ -260,7 +280,8 @@ export const extractSamplesFromTransactions = (
   }
 
   // Pending = reviewers still in an active request window at end of timeline
-  // who didn't emit a completed sample. Reviewers whose phid has no login
+  // who didn't emit a completed sample, or who did but have an unanswered
+  // re-request since. Reviewers whose phid has no login
   // mapping are dropped (same rule applied to completed samples above).
   // Skip the whole block when the reviewer is not the one blocking:
   // - terminal statuses (abandoned / published / draft / accepted) — the
@@ -288,7 +309,8 @@ export const extractSamplesFromTransactions = (
     revision.status === undefined || PENDING_BLOCKING_STATUSES.has(revision.status);
   if (reviewerIsBlocking) {
     for (const [reviewerPhid, requestedAt] of currentRequestAt) {
-      if (emitted.has(reviewerPhid)) continue;
+      const reRequested = reRequestedAt.get(reviewerPhid);
+      if (emitted.has(reviewerPhid) && reRequested === undefined) continue;
       const acceptedByTeam = acceptedProjects.has(reviewerPhid);
       if (resolvedProjects.has(reviewerPhid) && !acceptedByTeam) continue;
       const login = loginByPhid.get(reviewerPhid);
@@ -299,7 +321,7 @@ export const extractSamplesFromTransactions = (
         revisionId: revision.id,
         ...(authorLogin === undefined ? {} : { author: asReviewerLogin(authorLogin) }),
         reviewer: asReviewerLogin(login),
-        requestedAt: toIso(requestedAt),
+        requestedAt: toIso(reRequested ?? requestedAt),
         ...(acceptedByTeam ? { acceptedByTeam: true } : {}),
       });
     }
