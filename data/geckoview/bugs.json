@@ -82,12 +82,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 1994863,
-    "summary": "Make ScrollPositionUpdate use a private constructor",
+    "id": 1998616,
+    "summary": "Intermittent org.mozilla.geckoview.test.InteractiveWidgetTest#bug1994311 | single tracking bug",
     "product": "GeckoView",
     "component": "General",
-    "filedAt": "2025-10-16T21:42:11Z",
-    "resolvedAt": "2026-07-07T09:28:58Z"
+    "filedAt": "2025-11-06T08:10:50Z",
+    "resolvedAt": "2026-10-03T21:11:05Z"
   },
   {
     "source": "bugzilla",
@@ -577,6 +577,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067617,
+    "summary": "Forward shift+arrow selection intermittently reaches the Java InputConnection editable as a collapsed caret",
+    "product": "GeckoView",
+    "component": "IME",
+    "filedAt": "2026-08-31T01:05:01Z",
+    "resolvedAt": "2026-10-02T16:32:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067881,
     "summary": "Remove deprecated geckoview telemetry mirrors",
     "product": "GeckoView",
@@ -745,5 +754,14 @@
     "component": "General",
     "filedAt": "2026-09-24T03:26:05Z",
     "resolvedAt": "2026-09-24T16:49:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2076837,
+    "summary": "Run reftest and crashtest on GeckoView with fission",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-30T17:47:56Z",
+    "resolvedAt": "2026-10-03T21:11:16Z"
   }
 ]
