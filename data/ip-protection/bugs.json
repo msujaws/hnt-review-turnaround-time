@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2028904,
-    "summary": "Remove custom font sizing from all VPN elements besides status",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-02T14:36:42Z",
-    "resolvedAt": "2026-07-07T21:12:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034088,
     "summary": "VPN toolbar button shows incorrect state and excludes wrong URL for JSON/PDF viewer pages",
     "product": "Firefox",
@@ -133,15 +124,6 @@
     "component": "IP Protection",
     "filedAt": "2026-05-20T08:37:00Z",
     "resolvedAt": "2026-08-17T10:16:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2042691,
-    "summary": "[a11y] Unavailable locations are completely skipped by keyboard navigation and screen readers",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-27T10:36:14Z",
-    "resolvedAt": "2026-07-06T21:43:33Z"
   },
   {
     "source": "bugzilla",
@@ -208,30 +190,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052007,
-    "summary": "Add property to country object for premium locations",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-01T17:56:01Z",
-    "resolvedAt": "2026-07-07T21:14:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052013,
     "summary": "Filter locations list based on default or premium status",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-07-01T18:09:05Z",
     "resolvedAt": "2026-07-15T09:36:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052521,
-    "summary": "IP-Protection: remove IPPFxaAuthProvider",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-03T12:46:20Z",
-    "resolvedAt": "2026-07-06T21:47:41Z"
   },
   {
     "source": "bugzilla",
