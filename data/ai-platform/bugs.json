@@ -244,30 +244,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051714,
-    "summary": "Add fr-FR Sensitive Content Filters for Memory Generation",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-30T19:22:00Z",
-    "resolvedAt": "2026-07-07T21:14:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051744,
     "summary": "[5.2 Discover] Mistral | Confirm Conversation Starters / Follow Ups match expected user language | Part 2",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-06-30T21:03:08Z",
     "resolvedAt": "2026-07-12T11:37:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051778,
-    "summary": "Add support for French specific intent model for Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-01T01:03:14Z",
-    "resolvedAt": "2026-07-07T21:14:26Z"
   },
   {
     "source": "bugzilla",
@@ -367,6 +349,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-10T20:11:52Z",
     "resolvedAt": "2026-07-23T16:17:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054482,
+    "summary": "Improve Mistral Memory Tagging",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-07-13T14:07:46Z",
+    "resolvedAt": "2026-10-05T18:10:16Z"
   },
   {
     "source": "bugzilla",
@@ -1135,15 +1126,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052648,
-    "summary": "LlamaRunner double-closes the model file handle, causing EXCEPTION_INVALID_HANDLE crashes in browser_ml_native on Windows",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-04T10:26:28Z",
-    "resolvedAt": "2026-07-06T21:47:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053830,
     "summary": "Decommission wllama",
     "product": "Core",
@@ -1639,15 +1621,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2015106,
-    "summary": "The Assistant Sidebar should have a minimum width when resized",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-06T17:15:32Z",
-    "resolvedAt": "2026-07-07T21:12:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2016416,
     "summary": "The Chat Assistant Sidebar frame extends past the main content scrollbar when resized to the max",
     "product": "Core",
@@ -1672,24 +1645,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-17T19:00:07Z",
     "resolvedAt": "2026-08-20T16:41:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2024975,
-    "summary": "Smartbar autocomplete highlighting flickers on input",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-20T16:19:47Z",
-    "resolvedAt": "2026-07-07T09:29:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2027850,
-    "summary": "Manual Smart bar intent Configuration",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-30T17:53:18Z",
-    "resolvedAt": "2026-07-07T09:29:37Z"
   },
   {
     "source": "bugzilla",
@@ -1891,15 +1846,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047558,
-    "summary": "The History grid view is truncated when overlapping the Smart bar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-15T12:02:37Z",
-    "resolvedAt": "2026-07-07T21:13:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047561,
     "summary": "The History Grid view/List View buttons are barely visible with High contrast enabled",
     "product": "Core",
@@ -1969,15 +1915,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-18T11:42:09Z",
     "resolvedAt": "2026-07-09T22:57:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048749,
-    "summary": "Increment MAX_TABS in GetOpenTabs to 30",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-18T20:10:27Z",
-    "resolvedAt": "2026-07-07T21:13:47Z"
   },
   {
     "source": "bugzilla",
@@ -2107,15 +2044,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050943,
-    "summary": "The Restore Session is unavailable if Smart Window is set as the default Window",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-26T19:10:21Z",
-    "resolvedAt": "2026-07-07T09:31:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051359,
     "summary": "ui component for Source Citations for Exa Integration (v1)",
     "product": "Core",
@@ -2131,15 +2059,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-29T17:24:49Z",
     "resolvedAt": "2026-07-26T21:55:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051524,
-    "summary": "The Web Content rounded borders are visible during Smart Window Onboarding",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-30T09:54:23Z",
-    "resolvedAt": "2026-07-07T09:31:54Z"
   },
   {
     "source": "bugzilla",
@@ -2167,15 +2086,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-01T05:55:38Z",
     "resolvedAt": "2026-07-22T04:29:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052009,
-    "summary": "Hard-coded content in onboarding for Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-01T17:56:33Z",
-    "resolvedAt": "2026-07-06T21:47:12Z"
   },
   {
     "source": "bugzilla",
@@ -2269,30 +2179,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052558,
-    "summary": "Classic/Smart window switcher icon is blurry with horizontal tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-03T15:41:56Z",
-    "resolvedAt": "2026-07-07T09:32:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052627,
     "summary": "Store time since user last switched mode from SW to CW",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-04T01:10:40Z",
     "resolvedAt": "2026-07-12T11:37:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052947,
-    "summary": "Fix en-US typo in smart-window-cancelled-label (non-US \"cancelled\" to \"canceled\")",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-06T18:52:21Z",
-    "resolvedAt": "2026-07-07T21:16:14Z"
   },
   {
     "source": "bugzilla",
