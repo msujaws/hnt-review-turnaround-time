@@ -48,6 +48,26 @@ const requestedButNeverActed = (): PhabTransaction[] => [
   }),
 ];
 
+// Shared fixture: alice is added, acts once (`firstAction`), then the author
+// updates the diff and Phab records a request-review. The completed sample
+// stays as the first-response measurement; the new round only surfaces as
+// pending.
+const reRequested = (firstAction: string): PhabTransaction[] => [
+  ...requestedButNeverActed(),
+  mkTransaction({
+    id: 2,
+    type: firstAction,
+    authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+    dateCreated: 1_761_003_600,
+  }),
+  mkTransaction({
+    id: 3,
+    type: 'request-review',
+    authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+    dateCreated: 1_761_090_000,
+  }),
+];
+
 describe('extractSamplesFromTransactions', () => {
   it('returns no samples when there are no transactions', () => {
     const result = extractSamplesFromTransactions(revision(), [], loginByPhid);
@@ -632,6 +652,66 @@ describe('extractSamplesFromTransactions', () => {
         reviewer: 'alice',
         firstActionAt: new Date(1_761_003_600 * 1000).toISOString(),
       });
+      expect(pending).toEqual([]);
+    });
+  });
+
+  describe('author re-requests review after the reviewer responded', () => {
+    it('emits pending from the re-request while keeping the first-response sample', () => {
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        reRequested('inline'),
+        loginByPhid,
+      );
+      expect(samples).toHaveLength(1);
+      expect(samples[0]).toMatchObject({
+        reviewer: 'alice',
+        requestedAt: new Date(1_761_000_000 * 1000).toISOString(),
+        firstActionAt: new Date(1_761_003_600 * 1000).toISOString(),
+      });
+      expect(pending).toHaveLength(1);
+      expect(pending[0]).toMatchObject({
+        reviewer: 'alice',
+        requestedAt: new Date(1_761_090_000 * 1000).toISOString(),
+      });
+    });
+
+    it('drops the pending entry once the reviewer acts on the new round', () => {
+      const txs = [
+        ...reRequested('comment'),
+        mkTransaction({
+          id: 4,
+          type: 'comment',
+          authorPhid: 'PHID-USER-revieweraaaaaaaaaaaaa',
+          dateCreated: 1_761_093_600,
+        }),
+      ];
+      const { samples, pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        txs,
+        loginByPhid,
+      );
+      expect(samples).toHaveLength(1);
+      expect(pending).toEqual([]);
+    });
+
+    it('does not reopen a reviewer whose last action was accept', () => {
+      // Phab keeps an accept on the reviewer row across diff updates, so the
+      // re-request is aimed at the other reviewers, not the one who accepted.
+      const { pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'needs-review' },
+        reRequested('accept'),
+        loginByPhid,
+      );
+      expect(pending).toEqual([]);
+    });
+
+    it('emits no pending for the re-request when the revision is not in needs-review', () => {
+      const { pending } = extractSamplesFromTransactions(
+        { ...revision(), status: 'changes-planned' },
+        reRequested('inline'),
+        loginByPhid,
+      );
       expect(pending).toEqual([]);
     });
   });
