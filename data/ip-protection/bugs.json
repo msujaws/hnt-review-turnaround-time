@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2021034,
-    "summary": "Document bandwidth usage display logic in IP Protection",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-03-04T16:30:26Z",
-    "resolvedAt": "2026-07-08T04:05:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2025373,
     "summary": "Add l10n notes in code for built-in VPN and correct geographic error string",
     "product": "Firefox",
@@ -520,6 +511,15 @@
     "component": "IP Protection",
     "filedAt": "2026-08-18T18:32:29Z",
     "resolvedAt": "2026-08-19T21:28:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066384,
+    "summary": "Local legislation error panel middle section background is white instead of gray",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-25T09:54:48Z",
+    "resolvedAt": "2026-10-06T10:37:45Z"
   },
   {
     "source": "bugzilla",
