@@ -109,6 +109,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1999073,
+    "summary": "Remove GeckoSession.Window.nativeTransfer()",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-11-08T06:07:28Z",
+    "resolvedAt": "2026-10-06T04:20:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2029263,
     "summary": "Intermittent org.mozilla.geckoview.test.PanZoomControllerTest#touchEventWithXOrigin | single tracking bug",
     "product": "GeckoView",
@@ -592,6 +601,15 @@
     "component": "General",
     "filedAt": "2026-08-31T18:33:49Z",
     "resolvedAt": "2026-09-04T09:25:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068239,
+    "summary": "Chunk geckoview-junit",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-01T20:07:51Z",
+    "resolvedAt": "2026-10-06T04:20:14Z"
   },
   {
     "source": "bugzilla",
