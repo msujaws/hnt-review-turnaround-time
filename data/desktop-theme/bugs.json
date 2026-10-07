@@ -82,15 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051554,
-    "summary": "Introduce a new system ESM as single source of truth for the list of Firefox Themes managed through the new Nova Themes Picker webcomponents",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-30T12:38:31Z",
-    "resolvedAt": "2026-07-09T16:08:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053220,
     "summary": "Remove testing XPI base url pref from ThemesList.sys.mjs",
     "product": "Firefox",
