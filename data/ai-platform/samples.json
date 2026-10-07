@@ -50,16 +50,6 @@
     "tatBusinessHours": 0.5138888888888888
   },
   {
-    "source": "github",
-    "id": 199,
-    "repo": "Firefox-AI/MLPA",
-    "author": "github-actions",
-    "reviewer": "FieldMarshallObvious",
-    "requestedAt": "2026-07-09T15:09:33Z",
-    "firstActionAt": "2026-07-09T15:10:06Z",
-    "tatBusinessHours": 0.009166666666666667
-  },
-  {
     "source": "phab",
     "id": "PHID-DREV-gmdquawavhnetceqnspx",
     "revisionId": 313108,
@@ -78,56 +68,6 @@
     "requestedAt": "2026-07-16T20:27:46.000Z",
     "firstActionAt": "2026-07-20T23:29:43.000Z",
     "tatBusinessHours": 16.537222222222223
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-cevbimo62qxhh6lwkrvp",
-    "revisionId": 311369,
-    "author": "valentinp",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-07-09T17:08:13.000Z",
-    "firstActionAt": "2026-07-20T17:20:30.000Z",
-    "tatBusinessHours": 56.20472222222222
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-dhz3m7anixsqfrwaq7zx",
-    "revisionId": 311371,
-    "author": "valentinp",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-07-09T17:08:25.000Z",
-    "firstActionAt": "2026-07-20T17:30:09.000Z",
-    "tatBusinessHours": 56.36222222222223
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-veci2xehuajr22ua75s2",
-    "revisionId": 311370,
-    "author": "valentinp",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-07-09T17:08:19.000Z",
-    "firstActionAt": "2026-07-20T17:22:15.000Z",
-    "tatBusinessHours": 56.23222222222223
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7qqwq6iqcvmol3ljffuq",
-    "revisionId": 311367,
-    "author": "valentinp",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-07-09T17:08:01.000Z",
-    "firstActionAt": "2026-07-20T17:14:53.000Z",
-    "tatBusinessHours": 56.114444444444445
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-zs6pmdsduqhply4ech5a",
-    "revisionId": 311368,
-    "author": "valentinp",
-    "reviewer": "gregtatum",
-    "requestedAt": "2026-07-09T17:08:06.000Z",
-    "firstActionAt": "2026-07-20T17:09:40.000Z",
-    "tatBusinessHours": 56.02611111111111
   },
   {
     "source": "phab",
@@ -1588,5 +1528,15 @@
     "requestedAt": "2026-10-06T11:29:16.000Z",
     "firstActionAt": "2026-10-06T12:23:00.000Z",
     "tatBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ojkgarcdb3pydvxrgqf3",
+    "revisionId": 328147,
+    "author": "gregtatum",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-09-22T14:21:39.000Z",
+    "firstActionAt": "2026-09-23T22:11:36.000Z",
+    "tatBusinessHours": 14.639166666666666
   }
 ]

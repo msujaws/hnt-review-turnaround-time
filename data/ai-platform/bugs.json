@@ -28,6 +28,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2028611,
+    "summary": "[Models] Evaluate exa.ai",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-04-01T19:12:03Z",
+    "resolvedAt": "2026-10-07T14:57:57Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2029729,
     "summary": "Remove unused security layer components",
     "product": "Core",
@@ -277,15 +286,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-04T23:42:24Z",
     "resolvedAt": "2026-07-31T17:22:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053449,
-    "summary": "Reduce browsing history pulled on memories first run",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-08T15:36:36Z",
-    "resolvedAt": "2026-07-09T16:10:50Z"
   },
   {
     "source": "bugzilla",
@@ -982,15 +982,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043430,
-    "summary": "[LinkPreview] Unhandled malformed UTF8 sequence on previews containing Chinese characters",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-05-28T20:58:00Z",
-    "resolvedAt": "2026-07-09T16:07:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046861,
     "summary": "Crash in [@ OOM | unknown | mozilla::dom::InferenceSession::Init]",
     "product": "Core",
@@ -1060,15 +1051,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-11T23:37:44Z",
     "resolvedAt": "2026-08-12T20:21:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047025,
-    "summary": "Create reproducible smoke tests for running llama.cpp locally and in CI",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-11T23:39:45Z",
-    "resolvedAt": "2026-07-09T16:07:28Z"
   },
   {
     "source": "bugzilla",
@@ -1594,6 +1576,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078561,
+    "summary": "Enable HWInference for Link Preview in Beta",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-06T11:01:20Z",
+    "resolvedAt": "2026-10-06T20:01:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1972935,
+    "summary": "include url for page prompts instead of sending page content",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2025-06-18T22:56:40Z",
+    "resolvedAt": "2026-10-07T05:06:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1981904,
     "summary": "[GenAI Chat Sidebar] Choose a chatbot combobox and provider's frame content are visually hidden but still focusable and accessible with assistive technology",
     "product": "Core",
@@ -1765,15 +1765,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046512,
-    "summary": "Smart Window history grid db updates to enable restore",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-10T16:50:05Z",
-    "resolvedAt": "2026-07-09T16:07:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046612,
     "summary": "Add animated loading treatment to Action Log",
     "product": "Core",
@@ -1789,15 +1780,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-10T22:34:47Z",
     "resolvedAt": "2026-07-13T18:43:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046952,
-    "summary": "Add URL bar to Smart Window new tab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-11T20:16:25Z",
-    "resolvedAt": "2026-07-09T22:57:15Z"
   },
   {
     "source": "bugzilla",
@@ -1906,15 +1888,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-17T17:37:49Z",
     "resolvedAt": "2026-07-22T04:29:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048595,
-    "summary": "The Smart Window Switcher Icon is not displayed according to FIGMA",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-18T11:42:09Z",
-    "resolvedAt": "2026-07-09T22:57:24Z"
   },
   {
     "source": "bugzilla",
@@ -2212,15 +2185,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-09T07:29:53Z",
     "resolvedAt": "2026-08-01T09:55:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053685,
-    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_request_response_telemetry.js | single tracking bug",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T07:40:36Z",
-    "resolvedAt": "2026-07-09T22:58:16Z"
   },
   {
     "source": "bugzilla",
@@ -4114,6 +4078,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068690,
+    "summary": "Show about:aitab pages in user history",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-02T17:11:22Z",
+    "resolvedAt": "2026-10-07T05:07:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068714,
     "summary": "Include the chat tab in the assistant-created tab group by default",
     "product": "Core",
@@ -4183,6 +4156,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-03T20:26:07Z",
     "resolvedAt": "2026-09-25T04:42:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069144,
+    "summary": "Add a Glean category and core events for the text selection actions menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T21:52:21Z",
+    "resolvedAt": "2026-10-07T09:56:44Z"
   },
   {
     "source": "bugzilla",
@@ -4318,6 +4300,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-09T19:23:57Z",
     "resolvedAt": "2026-09-16T20:24:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071035,
+    "summary": "AITab [FE] - page loading/generated state after trigger from assistant",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-10T18:23:00Z",
+    "resolvedAt": "2026-10-06T19:52:44Z"
   },
   {
     "source": "bugzilla",
@@ -4564,12 +4555,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074673,
+    "summary": "AITab [FE] - AITab tool call should use URL tokens for images and links and prevent hallucinations",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-22T21:57:23Z",
+    "resolvedAt": "2026-10-07T05:07:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075335,
     "summary": "Selection shortcuts popup opens in the wrong place when the Firefox UI is right-to-left",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-24T16:36:14Z",
     "resolvedAt": "2026-09-30T21:49:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075669,
+    "summary": "[Models] ATG Multilingual [FR] Evals for Clustering & Group Naming",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T17:07:59Z",
+    "resolvedAt": "2026-10-06T17:51:46Z"
   },
   {
     "source": "bugzilla",
