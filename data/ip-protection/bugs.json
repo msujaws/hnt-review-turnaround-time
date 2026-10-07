@@ -208,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053491,
-    "summary": "Fix heading regression for VPN status box",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-08T16:54:28Z",
-    "resolvedAt": "2026-07-09T16:10:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053753,
     "summary": "Broken Inclusion-Rule can deadlock the VPN",
     "product": "Firefox",
