@@ -28,6 +28,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1768489,
+    "summary": "Intermittent org.mozilla.geckoview.test.OrientationDelegateTest#orientationUnlockByExitFullscreen | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2022-05-09T16:49:18Z",
+    "resolvedAt": "2026-10-07T05:06:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1902103,
     "summary": "Intermittent org.mozilla.geckoview.test.GeolocationTest#jsContentRequestForLocation | single tracking bug",
     "product": "GeckoView",
@@ -79,6 +88,15 @@
     "component": "General",
     "filedAt": "2025-07-17T23:23:21Z",
     "resolvedAt": "2026-10-02T14:53:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1988531,
+    "summary": "Ensure media is working on isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-09-15T13:31:24Z",
+    "resolvedAt": "2026-10-06T19:51:56Z"
   },
   {
     "source": "bugzilla",
@@ -154,15 +172,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049804,
-    "summary": "GeckoView:MediaPermission trusts child-supplied uri for camera/mic prompt origin and SitePermissions storage key (Android, variant of bmo-2003171)",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-23T18:16:30Z",
-    "resolvedAt": "2026-07-09T23:00:32Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049904,
     "summary": "Avoid to read content on main thread when using <input type=file webkitdirectory>",
     "product": "GeckoView",
@@ -178,15 +187,6 @@
     "component": "PDF Viewer",
     "filedAt": "2026-06-27T10:39:38Z",
     "resolvedAt": "2026-09-04T09:24:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051418,
-    "summary": "Add `download` attribute to WebResponse",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-29T20:24:50Z",
-    "resolvedAt": "2026-07-09T16:08:44Z"
   },
   {
     "source": "bugzilla",
@@ -502,6 +502,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-17T18:47:34Z",
     "resolvedAt": "2026-08-20T16:29:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064727,
+    "summary": "Share pulls network bytes, not PDF bytes which cause slow speeds and issues when the PDF has been edited",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-19T14:33:51Z",
+    "resolvedAt": "2026-10-06T19:52:36Z"
   },
   {
     "source": "bugzilla",
