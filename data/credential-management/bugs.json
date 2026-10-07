@@ -19,6 +19,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1957425,
+    "summary": "Add sidebar.newTool.migration.cpm pref for visibility in sidebar launcher",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2025-03-31T14:44:27Z",
+    "resolvedAt": "2026-10-07T05:06:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1984820,
     "summary": "Intermittent toolkit/components/passwordmgr/test/browser/browser_formless_submit_chrome.js | single tracking bug",
     "product": "Toolkit",
@@ -106,42 +115,6 @@
     "component": "Password Manager",
     "filedAt": "2026-07-03T12:46:15Z",
     "resolvedAt": "2026-07-22T11:09:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053385,
-    "summary": "test_include_other_subdomains_in_lookup.html relies on login origin normalization",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-08T11:18:43Z",
-    "resolvedAt": "2026-07-09T15:39:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053409,
-    "summary": "LoginHelper.getBrowserForPrompt should handle a null browsingContext",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-08T13:11:25Z",
-    "resolvedAt": "2026-07-09T16:10:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053428,
-    "summary": "Rust login storage: integrate primary-password prompt with cancel handling",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-08T14:20:22Z",
-    "resolvedAt": "2026-07-09T22:58:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053557,
-    "summary": "Rust Logins: remove logins without decrypting",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-08T20:55:24Z",
-    "resolvedAt": "2026-07-09T18:09:47Z"
   },
   {
     "source": "bugzilla",
@@ -295,6 +268,15 @@
     "component": "Password Manager",
     "filedAt": "2026-08-21T17:02:21Z",
     "resolvedAt": "2026-08-22T21:28:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066368,
+    "summary": "Non-decrypting logins candidate Rust logins API in a-s",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-08-25T07:43:13Z",
+    "resolvedAt": "2026-10-07T12:07:04Z"
   },
   {
     "source": "bugzilla",

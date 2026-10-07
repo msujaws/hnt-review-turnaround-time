@@ -1,30 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-lk32jo2rruymlnbjciiw",
-    "revisionId": 311176,
-    "author": "joschmidt",
-    "createdAt": "2026-07-08T21:01:04.000Z",
-    "firstReviewAt": "2026-07-08T21:16:37.000Z",
-    "landedAt": "2026-07-09T14:43:00.000Z",
-    "cycleBusinessHours": 1.7166666666666666,
-    "postReviewBusinessHours": 1.7166666666666666,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-e62ls5bnxlvvp2leml4p",
-    "revisionId": 311059,
-    "author": "joschmidt",
-    "createdAt": "2026-07-08T13:25:55.000Z",
-    "firstReviewAt": "2026-07-09T11:41:04.000Z",
-    "landedAt": "2026-07-09T12:05:14.000Z",
-    "cycleBusinessHours": 7.5680555555555555,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-wpl6azwypoichdamdzba",
     "revisionId": 311532,
     "author": "joschmidt",
@@ -1459,9 +1435,9 @@
     "createdAt": "2026-09-24T00:58:13.000Z",
     "firstReviewAt": "2026-09-24T02:04:09.000Z",
     "landedAt": "2026-09-24T19:56:22.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 6.939444444444445,
-    "postReviewBusinessHours": 6.939444444444445,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 6.939444444444445
   },
   {
     "source": "phab",
@@ -1594,5 +1570,29 @@
     "cycleBusinessHours": 38.52611111111111,
     "postReviewBusinessHours": 38.52611111111111,
     "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-x2crw6pfqyusxr4k6bdh",
+    "revisionId": 330674,
+    "author": "dimi",
+    "createdAt": "2026-10-05T08:07:19.000Z",
+    "firstReviewAt": "2026-10-05T08:07:28.000Z",
+    "landedAt": "2026-10-07T15:04:02.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 18.06722222222222,
+    "postReviewBusinessHours": 18.06722222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-nrafpxbg7wfs5zbp6jng",
+    "revisionId": 328539,
+    "author": "kandres",
+    "createdAt": "2026-09-23T14:47:39.000Z",
+    "firstReviewAt": "2026-09-23T14:47:45.000Z",
+    "landedAt": "2026-10-06T17:43:01.000Z",
+    "reviewRounds": 3,
+    "cycleBusinessHours": 74.92277777777778,
+    "postReviewBusinessHours": 74.9211111111111
   }
 ]
