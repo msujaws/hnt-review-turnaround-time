@@ -163,6 +163,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063878,
+    "summary": "Fix component in modules/xz-embedded/moz.yaml",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-16T05:53:47Z",
+    "resolvedAt": "2026-10-08T16:16:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063986,
     "summary": "Check the return value of posix_fallocate and only preallocate when the destination file was opened in PatchFile::ApplyPatchTo",
     "product": "Toolkit",
