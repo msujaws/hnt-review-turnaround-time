@@ -487,15 +487,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050339,
-    "summary": "Crossword widget - Add in locales preview file for en-xx localization",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-25T04:47:05Z",
-    "resolvedAt": "2026-07-10T10:23:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050340,
     "summary": "Crossword widget - Add Crossword to AboutPreferences",
     "product": "Firefox",
@@ -532,60 +523,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050969,
-    "summary": "Set up boilerplate Picture of the Day widget (prefs/basic UI)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:12:46Z",
-    "resolvedAt": "2026-07-10T10:23:30Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050972,
-    "summary": "Add ability to dimiss current daily photo",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:16:53Z",
-    "resolvedAt": "2026-07-10T10:23:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050973,
-    "summary": "Add ability to set the picture of the day as a custom wallpaper",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:17:21Z",
-    "resolvedAt": "2026-07-10T10:23:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050975,
-    "summary": "Display a localized image description for the picture of the day",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:23:41Z",
-    "resolvedAt": "2026-07-10T10:23:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050976,
-    "summary": "Connect Picture of the day widget to the Merino endpoint to set the background of the widget to the current picture",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:26:08Z",
-    "resolvedAt": "2026-07-10T10:23:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050977,
-    "summary": "Add telemetry to the Picture of the day widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T21:28:06Z",
-    "resolvedAt": "2026-07-10T10:23:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051179,
     "summary": "Focus Timer widget: add small size in Nova",
     "product": "Firefox",
@@ -601,15 +538,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-29T15:05:38Z",
     "resolvedAt": "2026-07-17T09:33:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051333,
-    "summary": "Use moz-checkbox for New Tab inferred personalization checkbox",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T16:02:49Z",
-    "resolvedAt": "2026-07-10T10:24:01Z"
   },
   {
     "source": "bugzilla",
@@ -649,15 +577,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051610,
-    "summary": "Newtab shortcuts drag n drop updates to placeholder",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T14:48:56Z",
-    "resolvedAt": "2026-07-10T10:24:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051616,
     "summary": "Add CTA button to Privacy widget",
     "product": "Firefox",
@@ -676,30 +595,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052416,
-    "summary": "Stocks widget: introduce default state for Medium and Large sizes",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-03T02:27:05Z",
-    "resolvedAt": "2026-07-10T10:24:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052427,
     "summary": "Stocks widget: add error state",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-03T04:11:47Z",
     "resolvedAt": "2026-07-17T09:33:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052616,
-    "summary": "Fetch New Tab ads through the MozAdsClient in AdsFeed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-03T23:02:00Z",
-    "resolvedAt": "2026-07-10T10:24:37Z"
   },
   {
     "source": "bugzilla",
@@ -781,24 +682,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-09T16:22:58Z",
     "resolvedAt": "2026-07-17T09:34:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053933,
-    "summary": "Add author and license attribution to picture of the day",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-09T21:42:19Z",
-    "resolvedAt": "2026-07-10T10:25:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053963,
-    "summary": "Crossword widget - Add strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T00:49:32Z",
-    "resolvedAt": "2026-07-10T10:25:40Z"
   },
   {
     "source": "bugzilla",
@@ -1168,6 +1051,24 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-22T16:07:27Z",
     "resolvedAt": "2026-07-26T21:55:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057021,
+    "summary": "New Tab message should use intersection observer to avoid evaluating activeNotifications true when message is below the fold",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-22T21:19:01Z",
+    "resolvedAt": "2026-10-08T04:23:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057030,
+    "summary": "Navigating away from `about:newtab` with a newtab message keeps activeNotification targeting as true",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-22T21:35:35Z",
+    "resolvedAt": "2026-10-08T09:45:56Z"
   },
   {
     "source": "bugzilla",
@@ -1681,6 +1582,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-10T18:54:58Z",
     "resolvedAt": "2026-08-26T09:14:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062393,
+    "summary": "Add pocket.dwell_time labeled quantity to newtab ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-10T18:56:38Z",
+    "resolvedAt": "2026-10-08T04:23:36Z"
   },
   {
     "source": "bugzilla",
@@ -3229,5 +3139,32 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-05T16:55:26Z",
     "resolvedAt": "2026-10-06T04:22:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078497,
+    "summary": "Clocks widget menu button overlaps the clocks on hover",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T04:48:08Z",
+    "resolvedAt": "2026-10-08T09:46:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078816,
+    "summary": "Enable a widget in the first content position of New Tab sections",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T16:35:37Z",
+    "resolvedAt": "2026-10-08T04:27:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078895,
+    "summary": "Enable type checking for newtab/lib with exception for failing files",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T19:27:50Z",
+    "resolvedAt": "2026-10-08T04:27:19Z"
   }
 ]
