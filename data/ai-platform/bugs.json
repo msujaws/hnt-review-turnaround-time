@@ -946,6 +946,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075395,
+    "summary": "Validate support of Major/Minor build updates through versioning in GenTab",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-24T20:46:21Z",
+    "resolvedAt": "2026-10-09T04:23:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2001646,
     "summary": "Create policies and tests around redirects for headless extraction",
     "product": "Core",
@@ -1582,6 +1591,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-09-26T02:50:39Z",
     "resolvedAt": "2026-09-30T04:49:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078428,
+    "summary": "PageExtractor telemetry misreports some extraction outcomes",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-05T21:40:02Z",
+    "resolvedAt": "2026-10-09T04:24:41Z"
   },
   {
     "source": "bugzilla",
@@ -4177,6 +4195,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069132,
+    "summary": "AITab telemetry - tool calling",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T21:22:15Z",
+    "resolvedAt": "2026-10-09T04:22:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069144,
     "summary": "Add a Glean category and core events for the text selection actions menu",
     "product": "Core",
@@ -4228,6 +4255,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-04T19:56:57Z",
     "resolvedAt": "2026-09-22T04:38:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069543,
+    "summary": "AITab [FE] - Footer gradient and \"Made with Smart Window\" lockup",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-04T22:34:20Z",
+    "resolvedAt": "2026-10-09T09:55:26Z"
   },
   {
     "source": "bugzilla",
@@ -4573,6 +4609,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074601,
+    "summary": "[Monitor Agent][FE] Product page detector for SW Watch(monitor) feature callout target",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-22T19:05:20Z",
+    "resolvedAt": "2026-10-09T04:23:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074631,
     "summary": "ATG reduce minimum number of tabs floor from 4 to 2 along wth Nimbus Flag",
     "product": "Core",
@@ -4624,6 +4669,33 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-05T17:16:40Z",
     "resolvedAt": "2026-10-08T09:46:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078469,
+    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aichat_open_link.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-06T01:51:55Z",
+    "resolvedAt": "2026-10-09T04:24:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078495,
+    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aitab_actions.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-06T04:39:50Z",
+    "resolvedAt": "2026-10-09T04:24:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078662,
+    "summary": "AITab - implement in-mozilla hosting for font artifacts using Remote Settings",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-06T14:44:45Z",
+    "resolvedAt": "2026-10-09T04:24:55Z"
   },
   {
     "source": "bugzilla",
@@ -4732,5 +4804,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-09-16T13:26:20Z",
     "resolvedAt": "2026-09-18T22:04:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078396,
+    "summary": "[Flaky Test] browser_monitor_agent_limits.js",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-10-05T20:36:03Z",
+    "resolvedAt": "2026-10-08T21:06:36Z"
   }
 ]
