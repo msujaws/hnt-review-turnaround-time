@@ -424,6 +424,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070647,
+    "summary": "Consider applying expand-on-hover opaque backdrop only when hovered / animating.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-09T18:05:35Z",
+    "resolvedAt": "2026-10-08T21:06:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070963,
     "summary": "[Linux][LWT] Notification banner has solid black top border in Nova standard theme",
     "product": "Firefox",
@@ -520,6 +529,15 @@
     "component": "Theme",
     "filedAt": "2026-09-22T09:20:22Z",
     "resolvedAt": "2026-09-23T21:43:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078363,
+    "summary": "Alpenglow theme overflowing tab container fade effect is misaligned with the content area corner radius",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-05T18:58:59Z",
+    "resolvedAt": "2026-10-09T04:24:31Z"
   },
   {
     "source": "bugzilla",
