@@ -613,15 +613,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052945,
-    "summary": "[meta] Firefox 152.0.5 train-hop metabug",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-06T18:43:57Z",
-    "resolvedAt": "2026-07-12T01:41:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053140,
     "summary": "Perma mozilla-beta /builds/worker/checkouts/gecko/browser/components/asrouter/modules/ASRouter.sys.mjs:1632:3 | Duplicate name '_isAllowedActionOnlyMessageAction'. (no-dupe-class-members)",
     "product": "Firefox",
@@ -1258,6 +1249,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-03T18:24:39Z",
     "resolvedAt": "2026-08-08T09:43:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060322,
+    "summary": "Fix `pocket.click` and `topsite.click` missing context menu triggers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-03T18:24:50Z",
+    "resolvedAt": "2026-10-09T04:22:40Z"
   },
   {
     "source": "bugzilla",
@@ -2746,6 +2746,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072355,
+    "summary": "[meta] Newtab score-based selection for sponsored tiles experiment",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-15T18:12:28Z",
+    "resolvedAt": "2026-10-09T04:23:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072361,
     "summary": "Newtab score-based selection new JS Module",
     "product": "Firefox",
@@ -3166,5 +3175,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-06T19:27:50Z",
     "resolvedAt": "2026-10-08T04:27:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079542,
+    "summary": "Use `useWidgetTelemetry` in the Weather widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-07T23:53:59Z",
+    "resolvedAt": "2026-10-09T04:25:34Z"
   }
 ]
