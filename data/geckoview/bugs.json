@@ -91,6 +91,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1980466,
+    "summary": "Android 10 gv-junit failures: MediaSessionTest",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-07-31T17:51:49Z",
+    "resolvedAt": "2026-10-08T21:05:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1988531,
     "summary": "Ensure media is working on isolated process",
     "product": "GeckoView",
