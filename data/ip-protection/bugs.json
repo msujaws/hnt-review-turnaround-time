@@ -655,5 +655,23 @@
     "component": "IP Protection",
     "filedAt": "2026-10-01T14:40:41Z",
     "resolvedAt": "2026-10-02T09:44:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078192,
+    "summary": "Focus ring around Settings button is clipped during keyboard navigation in the \"VPN is paused\" panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-05T12:00:06Z",
+    "resolvedAt": "2026-10-09T04:24:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078236,
+    "summary": "The VPN panel is not dismissed after clicking the \"Learn more\" link in the local region error view",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-05T13:44:51Z",
+    "resolvedAt": "2026-10-09T04:24:27Z"
   }
 ]
