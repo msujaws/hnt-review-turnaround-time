@@ -64,15 +64,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2008143,
-    "summary": "Button lacks accessible name (Task list widget > ••• button)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-12-31T18:09:20Z",
-    "resolvedAt": "2026-07-12T04:36:21Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2011433,
     "summary": "Focus can visibly be on New Tab search box AND secondary search bar at the same time",
     "product": "Firefox",
@@ -370,15 +361,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2043730,
-    "summary": "Add WebNotifications to newtab state",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-05-29T20:06:36Z",
-    "resolvedAt": "2026-07-12T11:36:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2044483,
     "summary": "World Clocks widget is missing the widgets.clocks.interaction pref and   interaction tracking entirely",
     "product": "Firefox",
@@ -484,15 +466,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-23T16:40:12Z",
     "resolvedAt": "2026-09-22T19:19:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050340,
-    "summary": "Crossword widget - Add Crossword to AboutPreferences",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-25T04:49:05Z",
-    "resolvedAt": "2026-07-13T20:32:40Z"
   },
   {
     "source": "bugzilla",
@@ -631,39 +604,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053264,
-    "summary": "Newtab Hide section layout cards that don't fill their row",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-07T21:07:08Z",
-    "resolvedAt": "2026-07-12T04:44:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053311,
-    "summary": "Crossword widget - Add context menu with postMessages script",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-08T03:58:34Z",
-    "resolvedAt": "2026-07-15T03:21:27Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053568,
     "summary": "Remove three unused activity-stream discoverystream.thumbsUpDown.* preferences",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-08T21:12:04Z",
     "resolvedAt": "2026-07-23T16:17:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053667,
-    "summary": "Crossword widget - Add \"New\" badge + interactions logic",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-09T05:39:33Z",
-    "resolvedAt": "2026-07-15T03:21:31Z"
   },
   {
     "source": "bugzilla",
@@ -676,66 +622,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054104,
-    "summary": "Picture of the Day \"Set as wallpaper\" always classifies theme as \"light\" because calculateTheme runs in the parent process",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T15:15:28Z",
-    "resolvedAt": "2026-07-12T11:38:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054106,
-    "summary": "Picture of the Day \"Set as wallpaper\" checkmark doesn't track whether the current picture is actually the active wallpaper",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T15:16:39Z",
-    "resolvedAt": "2026-07-12T11:38:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054109,
-    "summary": "Picture of the Day widget: UX refinements",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T15:19:59Z",
-    "resolvedAt": "2026-07-14T09:47:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054111,
-    "summary": "Add a pref / trainhopConfig gate to toggle the Picture of the Day \"Set as wallpaper\" feature",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T15:20:29Z",
-    "resolvedAt": "2026-07-12T11:38:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054112,
-    "summary": "Add a dedicated trainhopConfig.widgetPictureOfTheDay payload for POTD feature config",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T15:22:28Z",
-    "resolvedAt": "2026-07-12T11:38:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054175,
     "summary": "Update Shortcuts Add/Edit dialog for Nova",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-10T18:58:41Z",
     "resolvedAt": "2026-07-18T09:11:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054325,
-    "summary": "Update locales for Firefox 152.0.6 train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-12T01:47:27Z",
-    "resolvedAt": "2026-07-12T11:39:09Z"
   },
   {
     "source": "bugzilla",
@@ -748,48 +640,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054436,
-    "summary": "Daily crossword widget content overflows and clips past the bottom container boundary",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-13T09:43:36Z",
-    "resolvedAt": "2026-07-15T03:21:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054463,
-    "summary": "Related articles are not opening on click",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-13T12:42:12Z",
-    "resolvedAt": "2026-07-15T03:21:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054568,
-    "summary": "Picture of the Day widget - Add \"New\" badge + interactions logic",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-13T19:04:23Z",
-    "resolvedAt": "2026-07-14T09:47:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054581,
     "summary": "ExternalComponentWrapper doesn't properly forward down \"live\" properties from MessageWrapper, like isIntersecting",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-13T19:38:43Z",
     "resolvedAt": "2026-07-22T21:44:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054599,
-    "summary": "Update the initial order of the Picture of the day widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-13T21:42:39Z",
-    "resolvedAt": "2026-07-14T09:47:39Z"
   },
   {
     "source": "bugzilla",
@@ -808,15 +664,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-14T11:35:41Z",
     "resolvedAt": "2026-07-16T00:08:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054936,
-    "summary": "Crossword widget: Migrate strings from Fluent file back to inline markup",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-14T14:05:29Z",
-    "resolvedAt": "2026-07-15T03:21:48Z"
   },
   {
     "source": "bugzilla",
@@ -1240,6 +1087,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-31T20:02:01Z",
     "resolvedAt": "2026-09-07T09:28:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059852,
+    "summary": "[a11y] Dialog fails to contain keyboard focus",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-31T20:06:26Z",
+    "resolvedAt": "2026-10-10T08:49:31Z"
   },
   {
     "source": "bugzilla",
@@ -2215,6 +2071,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066556,
+    "summary": "Update API contract to return previous day's POTD",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-25T18:32:49Z",
+    "resolvedAt": "2026-10-09T19:34:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066557,
     "summary": "Support Multiple Custom Wallpapers: Storage and migration",
     "product": "Firefox",
@@ -2617,6 +2482,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-08T21:27:30Z",
     "resolvedAt": "2026-09-10T21:48:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070368,
+    "summary": "Update WallpaperFeatureHighlight to allow for alternate strings to be injected",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T21:58:20Z",
+    "resolvedAt": "2026-10-10T08:49:52Z"
   },
   {
     "source": "bugzilla",
@@ -3178,11 +3052,74 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078974,
+    "summary": "Set default enabled value to false for all existing widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T21:36:02Z",
+    "resolvedAt": "2026-10-09T21:48:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079012,
+    "summary": "Newtab score-based selection normalize and decay day counts",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:20:30Z",
+    "resolvedAt": "2026-10-09T15:11:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079013,
+    "summary": "Newtab score-based selection calculate domain overlap for differential privacy",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:20:57Z",
+    "resolvedAt": "2026-10-09T15:12:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079014,
+    "summary": "Newtab score-based selection add differential privacy noise to scores",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:21:12Z",
+    "resolvedAt": "2026-10-09T15:12:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079018,
+    "summary": "Newtab score-based selection use PersistentCache for scores",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:24:58Z",
+    "resolvedAt": "2026-10-10T08:51:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079376,
+    "summary": "Fix more newtab/lib TypeScript errors so 11 more files can be type-checked",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-07T17:18:35Z",
+    "resolvedAt": "2026-10-10T08:52:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079542,
     "summary": "Use `useWidgetTelemetry` in the Weather widget",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-07T23:53:59Z",
     "resolvedAt": "2026-10-09T04:25:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079939,
+    "summary": "Turn off all New Tab widgets in automation with one pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-08T20:41:38Z",
+    "resolvedAt": "2026-10-09T21:48:27Z"
   }
 ]
