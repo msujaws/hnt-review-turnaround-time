@@ -127,15 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054067,
-    "summary": "Use new Rust api methods for login removal",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-10T13:42:51Z",
-    "resolvedAt": "2026-07-13T20:34:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056155,
     "summary": "JavaScript error: resource://gre/modules/LoginManager.sys.mjs, line 510: TypeError: can't access property \"uiBusy\", this._storage is null",
     "product": "Toolkit",
@@ -403,5 +394,14 @@
     "component": "Password Manager",
     "filedAt": "2026-10-08T10:35:38Z",
     "resolvedAt": "2026-10-08T21:06:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080080,
+    "summary": "test_LoginStorageMigrator_nimbus.js fails in Thunderbird",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-09T07:53:11Z",
+    "resolvedAt": "2026-10-10T08:53:02Z"
   }
 ]

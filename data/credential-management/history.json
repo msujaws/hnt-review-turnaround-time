@@ -16588,5 +16588,215 @@
         "pctUnderSLA": 47.05882352941176
       }
     }
+  },
+  {
+    "date": "2026-10-12",
+    "phab": {
+      "window7d": {
+        "n": 7,
+        "median": 0,
+        "mean": 6.076666666666667,
+        "p90": 15.922000000000004,
+        "pctUnderSLA": 57.14285714285714
+      },
+      "window14d": {
+        "n": 15,
+        "median": 10.536666666666667,
+        "mean": 21.775185185185187,
+        "p90": 65.88466666666666,
+        "pctUnderSLA": 33.33333333333333
+      },
+      "window30d": {
+        "n": 46,
+        "median": 10.338055555555556,
+        "mean": 22.92138888888889,
+        "p90": 65.92722222222221,
+        "pctUnderSLA": 32.608695652173914
+      }
+    },
+    "github": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabCycle": {
+      "window7d": {
+        "n": 12,
+        "median": 45.312638888888884,
+        "mean": 62.01722222222222,
+        "p90": 152,
+        "pctUnderSLA": 41.66666666666667
+      },
+      "window14d": {
+        "n": 18,
+        "median": 38.526805555555555,
+        "mean": 62.778209876543215,
+        "p90": 156.63883333333334,
+        "pctUnderSLA": 27.77777777777778
+      },
+      "window30d": {
+        "n": 52,
+        "median": 35.079861111111114,
+        "mean": 63.66683226495728,
+        "p90": 124.79999999999995,
+        "pctUnderSLA": 34.61538461538461
+      }
+    },
+    "githubCycle": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabPostReview": {
+      "window7d": {
+        "n": 12,
+        "median": 37.033611111111114,
+        "mean": 50.656643518518514,
+        "p90": 111.99847222222222,
+        "pctUnderSLA": 25
+      },
+      "window14d": {
+        "n": 18,
+        "median": 22.04138888888889,
+        "mean": 44.122962962962966,
+        "p90": 111.98930555555555,
+        "pctUnderSLA": 16.666666666666664
+      },
+      "window30d": {
+        "n": 52,
+        "median": 19.724583333333335,
+        "mean": 50.510507478632476,
+        "p90": 87.37108333333333,
+        "pctUnderSLA": 25
+      }
+    },
+    "githubPostReview": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "phabRounds": {
+      "window7d": {
+        "n": 12,
+        "median": 1,
+        "mean": 1.75,
+        "p90": 3,
+        "pctUnderSLA": 58.333333333333336
+      },
+      "window14d": {
+        "n": 18,
+        "median": 1,
+        "mean": 1.6111111111111112,
+        "p90": 3,
+        "pctUnderSLA": 66.66666666666666
+      },
+      "window30d": {
+        "n": 52,
+        "median": 1,
+        "mean": 1.4230769230769231,
+        "p90": 3,
+        "pctUnderSLA": 73.07692307692307
+      }
+    },
+    "githubRounds": {
+      "window7d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window14d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      },
+      "window30d": {
+        "n": 0,
+        "median": 0,
+        "mean": 0,
+        "p90": 0,
+        "pctUnderSLA": 0
+      }
+    },
+    "bugFix": {
+      "window7d": {
+        "n": 5,
+        "median": 34.253680555555555,
+        "mean": 126.7031087962963,
+        "p90": 350.0324930555556,
+        "pctUnderSLA": 40
+      },
+      "window14d": {
+        "n": 8,
+        "median": 20.80373263888889,
+        "mean": 84.42305555555556,
+        "p90": 196.60786111111105,
+        "pctUnderSLA": 37.5
+      },
+      "window30d": {
+        "n": 16,
+        "median": 7.498755787037037,
+        "mean": 45.449101562500005,
+        "p90": 38.71845486111111,
+        "pctUnderSLA": 50
+      }
+    }
   }
 ]
