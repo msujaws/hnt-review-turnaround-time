@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034698,
-    "summary": "VPN toolbar icon briefly disapears when you turn it on the first time in a browsing session",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-04-24T04:40:59Z",
-    "resolvedAt": "2026-07-14T04:01:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2036065,
     "summary": "[META] [QA] [QA-5180] QA request for Free VPN integration (Fx 152)",
     "product": "Firefox",
@@ -91,39 +82,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037184,
-    "summary": "IP-Protection: implement the kotlin glue for GPI AuthProvider",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-05T17:05:52Z",
-    "resolvedAt": "2026-07-14T21:42:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039487,
-    "summary": "Site exclusion description alignment is slightly offset in the VPN main panel",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-14T06:49:28Z",
-    "resolvedAt": "2026-07-12T11:36:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2040879,
     "summary": "[META] [QA] [QA-5254] QA request for Free VPN integration (Fx 153)",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-05-20T08:37:00Z",
     "resolvedAt": "2026-08-17T10:16:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049817,
-    "summary": "Turn on/off VPN button in VPN panel is wrong color",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-23T18:33:27Z",
-    "resolvedAt": "2026-07-13T14:13:02Z"
   },
   {
     "source": "bugzilla",
@@ -142,24 +106,6 @@
     "component": "IP Protection",
     "filedAt": "2026-06-25T06:42:53Z",
     "resolvedAt": "2026-07-29T04:16:30Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050761,
-    "summary": "[Nova] VPN location list items permanently display hover effect styling without active hover in certain HCM themes (e.g., Dusk)",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-26T08:35:29Z",
-    "resolvedAt": "2026-07-14T04:02:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050822,
-    "summary": "[Nova] The “Settings” option has no border when Increased Contrast is enabled",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-26T11:56:36Z",
-    "resolvedAt": "2026-07-13T14:17:11Z"
   },
   {
     "source": "bugzilla",
@@ -205,15 +151,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-06T14:08:25Z",
     "resolvedAt": "2026-08-27T18:29:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053753,
-    "summary": "Broken Inclusion-Rule can deadlock the VPN",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-09T12:42:30Z",
-    "resolvedAt": "2026-07-13T20:34:18Z"
   },
   {
     "source": "bugzilla",
@@ -637,6 +574,42 @@
     "component": "IP Protection",
     "filedAt": "2026-09-22T08:38:22Z",
     "resolvedAt": "2026-09-24T04:57:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074514,
+    "summary": "Create new list component for managing site permissions in website settings subpane",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T15:24:47Z",
+    "resolvedAt": "2026-10-10T08:50:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074574,
+    "summary": "Add dialog for creating a site inclusion or exclusion rule in VPN settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T17:41:23Z",
+    "resolvedAt": "2026-10-10T08:50:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074578,
+    "summary": "Create delete confirmation dialogs for VPN site rules settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T17:43:23Z",
+    "resolvedAt": "2026-10-10T08:50:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075355,
+    "summary": "Add a dialog for editing a site inclusion or exclusion",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-24T17:57:25Z",
+    "resolvedAt": "2026-10-10T08:50:43Z"
   },
   {
     "source": "bugzilla",
