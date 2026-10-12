@@ -793,11 +793,47 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075423,
+    "summary": "[3.1.2] Implement ScrollCaptureCallback using Bitmap to paint pixels",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-24T23:33:59Z",
+    "resolvedAt": "2026-10-09T23:28:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076837,
     "summary": "Run reftest and crashtest on GeckoView with fission",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-09-30T17:47:56Z",
     "resolvedAt": "2026-10-03T21:11:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078435,
+    "summary": "[gv-junit] Intermittent org.mozilla.geckoview.test.HistoryDelegateTest#flushSessionStateTriggersHistoryChange | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-05T21:53:52Z",
+    "resolvedAt": "2026-10-10T08:51:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079024,
+    "summary": "[gv-junit] Re-enable geckoview-junit tests that no longer need their fission skip",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-06T23:58:02Z",
+    "resolvedAt": "2026-10-10T08:51:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079548,
+    "summary": "[gv-junit] Remove no-fis gv-junit variants and make the Fission default",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-08T00:19:09Z",
+    "resolvedAt": "2026-10-10T08:52:21Z"
   }
 ]
