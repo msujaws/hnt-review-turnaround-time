@@ -19,15 +19,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2038764,
-    "summary": "Remove Nova outer window padding when the window is fullscreen",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-05-11T18:00:06Z",
-    "resolvedAt": "2026-07-12T11:36:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2043461,
     "summary": "Update Nova icons for bookmark-12, pin-12",
     "product": "Firefox",
@@ -37,39 +28,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048189,
-    "summary": "Stop / reload button twitches when animating",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-17T09:32:40Z",
-    "resolvedAt": "2026-07-12T11:37:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048354,
     "summary": "Remap tab-audio-blocked-circle-12.svg to Nova icon play-circle-fill-12",
     "product": "Firefox",
     "component": "Theme",
     "filedAt": "2026-06-17T18:58:20Z",
     "resolvedAt": "2026-07-28T09:57:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050546,
-    "summary": "Remove dead CSS rule .alltabs-item[selected=\"true\"]",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-25T15:50:58Z",
-    "resolvedAt": "2026-07-14T04:02:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050655,
-    "summary": "[Nova] Page blocks (sidebar/toolbar/content area) in dark theme should have light grey borders",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-25T21:22:50Z",
-    "resolvedAt": "2026-07-14T21:42:54Z"
   },
   {
     "source": "bugzilla",
@@ -106,15 +70,6 @@
     "component": "Theme",
     "filedAt": "2026-07-10T19:36:46Z",
     "resolvedAt": "2026-08-07T04:27:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054261,
-    "summary": "Fix reload button disabled state override",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-11T10:12:23Z",
-    "resolvedAt": "2026-07-14T21:44:36Z"
   },
   {
     "source": "bugzilla",
@@ -538,6 +493,15 @@
     "component": "Theme",
     "filedAt": "2026-10-05T18:58:59Z",
     "resolvedAt": "2026-10-09T04:24:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078754,
+    "summary": "The \"See details\" button on the blocked site warning page has unreadable text on hover and when pressed",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-06T15:41:21Z",
+    "resolvedAt": "2026-10-09T17:10:36Z"
   },
   {
     "source": "bugzilla",
