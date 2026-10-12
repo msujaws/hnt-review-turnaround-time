@@ -19,15 +19,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2026393,
-    "summary": "[Models] Set up automated running of production chat evaluation suite daily with alerts",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-03-25T21:27:07Z",
-    "resolvedAt": "2026-07-14T16:37:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2028611,
     "summary": "[Models] Evaluate exa.ai",
     "product": "Core",
@@ -163,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046597,
-    "summary": "[Monitor Agent][Models] Build Monitor Agent runtime",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-10T21:24:01Z",
-    "resolvedAt": "2026-07-12T11:37:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046603,
     "summary": "[Monitor Agent][FE] Page UI for CRUD monitor",
     "product": "Core",
@@ -196,15 +178,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-18T14:53:12Z",
     "resolvedAt": "2026-09-08T22:17:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049391,
-    "summary": "Implement Improved MemoryStore API with Enrichment Fields",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-22T15:26:13Z",
-    "resolvedAt": "2026-07-12T11:37:16Z"
   },
   {
     "source": "bugzilla",
@@ -241,15 +214,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-26T17:20:02Z",
     "resolvedAt": "2026-08-21T15:02:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051744,
-    "summary": "[5.2 Discover] Mistral | Confirm Conversation Starters / Follow Ups match expected user language | Part 2",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-30T21:03:08Z",
-    "resolvedAt": "2026-07-12T11:37:41Z"
   },
   {
     "source": "bugzilla",
@@ -322,15 +286,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-10T14:56:54Z",
     "resolvedAt": "2026-08-12T04:01:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054187,
-    "summary": "Create Grouping Quality Score for Auto Tab Grouping V0",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-10T20:04:47Z",
-    "resolvedAt": "2026-07-14T21:44:27Z"
   },
   {
     "source": "bugzilla",
@@ -955,30 +910,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076242,
+    "summary": "Design extended Memories telemetry",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-28T19:06:21Z",
+    "resolvedAt": "2026-10-12T17:25:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080922,
+    "summary": "Create models backend content POC for Morning Briefing Feature",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-12T17:37:56Z",
+    "resolvedAt": "2026-10-12T18:04:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2001646,
     "summary": "Create policies and tests around redirects for headless extraction",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2025-11-21T14:53:54Z",
     "resolvedAt": "2026-09-25T09:59:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2015825,
-    "summary": "Gather telemetry for all download times for all models",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-02-10T14:11:35Z",
-    "resolvedAt": "2026-07-14T09:46:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2016214,
-    "summary": "Collect telemetry for time to first chunk and average chunk time for text generation",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-02-11T19:17:00Z",
-    "resolvedAt": "2026-07-14T09:46:53Z"
   },
   {
     "source": "bugzilla",
@@ -1096,15 +1051,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-25T18:14:15Z",
     "resolvedAt": "2026-07-27T13:11:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051306,
-    "summary": "Finalize Dataset for Local Model Memories Evaluation",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-29T14:47:42Z",
-    "resolvedAt": "2026-07-14T19:27:50Z"
   },
   {
     "source": "bugzilla",
@@ -1648,15 +1594,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2016416,
-    "summary": "The Chat Assistant Sidebar frame extends past the main content scrollbar when resized to the max",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-12T13:19:32Z",
-    "resolvedAt": "2026-07-14T04:01:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2019042,
     "summary": "smartbar suggestion list is shorter than address bar making it hard to switch to open tabs, other suggest results further down",
     "product": "Core",
@@ -1681,15 +1618,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-09T13:26:38Z",
     "resolvedAt": "2026-07-29T21:42:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2033588,
-    "summary": "[a11y] Smart window - Links within chat messages are difficult to distinguish when focused",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-20T20:08:21Z",
-    "resolvedAt": "2026-07-12T04:36:29Z"
   },
   {
     "source": "bugzilla",
@@ -1765,39 +1693,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046201,
-    "summary": "[meta] Smart Window 152.0.x uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-09T20:43:21Z",
-    "resolvedAt": "2026-07-15T01:01:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046240,
-    "summary": "Update SmartWindow Nimbus feature with enable variable",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-09T22:50:41Z",
-    "resolvedAt": "2026-07-12T11:37:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046612,
     "summary": "Add animated loading treatment to Action Log",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-10T21:53:19Z",
     "resolvedAt": "2026-07-22T21:43:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046624,
-    "summary": "Spike: Evaluate Smart Form Fill using Smart Window data sources",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-10T22:34:47Z",
-    "resolvedAt": "2026-07-13T18:43:44Z"
   },
   {
     "source": "bugzilla",
@@ -1816,24 +1717,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-12T15:20:56Z",
     "resolvedAt": "2026-07-24T16:41:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047300,
-    "summary": "Replace GPT-OSS with Mistral Small 4 across Smart Window model selection surfaces",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T21:26:06Z",
-    "resolvedAt": "2026-07-13T20:32:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047304,
-    "summary": "Add Europe-specific Mistral promotion UI",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-12T21:33:49Z",
-    "resolvedAt": "2026-07-14T21:42:31Z"
   },
   {
     "source": "bugzilla",
@@ -1870,15 +1753,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-15T12:15:57Z",
     "resolvedAt": "2026-08-08T09:41:48Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047660,
-    "summary": "Spike: Evaluate approaches for Auto Tab Grouping",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-15T17:11:49Z",
-    "resolvedAt": "2026-07-13T18:13:36Z"
   },
   {
     "source": "bugzilla",
@@ -1936,30 +1810,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049660,
-    "summary": "The listed Memories show a Hover state when opening the Manage memories panel",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-23T11:53:02Z",
-    "resolvedAt": "2026-07-12T11:37:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049852,
     "summary": "Make Smart Window smartbar context chips tab-contextual (persist/restore per tab)",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-23T20:22:50Z",
     "resolvedAt": "2026-07-18T09:10:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049973,
-    "summary": "The Page and Chat feedback text is not visible with High contrast enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-24T08:14:47Z",
-    "resolvedAt": "2026-07-14T04:02:13Z"
   },
   {
     "source": "bugzilla",
@@ -2062,15 +1918,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051683,
-    "summary": "Sidebar should not animate open when I navigate between tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-30T17:51:49Z",
-    "resolvedAt": "2026-07-12T04:41:22Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051796,
     "summary": "Fix styling for Smart Cursor",
     "product": "Core",
@@ -2095,15 +1942,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T15:36:56Z",
     "resolvedAt": "2026-07-21T21:25:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052280,
-    "summary": "[Monitor Agent][FE] Create agent-monitor-item component",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T16:58:25Z",
-    "resolvedAt": "2026-07-13T20:33:15Z"
   },
   {
     "source": "bugzilla",
@@ -2167,15 +2005,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T21:13:39Z",
     "resolvedAt": "2026-09-06T09:35:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052627,
-    "summary": "Store time since user last switched mode from SW to CW",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-04T01:10:40Z",
-    "resolvedAt": "2026-07-12T11:37:58Z"
   },
   {
     "source": "bugzilla",
@@ -2266,15 +2095,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-10T14:53:05Z",
     "resolvedAt": "2026-08-08T09:42:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054206,
-    "summary": "Fix Smart Window Promo ghost button background",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-10T21:14:34Z",
-    "resolvedAt": "2026-07-12T11:39:03Z"
   },
   {
     "source": "bugzilla",
@@ -2383,15 +2203,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-13T22:54:28Z",
     "resolvedAt": "2026-07-21T20:27:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054774,
-    "summary": "browser_smartwindow_beta_badge.js fails with Nova enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-14T00:39:51Z",
-    "resolvedAt": "2026-07-14T21:45:37Z"
   },
   {
     "source": "bugzilla",
@@ -3808,6 +3619,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065248,
+    "summary": "[meta] PUWYLO MVP follow ups",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-20T18:43:09Z",
+    "resolvedAt": "2026-10-12T18:18:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2065292,
     "summary": "Smart Form Fill - change order of autocomplete row items when SFF is enabled",
     "product": "Core",
@@ -4681,6 +4501,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078471,
+    "summary": "Perma TV browser/components/genai/tests/browser/browser_chat_shortcuts.js | test_input_selection - No unnecessary hides - \"GenAI:HideShortcuts\" != \"GenAI:HideShortcuts\"",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-06T01:53:45Z",
+    "resolvedAt": "2026-10-10T08:51:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078495,
     "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aitab_actions.js | application timed out after 740.0 seconds with no output",
     "product": "Core",
@@ -4696,6 +4525,33 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-06T14:44:45Z",
     "resolvedAt": "2026-10-09T04:24:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079873,
+    "summary": "AiTab [FE] Remove refresh button from Smart Page UI",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T18:34:17Z",
+    "resolvedAt": "2026-10-10T08:52:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079874,
+    "summary": "AiTab [FE] Make the page name in the \"created a smart page\" chicklet a link to the existing tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T18:35:06Z",
+    "resolvedAt": "2026-10-10T08:52:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080033,
+    "summary": "add yahoo scout chatbot configuration to allow nimbus rollout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-09T03:22:50Z",
+    "resolvedAt": "2026-10-09T21:48:33Z"
   },
   {
     "source": "bugzilla",
