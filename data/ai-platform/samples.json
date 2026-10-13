@@ -10,16 +10,6 @@
     "tatBusinessHours": 0.2802777777777778
   },
   {
-    "source": "github",
-    "id": 205,
-    "repo": "Firefox-AI/MLPA",
-    "author": "randy-concepcion",
-    "reviewer": "noahpodgurski",
-    "requestedAt": "2026-07-15T18:48:21Z",
-    "firstActionAt": "2026-07-15T19:20:27Z",
-    "tatBusinessHours": 0.535
-  },
-  {
     "source": "phab",
     "id": "PHID-DREV-gmdquawavhnetceqnspx",
     "revisionId": 313108,
@@ -1160,16 +1150,6 @@
     "tatBusinessHours": 6.047777777777778
   },
   {
-    "source": "github",
-    "id": 209,
-    "repo": "Firefox-AI/MLPA",
-    "author": "dependabot",
-    "reviewer": "noahpodgurski",
-    "requestedAt": "2026-07-15T19:41:41Z",
-    "firstActionAt": "2026-09-17T15:30:51Z",
-    "tatBusinessHours": 363.8194444444444
-  },
-  {
     "source": "phab",
     "id": "PHID-DREV-e6h2y4s62ku3tdj2wv7v",
     "revisionId": 327501,
@@ -1578,5 +1558,45 @@
     "firstActionAt": "2026-10-12T12:32:59Z",
     "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 14.746944444444443
+  },
+  {
+    "source": "github",
+    "id": 289,
+    "author": "ikchifo",
+    "reviewer": "noahpodgurski",
+    "requestedAt": "2026-10-08T14:56:15Z",
+    "firstActionAt": "2026-10-13T13:10:31Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 22.237777777777776
+  },
+  {
+    "source": "github",
+    "id": 292,
+    "author": "noahpodgurski",
+    "reviewer": "FieldMarshallObvious",
+    "requestedAt": "2026-10-13T15:02:51Z",
+    "firstActionAt": "2026-10-13T15:17:40Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 0.24694444444444444
+  },
+  {
+    "source": "github",
+    "id": 290,
+    "author": "subpath",
+    "reviewer": "bakulf",
+    "requestedAt": "2026-10-13T11:54:34Z",
+    "firstActionAt": "2026-10-13T12:54:18Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 0
+  },
+  {
+    "source": "github",
+    "id": 290,
+    "author": "subpath",
+    "reviewer": "noahpodgurski",
+    "requestedAt": "2026-10-13T11:54:34Z",
+    "firstActionAt": "2026-10-13T13:24:15Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 0.4041666666666667
   }
 ]

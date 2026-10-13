@@ -24,18 +24,6 @@
     "reviewRounds": 1
   },
   {
-    "source": "github",
-    "id": 205,
-    "repo": "Firefox-AI/MLPA",
-    "author": "randy-concepcion",
-    "createdAt": "2026-07-15T18:47:56Z",
-    "firstReviewAt": "2026-07-15T19:20:27Z",
-    "landedAt": "2026-07-15T19:35:53Z",
-    "cycleBusinessHours": 0.7991666666666667,
-    "postReviewBusinessHours": 0.25722222222222224,
-    "reviewRounds": 1
-  },
-  {
     "source": "phab",
     "id": "PHID-DREV-cevbimo62qxhh6lwkrvp",
     "revisionId": 311369,
@@ -2158,5 +2146,29 @@
     "cycleBusinessHours": 24,
     "postReviewBusinessHours": 24,
     "reviewRounds": 1
+  },
+  {
+    "source": "github",
+    "id": 291,
+    "author": "github-actions",
+    "createdAt": "2026-10-13T13:00:20Z",
+    "firstReviewAt": null,
+    "landedAt": "2026-10-13T13:21:50Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.35833333333333334,
+    "postReviewBusinessHours": null
+  },
+  {
+    "source": "github",
+    "id": 288,
+    "author": "ikchifo",
+    "createdAt": "2026-10-08T14:15:10Z",
+    "firstReviewAt": "2026-10-12T12:21:20Z",
+    "landedAt": "2026-10-13T12:56:03Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 22.74722222222222,
+    "postReviewBusinessHours": 8
   }
 ]

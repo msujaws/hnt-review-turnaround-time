@@ -316,15 +316,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054567,
-    "summary": "[Models] SFF: Identify hard limits multi form filling using LLM",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-13T19:02:05Z",
-    "resolvedAt": "2026-07-15T21:52:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054569,
     "summary": "[Models] SFF: Prompt tuning for multi field form filling",
     "product": "Core",
@@ -883,6 +874,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073187,
+    "summary": "Quailty filtering instructions in memories filter prompt removes more memories than it should",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-17T16:52:02Z",
+    "resolvedAt": "2026-10-13T14:10:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073208,
     "summary": "SFF human evaluations",
     "product": "Core",
@@ -916,6 +916,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-09-28T19:06:21Z",
     "resolvedAt": "2026-10-12T17:25:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079400,
+    "summary": "Remove flaky test_Tools_GetPageContent.js test",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-07T18:01:35Z",
+    "resolvedAt": "2026-10-13T04:20:09Z"
   },
   {
     "source": "bugzilla",
@@ -1594,15 +1603,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2019042,
-    "summary": "smartbar suggestion list is shorter than address bar making it hard to switch to open tabs, other suggest results further down",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-02-24T18:24:22Z",
-    "resolvedAt": "2026-07-16T03:51:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2024015,
     "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_telemetry.js | single tracking bug",
     "product": "Core",
@@ -1636,15 +1636,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-08T15:29:49Z",
     "resolvedAt": "2026-07-31T17:20:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2039351,
-    "summary": "Smart Window tab restore should restore the tab's chat conversation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-13T16:57:48Z",
-    "resolvedAt": "2026-07-15T09:36:16Z"
   },
   {
     "source": "bugzilla",
@@ -2266,15 +2257,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-15T09:34:08Z",
     "resolvedAt": "2026-07-24T22:06:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055282,
-    "summary": "New tab button hover states are too saturated",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-15T17:29:39Z",
-    "resolvedAt": "2026-07-15T18:12:54Z"
   },
   {
     "source": "bugzilla",
@@ -3835,6 +3817,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067869,
+    "summary": "PUWYLO: handle X dismiss",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:38Z",
+    "resolvedAt": "2026-10-13T04:18:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067870,
     "summary": "PUWYLO: empty and loading states",
     "product": "Core",
@@ -4213,6 +4204,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071425,
+    "summary": "AITab [FE] - remove history entries when an AITab is deleted",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-11T17:45:10Z",
+    "resolvedAt": "2026-10-13T04:18:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071488,
+    "summary": "AITab [FE] - tool call response must call sanitizeUntrustedContent on response data",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-11T21:13:29Z",
+    "resolvedAt": "2026-10-13T02:11:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071514,
     "summary": "Intermittent Assertion failure: !trusted || !IsPointerEventMessage(e->mEvent->mMessage) (Please use PointerEvent constructor!), at checkouts\\gecko\\dom\\events\\MouseEvent.cpp:X",
     "product": "Core",
@@ -4474,6 +4483,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075700,
+    "summary": "Smartbar dropdown opens downward and is clipped after starting a second full-width chat",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T18:52:07Z",
+    "resolvedAt": "2026-10-13T09:40:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075705,
+    "summary": "Uneven vertical spacing in the Chat history menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T19:01:31Z",
+    "resolvedAt": "2026-10-13T09:40:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078324,
     "summary": "[Models] Generate Multilingual [FR] dataset for ATG",
     "product": "Core",
@@ -4489,6 +4516,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-05T17:16:40Z",
     "resolvedAt": "2026-10-08T09:46:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078329,
+    "summary": "[Models] ATG Prompt Tuning Update for handling Multilingual Tab Titles",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-05T17:19:55Z",
+    "resolvedAt": "2026-10-13T15:50:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078330,
+    "summary": "[Models] Enable ATG for FR locale",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-05T17:20:32Z",
+    "resolvedAt": "2026-10-13T14:09:54Z"
   },
   {
     "source": "bugzilla",
@@ -4525,6 +4570,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-06T14:44:45Z",
     "resolvedAt": "2026-10-09T04:24:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079838,
+    "summary": "Add Nimbus preferences for handling non-en locales",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T17:03:11Z",
+    "resolvedAt": "2026-10-13T04:20:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079849,
+    "summary": "ATG Modeling Changes to Handle Non-EN Locales",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T17:51:10Z",
+    "resolvedAt": "2026-10-13T04:20:33Z"
   },
   {
     "source": "bugzilla",
