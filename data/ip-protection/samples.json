@@ -1,16 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-uwb7rogf5wkxvw2pq45y",
-    "revisionId": 312083,
-    "author": "rking",
-    "reviewer": "kpatenio",
-    "requestedAt": "2026-07-15T13:47:48.000Z",
-    "firstActionAt": "2026-07-15T18:53:25.000Z",
-    "tatBusinessHours": 5.0936111111111115
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-iwyby5aysefgmofdziwn",
     "revisionId": 312561,
     "author": "rking",
@@ -18,16 +8,6 @@
     "requestedAt": "2026-07-16T18:45:55.000Z",
     "firstActionAt": "2026-07-16T19:15:22.000Z",
     "tatBusinessHours": 0.49083333333333334
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-ly34palyjvgtoe7yvzmi",
-    "revisionId": 312329,
-    "author": "mhynson",
-    "reviewer": "rking",
-    "requestedAt": "2026-07-15T17:29:21.000Z",
-    "firstActionAt": "2026-07-15T19:46:15.000Z",
-    "tatBusinessHours": 2.2816666666666667
   },
   {
     "source": "phab",
@@ -224,30 +204,10 @@
     "id": "PHID-DREV-3eq4vfrqgsl4pqhuljwz",
     "revisionId": 312390,
     "author": "mcleinman",
-    "reviewer": "rking",
-    "requestedAt": "2026-07-15T21:45:57.000Z",
-    "firstActionAt": "2026-07-16T13:08:00.000Z",
-    "tatBusinessHours": 0.13333333333333333
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-3eq4vfrqgsl4pqhuljwz",
-    "revisionId": 312390,
-    "author": "mcleinman",
     "reviewer": "kpatenio",
     "requestedAt": "2026-07-17T16:22:01.000Z",
     "firstActionAt": "2026-07-22T21:27:31.000Z",
     "tatBusinessHours": 28.633055555555554
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-3eq4vfrqgsl4pqhuljwz",
-    "revisionId": 312390,
-    "author": "mcleinman",
-    "reviewer": "sstreich",
-    "requestedAt": "2026-07-15T21:45:57.000Z",
-    "firstActionAt": "2026-07-27T17:50:27.000Z",
-    "tatBusinessHours": 60.84083333333333
   },
   {
     "source": "phab",
@@ -718,5 +678,15 @@
     "requestedAt": "2026-08-11T21:56:27.000Z",
     "firstActionAt": "2026-10-10T04:59:36.000Z",
     "tatBusinessHours": 344
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-zi32erbuptzgurvfasvc",
+    "revisionId": 332877,
+    "author": "sstreich",
+    "reviewer": "rking",
+    "requestedAt": "2026-10-12T13:27:21.000Z",
+    "firstActionAt": "2026-10-12T14:45:45.000Z",
+    "tatBusinessHours": 1.3066666666666669
   }
 ]
