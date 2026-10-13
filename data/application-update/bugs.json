@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2031817,
-    "summary": "A previous fix broke install when running from inside a DMG",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-04-14T19:48:12Z",
-    "resolvedAt": "2026-07-16T03:51:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034669,
     "summary": "Give a grace period after waking from sleep before enforcing compulsory restart",
     "product": "Toolkit",
