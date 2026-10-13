@@ -586,15 +586,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053140,
-    "summary": "Perma mozilla-beta /builds/worker/checkouts/gecko/browser/components/asrouter/modules/ASRouter.sys.mjs:1632:3 | Duplicate name '_isAllowedActionOnlyMessageAction'. (no-dupe-class-members)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-07T15:15:13Z",
-    "resolvedAt": "2026-07-15T13:40:34Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053151,
     "summary": "Clocks Widget: \"Edit Clocks\" UI doesn't match intended desigsn",
     "product": "Firefox",
@@ -649,24 +640,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054868,
-    "summary": "The New Tab page is no longer localized on localized builds after installing the latest Train Hop XPI (154.6.20260713.11701)",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-14T09:04:41Z",
-    "resolvedAt": "2026-07-15T11:46:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054886,
-    "summary": "Daily crossword title's descenders are being clipped",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-14T11:35:41Z",
-    "resolvedAt": "2026-07-16T00:08:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054985,
     "summary": "Migrate New Tab Widgets expand button to moz-button",
     "product": "Firefox",
@@ -691,15 +664,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-14T20:23:18Z",
     "resolvedAt": "2026-07-18T09:12:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055158,
-    "summary": "Daily crossword widget is blank after closing and reopening browser",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T09:21:14Z",
-    "resolvedAt": "2026-07-16T03:54:30Z"
   },
   {
     "source": "bugzilla",
@@ -1972,6 +1936,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066243,
+    "summary": "Add region/locales dynamic control for Weather widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-24T21:18:40Z",
+    "resolvedAt": "2026-10-12T21:54:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066244,
     "summary": "Add region/locales dynamic control for Clock widget",
     "product": "Firefox",
@@ -2338,6 +2311,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-02T05:33:13Z",
     "resolvedAt": "2026-09-03T09:16:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068721,
+    "summary": "Re-order newtab settings in about:preferences",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-02T18:43:39Z",
+    "resolvedAt": "2026-10-13T04:18:03Z"
   },
   {
     "source": "bugzilla",
@@ -3121,5 +3103,23 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-08T20:41:38Z",
     "resolvedAt": "2026-10-09T21:48:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079953,
+    "summary": "Use `useWidgetTelemetry` in the Focus Timer widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-08T21:12:25Z",
+    "resolvedAt": "2026-10-13T04:20:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080654,
+    "summary": "Some New Tab dialogs are transparent when the train-hop is applied to Firefox 158 and 159",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-11T23:00:27Z",
+    "resolvedAt": "2026-10-13T04:25:12Z"
   }
 ]
