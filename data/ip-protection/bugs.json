@@ -208,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055274,
-    "summary": "VPN toolbar icon lacks hover state on macOS",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-15T16:38:35Z",
-    "resolvedAt": "2026-07-16T21:42:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056232,
     "summary": "Do not expose IP Protection feature if not fully translated",
     "product": "Firefox",
@@ -451,6 +442,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2066840,
+    "summary": "Move Default-Tunnel Mode into ProxyManager",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-26T15:42:15Z",
+    "resolvedAt": "2026-10-13T21:15:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066842,
+    "summary": "Adjust the auto-activator to handle inclusions.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-26T15:48:20Z",
+    "resolvedAt": "2026-10-13T21:15:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068264,
     "summary": "Add a new component to the IP Protection panel for rule applied",
     "product": "Firefox",
@@ -568,6 +577,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074550,
+    "summary": "Calling start() while an activation is already running can open a second activation",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T16:47:31Z",
+    "resolvedAt": "2026-10-13T21:15:47Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074574,
     "summary": "Add dialog for creating a site inclusion or exclusion rule in VPN settings",
     "product": "Firefox",
@@ -637,5 +655,32 @@
     "component": "IP Protection",
     "filedAt": "2026-10-05T13:44:51Z",
     "resolvedAt": "2026-10-09T04:24:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079752,
+    "summary": "IPProtections Toolbar Panel should understand Mode==Inclusion",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-08T13:57:58Z",
+    "resolvedAt": "2026-10-13T21:16:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080356,
+    "summary": "Perma TV browser/components/preferences/tests/privacy/browser_privacy_ipprotection_siterules_srd.js | single tracking bug",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-09T22:07:48Z",
+    "resolvedAt": "2026-10-14T04:31:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080891,
+    "summary": "Remove 'New' badge from location button",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-12T15:07:11Z",
+    "resolvedAt": "2026-10-13T21:16:56Z"
   }
 ]
