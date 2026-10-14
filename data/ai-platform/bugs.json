@@ -892,6 +892,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074126,
+    "summary": "Implement Journey Manager interface that calls existing resume-activity functions",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T14:52:32Z",
+    "resolvedAt": "2026-10-13T21:15:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075320,
     "summary": "AITab [models] - In-chat followups to trigger AITab Creation",
     "product": "Core",
@@ -1567,6 +1576,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079546,
+    "summary": "Allow Smart Window to read longer YouTube transcripts",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-08T00:03:18Z",
+    "resolvedAt": "2026-10-14T08:09:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080429,
+    "summary": "Perma perftest toolkit/components/ml/tests/browser/browser_ml_autofill_perf.js | test_ml_autofill_two_head_accuracy - Uncaught exception in test - TypeError: (intermediate value).splitContext is not a function",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-10T11:05:44Z",
+    "resolvedAt": "2026-10-13T21:16:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1771,15 +1798,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-17T17:37:49Z",
     "resolvedAt": "2026-07-22T04:29:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048880,
-    "summary": "The buttons from the Smart bar do not have a Clicked state",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-19T09:32:07Z",
-    "resolvedAt": "2026-07-16T21:23:53Z"
   },
   {
     "source": "bugzilla",
@@ -4015,6 +4033,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069135,
+    "summary": "AITab [FE] - Telemetry for viewing tabs and actions",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T21:24:39Z",
+    "resolvedAt": "2026-10-13T21:15:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069144,
     "summary": "Add a Glean category and core events for the text selection actions menu",
     "product": "Core",
@@ -4312,6 +4339,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072861,
+    "summary": "AITab [FE] - Limit source URLs when generating an AITab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-17T04:10:36Z",
+    "resolvedAt": "2026-10-13T21:15:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073011,
     "summary": "\"Cancel\" and \"Done\" buttons are not fully visible when multiple sources are displayed in the suggested and other tabs",
     "product": "Core",
@@ -4537,6 +4573,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078383,
+    "summary": "Route frontend resume activity through JourneyManager",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-05T19:51:24Z",
+    "resolvedAt": "2026-10-13T21:16:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078469,
     "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aichat_open_link.js | application timed out after 740.0 seconds with no output",
     "product": "Core",
@@ -4732,5 +4777,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-10-05T20:36:03Z",
     "resolvedAt": "2026-10-08T21:06:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078975,
+    "summary": "[Models] Remove usesCustomEndpoint and replace with conversation.engine.isCustomEndpoint",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-10-06T21:37:43Z",
+    "resolvedAt": "2026-10-13T21:16:17Z"
   }
 ]

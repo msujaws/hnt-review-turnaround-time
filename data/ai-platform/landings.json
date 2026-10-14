@@ -1,29 +1,5 @@
 [
   {
-    "source": "github",
-    "id": 211,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "createdAt": "2026-07-16T14:54:31Z",
-    "firstReviewAt": "2026-07-16T15:11:20Z",
-    "landedAt": "2026-07-16T15:17:46Z",
-    "cycleBusinessHours": 0.3875,
-    "postReviewBusinessHours": 0.10722222222222223,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 208,
-    "repo": "Firefox-AI/MLPA",
-    "author": "dependabot",
-    "createdAt": "2026-07-15T19:41:28Z",
-    "firstReviewAt": null,
-    "landedAt": "2026-07-16T15:07:19Z",
-    "cycleBusinessHours": 3.430833333333333,
-    "postReviewBusinessHours": null,
-    "reviewRounds": 1
-  },
-  {
     "source": "phab",
     "id": "PHID-DREV-cevbimo62qxhh6lwkrvp",
     "revisionId": 311369,
@@ -2170,5 +2146,53 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 22.74722222222222,
     "postReviewBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-d6dyint646hzpeogd2mt",
+    "revisionId": 327996,
+    "author": "thasan",
+    "createdAt": "2026-09-21T22:41:29.000Z",
+    "firstReviewAt": "2026-09-23T17:59:08.000Z",
+    "landedAt": "2026-10-13T23:39:39.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 128,
+    "postReviewBusinessHours": 115.01444444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7u2o54lincm7gnjbfngh",
+    "revisionId": 331868,
+    "author": "thasan",
+    "createdAt": "2026-10-08T00:34:22.000Z",
+    "firstReviewAt": "2026-10-08T19:54:18.000Z",
+    "landedAt": "2026-10-14T00:18:30.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 32,
+    "postReviewBusinessHours": 25.095000000000002
+  },
+  {
+    "source": "github",
+    "id": 289,
+    "author": "ikchifo",
+    "createdAt": "2026-10-08T14:56:14Z",
+    "firstReviewAt": "2026-10-12T13:08:49Z",
+    "landedAt": "2026-10-14T14:35:07Z",
+    "reviewRounds": 2,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 31.648055555555555,
+    "postReviewBusinessHours": 17.438333333333333
+  },
+  {
+    "source": "github",
+    "id": 292,
+    "author": "noahpodgurski",
+    "createdAt": "2026-10-13T15:02:50Z",
+    "firstReviewAt": "2026-10-13T15:17:40Z",
+    "landedAt": "2026-10-13T19:24:10Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 4.355555555555555,
+    "postReviewBusinessHours": 4.108333333333333
   }
 ]
