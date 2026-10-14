@@ -163,6 +163,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2003984,
+    "summary": "Intermittent org.mozilla.geckoview.test.AutocompleteTest#loginUpdateAccept | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-12-04T06:47:57Z",
+    "resolvedAt": "2026-10-14T04:29:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2029263,
     "summary": "Intermittent org.mozilla.geckoview.test.PanZoomControllerTest#touchEventWithXOrigin | single tracking bug",
     "product": "GeckoView",
@@ -838,12 +847,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075422,
+    "summary": "[3.1.1] Implement ScrollCaptureCallback using Surface primitive to paint pixels",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-24T23:30:47Z",
+    "resolvedAt": "2026-10-13T23:56:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075423,
     "summary": "[3.1.2] Implement ScrollCaptureCallback using Bitmap to paint pixels",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-09-24T23:33:59Z",
     "resolvedAt": "2026-10-09T23:28:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075427,
+    "summary": "[3.1.1.1] Add a backend function to return a Surface to Java from Gecko",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-24T23:41:05Z",
+    "resolvedAt": "2026-10-13T23:55:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075428,
+    "summary": "[3.1.1.2] Add Java methods to receive the Surface from Gecko and pass it to ScrollCaptureCallback",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-24T23:46:39Z",
+    "resolvedAt": "2026-10-13T23:54:20Z"
   },
   {
     "source": "bugzilla",
@@ -880,5 +916,23 @@
     "component": "General",
     "filedAt": "2026-10-08T00:19:09Z",
     "resolvedAt": "2026-10-10T08:52:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080318,
+    "summary": "GeckoView junit tests pass when a delegateUntilTestEnd callback is called fewer times than its @AssertCalled count",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-09T19:06:15Z",
+    "resolvedAt": "2026-10-14T04:31:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080659,
+    "summary": "GeckoViewPrintDelegate.onPrintWithStatus calls View.getContext() off the UI thread",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-11T23:35:33Z",
+    "resolvedAt": "2026-10-13T21:16:46Z"
   }
 ]
