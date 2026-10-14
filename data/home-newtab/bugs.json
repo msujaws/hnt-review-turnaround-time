@@ -370,15 +370,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044826,
-    "summary": "New-Tab Widgets 3-dot menu entries aren't vertically centered in their hover-granted colorful stripe",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-03T22:36:52Z",
-    "resolvedAt": "2026-07-16T09:15:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046143,
     "summary": "weather widget activate without user opt-in",
     "product": "Firefox",
@@ -664,15 +655,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-14T20:23:18Z",
     "resolvedAt": "2026-07-18T09:12:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055195,
-    "summary": "Daily crossword completed puzzle and show clues are displayed in medium sized widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T12:04:25Z",
-    "resolvedAt": "2026-07-16T21:42:39Z"
   },
   {
     "source": "bugzilla",
@@ -2800,6 +2782,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074594,
+    "summary": "Give all widgets a dedicated trainhop configuration namespace",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-22T18:50:13Z",
+    "resolvedAt": "2026-10-13T21:15:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074605,
     "summary": "Develop floating edge arrow buttons for New Tab Spaces",
     "product": "Firefox",
@@ -3070,6 +3061,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079015,
+    "summary": "Newtab score-based selection linear regression model",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:21:34Z",
+    "resolvedAt": "2026-10-14T04:30:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079018,
     "summary": "Newtab score-based selection use PersistentCache for scores",
     "product": "Firefox",
@@ -3112,6 +3112,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-08T21:12:25Z",
     "resolvedAt": "2026-10-13T04:20:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080368,
+    "summary": "Newtab score-based selection make provider a singleton managed by TopSitesFeed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T23:33:20Z",
+    "resolvedAt": "2026-10-14T04:31:39Z"
   },
   {
     "source": "bugzilla",
