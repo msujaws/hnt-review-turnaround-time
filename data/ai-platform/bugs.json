@@ -307,15 +307,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054488,
-    "summary": "[Models] SFF: Create Dataset for non-standard form fill attributes",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-13T14:18:09Z",
-    "resolvedAt": "2026-07-17T17:22:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054569,
     "summary": "[Models] SFF: Prompt tuning for multi field form filling",
     "product": "Core",
@@ -901,6 +892,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074214,
+    "summary": "Provide location data for Smart Window weather integration",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T16:51:41Z",
+    "resolvedAt": "2026-10-15T09:47:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075320,
     "summary": "AITab [models] - In-chat followups to trigger AITab Creation",
     "product": "Core",
@@ -952,6 +952,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2025-11-21T14:53:54Z",
     "resolvedAt": "2026-09-25T09:59:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2012176,
+    "summary": "onnx-native fails for linux on pdfjs with no fallback",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-01-23T18:14:50Z",
+    "resolvedAt": "2026-10-15T09:46:34Z"
   },
   {
     "source": "bugzilla",
@@ -1504,6 +1513,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072322,
+    "summary": "Headless page extraction reads single page apps before their content has rendered",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-15T16:50:41Z",
+    "resolvedAt": "2026-10-15T09:47:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072381,
     "summary": "Refactor MLPerfTestUtils to use the init pattern",
     "product": "Core",
@@ -1582,6 +1600,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-10-08T00:03:18Z",
     "resolvedAt": "2026-10-14T08:09:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080002,
+    "summary": "Intermittent TV toolkit/components/pageextractor/tests/browser/browser_page_extractor_markers.js | test_page_extractor_headless_teardown_unloads_wait - The navigation committed, so the timeout hit the page-ready wait. - Got \"error\", expected \"success\"",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-09T00:09:45Z",
+    "resolvedAt": "2026-10-15T09:49:15Z"
   },
   {
     "source": "bugzilla",
@@ -1825,15 +1852,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-23T20:22:50Z",
     "resolvedAt": "2026-07-18T09:10:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050008,
-    "summary": "The Tabs bar moves up when reached with Keyboard navigation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-24T10:25:56Z",
-    "resolvedAt": "2026-07-17T09:32:49Z"
   },
   {
     "source": "bugzilla",
@@ -2131,15 +2149,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-13T13:22:02Z",
     "resolvedAt": "2026-07-24T22:06:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054500,
-    "summary": "Land \"Group my tabs\" panel and AutoTabGrouping module behind a default-off pref",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-13T14:50:38Z",
-    "resolvedAt": "2026-07-17T09:34:36Z"
   },
   {
     "source": "bugzilla",
@@ -4276,12 +4285,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2072041,
+    "summary": "Instrument Select all / Deselect all clicks on the tab picker confirmation card",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-14T22:52:25Z",
+    "resolvedAt": "2026-10-15T09:47:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072320,
     "summary": "Move the default browser promo to match the PUWYLO New Tab layout",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-15T16:48:50Z",
     "resolvedAt": "2026-09-24T08:57:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072364,
+    "summary": "[Monitor Agent][FE] Pages to watch chips show the address instead of the page title while creating a task",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-15T18:50:37Z",
+    "resolvedAt": "2026-10-15T09:47:49Z"
   },
   {
     "source": "bugzilla",
@@ -4447,6 +4474,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074139,
+    "summary": "Triple Clicking the Toolbar Monitor button will never open the Monitor panel unless the user restarts the browser",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-21T15:20:10Z",
+    "resolvedAt": "2026-10-15T04:40:23Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074281,
     "summary": "Long URLs saved in the description section of an alert are not properly displayed",
     "product": "Core",
@@ -4507,6 +4543,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-24T16:36:14Z",
     "resolvedAt": "2026-09-30T21:49:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075412,
+    "summary": "Update AITab slug creation method, and id conflict handling",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-24T22:25:23Z",
+    "resolvedAt": "2026-10-15T09:48:02Z"
   },
   {
     "source": "bugzilla",
@@ -4618,6 +4663,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079532,
+    "summary": "update mots for machine learning related frontend",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-07T23:00:06Z",
+    "resolvedAt": "2026-10-15T04:40:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079838,
     "summary": "Add Nimbus preferences for handling non-en locales",
     "product": "Core",
@@ -4660,6 +4714,33 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-09T03:22:50Z",
     "resolvedAt": "2026-10-09T21:48:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080278,
+    "summary": "Update Auto Tab Grouping Targeting for FR Expansion",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-09T17:17:09Z",
+    "resolvedAt": "2026-10-15T09:49:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081296,
+    "summary": "Add 200 tab limit on number of tabs to process for Auto Tab Grouping",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-13T15:23:49Z",
+    "resolvedAt": "2026-10-15T04:41:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081803,
+    "summary": "Improve Multilingual Synthetic Dataset & Re-run Evals",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-14T15:09:19Z",
+    "resolvedAt": "2026-10-15T14:56:09Z"
   },
   {
     "source": "bugzilla",
