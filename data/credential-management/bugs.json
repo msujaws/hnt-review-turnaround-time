@@ -388,6 +388,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079353,
+    "summary": "Remove now-unused Legacy Telemetry Password Manager instrumentation",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-07T15:56:03Z",
+    "resolvedAt": "2026-10-14T22:00:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079671,
     "summary": "Make `signon.storage.rust.enabled` controllable through Nimbus",
     "product": "Toolkit",
