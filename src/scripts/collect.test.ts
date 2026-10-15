@@ -136,6 +136,25 @@ describe('collect', () => {
     expect(result.lookbackDays).toBe(3);
   });
 
+  it('uses an explicit lookbackDays override even when history already exists', async () => {
+    const existing: Sample[] = [{ ...makePhabSample(), tatBusinessHours: asBusinessHours(2) }];
+    const fetchPhab = vi.fn(async () => ({ samples: [], pending: [], landings: [] }));
+    const fetchGithub = vi.fn(async () => ({ samples: [], pending: [], landings: [] }));
+
+    const result = await collect({
+      existingSamples: existing,
+      existingHistory: [],
+      fetchPhab,
+      fetchGithub,
+      lookbackDays: 45,
+      now: new Date('2026-04-20T13:00:00Z'),
+    });
+
+    expect(fetchPhab).toHaveBeenCalledWith(45);
+    expect(fetchGithub).toHaveBeenCalledWith(45);
+    expect(result.lookbackDays).toBe(45);
+  });
+
   it('computes tatBusinessHours on new samples', async () => {
     // Mon 2026-04-20 10:00 ET → 12:00 ET = 2 business hours
     // 10:00 ET = 14:00 UTC; 12:00 ET = 16:00 UTC
@@ -737,7 +756,10 @@ describe('collect', () => {
       expect(result.samples).toEqual([]);
     });
 
-    it('drops legacy phab samples whose author is not in peopleMap.phab', async () => {
+    it('keeps legacy phab samples from an off-roster author when the reviewer is on the roster', async () => {
+      // An outside author's revision counts when it requested a team reviewer
+      // group, and the persisted row doesn't record that, so the purge gates on
+      // the reviewer alone.
       const existing: Sample[] = [
         {
           ...makePhabSample({
@@ -764,7 +786,10 @@ describe('collect', () => {
         peopleMap,
         now: new Date('2026-04-20T13:00:00Z'),
       });
-      expect(result.samples.map((s) => s.id)).toEqual(['PHID-DREV-teamauthor22222xxxxx']);
+      expect(result.samples.map((s) => s.id)).toEqual([
+        'PHID-DREV-offteamauthor11111xx',
+        'PHID-DREV-teamauthor22222xxxxx',
+      ]);
     });
 
     it('retains a merino-style existing sample with an off-roster reviewer', async () => {

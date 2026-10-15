@@ -555,6 +555,9 @@ export const collect = async (options: {
   readonly postReviewSlaHours?: number;
   readonly roundsSla?: number;
   readonly fixedWithinDays?: number;
+  // Explicit lookback for a one-off manual backfill. Absent → the
+  // backfill-on-first-run / follow-up rule below.
+  readonly lookbackDays?: number;
 }): Promise<{
   readonly samples: Sample[];
   readonly pending: PendingSample[];

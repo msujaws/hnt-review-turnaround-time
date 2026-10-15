@@ -319,6 +319,39 @@ describe('extractSamplesFromTransactions', () => {
     expect(pending).toEqual([]);
   });
 
+  it('keeps an off-team author revision when a team project was ever requested as reviewer', () => {
+    // D330157: Herald added the rotation group, it was later removed, and a
+    // team member stayed on as the requested reviewer.
+    const projectPhid = 'PHID-PROJ-rotationaaaaaaaaaaa';
+    const txs: PhabTransaction[] = [
+      mkTransaction({
+        id: 1,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_000,
+        fields: {
+          operations: [
+            { operation: 'add', phid: projectPhid },
+            { operation: 'add', phid: 'PHID-USER-revieweraaaaaaaaaaaaa' },
+          ],
+        },
+      }),
+      mkTransaction({
+        id: 2,
+        type: 'reviewers',
+        authorPhid: 'PHID-USER-authoraaaaaaaaaaaaaa',
+        dateCreated: 1_761_000_100,
+        fields: { operations: [{ operation: 'remove', phid: projectPhid }] },
+      }),
+    ];
+    const { pending } = extractSamplesFromTransactions(revision(), txs, loginByPhid, {
+      allowedReviewerPhids: new Set(['PHID-USER-revieweraaaaaaaaaaaaa', projectPhid]),
+      allowedAuthorPhids: new Set(['PHID-USER-someoneelseaaaaaaaaa']),
+      projectMembers: new Map([[projectPhid, new Set(['PHID-USER-revieweraaaaaaaaaaaaa'])]]),
+    });
+    expect(pending.map((p) => p.reviewer)).toEqual(['alice']);
+  });
+
   it('emits the sample when the author is in allowedAuthorPhids', () => {
     const txs: PhabTransaction[] = [
       mkTransaction({
