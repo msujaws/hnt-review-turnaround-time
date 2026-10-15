@@ -583,9 +583,10 @@ export const collect = async (options: {
   // are re-fetched in full every run, so an empty bugs.json must not widen the
   // Phabricator lookback and re-run the expensive bugbug/Conduit walk.
   const lookbackDays =
-    options.existingSamples.length === 0 || existingLandings.length === 0
+    options.lookbackDays ??
+    (options.existingSamples.length === 0 || existingLandings.length === 0
       ? BACKFILL_LOOKBACK_DAYS
-      : FOLLOWUP_LOOKBACK_DAYS;
+      : FOLLOWUP_LOOKBACK_DAYS);
 
   // BMO is a public third-party endpoint with no token and no SLA of its own,
   // and it is not what this dashboard is primarily for. An outage or a renamed
@@ -631,13 +632,13 @@ export const collect = async (options: {
   };
   const githubPolicyFor = (repoSlug: string): ResolvedGithubPolicy =>
     options.githubPolicies?.get(repoSlug) ?? defaultGithubPolicy;
-  const phabOnTeam = (author: string | undefined, reviewer: string): boolean => {
-    if (phabRoster.size === 0) return true;
-    if (author === undefined) return false;
-    return phabRoster.has(author) && phabRoster.has(reviewer);
-  };
+  // Phab gates on the reviewer only: an outside author's revision counts when
+  // it requested a team reviewer group, and the persisted row doesn't record
+  // that, so the author can't be checked here.
+  const phabOnTeam = (reviewer: string): boolean =>
+    phabRoster.size === 0 || phabRoster.has(reviewer);
   const legacySampleOnTeam = (sample: Sample): boolean => {
-    if (sample.source === 'phab') return phabOnTeam(sample.author, sample.reviewer);
+    if (sample.source === 'phab') return phabOnTeam(sample.reviewer);
     const policy = githubPolicyFor(repoSlugForRecord(sample));
     if (
       policy.authorLogins !== undefined &&
@@ -910,10 +911,16 @@ export const runCollectionFromDisk = async (
   // Mirrors the decision inside collect(): widen to backfill when either
   // feature's persisted history is empty (samples-first-run OR landings-
   // first-run). Keeps the phab progress cache's lookback key in sync.
+  // LOOKBACK_DAYS=<n> overrides it for a one-off manual backfill (e.g. after
+  // widening a group's gate); it is never set by the cron. Any value other
+  // than BACKFILL_LOOKBACK_DAYS takes the Conduit path, not bugbug.
+  const lookbackOverride = Number(process.env.LOOKBACK_DAYS);
   const lookbackDays =
-    existingSamples.length === 0 || existingLandings.length === 0
-      ? BACKFILL_LOOKBACK_DAYS
-      : FOLLOWUP_LOOKBACK_DAYS;
+    Number.isInteger(lookbackOverride) && lookbackOverride > 0
+      ? lookbackOverride
+      : existingSamples.length === 0 || existingLandings.length === 0
+        ? BACKFILL_LOOKBACK_DAYS
+        : FOLLOWUP_LOOKBACK_DAYS;
   const { transactions: resumeCache, createdAt: progressCreatedAt } = await loadPhabProgress(
     progressPath,
     lookbackDays,
@@ -995,6 +1002,7 @@ export const runCollectionFromDisk = async (
     existingHistory,
     peopleMap,
     githubPolicies,
+    lookbackDays,
     fetchPhab: async (lookbackDaysArgument) => {
       const projectSlugs = group.phabProjectSlugs;
       const isBackfill = lookbackDaysArgument === BACKFILL_LOOKBACK_DAYS;

@@ -351,10 +351,12 @@ describe('Dashboard', () => {
     );
     const phabSection = screen.getByRole('heading', { name: /^phabricator$/i }).closest('details');
     expect(phabSection).not.toBeNull();
-    const link = within(phabSection!).getByRole('link', { name: 'home-newtab-reviewers' });
+    const link = within(phabSection!).getByRole('link', {
+      name: 'home-newtab-reviewers-rotation, home-newtab-journeys-reviewers-rotation, home-newtab-wattle-reviewers-rotation',
+    });
     expect(link).toHaveAttribute(
       'href',
-      'https://phabricator.services.mozilla.com/tag/home-newtab-reviewers/',
+      'https://phabricator.services.mozilla.com/tag/home-newtab-reviewers-rotation/',
     );
   });
 

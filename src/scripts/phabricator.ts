@@ -171,7 +171,9 @@ export const extractSamplesFromTransactions = (
   transactions: readonly PhabTransaction[],
   loginByPhid: ReadonlyMap<string, string>,
   // `allowedAuthorPhids`, when set, gates the whole revision: if the author
-  // is not in the set, no samples or pending entries are emitted.
+  // is not in the set, no samples or pending entries are emitted — unless one
+  // of the team's projects was ever requested as a reviewer, which makes an
+  // outside author's patch the team's review (e.g. Herald adding a rotation).
   // `projectMembers` carries reviewer-group memberships: when the team's
   // project tag is requested as a reviewer, an action by any of its members
   // satisfies the project's request and produces a sample attributed to that
@@ -183,7 +185,18 @@ export const extractSamplesFromTransactions = (
   } = {},
 ): ExtractedTransactions => {
   const { allowedReviewerPhids, allowedAuthorPhids, projectMembers } = options;
-  if (allowedAuthorPhids !== undefined && !allowedAuthorPhids.has(revision.authorPhid)) {
+  const requestedTeamProject = transactions.some(
+    (tx) =>
+      tx.type === 'reviewers' &&
+      (tx.fields.operations ?? []).some(
+        (op) => REVIEWER_ADD_OPS.has(op.operation) && projectMembers?.has(op.phid) === true,
+      ),
+  );
+  if (
+    allowedAuthorPhids !== undefined &&
+    !allowedAuthorPhids.has(revision.authorPhid) &&
+    !requestedTeamProject
+  ) {
     return { samples: [], pending: [] };
   }
   // Process transactions chronologically, tracking per-reviewer request windows.

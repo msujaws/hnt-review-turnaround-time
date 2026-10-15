@@ -77,8 +77,14 @@ const HOME_NEWTAB: GroupConfig = {
     'from the moment a reviewer is requested to their first accept, comment, or ' +
     "request-changes. Clock is in business hours only (Mon–Fri 9am–5pm in each reviewer's " +
     'local timezone).',
-  phabProjectSlugs: ['home-newtab-reviewers'],
-  phabProjectUrl: phabProjectUrl('home-newtab-reviewers'),
+  // The general, journeys and wattle rotations. Requesting any of them makes a
+  // revision count even when its author is outside the roster.
+  phabProjectSlugs: [
+    'home-newtab-reviewers-rotation',
+    'home-newtab-journeys-reviewers-rotation',
+    'home-newtab-wattle-reviewers-rotation',
+  ],
+  phabProjectUrl: phabProjectUrl('home-newtab-reviewers-rotation'),
   bugzilla: [{ product: 'Firefox', components: ['New Tab Page'] }],
   phabTabLabel: 'Frontend Team (Phabricator)',
   githubTabLabel: 'Backend Team (GitHub)',
