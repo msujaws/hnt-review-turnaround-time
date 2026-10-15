@@ -487,24 +487,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051179,
-    "summary": "Focus Timer widget: add small size in Nova",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T01:29:24Z",
-    "resolvedAt": "2026-07-17T09:33:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051313,
-    "summary": "Create devtools controls area for enabling/configuring widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T15:05:38Z",
-    "resolvedAt": "2026-07-17T09:33:21Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051408,
     "summary": "Newtab decouple client layout pref from remote layouts pref",
     "product": "Firefox",
@@ -559,15 +541,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052427,
-    "summary": "Stocks widget: add error state",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-03T04:11:47Z",
-    "resolvedAt": "2026-07-17T09:33:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052622,
     "summary": "Newtab write a technical doc on data formate structure and mecahnics for the data",
     "product": "Firefox",
@@ -592,15 +565,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-08T21:12:04Z",
     "resolvedAt": "2026-07-23T16:17:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053843,
-    "summary": "Remove unused Add Shortcut OMC artifacts",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-09T16:22:58Z",
-    "resolvedAt": "2026-07-17T09:34:11Z"
   },
   {
     "source": "bugzilla",
@@ -631,15 +595,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054985,
-    "summary": "Migrate New Tab Widgets expand button to moz-button",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-14T16:17:18Z",
-    "resolvedAt": "2026-07-17T09:34:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055029,
     "summary": "Standardize New Tab widgets and sections header spacing",
     "product": "Firefox",
@@ -655,60 +610,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-14T20:23:18Z",
     "resolvedAt": "2026-07-18T09:12:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055304,
-    "summary": "Update Discovery Stream Admin buttons to use moz-button components",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T18:36:32Z",
-    "resolvedAt": "2026-07-17T09:35:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055306,
-    "summary": "Discovery Stream Admin: Add per-widget feature toggles and pref reset buttons",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T18:37:53Z",
-    "resolvedAt": "2026-07-17T09:35:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055307,
-    "summary": "Migrate Discovery Stream Admin unit tests to jest",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T18:39:27Z",
-    "resolvedAt": "2026-07-17T09:35:24Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055312,
-    "summary": "Update Dev Tools Wrench button to match nova redesign",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T18:55:07Z",
-    "resolvedAt": "2026-07-17T09:35:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055314,
-    "summary": "Add \"close\" (dismss) button to Discovery Stream Admin panel",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-15T19:13:09Z",
-    "resolvedAt": "2026-07-17T09:35:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055369,
-    "summary": "Change the URL to open from an anchor tag, not a button element",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-16T00:03:46Z",
-    "resolvedAt": "2026-07-17T16:19:31Z"
   },
   {
     "source": "bugzilla",
@@ -3067,6 +2968,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-06T23:21:34Z",
     "resolvedAt": "2026-10-14T04:30:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079017,
+    "summary": "Newtab score-based selection filter to max allowed scores",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:24:28Z",
+    "resolvedAt": "2026-10-14T18:20:02Z"
   },
   {
     "source": "bugzilla",
