@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2025373,
-    "summary": "Add l10n notes in code for built-in VPN and correct geographic error string",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-03-23T15:11:52Z",
-    "resolvedAt": "2026-07-17T09:32:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2027779,
     "summary": "[META] [QA] [QA-5087] QA request for Free VPN integration (Fx 151)",
     "product": "Firefox",
@@ -133,42 +124,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-06T14:08:25Z",
     "resolvedAt": "2026-08-27T18:29:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054136,
-    "summary": "Land strings for all offramp CFRs",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-10T16:26:42Z",
-    "resolvedAt": "2026-07-17T09:34:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054141,
-    "summary": "[experimenter] Add CFR for Mozilla VPN subscribers",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-10T16:40:12Z",
-    "resolvedAt": "2026-07-17T14:16:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054144,
-    "summary": "[experimenter] Add CFR for non-Mozilla VPN subscribers who have Firefox set as default",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-10T16:44:50Z",
-    "resolvedAt": "2026-07-17T14:12:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054147,
-    "summary": "[experimenter] Add experimental CFRs for users who don't have a Mozilla VPN subscription or have Firefox set to default",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-10T16:52:30Z",
-    "resolvedAt": "2026-07-17T14:16:13Z"
   },
   {
     "source": "bugzilla",
@@ -532,6 +487,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069153,
+    "summary": "Add new copy mentioning site inclusions to not yet opted in view in built-in VPN section in about:settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-03T22:11:50Z",
+    "resolvedAt": "2026-10-15T09:47:27Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069911,
     "summary": "[IPProtection] Selecting United States routes traffic through Austria on Linux",
     "product": "Firefox",
@@ -682,5 +646,14 @@
     "component": "IP Protection",
     "filedAt": "2026-10-12T15:07:11Z",
     "resolvedAt": "2026-10-13T21:16:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081815,
+    "summary": "Update strings for site inclusions CFRs",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-14T15:50:10Z",
+    "resolvedAt": "2026-10-15T09:50:24Z"
   }
 ]
