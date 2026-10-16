@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051696,
-    "summary": "Referrals: Hamburger menu entry point",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-30T18:29:04Z",
-    "resolvedAt": "2026-07-18T09:10:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051698,
     "summary": "Referrals: Accounts menu entry point",
     "product": "Firefox",
@@ -46,39 +37,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051699,
-    "summary": "Referrals: About firefox entry point",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-30T18:35:16Z",
-    "resolvedAt": "2026-07-18T09:10:53Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051700,
     "summary": "Referrals: Settings entry point",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-06-30T18:38:50Z",
     "resolvedAt": "2026-08-05T04:29:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051701,
-    "summary": "Referrals: gate referrals behind pref",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-30T18:41:07Z",
-    "resolvedAt": "2026-07-18T09:10:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051706,
-    "summary": "Referrals: Generate and store referral code",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-06-30T18:51:25Z",
-    "resolvedAt": "2026-07-18T09:11:01Z"
   },
   {
     "source": "bugzilla",
@@ -403,5 +367,14 @@
     "component": "Sharing",
     "filedAt": "2026-09-30T20:42:02Z",
     "resolvedAt": "2026-10-11T08:18:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2077237,
+    "summary": "\"Share Firefox\" grouped under Privacy tools section in Account menu after Nova update",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-10-01T17:40:53Z",
+    "resolvedAt": "2026-10-16T04:32:45Z"
   }
 ]
