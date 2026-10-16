@@ -568,15 +568,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054175,
-    "summary": "Update Shortcuts Add/Edit dialog for Nova",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-10T18:58:41Z",
-    "resolvedAt": "2026-07-18T09:11:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054391,
     "summary": "Capture web notifications into a live New Tab slice",
     "product": "Firefox",
@@ -604,30 +595,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055057,
-    "summary": "Add a dedicated trainhopConfig.widgetCrossword payload for Crossword feature config",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-14T20:23:18Z",
-    "resolvedAt": "2026-07-18T09:12:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055495,
     "summary": "0.22 - 0.11% installer size + 1 more () regression on Thu July 2 2026",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-16T13:44:40Z",
     "resolvedAt": "2026-08-16T18:28:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055640,
-    "summary": "Fail jest tests that emit console.error messages",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-16T20:35:08Z",
-    "resolvedAt": "2026-07-18T09:12:51Z"
   },
   {
     "source": "bugzilla",
@@ -2485,15 +2458,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2072355,
-    "summary": "[meta] Newtab score-based selection for sponsored tiles experiment",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-09-15T18:12:28Z",
-    "resolvedAt": "2026-10-09T04:23:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2072361,
     "summary": "Newtab score-based selection new JS Module",
     "product": "Firefox",
@@ -2791,6 +2755,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076491,
+    "summary": "Update New Tab train-hop runtime metrics generation to handle new extra_keys",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-29T15:56:53Z",
+    "resolvedAt": "2026-10-16T04:32:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076846,
     "summary": "Remove newtab activityStream pref for hideTopSitesTitle",
     "product": "Firefox",
@@ -2917,6 +2890,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078836,
+    "summary": "Add the travel widget strings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T17:19:45Z",
+    "resolvedAt": "2026-10-15T09:48:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078838,
+    "summary": "Add the travel widget scaffold",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T17:22:19Z",
+    "resolvedAt": "2026-10-15T09:48:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078895,
     "summary": "Enable type checking for newtab/lib with exception for failing files",
     "product": "Firefox",
@@ -2971,6 +2962,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079016,
+    "summary": "Newtab score-based selection clear data when history is cleared",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:23:57Z",
+    "resolvedAt": "2026-10-15T09:48:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079017,
     "summary": "Newtab score-based selection filter to max allowed scores",
     "product": "Firefox",
@@ -2986,6 +2986,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-06T23:24:58Z",
     "resolvedAt": "2026-10-10T08:51:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079021,
+    "summary": "Newtab score-based selection uninit provider when sponsored shortcuts are disabled",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:27:18Z",
+    "resolvedAt": "2026-10-15T09:48:51Z"
   },
   {
     "source": "bugzilla",
@@ -3007,6 +3016,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079902,
+    "summary": "Newtab floating tab bar with hover preview for Spaces",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-08T19:08:16Z",
+    "resolvedAt": "2026-10-16T04:35:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079939,
     "summary": "Turn off all New Tab widgets in automation with one pref",
     "product": "Firefox",
@@ -3025,6 +3043,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079981,
+    "summary": "Support edge arrows and spaces without stories in New Tab thematic spaces",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-08T22:24:10Z",
+    "resolvedAt": "2026-10-16T04:36:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080304,
+    "summary": "Fix TypeScript errors in five newtab feeds so they can be type-checked",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T18:14:10Z",
+    "resolvedAt": "2026-10-15T09:49:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080368,
     "summary": "Newtab score-based selection make provider a singleton managed by TopSitesFeed",
     "product": "Firefox",
@@ -3040,5 +3076,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-11T23:00:27Z",
     "resolvedAt": "2026-10-13T04:25:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081663,
+    "summary": "Add design token train-hop checks to the New Tab AGENTS.md",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T10:04:26Z",
+    "resolvedAt": "2026-10-15T09:50:09Z"
   }
 ]
