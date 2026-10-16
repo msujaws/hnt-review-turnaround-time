@@ -649,11 +649,56 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080900,
+    "summary": "Add site rules onboarding message to VPN panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-12T15:46:40Z",
+    "resolvedAt": "2026-10-16T04:36:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081374,
+    "summary": "Create delete error dialog for VPN site rules",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-13T17:40:47Z",
+    "resolvedAt": "2026-10-16T04:37:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081785,
+    "summary": "Editing a website rule to a duplicate URL replaces the existing rule instead of displaying a validation error",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-14T14:24:33Z",
+    "resolvedAt": "2026-10-16T04:37:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081805,
+    "summary": "Remove unused locationButtonBadgeDismissed pref",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-14T15:11:03Z",
+    "resolvedAt": "2026-10-16T04:37:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081815,
     "summary": "Update strings for site inclusions CFRs",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-14T15:50:10Z",
     "resolvedAt": "2026-10-15T09:50:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082551,
+    "summary": "Add new telemetry for inclusions count and rule_applied",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T15:54:43Z",
+    "resolvedAt": "2026-10-16T09:48:18Z"
   }
 ]
