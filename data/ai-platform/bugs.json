@@ -127,15 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046183,
-    "summary": "Implement V0 Search Loop validation, orchestration, and tool gating for search_the_web",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-09T19:59:51Z",
-    "resolvedAt": "2026-07-18T09:10:13Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046588,
     "summary": "[Monitor Agent][FE] Create monitor view",
     "product": "Core",
@@ -892,15 +883,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2074214,
-    "summary": "Provide location data for Smart Window weather integration",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-09-21T16:51:41Z",
-    "resolvedAt": "2026-10-15T09:47:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2075320,
     "summary": "AITab [models] - In-chat followups to trigger AITab Creation",
     "product": "Core",
@@ -943,6 +925,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-10-12T17:37:56Z",
     "resolvedAt": "2026-10-12T18:04:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1992419,
+    "summary": "Upload symbols for onnxruntime",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2025-10-03T14:17:29Z",
+    "resolvedAt": "2026-10-16T04:30:23Z"
   },
   {
     "source": "bugzilla",
@@ -1846,15 +1837,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049852,
-    "summary": "Make Smart Window smartbar context chips tab-contextual (persist/restore per tab)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-23T20:22:50Z",
-    "resolvedAt": "2026-07-18T09:10:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050017,
     "summary": "Permanent beta-as-esr153 Hit MOZ_CRASH(Attempting to connect to non-local address! opener is [chrome://browser/content/tabbrowser/tabbrowser.js:9933:33], uri is [https://www.google.com/search?client=firefox-b-1-e&channel=entpr&q=Hello])",
     "product": "Core",
@@ -1933,15 +1915,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-29T17:24:49Z",
     "resolvedAt": "2026-07-26T21:55:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051645,
-    "summary": "The Assistant Chat content shows a light background behind the Blur effect",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-30T16:14:15Z",
-    "resolvedAt": "2026-07-18T09:10:46Z"
   },
   {
     "source": "bugzilla",
@@ -4033,6 +4006,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069128,
+    "summary": "AITab - Update GetPageContent to support AITab pages",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T21:17:38Z",
+    "resolvedAt": "2026-10-16T04:31:03Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069132,
     "summary": "AITab telemetry - tool calling",
     "product": "Core",
@@ -4582,6 +4564,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078138,
+    "summary": "Clicking a Tab group context chip has no functionality",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-05T08:49:22Z",
+    "resolvedAt": "2026-10-16T09:46:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078324,
     "summary": "[Models] Generate Multilingual [FR] dataset for ATG",
     "product": "Core",
@@ -4726,6 +4717,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080936,
+    "summary": "AITab UX QA - Highlights Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-12T18:30:59Z",
+    "resolvedAt": "2026-10-16T04:36:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080951,
+    "summary": "AITab UX QA - Table Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-12T19:22:23Z",
+    "resolvedAt": "2026-10-16T04:36:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080952,
+    "summary": "AITab UX QA - Timeline Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-12T19:30:02Z",
+    "resolvedAt": "2026-10-16T04:36:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081296,
     "summary": "Add 200 tab limit on number of tabs to process for Auto Tab Grouping",
     "product": "Core",
@@ -4741,6 +4759,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-14T15:09:19Z",
     "resolvedAt": "2026-10-15T14:56:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082609,
+    "summary": "Enable AITab (smart page) in Nightly, allow Nimbus config as well for future rollout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-15T19:02:34Z",
+    "resolvedAt": "2026-10-16T09:48:21Z"
   },
   {
     "source": "bugzilla",
@@ -4867,5 +4894,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-10-06T21:37:43Z",
     "resolvedAt": "2026-10-13T21:16:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082591,
+    "summary": "Add rrando and cgopal to ai-prompts-reviewers and editors lists",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-10-15T18:00:44Z",
+    "resolvedAt": "2026-10-15T18:44:12Z"
   }
 ]
