@@ -118,15 +118,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053724,
-    "summary": "Enable Rust storage by default",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-09T10:24:09Z",
-    "resolvedAt": "2026-07-18T09:11:27Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056155,
     "summary": "JavaScript error: resource://gre/modules/LoginManager.sys.mjs, line 510: TypeError: can't access property \"uiBusy\", this._storage is null",
     "product": "Toolkit",
