@@ -406,15 +406,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047788,
-    "summary": "Show less/more transition animation",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-16T00:27:14Z",
-    "resolvedAt": "2026-07-21T10:17:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048082,
     "summary": "WorldCW - Celebration animation phase 2",
     "product": "Firefox",
@@ -439,15 +430,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-17T20:49:02Z",
     "resolvedAt": "2026-08-13T04:25:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049472,
-    "summary": "Newtab drag n drops could transition the movement of widgets",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-22T18:22:38Z",
-    "resolvedAt": "2026-07-21T10:17:27Z"
   },
   {
     "source": "bugzilla",
@@ -541,15 +523,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052622,
-    "summary": "Newtab write a technical doc on data formate structure and mecahnics for the data",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-04T00:16:02Z",
-    "resolvedAt": "2026-07-21T13:54:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053151,
     "summary": "Clocks Widget: \"Edit Clocks\" UI doesn't match intended desigsn",
     "product": "Firefox",
@@ -565,6 +538,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-08T21:12:04Z",
     "resolvedAt": "2026-07-23T16:17:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054203,
+    "summary": "Add regression test coverage for Picture of the Day parent-process wallpaper theme detection",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-10T21:04:36Z",
+    "resolvedAt": "2026-10-17T03:42:52Z"
   },
   {
     "source": "bugzilla",
@@ -604,15 +586,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055643,
-    "summary": "Populate MozAdsRequestOptions flags from adsBackendConfig in AdsFeed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-16T20:40:54Z",
-    "resolvedAt": "2026-07-21T10:23:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055858,
     "summary": "Respect wallpaper \"visible\" and \"visibility_group\" fields in the New Tab Customize picker",
     "product": "Firefox",
@@ -628,15 +601,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-17T19:35:07Z",
     "resolvedAt": "2026-07-24T09:05:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055942,
-    "summary": "Remove version 145 train-hop shim for PrivacyFeed getTodayStats guard",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-17T19:36:37Z",
-    "resolvedAt": "2026-07-21T10:24:23Z"
   },
   {
     "source": "bugzilla",
@@ -1738,6 +1702,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2065871,
+    "summary": "POTD: improve handling when the picture is set as the wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-23T02:33:52Z",
+    "resolvedAt": "2026-10-16T16:12:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2066037,
     "summary": "Stocks widget drop down and menu not visible with HCM",
     "product": "Firefox",
@@ -2266,6 +2239,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-08T16:53:14Z",
     "resolvedAt": "2026-10-06T09:10:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2070278,
+    "summary": "Update \"Your Clocks\" panel UI in Clocks widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T16:54:08Z",
+    "resolvedAt": "2026-10-16T09:46:30Z"
   },
   {
     "source": "bugzilla",
@@ -2908,6 +2890,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078839,
+    "summary": "Add the game widget scaffold",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T17:22:21Z",
+    "resolvedAt": "2026-10-19T07:35:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078895,
     "summary": "Enable type checking for newtab/lib with exception for failing files",
     "product": "Firefox",
@@ -2998,6 +2989,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079283,
+    "summary": "Add in newtab locale preview file for en-xx localization",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-07T13:29:42Z",
+    "resolvedAt": "2026-10-16T09:47:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079376,
     "summary": "Fix more newtab/lib TypeScript errors so 11 more files can be type-checked",
     "product": "Firefox",
@@ -3021,7 +3021,7 @@
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-08T19:08:16Z",
-    "resolvedAt": "2026-10-16T04:35:51Z"
+    "resolvedAt": "2026-10-17T03:43:59Z"
   },
   {
     "source": "bugzilla",
@@ -3048,7 +3048,16 @@
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-08T22:24:10Z",
-    "resolvedAt": "2026-10-16T04:36:01Z"
+    "resolvedAt": "2026-10-17T03:44:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080227,
+    "summary": "[HNT-3579] Send location inferred interests to merino but not BQ",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T14:35:57Z",
+    "resolvedAt": "2026-10-16T19:42:05Z"
   },
   {
     "source": "bugzilla",
@@ -3079,11 +3088,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080944,
+    "summary": "Calculate topic interests based on location",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-12T18:57:05Z",
+    "resolvedAt": "2026-10-16T19:42:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081663,
     "summary": "Add design token train-hop checks to the New Tab AGENTS.md",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-14T10:04:26Z",
     "resolvedAt": "2026-10-15T09:50:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081929,
+    "summary": "Newtab score-based selection serialize score refreshes and clearing with an exclusive lock",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T19:38:22Z",
+    "resolvedAt": "2026-10-16T19:42:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082690,
+    "summary": "Newtab score-based selection add provider debug logs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-15T22:35:44Z",
+    "resolvedAt": "2026-10-16T19:42:40Z"
   }
 ]
