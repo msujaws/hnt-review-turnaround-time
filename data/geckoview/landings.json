@@ -1,42 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-bnmtz6w5b67xnhckvldn",
-    "revisionId": 312639,
-    "author": "hiro",
-    "createdAt": "2026-07-17T02:35:59.000Z",
-    "firstReviewAt": "2026-07-21T09:14:11.000Z",
-    "landedAt": "2026-07-21T10:20:38.000Z",
-    "cycleBusinessHours": 16,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-vndrlgzn4ntu35dwozus",
-    "revisionId": 312198,
-    "author": "owlish",
-    "createdAt": "2026-07-15T01:29:24.000Z",
-    "firstReviewAt": "2026-07-15T01:39:18.000Z",
-    "landedAt": "2026-07-21T00:26:14.000Z",
-    "cycleBusinessHours": 32,
-    "postReviewBusinessHours": 32,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-zg4rkyczm5lg2qxvaxkm",
-    "revisionId": 309286,
-    "author": "m_kato",
-    "createdAt": "2026-06-29T05:03:06.000Z",
-    "firstReviewAt": "2026-06-29T08:09:03.000Z",
-    "landedAt": "2026-07-21T23:49:24.000Z",
-    "cycleBusinessHours": 136,
-    "postReviewBusinessHours": 136,
-    "reviewRounds": 4
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-fhcjx5bfjuhx6z6ypoiv",
     "revisionId": 312601,
     "author": "hiro",
@@ -931,9 +895,9 @@
     "createdAt": "2026-10-07T14:43:39.000Z",
     "firstReviewAt": "2026-10-07T15:02:54.000Z",
     "landedAt": "2026-10-12T23:37:20.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 30.272499999999997,
-    "postReviewBusinessHours": 29.951666666666664
+    "postReviewBusinessHours": 29.951666666666664,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -955,8 +919,20 @@
     "createdAt": "2026-05-13T06:21:23.000Z",
     "firstReviewAt": "2026-05-21T00:49:47.000Z",
     "landedAt": "2026-10-14T01:10:54.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 880,
-    "postReviewBusinessHours": 832
+    "postReviewBusinessHours": 832,
+    "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-kjpu7az3przroh64drqa",
+    "revisionId": 334361,
+    "author": "owlish",
+    "createdAt": "2026-10-16T00:25:13.000Z",
+    "firstReviewAt": "2026-10-16T00:36:02.000Z",
+    "landedAt": "2026-10-16T18:57:59.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 5.966388888888889,
+    "postReviewBusinessHours": 5.966388888888889
   }
 ]
