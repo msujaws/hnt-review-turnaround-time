@@ -469,6 +469,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076643,
+    "summary": "Shadow in address bar is purple, regardless of the selected theme",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-09-30T07:22:53Z",
+    "resolvedAt": "2026-10-16T16:13:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078363,
     "summary": "Alpenglow theme overflowing tab container fade effect is misaligned with the content area corner radius",
     "product": "Firefox",
@@ -493,5 +502,14 @@
     "component": "Theme",
     "filedAt": "2026-10-06T15:41:36Z",
     "resolvedAt": "2026-10-08T04:27:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081318,
+    "summary": "Address bar appears light instead of dark over Mica backdrop in Nova",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-13T16:00:23Z",
+    "resolvedAt": "2026-10-16T16:14:50Z"
   }
 ]
