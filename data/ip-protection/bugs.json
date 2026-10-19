@@ -154,6 +154,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055094,
+    "summary": "vpn integration should not create/destroy very short lived fxa access tokens.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-15T00:14:17Z",
+    "resolvedAt": "2026-10-17T01:43:45Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055206,
     "summary": "IPPLifecylce handler does not retry a failed refresh.",
     "product": "Firefox",
@@ -694,11 +703,56 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081951,
+    "summary": "Add telemetry for rules_page_opened",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-14T20:05:06Z",
+    "resolvedAt": "2026-10-17T03:45:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082551,
     "summary": "Add new telemetry for inclusions count and rule_applied",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-15T15:54:43Z",
     "resolvedAt": "2026-10-16T09:48:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082660,
+    "summary": "Land strings for holiday promo CFRs",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T20:55:01Z",
+    "resolvedAt": "2026-10-17T03:45:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083072,
+    "summary": "Update background of Your Rule section in VPN panel",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-16T18:10:37Z",
+    "resolvedAt": "2026-10-17T09:58:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083144,
+    "summary": "Update string for Turn on VPN button",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-16T19:48:19Z",
+    "resolvedAt": "2026-10-17T09:58:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083184,
+    "summary": "Introduce a pref to track whether the VPN panel was opened in release 160",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-16T21:16:57Z",
+    "resolvedAt": "2026-10-17T09:58:56Z"
   }
 ]
