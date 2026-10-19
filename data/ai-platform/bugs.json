@@ -145,15 +145,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046603,
-    "summary": "[Monitor Agent][FE] Page UI for CRUD monitor",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-10T21:29:06Z",
-    "resolvedAt": "2026-07-21T10:17:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047711,
     "summary": "[AI Window] Tool Use - Delete memories from natural language in chat",
     "product": "Core",
@@ -322,15 +313,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-17T13:27:56Z",
     "resolvedAt": "2026-07-23T16:18:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056383,
-    "summary": "update mots for machine learning peers, includes, groups",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-20T20:26:23Z",
-    "resolvedAt": "2026-07-21T10:25:29Z"
   },
   {
     "source": "bugzilla",
@@ -829,6 +811,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073118,
+    "summary": "[Flaky Test] browser_aitab_validation.js",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-17T15:07:01Z",
+    "resolvedAt": "2026-10-17T03:43:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073120,
     "summary": "[Flaky Test] browser_aitab_generation.js",
     "product": "Core",
@@ -883,6 +874,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074129,
+    "summary": "Implement persistence of journey metadata",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T14:57:44Z",
+    "resolvedAt": "2026-10-17T03:43:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075320,
     "summary": "AITab [models] - In-chat followups to trigger AITab Creation",
     "product": "Core",
@@ -901,12 +901,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076239,
+    "summary": "Design models backend for Morning Briefing feature",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-28T19:00:21Z",
+    "resolvedAt": "2026-10-16T17:04:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076242,
     "summary": "Design extended Memories telemetry",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-09-28T19:06:21Z",
     "resolvedAt": "2026-10-12T17:25:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2076244,
+    "summary": "Design Memories usage with v2 attributes",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-28T19:11:36Z",
+    "resolvedAt": "2026-10-16T17:57:58Z"
   },
   {
     "source": "bugzilla",
@@ -919,12 +937,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079891,
+    "summary": "AiTab:  [FE] Chat context for an opened Smart Page is missing the slug, so the page cannot be discussed or edited",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-08T18:44:43Z",
+    "resolvedAt": "2026-10-16T16:14:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080922,
     "summary": "Create models backend content POC for Morning Briefing Feature",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-10-12T17:37:56Z",
     "resolvedAt": "2026-10-12T18:04:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081409,
+    "summary": "Enable automodel via \"inference_model\" attribute",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-13T18:14:35Z",
+    "resolvedAt": "2026-10-17T03:44:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081419,
+    "summary": "Perma TV browser/components/aiwindow/models/tests/browser/browser_JourneyManager.js | bound setupSemanticUrlResolutionTests - Uncaught exception in setup - Error: The object has been already finalized.",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-13T18:32:13Z",
+    "resolvedAt": "2026-10-17T03:44:37Z"
   },
   {
     "source": "bugzilla",
@@ -1303,6 +1348,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-12T16:27:04Z",
     "resolvedAt": "2026-08-22T09:53:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063326,
+    "summary": "Add perftests for PDF.js alt text and intent classifier",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-13T14:41:40Z",
+    "resolvedAt": "2026-10-17T03:43:05Z"
   },
   {
     "source": "bugzilla",
@@ -1936,24 +1990,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052243,
-    "summary": "Update Smart Window theme to use --button-background-color-menu tokens",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T15:36:56Z",
-    "resolvedAt": "2026-07-21T21:25:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052289,
-    "summary": "[Monitor Agent][FE]  Register about:agents page",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T17:23:06Z",
-    "resolvedAt": "2026-07-21T10:18:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052358,
     "summary": "Smart Window perf: eliminate per-chunk full-document work in chat rendering",
     "product": "Core",
@@ -2185,15 +2221,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-13T21:19:37Z",
     "resolvedAt": "2026-07-22T04:30:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054642,
-    "summary": "Use consistent favicons for context chips outside the Smartbar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-13T22:54:28Z",
-    "resolvedAt": "2026-07-21T20:27:51Z"
   },
   {
     "source": "bugzilla",
@@ -3835,6 +3862,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067873,
+    "summary": "PUWYLO: telemetry for impressions and actions",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:46Z",
+    "resolvedAt": "2026-10-17T03:43:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067905,
     "summary": "Transition AITab schema to A2UI type schema for a more LLM friendly architecture",
     "product": "Core",
@@ -4069,6 +4105,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069156,
+    "summary": "Remove the Hide chatbot shortcut item from the AI submenu when browser.highlightToSearch.featureGate is true",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T22:15:16Z",
+    "resolvedAt": "2026-10-17T09:57:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069453,
     "summary": "[Monitor Agent][FE] launch nimbus experiment for promo card v0 by 9/1",
     "product": "Core",
@@ -4183,6 +4228,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-09T19:23:57Z",
     "resolvedAt": "2026-09-16T20:24:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071029,
+    "summary": "AITab [FE] - exclude about:smartpage URLs from Sync",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-10T18:01:22Z",
+    "resolvedAt": "2026-10-16T19:41:24Z"
   },
   {
     "source": "bugzilla",
@@ -4546,6 +4600,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075698,
+    "summary": "Smart Window smartbar shows its focus ring on non-keyboard focus and a double border when Nova is enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T18:46:19Z",
+    "resolvedAt": "2026-10-18T09:45:23Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075700,
     "summary": "Smartbar dropdown opens downward and is clipped after starting a second full-width chat",
     "product": "Core",
@@ -4699,6 +4762,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079884,
+    "summary": "AiTab [FE] Still using \"AI Tab\" in user-facing strings, should remove \"Made With\" in footer",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T18:41:06Z",
+    "resolvedAt": "2026-10-17T21:13:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079888,
+    "summary": "AiTab [models] List items in the Smart Page \"how to make it\" section have irregular positions",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T18:42:54Z",
+    "resolvedAt": "2026-10-16T16:14:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080033,
     "summary": "add yahoo scout chatbot configuration to allow nimbus rollout",
     "product": "Core",
@@ -4744,6 +4825,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081007,
+    "summary": "Empty state when Smart Page is opened in a new tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-12T23:02:26Z",
+    "resolvedAt": "2026-10-17T03:44:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081296,
     "summary": "Add 200 tab limit on number of tabs to process for Auto Tab Grouping",
     "product": "Core",
@@ -4759,6 +4849,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-14T15:09:19Z",
     "resolvedAt": "2026-10-15T14:56:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082511,
+    "summary": "[Bug - Models] SFF showing irrelevant google sheet tab when trying to fill form",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-15T15:03:23Z",
+    "resolvedAt": "2026-10-16T19:01:36Z"
   },
   {
     "source": "bugzilla",
