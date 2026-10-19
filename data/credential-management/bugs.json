@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048463,
-    "summary": "Remove or update metrics expiring at the end of Firefox 154: pwmgr.doorhanger_submitted_* before Gecko switches to version 155 on 2026-07-20",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-06-18T02:35:25Z",
-    "resolvedAt": "2026-07-20T17:54:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049698,
     "summary": "Clicking the address bar while the Password Save/Update doorhanger is open no longer selects the page URL",
     "product": "Toolkit",
@@ -115,15 +106,6 @@
     "component": "Password Manager",
     "filedAt": "2026-07-03T12:46:15Z",
     "resolvedAt": "2026-07-22T11:09:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056155,
-    "summary": "JavaScript error: resource://gre/modules/LoginManager.sys.mjs, line 510: TypeError: can't access property \"uiBusy\", this._storage is null",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-20T06:28:21Z",
-    "resolvedAt": "2026-07-21T10:25:10Z"
   },
   {
     "source": "bugzilla",
