@@ -1,17 +1,5 @@
 [
   {
-    "source": "phab",
-    "id": "PHID-DREV-hdiuzmbc4nryi2bwa4kl",
-    "revisionId": 310941,
-    "author": "jbowser",
-    "createdAt": "2026-07-07T21:48:46.000Z",
-    "firstReviewAt": "2026-07-07T22:17:33.000Z",
-    "landedAt": "2026-07-22T22:41:51.000Z",
-    "cycleBusinessHours": 88,
-    "postReviewBusinessHours": 88,
-    "reviewRounds": 2
-  },
-  {
     "source": "github",
     "id": 212,
     "repo": "Firefox-AI/MLPA",
@@ -2018,14 +2006,14 @@
   {
     "source": "github",
     "id": 296,
+    "repo": "Firefox-AI/MLPA",
     "author": "subpath",
     "createdAt": "2026-10-15T12:20:25Z",
     "firstReviewAt": "2026-10-15T13:38:51Z",
     "landedAt": "2026-10-16T14:05:06Z",
-    "reviewRounds": 1,
-    "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 9.085,
-    "postReviewBusinessHours": 8.4375
+    "postReviewBusinessHours": 8.4375,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -2035,9 +2023,9 @@
     "createdAt": "2026-10-14T12:54:11.000Z",
     "firstReviewAt": "2026-10-14T12:54:12.000Z",
     "landedAt": "2026-10-16T18:53:51.000Z",
-    "reviewRounds": 2,
     "cycleBusinessHours": 21.897499999999997,
-    "postReviewBusinessHours": 21.897499999999997
+    "postReviewBusinessHours": 21.897499999999997,
+    "reviewRounds": 2
   },
   {
     "source": "phab",
@@ -2047,8 +2035,20 @@
     "createdAt": "2026-10-14T12:54:13.000Z",
     "firstReviewAt": "2026-10-14T12:54:13.000Z",
     "landedAt": "2026-10-16T18:53:43.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 21.89527777777778,
-    "postReviewBusinessHours": 21.89527777777778
+    "postReviewBusinessHours": 21.89527777777778,
+    "reviewRounds": 1
+  },
+  {
+    "source": "github",
+    "id": 298,
+    "author": "TEChopra1000",
+    "createdAt": "2026-10-19T17:34:34Z",
+    "firstReviewAt": "2026-10-19T17:52:08Z",
+    "landedAt": "2026-10-19T18:27:47Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.8869444444444444,
+    "postReviewBusinessHours": 0.5941666666666666
   }
 ]

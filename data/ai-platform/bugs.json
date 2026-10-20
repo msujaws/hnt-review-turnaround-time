@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037171,
-    "summary": "[Models] Re-architect Prompts",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-05T16:46:29Z",
-    "resolvedAt": "2026-07-22T04:29:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037622,
     "summary": "Get security review for NL browser actions",
     "product": "Core",
@@ -295,15 +286,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-13T19:04:51Z",
     "resolvedAt": "2026-07-24T15:42:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055544,
-    "summary": "Add some docs on footguns around using phabricator",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-16T15:02:58Z",
-    "resolvedAt": "2026-07-22T04:30:40Z"
   },
   {
     "source": "bugzilla",
@@ -973,6 +955,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081811,
+    "summary": "AiTab:  [FE]  Do not await font to load page contents",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-14T15:36:09Z",
+    "resolvedAt": "2026-10-20T12:20:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1992419,
     "summary": "Upload symbols for onnxruntime",
     "product": "Core",
@@ -997,6 +988,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-01-23T18:14:50Z",
     "resolvedAt": "2026-10-15T09:46:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2015829,
+    "summary": "onnx-native library is lacking symbols when profiling",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-02-10T14:26:50Z",
+    "resolvedAt": "2026-10-19T17:49:43Z"
   },
   {
     "source": "bugzilla",
@@ -1774,24 +1774,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046199,
-    "summary": "[Nova] Update manifest.nova.in.json for Smart Window for remaining properties",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-09T20:40:34Z",
-    "resolvedAt": "2026-07-22T04:29:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046612,
-    "summary": "Add animated loading treatment to Action Log",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-10T21:53:19Z",
-    "resolvedAt": "2026-07-22T21:43:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047007,
     "summary": "Add a Smart Window enabled metric to accurately count clients with Smart Window enabled",
     "product": "Core",
@@ -1807,15 +1789,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-12T15:20:56Z",
     "resolvedAt": "2026-07-24T16:41:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047556,
-    "summary": "The Scroll bar from the History Grid List View is barely visible with Light Theme when hovered over",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-15T11:56:13Z",
-    "resolvedAt": "2026-07-22T04:29:19Z"
   },
   {
     "source": "bugzilla",
@@ -1861,15 +1834,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-16T19:45:27Z",
     "resolvedAt": "2026-08-24T23:20:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048336,
-    "summary": "Make show/hide of Smart Window first run onboarding screen nimbus configurable",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-17T17:37:49Z",
-    "resolvedAt": "2026-07-22T04:29:26Z"
   },
   {
     "source": "bugzilla",
@@ -1945,15 +1909,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050630,
-    "summary": "[meta] Smart Window 153 uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-25T19:59:31Z",
-    "resolvedAt": "2026-07-22T21:39:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051359,
     "summary": "ui component for Source Citations for Exa Integration (v1)",
     "product": "Core",
@@ -1969,24 +1924,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-29T17:24:49Z",
     "resolvedAt": "2026-07-26T21:55:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051796,
-    "summary": "Fix styling for Smart Cursor",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-01T05:55:38Z",
-    "resolvedAt": "2026-07-22T04:29:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052182,
-    "summary": "Asking the assistant to group 2 specific tabs without any confirmation will no longer perform that action",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T13:05:18Z",
-    "resolvedAt": "2026-07-22T21:43:44Z"
   },
   {
     "source": "bugzilla",
@@ -2215,15 +2152,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054598,
-    "summary": "[Monitor Agent][FE] Add new monitor agent form in modal on about:XXX page",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-13T21:19:37Z",
-    "resolvedAt": "2026-07-22T04:30:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054888,
     "summary": "The Mistral Ai model cannot distinguish related from unrelated tabs when grouping or closing them",
     "product": "Core",
@@ -2347,24 +2275,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-20T09:51:24Z",
     "resolvedAt": "2026-08-12T23:15:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056193,
-    "summary": "The Smart Window Switcher is disabled during onboarding",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-20T10:04:37Z",
-    "resolvedAt": "2026-07-22T21:44:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056345,
-    "summary": "Freqeunt linux asan FATAL ERROR: Non-local network connections are disabled and a connection attempt to www.google.com (2001:4860:4826:7700::) was made.",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-20T17:57:42Z",
-    "resolvedAt": "2026-07-22T21:45:05Z"
   },
   {
     "source": "bugzilla",
@@ -2698,6 +2608,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-29T19:15:26Z",
     "resolvedAt": "2026-08-01T09:59:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059197,
+    "summary": "Add Glean telemetry for browser.smartwindow.sidebar.openByDefault preference changes",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-29T20:45:52Z",
+    "resolvedAt": "2026-10-20T12:19:41Z"
   },
   {
     "source": "bugzilla",
@@ -4627,6 +4546,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2077473,
+    "summary": "Consider improving the styling of the AI Chatbot dropdown when no provider is selected",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-02T12:22:06Z",
+    "resolvedAt": "2026-10-19T17:40:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078138,
     "summary": "Clicking a Tab group context chip has no functionality",
     "product": "Core",
@@ -4825,6 +4753,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080958,
+    "summary": "Show the text selection menu only for a selection the user made",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-12T19:51:10Z",
+    "resolvedAt": "2026-10-20T12:20:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081007,
     "summary": "Empty state when Smart Page is opened in a new tab",
     "product": "Core",
@@ -4852,6 +4789,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082170,
+    "summary": "AITab UX QA - confirmation card",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-14T23:23:39Z",
+    "resolvedAt": "2026-10-20T04:44:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082511,
     "summary": "[Bug - Models] SFF showing irrelevant google sheet tab when trying to fill form",
     "product": "Core",
@@ -4861,12 +4807,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082588,
+    "summary": "Bubble up AITab content errors to chat",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-15T17:57:35Z",
+    "resolvedAt": "2026-10-20T04:44:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082609,
     "summary": "Enable AITab (smart page) in Nightly, allow Nimbus config as well for future rollout",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-15T19:02:34Z",
     "resolvedAt": "2026-10-16T09:48:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083169,
+    "summary": "update chatbot scout url",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-16T20:43:48Z",
+    "resolvedAt": "2026-10-20T04:45:21Z"
   },
   {
     "source": "bugzilla",
