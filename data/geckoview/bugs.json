@@ -91,6 +91,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1962027,
+    "summary": "Cannot get code lists on isolated content process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-04-23T04:32:46Z",
+    "resolvedAt": "2026-10-20T05:55:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1977950,
     "summary": "Investigate whether we can define both android:isolatedProcess on GeckoChildProcessServices",
     "product": "GeckoView",
@@ -199,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049904,
-    "summary": "Avoid to read content on main thread when using <input type=file webkitdirectory>",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-23T23:51:03Z",
-    "resolvedAt": "2026-07-22T04:29:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051026,
     "summary": "Problem with opening a local pdf file with FF 151 for Android 9",
     "product": "GeckoView",
@@ -268,15 +268,6 @@
     "component": "PDF Viewer",
     "filedAt": "2026-07-14T13:20:03Z",
     "resolvedAt": "2026-08-20T16:28:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055101,
-    "summary": "[2.1.1] Add screenshot taking functionality to GVE for testing purposes",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-15T01:21:02Z",
-    "resolvedAt": "2026-07-22T04:30:28Z"
   },
   {
     "source": "bugzilla",
@@ -943,6 +934,15 @@
     "component": "General",
     "filedAt": "2026-10-05T21:53:52Z",
     "resolvedAt": "2026-10-10T08:51:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078920,
+    "summary": "[performance tests] Remove `-nofis` variants from testing on Android",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-06T20:04:04Z",
+    "resolvedAt": "2026-10-20T04:43:25Z"
   },
   {
     "source": "bugzilla",
