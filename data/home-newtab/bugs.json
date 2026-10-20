@@ -352,6 +352,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2040635,
+    "summary": "Clock widget shifts slightly  while adjusting its position when resizing widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T12:14:34Z",
+    "resolvedAt": "2026-10-19T17:41:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2040668,
+    "summary": "'Add new clock' menu overlaps the 'Thought-provoking stories' section if the widget size is set to small or medium",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-19T14:45:34Z",
+    "resolvedAt": "2026-10-19T17:35:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2042496,
     "summary": "Fx wallpapers lack accessible names in Customize panel",
     "product": "Firefox",
@@ -556,15 +574,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-12T21:59:52Z",
     "resolvedAt": "2026-08-05T09:24:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054581,
-    "summary": "ExternalComponentWrapper doesn't properly forward down \"live\" properties from MessageWrapper, like isIntersecting",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-13T19:38:43Z",
-    "resolvedAt": "2026-07-22T21:44:16Z"
   },
   {
     "source": "bugzilla",
@@ -2980,6 +2989,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079019,
+    "summary": "Newtab score-based selection switch telemetry when enabled to use newtab_content ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:25:25Z",
+    "resolvedAt": "2026-10-20T04:43:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079021,
     "summary": "Newtab score-based selection uninit provider when sponsored shortcuts are disabled",
     "product": "Firefox",
@@ -3097,12 +3115,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081527,
+    "summary": "Add MAC status display to HNT devtools",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T00:04:44Z",
+    "resolvedAt": "2026-10-20T04:44:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081588,
+    "summary": "Perma linux trainhop [tier 2] runtests.py | Timed out while waiting for server startup.",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T04:33:51Z",
+    "resolvedAt": "2026-10-19T15:28:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081663,
     "summary": "Add design token train-hop checks to the New Tab AGENTS.md",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-14T10:04:26Z",
     "resolvedAt": "2026-10-15T09:50:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081865,
+    "summary": "Add functionality to turn off widgets during ActivationWindow",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T16:27:03Z",
+    "resolvedAt": "2026-10-20T04:44:14Z"
   },
   {
     "source": "bugzilla",
@@ -3121,5 +3166,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-15T22:35:44Z",
     "resolvedAt": "2026-10-16T19:42:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083831,
+    "summary": "Remove the version 160 guard on New Tab topsites.click and pocket.click extra keys",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T17:28:50Z",
+    "resolvedAt": "2026-10-20T04:46:53Z"
   }
 ]
