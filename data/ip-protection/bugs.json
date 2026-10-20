@@ -496,6 +496,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068770,
+    "summary": "IPProtection serverlist cache writes 9KB to the browser.ipProtection.locationListCache pref, exceeding libpref's 4KB advisory limit",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-02T21:23:25Z",
+    "resolvedAt": "2026-10-20T04:42:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069153,
     "summary": "Add new copy mentioning site inclusions to not yet opted in view in built-in VPN section in about:settings",
     "product": "Firefox",
@@ -709,6 +718,15 @@
     "component": "IP Protection",
     "filedAt": "2026-10-14T20:05:06Z",
     "resolvedAt": "2026-10-17T03:45:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082477,
+    "summary": "\"VPN is OFF for this site\" text displayed in two places in the VPN main panel for excluded sites",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T13:50:16Z",
+    "resolvedAt": "2026-10-19T22:00:29Z"
   },
   {
     "source": "bugzilla",
