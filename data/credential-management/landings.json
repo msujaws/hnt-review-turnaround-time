@@ -613,18 +613,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-jeulae3a7l5l4kmqskhd",
-    "revisionId": 313234,
-    "author": "kbaliev",
-    "createdAt": "2026-07-21T16:11:30.000Z",
-    "firstReviewAt": "2026-07-21T19:37:12.000Z",
-    "landedAt": "2026-07-22T12:58:06.000Z",
-    "cycleBusinessHours": 4.808333333333334,
-    "postReviewBusinessHours": 1.38,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-4wpgmdde3hx6kyjugtsp",
     "revisionId": 321829,
     "author": "joschmidt",
@@ -1687,9 +1675,9 @@
     "createdAt": "2026-10-13T21:18:41.000Z",
     "firstReviewAt": "2026-10-13T21:18:55.000Z",
     "landedAt": "2026-10-16T20:22:25.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 23.373611111111114,
-    "postReviewBusinessHours": 23.373611111111114
+    "postReviewBusinessHours": 23.373611111111114,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1699,9 +1687,9 @@
     "createdAt": "2026-10-05T16:33:59.000Z",
     "firstReviewAt": "2026-10-05T16:34:06.000Z",
     "landedAt": "2026-10-16T20:22:23.000Z",
-    "reviewRounds": 2,
     "cycleBusinessHours": 75.80666666666666,
-    "postReviewBusinessHours": 75.80472222222221
+    "postReviewBusinessHours": 75.80472222222221,
+    "reviewRounds": 2
   },
   {
     "source": "phab",
@@ -1711,9 +1699,9 @@
     "createdAt": "2026-10-13T19:27:37.000Z",
     "firstReviewAt": "2026-10-13T19:28:18.000Z",
     "landedAt": "2026-10-16T20:22:16.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 24.910833333333333,
-    "postReviewBusinessHours": 24.899444444444445
+    "postReviewBusinessHours": 24.899444444444445,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1723,8 +1711,8 @@
     "createdAt": "2026-10-05T16:34:16.000Z",
     "firstReviewAt": "2026-10-05T16:34:28.000Z",
     "landedAt": "2026-10-16T20:22:08.000Z",
-    "reviewRounds": 2,
     "cycleBusinessHours": 75.79777777777778,
-    "postReviewBusinessHours": 75.79444444444444
+    "postReviewBusinessHours": 75.79444444444444,
+    "reviewRounds": 2
   }
 ]
