@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2049595,
+    "summary": "[META] [QA] [QA-5387] QA request for Free VPN integration (Fx 154)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T08:35:50Z",
+    "resolvedAt": "2026-10-21T06:48:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2050135,
     "summary": "IProtection.sys.mjs might leak IPProtectionPanel",
     "product": "Firefox",
@@ -181,12 +190,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056495,
-    "summary": "IP-Protection: Remove world-cup deprecated entries in the list of breakage rules",
+    "id": 2056872,
+    "summary": "[META] [QA] [QA-5503] QA request for Free VPN integration (Fx 155)",
     "product": "Firefox",
     "component": "IP Protection",
-    "filedAt": "2026-07-21T08:52:44Z",
-    "resolvedAt": "2026-07-23T16:19:14Z"
+    "filedAt": "2026-07-22T12:37:33Z",
+    "resolvedAt": "2026-10-21T06:48:28Z"
   },
   {
     "source": "bugzilla",
@@ -343,6 +352,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062343,
+    "summary": "Update Remote Settings to handle end of summer promo server availability changes",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-10T17:10:28Z",
+    "resolvedAt": "2026-10-20T12:27:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063206,
     "summary": "The “Bandwidth reset” CFR cannot be triggered on Windows",
     "product": "Firefox",
@@ -367,6 +385,15 @@
     "component": "IP Protection",
     "filedAt": "2026-08-14T20:34:44Z",
     "resolvedAt": "2026-10-13T09:33:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064012,
+    "summary": "[META] [QA] [QA-5598] QA request for Free VPN integration (Fx 156)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-17T10:09:49Z",
+    "resolvedAt": "2026-10-21T06:48:56Z"
   },
   {
     "source": "bugzilla",
@@ -469,6 +496,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2068545,
+    "summary": "[META] [QA] [QA-5684] QA request for Free VPN integration (Fx 157)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-02T11:34:07Z",
+    "resolvedAt": "2026-10-21T06:49:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2068547,
     "summary": "VPN location list fails to update dynamically after default browser change without a browser restart",
     "product": "Firefox",
@@ -520,6 +556,15 @@
     "component": "IP Protection",
     "filedAt": "2026-09-07T12:51:14Z",
     "resolvedAt": "2026-09-22T13:57:10Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073989,
+    "summary": "[META] [QA] [QA-5765] QA request for Free VPN integration (Fx 158)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-21T06:21:34Z",
+    "resolvedAt": "2026-10-21T06:49:31Z"
   },
   {
     "source": "bugzilla",
@@ -721,6 +766,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082351,
+    "summary": "VPN toolbar icon has incorrect UI while in Overflow menu for both dark/light themes",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T10:02:02Z",
+    "resolvedAt": "2026-10-21T03:59:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082477,
     "summary": "\"VPN is OFF for this site\" text displayed in two places in the VPN main panel for excluded sites",
     "product": "Firefox",
@@ -766,11 +820,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083153,
+    "summary": "Make delete dialog dismissable by clicking outside",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-16T20:10:46Z",
+    "resolvedAt": "2026-10-21T04:00:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083184,
     "summary": "Introduce a pref to track whether the VPN panel was opened in release 160",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-16T21:16:57Z",
     "resolvedAt": "2026-10-17T09:58:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083742,
+    "summary": "Update date of end of promo in the holiday promo CFR",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-19T14:03:49Z",
+    "resolvedAt": "2026-10-20T20:02:11Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083790,
+    "summary": "Update string for site inclusions CFR to correct wording issue",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-19T15:15:39Z",
+    "resolvedAt": "2026-10-21T04:01:38Z"
   }
 ]
