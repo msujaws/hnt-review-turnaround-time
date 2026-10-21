@@ -208,6 +208,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2022942,
+    "summary": "New Tab stories' three dot button menu is cut off by the bottom of the window",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-12T18:20:38Z",
+    "resolvedAt": "2026-10-20T21:32:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2023930,
     "summary": "Intermittent browser/extensions/newtab/test/browser/browser_as_render.js | single tracking bug",
     "product": "Firefox",
@@ -514,15 +523,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051413,
-    "summary": "Newtab client needs to request layouts from remote settings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T20:02:31Z",
-    "resolvedAt": "2026-07-23T16:16:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051616,
     "summary": "Add CTA button to Privacy widget",
     "product": "Firefox",
@@ -550,15 +550,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053568,
-    "summary": "Remove three unused activity-stream discoverystream.thumbsUpDown.* preferences",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-08T21:12:04Z",
-    "resolvedAt": "2026-07-23T16:17:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054203,
     "summary": "Add regression test coverage for Picture of the Day parent-process wallpaper theme detection",
     "product": "Firefox",
@@ -577,12 +568,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055029,
-    "summary": "Standardize New Tab widgets and sections header spacing",
+    "id": 2054943,
+    "summary": "Picture of the day widget: Author/License label should be truncated to two lines and … when extra long",
     "product": "Firefox",
     "component": "New Tab Page",
-    "filedAt": "2026-07-14T18:58:53Z",
-    "resolvedAt": "2026-07-23T16:17:57Z"
+    "filedAt": "2026-07-14T14:14:49Z",
+    "resolvedAt": "2026-10-20T19:54:50Z"
   },
   {
     "source": "bugzilla",
@@ -1438,6 +1429,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-13T15:11:33Z",
     "resolvedAt": "2026-08-14T04:19:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063361,
+    "summary": "HNT widgets are available on default profile by using VPN set to US",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-13T16:23:05Z",
+    "resolvedAt": "2026-10-20T19:54:55Z"
   },
   {
     "source": "bugzilla",
@@ -2557,6 +2557,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073040,
+    "summary": "Edit a user-added shortcut URL creates a new shortcut instead of editing",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T13:21:52Z",
+    "resolvedAt": "2026-10-21T03:57:45Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073199,
     "summary": "Remove tile_id from newtab metrics",
     "product": "Firefox",
@@ -2746,6 +2755,60 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075715,
+    "summary": "Remove version 157 train-hop shim for the recent searches widget search SAP check",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T20:08:59Z",
+    "resolvedAt": "2026-10-21T03:58:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075716,
+    "summary": "Remove version 157 train-hop shim for the theme picker shown() call",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T20:10:01Z",
+    "resolvedAt": "2026-10-21T03:58:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075717,
+    "summary": "Remove version 157 train-hop guard for the layout_name newtab_content extra key",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T20:11:12Z",
+    "resolvedAt": "2026-10-21T03:58:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075718,
+    "summary": "Remove version 157 train-hop guard for the card_column pocket extra key",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T20:12:53Z",
+    "resolvedAt": "2026-10-21T03:58:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075719,
+    "summary": "Remove version 157 train-hop guard for the is_ad_eligible_position extra key",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T20:14:02Z",
+    "resolvedAt": "2026-10-21T03:58:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2075757,
+    "summary": "Add per-story active dwell time by tile_id to the newtab_content ping",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T23:20:27Z",
+    "resolvedAt": "2026-10-20T19:55:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076491,
     "summary": "Update New Tab train-hop runtime metrics generation to handle new extra_keys",
     "product": "Firefox",
@@ -2815,6 +2878,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-30T20:30:59Z",
     "resolvedAt": "2026-10-01T21:46:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2077179,
+    "summary": "Pass through MARS endpoint preference to MAC client instantiation",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-01T15:14:14Z",
+    "resolvedAt": "2026-10-20T19:56:17Z"
   },
   {
     "source": "bugzilla",
@@ -2998,6 +3070,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079020,
+    "summary": "Newtab score-based selection update sponsored shortcut requests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T23:25:54Z",
+    "resolvedAt": "2026-10-21T03:58:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079021,
     "summary": "Newtab score-based selection uninit provider when sponsored shortcuts are disabled",
     "product": "Firefox",
@@ -3169,11 +3250,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083119,
+    "summary": "Develop peek into adjacent space for New Tab Spaces",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-16T18:50:34Z",
+    "resolvedAt": "2026-10-21T04:00:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083194,
+    "summary": "Newtab - Load sponsored top sites tile images over OHTTP",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-16T21:53:14Z",
+    "resolvedAt": "2026-10-21T04:00:55Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083831,
     "summary": "Remove the version 160 guard on New Tab topsites.click and pocket.click extra keys",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-19T17:28:50Z",
     "resolvedAt": "2026-10-20T04:46:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083945,
+    "summary": "Add documentation explaining the new newtabPreview.ftl file",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T22:24:07Z",
+    "resolvedAt": "2026-10-21T04:01:54Z"
   }
 ]
