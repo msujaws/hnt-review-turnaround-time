@@ -289,15 +289,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056901,
-    "summary": "Privileged content process crashes when \"EventDispatcher.instance\" is accessed from GeckoViewStartup during \"content-process-ready-for-script\"",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-22T14:17:04Z",
-    "resolvedAt": "2026-07-23T16:21:03Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057393,
     "summary": "virtual keyboard might not work when opening a new window",
     "product": "GeckoView",
