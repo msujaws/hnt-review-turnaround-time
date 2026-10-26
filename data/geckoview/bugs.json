@@ -244,6 +244,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2053909,
+    "summary": "[3] Use GV API for full screenshots to implement Android ScrollCaptureCallback API",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-07-09T19:58:32Z",
+    "resolvedAt": "2026-10-22T22:30:47Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2054916,
     "summary": "[UI] Add download button to bottom right of the PDF viewer",
     "product": "GeckoView",
@@ -277,15 +286,6 @@
     "component": "General",
     "filedAt": "2026-07-15T23:48:48Z",
     "resolvedAt": "2026-09-21T20:13:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055683,
-    "summary": "Compromised content process can read arbitrary files at parent privilege via forged PGeckoViewContentChannel open [@ GeckoViewContentChannelParent::Init]",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-16T22:17:42Z",
-    "resolvedAt": "2026-07-28T22:50:22Z"
   },
   {
     "source": "bugzilla",
@@ -340,15 +340,6 @@
     "component": "General",
     "filedAt": "2026-07-24T22:48:42Z",
     "resolvedAt": "2026-09-24T08:56:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058244,
-    "summary": "Use Gradle's embedded Kotlin version for the build-logic plugin builds",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-27T18:08:35Z",
-    "resolvedAt": "2026-07-28T10:01:35Z"
   },
   {
     "source": "bugzilla",
@@ -955,6 +946,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079822,
+    "summary": "[UI/UX] Improve Keyboard Popup Smoothness",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-08T16:22:39Z",
+    "resolvedAt": "2026-10-21T18:13:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079863,
     "summary": "Replace the deprecated `AsyncTask` in `GeckoMediaDrmBridge`",
     "product": "GeckoView",
@@ -1006,5 +1006,14 @@
     "component": "General",
     "filedAt": "2026-10-15T14:03:14Z",
     "resolvedAt": "2026-10-16T16:15:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083900,
+    "summary": "Swap content description string \"Sign PDF\" for \"Add a signature\"",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-19T19:49:17Z",
+    "resolvedAt": "2026-10-21T18:14:26Z"
   }
 ]
