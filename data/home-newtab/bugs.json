@@ -280,6 +280,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2028152,
+    "summary": "Remove deprecated batch() usage from react-redux in New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-03-31T14:04:35Z",
+    "resolvedAt": "2026-10-26T21:07:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2031465,
     "summary": "White flash on startup caused by abouthome_cache storing  incompatible startup frame",
     "product": "Firefox",
@@ -307,15 +316,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2031665,
-    "summary": "AccuWeather sponsored text is overlapping the \"Tell us what you think link\" when medium weather card is hovered",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-14T13:05:12Z",
-    "resolvedAt": "2026-07-24T09:04:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2034363,
     "summary": "Incorrect card type detection in impression and dismiss events for small and large cards if NOVA is enabled",
     "product": "Firefox",
@@ -331,6 +331,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-27T14:49:08Z",
     "resolvedAt": "2026-08-01T09:55:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2035476,
+    "summary": "Billboard card context menu opens outside the card instead of being anchored to the Contextual menu button",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-04-28T12:37:55Z",
+    "resolvedAt": "2026-10-22T18:41:32Z"
   },
   {
     "source": "bugzilla",
@@ -394,15 +403,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-02T21:54:50Z",
     "resolvedAt": "2026-07-31T04:33:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046143,
-    "summary": "weather widget activate without user opt-in",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-09T17:53:49Z",
-    "resolvedAt": "2026-07-27T08:20:01Z"
   },
   {
     "source": "bugzilla",
@@ -568,6 +568,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2054870,
+    "summary": "Check back tomorrow hidden picture state is shown for a second after toggling the widget off and back on",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-14T09:19:12Z",
+    "resolvedAt": "2026-10-22T21:53:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2054943,
     "summary": "Picture of the day widget: Author/License label should be truncated to two lines and … when extra long",
     "product": "Firefox",
@@ -595,15 +604,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055939,
-    "summary": "Remove version 153 train-hop compatibility shims for the World Cup newtab logo variations",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-17T19:35:07Z",
-    "resolvedAt": "2026-07-24T09:05:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056249,
     "summary": "Briefing card SCSS has root level <hr> styles",
     "product": "Firefox",
@@ -622,33 +622,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056300,
-    "summary": "Expose available browser themes to New Tab and apply/install a selected theme",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-20T16:07:08Z",
-    "resolvedAt": "2026-07-24T22:06:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056301,
-    "summary": "Add New Tab Customize Panel browser theme selection strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-20T16:07:24Z",
-    "resolvedAt": "2026-07-24T22:06:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056304,
-    "summary": "Add full browser theme selection sub-panel to the New Tab Customize Panel",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-20T16:10:14Z",
-    "resolvedAt": "2026-07-24T22:06:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056317,
     "summary": "[a11y] Button lacks accessible name",
     "product": "Firefox",
@@ -664,15 +637,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-20T18:01:11Z",
     "resolvedAt": "2026-09-01T04:16:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056937,
-    "summary": "Expose trainhopConfig values in Discovery Stream Admin tooling",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-22T16:07:27Z",
-    "resolvedAt": "2026-07-26T21:55:35Z"
   },
   {
     "source": "bugzilla",
@@ -703,15 +667,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057217,
-    "summary": "Newtab custom wallpapers flash when selecting from picture of the day widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-23T13:38:21Z",
-    "resolvedAt": "2026-07-28T09:59:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057274,
     "summary": "Add \"sponsored position\" Flag to pocket.impression Glean event",
     "product": "Firefox",
@@ -727,15 +682,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-23T16:27:23Z",
     "resolvedAt": "2026-09-10T04:45:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057286,
-    "summary": "Newtab make ad allowed ranks configurable via trainhopConfig",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-23T16:51:23Z",
-    "resolvedAt": "2026-07-24T22:07:13Z"
   },
   {
     "source": "bugzilla",
@@ -763,6 +709,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-24T19:07:46Z",
     "resolvedAt": "2026-08-05T04:30:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057675,
+    "summary": "Add CI smoke test / coverage for the newtab trainhop langpack observer re-entranccy bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-24T21:37:50Z",
+    "resolvedAt": "2026-10-22T21:53:42Z"
   },
   {
     "source": "bugzilla",
@@ -1567,6 +1522,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063771,
+    "summary": "Perma central PROCESS-CRASH | 79a6a3a8-aafb-aa8e-cb4e-0630193cd670 | Attempting to connect to non-local address! opener is [resource://newtab/lib/TemporaryMerinoClientShim.sys.mjs:895:30], uri is [https://merino.services.mozilla.com/api/v1/rss/picture-",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-15T01:06:23Z",
+    "resolvedAt": "2026-10-22T15:15:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063840,
     "summary": "moz-page-thumb test URLs use the \"thumbnail\" host and never resolve",
     "product": "Firefox",
@@ -2233,6 +2197,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070270,
+    "summary": "Standardize search UI across Weather, Stocks and Clocks widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T16:33:18Z",
+    "resolvedAt": "2026-10-26T09:20:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070272,
     "summary": "Standardize context menu button UI across all widgets",
     "product": "Firefox",
@@ -2347,6 +2320,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-09T20:48:28Z",
     "resolvedAt": "2026-09-11T09:45:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071112,
+    "summary": "Picture-of-the-day briefly flashes its alt-text on new window, and new-tabs that bypass preload",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-10T21:49:33Z",
+    "resolvedAt": "2026-10-22T08:47:43Z"
   },
   {
     "source": "bugzilla",
@@ -2818,6 +2800,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076735,
+    "summary": "Add Luxembourg to the Weather widget's in-tree consent-required list",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-30T12:59:08Z",
+    "resolvedAt": "2026-10-27T09:21:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076846,
     "summary": "Remove newtab activityStream pref for hideTopSitesTitle",
     "product": "Firefox",
@@ -3151,6 +3142,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080161,
+    "summary": "Build the newtab bundles only once in clean builds, starting them as soon as pre-export does",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T12:13:50Z",
+    "resolvedAt": "2026-10-22T16:22:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080227,
     "summary": "[HNT-3579] Send location inferred interests to merino but not BQ",
     "product": "Firefox",
@@ -3241,6 +3241,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082014,
+    "summary": "Fix TypeScript errors in more files newtab/libs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-14T20:43:26Z",
+    "resolvedAt": "2026-10-27T09:21:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082690,
     "summary": "Newtab score-based selection add provider debug logs",
     "product": "Firefox",
@@ -3268,6 +3277,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083732,
+    "summary": "Constrain the set of values that surface_id can have to a very particular format",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T13:48:59Z",
+    "resolvedAt": "2026-10-22T08:48:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083811,
+    "summary": "Weather widget availability in SG",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T16:23:48Z",
+    "resolvedAt": "2026-10-27T09:22:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083831,
     "summary": "Remove the version 160 guard on New Tab topsites.click and pocket.click extra keys",
     "product": "Firefox",
@@ -3283,5 +3310,50 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-19T22:24:07Z",
     "resolvedAt": "2026-10-21T04:01:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084033,
+    "summary": "Perma [tier2] TSC /builds/worker/checkouts/gecko/browser/extensions/newtab/lib/TelemetryFeed.sys.mjs:1227 | TS2345: Argument of type 'string | number' is not assignable to parameter of type 'number'. (typescript)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T06:54:40Z",
+    "resolvedAt": "2026-10-22T08:48:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084256,
+    "summary": "Remove version 158 train-hop guard for the variant_id and source_section_id extra keys",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T15:25:21Z",
+    "resolvedAt": "2026-10-26T21:08:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085056,
+    "summary": "Update the New Tab build docs now that the build generates the bundles in the objdir",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-22T16:19:10Z",
+    "resolvedAt": "2026-10-23T16:24:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085146,
+    "summary": "Let framed widgets load from *.merino.nonprod.webservices.mozgcp.net and *.merino.prod.webservices.mozgcp.net",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-22T20:37:09Z",
+    "resolvedAt": "2026-10-26T21:09:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085803,
+    "summary": "POTD: Enable set as wallpaper feature by default",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T14:57:19Z",
+    "resolvedAt": "2026-10-26T21:10:30Z"
   }
 ]
