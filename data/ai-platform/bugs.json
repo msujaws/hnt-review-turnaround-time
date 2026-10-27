@@ -298,15 +298,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058810,
-    "summary": "Intermittent TV browser/components/aiwindow/models/tests/browser/browser_monitor_agent.js | single tracking bug",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-29T06:07:06Z",
-    "resolvedAt": "2026-07-29T06:13:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059553,
     "summary": "Send more user messages to relevant memories retrieval to increase recall",
     "product": "Core",
@@ -790,6 +781,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-09-21T14:57:44Z",
     "resolvedAt": "2026-10-17T03:43:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074214,
+    "summary": "Provide location data for Smart Window weather integration",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T16:51:41Z",
+    "resolvedAt": "2026-10-26T21:07:45Z"
   },
   {
     "source": "bugzilla",
@@ -1693,15 +1693,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2030683,
-    "summary": "Show Bookmark Bar on Smart Window New Tab when \"Only Show on New Tab\" setting enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-04-09T13:26:38Z",
-    "resolvedAt": "2026-07-29T21:42:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2037179,
     "summary": "Track data review for rescoped feedback launch",
     "product": "Core",
@@ -1726,15 +1717,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-15T22:26:18Z",
     "resolvedAt": "2026-07-31T22:06:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040803,
-    "summary": "Add client-side runtime/render error telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-19T22:31:30Z",
-    "resolvedAt": "2026-07-29T09:55:42Z"
   },
   {
     "source": "bugzilla",
@@ -1816,15 +1798,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-24T13:43:05Z",
     "resolvedAt": "2026-08-06T09:57:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050291,
-    "summary": "Create SplitView Trigger that gets fired on using split view feature",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-24T23:29:35Z",
-    "resolvedAt": "2026-07-29T04:16:27Z"
   },
   {
     "source": "bugzilla",
@@ -2071,15 +2044,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055657,
-    "summary": "Add favicon preview variant to Smart Window conversation starter pills",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-16T21:40:04Z",
-    "resolvedAt": "2026-07-29T04:17:01Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055660,
     "summary": "Support opening and grouping tabs from the tab-selection confirmation card",
     "product": "Core",
@@ -2230,15 +2194,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-24T14:32:12Z",
     "resolvedAt": "2026-09-18T04:24:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057599,
-    "summary": "[Monitor Agent][FE] Prefill condition into the create form  from /monitor command in assistant chat",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-24T15:36:02Z",
-    "resolvedAt": "2026-07-29T09:56:07Z"
   },
   {
     "source": "bugzilla",
@@ -4474,6 +4429,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079366,
+    "summary": "Smart Window: re-opening chat conversation from history should open the last page a user prompt was submitted on",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-07T16:42:51Z",
+    "resolvedAt": "2026-10-27T09:21:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079532,
     "summary": "update mots for machine learning related frontend",
     "product": "Core",
@@ -4663,6 +4627,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081886,
+    "summary": "Create smartwindow-chips from ai-website-chips component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-14T17:51:51Z",
+    "resolvedAt": "2026-10-26T21:08:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082170,
     "summary": "AITab UX QA - confirmation card",
     "product": "Core",
@@ -4807,6 +4780,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084332,
+    "summary": "AITab UX QA - Footer top spacing",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-20T18:06:49Z",
+    "resolvedAt": "2026-10-26T21:09:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084417,
     "summary": "AITab [FE] - Refresh Smart Page tabs on focus if the page's content has changed",
     "product": "Core",
@@ -4822,6 +4804,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-21T12:59:13Z",
     "resolvedAt": "2026-10-23T08:28:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084938,
+    "summary": "Perma TEST-UNEXPECTED-FAIL | browser/components/aiwindow/models/tests/browser/browser_aitab_generation.js | test_modification_is_answered_by_the_model - Test timed out when Gecko 160 merges to beta on 2026-10-22",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-22T11:39:43Z",
+    "resolvedAt": "2026-10-26T21:09:26Z"
   },
   {
     "source": "bugzilla",
@@ -4966,5 +4957,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-10-20T19:10:35Z",
     "resolvedAt": "2026-10-21T19:15:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084784,
+    "summary": "chat title generation user and assistant order issue for Gemini and Mistral models",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-10-21T21:08:04Z",
+    "resolvedAt": "2026-10-26T21:09:19Z"
   }
 ]
