@@ -199,30 +199,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048732,
-    "summary": "Route Android system audio-focus loss and gain to the Audio Session interrupt path",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-18T18:54:27Z",
-    "resolvedAt": "2026-07-29T04:16:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051026,
     "summary": "Problem with opening a local pdf file with FF 151 for Android 9",
     "product": "GeckoView",
     "component": "PDF Viewer",
     "filedAt": "2026-06-27T10:39:38Z",
     "resolvedAt": "2026-09-04T09:24:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051440,
-    "summary": "Make `nsResProtocolHandler::GetApkURI` unrelated to omni.ja file path",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-29T22:26:19Z",
-    "resolvedAt": "2026-07-29T21:42:53Z"
   },
   {
     "source": "bugzilla",
@@ -289,30 +271,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057393,
-    "summary": "virtual keyboard might not work when opening a new window",
-    "product": "GeckoView",
-    "component": "IME",
-    "filedAt": "2026-07-24T02:45:53Z",
-    "resolvedAt": "2026-07-29T09:56:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057683,
     "summary": "[2.3] Streamline screenshot tiling",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-07-24T22:30:25Z",
     "resolvedAt": "2026-09-15T19:46:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057684,
-    "summary": "[2.4] Research tasks",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-24T22:36:20Z",
-    "resolvedAt": "2026-07-29T18:36:10Z"
   },
   {
     "source": "bugzilla",
@@ -673,6 +637,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-09-02T15:40:12Z",
     "resolvedAt": "2026-09-19T09:09:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068989,
+    "summary": "[PDF.js] Begin Packaging Annotation Editor CSS and Add new CSS",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-03T14:11:27Z",
+    "resolvedAt": "2026-10-27T11:51:20Z"
   },
   {
     "source": "bugzilla",

@@ -1,66 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-p7fsw5fd5x3db3pxab3w",
-    "revisionId": 313929,
-    "author": "m_kato",
-    "createdAt": "2026-07-24T05:20:45.000Z",
-    "firstReviewAt": "2026-07-28T21:07:42.000Z",
-    "landedAt": "2026-07-29T06:18:46.000Z",
-    "cycleBusinessHours": 24,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-tmotnchfu2h65umj6de2",
-    "revisionId": 315130,
-    "author": "hiro",
-    "createdAt": "2026-07-29T23:42:09.000Z",
-    "firstReviewAt": "2026-07-29T23:46:38.000Z",
-    "landedAt": "2026-07-29T23:50:14.000Z",
-    "cycleBusinessHours": 0,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-wbdhobuvmsvvqzndtj3z",
-    "revisionId": 315129,
-    "author": "hiro",
-    "createdAt": "2026-07-29T23:39:32.000Z",
-    "firstReviewAt": "2026-07-29T23:41:17.000Z",
-    "landedAt": "2026-07-29T23:46:50.000Z",
-    "cycleBusinessHours": 0,
-    "postReviewBusinessHours": 0,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-6zzfx66qcyhxh5wjsjh6",
-    "revisionId": 306680,
-    "author": "hiro",
-    "createdAt": "2026-06-15T05:06:06.000Z",
-    "firstReviewAt": "2026-06-15T22:50:56.000Z",
-    "landedAt": "2026-07-29T20:42:01.000Z",
-    "cycleBusinessHours": 263.7002777777778,
-    "postReviewBusinessHours": 255.70027777777779,
-    "reviewRounds": 2
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-rniczdzlljiiq7zf5f3i",
-    "revisionId": 306679,
-    "author": "hiro",
-    "createdAt": "2026-06-15T05:06:03.000Z",
-    "firstReviewAt": "2026-06-15T23:12:50.000Z",
-    "landedAt": "2026-07-29T20:41:59.000Z",
-    "cycleBusinessHours": 263.69972222222225,
-    "postReviewBusinessHours": 255.69972222222222,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-unuwpx6jelptl7ox5hmf",
     "revisionId": 314502,
     "author": "jonalmeida",
@@ -898,5 +838,17 @@
     "cycleBusinessHours": 48,
     "postReviewBusinessHours": 40,
     "reviewRounds": 2
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-glp475d3woooncni3r3r",
+    "revisionId": 336281,
+    "author": "owlish",
+    "createdAt": "2026-10-22T20:20:46.000Z",
+    "firstReviewAt": "2026-10-22T20:23:40.000Z",
+    "landedAt": "2026-10-27T11:52:00.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 16.65388888888889,
+    "postReviewBusinessHours": 16.605555555555558
   }
 ]
