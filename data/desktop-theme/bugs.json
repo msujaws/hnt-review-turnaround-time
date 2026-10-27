@@ -19,15 +19,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048354,
-    "summary": "Remap tab-audio-blocked-circle-12.svg to Nova icon play-circle-fill-12",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-06-17T18:58:20Z",
-    "resolvedAt": "2026-07-28T09:57:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051212,
     "summary": "[Nova] Split view size inconsistent between selected and non-selected causing layout changes",
     "product": "Firefox",
@@ -91,15 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058235,
-    "summary": "browser_ext_management_themes.js fails when browser.nova.enabled is true",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-27T17:50:50Z",
-    "resolvedAt": "2026-07-29T21:43:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058315,
     "summary": "Background tab labels disappear with the default theme and browser.theme.native-theme = true",
     "product": "Firefox",
@@ -124,15 +106,6 @@
     "component": "Theme",
     "filedAt": "2026-07-28T14:40:42Z",
     "resolvedAt": "2026-08-07T20:10:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058575,
-    "summary": "Ctrl-Tab preview labels are no longer centered",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-28T16:37:48Z",
-    "resolvedAt": "2026-07-28T21:58:13Z"
   },
   {
     "source": "bugzilla",
@@ -502,5 +475,32 @@
     "component": "Theme",
     "filedAt": "2026-10-13T16:00:23Z",
     "resolvedAt": "2026-10-16T16:14:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083168,
+    "summary": "LightweightThemeConsumer throws when theme prefs change after its window was closed",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-16T20:39:00Z",
+    "resolvedAt": "2026-10-23T16:23:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084382,
+    "summary": "Fire button hover animation turns grayish between its two gradients in dark mode",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-20T21:31:31Z",
+    "resolvedAt": "2026-10-22T21:55:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084626,
+    "summary": "Synced tabs icon shows darker corners when drawn with a translucent fill",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-21T13:25:44Z",
+    "resolvedAt": "2026-10-22T08:49:26Z"
   }
 ]
