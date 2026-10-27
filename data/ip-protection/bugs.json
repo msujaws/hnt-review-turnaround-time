@@ -91,39 +91,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2050348,
-    "summary": "[Nova] [a11y] VPN main panel exclusion toggle is not visible while disabled using default browser themes",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-25T06:42:53Z",
-    "resolvedAt": "2026-07-29T04:16:30Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051225,
     "summary": "VPN panel briefly displays loading state every time it is opened while in paused state",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-06-29T08:52:53Z",
     "resolvedAt": "2026-08-07T20:09:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051977,
-    "summary": "Show the VPN unavailable screen when getting a 451 from Guardian.",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-01T16:31:09Z",
-    "resolvedAt": "2026-07-28T21:53:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052845,
-    "summary": "IP-Protection: telemetry for GPI authentication",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-06T13:14:39Z",
-    "resolvedAt": "2026-07-27T14:44:56Z"
   },
   {
     "source": "bugzilla",
@@ -169,15 +142,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-15T00:14:17Z",
     "resolvedAt": "2026-10-17T01:43:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055206,
-    "summary": "IPPLifecylce handler does not retry a failed refresh.",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-15T12:36:26Z",
-    "resolvedAt": "2026-07-28T21:54:13Z"
   },
   {
     "source": "bugzilla",
@@ -232,15 +196,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-23T18:47:05Z",
     "resolvedAt": "2026-09-23T04:31:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058264,
-    "summary": "Bug: Mozilla VPN upgrade promo shows in regions where VPN is unavailable (Japan)",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-27T19:00:56Z",
-    "resolvedAt": "2026-07-28T21:57:34Z"
   },
   {
     "source": "bugzilla",
@@ -766,12 +721,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082346,
+    "summary": "VPN toolbar icon remains in logged in/included state after signing out on an included site",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T09:48:43Z",
+    "resolvedAt": "2026-10-26T14:18:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082351,
     "summary": "VPN toolbar icon has incorrect UI while in Overflow menu for both dark/light themes",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-15T10:02:02Z",
     "resolvedAt": "2026-10-21T03:59:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082476,
+    "summary": "Add confirmation hint when navigating to a site inclusion",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T13:47:27Z",
+    "resolvedAt": "2026-10-21T20:57:20Z"
   },
   {
     "source": "bugzilla",
@@ -793,12 +766,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082631,
+    "summary": "Keep a failed IP Protection connection in ERROR until the user acts on it",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T19:47:51Z",
+    "resolvedAt": "2026-10-21T20:57:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082660,
     "summary": "Land strings for holiday promo CFRs",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-15T20:55:01Z",
     "resolvedAt": "2026-10-17T03:45:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083043,
+    "summary": "Swap in correct warning icon for delete error dialog in VPN site rules",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-16T17:21:00Z",
+    "resolvedAt": "2026-10-22T21:55:00Z"
   },
   {
     "source": "bugzilla",
@@ -847,11 +838,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083787,
+    "summary": "Update image in empty state of vpn site rules in settings",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-19T15:02:38Z",
+    "resolvedAt": "2026-10-22T21:55:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083790,
     "summary": "Update string for site inclusions CFR to correct wording issue",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-19T15:15:39Z",
     "resolvedAt": "2026-10-21T04:01:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084660,
+    "summary": "[experimenter] Create messaging rollout for holiday VPN promo",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-21T14:23:55Z",
+    "resolvedAt": "2026-10-26T18:43:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084722,
+    "summary": "Hide 'Your Rule' section when the VPN is not connected",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-21T17:05:25Z",
+    "resolvedAt": "2026-10-23T04:11:24Z"
   }
 ]
