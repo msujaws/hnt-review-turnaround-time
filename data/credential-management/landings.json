@@ -1,30 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-ntwlo4crpocqgczqj4ou",
-    "revisionId": 314555,
-    "author": "dimi",
-    "createdAt": "2026-07-28T02:04:42.000Z",
-    "firstReviewAt": "2026-07-28T05:02:06.000Z",
-    "landedAt": "2026-07-29T09:40:05.000Z",
-    "cycleBusinessHours": 8,
-    "postReviewBusinessHours": 8,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-xygyrocp2vl5baty6ehp",
-    "revisionId": 314556,
-    "author": "dimi",
-    "createdAt": "2026-07-28T02:04:50.000Z",
-    "firstReviewAt": "2026-07-28T09:25:41.000Z",
-    "landedAt": "2026-07-29T09:40:03.000Z",
-    "cycleBusinessHours": 8,
-    "postReviewBusinessHours": 8,
-    "reviewRounds": 2
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-vrsdtjixt5b6zw7p3wr7",
     "revisionId": 313831,
     "author": "kalenlu",
@@ -34,30 +10,6 @@
     "cycleBusinessHours": 36.82805555555556,
     "postReviewBusinessHours": 32.60388888888889,
     "reviewRounds": 2
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-skt6fstkpcfbt3rhzn6j",
-    "revisionId": 314651,
-    "author": "kbaliev",
-    "createdAt": "2026-07-28T13:26:37.000Z",
-    "firstReviewAt": "2026-07-28T20:52:02.000Z",
-    "landedAt": "2026-07-29T13:27:57.000Z",
-    "cycleBusinessHours": 8.022222222222222,
-    "postReviewBusinessHours": 0.5986111111111111,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-x7ifduqarvrra42hb7ie",
-    "revisionId": 314644,
-    "author": "kbaliev",
-    "createdAt": "2026-07-28T12:53:06.000Z",
-    "firstReviewAt": "2026-07-28T20:23:39.000Z",
-    "landedAt": "2026-07-29T13:26:55.000Z",
-    "cycleBusinessHours": 8.448611111111111,
-    "postReviewBusinessHours": 1.0544444444444445,
-    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -1567,9 +1519,9 @@
     "createdAt": "2026-10-14T14:47:14.000Z",
     "firstReviewAt": "2026-10-14T14:51:56.000Z",
     "landedAt": "2026-10-14T16:11:10.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 1.3988888888888888,
-    "postReviewBusinessHours": 1.3205555555555555,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 1.3205555555555555
   },
   {
     "source": "phab",
@@ -1591,9 +1543,9 @@
     "createdAt": "2026-10-12T08:56:09.000Z",
     "firstReviewAt": "2026-10-14T14:16:28.000Z",
     "landedAt": "2026-10-14T14:49:40.000Z",
+    "reviewRounds": 1,
     "cycleBusinessHours": 17.82777777777778,
-    "postReviewBusinessHours": 0.5533333333333333,
-    "reviewRounds": 1
+    "postReviewBusinessHours": 0.5533333333333333
   },
   {
     "source": "phab",
@@ -1690,5 +1642,53 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 0,
     "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-mwnkhvk26yxcbltcsxpo",
+    "revisionId": 334170,
+    "author": "kbaliev",
+    "createdAt": "2026-10-15T15:03:45.000Z",
+    "firstReviewAt": "2026-10-21T14:20:34.000Z",
+    "landedAt": "2026-10-27T13:57:09.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 62.89,
+    "postReviewBusinessHours": 31.609722222222224
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-bdvdnqecbhub5t2ktzf4",
+    "revisionId": 337106,
+    "author": "theidkamp",
+    "createdAt": "2026-10-27T12:05:40.000Z",
+    "firstReviewAt": "2026-10-27T12:23:11.000Z",
+    "landedAt": "2026-10-27T13:17:19.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 0.2886111111111111,
+    "postReviewBusinessHours": 0.2886111111111111
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-saonhrumviohba2uk3p3",
+    "revisionId": 337069,
+    "author": "dimi",
+    "createdAt": "2026-10-27T09:23:10.000Z",
+    "firstReviewAt": "2026-10-27T09:51:19.000Z",
+    "landedAt": "2026-10-27T10:26:01.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 0,
+    "postReviewBusinessHours": 0
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-kcvku3hgml5wwdsioycm",
+    "revisionId": 336222,
+    "author": "kalenlu",
+    "createdAt": "2026-10-22T16:48:14.000Z",
+    "firstReviewAt": "2026-10-22T16:57:05.000Z",
+    "landedAt": "2026-10-26T18:20:08.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 17.53166666666667,
+    "postReviewBusinessHours": 17.384166666666665
   }
 ]
