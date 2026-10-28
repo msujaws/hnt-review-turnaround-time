@@ -19,15 +19,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 1748526,
-    "summary": "BrowserAction popup always opens as non-private tab on Fenix",
-    "product": "GeckoView",
-    "component": "Extensions",
-    "filedAt": "2022-01-04T23:21:13Z",
-    "resolvedAt": "2026-07-30T21:45:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 1768489,
     "summary": "Intermittent org.mozilla.geckoview.test.OrientationDelegateTest#orientationUnlockByExitFullscreen | single tracking bug",
     "product": "GeckoView",
@@ -136,6 +127,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1998594,
+    "summary": "about:processes doesn't show android:isolatedProcess content processes",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-11-06T04:36:12Z",
+    "resolvedAt": "2026-10-27T16:40:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1998616,
     "summary": "Intermittent org.mozilla.geckoview.test.InteractiveWidgetTest#bug1994311 | single tracking bug",
     "product": "GeckoView",
@@ -208,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051964,
-    "summary": "Add Fission Testing to GeckoView Performance",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-07-01T15:49:28Z",
-    "resolvedAt": "2026-07-30T21:46:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053907,
     "summary": "[2] Add a new GeckoView API endpoint for full page screenshots",
     "product": "GeckoView",
@@ -259,6 +250,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-07-14T13:20:03Z",
     "resolvedAt": "2026-08-20T16:28:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2054920,
+    "summary": "Turn off pull-to-refresh on PDFs",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-07-14T13:20:20Z",
+    "resolvedAt": "2026-10-28T09:50:47Z"
   },
   {
     "source": "bugzilla",
@@ -469,6 +469,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2063416,
+    "summary": "[A11y] Engineering basic check",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-13T19:01:11Z",
+    "resolvedAt": "2026-10-28T13:12:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2063422,
     "summary": "[QA] File QA ticket for new PDF tools",
     "product": "GeckoView",
@@ -658,6 +667,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069045,
+    "summary": "[GeckoView] Interface and behavior for adding a signature in PDF.js",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-03T16:23:32Z",
+    "resolvedAt": "2026-10-28T04:12:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069060,
     "summary": "[AC/Fenix] Wire through signature API for Fenix use",
     "product": "GeckoView",
@@ -712,6 +730,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070190,
+    "summary": "[UI] Wait State - Prevent multiple add a signature requests on the Fenix side",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-08T13:06:27Z",
+    "resolvedAt": "2026-10-28T04:13:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071217,
     "summary": "Intermittent org.mozilla.geckoview.test.InteractiveWidgetTest#scrollIntoViewToPositionFixed | single tracking bug",
     "product": "GeckoView",
@@ -727,6 +754,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-09-11T16:24:54Z",
     "resolvedAt": "2026-09-17T20:39:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071388,
+    "summary": "Turn on PDF Signatures for Nightly",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-11T16:26:32Z",
+    "resolvedAt": "2026-10-28T04:13:05Z"
   },
   {
     "source": "bugzilla",
@@ -937,6 +973,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079932,
+    "summary": "[Crash] Sign PDF java.lang.IllegalStateException: result is already complete",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-08T20:27:55Z",
+    "resolvedAt": "2026-10-28T04:13:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080318,
     "summary": "GeckoView junit tests pass when a delegateUntilTestEnd callback is called fewer times than its @AssertCalled count",
     "product": "GeckoView",
@@ -988,5 +1033,14 @@
     "component": "PDF Viewer",
     "filedAt": "2026-10-19T19:49:17Z",
     "resolvedAt": "2026-10-21T18:14:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085012,
+    "summary": "[A11y] We need branching behavior on the bottom toolbar case to ensure better focus order",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-22T14:22:19Z",
+    "resolvedAt": "2026-10-28T04:14:04Z"
   }
 ]
