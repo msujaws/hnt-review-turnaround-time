@@ -775,15 +775,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059030,
-    "summary": "Use MAC in TopSitesFeed for fetching tiles from MARS",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-29T17:06:46Z",
-    "resolvedAt": "2026-07-30T09:24:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059095,
     "summary": "Use MAC in DiscoveryStreamFeed for fetching tiles from MARS",
     "product": "Firefox",
@@ -799,6 +790,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-29T19:05:20Z",
     "resolvedAt": "2026-08-07T04:27:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2059567,
+    "summary": "Exclude religious imagery from picture of the day widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-30T20:47:46Z",
+    "resolvedAt": "2026-10-27T22:16:26Z"
   },
   {
     "source": "bugzilla",
@@ -2058,7 +2058,7 @@
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-31T17:12:23Z",
-    "resolvedAt": "2026-09-22T19:21:42Z"
+    "resolvedAt": "2026-10-28T09:50:50Z"
   },
   {
     "source": "bugzilla",
@@ -2341,6 +2341,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071371,
+    "summary": "Daily Crossword widget is enabled for non-en-US locale",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T15:49:03Z",
+    "resolvedAt": "2026-10-27T22:40:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071406,
     "summary": "Restore transparency to New Tab card backgrounds",
     "product": "Firefox",
@@ -2383,6 +2392,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-12T13:24:19Z",
     "resolvedAt": "2026-09-18T22:04:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071975,
+    "summary": "New-tab tiles might have insufficient contrast against background color",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-14T17:59:03Z",
+    "resolvedAt": "2026-10-28T09:50:59Z"
   },
   {
     "source": "bugzilla",
@@ -2800,6 +2818,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076593,
+    "summary": "Crossword widget records puzzle_completed on every new tab after the puzzle is solved",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-30T01:17:38Z",
+    "resolvedAt": "2026-10-28T02:09:57Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076735,
     "summary": "Add Luxembourg to the Weather widget's in-tree consent-required list",
     "product": "Firefox",
@@ -2968,6 +2995,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-06T17:22:21Z",
     "resolvedAt": "2026-10-19T07:35:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078871,
+    "summary": "Expand Weather widget availability to more regions",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-06T18:25:36Z",
+    "resolvedAt": "2026-10-27T16:40:42Z"
   },
   {
     "source": "bugzilla",
@@ -3322,12 +3358,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084254,
+    "summary": "Remove version 158 train-hop shim for the MozAdsEnvironment constructor in AdsClient",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T15:23:42Z",
+    "resolvedAt": "2026-10-28T09:52:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084256,
     "summary": "Remove version 158 train-hop guard for the variant_id and source_section_id extra keys",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-20T15:25:21Z",
     "resolvedAt": "2026-10-26T21:08:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084814,
+    "summary": "Crossword: Use the shared Powered by menu component",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-21T23:09:49Z",
+    "resolvedAt": "2026-10-28T04:14:00Z"
   },
   {
     "source": "bugzilla",
@@ -3355,5 +3409,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-26T14:57:19Z",
     "resolvedAt": "2026-10-26T21:10:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085817,
+    "summary": "`browser_topsites_section.js` | Wait for pinned search topsites - timed out after 50 tries when the test is run more than once (test-verify, `--repeat`)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T16:06:04Z",
+    "resolvedAt": "2026-10-27T21:35:14Z"
   }
 ]
