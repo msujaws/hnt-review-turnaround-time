@@ -127,15 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046592,
-    "summary": "[Monitor Agent][FE] Browser notification",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-10T21:15:00Z",
-    "resolvedAt": "2026-07-30T09:22:58Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047711,
     "summary": "[AI Window] Tool Use - Delete memories from natural language in chat",
     "product": "Core",
@@ -1150,15 +1141,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-27T18:12:22Z",
     "resolvedAt": "2026-09-17T09:54:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058370,
-    "summary": "get_page_content hangs forever when a page read never commits",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-28T02:35:46Z",
-    "resolvedAt": "2026-07-30T13:49:05Z"
   },
   {
     "source": "bugzilla",
@@ -2311,15 +2293,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-27T22:40:02Z",
     "resolvedAt": "2026-08-05T21:48:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058479,
-    "summary": "The Smart Window Switcher button from the Overflow menu is missing the > Arrow indicating that its a menu",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-28T12:40:23Z",
-    "resolvedAt": "2026-07-30T09:24:08Z"
   },
   {
     "source": "bugzilla",
@@ -3817,6 +3790,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069166,
+    "summary": "Turn the selection menu off when the user unchecks every action",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-03T22:44:23Z",
+    "resolvedAt": "2026-10-28T09:50:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069453,
     "summary": "[Monitor Agent][FE] launch nimbus experiment for promo card v0 by 9/1",
     "product": "Core",
@@ -4330,6 +4312,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076103,
+    "summary": "The Chat History and More Menus from the Ai conversation flicker when clicked and dragged to the side",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-28T07:49:07Z",
+    "resolvedAt": "2026-10-27T21:32:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2077473,
     "summary": "Consider improving the styling of the AI Chatbot dropdown when no provider is selected",
     "product": "Core",
@@ -4777,6 +4768,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-19T23:36:52Z",
     "resolvedAt": "2026-10-21T20:57:54Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084169,
+    "summary": "Users can still create and run a Monitor Task after Blocking all AI enhancements",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-20T12:31:01Z",
+    "resolvedAt": "2026-10-28T04:13:48Z"
   },
   {
     "source": "bugzilla",
