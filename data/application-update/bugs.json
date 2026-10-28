@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056652,
-    "summary": "Perma [Tier 2] toolkit/mozapps/update/tests/browser/browser_doorhanger_sp_patch_partialApplyFailure.js | single tracking bug",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-07-21T17:59:49Z",
-    "resolvedAt": "2026-07-30T21:47:22Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057244,
     "summary": "Most tests in toolkit/mozapps/update/tests/unit_updater_binary fail when run locally",
     "product": "Toolkit",
@@ -151,6 +142,15 @@
     "component": "Application Update",
     "filedAt": "2026-08-17T08:38:26Z",
     "resolvedAt": "2026-08-20T04:22:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064110,
+    "summary": "Intermittent TEST-UNEXPECTED-TIMEOUT | toolkit/mozapps/update/tests/unit_aus_update/languagePackUpdates.js | Test timed out",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-08-17T15:59:08Z",
+    "resolvedAt": "2026-10-27T21:32:10Z"
   },
   {
     "source": "bugzilla",
