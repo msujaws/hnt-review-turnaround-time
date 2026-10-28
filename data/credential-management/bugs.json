@@ -358,5 +358,14 @@
     "component": "Password Manager",
     "filedAt": "2026-10-09T07:53:11Z",
     "resolvedAt": "2026-10-10T08:53:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085021,
+    "summary": "Rust storage migration failure: timePasswordChanged: N exceeds the safe integer bounds",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-22T14:54:00Z",
+    "resolvedAt": "2026-10-27T21:34:49Z"
   }
 ]
