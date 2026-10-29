@@ -397,15 +397,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044483,
-    "summary": "World Clocks widget is missing the widgets.clocks.interaction pref and   interaction tracking entirely",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-02T21:54:50Z",
-    "resolvedAt": "2026-07-31T04:33:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2046503,
     "summary": "Widgets listed in about:preferences should be dynamically rendered from WidgetsRegistry.mjs",
     "product": "Firefox",
@@ -628,6 +619,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-20T16:53:17Z",
     "resolvedAt": "2026-09-03T09:15:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2056341,
+    "summary": "Timer widget [a11y] Inaccessible radio group",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-20T17:46:13Z",
+    "resolvedAt": "2026-10-29T03:45:05Z"
   },
   {
     "source": "bugzilla",
@@ -1429,6 +1429,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-14T14:21:56Z",
     "resolvedAt": "2026-08-14T21:58:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2063617,
+    "summary": "Widgets context menu selection/hover highlight overflows menu bounds",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-14T14:57:11Z",
+    "resolvedAt": "2026-10-29T03:42:45Z"
   },
   {
     "source": "bugzilla",
@@ -3340,6 +3349,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083871,
+    "summary": "Add the context menu for the travel widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T18:33:21Z",
+    "resolvedAt": "2026-10-29T09:42:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083945,
     "summary": "Add documentation explaining the new newtabPreview.ftl file",
     "product": "Firefox",
@@ -3418,5 +3436,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-26T16:06:04Z",
     "resolvedAt": "2026-10-27T21:35:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085905,
+    "summary": "Update New Tab section empty state for Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T19:24:05Z",
+    "resolvedAt": "2026-10-28T21:38:08Z"
   }
 ]
