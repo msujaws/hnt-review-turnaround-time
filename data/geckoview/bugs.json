@@ -1027,6 +1027,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082728,
+    "summary": "A hovering stylus on android is reported as pointerType 'mouse' not 'pen'",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-16T02:26:08Z",
+    "resolvedAt": "2026-10-29T09:42:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083900,
     "summary": "Swap content description string \"Sign PDF\" for \"Add a signature\"",
     "product": "GeckoView",
@@ -1042,5 +1051,14 @@
     "component": "PDF Viewer",
     "filedAt": "2026-10-22T14:22:19Z",
     "resolvedAt": "2026-10-28T04:14:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086729,
+    "summary": "Only request Mozilla groups from maven.mozilla.org",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-28T18:28:29Z",
+    "resolvedAt": "2026-10-29T09:44:14Z"
   }
 ]
