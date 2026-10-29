@@ -1,18 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-pu5y3bty2xidlj2mtxkh",
-    "revisionId": 314382,
-    "author": "niklas",
-    "createdAt": "2026-07-27T15:04:36.000Z",
-    "firstReviewAt": "2026-07-27T16:09:51.000Z",
-    "landedAt": "2026-07-31T12:15:43.000Z",
-    "cycleBusinessHours": 29.923333333333336,
-    "postReviewBusinessHours": 28.835833333333333,
-    "reviewRounds": 3
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-m5sqb3dmp44bvdp3g7r3",
     "revisionId": 315428,
     "author": "niklas",
@@ -355,8 +343,20 @@
     "createdAt": "2026-10-19T22:12:13.000Z",
     "firstReviewAt": "2026-10-20T14:56:17.000Z",
     "landedAt": "2026-10-22T16:11:46.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 19.19611111111111,
-    "postReviewBusinessHours": 17.258055555555554
+    "postReviewBusinessHours": 17.258055555555554,
+    "reviewRounds": 1
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-lg7dsptgv5rogyxuea4x",
+    "revisionId": 334199,
+    "author": "niklas",
+    "createdAt": "2026-10-15T15:56:43.000Z",
+    "firstReviewAt": "2026-10-16T16:28:02.000Z",
+    "landedAt": "2026-10-28T17:43:40.000Z",
+    "reviewRounds": 2,
+    "cycleBusinessHours": 73.7825,
+    "postReviewBusinessHours": 65.26055555555556
   }
 ]
