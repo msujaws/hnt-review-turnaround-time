@@ -775,6 +775,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082632,
+    "summary": "Only show an IP Protection connection failure where it applies",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T19:48:35Z",
+    "resolvedAt": "2026-10-29T09:42:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082660,
     "summary": "Land strings for holiday promo CFRs",
     "product": "Firefox",
@@ -883,6 +892,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084724,
+    "summary": "Update copy on catastrophic error alert",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-21T17:07:19Z",
+    "resolvedAt": "2026-10-29T04:05:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085797,
+    "summary": "Turning off built-in VPN while \"Work Offline\" is enabled triggers a \"VPN isn't working right now\" error",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-26T14:42:25Z",
+    "resolvedAt": "2026-10-29T04:05:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086094,
     "summary": "The add-on infobar is displayed while on YT even if VPN is OFF if an inclusion rule is set for a different website",
     "product": "Firefox",
@@ -892,11 +919,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086176,
+    "summary": "Update website rules icon",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-27T16:07:06Z",
+    "resolvedAt": "2026-10-29T04:05:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086250,
     "summary": "Intermittent TV browser/components/ipprotection/tests/browser/browser_ipprotection_alert_manager.js | test_pending_error_shown_on_switch_to_included_tab - Test timed out",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-27T19:30:04Z",
     "resolvedAt": "2026-10-27T21:05:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086696,
+    "summary": "Flip browser.ipProtection.features.siteInclusions to true by default",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-28T17:28:24Z",
+    "resolvedAt": "2026-10-29T04:06:59Z"
   }
 ]
