@@ -64,57 +64,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2036831,
-    "summary": "Intent model classifies comparison queries w/ @mentions as search instead of ask",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-04T15:55:59Z",
-    "resolvedAt": "2026-07-31T21:51:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037622,
-    "summary": "Get security review for NL browser actions",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-06T20:20:32Z",
-    "resolvedAt": "2026-07-31T19:05:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037945,
-    "summary": "Create sports data query toolcall",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-07T16:33:30Z",
-    "resolvedAt": "2026-07-31T21:51:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2037946,
-    "summary": "Prompt engineering for sports data query toolcall",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-07T16:34:30Z",
-    "resolvedAt": "2026-07-31T21:14:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2038703,
     "summary": "Mistral 4 prompt tuning",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-05-11T15:43:45Z",
     "resolvedAt": "2026-08-13T16:16:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040435,
-    "summary": "[Models] Fix tool rounds in evaluation framework",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-18T17:25:09Z",
-    "resolvedAt": "2026-07-31T22:06:49Z"
   },
   {
     "source": "bugzilla",
@@ -208,15 +163,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052685,
-    "summary": "the summarize page button in ai sidebar with gemini fails without an error",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-04T23:42:24Z",
-    "resolvedAt": "2026-07-31T17:22:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054091,
     "summary": "Define and agree on PUWYLO contract with FE",
     "product": "Core",
@@ -250,15 +196,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-13T14:07:46Z",
     "resolvedAt": "2026-10-05T18:10:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056672,
-    "summary": "[Models] Smart Form Fill Relevant Tabs Evals",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-21T18:58:24Z",
-    "resolvedAt": "2026-07-31T15:21:20Z"
   },
   {
     "source": "bugzilla",
@@ -1108,48 +1045,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058118,
-    "summary": "[llama.cpp] LlamaCppPipeline::run does not return the generated text properly",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-27T12:21:07Z",
-    "resolvedAt": "2026-07-31T04:34:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058119,
-    "summary": "[llama.cpp] LlamaCppPipeline options are not always forwarded to llama.cpp",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-27T12:23:56Z",
-    "resolvedAt": "2026-07-31T04:34:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058122,
-    "summary": "[llama.cpp] browser_ml_native.js llama.cpp crash tests don't validate a crash happened",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-27T12:28:04Z",
-    "resolvedAt": "2026-07-31T04:34:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058247,
     "summary": "Add telemetry for PageExtractor",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-27T18:12:22Z",
     "resolvedAt": "2026-09-17T09:54:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058687,
-    "summary": "[llama.cpp] ml_llama_summarizer perf test cleanup",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-28T20:00:30Z",
-    "resolvedAt": "2026-07-31T04:34:22Z"
   },
   {
     "source": "bugzilla",
@@ -1675,33 +1576,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2037179,
-    "summary": "Track data review for rescoped feedback launch",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-05T16:57:18Z",
-    "resolvedAt": "2026-07-31T19:05:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038267,
-    "summary": "Spike: Investigate generic error spikes and improve error visibility",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-08T15:29:49Z",
-    "resolvedAt": "2026-07-31T17:20:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2040044,
-    "summary": "Support region-based Mistral availability in UI",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-15T22:26:18Z",
-    "resolvedAt": "2026-07-31T22:06:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2042932,
     "summary": "Spike: Evaluate bringing Classic Window shortcuts to Smart Window new tab",
     "product": "Core",
@@ -1954,15 +1828,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054529,
-    "summary": "[Monitor Agent][FE] Move hardcded string to locals preview file",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-13T16:50:15Z",
-    "resolvedAt": "2026-07-31T04:33:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054888,
     "summary": "The Mistral Ai model cannot distinguish related from unrelated tabs when grouping or closing them",
     "product": "Core",
@@ -2014,15 +1879,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-15T20:54:23Z",
     "resolvedAt": "2026-09-15T21:44:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055463,
-    "summary": "Clicking on a grouped mention will not redirect the user to that tab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-16T12:30:40Z",
-    "resolvedAt": "2026-07-31T04:33:56Z"
   },
   {
     "source": "bugzilla",
@@ -2149,15 +2005,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-23T23:10:29Z",
     "resolvedAt": "2026-08-06T21:21:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057503,
-    "summary": "The Smart Window Logo is out of date",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-24T13:11:18Z",
-    "resolvedAt": "2026-07-31T04:34:03Z"
   },
   {
     "source": "bugzilla",
@@ -2311,15 +2158,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-28T22:26:16Z",
     "resolvedAt": "2026-08-17T09:40:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058767,
-    "summary": "SmartWindow ToU Spotlight Modal for FR launch",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-29T02:01:36Z",
-    "resolvedAt": "2026-07-31T04:34:30Z"
   },
   {
     "source": "bugzilla",
@@ -4723,6 +4561,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-19T14:33:31Z",
     "resolvedAt": "2026-10-26T16:59:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083775,
+    "summary": "Create EN / FR callout rollout for new ATG Targeting Variable",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T14:48:16Z",
+    "resolvedAt": "2026-10-29T13:39:39Z"
   },
   {
     "source": "bugzilla",
