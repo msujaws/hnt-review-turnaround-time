@@ -3511,9 +3511,9 @@
     "createdAt": "2026-10-26T05:10:17.000Z",
     "firstReviewAt": "2026-10-27T03:03:24.000Z",
     "landedAt": "2026-10-27T03:08:09.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 5.964444444444444,
-    "postReviewBusinessHours": 0.07916666666666666
+    "postReviewBusinessHours": 0.07916666666666666,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3523,9 +3523,9 @@
     "createdAt": "2026-10-27T00:49:25.000Z",
     "firstReviewAt": "2026-10-27T00:49:35.000Z",
     "landedAt": "2026-10-27T03:07:34.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 2.3025,
-    "postReviewBusinessHours": 2.299722222222222
+    "postReviewBusinessHours": 2.299722222222222,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3535,9 +3535,9 @@
     "createdAt": "2026-10-22T20:41:33.000Z",
     "firstReviewAt": "2026-10-22T20:41:49.000Z",
     "landedAt": "2026-10-23T18:23:21.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 5.696666666666667,
-    "postReviewBusinessHours": 5.692222222222223
+    "postReviewBusinessHours": 5.692222222222223,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3547,9 +3547,9 @@
     "createdAt": "2026-10-20T15:44:34.000Z",
     "firstReviewAt": "2026-10-20T18:07:06.000Z",
     "landedAt": "2026-10-26T15:47:58.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 32.056666666666665,
-    "postReviewBusinessHours": 29.681111111111115
+    "postReviewBusinessHours": 29.681111111111115,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3559,9 +3559,9 @@
     "createdAt": "2026-10-26T15:15:40.000Z",
     "firstReviewAt": "2026-10-26T15:15:59.000Z",
     "landedAt": "2026-10-26T15:28:09.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 0.20805555555555555,
-    "postReviewBusinessHours": 0.20277777777777778
+    "postReviewBusinessHours": 0.20277777777777778,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3578,14 +3578,14 @@
   {
     "source": "github",
     "id": 1823,
+    "repo": "mozilla-services/merino-py",
     "author": "Herraj",
     "createdAt": "2026-10-26T20:02:57Z",
     "firstReviewAt": "2026-10-26T22:41:54Z",
     "landedAt": "2026-10-27T00:44:07Z",
-    "reviewRounds": 1,
-    "repo": "mozilla-services/merino-py",
     "cycleBusinessHours": 0.9508333333333333,
-    "postReviewBusinessHours": 0
+    "postReviewBusinessHours": 0,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -3631,9 +3631,9 @@
     "createdAt": "2026-10-27T01:42:06.000Z",
     "firstReviewAt": "2026-10-27T01:42:14.000Z",
     "landedAt": "2026-10-27T10:49:27.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 4.298333333333333,
-    "postReviewBusinessHours": 4.296111111111111
+    "postReviewBusinessHours": 4.296111111111111,
+    "reviewRounds": 1
   },
   {
     "source": "github",
@@ -3706,6 +3706,54 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 6.9375,
     "postReviewBusinessHours": 6.933888888888888
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-wjbmwyxvaka2oefzwmrx",
+    "revisionId": 337490,
+    "author": "nina-py",
+    "createdAt": "2026-10-28T09:16:00.000Z",
+    "firstReviewAt": "2026-10-28T09:16:48.000Z",
+    "landedAt": "2026-10-30T08:26:45.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 16,
+    "postReviewBusinessHours": 16
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-j7os4ofgz2r2gaaw7etx",
+    "revisionId": 337756,
+    "author": "Dre",
+    "createdAt": "2026-10-28T21:06:06.000Z",
+    "firstReviewAt": "2026-10-29T02:26:44.000Z",
+    "landedAt": "2026-10-29T18:37:14.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 5.518888888888889,
+    "postReviewBusinessHours": 2.6205555555555553
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-575aytglp4cxitmjexxv",
+    "revisionId": 337661,
+    "author": "Dre",
+    "createdAt": "2026-10-28T17:56:01.000Z",
+    "firstReviewAt": "2026-10-28T17:56:12.000Z",
+    "landedAt": "2026-10-29T18:29:07.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 8.551666666666668,
+    "postReviewBusinessHours": 8.548611111111112
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-cvwgzkscpn4pm6wz2t4w",
+    "revisionId": 337657,
+    "author": "ini",
+    "createdAt": "2026-10-28T17:50:41.000Z",
+    "firstReviewAt": "2026-10-28T17:52:37.000Z",
+    "landedAt": "2026-10-29T15:13:49.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 5.385555555555555,
+    "postReviewBusinessHours": 5.3533333333333335
   },
   {
     "source": "phab",

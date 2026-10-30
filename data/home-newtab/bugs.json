@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 1995391,
-    "summary": "newtabTrainhopAddon should allow co-enrollment, prioritizing the enrollment with the highest version number",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2025-10-20T19:45:58Z",
-    "resolvedAt": "2026-08-01T09:55:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2002685,
     "summary": "Firefox new-tab news-story-tiles from CBC are shown with the wrong favicon in the tile",
     "product": "Firefox",
@@ -169,6 +160,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-02-23T18:17:13Z",
     "resolvedAt": "2026-09-11T20:14:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2018718,
+    "summary": "Remove previous unit tests once fully migrated to Jest/RTL",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-23T18:34:18Z",
+    "resolvedAt": "2026-10-30T04:31:29Z"
   },
   {
     "source": "bugzilla",
@@ -322,15 +322,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-23T08:41:01Z",
     "resolvedAt": "2026-08-19T12:28:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2035221,
-    "summary": "If wallpaper list can't be queried from remote settings, wallpapers can't be uploaded.",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-27T14:49:08Z",
-    "resolvedAt": "2026-08-01T09:55:17Z"
   },
   {
     "source": "bugzilla",
@@ -694,15 +685,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057616,
-    "summary": "Automate runtime-metrics update for train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-24T16:34:17Z",
-    "resolvedAt": "2026-08-01T09:57:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057646,
     "summary": "World Clock Widget: Complete City Search",
     "product": "Firefox",
@@ -754,15 +736,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-28T16:28:18Z",
     "resolvedAt": "2026-08-07T09:49:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058878,
-    "summary": "Remove skip-if==\"nova\" for already fixed perma fail tests",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-29T10:29:52Z",
-    "resolvedAt": "2026-08-01T09:58:51Z"
   },
   {
     "source": "bugzilla",
@@ -3187,6 +3160,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080015,
+    "summary": "Add an accessible name string for the Wrexham wallpaper",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T01:55:05Z",
+    "resolvedAt": "2026-10-30T05:05:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080161,
     "summary": "Build the newtab bundles only once in clean builds, starting them as soon as pre-export does",
     "product": "Firefox",
@@ -3238,6 +3220,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-12T18:57:05Z",
     "resolvedAt": "2026-10-16T19:42:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081338,
+    "summary": "Allow privacy widget to render in the top right sidebar slot",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-13T16:32:38Z",
+    "resolvedAt": "2026-10-30T05:05:24Z"
   },
   {
     "source": "bugzilla",
@@ -3376,6 +3367,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084247,
+    "summary": "Add a sticky option to location-based topic interests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T15:01:15Z",
+    "resolvedAt": "2026-10-29T21:28:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084254,
     "summary": "Remove version 158 train-hop shim for the MozAdsEnvironment constructor in AdsClient",
     "product": "Firefox",
@@ -3412,6 +3412,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085074,
+    "summary": "A11y engineering review for New Tab carousel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-22T17:46:03Z",
+    "resolvedAt": "2026-10-29T21:20:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085146,
     "summary": "Let framed widgets load from *.merino.nonprod.webservices.mozgcp.net and *.merino.prod.webservices.mozgcp.net",
     "product": "Firefox",
@@ -3445,5 +3454,23 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-26T19:24:05Z",
     "resolvedAt": "2026-10-28T21:38:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086665,
+    "summary": "Picture-of-the-day tile briefly flickers \"sunrise\" placeholder-image (\"wallpaper-landscape-planet.svg\") on every new-tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T16:37:10Z",
+    "resolvedAt": "2026-10-30T05:06:36Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086710,
+    "summary": "Widgets auto-minimize collapse logs as a user interaction in New Tab telemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T17:46:03Z",
+    "resolvedAt": "2026-10-29T21:29:33Z"
   }
 ]
