@@ -856,6 +856,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082228,
+    "summary": "Remove or update metrics expiring at the end of Firefox 161 (2026-11-05): genai.linkpreview.*",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-15T02:08:16Z",
+    "resolvedAt": "2026-10-30T05:05:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082500,
     "summary": "[Monitor Agent][Models] Preserve the MLPA 429 error subcode so out-of-budget can be told apart from transient rate limiting",
     "product": "Core",
@@ -1033,15 +1042,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-01T16:24:26Z",
     "resolvedAt": "2026-09-02T21:27:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055291,
-    "summary": "Extract YouTube video transcripts in PageExtractor for Smart Window context",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-15T17:50:36Z",
-    "resolvedAt": "2026-08-01T09:56:09Z"
   },
   {
     "source": "bugzilla",
@@ -1531,6 +1531,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084765,
+    "summary": "chat title generation evaluations from mlpa to firefox and current tab, assistant responce added",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-21T19:50:49Z",
+    "resolvedAt": "2026-10-29T17:37:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1630,15 +1639,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049647,
-    "summary": "The Memories used panel is not displayed according to FIGMA with NOVA enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-23T11:09:36Z",
-    "resolvedAt": "2026-08-01T09:55:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050017,
     "summary": "Permanent beta-as-esr153 Hit MOZ_CRASH(Attempting to connect to non-local address! opener is [chrome://browser/content/tabbrowser/tabbrowser.js:9933:33], uri is [https://www.google.com/search?client=firefox-b-1-e&channel=entpr&q=Hello])",
     "product": "Core",
@@ -1726,15 +1726,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-07T15:24:18Z",
     "resolvedAt": "2026-08-06T09:57:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053682,
-    "summary": "The Ask and Default badge strings from the Smart bar will spill with French builds after resizing the Ask Sidebar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T07:29:53Z",
-    "resolvedAt": "2026-08-01T09:55:57Z"
   },
   {
     "source": "bugzilla",
@@ -2158,15 +2149,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-28T22:26:16Z",
     "resolvedAt": "2026-08-17T09:40:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059112,
-    "summary": "Flip mistralRelease pref to true as default",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-29T19:15:26Z",
-    "resolvedAt": "2026-08-01T09:59:10Z"
   },
   {
     "source": "bugzilla",
@@ -4114,6 +4096,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075639,
+    "summary": "AITab [FE] - Update error component strings",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T15:29:39Z",
+    "resolvedAt": "2026-10-30T09:06:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075669,
     "summary": "[Models] ATG Multilingual [FR] Evals for Clustering & Group Naming",
     "product": "Core",
@@ -4264,6 +4255,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-07T16:42:51Z",
     "resolvedAt": "2026-10-27T09:21:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079378,
+    "summary": "Add a feature callout to the text selection menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-07T17:21:20Z",
+    "resolvedAt": "2026-10-30T05:04:58Z"
   },
   {
     "source": "bugzilla",
@@ -4606,6 +4606,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-19T18:16:03Z",
     "resolvedAt": "2026-10-21T00:43:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083889,
+    "summary": "Do not show the text selection menu on pages that show their own selection menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T18:59:52Z",
+    "resolvedAt": "2026-10-29T21:28:39Z"
   },
   {
     "source": "bugzilla",
