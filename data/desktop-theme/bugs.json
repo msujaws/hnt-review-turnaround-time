@@ -502,5 +502,23 @@
     "component": "Theme",
     "filedAt": "2026-10-21T13:25:44Z",
     "resolvedAt": "2026-10-22T08:49:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085043,
+    "summary": "Make LightweightThemeConsumer pref getters global instead of per instance",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-22T16:00:35Z",
+    "resolvedAt": "2026-10-29T21:29:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086347,
+    "summary": "Attention dots are not recognizable on dark mode of Nova themes",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-28T02:11:11Z",
+    "resolvedAt": "2026-10-30T05:06:27Z"
   }
 ]
