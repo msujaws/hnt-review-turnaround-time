@@ -835,9 +835,9 @@
     "createdAt": "2026-10-22T20:20:46.000Z",
     "firstReviewAt": "2026-10-22T20:23:40.000Z",
     "landedAt": "2026-10-27T11:52:00.000Z",
-    "reviewRounds": 1,
     "cycleBusinessHours": 16.65388888888889,
-    "postReviewBusinessHours": 16.605555555555558
+    "postReviewBusinessHours": 16.605555555555558,
+    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -898,5 +898,17 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 8,
     "postReviewBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-xpz6rlgdbbhektew6jbj",
+    "revisionId": 337290,
+    "author": "ohall",
+    "createdAt": "2026-10-27T20:31:44.000Z",
+    "firstReviewAt": "2026-10-27T20:43:55.000Z",
+    "landedAt": "2026-10-29T22:10:56.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 16.47111111111111,
+    "postReviewBusinessHours": 16.268055555555556
   }
 ]

@@ -1009,6 +1009,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081257,
+    "summary": "Add PDF viewer tools to custom tabs",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-13T13:49:40Z",
+    "resolvedAt": "2026-10-30T05:05:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081770,
     "summary": "toolkit/components/extensions/test/xpcshell/test_ext_l10n.js fails with Android isolated process",
     "product": "GeckoView",
@@ -1045,6 +1054,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083941,
+    "summary": "EventDispatcher's JavaCallbackDelegate and CallbackResult are retained even after the GeckoView query returns",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-19T22:02:18Z",
+    "resolvedAt": "2026-10-29T16:08:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085012,
     "summary": "[A11y] We need branching behavior on the bottom toolbar case to ensure better focus order",
     "product": "GeckoView",
@@ -1060,5 +1078,32 @@
     "component": "General",
     "filedAt": "2026-10-28T18:28:29Z",
     "resolvedAt": "2026-10-29T09:44:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086999,
+    "summary": "Run test_android_audio.html for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-29T10:02:27Z",
+    "resolvedAt": "2026-10-29T21:29:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087010,
+    "summary": "Move the clipboard content provider declaration from AndroidManifest_overlay.jinja to AndroidManifest.xml",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-29T10:41:40Z",
+    "resolvedAt": "2026-10-29T21:29:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087095,
+    "summary": "Fix Android Java code, javadoc and unit tests flagged by newer JDKs",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-29T14:55:14Z",
+    "resolvedAt": "2026-10-30T05:07:13Z"
   }
 ]
