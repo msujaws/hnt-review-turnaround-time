@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057244,
-    "summary": "Most tests in toolkit/mozapps/update/tests/unit_updater_binary fail when run locally",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-07-23T14:41:09Z",
-    "resolvedAt": "2026-08-01T09:56:47Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058173,
     "summary": "Bound untrusted allocation sizes in libmar (Coverity CID 1459297, 1459486)",
     "product": "Toolkit",
