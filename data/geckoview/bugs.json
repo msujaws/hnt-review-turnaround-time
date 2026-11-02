@@ -19,6 +19,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1709948,
+    "summary": "[meta] Fix mochitests for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2021-05-06T20:54:37Z",
+    "resolvedAt": "2026-11-02T17:00:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1768489,
     "summary": "Intermittent org.mozilla.geckoview.test.OrientationDelegateTest#orientationUnlockByExitFullscreen | single tracking bug",
     "product": "GeckoView",
@@ -1081,6 +1090,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086735,
+    "summary": "Reuse one Gradle daemon across the Gradle runs of a CI task",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-28T18:38:01Z",
+    "resolvedAt": "2026-10-30T16:26:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086925,
+    "summary": "Generate the GeckoView JNI wrappers only in builds with a compile environment",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-29T06:25:29Z",
+    "resolvedAt": "2026-10-30T16:26:40Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086999,
     "summary": "Run test_android_audio.html for isolated process",
     "product": "GeckoView",
@@ -1105,5 +1132,14 @@
     "component": "General",
     "filedAt": "2026-10-29T14:55:14Z",
     "resolvedAt": "2026-10-30T05:07:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087464,
+    "summary": "Stop skipping remaining reftests for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-30T12:30:44Z",
+    "resolvedAt": "2026-10-30T21:48:03Z"
   }
 ]
