@@ -2215,6 +2215,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070280,
+    "summary": "Update Checklist widget dropdown/button UI",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-08T16:58:58Z",
+    "resolvedAt": "2026-10-30T16:24:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2070284,
     "summary": "The customization panel should reset when closed",
     "product": "Firefox",
@@ -3106,6 +3115,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079330,
+    "summary": "Privacy widget impressions are recorded as user events",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-07T15:31:24Z",
+    "resolvedAt": "2026-11-01T21:34:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079376,
     "summary": "Fix more newtab/lib TypeScript errors so 11 more files can be type-checked",
     "product": "Firefox",
@@ -3454,6 +3472,33 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-26T19:24:05Z",
     "resolvedAt": "2026-10-28T21:38:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085958,
+    "summary": "Allow pinning New Tab widgets to the Home space in the thematic spaces layout",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T22:32:06Z",
+    "resolvedAt": "2026-10-31T09:55:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085959,
+    "summary": "Record whether a New Tab widget is pinned to Home in widget telemetry",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T22:35:34Z",
+    "resolvedAt": "2026-10-31T09:55:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086163,
+    "summary": "Intermittent \"waiting for vsync to be disabled\" in newtab browser tests: dead about:newtab windows pile up in the privileged about: process",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-27T15:51:34Z",
+    "resolvedAt": "2026-10-31T09:55:26Z"
   },
   {
     "source": "bugzilla",
