@@ -352,11 +352,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082847,
+    "summary": "Monitor the `logins-rust-storage` rollout with Nimbus feature monitoring",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-16T11:21:15Z",
+    "resolvedAt": "2026-11-02T08:57:11Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085021,
     "summary": "Rust storage migration failure: timePasswordChanged: N exceeds the safe integer bounds",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-10-22T14:54:00Z",
     "resolvedAt": "2026-10-27T21:34:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087534,
+    "summary": "Stop prompting for the Primary Password on every startup when the logins migration keeps being canceled",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-30T15:32:03Z",
+    "resolvedAt": "2026-10-30T21:48:16Z"
   }
 ]
