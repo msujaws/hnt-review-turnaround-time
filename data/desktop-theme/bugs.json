@@ -235,6 +235,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2067038,
+    "summary": "Pre-startup skeleton UI needs to be updated for Nova redesign",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-08-27T08:44:42Z",
+    "resolvedAt": "2026-11-02T09:33:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2067215,
     "summary": "Don't force special colours for LWT in Nova",
     "product": "Firefox",
@@ -520,5 +529,23 @@
     "component": "Theme",
     "filedAt": "2026-10-28T02:11:11Z",
     "resolvedAt": "2026-10-30T05:06:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086366,
+    "summary": "Address bar suggestions cover the input when revealing the macOS fullscreen titlebar",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-28T04:06:06Z",
+    "resolvedAt": "2026-10-30T21:46:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087393,
+    "summary": "Use <meta name=color-scheme> rather than ChromeOnly magic to override prefers-color-scheme in the front-end.",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-30T07:27:06Z",
+    "resolvedAt": "2026-10-30T21:47:42Z"
   }
 ]
