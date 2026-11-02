@@ -1,41 +1,5 @@
 [
   {
-    "source": "phab",
-    "id": "PHID-DREV-aaow3ckel63h5hsxcrei",
-    "revisionId": 315752,
-    "author": "nordzilla",
-    "createdAt": "2026-07-31T22:58:42.000Z",
-    "firstReviewAt": "2026-08-03T13:46:58.000Z",
-    "landedAt": "2026-08-03T19:47:05.000Z",
-    "cycleBusinessHours": 6.784722222222222,
-    "postReviewBusinessHours": 6.001944444444445,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 221,
-    "repo": "Firefox-AI/MLPA",
-    "author": "randy-concepcion",
-    "createdAt": "2026-08-04T14:50:24Z",
-    "firstReviewAt": "2026-08-04T17:14:48Z",
-    "landedAt": "2026-08-04T18:28:19Z",
-    "cycleBusinessHours": 3.631944444444444,
-    "postReviewBusinessHours": 1.2252777777777777,
-    "reviewRounds": 1
-  },
-  {
-    "source": "github",
-    "id": 222,
-    "repo": "Firefox-AI/MLPA",
-    "author": "github-actions",
-    "createdAt": "2026-08-04T18:30:05Z",
-    "firstReviewAt": null,
-    "landedAt": "2026-08-04T18:50:04Z",
-    "cycleBusinessHours": 0.33305555555555555,
-    "postReviewBusinessHours": null,
-    "reviewRounds": 1
-  },
-  {
     "source": "github",
     "id": 223,
     "repo": "Firefox-AI/MLPA",
@@ -1858,5 +1822,29 @@
     "cycleBusinessHours": 14.971666666666666,
     "postReviewBusinessHours": 11.304722222222221,
     "reviewRounds": 1
+  },
+  {
+    "source": "github",
+    "id": 308,
+    "author": "noahpodgurski",
+    "createdAt": "2026-11-02T19:48:57Z",
+    "firstReviewAt": "2026-11-02T19:58:51Z",
+    "landedAt": "2026-11-02T20:03:01Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 0.23444444444444443,
+    "postReviewBusinessHours": 0.06944444444444445
+  },
+  {
+    "source": "github",
+    "id": 305,
+    "author": "ikchifo",
+    "createdAt": "2026-10-22T19:02:36Z",
+    "firstReviewAt": "2026-10-22T21:05:17Z",
+    "landedAt": "2026-11-02T13:41:08Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 49.95666666666667,
+    "postReviewBusinessHours": 48
   }
 ]

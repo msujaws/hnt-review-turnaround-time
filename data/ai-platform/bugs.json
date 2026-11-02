@@ -208,15 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057245,
-    "summary": "Add search_the_web dispatch to the headless chat loop",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-23T14:41:26Z",
-    "resolvedAt": "2026-08-04T20:56:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058699,
     "summary": "Develop design of passive conversation-based memories",
     "product": "Core",
@@ -775,6 +766,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079879,
+    "summary": "When a model calls multiple tool calls, only 1 is preserved in the assistant message and validation breaks",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-08T18:38:56Z",
+    "resolvedAt": "2026-10-31T09:54:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079886,
     "summary": "AiTab Smart Page is sometimes generated with no text",
     "product": "Core",
@@ -883,6 +883,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085920,
+    "summary": "Tune Gemini 3.1 FL memory tagging prompt to reduce overtagging in negative scenarios",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-26T20:35:31Z",
+    "resolvedAt": "2026-10-30T18:20:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1992419,
     "summary": "Upload symbols for onnxruntime",
     "product": "Core",
@@ -934,6 +943,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-05-15T12:50:54Z",
     "resolvedAt": "2026-09-18T04:24:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2046850,
+    "summary": "[meta] On-device memories milestone 1 - Tighten up baseline implementation",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-06-11T15:47:05Z",
+    "resolvedAt": "2026-11-02T18:54:21Z"
   },
   {
     "source": "bugzilla",
@@ -1087,15 +1105,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-31T17:33:36Z",
     "resolvedAt": "2026-08-08T09:43:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059875,
-    "summary": "Expose an isAvailable() check for native ONNX runtime",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-31T22:00:55Z",
-    "resolvedAt": "2026-08-03T22:24:20Z"
   },
   {
     "source": "bugzilla",
@@ -1585,15 +1594,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042932,
-    "summary": "Spike: Evaluate bringing Classic Window shortcuts to Smart Window new tab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-05-27T19:01:08Z",
-    "resolvedAt": "2026-08-04T23:52:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047007,
     "summary": "Add a Smart Window enabled metric to accurately count clients with Smart Window enabled",
     "product": "Core",
@@ -1837,15 +1837,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055009,
-    "summary": "Smart Form Fill: Implement core functionality",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-14T17:55:55Z",
-    "resolvedAt": "2026-08-02T09:32:16Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055066,
     "summary": "Smart Form Fill: add telemetry",
     "product": "Core",
@@ -1891,15 +1882,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056384,
-    "summary": "Create Custom Messaging Surface inside Sidebar Chatbot for SW promo",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-20T20:28:50Z",
-    "resolvedAt": "2026-08-03T22:23:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056551,
     "summary": "The Smart Window Switcher button keyboard focus ring is too thick",
     "product": "Core",
@@ -1915,15 +1897,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-21T22:26:18Z",
     "resolvedAt": "2026-08-18T09:25:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056938,
-    "summary": "[meta] Exa Integration (v0) - Text Only, no citations",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-22T16:08:09Z",
-    "resolvedAt": "2026-08-03T18:07:50Z"
   },
   {
     "source": "bugzilla",
@@ -4159,6 +4132,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2077648,
+    "summary": "Show the configured custom model name in the Smart Window model picker",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-03T06:43:37Z",
+    "resolvedAt": "2026-10-30T21:45:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078138,
     "summary": "Clicking a Tab group context chip has no functionality",
     "product": "Core",
@@ -4669,6 +4651,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-22T11:39:43Z",
     "resolvedAt": "2026-10-26T21:09:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086855,
+    "summary": "Fix dismissal issues with text selection menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T00:05:23Z",
+    "resolvedAt": "2026-10-31T09:55:35Z"
   },
   {
     "source": "bugzilla",
