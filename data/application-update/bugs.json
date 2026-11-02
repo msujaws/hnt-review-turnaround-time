@@ -223,5 +223,14 @@
     "component": "Application Update",
     "filedAt": "2026-10-06T14:21:54Z",
     "resolvedAt": "2026-10-27T16:40:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083981,
+    "summary": "Update telemetry counts the maintenance service as disabled when it's enabled",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-10-20T01:33:48Z",
+    "resolvedAt": "2026-11-02T09:41:28Z"
   }
 ]
