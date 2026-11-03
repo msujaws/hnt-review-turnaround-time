@@ -91,15 +91,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018699,
-    "summary": "Migrate simple unit tests to Jest/RTL",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-23T18:06:09Z",
-    "resolvedAt": "2026-08-05T09:24:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2018702,
     "summary": "Migrate simple Redux unit tests to Jest/RTL",
     "product": "Firefox",
@@ -397,24 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2046946,
-    "summary": "Add WebNotifications badge to top sites",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T19:56:58Z",
-    "resolvedAt": "2026-08-05T09:24:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046947,
-    "summary": "Add TopSites hover card with notifications",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-11T19:59:50Z",
-    "resolvedAt": "2026-08-05T09:24:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048082,
     "summary": "WorldCW - Celebration animation phase 2",
     "product": "Firefox",
@@ -448,15 +421,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-23T16:40:12Z",
     "resolvedAt": "2026-09-22T19:19:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050377,
-    "summary": "[Nova] The “Learn how we protect your data” link from the “NEWTAB_PERSONALIZATION_MESSAGE” displays a blue and non‑rounded focus outline",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-25T09:37:03Z",
-    "resolvedAt": "2026-08-05T09:24:43Z"
   },
   {
     "source": "bugzilla",
@@ -538,15 +502,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-10T21:04:36Z",
     "resolvedAt": "2026-10-17T03:42:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054391,
-    "summary": "Capture web notifications into a live New Tab slice",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-12T21:59:52Z",
-    "resolvedAt": "2026-08-05T09:24:52Z"
   },
   {
     "source": "bugzilla",
@@ -685,15 +640,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057646,
-    "summary": "World Clock Widget: Complete City Search",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-24T19:07:46Z",
-    "resolvedAt": "2026-08-05T04:30:22Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057675,
     "summary": "Add CI smoke test / coverage for the newtab trainhop langpack observer re-entranccy bug",
     "product": "Firefox",
@@ -748,15 +694,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059095,
-    "summary": "Use MAC in DiscoveryStreamFeed for fetching tiles from MARS",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-29T18:30:30Z",
-    "resolvedAt": "2026-08-05T04:30:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059104,
     "summary": "Automate locales update for train-hop",
     "product": "Firefox",
@@ -772,24 +709,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-30T20:47:46Z",
     "resolvedAt": "2026-10-27T22:16:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059741,
-    "summary": "Crossword widget double-counts actions and includes too many catch-all \"interaction\" user_actions",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-31T13:25:24Z",
-    "resolvedAt": "2026-08-05T09:25:27Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059811,
-    "summary": "Fix issue with the \"Show more widgets\" visibility",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-31T17:26:26Z",
-    "resolvedAt": "2026-08-05T09:25:34Z"
   },
   {
     "source": "bugzilla",
@@ -817,6 +736,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-03T18:24:39Z",
     "resolvedAt": "2026-08-08T09:43:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060321,
+    "summary": "Fix `newtab_content.click` missing context menu triggers",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-03T18:24:46Z",
+    "resolvedAt": "2026-11-02T15:36:13Z"
   },
   {
     "source": "bugzilla",
@@ -997,6 +925,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-07T15:09:27Z",
     "resolvedAt": "2026-08-22T21:27:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061813,
+    "summary": "Notify newtab when a link is opened from the native context menu",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-07T17:43:44Z",
+    "resolvedAt": "2026-11-02T15:34:09Z"
   },
   {
     "source": "bugzilla",
@@ -3250,6 +3187,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081342,
+    "summary": "Add a \"small\" size to the Privacy widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-13T16:37:03Z",
+    "resolvedAt": "2026-11-03T04:14:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081527,
     "summary": "Add MAC status display to HNT devtools",
     "product": "Firefox",
@@ -3412,6 +3358,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084392,
+    "summary": "In new-tab page's 3-dot menus (with panel-list component), clicking-and-dragging on the menu will grab the widget-tile and drag that tile around",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T21:56:43Z",
+    "resolvedAt": "2026-11-03T08:02:19Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084814,
     "summary": "Crossword: Use the shared Powered by menu component",
     "product": "Firefox",
@@ -3517,5 +3472,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-28T17:46:03Z",
     "resolvedAt": "2026-10-29T21:29:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086804,
+    "summary": "Default custom shortcut URLs to https instead of http when no scheme is typed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T21:29:14Z",
+    "resolvedAt": "2026-11-03T08:02:29Z"
   }
 ]
