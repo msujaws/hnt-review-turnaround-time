@@ -28,15 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053220,
-    "summary": "Remove testing XPI base url pref from ThemesList.sys.mjs",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-07T18:29:28Z",
-    "resolvedAt": "2026-08-05T21:47:59Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054183,
     "summary": "Remove Nova outer window padding when the window is maximized",
     "product": "Firefox",
@@ -61,15 +52,6 @@
     "component": "Theme",
     "filedAt": "2026-07-14T19:53:10Z",
     "resolvedAt": "2026-08-31T16:35:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057058,
-    "summary": "Telemetry metric for Nova adoption",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-23T00:45:36Z",
-    "resolvedAt": "2026-08-05T09:24:59Z"
   },
   {
     "source": "bugzilla",
@@ -487,6 +469,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082903,
+    "summary": "Remove `browser.nova.enabled=false` coverage from usage telemetry tests",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-10-16T13:01:36Z",
+    "resolvedAt": "2026-11-02T22:17:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083168,
     "summary": "LightweightThemeConsumer throws when theme prefs change after its window was closed",
     "product": "Firefox",
@@ -547,5 +538,14 @@
     "component": "Theme",
     "filedAt": "2026-10-30T07:27:06Z",
     "resolvedAt": "2026-10-30T21:47:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087986,
+    "summary": "Draw the skeleton UI with Nova colors",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-11-02T09:32:09Z",
+    "resolvedAt": "2026-11-02T22:19:08Z"
   }
 ]
