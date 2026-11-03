@@ -217,15 +217,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059553,
-    "summary": "Send more user messages to relevant memories retrieval to increase recall",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-30T19:40:01Z",
-    "resolvedAt": "2026-08-05T04:30:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059863,
     "summary": "Nudge the assistant to fold relevant memories into the search_the_web query",
     "product": "Core",
@@ -703,6 +694,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074130,
+    "summary": "Journey metadata is created and persisted from memories",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T14:58:54Z",
+    "resolvedAt": "2026-11-03T08:01:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074131,
+    "summary": "Back PUWYLO functionality with new persisted journeys",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T14:59:51Z",
+    "resolvedAt": "2026-11-03T08:01:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074133,
+    "summary": "Implement new functionality to service PUWYLO Cards design",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-21T15:01:14Z",
+    "resolvedAt": "2026-11-03T08:01:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074214,
     "summary": "Provide location data for Smart Window weather integration",
     "product": "Core",
@@ -874,6 +892,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082844,
+    "summary": "Implement the Guest-Mode for SmartWindow",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-16T11:14:20Z",
+    "resolvedAt": "2026-11-03T08:43:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083192,
+    "summary": "[Models] Record name of judge model in LLMaJ runs",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-16T21:42:22Z",
+    "resolvedAt": "2026-11-03T04:14:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083718,
     "summary": "Run memories competitor analysis",
     "product": "Core",
@@ -883,12 +919,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083856,
+    "summary": "AiTab [models] generated tables rarely show links",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-19T18:06:38Z",
+    "resolvedAt": "2026-11-03T04:14:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085920,
     "summary": "Tune Gemini 3.1 FL memory tagging prompt to reduce overtagging in negative scenarios",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-10-26T20:35:31Z",
     "resolvedAt": "2026-10-30T18:20:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086555,
+    "summary": "TelemetryScheduler writes browser.smartwindow.lastLLMTelemetryRunTime after XPCOMShutdownThreads",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-28T11:26:25Z",
+    "resolvedAt": "2026-11-03T16:49:14Z"
   },
   {
     "source": "bugzilla",
@@ -1069,6 +1123,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-27T18:12:22Z",
     "resolvedAt": "2026-09-17T09:54:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2058478,
+    "summary": "Device discovery and placement API for the llama.cpp engine",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-28T12:39:19Z",
+    "resolvedAt": "2026-11-03T04:13:36Z"
   },
   {
     "source": "bugzilla",
@@ -1522,6 +1585,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080324,
+    "summary": "Drop provisional and broken device selection API from PipelineOptions",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-09T19:35:03Z",
+    "resolvedAt": "2026-11-03T04:14:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080429,
     "summary": "Perma perftest toolkit/components/ml/tests/browser/browser_ml_autofill_perf.js | test_ml_autofill_two_head_accuracy - Uncaught exception in test - TypeError: (intermediate value).splitContext is not a function",
     "product": "Core",
@@ -1546,6 +1618,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-10-21T19:50:49Z",
     "resolvedAt": "2026-10-29T17:37:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088295,
+    "summary": "Perma [tier2] toolkit/components/aboutinference/tests/browser/browser_aboutinference.js | test_about_inference_devices - Only one tab should be focusable | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-03T00:27:09Z",
+    "resolvedAt": "2026-11-03T00:55:35Z"
   },
   {
     "source": "bugzilla",
@@ -1591,6 +1672,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-17T19:00:07Z",
     "resolvedAt": "2026-08-20T16:41:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2025711,
+    "summary": "Sidebar browser leaks inner window when toggling out of AI Window mode",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-24T08:48:20Z",
+    "resolvedAt": "2026-11-03T16:47:31Z"
   },
   {
     "source": "bugzilla",
@@ -1945,15 +2035,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057255,
-    "summary": "[Monitor Agent][FE] Add Monitor agent telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-23T15:15:18Z",
-    "resolvedAt": "2026-08-05T04:30:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057277,
     "summary": "The History Grid will not show any image previews if the user asks the assistant for specific pages from history",
     "product": "Core",
@@ -2035,15 +2116,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058205,
-    "summary": "Complete SW Organize Tabs v0 Styling",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T16:20:18Z",
-    "resolvedAt": "2026-08-05T04:30:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058218,
     "summary": "Smart Window ATG Telemetry v0",
     "product": "Core",
@@ -2080,30 +2152,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058270,
-    "summary": "Gate Smart Window ATG/'Organize Tabs' button to minimum user RAM",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T19:40:53Z",
-    "resolvedAt": "2026-08-05T09:25:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058311,
     "summary": "SW Organize Tabs v0 - UI Fixes for v0",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-27T21:40:21Z",
     "resolvedAt": "2026-08-27T09:54:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058329,
-    "summary": "[Monitor Agent][FE] Add about link to monitor create success",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T22:40:02Z",
-    "resolvedAt": "2026-08-05T21:48:39Z"
   },
   {
     "source": "bugzilla",
@@ -2215,15 +2269,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059806,
-    "summary": "Add 'Close Duplicate Tabs' button to Smart Window's Auto Tab Grouping and fix menu flyout bug",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-31T16:59:59Z",
-    "resolvedAt": "2026-08-05T04:30:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059831,
     "summary": "Remove convId from Smart Window feedback chat telemetry",
     "product": "Core",
@@ -2266,15 +2311,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-03T15:41:37Z",
     "resolvedAt": "2026-08-11T09:23:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060397,
-    "summary": "Smart Window semantic search should have it's own threshold preference",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-03T23:29:21Z",
-    "resolvedAt": "2026-08-05T04:31:08Z"
   },
   {
     "source": "bugzilla",
@@ -3709,6 +3745,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070808,
+    "summary": "High frequency browser/components/aiwindow/ui/test/browser/browser_aiwindow_group_tabs_button_model.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-10T07:09:36Z",
+    "resolvedAt": "2026-11-03T16:47:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071029,
     "summary": "AITab [FE] - exclude about:smartpage URLs from Sync",
     "product": "Core",
@@ -3781,6 +3826,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071563,
+    "summary": "High frequency browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_suggestions.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-12T11:12:41Z",
+    "resolvedAt": "2026-11-03T16:47:55Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071887,
     "summary": "The Menus/Panels from the Smart Window homepage will move position if the user Holds the left mouse click and releases it anywhere else",
     "product": "Core",
@@ -3796,6 +3850,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-14T16:01:36Z",
     "resolvedAt": "2026-09-22T21:17:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2071986,
+    "summary": "[Monitor Agent][FE] After canceling a watch task, the assistant denies anything was canceled when asked",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-14T18:51:54Z",
+    "resolvedAt": "2026-11-03T04:13:52Z"
   },
   {
     "source": "bugzilla",
@@ -4123,6 +4186,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076627,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_get_page_content_timeout.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-30T06:18:40Z",
+    "resolvedAt": "2026-11-03T16:48:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2077473,
     "summary": "Consider improving the styling of the AI Chatbot dropdown when no provider is selected",
     "product": "Core",
@@ -4147,6 +4219,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-05T08:49:22Z",
     "resolvedAt": "2026-10-16T09:46:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078186,
+    "summary": "The AI model cannot close Pinned tabs when asked via Natural language",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-05T11:50:21Z",
+    "resolvedAt": "2026-11-02T22:16:47Z"
   },
   {
     "source": "bugzilla",
@@ -4291,6 +4372,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-08T18:35:06Z",
     "resolvedAt": "2026-10-10T08:52:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079875,
+    "summary": "AiTab [models] Show the Highlights component later in the Smart Page instead of at the top",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-08T18:35:52Z",
+    "resolvedAt": "2026-11-03T08:01:38Z"
   },
   {
     "source": "bugzilla",
@@ -4501,6 +4591,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082883,
+    "summary": "Remove `browser.nova.enabled=false` coverage from AI chatbot tests",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-16T12:38:51Z",
+    "resolvedAt": "2026-11-03T08:02:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082978,
     "summary": "AITab [FE] - Open in new tab: Smart Page should open next to originating tab",
     "product": "Core",
@@ -4573,6 +4672,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083841,
+    "summary": "ATG EN_GB Dataset Updates, Prompt Tuning & Evals",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:42:37Z",
+    "resolvedAt": "2026-11-03T16:22:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083844,
+    "summary": "ATG EN_GB Callout Rollout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:45:20Z",
+    "resolvedAt": "2026-11-03T16:25:21Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083845,
+    "summary": "ATG EN_GB: Test GB Locale Build (QA)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:46:07Z",
+    "resolvedAt": "2026-11-03T16:30:19Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083857,
     "summary": "Do not show the text selection menu for text selected in a textarea",
     "product": "Core",
@@ -4627,6 +4753,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084354,
+    "summary": "Add a widget-generation ML feature and purpose",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-20T19:14:33Z",
+    "resolvedAt": "2026-11-03T04:14:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084417,
     "summary": "AITab [FE] - Refresh Smart Page tabs on focus if the page's content has changed",
     "product": "Core",
@@ -4663,6 +4798,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086856,
+    "summary": "Match the text selection menu layout, sizes and placement to the Highlight to Search UX prototype",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T00:10:18Z",
+    "resolvedAt": "2026-11-03T08:02:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2056645,
     "summary": "remove world cup-related tool calls",
     "product": "Core",
@@ -4696,6 +4840,15 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-14T17:52:39Z",
     "resolvedAt": "2026-08-21T15:52:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2064487,
+    "summary": "Add global backoff to telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-18T18:46:46Z",
+    "resolvedAt": "2026-11-03T04:13:47Z"
   },
   {
     "source": "bugzilla",

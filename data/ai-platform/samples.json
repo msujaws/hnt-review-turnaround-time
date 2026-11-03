@@ -1,16 +1,6 @@
 [
   {
     "source": "github",
-    "id": 224,
-    "repo": "Firefox-AI/MLPA",
-    "author": "noahpodgurski",
-    "reviewer": "randy-concepcion",
-    "requestedAt": "2026-08-05T12:18:57Z",
-    "firstActionAt": "2026-08-05T13:31:22Z",
-    "tatBusinessHours": 0.5227777777777778
-  },
-  {
-    "source": "github",
     "id": 225,
     "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
@@ -18,26 +8,6 @@
     "requestedAt": "2026-08-06T13:32:38Z",
     "firstActionAt": "2026-08-06T13:38:48Z",
     "tatBusinessHours": 0.10277777777777779
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-vwt3ze5t6ni2jfcnyq2t",
-    "revisionId": 316126,
-    "author": "thasan",
-    "reviewer": "nordzilla",
-    "requestedAt": "2026-08-05T21:08:26.000Z",
-    "firstActionAt": "2026-08-07T17:46:05.000Z",
-    "tatBusinessHours": 12.768055555555554
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-hdiuzmbc4nryi2bwa4kl",
-    "revisionId": 310941,
-    "author": "jbowser",
-    "reviewer": "nordzilla",
-    "requestedAt": "2026-08-05T09:10:57.000Z",
-    "firstActionAt": "2026-08-12T16:17:14.000Z",
-    "tatBusinessHours": 43.28722222222222
   },
   {
     "source": "phab",
@@ -1658,5 +1628,15 @@
     "firstActionAt": "2026-11-02T12:49:04Z",
     "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 49.36138888888889
+  },
+  {
+    "source": "github",
+    "id": 307,
+    "author": "subpath",
+    "reviewer": "noahpodgurski",
+    "requestedAt": "2026-11-02T17:26:01Z",
+    "firstActionAt": "2026-11-03T13:16:28Z",
+    "repo": "Firefox-AI/MLPA",
+    "tatBusinessHours": 4.5663888888888895
   }
 ]
