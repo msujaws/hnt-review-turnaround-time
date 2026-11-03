@@ -208,24 +208,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060821,
-    "summary": "[Rollout] The messages of the “Built‑in VPN Beta – Summer promo off‑ramp messaging rollout” have no chance to be shown to clients, as there is no VPN Toolbar button available after enrolling in the rollout",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-05T10:46:56Z",
-    "resolvedAt": "2026-08-05T13:15:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060845,
-    "summary": "[Experiment and Rollout] The clients can be enrolled in both “Built‑in VPN Beta – Summer promo off‑ramp messaging rollout” and “Built‑in VPN Beta – Summer promo default browser experiment” at the same time",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-05T11:58:39Z",
-    "resolvedAt": "2026-08-05T13:16:52Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061171,
     "summary": "[Experiment] The “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_PROMO” experiment message is displayed to clients even when Firefox is already set as the default browser",
     "product": "Firefox",
@@ -478,6 +460,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2070596,
+    "summary": "Location list shows full list instead of short list on first opening of the VPN panel in a new profile",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-09T15:35:10Z",
+    "resolvedAt": "2026-11-02T16:27:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2073989,
     "summary": "[META] [QA] [QA-5765] QA request for Free VPN integration (Fx 158)",
     "product": "Firefox",
@@ -511,6 +502,15 @@
     "component": "IP Protection",
     "filedAt": "2026-09-22T08:38:22Z",
     "resolvedAt": "2026-09-24T04:57:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2074414,
+    "summary": "Borders overlap between the error message container and the Settings area in High Contrast Mode",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-09-22T10:26:58Z",
+    "resolvedAt": "2026-11-02T15:38:50Z"
   },
   {
     "source": "bugzilla",
