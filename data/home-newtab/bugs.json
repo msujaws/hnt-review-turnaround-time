@@ -388,15 +388,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048082,
-    "summary": "WorldCW - Celebration animation phase 2",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-16T20:29:07Z",
-    "resolvedAt": "2026-08-06T16:11:32Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048387,
     "summary": "Wire Privacy widget to PrivacyMetricsService display state",
     "product": "Firefox",
@@ -649,15 +640,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057871,
-    "summary": "browser_newtab_last_LinkMenu.js fails on Linux 22.04 when browser.nova.enabled is true",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-26T15:26:20Z",
-    "resolvedAt": "2026-08-06T09:58:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058284,
     "summary": "Add Section Layout Name (String) telemetry to newtab content impression & click events",
     "product": "Firefox",
@@ -667,30 +649,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058485,
-    "summary": "Update incorrect/missing nova-cleanup comments",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-28T12:55:20Z",
-    "resolvedAt": "2026-08-06T09:58:58Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058567,
     "summary": "Enable Glean telemetry for AdsClient by implementing MozAdsTelemetry against FOG",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-07-28T16:28:18Z",
     "resolvedAt": "2026-08-07T09:49:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058938,
-    "summary": "Enable remote settings driven sections layout in Nightly",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-29T14:29:54Z",
-    "resolvedAt": "2026-08-06T09:59:06Z"
   },
   {
     "source": "bugzilla",
@@ -793,15 +757,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060749,
-    "summary": "Stocks widget: add widgets.stocks.interaction and flip it on user actions",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T06:15:55Z",
-    "resolvedAt": "2026-08-06T10:00:16Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060787,
     "summary": "Migrate the Stocks widget telemetry to the shared useWidgetTelemetry hook",
     "product": "Firefox",
@@ -826,15 +781,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-05T18:25:36Z",
     "resolvedAt": "2026-08-11T09:24:01Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060964,
-    "summary": "Fix spoc request building in DiscoveryStream with MAC",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T19:16:45Z",
-    "resolvedAt": "2026-08-06T10:00:48Z"
   },
   {
     "source": "bugzilla",
@@ -3475,11 +3421,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086757,
+    "summary": "New Tab turn on grouped pins by default in Release",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T19:16:08Z",
+    "resolvedAt": "2026-11-04T09:50:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086804,
     "summary": "Default custom shortcut URLs to https instead of http when no scheme is typed",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-10-28T21:29:14Z",
     "resolvedAt": "2026-11-03T08:02:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088608,
+    "summary": "Newtab test failing",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-03T17:37:52Z",
+    "resolvedAt": "2026-11-04T09:52:18Z"
   }
 ]
