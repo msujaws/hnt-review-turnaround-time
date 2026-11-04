@@ -91,6 +91,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2047876,
+    "summary": "Perma subprocess.CalledProcessError: Command '['git', 'clone', '-n', 'https://huggingface.co/Mozilla/smart-tab-topic', '/tmp/tmph_40b31n/onnx-models/Mozilla/smart-tab-topic/main']' returned non-zero exit status 128.",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-06-16T09:34:55Z",
+    "resolvedAt": "2026-11-04T09:45:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2048659,
     "summary": "Add 'topic' argument to get_topn_tabs tool",
     "product": "Core",
@@ -676,6 +685,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073709,
+    "summary": "Intermittent browser/components/aiwindow/models/tests/browser/browser_utils_records_cache.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-09-18T21:02:42Z",
+    "resolvedAt": "2026-11-03T18:27:58Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074126,
     "summary": "Implement Journey Manager interface that calls existing resume-activity functions",
     "product": "Core",
@@ -928,6 +946,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083978,
+    "summary": "Add Smart Window Nimbus variables for the auth provider and guest sign-in mode",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-20T01:13:02Z",
+    "resolvedAt": "2026-11-04T09:48:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085920,
     "summary": "Tune Gemini 3.1 FL memory tagging prompt to reduce overtagging in negative scenarios",
     "product": "Core",
@@ -942,7 +969,7 @@
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-10-28T11:26:25Z",
-    "resolvedAt": "2026-11-03T16:49:14Z"
+    "resolvedAt": "2026-11-04T09:49:44Z"
   },
   {
     "source": "bugzilla",
@@ -1585,6 +1612,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080323,
+    "summary": "about:inference clean-up for HWInference",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-09T19:31:19Z",
+    "resolvedAt": "2026-11-04T09:47:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080324,
     "summary": "Drop provisional and broken device selection API from PipelineOptions",
     "product": "Core",
@@ -1680,7 +1716,7 @@
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-24T08:48:20Z",
-    "resolvedAt": "2026-11-03T16:47:31Z"
+    "resolvedAt": "2026-11-04T09:45:25Z"
   },
   {
     "source": "bugzilla",
@@ -1735,15 +1771,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-24T11:09:12Z",
     "resolvedAt": "2026-08-25T21:42:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050078,
-    "summary": "The Jump to bottom arrow is displayed for an empty sidebar when switching tabs from a populated one",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-24T13:43:05Z",
-    "resolvedAt": "2026-08-06T09:57:44Z"
   },
   {
     "source": "bugzilla",
@@ -1810,30 +1837,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053143,
-    "summary": "Fix Smart Window icon visibility in Settings (dark theme)",
+    "id": 2053495,
+    "summary": "Remove mistralRelease pref after Fx155 releases",
     "product": "Core",
     "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-07T15:24:18Z",
-    "resolvedAt": "2026-08-06T09:57:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053889,
-    "summary": "Allow Action Log context chips to wrap or scroll within available space",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T18:57:58Z",
-    "resolvedAt": "2026-08-06T09:57:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053925,
-    "summary": "Replace NL Action Log with dedicated action confirmation UI",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T20:56:04Z",
-    "resolvedAt": "2026-08-06T21:21:15Z"
+    "filedAt": "2026-07-08T17:02:34Z",
+    "resolvedAt": "2026-11-04T09:45:45Z"
   },
   {
     "source": "bugzilla",
@@ -1861,15 +1870,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-09T22:13:31Z",
     "resolvedAt": "2026-08-13T04:26:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054045,
-    "summary": "Ask on New Tab in urlbar should initiate a chat in the fullpage assistant",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-10T12:17:47Z",
-    "resolvedAt": "2026-08-06T09:57:59Z"
   },
   {
     "source": "bugzilla",
@@ -1954,15 +1954,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055660,
-    "summary": "Support opening and grouping tabs from the tab-selection confirmation card",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-16T21:47:14Z",
-    "resolvedAt": "2026-08-06T09:58:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056187,
     "summary": "The Smart Window Icon is not displayed when pinned to the overflow menu",
     "product": "Core",
@@ -2026,30 +2017,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057237,
-    "summary": "Connect citation component with assistant Exa source citations (v1)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-23T14:29:29Z",
-    "resolvedAt": "2026-08-06T09:58:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057277,
     "summary": "The History Grid will not show any image previews if the user asks the assistant for specific pages from history",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-23T16:16:29Z",
     "resolvedAt": "2026-08-07T20:10:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057370,
-    "summary": "[Monitor Agent][FE] Monitor Card UI clean up",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-23T23:10:29Z",
-    "resolvedAt": "2026-08-06T21:21:29Z"
   },
   {
     "source": "bugzilla",
@@ -3750,7 +3723,7 @@
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-10T07:09:36Z",
-    "resolvedAt": "2026-11-03T16:47:46Z"
+    "resolvedAt": "2026-11-04T09:46:02Z"
   },
   {
     "source": "bugzilla",
@@ -3831,7 +3804,7 @@
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-12T11:12:41Z",
-    "resolvedAt": "2026-11-03T16:47:55Z"
+    "resolvedAt": "2026-11-04T09:46:10Z"
   },
   {
     "source": "bugzilla",
@@ -3940,6 +3913,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-17T00:36:22Z",
     "resolvedAt": "2026-09-19T09:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072806,
+    "summary": "AITab [FE] - Clicking Stop button in chat assistant should abort in-flight AITab generation",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-17T02:13:30Z",
+    "resolvedAt": "2026-11-04T09:46:23Z"
   },
   {
     "source": "bugzilla",
@@ -4191,7 +4173,7 @@
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-30T06:18:40Z",
-    "resolvedAt": "2026-11-03T16:48:18Z"
+    "resolvedAt": "2026-11-04T09:47:03Z"
   },
   {
     "source": "bugzilla",
@@ -4483,6 +4465,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081214,
+    "summary": "The Hide for now button has no pressed state with High contrast enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-13T11:56:08Z",
+    "resolvedAt": "2026-11-04T09:47:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081296,
     "summary": "Add 200 tab limit on number of tabs to process for Auto Tab Grouping",
     "product": "Core",
@@ -4726,6 +4717,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083952,
+    "summary": "Implement OMC feature callouts for AITAb (Smart pages)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T23:14:50Z",
+    "resolvedAt": "2026-11-04T09:48:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083956,
     "summary": "AITab: Show text response rather than button widget after modification",
     "product": "Core",
@@ -4771,6 +4771,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084445,
+    "summary": "Add telemetry for the Smart Window guest sign-in flow",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-21T01:20:48Z",
+    "resolvedAt": "2026-11-04T09:48:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084612,
     "summary": "The \"{-brand-short-name}\" Error is displayed when restarting the browser during a Monitor check",
     "product": "Core",
@@ -4786,6 +4795,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-22T11:39:43Z",
     "resolvedAt": "2026-10-26T21:09:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086741,
+    "summary": "[Research Agent][FE] Add a reusable clarifying question card for Smart Window AI flows",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-28T18:44:10Z",
+    "resolvedAt": "2026-11-04T09:49:56Z"
   },
   {
     "source": "bugzilla",
