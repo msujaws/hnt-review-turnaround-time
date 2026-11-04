@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052153,
-    "summary": "The edit button inside the passwords dropdown is not read by the screen reader upon hovering the mouse over it",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-02T11:19:10Z",
-    "resolvedAt": "2026-08-06T09:57:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057888,
     "summary": "browser_autocomplete_import.js fails on Linux 22.04 when browser.nova.enabled is true",
     "product": "Toolkit",
