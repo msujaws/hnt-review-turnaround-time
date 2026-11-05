@@ -1,15 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 2040610,
-    "summary": "Consider disabling \"Share folder\" context menu item for empty folders",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-05-19T10:09:27Z",
-    "resolvedAt": "2026-08-07T04:26:51Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052256,
     "summary": "Add share button to url bar",
     "product": "Firefox",
@@ -97,15 +88,6 @@
     "component": "Sharing",
     "filedAt": "2026-07-02T16:33:52Z",
     "resolvedAt": "2026-08-27T09:54:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055255,
-    "summary": "Referrals: Use referral attribution in startup ping and then remove",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-07-15T15:43:57Z",
-    "resolvedAt": "2026-08-07T04:27:19Z"
   },
   {
     "source": "bugzilla",
