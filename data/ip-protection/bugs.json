@@ -82,15 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051225,
-    "summary": "VPN panel briefly displays loading state every time it is opened while in paused state",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-06-29T08:52:53Z",
-    "resolvedAt": "2026-08-07T20:09:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052864,
     "summary": "Stale / Erronus ServerList Cache is persisted until the next Bucket update",
     "product": "Firefox",
@@ -106,15 +97,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-12T11:03:14Z",
     "resolvedAt": "2026-09-22T12:23:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054514,
-    "summary": "ProxyPass infinite refresh-loop when the System-Clock has drifted more then 15minutes.",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-13T15:30:29Z",
-    "resolvedAt": "2026-08-06T21:21:17Z"
   },
   {
     "source": "bugzilla",
@@ -205,24 +187,6 @@
     "component": "IP Protection",
     "filedAt": "2026-08-05T10:42:54Z",
     "resolvedAt": "2026-09-11T06:46:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061171,
-    "summary": "[Experiment] The “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_PROMO” experiment message is displayed to clients even when Firefox is already set as the default browser",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-06T11:39:33Z",
-    "resolvedAt": "2026-08-06T14:23:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061274,
-    "summary": "Add a new pref to gate the site inclusions feature",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-06T14:47:13Z",
-    "resolvedAt": "2026-08-07T20:13:29Z"
   },
   {
     "source": "bugzilla",
@@ -946,11 +910,38 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087493,
+    "summary": "Website with \"Always On\" rule routes through Recommended location instead of selected location after signing out and back in",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-30T13:35:50Z",
+    "resolvedAt": "2026-11-03T21:49:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2087602,
     "summary": "Update isPremium check so that unlimited bandwidth does not gate locations",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-10-30T18:04:59Z",
     "resolvedAt": "2026-10-31T09:56:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088104,
+    "summary": "Inclusion promo displayed for excluded website",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-02T15:26:07Z",
+    "resolvedAt": "2026-11-03T21:50:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088515,
+    "summary": "[a11y] VPN panel fails to dismiss or update content when switching tabs via keyboard shortcuts",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-03T15:03:40Z",
+    "resolvedAt": "2026-11-05T05:11:31Z"
   }
 ]
