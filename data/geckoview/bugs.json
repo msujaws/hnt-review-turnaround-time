@@ -28,6 +28,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1753174,
+    "summary": "Intermittent org.mozilla.geckoview.test.WebExecutorTest#readTimeout[#normal] | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2022-02-02T08:55:32Z",
+    "resolvedAt": "2026-11-05T05:08:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1768489,
     "summary": "Intermittent org.mozilla.geckoview.test.OrientationDelegateTest#orientationUnlockByExitFullscreen | single tracking bug",
     "product": "GeckoView",
@@ -370,15 +379,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060976,
-    "summary": "Build the apilint plugin with the Kotlin DSL and enforce its Kotlin formatting",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-05T20:08:43Z",
-    "resolvedAt": "2026-08-07T10:03:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061270,
     "summary": "[Fenix] Add Secret Setting to control new PDF toolbar",
     "product": "GeckoView",
@@ -403,15 +403,6 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-06T14:59:10Z",
     "resolvedAt": "2026-08-27T03:43:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061549,
-    "summary": "Expand the apilint plugin's test coverage and make its test tasks skippable",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-06T23:48:32Z",
-    "resolvedAt": "2026-08-07T20:13:44Z"
   },
   {
     "source": "bugzilla",
@@ -1009,6 +1000,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081459,
+    "summary": "Intermittent org.mozilla.geckoview.test.OrientationDelegateTest#orientationLockKeptWhenUnlockedIframeIsRemoved | single tracking bug",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-13T20:19:05Z",
+    "resolvedAt": "2026-11-05T05:09:23Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081770,
     "summary": "toolkit/components/extensions/test/xpcshell/test_ext_l10n.js fails with Android isolated process",
     "product": "GeckoView",
@@ -1132,5 +1132,23 @@
     "component": "General",
     "filedAt": "2026-10-30T12:30:44Z",
     "resolvedAt": "2026-10-30T21:48:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087908,
+    "summary": "GeckoView's junit test server depends on the unmaintained AndroidAsync library",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-01T22:07:17Z",
+    "resolvedAt": "2026-11-05T16:14:55Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089508,
+    "summary": "Allow perf tries to run against obfuscated builds",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-05T11:29:15Z",
+    "resolvedAt": "2026-11-05T16:17:32Z"
   }
 ]
