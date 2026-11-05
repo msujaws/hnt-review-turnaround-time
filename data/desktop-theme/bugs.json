@@ -28,24 +28,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054183,
-    "summary": "Remove Nova outer window padding when the window is maximized",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-10T19:36:46Z",
-    "resolvedAt": "2026-08-07T04:27:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054481,
-    "summary": "Sidebar custom theme sidebar_border color is missing when Nova is enabled",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-13T13:55:37Z",
-    "resolvedAt": "2026-08-07T20:09:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055043,
     "summary": "browser_test_position_sticky.js reftest comparison fails when Nova is enabled",
     "product": "Firefox",
@@ -79,15 +61,6 @@
     "component": "Theme",
     "filedAt": "2026-07-28T14:37:34Z",
     "resolvedAt": "2026-08-21T09:57:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058525,
-    "summary": "Inconsistent color scheme between context menu and its submenu",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-28T14:40:42Z",
-    "resolvedAt": "2026-08-07T20:10:15Z"
   },
   {
     "source": "bugzilla",
