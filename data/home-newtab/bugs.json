@@ -262,15 +262,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2025793,
-    "summary": "Stop including activity-stream.bundle.js and vendor.bundle.js in the source tree",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-24T14:18:11Z",
-    "resolvedAt": "2026-08-07T20:08:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2028152,
     "summary": "Remove deprecated batch() usage from react-redux in New Tab",
     "product": "Firefox",
@@ -649,24 +640,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058567,
-    "summary": "Enable Glean telemetry for AdsClient by implementing MozAdsTelemetry against FOG",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-28T16:28:18Z",
-    "resolvedAt": "2026-08-07T09:49:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059104,
-    "summary": "Automate locales update for train-hop",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-29T19:05:20Z",
-    "resolvedAt": "2026-08-07T04:27:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059567,
     "summary": "Exclude religious imagery from picture of the day widget",
     "product": "Firefox",
@@ -721,15 +694,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060323,
-    "summary": "Add topsite display customization event to newtab ping",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-03T18:24:55Z",
-    "resolvedAt": "2026-08-07T04:28:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060343,
     "summary": "Add `scroll100` and `scroll250` boolean metrics to newtab ping",
     "product": "Firefox",
@@ -754,15 +718,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-05T03:27:50Z",
     "resolvedAt": "2026-09-07T09:28:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060787,
-    "summary": "Migrate the Stocks widget telemetry to the shared useWidgetTelemetry hook",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T09:05:24Z",
-    "resolvedAt": "2026-08-07T09:50:18Z"
   },
   {
     "source": "bugzilla",
@@ -799,15 +754,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-05T22:30:50Z",
     "resolvedAt": "2026-09-21T20:13:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061063,
-    "summary": "Stocks widget: show a \"New\" badge until first interaction",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-06T02:30:52Z",
-    "resolvedAt": "2026-08-07T09:50:42Z"
   },
   {
     "source": "bugzilla",
@@ -3313,6 +3259,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084669,
+    "summary": "0.73 - 0.64% installer size + 2 more (OSX, Windows) regression on Fri October 16 2026",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-21T14:49:00Z",
+    "resolvedAt": "2026-11-05T05:09:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084814,
     "summary": "Crossword: Use the shared Powered by menu component",
     "product": "Firefox",
@@ -3412,6 +3367,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086666,
+    "summary": "Remove version 159 train-hop strips for tile_id in the newtab and newtab-content pings",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T16:37:45Z",
+    "resolvedAt": "2026-11-05T05:10:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086669,
+    "summary": "Remove the section_position guard in NewTabContentPing now that 159 is on Release",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-28T16:39:03Z",
+    "resolvedAt": "2026-11-05T05:10:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086710,
     "summary": "Widgets auto-minimize collapse logs as a user interaction in New Tab telemetry",
     "product": "Firefox",
@@ -3436,6 +3409,60 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-28T21:29:14Z",
     "resolvedAt": "2026-11-03T08:02:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087646,
+    "summary": "Ingest new Merino endpoint to fetch all framed widget URLs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:15:34Z",
+    "resolvedAt": "2026-11-05T05:10:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087647,
+    "summary": "Replace Crosswords endpoint with new Framed Widget URLs endpoint",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:17:07Z",
+    "resolvedAt": "2026-11-05T05:10:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087648,
+    "summary": "Add framed widget URL to Travel widget parent frame",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:18:19Z",
+    "resolvedAt": "2026-11-05T05:10:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087649,
+    "summary": "Add framed widget URL to Horoscopes widget parent frame",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:19:08Z",
+    "resolvedAt": "2026-11-05T05:10:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087650,
+    "summary": "Add framed widget URL to Solitaire widget parent frame",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:19:45Z",
+    "resolvedAt": "2026-11-05T05:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088559,
+    "summary": "Update New Tab Recent Activity for Nova",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-03T15:53:26Z",
+    "resolvedAt": "2026-11-04T17:01:38Z"
   },
   {
     "source": "bugzilla",
