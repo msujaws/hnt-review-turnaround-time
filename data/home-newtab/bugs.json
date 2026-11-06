@@ -91,39 +91,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2018702,
-    "summary": "Migrate simple Redux unit tests to Jest/RTL",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-23T18:10:09Z",
-    "resolvedAt": "2026-08-08T09:41:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2018705,
-    "summary": "Migrate Sections unit test to Jest/RTL",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-23T18:13:28Z",
-    "resolvedAt": "2026-08-08T09:41:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2018708,
     "summary": "Migrate TopSites unit tests to Jest/RTL",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-02-23T18:14:25Z",
     "resolvedAt": "2026-09-11T20:14:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2018709,
-    "summary": "Migrate Base unit test to Jest/RTL",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-02-23T18:15:30Z",
-    "resolvedAt": "2026-08-08T09:41:24Z"
   },
   {
     "source": "bugzilla",
@@ -232,15 +205,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-03-17T22:37:36Z",
     "resolvedAt": "2026-09-11T20:14:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2024071,
-    "summary": "Migrate remaining content-src/components Enzyme unit tests",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-17T22:37:53Z",
-    "resolvedAt": "2026-08-09T02:49:07Z"
   },
   {
     "source": "bugzilla",
@@ -403,24 +367,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-23T16:40:12Z",
     "resolvedAt": "2026-09-22T19:19:12Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050900,
-    "summary": "Migrate test/unit/common/Reducers.test.js to test/jest/common/Reducers.test.jsx",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T16:57:57Z",
-    "resolvedAt": "2026-08-08T09:42:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050954,
-    "summary": "Add logic to show different tip messages through out the day/week",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-26T19:58:42Z",
-    "resolvedAt": "2026-08-08T09:42:06Z"
   },
   {
     "source": "bugzilla",
@@ -613,15 +559,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057317,
-    "summary": "Provide the New Tab `context_id` to Mozilla Ads Client",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-23T18:54:33Z",
-    "resolvedAt": "2026-08-08T09:42:41Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057675,
     "summary": "Add CI smoke test / coverage for the newtab trainhop langpack observer re-entranccy bug",
     "product": "Firefox",
@@ -664,15 +601,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-31T20:06:26Z",
     "resolvedAt": "2026-10-10T08:49:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060320,
-    "summary": "Fix `newtab.closed` and `newtab.sections_impression` firing unexpectedly",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-03T18:24:39Z",
-    "resolvedAt": "2026-08-08T09:43:19Z"
   },
   {
     "source": "bugzilla",
@@ -3223,6 +3151,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084043,
+    "summary": "0.71 - 0.61% installer size + 1 more (OSX) regression on Fri October 16 2026",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-20T07:51:15Z",
+    "resolvedAt": "2026-11-06T04:43:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084247,
     "summary": "Add a sticky option to location-based topic interests",
     "product": "Firefox",
@@ -3454,6 +3391,33 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-30T21:19:45Z",
     "resolvedAt": "2026-11-05T05:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087931,
+    "summary": "Add photo backgrounds to the travel widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T02:02:18Z",
+    "resolvedAt": "2026-11-05T15:20:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087932,
+    "summary": "Add Merino autocomplete to the travel widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T02:03:08Z",
+    "resolvedAt": "2026-11-05T15:21:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087933,
+    "summary": "Build the outbound link builder for the travel widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T02:04:51Z",
+    "resolvedAt": "2026-11-05T15:22:24Z"
   },
   {
     "source": "bugzilla",
