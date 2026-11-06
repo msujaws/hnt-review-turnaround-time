@@ -834,7 +834,7 @@
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-10-12T16:56:20Z",
-    "resolvedAt": "2026-10-20T20:29:04Z"
+    "resolvedAt": "2026-11-06T04:43:23Z"
   },
   {
     "source": "bugzilla",
@@ -1186,15 +1186,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-30T18:33:59Z",
     "resolvedAt": "2026-09-03T16:23:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059814,
-    "summary": "Send Smart Window requests to the http2 MLPA endpoint",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-31T17:33:36Z",
-    "resolvedAt": "2026-08-08T09:43:13Z"
   },
   {
     "source": "bugzilla",
@@ -1666,6 +1657,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088755,
+    "summary": "Update MLEngine to only be idle when nothing is running",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-04T05:21:47Z",
+    "resolvedAt": "2026-11-04T21:55:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1720,6 +1720,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2041489,
+    "summary": "High frequency  browser/components/aiwindow/ui/test/browser/browser_aiwindow_switcher.js | Shutdown - leaked window until shutdown [url = about:newtab]",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-05-21T22:02:33Z",
+    "resolvedAt": "2026-11-06T04:42:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2047007,
     "summary": "Add a Smart Window enabled metric to accurately count clients with Smart Window enabled",
     "product": "Core",
@@ -1735,15 +1744,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-15T12:11:30Z",
     "resolvedAt": "2026-08-20T03:04:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2047564,
-    "summary": "The History items retrieved by the AI model and displayed in a List will show the Untrusted webpage data message",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-15T12:15:57Z",
-    "resolvedAt": "2026-08-08T09:41:48Z"
   },
   {
     "source": "bugzilla",
@@ -1873,15 +1873,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054093,
-    "summary": "[Monitor Agent][FE] Add /command palette in smartbar",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-10T14:53:05Z",
-    "resolvedAt": "2026-08-08T09:42:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054226,
     "summary": "Update Smart Window promo to include a top-right close (×) button and remote settings images",
     "product": "Core",
@@ -1915,15 +1906,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-14T11:37:14Z",
     "resolvedAt": "2026-08-11T16:44:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054933,
-    "summary": "The text from the selected AI models from the Onboarding flow are barely visible with High contrast enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-14T13:54:40Z",
-    "resolvedAt": "2026-08-07T04:27:16Z"
   },
   {
     "source": "bugzilla",
@@ -1981,15 +1963,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056956,
-    "summary": "Region Gate the monitor feature region US",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-22T16:47:27Z",
-    "resolvedAt": "2026-08-08T09:42:38Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057007,
     "summary": "[Monitor Agent][FE] When monitor agent fails in a run, there should be some warning sent to the user",
     "product": "Core",
@@ -2014,24 +1987,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-23T06:40:36Z",
     "resolvedAt": "2026-08-25T09:08:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057277,
-    "summary": "The History Grid will not show any image previews if the user asks the assistant for specific pages from history",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-23T16:16:29Z",
-    "resolvedAt": "2026-08-07T20:10:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057553,
-    "summary": "browser_aiwindow_smartbar_telemetry.js fails on Linux 22.04 when browser.nova.enabled is true",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-24T13:55:37Z",
-    "resolvedAt": "2026-08-07T04:27:41Z"
   },
   {
     "source": "bugzilla",
@@ -2116,15 +2071,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058227,
-    "summary": "Smart Form Fill integrate LLM requests for classification, tab relevancy, value generation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T17:29:25Z",
-    "resolvedAt": "2026-08-08T09:42:44Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058311,
     "summary": "SW Organize Tabs v0 - UI Fixes for v0",
     "product": "Core",
@@ -2176,15 +2122,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-30T15:02:04Z",
     "resolvedAt": "2026-08-13T16:10:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059538,
-    "summary": "[Monitor Agent][FE] Polish Command palette ui",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-30T18:49:56Z",
-    "resolvedAt": "2026-08-08T09:43:07Z"
   },
   {
     "source": "bugzilla",
@@ -2269,15 +2206,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060260,
-    "summary": "[Models] ATG Improve Clustering Algorithm",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-03T15:38:32Z",
-    "resolvedAt": "2026-08-07T04:28:12Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060262,
     "summary": "[Models] ATG Switch Underlying similarity score to use STG Logistic Regression version",
     "product": "Core",
@@ -2296,15 +2224,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060582,
-    "summary": "[Monitor Agent][FE] message for pages we cant monitor for example about pages.",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-04T15:39:21Z",
-    "resolvedAt": "2026-08-08T09:43:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060584,
     "summary": "[Monitor Agent][FE] Add Telemetry for /command after V0",
     "product": "Core",
@@ -2320,33 +2239,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-04T17:19:52Z",
     "resolvedAt": "2026-08-21T09:57:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060705,
-    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_group_tabs_button.js | application timed out after 740.0 seconds with no output",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-05T00:08:40Z",
-    "resolvedAt": "2026-08-07T20:12:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060948,
-    "summary": "SW Organize Tabs: Ensure \"Just created\" only persists for current menu instance",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-05T17:11:51Z",
-    "resolvedAt": "2026-08-07T09:50:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060959,
-    "summary": "SW ATG: Suggested group's hover state lingers when moving to another Organize Tabs menu item",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-05T18:32:21Z",
-    "resolvedAt": "2026-08-08T09:43:35Z"
   },
   {
     "source": "bugzilla",
@@ -2500,15 +2392,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T19:33:13Z",
     "resolvedAt": "2026-08-14T04:17:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061542,
-    "summary": "Clear OnboardingMessagingProvider of dummy content",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T22:25:04Z",
-    "resolvedAt": "2026-08-07T09:50:59Z"
   },
   {
     "source": "bugzilla",
@@ -3301,6 +3184,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-31T18:21:40Z",
     "resolvedAt": "2026-09-25T04:41:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067871,
+    "summary": "PUWYLO: adapt data layer to new journey object",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-31T18:21:42Z",
+    "resolvedAt": "2026-11-05T20:52:09Z"
   },
   {
     "source": "bugzilla",
@@ -4159,6 +4051,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075832,
+    "summary": "Perma mochitest-standalone browser/components/aiwindow/ui/test/browser/browser_smartwindow_chat_browser_tabbable.js | Shutdown - leaked window until shutdown [url = chrome://browser/content/browser.xhtml] | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-26T12:29:30Z",
+    "resolvedAt": "2026-11-05T16:13:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076103,
     "summary": "The Chat History and More Menus from the Ai conversation flicker when clicked and dragged to the side",
     "product": "Core",
@@ -4168,12 +4069,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076176,
+    "summary": "There is no AI response when trying to close a mentioned tab that is already closed",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-28T14:08:33Z",
+    "resolvedAt": "2026-11-04T21:53:31Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076627,
     "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_get_page_content_timeout.js | single tracking bug",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-30T06:18:40Z",
     "resolvedAt": "2026-11-04T09:47:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2077468,
+    "summary": "The Ai model cannot group a single tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-02T11:13:01Z",
+    "resolvedAt": "2026-11-04T21:53:34Z"
   },
   {
     "source": "bugzilla",
@@ -4282,6 +4201,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-06T04:39:50Z",
     "resolvedAt": "2026-10-09T04:24:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078565,
+    "summary": "Unable to group pinned tabs via Natural Language",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-06T11:07:19Z",
+    "resolvedAt": "2026-11-04T21:53:37Z"
   },
   {
     "source": "bugzilla",
@@ -4735,6 +4663,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083966,
+    "summary": "[Smart Window] Add Account Signin link to temporarily unavailable message",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-20T00:19:34Z",
+    "resolvedAt": "2026-11-05T16:14:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084169,
     "summary": "Users can still create and run a Monitor Task after Blocking all AI enhancements",
     "product": "Core",
@@ -4798,6 +4735,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084942,
+    "summary": "The @mention a generated page will not show the correct Favicon",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-22T11:55:19Z",
+    "resolvedAt": "2026-11-06T04:43:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086526,
+    "summary": "2.73% damp browser-toolbox.styleeditor-ready.DAMP (Windows) regression on Thu October 22 2026",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-28T10:14:27Z",
+    "resolvedAt": "2026-11-05T16:36:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086741,
     "summary": "[Research Agent][FE] Add a reusable clarifying question card for Smart Window AI flows",
     "product": "Core",
@@ -4822,6 +4777,42 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-29T00:10:18Z",
     "resolvedAt": "2026-11-03T08:02:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088129,
+    "summary": "Fix minor alignment issues with text selection menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-02T15:54:52Z",
+    "resolvedAt": "2026-11-05T05:11:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088181,
+    "summary": "Add pref Enable to support single-page Smart Window onboarding with automatic model selection",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-02T17:33:21Z",
+    "resolvedAt": "2026-11-05T05:11:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088877,
+    "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_prompt_loader_chat_system_prompt.js | test_buildChatSystemPrompt_uses_manifest_order - # Pages (generate_page) appears in manifest order - -1 > 9562 when Gecko 161 merges to beta on 2026-11-05",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-04T12:43:02Z",
+    "resolvedAt": "2026-11-06T04:44:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089668,
+    "summary": "[Research Agent][FE] Recommended badge on the Smart Window clarifying question card has insufficient color contrast",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-05T17:04:15Z",
+    "resolvedAt": "2026-11-06T04:45:40Z"
   },
   {
     "source": "bugzilla",
