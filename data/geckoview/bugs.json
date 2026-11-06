@@ -415,15 +415,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061844,
-    "summary": "Improve the apilint plugin's task declarations for caching, the interpreter, and the compile classpath",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-07T19:39:00Z",
-    "resolvedAt": "2026-08-08T09:44:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062521,
     "summary": "Intermittent org.mozilla.geckoview.test.TextInputDelegateTest#noDismissKeyboardAfterlostFocus[#input] | single tracking bug",
     "product": "GeckoView",
