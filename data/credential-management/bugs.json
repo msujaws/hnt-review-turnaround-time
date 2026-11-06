@@ -334,6 +334,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088399,
+    "summary": "[Telemetry records] For passwords, close_reason: \"dismissed\" is recorded instead of the expected \"typed_through\" when typing in the Username/Email field",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-03T10:09:15Z",
+    "resolvedAt": "2026-11-05T20:52:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088438,
     "summary": "Profiles that exhaust the Rust logins migration attempts are unenrolled from the logins-rust-storage experiment",
     "product": "Toolkit",
