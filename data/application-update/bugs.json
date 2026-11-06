@@ -232,5 +232,14 @@
     "component": "Application Update",
     "filedAt": "2026-10-20T01:33:48Z",
     "resolvedAt": "2026-11-02T09:41:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084876,
+    "summary": "[clang-23] Perma /builds/worker/checkouts/gecko/third_party/zucchini/chromium/components/zucchini/zucchini_integration.cc(114,25): error: '__try' is not permitted in functions that require object unwinding",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-10-22T06:53:48Z",
+    "resolvedAt": "2026-11-06T04:43:43Z"
   }
 ]
