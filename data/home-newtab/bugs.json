@@ -343,15 +343,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048387,
-    "summary": "Wire Privacy widget to PrivacyMetricsService display state",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-17T20:48:58Z",
-    "resolvedAt": "2026-08-10T17:55:27Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048388,
     "summary": "Add Glean telemetry for the Privacy New Tab widget",
     "product": "Firefox",
@@ -370,39 +361,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051408,
-    "summary": "Newtab decouple client layout pref from remote layouts pref",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T19:49:57Z",
-    "resolvedAt": "2026-08-10T20:30:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051410,
     "summary": "Newtab daily briefing can probably be removed now",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-06-29T19:52:43Z",
     "resolvedAt": "2026-08-18T09:25:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051412,
-    "summary": "Newtab setup layouts in remote settings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T19:56:50Z",
-    "resolvedAt": "2026-08-10T20:27:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051616,
-    "summary": "Add CTA button to Privacy widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T15:12:24Z",
-    "resolvedAt": "2026-08-10T17:54:53Z"
   },
   {
     "source": "bugzilla",
@@ -532,15 +496,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057171,
-    "summary": "[Privacy widget] Font size of the message is set as root instead of small",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-23T09:12:47Z",
-    "resolvedAt": "2026-08-10T17:54:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057274,
     "summary": "Add \"sponsored position\" Flag to pocket.impression Glean event",
     "product": "Firefox",
@@ -658,15 +613,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060958,
-    "summary": "Add surface_id to the newtab ping",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T18:25:36Z",
-    "resolvedAt": "2026-08-11T09:24:01Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060987,
     "summary": "Remove some old unnecessary metrics now that we've long-since switched to Merino for stories, and MARS for sponsored content / top sites",
     "product": "Firefox",
@@ -685,15 +631,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061072,
-    "summary": "Focus Timer: make the small size available in the context menu",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-06T04:07:05Z",
-    "resolvedAt": "2026-08-10T20:48:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061155,
     "summary": "Last item in customization panel (\"Recommended stories\") is faded despite being fully scrolled to bottom",
     "product": "Firefox",
@@ -709,6 +646,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-06T13:57:08Z",
     "resolvedAt": "2026-09-23T21:41:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2061408,
+    "summary": "Ensure newtab card placeholder animation doesn't run until document is visible",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-06T17:19:32Z",
+    "resolvedAt": "2026-11-07T16:34:59Z"
   },
   {
     "source": "bugzilla",
@@ -772,15 +718,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-07T22:13:43Z",
     "resolvedAt": "2026-08-12T04:03:35Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062117,
-    "summary": "New Tab: activity-stream.bundle.js and css/activity-stream.css re-added after Bug 2025793 removed them",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-10T04:07:22Z",
-    "resolvedAt": "2026-08-11T09:25:06Z"
   },
   {
     "source": "bugzilla",
@@ -880,15 +817,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-10T17:52:30Z",
     "resolvedAt": "2026-08-13T20:11:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062364,
-    "summary": "New Tab trainhop XPI builds from shipit fail with \"newtab-node-modules must be fetched in CI\"",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-10T18:01:09Z",
-    "resolvedAt": "2026-08-11T09:25:52Z"
   },
   {
     "source": "bugzilla",
@@ -2557,6 +2485,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076234,
+    "summary": "Update default HNT Ads to allow for Billboard ad + promo card and additional placements",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-28T18:10:02Z",
+    "resolvedAt": "2026-11-07T09:32:12Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076491,
     "summary": "Update New Tab train-hop runtime metrics generation to handle new extra_keys",
     "product": "Firefox",
@@ -3436,5 +3373,50 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-03T17:37:52Z",
     "resolvedAt": "2026-11-04T09:52:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089611,
+    "summary": "Update Travel widget UI to allow for fullbleed framed content",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T15:24:27Z",
+    "resolvedAt": "2026-11-07T09:34:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089616,
+    "summary": "Update the Travel widget size when a specific change_size event is emitted",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T15:30:51Z",
+    "resolvedAt": "2026-11-07T09:34:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089633,
+    "summary": "Add allow-forms to CSP for framed widget iframes",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T16:09:28Z",
+    "resolvedAt": "2026-11-07T09:34:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090281,
+    "summary": "FramedWidgetsFeed cache lifetime should be much shorter",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-06T19:09:44Z",
+    "resolvedAt": "2026-11-07T09:35:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090302,
+    "summary": "Send the user agent on ads-client OHTTP requests",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-06T20:24:10Z",
+    "resolvedAt": "2026-11-08T09:16:22Z"
   }
 ]
