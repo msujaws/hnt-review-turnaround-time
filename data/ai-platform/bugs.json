@@ -109,33 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2049403,
-    "summary": "Add Memories Attribute Update on Use",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-22T15:33:28Z",
-    "resolvedAt": "2026-08-10T15:58:29Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049408,
-    "summary": "Implement Memories Evolution Step in Scheduler",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-22T15:36:03Z",
-    "resolvedAt": "2026-08-11T09:22:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2049883,
-    "summary": "[Agent Surface][Models] Decide appropriate limits and budget for agents",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-23T21:31:52Z",
-    "resolvedAt": "2026-08-10T17:13:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2050910,
     "summary": "[AI Window] Tool Use - Update memories with natural language in chat",
     "product": "Core",
@@ -181,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054096,
-    "summary": "Develop prompting and code for new tab PUWYLO chip or card",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-10T14:55:04Z",
-    "resolvedAt": "2026-08-11T21:48:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054097,
     "summary": "Develop prompting and code for initial PUWYLO assistant conversation message",
     "product": "Core",
@@ -232,15 +196,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-31T20:29:36Z",
     "resolvedAt": "2026-08-13T16:14:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061478,
-    "summary": "Remove markdown link markers from hallucinated tokens",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-06T19:33:49Z",
-    "resolvedAt": "2026-08-11T09:24:18Z"
   },
   {
     "source": "bugzilla",
@@ -955,6 +910,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084819,
+    "summary": "Improve Stability of SmartWindow Tests",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-21T23:30:23Z",
+    "resolvedAt": "2026-11-07T16:35:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085920,
     "summary": "Tune Gemini 3.1 FL memory tagging prompt to reduce overtagging in negative scenarios",
     "product": "Core",
@@ -970,6 +934,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-10-28T11:26:25Z",
     "resolvedAt": "2026-11-04T09:49:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090794,
+    "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_aitab.js | test_modification_keeps_links_from_earlier_turns - The stored exchange holds no URL tokens. - false == true",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-08T21:16:11Z",
+    "resolvedAt": "2026-11-09T09:27:02Z"
   },
   {
     "source": "bugzilla",
@@ -1033,15 +1006,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-06-11T15:47:05Z",
     "resolvedAt": "2026-11-02T18:54:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2046861,
-    "summary": "Crash in [@ OOM | unknown | mozilla::dom::InferenceSession::Init]",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-11T16:00:38Z",
-    "resolvedAt": "2026-08-09T09:53:43Z"
   },
   {
     "source": "bugzilla",
@@ -1189,30 +1153,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059883,
-    "summary": "Use the regex classifier when native ONNX is unavailable for Form Autofill",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-31T23:01:38Z",
-    "resolvedAt": "2026-08-11T09:23:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060272,
     "summary": "OpenAIPipeline cancels every tool-calling round mid-response and discards its usage chunk",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-03T16:09:21Z",
     "resolvedAt": "2026-08-13T04:27:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061717,
-    "summary": "Properly reference onnxruntime in our license file",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-07T14:33:04Z",
-    "resolvedAt": "2026-08-10T20:48:55Z"
   },
   {
     "source": "bugzilla",
@@ -1240,15 +1186,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-10T20:17:02Z",
     "resolvedAt": "2026-08-22T09:53:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062445,
-    "summary": "Enable the native ML browser-chrome tests on win32",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-10T22:14:46Z",
-    "resolvedAt": "2026-08-11T21:50:35Z"
   },
   {
     "source": "bugzilla",
@@ -1540,6 +1477,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2073260,
+    "summary": "Add Telemetry to Measure Time to First Action Log in SmartWindow",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-17T20:38:42Z",
+    "resolvedAt": "2026-11-07T16:35:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073261,
+    "summary": "Add Telemetry to Measure Time to End of First Turn in SmartWindow",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-17T20:40:03Z",
+    "resolvedAt": "2026-11-07T16:35:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074072,
     "summary": "MLEngine onnx backends leak memory",
     "product": "Core",
@@ -1717,6 +1672,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-24T08:48:20Z",
     "resolvedAt": "2026-11-04T09:45:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2028654,
+    "summary": "browser_smartwindow_request_response_telemetry.js fails standalone on Windows debug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-04-01T22:07:48Z",
+    "resolvedAt": "2026-11-07T16:34:52Z"
   },
   {
     "source": "bugzilla",
@@ -1900,15 +1864,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054888,
-    "summary": "The Mistral Ai model cannot distinguish related from unrelated tabs when grouping or closing them",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-14T11:37:14Z",
-    "resolvedAt": "2026-08-11T16:44:08Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055066,
     "summary": "Smart Form Fill: add telemetry",
     "product": "Core",
@@ -1933,6 +1888,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-15T20:54:23Z",
     "resolvedAt": "2026-09-15T21:44:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2055503,
+    "summary": "browser_smartwindow_sidebar.js fails when browser.nova.enabled is true",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-16T14:00:16Z",
+    "resolvedAt": "2026-11-07T09:31:55Z"
   },
   {
     "source": "bugzilla",
@@ -1972,15 +1936,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2057031,
-    "summary": "[meta] Smart Window 153.0.x uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-22T21:41:45Z",
-    "resolvedAt": "2026-08-11T06:04:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057151,
     "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_ai_action_result.js | application timed out after 740.0 seconds with no output",
     "product": "Core",
@@ -2005,15 +1960,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-24T17:02:23Z",
     "resolvedAt": "2026-08-20T20:03:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058014,
-    "summary": "The New chat, Chat history and More Buttons from the New tab AI chat are barely visible with blurred text underneath",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T09:18:15Z",
-    "resolvedAt": "2026-08-10T20:48:12Z"
   },
   {
     "source": "bugzilla",
@@ -2206,15 +2152,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060262,
-    "summary": "[Models] ATG Switch Underlying similarity score to use STG Logistic Regression version",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-03T15:41:37Z",
-    "resolvedAt": "2026-08-11T09:23:35Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060489,
     "summary": "The Monitor Agent Create a task panel resets all fields when switching tabs",
     "product": "Core",
@@ -2266,15 +2203,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-06T00:04:22Z",
     "resolvedAt": "2026-08-25T09:09:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061038,
-    "summary": "AITab - Finalize table structures needed to create AITab database",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T00:52:08Z",
-    "resolvedAt": "2026-08-11T05:51:27Z"
   },
   {
     "source": "bugzilla",
@@ -2395,24 +2323,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061771,
-    "summary": "Train / Distill new student model for Auto Tab Grouping group name generation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T16:35:11Z",
-    "resolvedAt": "2026-08-11T14:15:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061774,
-    "summary": "[Monitor Agent][FE] Monitor featuer STRINGS - round 2",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T16:37:34Z",
-    "resolvedAt": "2026-08-11T21:49:23Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061776,
     "summary": "Perma TEST-UNEXPECTED-FAIL | browser/base/content/test/static/browser_parsable_css.js | checkAllTheCSS - Got error message for chrome://browser/content/aiwindow/components/ai-action-confirmation.css: Unknown pro when Gecko 155 merges to Beta on 2026-08-13",
     "product": "Core",
@@ -2428,15 +2338,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-07T19:55:14Z",
     "resolvedAt": "2026-08-22T09:53:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061853,
-    "summary": "Add Auto Tab Grouping local model for group name generation",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T20:21:51Z",
-    "resolvedAt": "2026-08-09T09:53:46Z"
   },
   {
     "source": "bugzilla",
@@ -2521,21 +2422,21 @@
   },
   {
     "source": "bugzilla",
+    "id": 2062409,
+    "summary": "Assistant does not use prior conversation turns when answering",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-10T19:31:29Z",
+    "resolvedAt": "2026-11-07T09:32:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062417,
     "summary": "browser.smartwindow.agent.enabled set default and set nimbus feature pattern for Smart Window Agent Watch",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-10T19:57:28Z",
     "resolvedAt": "2026-08-20T16:28:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062474,
-    "summary": "Turn on Auto Tab Grouping Config",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T00:56:42Z",
-    "resolvedAt": "2026-08-11T13:57:46Z"
   },
   {
     "source": "bugzilla",
@@ -4465,6 +4366,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082177,
+    "summary": "Add browser.ml.chat.provider to SpecialMessageActions allowedPrefs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-14T23:54:33Z",
+    "resolvedAt": "2026-11-07T09:32:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082486,
+    "summary": "Fix the leak and SearchService initialization failures in browser_chat_shortcuts.js",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-15T14:15:28Z",
+    "resolvedAt": "2026-11-07T09:32:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082511,
     "summary": "[Bug - Models] SFF showing irrelevant google sheet tab when trying to fill form",
     "product": "Core",
@@ -4588,6 +4507,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-19T16:07:45Z",
     "resolvedAt": "2026-10-22T08:48:50Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083827,
+    "summary": "Add a reusable dropdown component for Smart Window onboarding settings rows",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:26:04Z",
+    "resolvedAt": "2026-11-08T09:15:56Z"
   },
   {
     "source": "bugzilla",
@@ -4780,6 +4708,33 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087058,
+    "summary": "Asking the AI model to modify a Gen Tab will sometimes return an internal error",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T13:07:42Z",
+    "resolvedAt": "2026-11-09T18:46:27Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087166,
+    "summary": "[Monitor+Research Agent][FE] Group monitors on the Tasks page into Active and Paused, with Show more",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T16:45:30Z",
+    "resolvedAt": "2026-11-07T09:33:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087192,
+    "summary": "The Links displayed in chat are not displayed for the created Gen tab",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T17:32:34Z",
+    "resolvedAt": "2026-11-09T18:43:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088129,
     "summary": "Fix minor alignment issues with text selection menu",
     "product": "Core",
@@ -4813,6 +4768,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-05T17:04:15Z",
     "resolvedAt": "2026-11-06T04:45:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089939,
+    "summary": "Stop loading a pdf.js font file in browser_aitab_heading_font.js",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-06T07:46:55Z",
+    "resolvedAt": "2026-11-07T09:35:15Z"
   },
   {
     "source": "bugzilla",
