@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058173,
-    "summary": "Bound untrusted allocation sizes in libmar (Coverity CID 1459297, 1459486)",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-07-27T14:47:56Z",
-    "resolvedAt": "2026-08-11T09:22:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058359,
     "summary": "Re-enable \"update service\" setting for auto-disabled installations",
     "product": "Toolkit",
@@ -241,5 +232,14 @@
     "component": "Application Update",
     "filedAt": "2026-10-22T06:53:48Z",
     "resolvedAt": "2026-11-06T04:43:43Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090625,
+    "summary": "zucchini fails to build with clang 23 and libc++: unused attribute in #pragma clang attribute push region",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-11-07T16:53:11Z",
+    "resolvedAt": "2026-11-09T16:50:55Z"
   }
 ]
