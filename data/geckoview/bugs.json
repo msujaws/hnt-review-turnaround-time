@@ -46,6 +46,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1785929,
+    "summary": "Update to JDK LTS 25",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2022-08-18T22:14:19Z",
+    "resolvedAt": "2026-11-07T09:30:49Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1806129,
     "summary": "Isolated process is not compatibe with Android >= 10",
     "product": "GeckoView",
@@ -88,15 +97,6 @@
     "component": "General",
     "filedAt": "2025-04-02T17:01:53Z",
     "resolvedAt": "2026-09-21T20:04:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 1958658,
-    "summary": "Keyboard is hidden when using \"find in page\"",
-    "product": "GeckoView",
-    "component": "IME",
-    "filedAt": "2025-04-05T23:52:56Z",
-    "resolvedAt": "2026-08-11T09:21:30Z"
   },
   {
     "source": "bugzilla",
@@ -160,15 +160,6 @@
     "component": "General",
     "filedAt": "2025-11-06T08:10:50Z",
     "resolvedAt": "2026-10-03T21:11:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 1998834,
-    "summary": "[2.2] Calculate the right size of the screenshot",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2025-11-06T23:48:01Z",
-    "resolvedAt": "2026-08-11T19:21:25Z"
   },
   {
     "source": "bugzilla",
@@ -376,15 +367,6 @@
     "component": "General",
     "filedAt": "2026-08-03T12:34:57Z",
     "resolvedAt": "2026-08-25T13:16:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061270,
-    "summary": "[Fenix] Add Secret Setting to control new PDF toolbar",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-08-06T14:41:52Z",
-    "resolvedAt": "2026-08-11T09:24:15Z"
   },
   {
     "source": "bugzilla",
@@ -1045,6 +1027,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084491,
+    "summary": "Crash in [@ java.lang.IllegalStateException: at org.mozilla.geckoview.GeckoResult.complete(GeckoResult.java)]",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-21T06:20:49Z",
+    "resolvedAt": "2026-11-06T17:36:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085012,
     "summary": "[A11y] We need branching behavior on the bottom toolbar case to ensure better focus order",
     "product": "GeckoView",
@@ -1054,12 +1045,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085966,
+    "summary": "Group the parameters of GeckoSession.Compositor.notifyCompositorScrollUpdate into a single object",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-26T23:48:27Z",
+    "resolvedAt": "2026-11-07T16:35:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086088,
     "summary": "[UI] Force timeout on `dismissSignatureDialog` to prevent a hanging pend on the \"Adding\" `onResult` wait for PDF signatures",
     "product": "GeckoView",
     "component": "PDF Viewer",
     "filedAt": "2026-10-27T12:46:31Z",
     "resolvedAt": "2026-11-02T22:17:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086233,
+    "summary": "[UI] Tablet PDF tools can draw over tab strip bar when bottom toolbar is also enabled",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-27T18:47:57Z",
+    "resolvedAt": "2026-11-06T17:40:59Z"
   },
   {
     "source": "bugzilla",
