@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2042104,
+    "summary": "[macOS][a11y] VPN \"ON\" state is not announced by VoiceOver after \"Connecting\" state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-05-25T09:25:30Z",
+    "resolvedAt": "2026-11-06T19:15:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2049595,
     "summary": "[META] [QA] [QA-5387] QA request for Free VPN integration (Fx 154)",
     "product": "Firefox",
@@ -187,33 +196,6 @@
     "component": "IP Protection",
     "filedAt": "2026-08-05T10:42:54Z",
     "resolvedAt": "2026-09-11T06:46:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061622,
-    "summary": "[Stage] \"Get Started\" panel displayed after successful authentication",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-07T07:26:11Z",
-    "resolvedAt": "2026-08-10T08:24:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062190,
-    "summary": "[Rollout] Users in the JP region cannot enroll in the “Built-in VPN Beta - Summer promo off-ramp messaging rollout” and are therefore unable to receive the “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPGRADE_NOT_AVAILABLE” message",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-10T09:54:34Z",
-    "resolvedAt": "2026-08-10T15:11:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062238,
-    "summary": "[Rollout] The “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPGRADE_NOT_AVAILABLE” and “IP_PROTECTION_SUMMER_PROMO_OFFRAMP_DEFAULT_BROWSER_USERS_UPSELL” messages are displayed to clients even when Firefox is not set as the default browser",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-10T12:02:17Z",
-    "resolvedAt": "2026-08-10T15:14:19Z"
   },
   {
     "source": "bugzilla",
