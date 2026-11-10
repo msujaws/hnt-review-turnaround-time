@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2042104,
-    "summary": "[macOS][a11y] VPN \"ON\" state is not announced by VoiceOver after \"Connecting\" state",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-05-25T09:25:30Z",
-    "resolvedAt": "2026-11-06T19:15:54Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049595,
     "summary": "[META] [QA] [QA-5387] QA request for Free VPN integration (Fx 154)",
     "product": "Firefox",
@@ -835,6 +826,15 @@
     "component": "IP Protection",
     "filedAt": "2026-10-26T14:42:25Z",
     "resolvedAt": "2026-10-29T04:05:41Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085810,
+    "summary": "VPN toolbar icon becomes invisible after flipping the “browser.ipProtection.enabled” off-on with VPN in PAUSED state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-26T15:35:18Z",
+    "resolvedAt": "2026-11-09T22:08:45Z"
   },
   {
     "source": "bugzilla",
