@@ -199,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2044409,
-    "summary": "Monkey test crash IllegalStateException",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-06-02T16:54:29Z",
-    "resolvedAt": "2026-08-12T04:01:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2051026,
     "summary": "Problem with opening a local pdf file with FF 151 for Android 9",
     "product": "GeckoView",
@@ -1027,12 +1018,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084393,
+    "summary": "Switching tabs can interfere with taking scrollable screenshot",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-20T22:04:47Z",
+    "resolvedAt": "2026-11-10T09:48:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084491,
     "summary": "Crash in [@ java.lang.IllegalStateException: at org.mozilla.geckoview.GeckoResult.complete(GeckoResult.java)]",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2026-10-21T06:20:49Z",
     "resolvedAt": "2026-11-06T17:36:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084956,
+    "summary": "[PDF.js] [A11y] It is difficult to put focus on the signature element itself",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-22T12:21:20Z",
+    "resolvedAt": "2026-11-10T12:28:25Z"
   },
   {
     "source": "bugzilla",
@@ -1150,5 +1159,14 @@
     "component": "General",
     "filedAt": "2026-11-05T11:29:15Z",
     "resolvedAt": "2026-11-05T16:17:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091077,
+    "summary": "GeckoView tests use deprecated junit and androidx.test APIs",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-09T19:03:07Z",
+    "resolvedAt": "2026-11-10T04:06:26Z"
   }
 ]
