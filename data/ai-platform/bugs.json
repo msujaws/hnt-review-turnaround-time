@@ -154,15 +154,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054097,
-    "summary": "Develop prompting and code for initial PUWYLO assistant conversation message",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-10T14:56:54Z",
-    "resolvedAt": "2026-08-12T04:01:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054482,
     "summary": "Improve Mistral Memory Tagging",
     "product": "Core",
@@ -1063,15 +1054,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047023,
-    "summary": "Ensure we have good testing support to pull in artifacts from Remote Settings and attachments both locally and in CI",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-11T23:37:44Z",
-    "resolvedAt": "2026-08-12T20:21:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047026,
     "summary": "Create a Glean telemetry probe that tests model fidelity on known input/output (Category 1 \"technical data\").",
     "product": "Core",
@@ -1621,6 +1603,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090866,
+    "summary": "Move the delta stats into the generate resolve callback in TextGenerator::Generate",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T09:43:11Z",
+    "resolvedAt": "2026-11-10T04:06:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1900,15 +1891,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056187,
-    "summary": "The Smart Window Icon is not displayed when pinned to the overflow menu",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-20T09:51:24Z",
-    "resolvedAt": "2026-08-12T23:15:02Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056551,
     "summary": "The Smart Window Switcher button keyboard focus ring is too thick",
     "product": "Core",
@@ -1990,24 +1972,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058218,
-    "summary": "Smart Window ATG Telemetry v0",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T17:14:44Z",
-    "resolvedAt": "2026-08-12T04:02:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058220,
-    "summary": "Smart Window ATG Feature Callout",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T17:21:39Z",
-    "resolvedAt": "2026-08-12T04:02:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058221,
     "summary": "Smart Form Fill autocomplete fill option trigger UI",
     "product": "Core",
@@ -2023,15 +1987,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-27T21:40:21Z",
     "resolvedAt": "2026-08-27T09:54:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058590,
-    "summary": "improve perceived performance of search the web showing exa tool call when it starts instead of when it finishes",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-28T17:10:03Z",
-    "resolvedAt": "2026-08-12T04:02:26Z"
   },
   {
     "source": "bugzilla",
@@ -2125,30 +2080,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059831,
-    "summary": "Remove convId from Smart Window feedback chat telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-31T18:28:10Z",
-    "resolvedAt": "2026-08-12T04:02:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059870,
     "summary": "Smart Form Fill: determine a max fields cap and concurrency limit when generating values",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-31T21:14:06Z",
     "resolvedAt": "2026-09-03T09:15:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060251,
-    "summary": "The Gemini Ai model will provide answers in french instead of English",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-03T14:57:11Z",
-    "resolvedAt": "2026-08-12T13:28:42Z"
   },
   {
     "source": "bugzilla",
@@ -2185,15 +2122,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-05T20:26:59Z",
     "resolvedAt": "2026-09-12T09:40:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061017,
-    "summary": "Intermittent TV browser/components/aiwindow/ui/test/xpcshell/test_ChatStore.js | Test timed out; profile uploaded in profile_test_ChatStore.js.json",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-05T22:56:01Z",
-    "resolvedAt": "2026-08-12T04:03:03Z"
   },
   {
     "source": "bugzilla",
@@ -2392,15 +2320,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-10T03:46:14Z",
     "resolvedAt": "2026-08-25T09:09:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062115,
-    "summary": "[Monitor Agent][FE] Add monitor icon near form title",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-10T03:51:54Z",
-    "resolvedAt": "2026-08-12T04:03:42Z"
   },
   {
     "source": "bugzilla",
@@ -4654,6 +4573,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084831,
+    "summary": "AITab [FE]  - UX QA: update response card layout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-22T00:28:22Z",
+    "resolvedAt": "2026-11-10T09:48:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084938,
     "summary": "Perma TEST-UNEXPECTED-FAIL | browser/components/aiwindow/models/tests/browser/browser_aitab_generation.js | test_modification_is_answered_by_the_model - Test timed out when Gecko 160 merges to beta on 2026-10-22",
     "product": "Core",
@@ -4753,6 +4681,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088237,
+    "summary": "[Monitor Agent][FE] Add UK Region gate to support UK Smart Window",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-02T20:25:10Z",
+    "resolvedAt": "2026-11-09T22:09:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088877,
     "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_prompt_loader_chat_system_prompt.js | test_buildChatSystemPrompt_uses_manifest_order - # Pages (generate_page) appears in manifest order - -1 > 9562 when Gecko 161 merges to beta on 2026-11-05",
     "product": "Core",
@@ -4777,15 +4714,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-06T07:46:55Z",
     "resolvedAt": "2026-11-07T09:35:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056645,
-    "summary": "remove world cup-related tool calls",
-    "product": "Core",
-    "component": "Machine Learning: Models",
-    "filedAt": "2026-07-21T17:22:48Z",
-    "resolvedAt": "2026-08-12T04:02:01Z"
   },
   {
     "source": "bugzilla",

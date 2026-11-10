@@ -1,29 +1,5 @@
 [
   {
-    "source": "phab",
-    "id": "PHID-DREV-vwt3ze5t6ni2jfcnyq2t",
-    "revisionId": 316126,
-    "author": "thasan",
-    "createdAt": "2026-08-03T22:40:03.000Z",
-    "firstReviewAt": "2026-08-07T17:46:05.000Z",
-    "landedAt": "2026-08-12T17:35:47.000Z",
-    "cycleBusinessHours": 52.59638888888889,
-    "postReviewBusinessHours": 23.82833333333333,
-    "reviewRounds": 2
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-thcux2tsw2cip7cmz5sc",
-    "revisionId": 316125,
-    "author": "thasan",
-    "createdAt": "2026-08-03T22:39:59.000Z",
-    "firstReviewAt": "2026-08-07T17:49:35.000Z",
-    "landedAt": "2026-08-12T17:35:46.000Z",
-    "cycleBusinessHours": 52.59611111111111,
-    "postReviewBusinessHours": 23.76972222222222,
-    "reviewRounds": 1
-  },
-  {
     "source": "github",
     "id": 228,
     "repo": "Firefox-AI/MLPA",
@@ -2050,5 +2026,17 @@
     "repo": "Firefox-AI/MLPA",
     "cycleBusinessHours": 0.018333333333333333,
     "postReviewBusinessHours": 0.018333333333333333
+  },
+  {
+    "source": "github",
+    "id": 315,
+    "author": "FieldMarshallObvious",
+    "createdAt": "2026-11-06T15:16:11Z",
+    "firstReviewAt": "2026-11-09T18:38:06Z",
+    "landedAt": "2026-11-09T21:42:55Z",
+    "reviewRounds": 1,
+    "repo": "Firefox-AI/MLPA",
+    "cycleBusinessHours": 14.445555555555556,
+    "postReviewBusinessHours": 3.080277777777778
   }
 ]
