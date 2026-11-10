@@ -604,15 +604,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060908,
-    "summary": "Create initial JSON dump of Remote settings sections layouts for cold startup",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T15:23:26Z",
-    "resolvedAt": "2026-08-12T04:03:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060987,
     "summary": "Remove some old unnecessary metrics now that we've long-since switched to Merino for stories, and MARS for sponsored content / top sites",
     "product": "Firefox",
@@ -667,15 +658,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061740,
-    "summary": "Reduce gutter width on default new tab layout",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-07T15:07:03Z",
-    "resolvedAt": "2026-08-12T04:03:16Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061741,
     "summary": "Create side-by-side content layout variant",
     "product": "Firefox",
@@ -709,15 +691,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-07T18:31:22Z",
     "resolvedAt": "2026-08-15T09:06:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061876,
-    "summary": "Privacy Widget: Celebrations",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-07T22:13:43Z",
-    "resolvedAt": "2026-08-12T04:03:35Z"
   },
   {
     "source": "bugzilla",
@@ -847,24 +820,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062434,
-    "summary": "New Tab topsite context menu button should obey prefers-reduced-motion",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-10T21:01:07Z",
-    "resolvedAt": "2026-08-12T04:04:19Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062473,
-    "summary": "Expand newtab's list of region and locales for content support",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T00:41:46Z",
-    "resolvedAt": "2026-08-12T04:04:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062482,
     "summary": "Stocks widget: add a Markets/Watchlist list dropdown",
     "product": "Firefox",
@@ -880,24 +835,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-11T01:55:07Z",
     "resolvedAt": "2026-08-19T09:38:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062621,
-    "summary": "The background for New Shortcut/Edit Shortcut prompt is transparent and hardly visible with the latest \"Newtab\" addon installed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T14:02:22Z",
-    "resolvedAt": "2026-08-12T04:04:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062683,
-    "summary": "Add wrexham favicon to topsites",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T16:04:08Z",
-    "resolvedAt": "2026-08-12T20:24:05Z"
   },
   {
     "source": "bugzilla",
@@ -925,15 +862,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-11T21:27:05Z",
     "resolvedAt": "2026-08-20T04:21:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062806,
-    "summary": "Crash in [@ callback_interface_ads_client_moz_ads_context_id_provider_context_id]",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T21:38:41Z",
-    "resolvedAt": "2026-08-12T20:24:21Z"
   },
   {
     "source": "bugzilla",
@@ -2368,6 +2296,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074923,
+    "summary": "Tell users about the 11 character limit on Clocks widget nicknames",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-23T16:49:32Z",
+    "resolvedAt": "2026-11-09T22:08:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074924,
     "summary": "Tabbing out of the Clocks widget's Add Clock form closes it",
     "product": "Firefox",
@@ -3178,6 +3115,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085173,
+    "summary": "Replace `requestSpocAds` with `requestSpocOrImageAds`",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-22T21:45:20Z",
+    "resolvedAt": "2026-11-10T04:05:11Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085803,
     "summary": "POTD: Enable set as wallpaper feature by default",
     "product": "Firefox",
@@ -3283,6 +3229,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-28T21:29:14Z",
     "resolvedAt": "2026-11-03T08:02:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087220,
+    "summary": "Add Scam, Misleading, and Offensive report reasons for sponsored stories on New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-29T18:45:13Z",
+    "resolvedAt": "2026-11-09T22:08:59Z"
   },
   {
     "source": "bugzilla",
@@ -3418,5 +3373,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-06T20:24:10Z",
     "resolvedAt": "2026-11-08T09:16:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090994,
+    "summary": "Newtab spaces preview images updates",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-09T15:33:31Z",
+    "resolvedAt": "2026-11-10T04:06:14Z"
   }
 ]
