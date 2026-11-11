@@ -163,15 +163,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060236,
-    "summary": "Land strings for built-in VPN for Android promo",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-03T13:58:55Z",
-    "resolvedAt": "2026-08-13T04:27:01Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060516,
     "summary": "\"Website address\" label is placed too close to the URL field in about:preferences#privacy VPN -> Manage Websites",
     "product": "Firefox",
@@ -196,15 +187,6 @@
     "component": "IP Protection",
     "filedAt": "2026-08-10T17:10:28Z",
     "resolvedAt": "2026-10-20T12:27:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063206,
-    "summary": "The “Bandwidth reset” CFR cannot be triggered on Windows",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-13T09:04:49Z",
-    "resolvedAt": "2026-08-13T14:20:17Z"
   },
   {
     "source": "bugzilla",
@@ -523,6 +505,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078098,
+    "summary": "[META] [QA] [QA-5808] QA request for Free VPN integration (Fx 159)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-05T06:20:12Z",
+    "resolvedAt": "2026-11-10T14:22:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078192,
     "summary": "Focus ring around Settings button is clipped during keyboard navigation in the \"VPN is paused\" panel",
     "product": "Firefox",
@@ -592,6 +583,15 @@
     "component": "IP Protection",
     "filedAt": "2026-10-13T17:40:47Z",
     "resolvedAt": "2026-10-16T04:37:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2081784,
+    "summary": "[META] [QA] [QA-5866] QA request for Free VPN integration (Fx 160)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-14T14:23:08Z",
+    "resolvedAt": "2026-11-10T14:23:27Z"
   },
   {
     "source": "bugzilla",
@@ -925,5 +925,14 @@
     "component": "IP Protection",
     "filedAt": "2026-11-03T15:03:40Z",
     "resolvedAt": "2026-11-05T05:11:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091550,
+    "summary": "Use generic error for VPN_UNAVAILABLE",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-10T21:20:17Z",
+    "resolvedAt": "2026-11-11T05:35:45Z"
   }
 ]
