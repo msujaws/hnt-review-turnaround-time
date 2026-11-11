@@ -55,33 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2034844,
-    "summary": "Evaluate Mistral 4",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-04-24T14:55:12Z",
-    "resolvedAt": "2026-08-13T16:16:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2038703,
-    "summary": "Mistral 4 prompt tuning",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-11T15:43:45Z",
-    "resolvedAt": "2026-08-13T16:16:23Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2043274,
-    "summary": "Mistral 4 memory usage prompt tuning",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-05-28T15:07:26Z",
-    "resolvedAt": "2026-08-13T14:56:05Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047711,
     "summary": "[AI Window] Tool Use - Delete memories from natural language in chat",
     "product": "Core",
@@ -115,15 +88,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-26T17:20:02Z",
     "resolvedAt": "2026-08-21T15:02:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052064,
-    "summary": "Investigate mistral page read errors",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-01T22:31:48Z",
-    "resolvedAt": "2026-08-13T16:14:50Z"
   },
   {
     "source": "bugzilla",
@@ -178,33 +142,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-07-28T20:32:34Z",
     "resolvedAt": "2026-08-21T15:31:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059863,
-    "summary": "Nudge the assistant to fold relevant memories into the search_the_web query",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-31T20:29:36Z",
-    "resolvedAt": "2026-08-13T16:14:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062275,
-    "summary": "Memories Scheduler doesn't instantiate when browser opens directly into Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T14:27:43Z",
-    "resolvedAt": "2026-08-13T09:54:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062278,
-    "summary": "Memories Scheduler watermark is set to the timestamp of the session's last event",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T14:31:05Z",
-    "resolvedAt": "2026-08-13T04:27:29Z"
   },
   {
     "source": "bugzilla",
@@ -277,15 +214,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-10T18:37:49Z",
     "resolvedAt": "2026-08-17T15:34:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062739,
-    "summary": "Limit the number of sessions to use in first-run memories generation",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-11T18:05:00Z",
-    "resolvedAt": "2026-08-13T04:27:55Z"
   },
   {
     "source": "bugzilla",
@@ -1117,15 +1045,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058755,
-    "summary": "Add profiler markers for raw SSE chunk arrival in OpenAIPipeline",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-07-29T01:02:20Z",
-    "resolvedAt": "2026-08-13T04:26:43Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059534,
     "summary": "Autofill spawns an unlimted number of ONNX workers when invoked",
     "product": "Core",
@@ -1135,30 +1054,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060272,
-    "summary": "OpenAIPipeline cancels every tool-calling round mid-response and discards its usage chunk",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-03T16:09:21Z",
-    "resolvedAt": "2026-08-13T04:27:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061823,
     "summary": "Add pref for two head design for ML Form Autofill",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-07T18:06:40Z",
     "resolvedAt": "2026-08-22T21:27:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062321,
-    "summary": "Investigate the embeddings engine performance",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-10T16:19:51Z",
-    "resolvedAt": "2026-08-13T14:47:54Z"
   },
   {
     "source": "bugzilla",
@@ -1810,24 +1711,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2053939,
-    "summary": "Support reopening browsing context from Pickup Where You Left Off",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T22:10:39Z",
-    "resolvedAt": "2026-08-13T09:54:37Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2053941,
-    "summary": "Implement Pickup Where You Left Off entry point on Smart Window new tab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-09T22:13:31Z",
-    "resolvedAt": "2026-08-13T04:26:16Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054226,
     "summary": "Update Smart Window promo to include a top-right close (×) button and remote settings images",
     "product": "Core",
@@ -1843,15 +1726,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-13T12:36:21Z",
     "resolvedAt": "2026-09-07T21:12:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054515,
-    "summary": "The Mistral Ai model cannot see or retrieve items from History",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-13T15:32:20Z",
-    "resolvedAt": "2026-08-13T04:26:22Z"
   },
   {
     "source": "bugzilla",
@@ -2005,24 +1879,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-29T20:45:52Z",
     "resolvedAt": "2026-10-20T12:19:41Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059439,
-    "summary": "The Mistral AI model has trouble creating links in the response",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-30T14:26:32Z",
-    "resolvedAt": "2026-08-13T12:29:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2059457,
-    "summary": "The Mistral AI model is not using saved memories for prompts and defaults back to exa search",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-30T15:02:04Z",
-    "resolvedAt": "2026-08-13T16:10:32Z"
   },
   {
     "source": "bugzilla",
@@ -2428,15 +2284,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T16:35:02Z",
     "resolvedAt": "2026-08-19T09:39:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062842,
-    "summary": "[Monitor Agent][FE] save text change and button styles",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-12T01:27:07Z",
-    "resolvedAt": "2026-08-13T04:28:17Z"
   },
   {
     "source": "bugzilla",
@@ -4294,6 +4141,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082465,
+    "summary": "AITab [models] - Smart Page lacks detail when generated from Amazon product pages",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-15T13:37:05Z",
+    "resolvedAt": "2026-11-10T21:13:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2082486,
     "summary": "Fix the leak and SearchService initialization failures in browser_chat_shortcuts.js",
     "product": "Core",
@@ -4690,6 +4546,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088305,
+    "summary": "AITab [FE] - Image Component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-03T01:34:41Z",
+    "resolvedAt": "2026-11-10T21:58:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088877,
     "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_prompt_loader_chat_system_prompt.js | test_buildChatSystemPrompt_uses_manifest_order - # Pages (generate_page) appears in manifest order - -1 > 9562 when Gecko 161 merges to beta on 2026-11-05",
     "product": "Core",
@@ -4717,12 +4582,30 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062711,
-    "summary": "Refactor exa-powered search_the_web to only pass snippets",
+    "id": 2090256,
+    "summary": "introduce aiwindow agents for newer best practices",
     "product": "Core",
-    "component": "Machine Learning: Models",
-    "filedAt": "2026-08-11T16:58:22Z",
-    "resolvedAt": "2026-08-13T04:27:52Z"
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-06T18:17:26Z",
+    "resolvedAt": "2026-11-10T21:58:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091061,
+    "summary": "[Models] Auto ATG v1 Evals",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-09T18:47:55Z",
+    "resolvedAt": "2026-11-10T19:50:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091260,
+    "summary": "Remove hard-coded \"Smart Window\" from strings",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-10T06:05:14Z",
+    "resolvedAt": "2026-11-11T05:35:25Z"
   },
   {
     "source": "bugzilla",
