@@ -226,6 +226,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085197,
+    "summary": "`mar_find_item` in libmar dereferences NULL when the requested item is not in the MAR index, crashing the updater instead of returning NULL",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-10-22T23:12:29Z",
+    "resolvedAt": "2026-11-11T09:13:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090625,
     "summary": "zucchini fails to build with clang 23 and libc++: unused attribute in #pragma clang attribute push region",
     "product": "Toolkit",
