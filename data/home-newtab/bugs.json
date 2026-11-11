@@ -46,6 +46,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1997684,
+    "summary": "Convert browser/components/topsites to use moz-src",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-10-31T22:16:27Z",
+    "resolvedAt": "2026-11-11T09:13:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2002685,
     "summary": "Firefox new-tab news-story-tiles from CBC are shown with the wrong favicon in the tile",
     "product": "Firefox",
@@ -142,6 +151,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-02-23T19:53:40Z",
     "resolvedAt": "2026-09-22T19:16:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2019460,
+    "summary": "Newtab remove discoverystream.enabled pref, and all branchoing logic, and keep the true paths",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-02-26T01:05:08Z",
+    "resolvedAt": "2026-11-11T09:13:17Z"
   },
   {
     "source": "bugzilla",
@@ -340,15 +358,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-06-10T16:26:06Z",
     "resolvedAt": "2026-09-22T04:36:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2048388,
-    "summary": "Add Glean telemetry for the Privacy New Tab widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-17T20:49:02Z",
-    "resolvedAt": "2026-08-13T04:25:54Z"
   },
   {
     "source": "bugzilla",
@@ -784,24 +793,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062360,
-    "summary": "Widget size 'medium' isn't usable for all widgets",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-10T17:52:30Z",
-    "resolvedAt": "2026-08-13T20:11:02Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062391,
-    "summary": "[crossword] Too small to play",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-10T18:54:38Z",
-    "resolvedAt": "2026-08-13T20:15:58Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062392,
     "summary": "Add newtab.dwell_time metric to newtab ping",
     "product": "Firefox",
@@ -838,15 +829,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062750,
-    "summary": "Add a dedicated trainhopConfig.widgetPrivacy payload for Privacy widget feature config",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T18:25:21Z",
-    "resolvedAt": "2026-08-13T04:28:00Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062753,
     "summary": "Add layout mgmt panel in Discovery Stream Admin",
     "product": "Firefox",
@@ -865,15 +847,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062830,
-    "summary": "Privacy Widget Celebration: Reduce the Sparkles",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-12T00:41:04Z",
-    "resolvedAt": "2026-08-13T04:28:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062845,
     "summary": "Stocks widget: add watchlist add/remove Fluent strings",
     "product": "Firefox",
@@ -889,15 +862,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-12T10:33:52Z",
     "resolvedAt": "2026-08-19T09:39:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063098,
-    "summary": "Gate newtab web notifications behind a Nimbus trainhop config",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-12T21:15:15Z",
-    "resolvedAt": "2026-08-13T04:28:39Z"
   },
   {
     "source": "bugzilla",
@@ -1981,6 +1945,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071474,
+    "summary": "[meta] Firefox 156 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-11T20:24:39Z",
+    "resolvedAt": "2026-11-10T21:59:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2071481,
     "summary": "Enable the typescript linter for newtab/common",
     "product": "Firefox",
@@ -2167,6 +2140,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-17T13:21:52Z",
     "resolvedAt": "2026-10-21T03:57:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073170,
+    "summary": "[meta] Firefox 156 v2 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-17T16:22:04Z",
+    "resolvedAt": "2026-11-10T21:59:16Z"
   },
   {
     "source": "bugzilla",
@@ -2368,6 +2350,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075692,
+    "summary": "[meta] Firefox 157 v1 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-25T18:26:13Z",
+    "resolvedAt": "2026-11-10T21:58:50Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075715,
     "summary": "Remove version 157 train-hop shim for the recent searches widget search SAP check",
     "product": "Firefox",
@@ -2563,6 +2554,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-01T18:38:23Z",
     "resolvedAt": "2026-10-02T21:23:37Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2077284,
+    "summary": "[meta] Firefox 157 v2 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-01T19:00:39Z",
+    "resolvedAt": "2026-11-10T21:58:23Z"
   },
   {
     "source": "bugzilla",
@@ -2845,6 +2845,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2080316,
+    "summary": "[meta] Firefox 158 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-09T18:52:27Z",
+    "resolvedAt": "2026-11-10T21:58:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2080368,
     "summary": "Newtab score-based selection make provider a singleton managed by TopSitesFeed",
     "product": "Firefox",
@@ -2962,6 +2971,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083129,
+    "summary": "[meta] Firefox 158.0.1 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-16T19:11:10Z",
+    "resolvedAt": "2026-11-10T21:57:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083194,
     "summary": "Newtab - Load sponsored top sites tile images over OHTTP",
     "product": "Firefox",
@@ -3076,6 +3094,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-21T14:49:00Z",
     "resolvedAt": "2026-11-05T05:09:49Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084782,
+    "summary": "[meta] Firefox 159 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-21T21:00:43Z",
+    "resolvedAt": "2026-11-10T21:57:53Z"
   },
   {
     "source": "bugzilla",
@@ -3313,6 +3340,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088205,
+    "summary": "[meta] Firefox 159.0.1 train-hop metabug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T18:50:45Z",
+    "resolvedAt": "2026-11-10T21:57:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088559,
     "summary": "Update New Tab Recent Activity for Nova",
     "product": "Firefox",
@@ -3382,5 +3418,23 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-09T15:33:31Z",
     "resolvedAt": "2026-11-10T04:06:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091049,
+    "summary": "Empty wallpaper category tile shown when all its wallpapers are hidden",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-09T18:20:14Z",
+    "resolvedAt": "2026-11-11T09:14:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091052,
+    "summary": "Allow setting wallpaper category order and count by pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-09T18:24:46Z",
+    "resolvedAt": "2026-11-11T09:14:18Z"
   }
 ]
