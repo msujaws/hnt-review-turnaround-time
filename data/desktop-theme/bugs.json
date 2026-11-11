@@ -46,15 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058315,
-    "summary": "Background tab labels disappear with the default theme and browser.theme.native-theme = true",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-07-27T21:48:09Z",
-    "resolvedAt": "2026-08-13T14:43:58Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058523,
     "summary": "[Nova] Grey color group is not available, as per figma, in Dark theme",
     "product": "Firefox",
@@ -82,21 +73,21 @@
   },
   {
     "source": "bugzilla",
+    "id": 2059669,
+    "summary": "[Sun Theme] Dark version lacks gradient image",
+    "product": "Firefox",
+    "component": "Theme",
+    "filedAt": "2026-07-31T08:18:22Z",
+    "resolvedAt": "2026-11-10T21:57:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2061701,
     "summary": "[Nova] Top right corner and right border of .browserContainer overlooked on maximized mode when sidebar on right and hidden",
     "product": "Firefox",
     "component": "Theme",
     "filedAt": "2026-08-07T13:31:38Z",
     "resolvedAt": "2026-09-02T08:50:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062042,
-    "summary": "Minor follow-ups for the native theme on nova",
-    "product": "Firefox",
-    "component": "Theme",
-    "filedAt": "2026-08-09T10:31:14Z",
-    "resolvedAt": "2026-08-13T20:13:45Z"
   },
   {
     "source": "bugzilla",
