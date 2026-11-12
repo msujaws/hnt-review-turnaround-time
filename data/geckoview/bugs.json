@@ -1162,6 +1162,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089593,
+    "summary": "Crash in [@ java.lang.RuntimeException: at android.app.ActivityThread.performResumeActivity(ActivityThread.java)]",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-05T14:57:59Z",
+    "resolvedAt": "2026-11-11T21:51:42Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091077,
     "summary": "GeckoView tests use deprecated junit and androidx.test APIs",
     "product": "GeckoView",
