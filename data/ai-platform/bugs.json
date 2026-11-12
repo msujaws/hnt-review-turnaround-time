@@ -145,15 +145,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062289,
-    "summary": "Plan Memories evaluation overhaul",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T15:02:23Z",
-    "resolvedAt": "2026-08-14T20:02:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062291,
     "summary": "Write new memories generation evaluation scripts",
     "product": "Core",
@@ -214,15 +205,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-10T18:37:49Z",
     "resolvedAt": "2026-08-17T15:34:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063340,
-    "summary": "MemoriesSchedulers should wait the full cooldown if not enough evidence accumulated",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-13T15:02:18Z",
-    "resolvedAt": "2026-08-14T04:19:37Z"
   },
   {
     "source": "bugzilla",
@@ -1576,6 +1558,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2035730,
+    "summary": "Localhost llama maxLength should not be ~1458 tokens",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-04-29T06:52:13Z",
+    "resolvedAt": "2026-11-11T21:40:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2041489,
     "summary": "High frequency  browser/components/aiwindow/ui/test/browser/browser_aiwindow_switcher.js | Shutdown - leaked window until shutdown [url = about:newtab]",
     "product": "Core",
@@ -2098,24 +2089,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061477,
-    "summary": "SW ATG: Create 'View Tab Groups' Dropdown",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T19:33:13Z",
-    "resolvedAt": "2026-08-14T04:17:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061776,
-    "summary": "Perma TEST-UNEXPECTED-FAIL | browser/base/content/test/static/browser_parsable_css.js | checkAllTheCSS - Got error message for chrome://browser/content/aiwindow/components/ai-action-confirmation.css: Unknown pro when Gecko 155 merges to Beta on 2026-08-13",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T16:39:40Z",
-    "resolvedAt": "2026-08-14T04:18:11Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061847,
     "summary": "Show the address bar consistently on the first New Tab, new windows, and about:home",
     "product": "Core",
@@ -2134,30 +2107,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061869,
-    "summary": "Memories scheduler never starts after first-time sign-in to Smart Window",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T21:52:31Z",
-    "resolvedAt": "2026-08-14T04:18:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061886,
     "summary": "[Spike] Understand how to track users by acquisition channel – to measure conversion metrics and customize onboarding per channel",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-07T22:34:54Z",
     "resolvedAt": "2026-08-21T17:24:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061889,
-    "summary": "[Spike] Sync with New Tab teams to build SW promos on newtab surface",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T22:37:03Z",
-    "resolvedAt": "2026-08-14T21:14:38Z"
   },
   {
     "source": "bugzilla",
@@ -2347,15 +2302,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-13T03:33:09Z",
     "resolvedAt": "2026-09-10T09:10:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063308,
-    "summary": "[Monitor Agent][FE] gate /command palette dispay for smartwindow.agent.enabled and region",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-13T14:18:20Z",
-    "resolvedAt": "2026-08-14T04:19:32Z"
   },
   {
     "source": "bugzilla",
@@ -4564,6 +4510,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089036,
+    "summary": "allow experimenting with smart bar defaulting to search",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-04T17:39:44Z",
+    "resolvedAt": "2026-11-11T21:51:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2089668,
     "summary": "[Research Agent][FE] Recommended badge on the Smart Window clarifying question card has insufficient color contrast",
     "product": "Core",
@@ -4750,5 +4705,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-10-21T21:08:04Z",
     "resolvedAt": "2026-10-26T21:09:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092032,
+    "summary": "upgrade chat title generation and chat conversation starters from qwen3 to qwen3.8-flash-next",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-11-12T11:41:24Z",
+    "resolvedAt": "2026-11-12T14:53:03Z"
   }
 ]
