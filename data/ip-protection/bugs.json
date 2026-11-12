@@ -1,6 +1,15 @@
 [
   {
     "source": "bugzilla",
+    "id": 1986013,
+    "summary": "[META] [QA] [QA-4200] Free VPN integration - Alpha version release through Nimbus",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2025-08-29T14:28:37Z",
+    "resolvedAt": "2026-11-11T14:37:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1992379,
     "summary": "[META] [QA] [QA-4497] QA request for Free VPN integration (Fx 146)",
     "product": "Firefox",
@@ -73,12 +82,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2044554,
+    "summary": "[META] [QA] [QA-5266] QA request for Free VPN integration (World Cup widget - messaging extension v.0.1/v.0.2)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-03T04:50:08Z",
+    "resolvedAt": "2026-11-11T13:49:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2049595,
     "summary": "[META] [QA] [QA-5387] QA request for Free VPN integration (Fx 154)",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-06-23T08:35:50Z",
     "resolvedAt": "2026-10-21T06:48:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2049692,
+    "summary": "[META] [QA] [QA-5227] QA request for Nova VPN integration",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-06-23T13:43:43Z",
+    "resolvedAt": "2026-11-11T13:23:19Z"
   },
   {
     "source": "bugzilla",
@@ -106,15 +133,6 @@
     "component": "IP Protection",
     "filedAt": "2026-07-15T00:14:17Z",
     "resolvedAt": "2026-10-17T01:43:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056232,
-    "summary": "Do not expose IP Protection feature if not fully translated",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-20T12:47:08Z",
-    "resolvedAt": "2026-08-14T21:55:53Z"
   },
   {
     "source": "bugzilla",
