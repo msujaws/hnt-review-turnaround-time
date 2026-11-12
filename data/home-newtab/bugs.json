@@ -595,15 +595,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060664,
-    "summary": "Use MAC for callbacks in HNT TelemetryFeed",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-04T20:58:46Z",
-    "resolvedAt": "2026-08-14T04:17:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060731,
     "summary": "Widgets that show content in an iframe appear blank while being dragged on New Tab",
     "product": "Firefox",
@@ -655,24 +646,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-06T17:19:32Z",
     "resolvedAt": "2026-11-07T16:34:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061524,
-    "summary": "[Privacy widget] Add UTM params for external CTA actions",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-06T21:11:41Z",
-    "resolvedAt": "2026-08-14T04:17:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061741,
-    "summary": "Create side-by-side content layout variant",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-07T15:08:20Z",
-    "resolvedAt": "2026-08-14T04:18:05Z"
   },
   {
     "source": "bugzilla",
@@ -829,15 +802,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062753,
-    "summary": "Add layout mgmt panel in Discovery Stream Admin",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T18:35:42Z",
-    "resolvedAt": "2026-08-14T04:18:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062800,
     "summary": "[meta] Firefox 153.0.4 train-hop metabug",
     "product": "Firefox",
@@ -928,15 +892,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063344,
-    "summary": "macOS trainhop CI jobs have stopped running on mozilla-central merges since be1ad74e08cab1c71617c3f54a0b95bc01641eab merged",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T15:11:33Z",
-    "resolvedAt": "2026-08-14T04:19:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063361,
     "summary": "HNT widgets are available on default profile by using VPN set to US",
     "product": "Firefox",
@@ -970,15 +925,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-14T10:02:00Z",
     "resolvedAt": "2026-09-24T08:56:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063604,
-    "summary": "Whene side-by-side exp layout is enabled, the \"Change size\" widget context menu item is missing",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T14:21:56Z",
-    "resolvedAt": "2026-08-14T21:58:55Z"
   },
   {
     "source": "bugzilla",
@@ -1492,6 +1438,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-26T15:55:03Z",
     "resolvedAt": "2026-09-03T09:15:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2066847,
+    "summary": "Record which surface opened the New Tab customize panel",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-08-26T15:56:01Z",
+    "resolvedAt": "2026-11-12T09:54:26Z"
   },
   {
     "source": "bugzilla",
@@ -3013,6 +2968,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-19T17:28:50Z",
     "resolvedAt": "2026-10-20T04:46:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083870,
+    "summary": "Add telemetry for the travel widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T18:32:41Z",
+    "resolvedAt": "2026-11-12T09:54:32Z"
   },
   {
     "source": "bugzilla",
