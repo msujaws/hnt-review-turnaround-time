@@ -847,6 +847,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091569,
+    "summary": "renderPrompt should single pass substitute placeholders like GenAI.buildChatPrompt",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-10T22:30:41Z",
+    "resolvedAt": "2026-11-13T04:53:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1990708,
+    "summary": "Crash in [@ mozilla::dom::InferenceSession::Init]",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2025-09-25T00:40:59Z",
+    "resolvedAt": "2026-11-13T13:59:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1992419,
     "summary": "Upload symbols for onnxruntime",
     "product": "Core",
@@ -997,6 +1015,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-01T16:24:26Z",
     "resolvedAt": "2026-09-02T21:27:08Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057035,
+    "summary": "Extract Google Docs content in PageExtractor",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-22T21:50:57Z",
+    "resolvedAt": "2026-11-13T04:51:08Z"
   },
   {
     "source": "bugzilla",
@@ -1756,15 +1783,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056551,
-    "summary": "The Smart Window Switcher button keyboard focus ring is too thick",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-21T12:26:09Z",
-    "resolvedAt": "2026-08-15T09:06:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2056732,
     "summary": "automatically download smart tab grouping models without extra opt-in for smart window auto tab grouping",
     "product": "Core",
@@ -1933,15 +1951,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-31T21:14:06Z",
     "resolvedAt": "2026-09-03T09:15:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060489,
-    "summary": "The Monitor Agent Create a task panel resets all fields when switching tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-04T11:28:49Z",
-    "resolvedAt": "2026-08-15T09:06:18Z"
   },
   {
     "source": "bugzilla",
@@ -3547,6 +3556,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074361,
+    "summary": "The Check Now button should be disabled when reaching the Rate limit for that day",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-22T07:32:37Z",
+    "resolvedAt": "2026-11-12T22:05:23Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074496,
     "summary": "Smart Window [FE] - Smart cursor hover text shows \"Ask ChatGPT\" while in Smart Window",
     "product": "Core",
@@ -4240,6 +4258,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083834,
+    "summary": "Add an Auto option to the Smart Window model setting in about:preferences",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:30:38Z",
+    "resolvedAt": "2026-11-13T04:51:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083841,
     "summary": "ATG EN_GB Dataset Updates, Prompt Tuning & Evals",
     "product": "Core",
@@ -4447,6 +4474,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087062,
+    "summary": "Long words not wrapping correctly in the Smart Window chat",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-29T13:19:41Z",
+    "resolvedAt": "2026-11-13T04:52:18Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2087166,
     "summary": "[Monitor+Research Agent][FE] Group monitors on the Tasks page into Active and Paused, with Show more",
     "product": "Core",
@@ -4462,6 +4498,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-29T17:32:34Z",
     "resolvedAt": "2026-11-09T18:43:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087829,
+    "summary": "Exa /answers disclosure: reuse existing action-log entry (Option 1 wording)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-01T01:50:45Z",
+    "resolvedAt": "2026-11-13T16:11:59Z"
   },
   {
     "source": "bugzilla",
@@ -4489,6 +4534,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-02T20:25:10Z",
     "resolvedAt": "2026-11-09T22:09:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088303,
+    "summary": "Smart Form Fill: Move the SFF autocomplete row item to the top of the list",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-03T01:27:09Z",
+    "resolvedAt": "2026-11-12T22:06:01Z"
   },
   {
     "source": "bugzilla",
@@ -4537,6 +4591,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090056,
+    "summary": "add initial smart window actions toolbar with existing conversation starters",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-06T12:57:18Z",
+    "resolvedAt": "2026-11-12T22:06:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090256,
     "summary": "introduce aiwindow agents for newer best practices",
     "product": "Core",
@@ -4561,6 +4624,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-10T06:05:14Z",
     "resolvedAt": "2026-11-11T05:35:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092259,
+    "summary": "`browser_chat_shortcuts.js` leaves the native cursor over the copy button, failing a later hover check when repeated",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-12T20:11:57Z",
+    "resolvedAt": "2026-11-13T16:20:16Z"
   },
   {
     "source": "bugzilla",
