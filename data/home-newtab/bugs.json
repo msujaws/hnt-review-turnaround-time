@@ -343,6 +343,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2042142,
+    "summary": "SmartShortcuts: fetchLast10VisitsByGuid uses an inefficient correlated subquery",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-05-25T12:25:28Z",
+    "resolvedAt": "2026-11-13T04:50:59Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2042496,
     "summary": "Fx wallpapers lack accessible names in Customize panel",
     "product": "Firefox",
@@ -604,15 +613,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060987,
-    "summary": "Remove some old unnecessary metrics now that we've long-since switched to Merino for stories, and MARS for sponsored content / top sites",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-05T20:36:42Z",
-    "resolvedAt": "2026-08-15T09:06:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061014,
     "summary": "Intermittent TV browser/extensions/newtab/test/browser/browser_newtab_last_LinkMenu.js | test_newtab_last_LinkMenu - Test timed out",
     "product": "Firefox",
@@ -664,15 +664,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-07T17:43:44Z",
     "resolvedAt": "2026-11-02T15:34:09Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061828,
-    "summary": "Add support for five column content feed layouts",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-07T18:31:22Z",
-    "resolvedAt": "2026-08-15T09:06:28Z"
   },
   {
     "source": "bugzilla",
@@ -901,15 +892,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063456,
-    "summary": "newtab trainhop CI jobs on Beta 155 aren't installing the 156 XPI",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T21:35:07Z",
-    "resolvedAt": "2026-08-15T09:06:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063525,
     "summary": "Missing ETP OFF state on the Privacy widget",
     "product": "Firefox",
@@ -943,15 +925,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-14T16:18:05Z",
     "resolvedAt": "2026-09-30T16:03:59Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063657,
-    "summary": "Stop the sports widget from rendering, regardless of pref",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T16:19:19Z",
-    "resolvedAt": "2026-08-15T09:07:13Z"
   },
   {
     "source": "bugzilla",
@@ -2386,6 +2359,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076525,
+    "summary": "Edit Clocks panel rows sit in the middle of the panel instead of at the top",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-29T19:13:55Z",
+    "resolvedAt": "2026-11-13T04:51:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076593,
     "summary": "Crossword widget records puzzle_completed on every new tab after the puzzle is solved",
     "product": "Firefox",
@@ -2953,6 +2935,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083804,
+    "summary": "Expand Weather widget availability to more locales",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T16:05:18Z",
+    "resolvedAt": "2026-11-13T04:51:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083811,
     "summary": "Weather widget availability in SG",
     "product": "Firefox",
@@ -3358,6 +3349,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090231,
+    "summary": "[Horoscopes] Clicking on \"Read more\" and \"More on Yahoo\" link 404s",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-06T17:13:04Z",
+    "resolvedAt": "2026-11-12T22:06:22Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090242,
+    "summary": "[Solitaire] Add static initial \"play now\" landing screen",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-06T17:39:19Z",
+    "resolvedAt": "2026-11-12T22:05:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090281,
     "summary": "FramedWidgetsFeed cache lifetime should be much shorter",
     "product": "Firefox",
@@ -3400,5 +3409,23 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-09T18:24:46Z",
     "resolvedAt": "2026-11-11T09:14:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091785,
+    "summary": "Lock browser.newtabpage.activity-stream.nova.enabled pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-11T16:56:54Z",
+    "resolvedAt": "2026-11-13T04:53:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091986,
+    "summary": "browser_thumbnails_bg_no_cookies_sent.js fails when run twice in a row because its cookie is never removed",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-12T09:34:46Z",
+    "resolvedAt": "2026-11-13T04:53:44Z"
   }
 ]
