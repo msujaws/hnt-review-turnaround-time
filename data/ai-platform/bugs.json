@@ -127,15 +127,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056677,
-    "summary": "[Models] Evaluate Form Filling aspect of Smart Form Fill",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-21T19:04:50Z",
-    "resolvedAt": "2026-08-17T15:38:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058699,
     "summary": "Develop design of passive conversation-based memories",
     "product": "Core",
@@ -181,30 +172,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062353,
-    "summary": "[Models] Review and define telemetry for Smart Form Fill model performance",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T17:29:15Z",
-    "resolvedAt": "2026-08-17T15:34:19Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062354,
     "summary": "[Models] Smart Form Fill background tabs de-risk",
     "product": "Core",
     "component": "Machine Learning: General",
     "filedAt": "2026-08-10T17:31:54Z",
     "resolvedAt": "2026-08-24T17:39:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062383,
-    "summary": "[Models] Check SFF field alignment in evals",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T18:37:49Z",
-    "resolvedAt": "2026-08-17T15:34:49Z"
   },
   {
     "source": "bugzilla",
@@ -259,15 +232,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-14T20:41:33Z",
     "resolvedAt": "2026-08-19T09:42:04Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063948,
-    "summary": "Make third_party/llama.cpp vendor again",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-17T03:55:49Z",
-    "resolvedAt": "2026-08-17T21:18:23Z"
   },
   {
     "source": "bugzilla",
@@ -838,6 +802,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088093,
+    "summary": "Experiment Plan for alternative sessionization method",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-02T15:15:54Z",
+    "resolvedAt": "2026-11-16T15:33:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090794,
     "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_aitab.js | test_modification_keeps_links_from_earlier_turns - The stored exchange holds no URL tokens. - false == true",
     "product": "Core",
@@ -1396,6 +1369,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2074080,
+    "summary": "Contextual and static embeddings share an engine cache slot",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-21T12:05:05Z",
+    "resolvedAt": "2026-11-14T08:51:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2074143,
     "summary": "Write a Design Document for Centralized AI-Controls Orchestration",
     "product": "Core",
@@ -1513,6 +1495,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090291,
+    "summary": "Several ML features keep their models loaded for the whole session instead of unloading when idle",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-06T19:41:18Z",
+    "resolvedAt": "2026-11-14T08:53:06Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090866,
     "summary": "Move the delta stats into the generate resolve callback in TextGenerator::Generate",
     "product": "Core",
@@ -1531,6 +1522,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1975092,
+    "summary": "High frequency browser/components/genai/tests/browser/browser_chat_page.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2025-07-01T23:38:59Z",
+    "resolvedAt": "2026-11-13T21:29:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1981904,
     "summary": "[GenAI Chat Sidebar] Choose a chatbot combobox and provider's frame content are visually hidden but still focusable and accessible with assistive technology",
     "product": "Core",
@@ -1546,6 +1546,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2025-10-15T10:15:40Z",
     "resolvedAt": "2026-08-21T09:56:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2004437,
+    "summary": "Intermittent browser/components/genai/tests/browser/browser_chat_request.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2025-12-05T18:07:38Z",
+    "resolvedAt": "2026-11-13T21:29:21Z"
   },
   {
     "source": "bugzilla",
@@ -1783,15 +1792,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2056732,
-    "summary": "automatically download smart tab grouping models without extra opt-in for smart window auto tab grouping",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-21T22:26:18Z",
-    "resolvedAt": "2026-08-18T09:25:40Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2057007,
     "summary": "[Monitor Agent][FE] When monitor agent fails in a run, there should be some warning sent to the user",
     "product": "Core",
@@ -1873,15 +1873,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058723,
-    "summary": "Implement AITab page composition code to enable evals of AITab",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-28T22:26:16Z",
-    "resolvedAt": "2026-08-17T09:40:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059197,
     "summary": "Add Glean telemetry for browser.smartwindow.sidebar.openByDefault preference changes",
     "product": "Core",
@@ -1960,6 +1951,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-04T15:39:50Z",
     "resolvedAt": "2026-09-26T04:28:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060609,
+    "summary": "[Monitor Agent][FE] Add a comment that watch and Monitor refer to the same agent task command",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-04T16:35:06Z",
+    "resolvedAt": "2026-11-14T08:51:28Z"
   },
   {
     "source": "bugzilla",
@@ -2143,15 +2143,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062141,
-    "summary": "Keyboard-activating a panel button opens an unrequested link preview",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-10T07:23:11Z",
-    "resolvedAt": "2026-08-18T09:26:28Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062308,
     "summary": "Smartbar “Ask” CTA does not workwhen suggestions is closed",
     "product": "Core",
@@ -2221,15 +2212,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T12:47:57Z",
     "resolvedAt": "2026-08-21T09:57:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062688,
-    "summary": "Add resume (PUWYLO) prompt telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T16:10:06Z",
-    "resolvedAt": "2026-08-18T09:26:33Z"
   },
   {
     "source": "bugzilla",
@@ -2338,15 +2320,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-14T11:00:00Z",
     "resolvedAt": "2026-09-12T09:40:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063876,
-    "summary": "Update third_party/js/prosemirror/LICENSE to the revision it is vendored from",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-16T05:37:41Z",
-    "resolvedAt": "2026-08-17T21:18:06Z"
   },
   {
     "source": "bugzilla",
@@ -3682,6 +3655,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075722,
+    "summary": "Move the application (hamburger) menu from the tab strip back to the toolbar",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T20:40:56Z",
+    "resolvedAt": "2026-11-14T08:51:52Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075832,
     "summary": "Perma mochitest-standalone browser/components/aiwindow/ui/test/browser/browser_smartwindow_chat_browser_tabbable.js | Shutdown - leaked window until shutdown [url = chrome://browser/content/browser.xhtml] | single tracking bug",
     "product": "Core",
@@ -4024,6 +4006,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081135,
+    "summary": "The Ask Smartbar button is not properly displayed with High contrast enabled",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-13T08:33:59Z",
+    "resolvedAt": "2026-11-14T08:52:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081214,
     "summary": "The Hide for now button has no pressed state with High contrast enabled",
     "product": "Core",
@@ -4258,6 +4249,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083829,
+    "summary": "Build the Smart Window single page onboarding UI",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:27:29Z",
+    "resolvedAt": "2026-11-14T08:52:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083830,
+    "summary": "Show the single page onboarding in Smart Window first run behind a pref",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:28:38Z",
+    "resolvedAt": "2026-11-14T08:52:10Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083834,
     "summary": "Add an Auto option to the Smart Window model setting in about:preferences",
     "product": "Core",
@@ -4429,6 +4438,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085208,
+    "summary": "AITab [FE] - Layout issue with highlight component",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-23T00:15:23Z",
+    "resolvedAt": "2026-11-14T08:52:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2085414,
+    "summary": "Split browser_chat_shortcuts.js into smaller test files",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-23T18:11:35Z",
+    "resolvedAt": "2026-11-14T08:52:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086526,
     "summary": "2.73% damp browser-toolbox.styleeditor-ready.DAMP (Windows) regression on Thu October 22 2026",
     "product": "Core",
@@ -4528,6 +4555,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088206,
+    "summary": "AITab [FE] - UX QA styling issues",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-02T18:53:42Z",
+    "resolvedAt": "2026-11-14T08:52:45Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088237,
     "summary": "[Monitor Agent][FE] Add UK Region gate to support UK Smart Window",
     "product": "Core",
@@ -4609,6 +4645,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091023,
+    "summary": "[Monitor Agent][FE] Support UK Region Feature callout",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-09T17:14:29Z",
+    "resolvedAt": "2026-11-14T08:53:12Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091061,
     "summary": "[Models] Auto ATG v1 Evals",
     "product": "Core",
@@ -4627,21 +4672,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091644,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_security_run_search.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-11T07:41:26Z",
+    "resolvedAt": "2026-11-14T22:47:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092222,
+    "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_smart_actions_toolbar.js | Smart actions toolbar / starts a new sidebar chat about the page - Uncaught exception in test - Couldn't find the engine \"chat\" - timed out after 200 tries.",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-12T18:36:16Z",
+    "resolvedAt": "2026-11-14T21:56:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092259,
     "summary": "`browser_chat_shortcuts.js` leaves the native cursor over the copy button, failing a later hover check when repeated",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-12T20:11:57Z",
     "resolvedAt": "2026-11-13T16:20:16Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063620,
-    "summary": "Pass model to memory context prompt",
-    "product": "Core",
-    "component": "Machine Learning: Models",
-    "filedAt": "2026-08-14T15:07:48Z",
-    "resolvedAt": "2026-08-18T09:27:19Z"
   },
   {
     "source": "bugzilla",

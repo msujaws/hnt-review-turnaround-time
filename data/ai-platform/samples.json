@@ -1,26 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-au74zpfnrmjuzrxjxce7",
-    "revisionId": 319299,
-    "author": "jbowser",
-    "reviewer": "nordzilla",
-    "requestedAt": "2026-08-17T23:14:48.000Z",
-    "firstActionAt": "2026-08-19T03:05:54.000Z",
-    "tatBusinessHours": 8
-  },
-  {
-    "source": "github",
-    "id": 231,
-    "repo": "Firefox-AI/MLPA",
-    "author": "subpath",
-    "reviewer": "noahpodgurski",
-    "requestedAt": "2026-08-18T13:55:38Z",
-    "firstActionAt": "2026-08-18T13:58:03Z",
-    "tatBusinessHours": 0.04027777777777777
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-464tlsqswmhc3fv4gc4a",
     "revisionId": 319762,
     "author": "valentinp",
@@ -28,16 +8,6 @@
     "requestedAt": "2026-08-19T12:47:22.000Z",
     "firstActionAt": "2026-08-19T12:51:48.000Z",
     "tatBusinessHours": 0
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-sdxpr5k4qqz3i3q7kdz4",
-    "revisionId": 319328,
-    "author": "thasan",
-    "reviewer": "nordzilla",
-    "requestedAt": "2026-08-18T01:13:21.000Z",
-    "firstActionAt": "2026-08-19T21:17:48.000Z",
-    "tatBusinessHours": 16
   },
   {
     "source": "github",
@@ -1281,16 +1251,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-bybrln4axf72j6iusj5y",
-    "revisionId": 319595,
-    "author": "bjohns",
-    "reviewer": "npodgurski",
-    "requestedAt": "2026-08-18T19:07:55.000Z",
-    "firstActionAt": "2026-08-19T12:19:07.000Z",
-    "tatBusinessHours": 1.8680555555555556
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-h2fnqmfdptgzawnjv5p7",
     "revisionId": 332765,
     "author": "NeilDeakin",
@@ -1872,11 +1832,11 @@
   {
     "source": "github",
     "id": 313,
+    "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
     "reviewer": "subpath",
     "requestedAt": "2026-11-05T18:29:09Z",
     "firstActionAt": "2026-11-06T14:55:37Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 4.441111111111111
   },
   {
@@ -2022,11 +1982,11 @@
   {
     "source": "github",
     "id": 315,
+    "repo": "Firefox-AI/MLPA",
     "author": "FieldMarshallObvious",
     "reviewer": "noahpodgurski",
     "requestedAt": "2026-11-06T20:22:00Z",
     "firstActionAt": "2026-11-09T18:38:06Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 6.2683333333333335
   },
   {
@@ -2052,11 +2012,11 @@
   {
     "source": "github",
     "id": 313,
+    "repo": "Firefox-AI/MLPA",
     "author": "noahpodgurski",
     "reviewer": "ikchifo",
     "requestedAt": "2026-11-05T18:29:09Z",
     "firstActionAt": "2026-11-10T14:12:57Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 19.73
   },
   {
@@ -2092,21 +2052,151 @@
   {
     "source": "github",
     "id": 318,
+    "repo": "Firefox-AI/MLPA",
     "author": "ikchifo",
     "reviewer": "subpath",
     "requestedAt": "2026-11-12T19:10:18Z",
     "firstActionAt": "2026-11-13T15:02:18Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 3.8666666666666667
   },
   {
     "source": "github",
     "id": 319,
+    "repo": "Firefox-AI/MLPA",
     "author": "subpath",
     "reviewer": "noahpodgurski",
     "requestedAt": "2026-11-13T14:42:51Z",
     "firstActionAt": "2026-11-13T14:58:40Z",
-    "repo": "Firefox-AI/MLPA",
     "tatBusinessHours": 0.26361111111111113
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-n6r5xzf2i6x232o5nfbf",
+    "revisionId": 339615,
+    "author": "gregtatum",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-11-04T17:05:13.000Z",
+    "firstActionAt": "2026-11-14T18:02:32.000Z",
+    "tatBusinessHours": 60.91305555555555
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-apradr7x5osxfwi3tmws",
+    "revisionId": 342358,
+    "author": "gregtatum",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-11-12T22:05:36.000Z",
+    "firstActionAt": "2026-11-14T17:43:37.000Z",
+    "tatBusinessHours": 8
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-izadkdajybdukuktkpcl",
+    "revisionId": 340213,
+    "author": "cgopal",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-11-06T01:46:00.000Z",
+    "firstActionAt": "2026-11-16T15:56:18.000Z",
+    "tatBusinessHours": 49.93833333333334
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ogbnsrbuyx7xfndg5nck",
+    "revisionId": 332706,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-19T01:19:29.000Z",
+    "firstActionAt": "2026-11-16T15:54:17.000Z",
+    "tatBusinessHours": 161.9047222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-loi7vr4b5dho6kxb4cqr",
+    "revisionId": 332707,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-19T01:19:42.000Z",
+    "firstActionAt": "2026-11-16T15:50:23.000Z",
+    "tatBusinessHours": 161.8397222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-33mvxeza4mxrtbcj43gt",
+    "revisionId": 336413,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-23T18:20:19.000Z",
+    "firstActionAt": "2026-11-16T15:48:06.000Z",
+    "tatBusinessHours": 124.46305555555556
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ujxfggmuafoj5tuftc2r",
+    "revisionId": 332705,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-19T01:19:21.000Z",
+    "firstActionAt": "2026-11-16T15:41:31.000Z",
+    "tatBusinessHours": 161.69194444444443
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-nx56k7cjuta3nz527ljs",
+    "revisionId": 332704,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-19T01:19:13.000Z",
+    "firstActionAt": "2026-11-16T15:40:16.000Z",
+    "tatBusinessHours": 161.67111111111112
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-qdzfdewrlvzd2nvouxwh",
+    "revisionId": 335650,
+    "author": "nordzilla",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-10-20T14:47:58.000Z",
+    "firstActionAt": "2026-11-16T15:38:11.000Z",
+    "tatBusinessHours": 151.8369444444444
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7zbzbqwchfj4o337syib",
+    "revisionId": 341512,
+    "author": "valentinp",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-11-10T18:00:38.000Z",
+    "firstActionAt": "2026-11-16T15:16:38.000Z",
+    "tatBusinessHours": 29.26666666666667
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-ifjhlipa5cunazfgdlvi",
+    "revisionId": 342660,
+    "author": "valentinp",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-11-13T16:39:25.000Z",
+    "firstActionAt": "2026-11-16T14:35:38.000Z",
+    "tatBusinessHours": 5.936944444444444
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-o6lm4lwkdcbrghkb5gl7",
+    "revisionId": 342658,
+    "author": "valentinp",
+    "reviewer": "gregtatum",
+    "requestedAt": "2026-11-13T16:39:19.000Z",
+    "firstActionAt": "2026-11-16T14:01:29.000Z",
+    "tatBusinessHours": 5.3694444444444445
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-zhabtejui5dgjnldqryc",
+    "revisionId": 338973,
+    "author": "thasan",
+    "reviewer": "nordzilla",
+    "requestedAt": "2026-11-12T21:33:57.000Z",
+    "firstActionAt": "2026-11-15T17:31:06.000Z",
+    "tatBusinessHours": 8.434166666666666
   }
 ]
