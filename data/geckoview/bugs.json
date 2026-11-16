@@ -388,6 +388,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2061833,
+    "summary": "[Release] [PDF.js] Turn on pdfjs.annotationEditorMode for Release",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-08-07T19:01:48Z",
+    "resolvedAt": "2026-11-14T21:56:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2062521,
     "summary": "Intermittent org.mozilla.geckoview.test.TextInputDelegateTest#noDismissKeyboardAfterlostFocus[#input] | single tracking bug",
     "product": "GeckoView",
@@ -1045,6 +1054,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084989,
+    "summary": "[PDF.js] [A11y] Focusing on the ressizer handlebars is difficult / not consistently possible and they do not present as labeled actionable elements",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-22T13:19:39Z",
+    "resolvedAt": "2026-11-16T12:44:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085012,
     "summary": "[A11y] We need branching behavior on the bottom toolbar case to ensure better focus order",
     "product": "GeckoView",
@@ -1060,6 +1078,15 @@
     "component": "General",
     "filedAt": "2026-10-26T23:48:27Z",
     "resolvedAt": "2026-11-07T16:35:35Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086001,
+    "summary": "Update WPT meta data for GeckoView with isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-27T06:06:07Z",
+    "resolvedAt": "2026-11-16T09:47:43Z"
   },
   {
     "source": "bugzilla",
@@ -1171,6 +1198,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090947,
+    "summary": "[Fenix][A11y] Request focus be placed in the browser after adding signature to pick up browser events",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-11-09T14:04:03Z",
+    "resolvedAt": "2026-11-14T08:53:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091077,
     "summary": "GeckoView tests use deprecated junit and androidx.test APIs",
     "product": "GeckoView",
@@ -1195,5 +1231,14 @@
     "component": "General",
     "filedAt": "2026-11-12T19:20:04Z",
     "resolvedAt": "2026-11-13T04:54:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092694,
+    "summary": "[Focus] Reenable PDF.js toolbar in Focus",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-11-13T20:28:18Z",
+    "resolvedAt": "2026-11-14T21:57:04Z"
   }
 ]
