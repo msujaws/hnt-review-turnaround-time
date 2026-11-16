@@ -1,80 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-ffiyi3557usy6jbca3qf",
-    "revisionId": 342378,
-    "author": "florian",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-12T22:37:27.000Z",
-    "acceptedByTeam": true
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-uq3qtijdkdus5o2kxo56",
-    "revisionId": 342372,
-    "author": "florian",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-12T22:37:09.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-wqct6wsvvkvmzw2tof65",
-    "revisionId": 341321,
-    "author": "dao",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-10T10:58:18.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-wqct6wsvvkvmzw2tof65",
-    "revisionId": 341321,
-    "author": "dao",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-11-10T10:58:18.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-ikcia2mkjk6aawpxjrx3",
-    "revisionId": 342350,
-    "author": "florian",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-12T21:35:03.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-zuyt4sqqd2l5acishgaa",
-    "revisionId": 339978,
-    "author": "gregtatum",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-05T14:23:06.000Z",
-    "acceptedByTeam": true
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-4miegqu7pzrmzhi6wjym",
-    "revisionId": 340471,
-    "author": "kalenlu",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-11-06T17:43:26.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-4miegqu7pzrmzhi6wjym",
-    "revisionId": 340471,
-    "author": "kalenlu",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-06T17:43:38.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-5nss4bchzxtct7vjo6f7",
-    "revisionId": 342334,
-    "author": "kbaliev",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-11-12T20:58:20.000Z"
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-grn2htpgryeq5o2s5mf5",
     "revisionId": 339589,
     "author": "ralkhulaidi",
@@ -83,19 +9,20 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-yuww4tul32i6bh2a7ksg",
-    "revisionId": 341577,
-    "author": "vprema",
+    "id": "PHID-DREV-wqct6wsvvkvmzw2tof65",
+    "revisionId": 341321,
+    "author": "dao",
     "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-10T21:34:20.000Z"
+    "requestedAt": "2026-11-10T10:58:18.000Z",
+    "acceptedByTeam": true
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-zfbmfre5p7pmdilsrpzt",
-    "revisionId": 334111,
-    "author": "dimi",
+    "id": "PHID-DREV-zuyt4sqqd2l5acishgaa",
+    "revisionId": 339978,
+    "author": "gregtatum",
     "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-11-06T12:56:39.000Z",
+    "requestedAt": "2026-11-05T14:23:06.000Z",
     "acceptedByTeam": true
   },
   {
@@ -162,54 +89,6 @@
     "author": "Moebius",
     "reviewer": "credential-management-reviewers",
     "requestedAt": "2026-02-10T19:47:18.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7f7wi3bxkljislwjtji2",
-    "revisionId": 337991,
-    "author": "kalenlu",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-10-29T14:00:51.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7f7wi3bxkljislwjtji2",
-    "revisionId": 337991,
-    "author": "kalenlu",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-10-29T14:00:57.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-bjpzsk7rsnwbulbulzl7",
-    "revisionId": 337992,
-    "author": "kalenlu",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-10-29T14:04:11.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-bjpzsk7rsnwbulbulzl7",
-    "revisionId": 337992,
-    "author": "kalenlu",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-10-29T14:05:00.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-4krkj553z5wjbouoke5v",
-    "revisionId": 337990,
-    "author": "kalenlu",
-    "reviewer": "mtigley",
-    "requestedAt": "2026-10-29T13:58:36.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-4krkj553z5wjbouoke5v",
-    "revisionId": 337990,
-    "author": "kalenlu",
-    "reviewer": "credential-management-reviewers",
-    "requestedAt": "2026-10-29T13:58:42.000Z"
   },
   {
     "source": "phab",

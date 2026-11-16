@@ -1,6 +1,15 @@
 [
   {
     "source": "bugzilla",
+    "id": 1883561,
+    "summary": "Intermittent TV toolkit/components/passwordmgr/test/browser/browser_proxyAuth_prompt.js | single tracking bug",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2024-03-05T03:59:14Z",
+    "resolvedAt": "2026-11-14T08:51:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1935395,
     "summary": "PasswordRulesManager use of nsIURI.displayHost may be incorrect",
     "product": "Toolkit",
@@ -331,6 +340,15 @@
     "component": "Password Manager",
     "filedAt": "2026-11-03T10:09:15Z",
     "resolvedAt": "2026-11-05T20:52:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2088428,
+    "summary": "Reject logins containing lone surrogate parts",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-03T11:28:21Z",
+    "resolvedAt": "2026-11-13T21:30:33Z"
   },
   {
     "source": "bugzilla",
