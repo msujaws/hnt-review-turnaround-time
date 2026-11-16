@@ -64,6 +64,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2010048,
+    "summary": "Record error metrics when communicating with Merino fails",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-01-13T16:26:37Z",
+    "resolvedAt": "2026-11-14T08:51:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2011433,
     "summary": "Focus can visibly be on New Tab search box AND secondary search bar at the same time",
     "product": "Firefox",
@@ -169,15 +178,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-02-26T18:24:51Z",
     "resolvedAt": "2026-09-25T15:05:15Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2022264,
-    "summary": "IAB Ads Devtools toggle fix",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-03-10T16:10:04Z",
-    "resolvedAt": "2026-08-18T09:24:42Z"
   },
   {
     "source": "bugzilla",
@@ -379,24 +379,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2051410,
-    "summary": "Newtab daily briefing can probably be removed now",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-29T19:52:43Z",
-    "resolvedAt": "2026-08-18T09:25:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2051742,
-    "summary": "Migrate New Tab ContextMenu/LinkMenu to panel-list",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-06-30T21:02:56Z",
-    "resolvedAt": "2026-08-18T09:25:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2053151,
     "summary": "Clocks Widget: \"Edit Clocks\" UI doesn't match intended desigsn",
     "product": "Firefox",
@@ -433,15 +415,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2055495,
-    "summary": "0.22 - 0.11% installer size + 1 more () regression on Thu July 2 2026",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-16T13:44:40Z",
-    "resolvedAt": "2026-08-16T18:28:39Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2055858,
     "summary": "Respect wallpaper \"visible\" and \"visibility_group\" fields in the New Tab Customize picker",
     "product": "Firefox",
@@ -457,15 +430,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-20T13:32:27Z",
     "resolvedAt": "2026-08-20T20:14:30Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2056255,
-    "summary": "Weather forecast widget SCSS has root level <hr> styles",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-07-20T13:39:47Z",
-    "resolvedAt": "2026-08-18T09:25:33Z"
   },
   {
     "source": "bugzilla",
@@ -1006,15 +970,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-15T01:06:23Z",
     "resolvedAt": "2026-10-22T15:15:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063840,
-    "summary": "moz-page-thumb test URLs use the \"thumbnail\" host and never resolve",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-15T20:21:32Z",
-    "resolvedAt": "2026-08-17T21:17:56Z"
   },
   {
     "source": "bugzilla",
@@ -2980,6 +2935,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083876,
+    "summary": "Add the context menu for the solitaire widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T18:35:35Z",
+    "resolvedAt": "2026-11-13T16:11:29Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083945,
     "summary": "Add documentation explaining the new newtabPreview.ftl file",
     "product": "Firefox",
@@ -3223,6 +3187,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087594,
+    "summary": "Move widget user action values into one shared list in WidgetsRegistry.mjs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T17:50:27Z",
+    "resolvedAt": "2026-11-13T16:11:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2087646,
     "summary": "Ingest new Merino endpoint to fetch all framed widget URLs",
     "product": "Firefox",
@@ -3268,6 +3241,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087660,
+    "summary": "Move widget source values into one shared list in WidgetsRegistry.mjs",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:58:36Z",
+    "resolvedAt": "2026-11-13T21:30:24Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087930,
+    "summary": "Add an expanded view to the Solitaire widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T02:01:48Z",
+    "resolvedAt": "2026-11-14T08:52:36Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2087931,
     "summary": "Add photo backgrounds to the travel widget",
     "product": "Firefox",
@@ -3295,6 +3286,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2087948,
+    "summary": "Global CSS changes to Large Privacy Widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T05:09:29Z",
+    "resolvedAt": "2026-11-14T08:52:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087970,
+    "summary": "Allow dragging iframe widgets on New Tab from inside the iframe",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-02T08:39:21Z",
+    "resolvedAt": "2026-11-16T09:47:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088205,
     "summary": "[meta] Firefox 159.0.1 train-hop metabug",
     "product": "Firefox",
@@ -3319,6 +3328,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-03T17:37:52Z",
     "resolvedAt": "2026-11-04T09:52:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089587,
+    "summary": "Sponsored story report dialog is missing its heading",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T14:53:09Z",
+    "resolvedAt": "2026-11-13T21:30:43Z"
   },
   {
     "source": "bugzilla",
