@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058359,
-    "summary": "Re-enable \"update service\" setting for auto-disabled installations",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-07-28T01:28:13Z",
-    "resolvedAt": "2026-08-18T09:25:46Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2059477,
     "summary": "Remove Legacy mirrors of application update telemetry",
     "product": "Toolkit",
@@ -214,6 +205,15 @@
     "component": "Application Update",
     "filedAt": "2026-10-22T23:12:29Z",
     "resolvedAt": "2026-11-11T09:13:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086354,
+    "summary": "Intermittent toolkit/mozapps/update/tests/unit_aus_update/languagePackUpdates.js | single tracking bug",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-10-28T02:38:20Z",
+    "resolvedAt": "2026-11-16T16:57:13Z"
   },
   {
     "source": "bugzilla",
