@@ -163,15 +163,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064482,
-    "summary": "empty browser/components/ipprotection/tests/browser/browser_ipprotection_usage.js",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-08-18T18:32:29Z",
-    "resolvedAt": "2026-08-19T21:28:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2066384,
     "summary": "Local legislation error panel middle section background is white instead of gray",
     "product": "Firefox",
@@ -214,6 +205,15 @@
     "component": "IP Protection",
     "filedAt": "2026-08-26T15:48:20Z",
     "resolvedAt": "2026-10-13T21:15:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2067288,
+    "summary": "VPN silently loses connection while device is sleeping",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-08-27T20:58:58Z",
+    "resolvedAt": "2026-11-17T04:15:29Z"
   },
   {
     "source": "bugzilla",
@@ -460,6 +460,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2078175,
+    "summary": "User location is not updated to VPN recommended one after removing Nightly as the default browser",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-05T11:12:11Z",
+    "resolvedAt": "2026-11-17T04:15:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078192,
     "summary": "Focus ring around Settings button is clipped during keyboard navigation in the \"VPN is paused\" panel",
     "product": "Firefox",
@@ -628,6 +637,15 @@
     "component": "IP Protection",
     "filedAt": "2026-10-15T15:54:43Z",
     "resolvedAt": "2026-10-16T09:48:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082582,
+    "summary": "Post-Nova CSS Updates for Desktop VPN",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-15T17:26:12Z",
+    "resolvedAt": "2026-11-17T04:16:01Z"
   },
   {
     "source": "bugzilla",
@@ -865,6 +883,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088115,
+    "summary": "“Remove VPN from toolbar” does not work on a second discovery callout if used before",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-02T15:37:09Z",
+    "resolvedAt": "2026-11-16T20:47:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088234,
     "summary": "Add Set to Default promo to locations subview",
     "product": "Firefox",
@@ -901,11 +928,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091467,
+    "summary": "Move Location button outside of the VPN status card",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-10T16:29:09Z",
+    "resolvedAt": "2026-11-16T20:48:02Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091550,
     "summary": "Use generic error for VPN_UNAVAILABLE",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-11-10T21:20:17Z",
     "resolvedAt": "2026-11-11T05:35:45Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093664,
+    "summary": "Add unlimited bandwidth text to vpn status card during promo",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-16T19:04:49Z",
+    "resolvedAt": "2026-11-17T09:43:47Z"
   }
 ]
