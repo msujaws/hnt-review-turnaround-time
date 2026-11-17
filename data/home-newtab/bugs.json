@@ -28,6 +28,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1966300,
+    "summary": "Intermittent TV browser/extensions/newtab/test/xpcshell/test_AboutHomeStartupCacheWorker.js | xpcshell return code: -11",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2025-05-14T06:35:31Z",
+    "resolvedAt": "2026-11-17T09:41:57Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1970996,
     "summary": "Intermittent browser/extensions/newtab/test/browser/browser_highlights_section.js | single tracking bug",
     "product": "Firefox",
@@ -277,15 +286,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-14T10:12:41Z",
     "resolvedAt": "2026-09-21T20:12:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2034363,
-    "summary": "Incorrect card type detection in impression and dismiss events for small and large cards if NOVA is enabled",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-23T08:41:01Z",
-    "resolvedAt": "2026-08-19T12:28:06Z"
   },
   {
     "source": "bugzilla",
@@ -739,75 +739,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062482,
-    "summary": "Stocks widget: add a Markets/Watchlist list dropdown",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T01:49:44Z",
-    "resolvedAt": "2026-08-19T09:38:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062483,
-    "summary": "Stocks widget: let users add default tickers to their Watchlist",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-11T01:55:07Z",
-    "resolvedAt": "2026-08-19T09:38:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062800,
     "summary": "[meta] Firefox 153.0.4 train-hop metabug",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-11T21:27:05Z",
     "resolvedAt": "2026-08-20T04:21:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062845,
-    "summary": "Stocks widget: add watchlist add/remove Fluent strings",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-12T03:05:22Z",
-    "resolvedAt": "2026-08-19T09:39:17Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062920,
-    "summary": "Add a small size to the Stocks New Tab widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-12T10:33:52Z",
-    "resolvedAt": "2026-08-19T09:39:26Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063144,
-    "summary": "Stocks Widget: update feed to fetch data for individual stock tickers",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T01:44:37Z",
-    "resolvedAt": "2026-08-19T09:39:52Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063183,
-    "summary": "Stocks Widget: add ticker search to find and add individual stocks",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T05:50:51Z",
-    "resolvedAt": "2026-08-19T09:40:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063207,
-    "summary": "Number of trackers blocked across 0 sites is displayed in the widget after clearing all the browser data",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T09:25:01Z",
-    "resolvedAt": "2026-08-19T09:40:26Z"
   },
   {
     "source": "bugzilla",
@@ -826,15 +763,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-13T13:00:31Z",
     "resolvedAt": "2026-08-20T09:42:11Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063289,
-    "summary": "Stocks Widget: add Watchlist tab to the Medium size",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-13T13:29:31Z",
-    "resolvedAt": "2026-08-19T09:40:32Z"
   },
   {
     "source": "bugzilla",
@@ -919,66 +847,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063709,
-    "summary": "Remove version 154 train-hop shims for contextual ads region/locale defaults",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T19:32:32Z",
-    "resolvedAt": "2026-08-19T09:41:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063710,
-    "summary": "Remove version 154 train-hop version check for MozAdsClient in AdsClient",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T19:32:59Z",
-    "resolvedAt": "2026-08-19T09:41:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063711,
-    "summary": "Remove version 154 train-hop shim for registerRuntimeMetric in NewTabGleanUtils",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T19:33:28Z",
-    "resolvedAt": "2026-08-19T09:41:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063712,
-    "summary": "Remove version 154 train-hop shim for getLogger in TemporaryMerinoClientShim",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T19:33:56Z",
-    "resolvedAt": "2026-08-19T09:41:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063713,
-    "summary": "Re-remove version 145 train-hop shim for PrivacyFeed getTodayStats guard",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T19:36:10Z",
-    "resolvedAt": "2026-08-19T09:42:01Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063771,
     "summary": "Perma central PROCESS-CRASH | 79a6a3a8-aafb-aa8e-cb4e-0630193cd670 | Attempting to connect to non-local address! opener is [resource://newtab/lib/TemporaryMerinoClientShim.sys.mjs:895:30], uri is [https://merino.services.mozilla.com/api/v1/rss/picture-",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-08-15T01:06:23Z",
     "resolvedAt": "2026-10-22T15:15:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063958,
-    "summary": "UX fixes for privacy widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-17T06:23:21Z",
-    "resolvedAt": "2026-08-19T21:27:16Z"
   },
   {
     "source": "bugzilla",
@@ -3034,6 +2908,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2084823,
+    "summary": "Widgets-Scaffold: Use WidgetMenuPoweredBy for widgets with a partner link",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-21T23:45:24Z",
+    "resolvedAt": "2026-11-16T17:35:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085056,
     "summary": "Update the New Tab build docs now that the build generates the bundles in the objdir",
     "product": "Firefox",
@@ -3079,6 +2962,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085804,
+    "summary": "POTD: Remove `widgets.pictureOfTheDay.setAsWallpaper.enabled` pref",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T14:59:20Z",
+    "resolvedAt": "2026-11-17T04:16:11Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085817,
     "summary": "`browser_topsites_section.js` | Wait for pinned search topsites - timed out after 50 tries when the test is run more than once (test-verify, `--repeat`)",
     "product": "Firefox",
@@ -3121,6 +3013,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-27T15:51:34Z",
     "resolvedAt": "2026-10-31T09:55:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2086314,
+    "summary": "Crossword widget - Move hard-coded strings to newtabPreview.ftl file",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-27T23:22:43Z",
+    "resolvedAt": "2026-11-17T04:16:14Z"
   },
   {
     "source": "bugzilla",
@@ -3349,6 +3250,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089612,
+    "summary": "Intermittent browser/extensions/newtab/test/browser/browser_discovery_card.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T15:24:46Z",
+    "resolvedAt": "2026-11-17T09:42:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2089616,
     "summary": "Update the Travel widget size when a specific change_size event is emitted",
     "product": "Firefox",
@@ -3372,7 +3282,7 @@
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-11-06T17:13:04Z",
-    "resolvedAt": "2026-11-12T22:06:22Z"
+    "resolvedAt": "2026-11-16T22:41:51Z"
   },
   {
     "source": "bugzilla",
@@ -3435,7 +3345,7 @@
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-11-11T16:56:54Z",
-    "resolvedAt": "2026-11-13T04:53:35Z"
+    "resolvedAt": "2026-11-17T04:16:43Z"
   },
   {
     "source": "bugzilla",
@@ -3445,5 +3355,41 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-12T09:34:46Z",
     "resolvedAt": "2026-11-13T04:53:44Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092328,
+    "summary": "Storing a page thumbnail that already exists fails instead of being skipped, so no page-thumbnail:create is sent",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-12T22:32:53Z",
+    "resolvedAt": "2026-11-16T20:48:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093686,
+    "summary": "Intermittent browser_newtab_spaces.js | The Stories space comes back for a user who had stories off - false == true",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-16T19:31:42Z",
+    "resolvedAt": "2026-11-17T09:43:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093690,
+    "summary": "Intermittent browser_newtab_ping.js | test_opened_page_dwell_time_ends_with_its_window - Closing the window ended the visit - \"undefined\" == 1",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-16T19:35:39Z",
+    "resolvedAt": "2026-11-17T09:43:58Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093708,
+    "summary": "newtab xpcshell head.js drops the built_in_addons.json override, so every test starts all built-in add-ons",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-16T20:22:25Z",
+    "resolvedAt": "2026-11-17T09:44:02Z"
   }
 ]
