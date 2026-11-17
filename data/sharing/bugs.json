@@ -1,39 +1,12 @@
 [
   {
     "source": "bugzilla",
-    "id": 2052263,
-    "summary": "Add Share button to panel (Windows)",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-07-02T16:25:13Z",
-    "resolvedAt": "2026-08-19T09:35:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052265,
-    "summary": "Add QR code button to panel",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-07-02T16:27:21Z",
-    "resolvedAt": "2026-08-19T09:35:45Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052266,
     "summary": "Add send to other devices button to panel",
     "product": "Firefox",
     "component": "Sharing",
     "filedAt": "2026-07-02T16:28:36Z",
     "resolvedAt": "2026-08-21T09:56:54Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052268,
-    "summary": "Enable/disable buttons depending on the current page",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-07-02T16:31:09Z",
-    "resolvedAt": "2026-08-19T09:35:49Z"
   },
   {
     "source": "bugzilla",
@@ -88,15 +61,6 @@
     "component": "Sharing",
     "filedAt": "2026-08-15T02:15:55Z",
     "resolvedAt": "2026-09-10T04:45:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064156,
-    "summary": "Unify entrypoint telemetry under a single metric",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-08-17T18:34:36Z",
-    "resolvedAt": "2026-08-19T09:43:27Z"
   },
   {
     "source": "bugzilla",
