@@ -37,6 +37,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1995881,
+    "summary": "Intermittent TV toolkit/components/passwordmgr/test/browser/browser_relay_signup_flow.js | Relay item SHOULD NOT be present in the autocomplete popup when the browser IS NOT signed in. - false == true -",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2025-10-22T21:12:39Z",
+    "resolvedAt": "2026-11-16T20:46:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2040812,
     "summary": "Passkey autofill entries not shown on autocomplete=\"webauthn\" form",
     "product": "Toolkit",
@@ -70,15 +79,6 @@
     "component": "Password Manager",
     "filedAt": "2026-08-10T23:33:32Z",
     "resolvedAt": "2026-08-31T16:35:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063993,
-    "summary": "Disable Rust Storage for release build",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-08-17T08:57:42Z",
-    "resolvedAt": "2026-08-19T21:27:23Z"
   },
   {
     "source": "bugzilla",
