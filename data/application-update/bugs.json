@@ -217,6 +217,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089983,
+    "summary": "Handle a missing type value in the updater manifest parser",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-11-06T08:26:26Z",
+    "resolvedAt": "2026-11-17T09:43:00Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090625,
     "summary": "zucchini fails to build with clang 23 and libc++: unused attribute in #pragma clang attribute push region",
     "product": "Toolkit",
