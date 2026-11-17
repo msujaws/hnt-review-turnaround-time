@@ -226,15 +226,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054916,
-    "summary": "[UI] Add download button to bottom right of the PDF viewer",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-07-14T13:19:31Z",
-    "resolvedAt": "2026-08-19T09:35:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054917,
     "summary": "[UI] Add print button to Android PDF viewer",
     "product": "GeckoView",
@@ -403,15 +394,6 @@
     "component": "IME",
     "filedAt": "2026-08-11T06:57:43Z",
     "resolvedAt": "2026-09-01T04:17:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062612,
-    "summary": "[UI] Wireframe in FAB / Toolbar for tools",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-08-11T13:25:51Z",
-    "resolvedAt": "2026-08-19T09:38:53Z"
   },
   {
     "source": "bugzilla",
@@ -865,6 +847,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075435,
+    "summary": "[3.3] Add telemetry",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-25T00:19:10Z",
+    "resolvedAt": "2026-11-17T09:42:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076837,
     "summary": "Run reftest and crashtest on GeckoView with fission",
     "product": "GeckoView",
@@ -961,6 +952,15 @@
     "component": "General",
     "filedAt": "2026-10-11T23:35:33Z",
     "resolvedAt": "2026-10-13T21:16:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2080959,
+    "summary": "Cannot run reftests on CI with isolated process enabled",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-12T20:02:38Z",
+    "resolvedAt": "2026-11-16T20:46:46Z"
   },
   {
     "source": "bugzilla",
