@@ -1,6 +1,15 @@
 [
   {
     "source": "bugzilla",
+    "id": 1530967,
+    "summary": "[meta] GeckoView: Add support for taking screenshot of full page web content",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2019-02-27T09:51:29Z",
+    "resolvedAt": "2026-11-17T18:56:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1554779,
     "summary": "Intermittent TEST-UNEXPECTED-TIMEOUT | runjunit.py | Timed out after 3000 seconds",
     "product": "GeckoView",
@@ -226,24 +235,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2054917,
-    "summary": "[UI] Add print button to Android PDF viewer",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-07-14T13:19:50Z",
-    "resolvedAt": "2026-08-20T16:28:39Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054918,
-    "summary": "[UI] Add share button to Android PDF viewer",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-07-14T13:20:03Z",
-    "resolvedAt": "2026-08-20T16:28:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054920,
     "summary": "Turn off pull-to-refresh on PDFs",
     "product": "GeckoView",
@@ -421,15 +412,6 @@
     "component": "PDF Viewer",
     "filedAt": "2026-08-13T19:14:03Z",
     "resolvedAt": "2026-10-19T11:38:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064162,
-    "summary": "[GeckoView] `saveAsPdf` should check if it is a PDF document and use `getPdfFileSaver`",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-08-17T18:47:34Z",
-    "resolvedAt": "2026-08-20T16:29:35Z"
   },
   {
     "source": "bugzilla",
@@ -919,6 +901,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2079919,
+    "summary": "[reftest] Remove `-nofis` variants from testing on Android",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-08T20:09:49Z",
+    "resolvedAt": "2026-11-18T16:16:38Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2079932,
     "summary": "[Crash] Sign PDF java.lang.IllegalStateException: result is already complete",
     "product": "GeckoView",
@@ -1213,6 +1204,15 @@
     "component": "General",
     "filedAt": "2026-11-09T19:03:07Z",
     "resolvedAt": "2026-11-10T04:06:26Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091229,
+    "summary": "Stop using deprecated Android APIs in GeckoView, geckoview_example, the annotation processor and test_runner",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-10T03:17:52Z",
+    "resolvedAt": "2026-11-18T03:51:32Z"
   },
   {
     "source": "bugzilla",
