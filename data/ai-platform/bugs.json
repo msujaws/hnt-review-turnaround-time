@@ -91,15 +91,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052356,
-    "summary": "Smart Window perf: remove serial pre-request I/O on the TTFT path (parallel FxA token, cached prompts)",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-02T21:12:45Z",
-    "resolvedAt": "2026-08-20T04:20:58Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2052357,
     "summary": "Smart Window perf: stop deep-cloning history and tools config per request",
     "product": "Core",
@@ -241,15 +232,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-18T19:55:58Z",
     "resolvedAt": "2026-09-02T08:50:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064838,
-    "summary": "Reduce PUWYLO URL semantic similarity threshold and expose as a pref",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-19T18:54:54Z",
-    "resolvedAt": "2026-08-20T16:30:35Z"
   },
   {
     "source": "bugzilla",
@@ -874,6 +856,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092727,
+    "summary": "[Models] change LLMaJ inference role to \"user\"",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-13T21:36:45Z",
+    "resolvedAt": "2026-11-17T22:48:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094237,
+    "summary": "Preserve provider metadata across AI tool calls",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-17T17:38:26Z",
+    "resolvedAt": "2026-11-18T03:52:08Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1990708,
     "summary": "Crash in [@ mozilla::dom::InferenceSession::Init]",
     "product": "Core",
@@ -1090,24 +1090,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062960,
-    "summary": "Run ml perftests with both onnx native and wasm to cover shipping configurations",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-12T13:03:16Z",
-    "resolvedAt": "2026-08-20T04:21:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063023,
-    "summary": "Consider utilizing `isAvailable` within the `best-onnx` fallback logic",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-12T16:24:04Z",
-    "resolvedAt": "2026-08-20T21:53:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063024,
     "summary": "Introduce a telemetry probe for native ONNX runtime availability v1.22",
     "product": "Core",
@@ -1123,24 +1105,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-13T14:41:40Z",
     "resolvedAt": "2026-10-17T03:43:05Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064108,
-    "summary": "Do not run ML perftests on autoland if they're not alerting",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-17T15:49:53Z",
-    "resolvedAt": "2026-08-20T04:22:06Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064679,
-    "summary": "browser_ml_smart_tab_clustering_perf.js expects a fixed output but it varies by arch",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-19T12:03:27Z",
-    "resolvedAt": "2026-08-20T04:22:30Z"
   },
   {
     "source": "bugzilla",
@@ -1294,6 +1258,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-09-03T15:28:45Z",
     "resolvedAt": "2026-09-15T04:37:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2069379,
+    "summary": "Settle HWInferenceParent's readiness when its launch fails",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-09-04T14:30:45Z",
+    "resolvedAt": "2026-11-17T22:47:37Z"
   },
   {
     "source": "bugzilla",
@@ -1558,6 +1531,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2093329,
+    "summary": "Crash in [@ abort | ggml_abort | ggml_metal_buffer_set_tensor]",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-16T12:54:04Z",
+    "resolvedAt": "2026-11-17T22:48:40Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094414,
+    "summary": "Intermittent toolkit/components/ml/tests/browser/browser_ml_model_hub_download.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-17T23:46:17Z",
+    "resolvedAt": "2026-11-18T08:27:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1609,15 +1600,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-02-04T17:02:04Z",
     "resolvedAt": "2026-10-01T04:19:01Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2024015,
-    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_telemetry.js | single tracking bug",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-03-17T19:00:07Z",
-    "resolvedAt": "2026-08-20T16:41:13Z"
   },
   {
     "source": "bugzilla",
@@ -1843,15 +1825,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-24T14:32:12Z",
     "resolvedAt": "2026-09-18T04:24:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057625,
-    "summary": "[meta] Smart Window 154 uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-24T17:02:23Z",
-    "resolvedAt": "2026-08-20T20:03:09Z"
   },
   {
     "source": "bugzilla",
@@ -2185,15 +2158,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-10T19:31:29Z",
     "resolvedAt": "2026-11-07T09:32:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062417,
-    "summary": "browser.smartwindow.agent.enabled set default and set nimbus feature pattern for Smart Window Agent Watch",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-10T19:57:28Z",
-    "resolvedAt": "2026-08-20T16:28:59Z"
   },
   {
     "source": "bugzilla",
@@ -4033,6 +3997,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2081369,
+    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/aitab/browser_aitab_context_tab_limit.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-13T17:35:49Z",
+    "resolvedAt": "2026-11-18T03:51:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2081422,
     "summary": "AITab [FE] - Disable AITab trigger from right-click on tab/tab groups menu",
     "product": "Core",
@@ -4177,6 +4150,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083045,
+    "summary": "Display the responding model in the Action Log in Auto-Model mode",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-16T17:33:58Z",
+    "resolvedAt": "2026-11-18T16:11:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083046,
+    "summary": "Add Auto-Model engagement flag and selected model to model-choice telemetry",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-16T17:34:01Z",
+    "resolvedAt": "2026-11-18T16:11:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083169,
     "summary": "update chatbot scout url",
     "product": "Core",
@@ -4282,6 +4273,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-19T17:30:38Z",
     "resolvedAt": "2026-11-13T04:51:56Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2083836,
+    "summary": "Add an Auto option to the Smart Window smartbar model picker",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:31:13Z",
+    "resolvedAt": "2026-11-18T16:11:10Z"
   },
   {
     "source": "bugzilla",
@@ -4573,6 +4573,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088217,
+    "summary": "Improve the maintainability of the Manage settings row styling in the text selection menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-02T19:22:15Z",
+    "resolvedAt": "2026-11-17T19:34:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088237,
     "summary": "[Monitor Agent][FE] Add UK Region gate to support UK Smart Window",
     "product": "Core",
@@ -4690,6 +4699,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091433,
+    "summary": "clean up Smart Window legacy patterns listed in the aiwindow AGENTS.md",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-10T14:58:25Z",
+    "resolvedAt": "2026-11-18T03:51:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091509,
     "summary": "allow custom prompt instead of existing conversation starters with optional page text",
     "product": "Core",
@@ -4705,6 +4723,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-11T07:41:26Z",
     "resolvedAt": "2026-11-14T22:47:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091938,
+    "summary": "Setting the link preview AI control to blocked does not prevent it from running",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-12T05:26:33Z",
+    "resolvedAt": "2026-11-17T22:48:17Z"
   },
   {
     "source": "bugzilla",
@@ -4735,6 +4762,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092730,
+    "summary": "Adjust AITab multi-tab character budgeting in Firefox",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-13T21:44:39Z",
+    "resolvedAt": "2026-11-18T09:39:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2093273,
     "summary": "The Auto model is displayed when selecting Qwen from the Single page Onboarding model",
     "product": "Core",
@@ -4759,15 +4795,6 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-08-18T18:46:46Z",
     "resolvedAt": "2026-11-03T04:13:47Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064790,
-    "summary": "Set browser.smartwindow.searchTheWebFast default to true",
-    "product": "Core",
-    "component": "Machine Learning: Models",
-    "filedAt": "2026-08-19T17:09:01Z",
-    "resolvedAt": "2026-08-20T04:22:52Z"
   },
   {
     "source": "bugzilla",
