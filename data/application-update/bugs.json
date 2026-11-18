@@ -82,15 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063986,
-    "summary": "Check the return value of posix_fallocate and only preallocate when the destination file was opened in PatchFile::ApplyPatchTo",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-08-17T08:38:26Z",
-    "resolvedAt": "2026-08-20T04:22:04Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064110,
     "summary": "Intermittent TEST-UNEXPECTED-TIMEOUT | toolkit/mozapps/update/tests/unit_aus_update/languagePackUpdates.js | Test timed out",
     "product": "Toolkit",
