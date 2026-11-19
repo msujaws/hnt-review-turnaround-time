@@ -856,15 +856,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064564,
-    "summary": "Wallpapers: Orphaned wallpaper cleanup",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-18T23:13:57Z",
-    "resolvedAt": "2026-08-21T04:22:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064767,
     "summary": "Upload new wallpapers to match new margins",
     "product": "Firefox",
@@ -889,15 +880,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-20T01:25:31Z",
     "resolvedAt": "2026-08-26T04:24:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2065011,
-    "summary": "Create blank widget for the Search team",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-20T04:29:29Z",
-    "resolvedAt": "2026-08-21T09:58:58Z"
   },
   {
     "source": "bugzilla",
@@ -3277,6 +3259,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090243,
+    "summary": "[Solitaire] Audio/sounds should be muted by default",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-06T17:40:36Z",
+    "resolvedAt": "2026-11-19T04:20:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090281,
     "summary": "FramedWidgetsFeed cache lifetime should be much shorter",
     "product": "Firefox",
@@ -3409,5 +3400,32 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-17T03:55:27Z",
     "resolvedAt": "2026-11-17T22:48:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094355,
+    "summary": "Include user region (country) to travel endpoint",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-17T21:36:39Z",
+    "resolvedAt": "2026-11-19T04:13:53Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094356,
+    "summary": "Include interaction state with travel endpoint",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-17T21:37:08Z",
+    "resolvedAt": "2026-11-19T04:13:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094756,
+    "summary": "Use title case for New Tab widget menu and submenu items",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-18T19:04:03Z",
+    "resolvedAt": "2026-11-19T09:22:15Z"
   }
 ]
