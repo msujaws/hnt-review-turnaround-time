@@ -55,15 +55,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047711,
-    "summary": "[AI Window] Tool Use - Delete memories from natural language in chat",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-15T19:34:37Z",
-    "resolvedAt": "2026-08-21T15:02:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2047876,
     "summary": "Perma subprocess.CalledProcessError: Command '['git', 'clone', '-n', 'https://huggingface.co/Mozilla/smart-tab-topic', '/tmp/tmph_40b31n/onnx-models/Mozilla/smart-tab-topic/main']' returned non-zero exit status 128.",
     "product": "Core",
@@ -79,15 +70,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-06-18T14:53:12Z",
     "resolvedAt": "2026-09-08T22:17:21Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050910,
-    "summary": "[AI Window] Tool Use - Update memories with natural language in chat",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-06-26T17:20:02Z",
-    "resolvedAt": "2026-08-21T15:02:00Z"
   },
   {
     "source": "bugzilla",
@@ -118,15 +100,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058699,
-    "summary": "Develop design of passive conversation-based memories",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-28T20:32:34Z",
-    "resolvedAt": "2026-08-21T15:31:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062291,
     "summary": "Write new memories generation evaluation scripts",
     "product": "Core",
@@ -142,15 +115,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-10T15:04:41Z",
     "resolvedAt": "2026-09-03T16:15:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062346,
-    "summary": "[Monitor Agent][Models] Add the historical page snapshots to the runtime and prompt",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T17:26:06Z",
-    "resolvedAt": "2026-08-21T04:22:16Z"
   },
   {
     "source": "bugzilla",
@@ -208,15 +172,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063650,
-    "summary": "Develop shared memories evaluation data model components",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-14T16:03:56Z",
-    "resolvedAt": "2026-08-21T14:46:31Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064098,
     "summary": "[Models] Implement telemetry for tracking SFF model performance",
     "product": "Core",
@@ -232,24 +187,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-18T19:55:58Z",
     "resolvedAt": "2026-09-02T08:50:44Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064840,
-    "summary": "Flakey test for browser_smartwindow_beta_badge",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-19T18:58:48Z",
-    "resolvedAt": "2026-08-21T04:22:31Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064844,
-    "summary": "PUWYLO v0: Gate feature to en locale",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-19T19:04:59Z",
-    "resolvedAt": "2026-08-21T04:22:33Z"
   },
   {
     "source": "bugzilla",
@@ -766,6 +703,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085180,
+    "summary": "Implement basics of DigestManager",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-10-22T22:26:53Z",
+    "resolvedAt": "2026-11-19T09:21:17Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085920,
     "summary": "Tune Gemini 3.1 FL memory tagging prompt to reduce overtagging in negative scenarios",
     "product": "Core",
@@ -838,6 +784,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091776,
+    "summary": "PUWYLO Suggestion Feature Telemetry",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-11T16:25:07Z",
+    "resolvedAt": "2026-11-19T04:13:34Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092619,
     "summary": "Implement Memories and Journeys maintenance telemetry",
     "product": "Core",
@@ -862,6 +817,15 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-11-13T21:36:45Z",
     "resolvedAt": "2026-11-17T22:48:32Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094207,
+    "summary": "[Monitor Agent][Models] Suggest creating a monitor as a follow-up chip in chat",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-17T17:03:37Z",
+    "resolvedAt": "2026-11-19T04:13:51Z"
   },
   {
     "source": "bugzilla",
@@ -907,6 +871,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-01-23T18:14:50Z",
     "resolvedAt": "2026-10-15T09:46:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2012843,
+    "summary": "In OPFS select a non-private browsing window for loading modals, rather than the most recent one",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-01-27T23:26:43Z",
+    "resolvedAt": "2026-11-19T04:12:26Z"
   },
   {
     "source": "bugzilla",
@@ -1495,6 +1468,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2086888,
+    "summary": "Remove or update metrics expiring at the end of Firefox 162 (2026-11-19): page_extractor.phase",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-29T02:05:03Z",
+    "resolvedAt": "2026-11-19T09:21:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088295,
     "summary": "Perma [tier2] toolkit/components/aboutinference/tests/browser/browser_aboutinference.js | test_about_inference_devices - Only one tab should be focusable | single tracking bug",
     "product": "Core",
@@ -1528,6 +1510,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-11-09T09:43:11Z",
     "resolvedAt": "2026-11-10T04:06:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092311,
+    "summary": "Intermittent TV toolkit/components/pageextractor/tests/browser/browser_google_docs_extraction.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only as a",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-12T21:57:55Z",
+    "resolvedAt": "2026-11-19T09:21:31Z"
   },
   {
     "source": "bugzilla",
@@ -1573,15 +1564,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2025-08-08T03:04:47Z",
     "resolvedAt": "2026-09-11T16:27:20Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 1994400,
-    "summary": "Korean/Japanese composition unexpectedly stops when mouse select triggers Firefox builtin AI chatbot popup icon",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2025-10-15T10:15:40Z",
-    "resolvedAt": "2026-08-21T09:56:35Z"
   },
   {
     "source": "bugzilla",
@@ -1744,15 +1726,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-09T22:02:44Z",
     "resolvedAt": "2026-08-31T19:05:07Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2054226,
-    "summary": "Update Smart Window promo to include a top-right close (×) button and remote settings images",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-10T23:08:18Z",
-    "resolvedAt": "2026-08-21T09:57:02Z"
   },
   {
     "source": "bugzilla",
@@ -1963,15 +1936,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060620,
-    "summary": "[Monitor Agent][FE]  Clean up /command palette",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-04T17:19:52Z",
-    "resolvedAt": "2026-08-21T09:57:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060985,
     "summary": "Smart Window ATG - Clean Up Testing Suite and Fix Window Stall",
     "product": "Core",
@@ -2116,15 +2080,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061886,
-    "summary": "[Spike] Understand how to track users by acquisition channel – to measure conversion metrics and customize onboarding per channel",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-07T22:34:54Z",
-    "resolvedAt": "2026-08-21T17:24:20Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062112,
     "summary": "[Monitor Agent][FE] Create monitor component in tool bar panel",
     "product": "Core",
@@ -2185,33 +2140,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T06:03:52Z",
     "resolvedAt": "2026-08-24T22:28:25Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062573,
-    "summary": "Unable to invoke the Create a Task modal in the sidebar by typing /watch and hitting the Enter key",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T10:46:43Z",
-    "resolvedAt": "2026-08-21T09:57:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062597,
-    "summary": "Unable to create a monitor from the new tab page",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T12:47:57Z",
-    "resolvedAt": "2026-08-21T09:57:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062904,
-    "summary": "Mochitest browser_smartwindow_chip_overflow.js timing out",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-12T09:19:12Z",
-    "resolvedAt": "2026-08-21T15:51:50Z"
   },
   {
     "source": "bugzilla",
@@ -2332,15 +2260,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064096,
-    "summary": "[Models] End to End evals for Smart Form Fill calls",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-17T15:28:43Z",
-    "resolvedAt": "2026-08-21T19:28:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064101,
     "summary": "[Models] Identify various types of contextual inputs for SFF",
     "product": "Core",
@@ -2365,15 +2284,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-17T21:22:24Z",
     "resolvedAt": "2026-08-26T04:24:42Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064410,
-    "summary": "Expand available component list for AITab protyping json",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T15:00:06Z",
-    "resolvedAt": "2026-08-21T09:58:31Z"
   },
   {
     "source": "bugzilla",
@@ -3619,6 +3529,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075706,
+    "summary": "Too much space between model name and description in the model picker menu",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-25T19:11:12Z",
+    "resolvedAt": "2026-11-19T09:21:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075722,
     "summary": "Move the application (hamburger) menu from the tab strip back to the toolbar",
     "product": "Core",
@@ -4672,6 +4591,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2090263,
+    "summary": "about:preferences#personalizeSmartWindow and about:preferences#manageMemories should not be available if browser.smartwindow.enabled is false",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-06T18:36:38Z",
+    "resolvedAt": "2026-11-18T22:39:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090997,
+    "summary": "Investigate animated smartbar placeholder rendering performance",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-09T15:40:39Z",
+    "resolvedAt": "2026-11-19T16:14:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091023,
     "summary": "[Monitor Agent][FE] Support UK Region Feature callout",
     "product": "Core",
@@ -4735,6 +4672,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092208,
+    "summary": "[Smart Window] Make Single Page Onboarding and Auto Model default experience",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-12T18:08:32Z",
+    "resolvedAt": "2026-11-18T22:39:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092222,
     "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_smart_actions_toolbar.js | Smart actions toolbar / starts a new sidebar chat about the page - Uncaught exception in test - Couldn't find the engine \"chat\" - timed out after 200 tries.",
     "product": "Core",
@@ -4750,6 +4696,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-12T20:11:57Z",
     "resolvedAt": "2026-11-13T16:20:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092366,
+    "summary": "Update the UITour API to pass the acquisition entry point when launching Smart Window",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-13T00:03:43Z",
+    "resolvedAt": "2026-11-19T04:13:40Z"
   },
   {
     "source": "bugzilla",
@@ -4780,12 +4735,21 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063685,
-    "summary": "Remove world cup tool calling code from Smart Window",
+    "id": 2094424,
+    "summary": "write Smart Window Fluent IDs in full and lint against building them from template strings",
     "product": "Core",
-    "component": "Machine Learning: Models",
-    "filedAt": "2026-08-14T17:52:39Z",
-    "resolvedAt": "2026-08-21T15:52:18Z"
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-18T00:21:37Z",
+    "resolvedAt": "2026-11-19T04:14:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094871,
+    "summary": "split large Smart Window files listed in the aiwindow AGENTS.md and match file layout to how files load",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-18T22:49:12Z",
+    "resolvedAt": "2026-11-19T12:48:48Z"
   },
   {
     "source": "bugzilla",
