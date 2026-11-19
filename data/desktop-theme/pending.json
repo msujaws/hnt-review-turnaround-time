@@ -1,14 +1,6 @@
 [
   {
     "source": "phab",
-    "id": "PHID-DREV-anwxjt4bbvohuqmalykm",
-    "revisionId": 342763,
-    "author": "gcardieri",
-    "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-13T20:06:06.000Z"
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-sie6b6bjgovvt426zafq",
     "revisionId": 337619,
     "author": "dwhisman",
@@ -26,19 +18,68 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-t2cxwnl5onlbeoi7ovkb",
-    "revisionId": 343754,
-    "author": "dwhisman",
-    "reviewer": "dao",
-    "requestedAt": "2026-11-17T22:36:42.000Z"
+    "id": "PHID-DREV-ydwui2wzfabntij2geq5",
+    "revisionId": 330028,
+    "author": "nsharpley",
+    "reviewer": "jules",
+    "requestedAt": "2026-11-17T17:37:54.000Z"
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-t2cxwnl5onlbeoi7ovkb",
-    "revisionId": 343754,
-    "author": "dwhisman",
+    "id": "PHID-DREV-ydwui2wzfabntij2geq5",
+    "revisionId": 330028,
+    "author": "nsharpley",
+    "reviewer": "emilio",
+    "requestedAt": "2026-11-19T16:10:47.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7wwtkmesyzgi5xnjsugp",
+    "revisionId": 343533,
+    "author": "tschuster",
     "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-17T22:36:46.000Z"
+    "requestedAt": "2026-11-19T16:17:58.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7wwtkmesyzgi5xnjsugp",
+    "revisionId": 343533,
+    "author": "tschuster",
+    "reviewer": "mstriemer",
+    "requestedAt": "2026-11-19T16:17:58.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-df55x7bfc5cgrjjjqf7d",
+    "revisionId": 344027,
+    "author": "jleritte",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-18T18:26:52.000Z",
+    "acceptedByTeam": true
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-5uilje7cqybcyyja36cf",
+    "revisionId": 344357,
+    "author": "chkoehler",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-19T15:25:25.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-yuww4tul32i6bh2a7ksg",
+    "revisionId": 341577,
+    "author": "vprema",
+    "reviewer": "emilio",
+    "requestedAt": "2026-11-16T20:42:50.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-yhoelypwj36ko7xc6axu",
+    "revisionId": 343777,
+    "author": "mcleinman",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-17T23:50:26.000Z"
   },
   {
     "source": "phab",
@@ -50,19 +91,12 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-c4n2cwd7eyvv3awqfa3c",
-    "revisionId": 343889,
-    "author": "dao",
+    "id": "PHID-DREV-hgaivcx7nhk3teue3afd",
+    "revisionId": 338829,
+    "author": "nina-py",
     "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-18T10:59:22.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-estncr46ghcjlffbqhvn",
-    "revisionId": 343874,
-    "author": "dao",
-    "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-18T10:34:30.000Z"
+    "requestedAt": "2026-11-02T18:18:25.000Z",
+    "acceptedByTeam": true
   },
   {
     "source": "phab",
@@ -74,19 +108,67 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-73icyvze6ku57filidck",
-    "revisionId": 343579,
-    "author": "dao",
-    "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-17T15:53:21.000Z"
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-unzo372aeshbyfewzrfc",
     "revisionId": 343847,
     "author": "nina-py",
     "reviewer": "desktop-theme-reviewers",
     "requestedAt": "2026-11-18T08:31:15.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-pblxkvpdt3uxvbuayn5z",
+    "revisionId": 340722,
+    "author": "dao",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-08T03:16:10.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-pblxkvpdt3uxvbuayn5z",
+    "revisionId": 340722,
+    "author": "dao",
+    "reviewer": "hjones",
+    "requestedAt": "2026-11-10T11:30:56.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-anwxjt4bbvohuqmalykm",
+    "revisionId": 342763,
+    "author": "gcardieri",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-13T20:06:06.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-c4n2cwd7eyvv3awqfa3c",
+    "revisionId": 343889,
+    "author": "dao",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-18T10:59:22.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7lzxwyn7azp3b7macgls",
+    "revisionId": 342616,
+    "author": "dao",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-13T15:02:38.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-7lzxwyn7azp3b7macgls",
+    "revisionId": 342616,
+    "author": "dao",
+    "reviewer": "tgiles",
+    "requestedAt": "2026-11-13T15:03:08.000Z"
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-estncr46ghcjlffbqhvn",
+    "revisionId": 343874,
+    "author": "dao",
+    "reviewer": "desktop-theme-reviewers",
+    "requestedAt": "2026-11-18T10:34:30.000Z"
   },
   {
     "source": "phab",
@@ -313,38 +395,6 @@
     "author": "dao",
     "reviewer": "tgiles",
     "requestedAt": "2026-11-13T08:52:53.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7lzxwyn7azp3b7macgls",
-    "revisionId": 342616,
-    "author": "dao",
-    "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-13T15:02:38.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-7lzxwyn7azp3b7macgls",
-    "revisionId": 342616,
-    "author": "dao",
-    "reviewer": "tgiles",
-    "requestedAt": "2026-11-13T15:03:08.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-pblxkvpdt3uxvbuayn5z",
-    "revisionId": 340722,
-    "author": "dao",
-    "reviewer": "desktop-theme-reviewers",
-    "requestedAt": "2026-11-08T03:16:10.000Z"
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-pblxkvpdt3uxvbuayn5z",
-    "revisionId": 340722,
-    "author": "dao",
-    "reviewer": "hjones",
-    "requestedAt": "2026-11-10T11:30:56.000Z"
   },
   {
     "source": "phab",
