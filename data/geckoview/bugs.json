@@ -775,6 +775,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2075337,
+    "summary": "Sharing a PDF should go through the print processor",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-24T16:48:33Z",
+    "resolvedAt": "2026-11-19T04:12:41Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2075421,
     "summary": "[3.1] Investigate comparative performance of implementation options",
     "product": "GeckoView",
@@ -838,6 +847,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2076741,
+    "summary": "[WPT] Run platform tests with fission on GeckoView",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-09-30T13:09:28Z",
+    "resolvedAt": "2026-11-19T03:43:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2076837,
     "summary": "Run reftest and crashtest on GeckoView with fission",
     "product": "GeckoView",
@@ -853,6 +871,15 @@
     "component": "General",
     "filedAt": "2026-10-05T21:53:52Z",
     "resolvedAt": "2026-10-10T08:51:23Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2078916,
+    "summary": "[mochitest] Remove `-nofis` variants from testing on Android",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-06T19:59:16Z",
+    "resolvedAt": "2026-11-19T04:12:43Z"
   },
   {
     "source": "bugzilla",
@@ -907,6 +934,15 @@
     "component": "General",
     "filedAt": "2026-10-08T20:09:49Z",
     "resolvedAt": "2026-11-18T16:16:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2079921,
+    "summary": "[xpcshell] Remove `-nofis` variants from testing on Android",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-08T20:10:57Z",
+    "resolvedAt": "2026-11-19T09:21:12Z"
   },
   {
     "source": "bugzilla",
@@ -1051,6 +1087,15 @@
     "component": "PDF Viewer",
     "filedAt": "2026-10-22T13:19:39Z",
     "resolvedAt": "2026-11-16T12:44:17Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2084998,
+    "summary": "[PDF.js] [A11y] Improve presentation of signature elements that no longer have an edit toolbar",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-10-22T13:38:58Z",
+    "resolvedAt": "2026-11-19T13:10:43Z"
   },
   {
     "source": "bugzilla",
@@ -1240,5 +1285,23 @@
     "component": "PDF Viewer",
     "filedAt": "2026-11-13T20:28:18Z",
     "resolvedAt": "2026-11-14T21:57:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093496,
+    "summary": "Re-enable isolated process tests skipped due to crash reporting",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-16T15:46:54Z",
+    "resolvedAt": "2026-11-19T16:15:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094461,
+    "summary": "SessionAccessibility uses deprecated AccessibilityNodeInfo APIs",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-18T04:12:55Z",
+    "resolvedAt": "2026-11-19T04:14:07Z"
   }
 ]
