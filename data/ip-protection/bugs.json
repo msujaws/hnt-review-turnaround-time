@@ -910,12 +910,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088239,
+    "summary": "Add success message to VPN panel when user has Firefox set as default",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-02T20:30:19Z",
+    "resolvedAt": "2026-11-18T22:38:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088515,
     "summary": "[a11y] VPN panel fails to dismiss or update content when switching tabs via keyboard shortcuts",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-11-03T15:03:40Z",
     "resolvedAt": "2026-11-05T05:11:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090329,
+    "summary": "Add telemetry for set to default promotion",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-06T21:48:01Z",
+    "resolvedAt": "2026-11-19T04:13:09Z"
   },
   {
     "source": "bugzilla",
