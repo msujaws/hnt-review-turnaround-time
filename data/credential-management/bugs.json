@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2065203,
-    "summary": "Fix test regression",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-08-20T15:55:47Z",
-    "resolvedAt": "2026-08-21T09:59:17Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2065441,
     "summary": "Match logins before encrypting them",
     "product": "Toolkit",
@@ -316,6 +307,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083513,
+    "summary": "Remove the Nova pref check from login.svg",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-10-18T21:31:00Z",
+    "resolvedAt": "2026-11-17T19:34:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085021,
     "summary": "Rust storage migration failure: timePasswordChanged: N exceeds the safe integer bounds",
     "product": "Toolkit",
@@ -358,5 +358,14 @@
     "component": "Password Manager",
     "filedAt": "2026-11-03T11:46:49Z",
     "resolvedAt": "2026-11-05T16:15:29Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089475,
+    "summary": "Remove the unneeded `createLogger` call from test_login_autocomplete_result.js",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-05T09:36:58Z",
+    "resolvedAt": "2026-11-18T22:38:51Z"
   }
 ]
