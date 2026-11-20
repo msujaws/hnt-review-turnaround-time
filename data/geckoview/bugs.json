@@ -136,6 +136,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1981580,
+    "summary": "[meta] Fix junit tests for isolated processes",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2025-08-06T19:24:10Z",
+    "resolvedAt": "2026-11-20T13:35:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1988531,
     "summary": "Ensure media is working on isolated process",
     "product": "GeckoView",
@@ -1231,6 +1240,15 @@
     "component": "General",
     "filedAt": "2026-11-05T14:57:59Z",
     "resolvedAt": "2026-11-11T21:51:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090649,
+    "summary": "geckoview_example from the Android x86_64 ASan fuzzing build restarts in a loop and never loads a page",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-07T20:22:39Z",
+    "resolvedAt": "2026-11-19T21:27:19Z"
   },
   {
     "source": "bugzilla",
