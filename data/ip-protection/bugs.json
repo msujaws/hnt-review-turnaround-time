@@ -37,6 +37,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2052469,
+    "summary": "IP-Protection: fall back to GPI AuthProvider after signing out of the FxA account",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-07-03T09:30:57Z",
+    "resolvedAt": "2026-11-20T03:49:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052864,
     "summary": "Stale / Erronus ServerList Cache is persisted until the next Bucket update",
     "product": "Firefox",
@@ -925,6 +934,15 @@
     "component": "IP Protection",
     "filedAt": "2026-11-03T15:03:40Z",
     "resolvedAt": "2026-11-05T05:11:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089076,
+    "summary": "Tell Android apps which IP Protection auth provider is active",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-04T19:13:41Z",
+    "resolvedAt": "2026-11-20T03:50:22Z"
   },
   {
     "source": "bugzilla",
