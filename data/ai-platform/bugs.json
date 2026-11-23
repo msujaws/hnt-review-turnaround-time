@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2052357,
-    "summary": "Smart Window perf: stop deep-cloning history and tools config per request",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-07-02T21:12:50Z",
-    "resolvedAt": "2026-08-24T21:46:37Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2054091,
     "summary": "Define and agree on PUWYLO contract with FE",
     "product": "Core",
@@ -124,15 +115,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-10T17:28:43Z",
     "resolvedAt": "2026-08-27T03:43:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062354,
-    "summary": "[Models] Smart Form Fill background tabs de-risk",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T17:31:54Z",
-    "resolvedAt": "2026-08-24T17:39:26Z"
   },
   {
     "source": "bugzilla",
@@ -241,15 +223,6 @@
     "component": "Machine Learning: General",
     "filedAt": "2026-08-24T18:41:27Z",
     "resolvedAt": "2026-09-05T09:07:51Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2066286,
-    "summary": "Perma TV browser/components/aiwindow/models/tests/browser/browser_monitor_errors.js | test_timed_out_run_records_timeout_code - Uncaught exception in test - [MockEngineManager]",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-24T23:03:39Z",
-    "resolvedAt": "2026-08-25T00:21:52Z"
   },
   {
     "source": "bugzilla",
@@ -748,6 +721,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088273,
+    "summary": "Decide Glean reporting for AITab component conversions",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-02T22:03:36Z",
+    "resolvedAt": "2026-11-21T09:45:46Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090794,
     "summary": "Perma browser/components/aiwindow/models/tests/browser/browser_aitab.js | test_modification_keeps_links_from_earlier_turns - The stored exchange holds no URL tokens. - false == true",
     "product": "Core",
@@ -1051,6 +1033,15 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-07-30T18:33:59Z",
     "resolvedAt": "2026-09-03T16:23:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062441,
+    "summary": "browser_ml_semantic_history_search_perf.js passes with zero metrics when semantic search is unavailable",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-08-10T21:32:19Z",
+    "resolvedAt": "2026-11-21T09:44:22Z"
   },
   {
     "source": "bugzilla",
@@ -1432,6 +1423,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2082976,
+    "summary": "Add a memories panel to about:inference",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-16T14:44:29Z",
+    "resolvedAt": "2026-11-21T20:15:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2082985,
+    "summary": "Add a OpenAI Completions shim for TextGenerationEngine",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-10-16T14:49:05Z",
+    "resolvedAt": "2026-11-21T20:15:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084351,
     "summary": "Switch conversation starter evaluations from mlpa to firefox",
     "product": "Core",
@@ -1495,12 +1504,75 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091155,
+    "summary": "Gemma 4 prompt template is not supported by llama.cpp C API",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T23:08:23Z",
+    "resolvedAt": "2026-11-21T20:16:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091157,
+    "summary": "ModelHub does not honor its max cache size limit",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T23:14:15Z",
+    "resolvedAt": "2026-11-21T20:16:12Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091158,
+    "summary": "LlamaBackend incorrectly handles llama_tokenize return value and fails when it should retry",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T23:16:53Z",
+    "resolvedAt": "2026-11-21T20:16:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091162,
+    "summary": "LlamaBackend does not handle prompts longer than batch size",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T23:23:23Z",
+    "resolvedAt": "2026-11-21T20:16:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2091164,
+    "summary": "TextGenerationEngine does not record feature id in run telemetry",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-09T23:25:55Z",
+    "resolvedAt": "2026-11-21T20:16:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092311,
     "summary": "Intermittent TV toolkit/components/pageextractor/tests/browser/browser_google_docs_extraction.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only as a",
     "product": "Core",
     "component": "Machine Learning: On Device",
     "filedAt": "2026-11-12T21:57:55Z",
     "resolvedAt": "2026-11-19T09:21:31Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092325,
+    "summary": "Make LlamaBackend create a new llama_context on each call to run",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-12T22:30:21Z",
+    "resolvedAt": "2026-11-21T20:17:47Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092603,
+    "summary": "Fix ggml ops causing UBSan failure",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-13T16:01:23Z",
+    "resolvedAt": "2026-11-21T20:17:55Z"
   },
   {
     "source": "bugzilla",
@@ -1567,6 +1639,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2019054,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_run_search.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-02-24T19:18:40Z",
+    "resolvedAt": "2026-11-23T18:17:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2025711,
     "summary": "Sidebar browser leaks inner window when toggling out of AI Window mode",
     "product": "Core",
@@ -1603,30 +1684,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2048067,
-    "summary": "[meta] Auto Tab Grouping v0 (with user intervention step)",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-16T19:45:27Z",
-    "resolvedAt": "2026-08-24T23:20:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2048916,
     "summary": "The AI logging Completed Steps text is not visible on Hover with High Contrast enabled",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-06-19T11:26:51Z",
     "resolvedAt": "2026-09-03T04:23:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2050017,
-    "summary": "Permanent beta-as-esr153 Hit MOZ_CRASH(Attempting to connect to non-local address! opener is [chrome://browser/content/tabbrowser/tabbrowser.js:9933:33], uri is [https://www.google.com/search?client=firefox-b-1-e&channel=entpr&q=Hello])",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-06-24T11:09:12Z",
-    "resolvedAt": "2026-08-25T21:42:02Z"
   },
   {
     "source": "bugzilla",
@@ -1654,33 +1717,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T21:12:58Z",
     "resolvedAt": "2026-08-27T03:42:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052362,
-    "summary": "Smart Window perf: add missing ChatSql indexes and fix the correlated history subquery",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T21:13:11Z",
-    "resolvedAt": "2026-08-24T21:46:40Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052363,
-    "summary": "Smart Window perf: batch ChatStore prune deletes and throttle the per-write stat",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T21:13:15Z",
-    "resolvedAt": "2026-08-25T21:42:08Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052364,
-    "summary": "Smart Window perf: avoid SELECT-parse-merge-stringify-UPSERT in the LLM telemetry update",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T21:13:18Z",
-    "resolvedAt": "2026-08-24T21:46:43Z"
   },
   {
     "source": "bugzilla",
@@ -1762,15 +1798,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-22T20:34:38Z",
     "resolvedAt": "2026-09-16T04:14:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2057151,
-    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_ai_action_result.js | application timed out after 740.0 seconds with no output",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-23T06:40:36Z",
-    "resolvedAt": "2026-08-25T09:08:36Z"
   },
   {
     "source": "bugzilla",
@@ -1918,24 +1945,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061030,
-    "summary": "Show or hide Smart Window shortcuts based on the Classic Window Shortcuts setting",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T00:04:22Z",
-    "resolvedAt": "2026-08-25T09:09:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061040,
-    "summary": "AITab - create db for AITab data storage",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T00:56:17Z",
-    "resolvedAt": "2026-08-24T21:46:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061043,
     "summary": "AITab - Add tab menu trigger",
     "product": "Core",
@@ -2053,15 +2062,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062113,
-    "summary": "Create Monitor Tool bar button",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-10T03:46:14Z",
-    "resolvedAt": "2026-08-25T09:09:21Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062308,
     "summary": "Smartbar “Ask” CTA does not workwhen suggestions is closed",
     "product": "Core",
@@ -2089,39 +2089,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062513,
-    "summary": "[meta] Exa Integration v1: Web-Grounded Answers & Source Citations",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T05:57:23Z",
-    "resolvedAt": "2026-08-24T23:25:14Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2062514,
-    "summary": "[meta] Smart Window 154.0.x uplifts",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-11T06:03:52Z",
-    "resolvedAt": "2026-08-24T22:28:25Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062965,
     "summary": "The Organize tabs panels sees new Tabs with different conversations started as duplicated tabs",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-12T13:15:57Z",
     "resolvedAt": "2026-09-11T09:44:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063009,
-    "summary": "[Models] Evaluate LLM based Auto Tab Grouping",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-12T15:31:08Z",
-    "resolvedAt": "2026-08-25T14:33:32Z"
   },
   {
     "source": "bugzilla",
@@ -2260,24 +2233,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064452,
-    "summary": "Hide retry on the initial PUWYLO assistant response",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T16:59:25Z",
-    "resolvedAt": "2026-08-25T21:42:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064485,
-    "summary": "remove the \"Pick up\" prefix from PUWYLO tab group title",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T18:34:31Z",
-    "resolvedAt": "2026-08-25T09:09:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064527,
     "summary": "[Monitor Agent][FE] Add error states to monitor create",
     "product": "Core",
@@ -2293,15 +2248,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:54:58Z",
     "resolvedAt": "2026-08-26T04:24:45Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064531,
-    "summary": "[Monitor Agent][FE] Move the agent monitor item into the dialog about page component",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T20:56:15Z",
-    "resolvedAt": "2026-08-25T09:09:57Z"
   },
   {
     "source": "bugzilla",
@@ -2953,6 +2899,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2069600,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_aiwindow_monitor_button.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-05T10:21:14Z",
+    "resolvedAt": "2026-11-21T09:44:30Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2069683,
     "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_inline_mentions.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only as",
     "product": "Core",
@@ -3202,6 +3157,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-15T22:10:57Z",
     "resolvedAt": "2026-09-16T09:59:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072495,
+    "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_smartwindow_resume_card.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-16T04:40:05Z",
+    "resolvedAt": "2026-11-21T09:44:48Z"
   },
   {
     "source": "bugzilla",
@@ -4339,6 +4303,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085247,
+    "summary": "Perma TV browser/components/genai/tests/browser/browser_chat_shortcuts.js | This test exceeded the timeout threshold",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-23T04:57:19Z",
+    "resolvedAt": "2026-11-23T17:15:39Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085414,
     "summary": "Split browser_chat_shortcuts.js into smaller test files",
     "product": "Core",
@@ -4417,6 +4390,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-10-29T17:32:34Z",
     "resolvedAt": "2026-11-09T18:43:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087578,
+    "summary": "[Monitor+Research Agent][FE] Update Tasks page colors to the new design",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-30T16:59:43Z",
+    "resolvedAt": "2026-11-23T18:58:02Z"
   },
   {
     "source": "bugzilla",
@@ -4681,6 +4663,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092593,
+    "summary": "Add a pref to control Smart Bar autofocus on Smart Window new tabs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-13T15:43:14Z",
+    "resolvedAt": "2026-11-21T09:47:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092655,
     "summary": "Add support for new Smart Page types that have different features",
     "product": "Core",
@@ -4732,6 +4723,24 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-18T22:49:12Z",
     "resolvedAt": "2026-11-19T12:48:48Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2095742,
+    "summary": "browser_link_preview.js connects to the real itisatrap.org when run twice in a row",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-20T19:51:21Z",
+    "resolvedAt": "2026-11-21T09:50:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062747,
+    "summary": "Open tab count is wrong and excludes other Firefox windows",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-08-11T18:18:40Z",
+    "resolvedAt": "2026-11-23T18:57:34Z"
   },
   {
     "source": "bugzilla",
