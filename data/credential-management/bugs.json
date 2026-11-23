@@ -82,24 +82,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064411,
-    "summary": "After each browser launch, a window for entering the main password opens.",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-08-18T15:06:36Z",
-    "resolvedAt": "2026-08-24T01:27:18Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064491,
-    "summary": "Primary Password prompt on first PDF open per session (Firefox 154, Windows)",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-08-18T19:07:19Z",
-    "resolvedAt": "2026-08-24T01:26:29Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2065079,
     "summary": "Firefox 154.0 nags for primary password when started, but this cannot be disabled, even via 'about:config' and setting 'identity.fxaccounts' to 'false'",
     "product": "Toolkit",
@@ -358,5 +340,23 @@
     "component": "Password Manager",
     "filedAt": "2026-11-05T09:36:58Z",
     "resolvedAt": "2026-11-18T22:38:51Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094662,
+    "summary": "Intermittent TV toolkit/components/passwordmgr/test/browser/browser_autocomplete_secondary_actions.js | test_typing_past_logins_records_typed_through - Closing once only the footer remains records typed_through - \"dismissed\" == \"typed_through\"",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-18T15:24:19Z",
+    "resolvedAt": "2026-11-21T09:49:01Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2095164,
+    "summary": "Distinguish key and decryption failures from a cancelled primary password in the Rust login store, and record them in telemetry",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-19T16:35:40Z",
+    "resolvedAt": "2026-11-20T18:49:34Z"
   }
 ]
