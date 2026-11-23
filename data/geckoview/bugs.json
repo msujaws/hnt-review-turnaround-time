@@ -307,51 +307,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060197,
-    "summary": "The variant `aab` expiration is on 2026-09-01",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-03T12:34:02Z",
-    "resolvedAt": "2026-08-25T13:16:13Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060198,
-    "summary": "The variant `geckoview-no-fission` expiration is on 2026-09-01",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-03T12:34:13Z",
-    "resolvedAt": "2026-08-25T21:42:22Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060199,
-    "summary": "The variant `geckoview-fission` expiration is on 2026-09-01",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-03T12:34:23Z",
-    "resolvedAt": "2026-08-25T13:16:07Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060200,
-    "summary": "The variant `geckoview-fission-isolate-high-value` expiration is on 2026-09-01",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-03T12:34:34Z",
-    "resolvedAt": "2026-08-25T13:16:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2060202,
-    "summary": "The variant `geckoview-zygote` expiration is on 2026-09-01",
-    "product": "GeckoView",
-    "component": "General",
-    "filedAt": "2026-08-03T12:34:57Z",
-    "resolvedAt": "2026-08-25T13:16:10Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061279,
     "summary": "[UI] Add \"Add a signature\" box",
     "product": "GeckoView",
@@ -712,6 +667,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2071966,
+    "summary": "Sharing/downloading a PDF from a file doesn't populate a meaningful name",
+    "product": "GeckoView",
+    "component": "PDF Viewer",
+    "filedAt": "2026-09-14T17:33:53Z",
+    "resolvedAt": "2026-11-23T13:21:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2072582,
     "summary": "pressKey in TextInputDelegateTest should wait for Editable changes",
     "product": "GeckoView",
@@ -1063,6 +1027,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083987,
+    "summary": "Replace `sUniqueGpuProcessIdCounter` with `getChildId()`",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-10-20T02:16:58Z",
+    "resolvedAt": "2026-11-23T12:53:13Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2084393,
     "summary": "Switching tabs can interfere with taking scrollable screenshot",
     "product": "GeckoView",
@@ -1321,5 +1294,14 @@
     "component": "General",
     "filedAt": "2026-11-18T04:12:55Z",
     "resolvedAt": "2026-11-19T04:14:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2095129,
+    "summary": "Video gets cropped in the picture-in-picture window in default size",
+    "product": "GeckoView",
+    "component": "Media",
+    "filedAt": "2026-11-19T15:36:46Z",
+    "resolvedAt": "2026-11-23T18:59:18Z"
   }
 ]
