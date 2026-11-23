@@ -46,24 +46,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059477,
-    "summary": "Remove Legacy mirrors of application update telemetry",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-07-30T15:49:55Z",
-    "resolvedAt": "2026-08-25T16:01:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061517,
-    "summary": "Fix -Wunused-but-set-global for `sTimerID` in progressui_gtk.cpp",
-    "product": "Toolkit",
-    "component": "Application Update",
-    "filedAt": "2026-08-06T21:05:32Z",
-    "resolvedAt": "2026-08-25T09:09:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063878,
     "summary": "Fix component in modules/xz-embedded/moz.yaml",
     "product": "Toolkit",
@@ -196,6 +178,15 @@
     "component": "Application Update",
     "filedAt": "2026-10-28T02:38:20Z",
     "resolvedAt": "2026-11-16T16:57:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087685,
+    "summary": "Update owners & peers for Firefox :: Installer and Toolkit :: Application Update",
+    "product": "Toolkit",
+    "component": "Application Update",
+    "filedAt": "2026-10-30T23:02:04Z",
+    "resolvedAt": "2026-11-23T09:03:23Z"
   },
   {
     "source": "bugzilla",
