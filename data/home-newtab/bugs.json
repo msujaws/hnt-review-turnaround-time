@@ -10,6 +10,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1875918,
+    "summary": "Intermittent browser/components/newtab/test/xpcshell/test_TelemetryFeed.js | single tracking bug",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2024-01-22T21:12:14Z",
+    "resolvedAt": "2026-11-21T09:43:51Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1958336,
     "summary": "Intermittent browser/extensions/newtab/test/browser/browser_newtab_towindow.js | single tracking bug",
     "product": "Firefox",
@@ -568,15 +577,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2060343,
-    "summary": "Add `scroll100` and `scroll250` boolean metrics to newtab ping",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-03T19:24:10Z",
-    "resolvedAt": "2026-08-25T09:08:55Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060731,
     "summary": "Widgets that show content in an iframe appear blank while being dragged on New Tab",
     "product": "Firefox",
@@ -865,15 +865,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064767,
-    "summary": "Upload new wallpapers to match new margins",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-19T15:50:34Z",
-    "resolvedAt": "2026-08-24T22:55:26Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064769,
     "summary": "POTD: Address alignment of Picture of the day in widget",
     "product": "Firefox",
@@ -889,24 +880,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-20T01:25:31Z",
     "resolvedAt": "2026-08-26T04:24:58Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2065170,
-    "summary": "New Tab's unscoped panel-item::part(button) rule strips the icon slot from panel-items it doesn't own",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-20T14:25:34Z",
-    "resolvedAt": "2026-08-25T21:42:57Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2065645,
-    "summary": "Missing Fluent variable $title for newtab-menu-content-tooltip causes debug build newtab content crashes on startup",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-21T20:00:05Z",
-    "resolvedAt": "2026-08-25T09:10:18Z"
   },
   {
     "source": "bugzilla",
@@ -934,15 +907,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-24T08:58:10Z",
     "resolvedAt": "2026-09-07T09:28:34Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2066144,
-    "summary": "Enable remote settings driven sections layout by default",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-24T15:32:26Z",
-    "resolvedAt": "2026-08-24T21:48:36Z"
   },
   {
     "source": "bugzilla",
@@ -2764,6 +2728,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083875,
+    "summary": "Add telemetry for the solitaire widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-19T18:35:01Z",
+    "resolvedAt": "2026-11-21T09:45:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083876,
     "summary": "Add the context menu for the solitaire widget",
     "product": "Firefox",
@@ -3187,6 +3160,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088606,
+    "summary": "Smart Shortcuts fetchShortcutInteractions query consumes a core during intermittent high CPU (Firefox 159/Linux)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-03T17:30:04Z",
+    "resolvedAt": "2026-11-21T09:45:48Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2088608,
     "summary": "Newtab test failing",
     "product": "Firefox",
@@ -3340,6 +3322,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092722,
+    "summary": "getUserMonthlyActivity reads all the history visits instead of the last 28 days",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-13T21:27:24Z",
+    "resolvedAt": "2026-11-21T09:47:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2093279,
     "summary": "Timer Widget - Play/Pause controls icon fails to render",
     "product": "Firefox",
@@ -3385,12 +3376,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2093707,
+    "summary": "Intermittent test_HighlightsFeed.js | highlight[2] should be link[0] - \"https://site5.com\" == \"https://site0.com\"",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-16T20:20:48Z",
+    "resolvedAt": "2026-11-21T09:48:25Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2093708,
     "summary": "newtab xpcshell head.js drops the built_in_addons.json override, so every test starts all built-in add-ons",
     "product": "Firefox",
     "component": "New Tab Page",
     "filedAt": "2026-11-16T20:22:25Z",
     "resolvedAt": "2026-11-17T09:44:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093709,
+    "summary": "Intermittent test_RecentSearchesFeed.js | ordering and last-use assertions fail when a form history write is slow",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-16T20:23:34Z",
+    "resolvedAt": "2026-11-21T09:48:29Z"
   },
   {
     "source": "bugzilla",
@@ -3436,5 +3445,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-18T19:04:03Z",
     "resolvedAt": "2026-11-19T09:22:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094928,
+    "summary": "Button does not programmatically indicate that it opens a dialog (Sponsored story card and ad banner > ••• disclosure > Report this ad button)",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-19T02:01:43Z",
+    "resolvedAt": "2026-11-21T09:49:36Z"
   }
 ]
