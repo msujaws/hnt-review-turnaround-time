@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2059662,
-    "summary": "[a11y] Screen reader announces Firefox VPN location list items as radio buttons",
-    "product": "Firefox",
-    "component": "IP Protection",
-    "filedAt": "2026-07-31T07:34:34Z",
-    "resolvedAt": "2026-08-24T21:46:50Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2060516,
     "summary": "\"Website address\" label is placed too close to the URL field in about:preferences#privacy VPN -> Manage Websites",
     "product": "Firefox",
@@ -793,6 +784,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085352,
+    "summary": "[META] [QA] [QA-5943] QA request for Free VPN integration (Fx 161)",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-10-23T12:51:31Z",
+    "resolvedAt": "2026-11-23T10:13:44Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2085797,
     "summary": "Turning off built-in VPN while \"Work Offline\" is enabled triggers a \"VPN isn't working right now\" error",
     "product": "Firefox",
@@ -946,6 +946,51 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089561,
+    "summary": "Replace IPP error alert when a net Error Page will handle the state.",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-05T14:32:04Z",
+    "resolvedAt": "2026-11-21T09:46:05Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089572,
+    "summary": "Feed Error State Data to about:neterror",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-05T14:39:50Z",
+    "resolvedAt": "2026-11-21T09:46:09Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089581,
+    "summary": "Add \"try again\" button for VPN Net-Error Pages",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-05T14:47:54Z",
+    "resolvedAt": "2026-11-21T09:46:13Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089589,
+    "summary": "Add a \"Continue Without VPN\" Button on about:neterror",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-05T14:54:18Z",
+    "resolvedAt": "2026-11-21T09:46:16Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089595,
+    "summary": "Add IPPTabRule removeOnLeave",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-05T14:58:13Z",
+    "resolvedAt": "2026-11-21T09:46:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2090329,
     "summary": "Add telemetry for set to default promotion",
     "product": "Firefox",
@@ -982,6 +1027,24 @@
   },
   {
     "source": "bugzilla",
+    "id": 2093528,
+    "summary": "IP Protection treats the connection as offline when the network link status is unknown",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-16T16:12:18Z",
+    "resolvedAt": "2026-11-21T09:48:06Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093529,
+    "summary": "Add 'Try Again' button to VPN panel error state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-16T16:17:07Z",
+    "resolvedAt": "2026-11-21T09:48:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2093664,
     "summary": "Add unlimited bandwidth text to vpn status card during promo",
     "product": "Firefox",
@@ -991,11 +1054,29 @@
   },
   {
     "source": "bugzilla",
+    "id": 2094130,
+    "summary": "Add 'Continue without VPN' button to VPN panel error state if the global VPN was on at the time of failure",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-17T14:22:56Z",
+    "resolvedAt": "2026-11-21T09:48:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2094188,
     "summary": "Update set to default promo string to handle plurals",
     "product": "Firefox",
     "component": "IP Protection",
     "filedAt": "2026-11-17T16:00:56Z",
     "resolvedAt": "2026-11-17T22:48:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094272,
+    "summary": "Add 'Trying again...' state in the panel for user retries out of the error state",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-17T18:31:04Z",
+    "resolvedAt": "2026-11-21T09:48:47Z"
   }
 ]
