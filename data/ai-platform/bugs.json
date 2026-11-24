@@ -109,15 +109,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2062352,
-    "summary": "[Monitor Agent][Models] Breaking out errors into more specific error codes for UI to consume",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-10T17:28:43Z",
-    "resolvedAt": "2026-08-27T03:43:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063636,
     "summary": "Create curated memories generation dataset",
     "product": "Core",
@@ -811,6 +802,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2093620,
+    "summary": "[Models - Discovery] PDF evaluation dataset",
+    "product": "Core",
+    "component": "Machine Learning: General",
+    "filedAt": "2026-11-16T18:08:34Z",
+    "resolvedAt": "2026-11-23T22:36:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2094207,
     "summary": "[Monitor Agent][Models] Suggest creating a monitor as a follow-up chip in chat",
     "product": "Core",
@@ -964,15 +964,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2047026,
-    "summary": "Create a Glean telemetry probe that tests model fidelity on known input/output (Category 1 \"technical data\").",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-06-11T23:42:06Z",
-    "resolvedAt": "2026-08-26T04:23:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2049666,
     "summary": "PROCESS-CRASH | MozPromise::ThenValue created from 'PullCallbackImpl' (dispatchRv: not dispatched) [@ mozilla::MozPromise<bool, nsresult, false>::ThenValueBase::AssertIsDead] | toolkit/components/ml/tests/browser/browser.toml",
     "product": "Core",
@@ -1060,15 +1051,6 @@
     "component": "Machine Learning: On Device",
     "filedAt": "2026-08-19T15:13:22Z",
     "resolvedAt": "2026-09-04T16:09:03Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064967,
-    "summary": "Utilize Parent-Process Native ONNX Availability Cache in \"best-onnx\" Resolution",
-    "product": "Core",
-    "component": "Machine Learning: On Device",
-    "filedAt": "2026-08-20T01:40:27Z",
-    "resolvedAt": "2026-08-27T03:43:36Z"
   },
   {
     "source": "bugzilla",
@@ -1630,6 +1612,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2012723,
+    "summary": "High frequency browser/components/aiwindow/ui/test/browser/browser_aiwindow_firstrun.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-01-27T14:28:54Z",
+    "resolvedAt": "2026-11-24T04:57:22Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2014499,
     "summary": "Add a Groups section to the Smart Window mentions panel",
     "product": "Core",
@@ -1654,6 +1645,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-03-24T08:48:20Z",
     "resolvedAt": "2026-11-04T09:45:25Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2026877,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_context_url.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-27T08:12:27Z",
+    "resolvedAt": "2026-11-24T04:57:30Z"
   },
   {
     "source": "bugzilla",
@@ -1684,6 +1684,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2045844,
+    "summary": "Replace deprecated startMockOpenAI and stubEngineNetworkBoundaries with MockEngineManager in Smart Window tests",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-08T17:48:42Z",
+    "resolvedAt": "2026-11-24T09:50:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2048916,
     "summary": "The AI logging Completed Steps text is not visible on Hover with High Contrast enabled",
     "product": "Core",
@@ -1702,21 +1711,21 @@
   },
   {
     "source": "bugzilla",
+    "id": 2051332,
+    "summary": "Intermittent Windows Standalone browser/components/aiwindow/ui/test/browser/browser_smartwindow_run_search.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-06-29T15:57:26Z",
+    "resolvedAt": "2026-11-24T05:15:35Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2052358,
     "summary": "Smart Window perf: eliminate per-chunk full-document work in chat rendering",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-02T21:12:54Z",
     "resolvedAt": "2026-09-21T09:19:36Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2052359,
-    "summary": "Smart Window perf: stop re-serializing the full conversation to SQLite on every chunk",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-02T21:12:58Z",
-    "resolvedAt": "2026-08-27T03:42:58Z"
   },
   {
     "source": "bugzilla",
@@ -1753,15 +1762,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-13T12:36:21Z",
     "resolvedAt": "2026-09-07T21:12:49Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2055066,
-    "summary": "Smart Form Fill: add telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-14T21:22:24Z",
-    "resolvedAt": "2026-08-26T04:24:05Z"
   },
   {
     "source": "bugzilla",
@@ -1807,15 +1807,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-24T14:32:12Z",
     "resolvedAt": "2026-09-18T04:24:53Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058016,
-    "summary": "Smart Window assistant can’t see tabs in a second window opened right after onboarding",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T09:18:28Z",
-    "resolvedAt": "2026-08-26T04:24:08Z"
   },
   {
     "source": "bugzilla",
@@ -1933,6 +1924,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-04T16:35:06Z",
     "resolvedAt": "2026-11-14T08:51:28Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2060705,
+    "summary": "Perma TV TEST-UNEXPECTED-TIMEOUT | browser/components/aiwindow/ui/test/browser/browser_aiwindow_group_tabs_button.js | application timed out after 740.0 seconds with no output",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-05T00:08:40Z",
+    "resolvedAt": "2026-11-24T04:57:45Z"
   },
   {
     "source": "bugzilla",
@@ -2215,15 +2215,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064226,
-    "summary": "Show Duplicate Tabs on Hover in Organize Tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-17T21:22:24Z",
-    "resolvedAt": "2026-08-26T04:24:42Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064442,
     "summary": "remove copilot from chatbot",
     "product": "Core",
@@ -2239,15 +2230,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:47:33Z",
     "resolvedAt": "2026-09-16T04:14:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064530,
-    "summary": "[Monitor Agent][FE] Monitor /watch command opens a blank monitor form on SW full page",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T20:54:58Z",
-    "resolvedAt": "2026-08-26T04:24:45Z"
   },
   {
     "source": "bugzilla",
@@ -2332,15 +2314,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2065292,
-    "summary": "Smart Form Fill - change order of autocomplete row items when SFF is enabled",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-20T20:43:40Z",
-    "resolvedAt": "2026-08-26T21:05:36Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2065311,
     "summary": "Make the starter prompts row scrollable",
     "product": "Core",
@@ -2356,15 +2329,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-21T09:26:36Z",
     "resolvedAt": "2026-08-28T09:47:33Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2065555,
-    "summary": "Add smart window launch command invoked glean telemetry",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-21T15:26:21Z",
-    "resolvedAt": "2026-08-27T03:43:39Z"
   },
   {
     "source": "bugzilla",
@@ -4501,6 +4465,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089208,
+    "summary": "AITab [FE] - update component_schema.json to support images in existing components",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-04T22:11:58Z",
+    "resolvedAt": "2026-11-24T09:50:26Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2089668,
     "summary": "[Research Agent][FE] Recommended badge on the Smart Window clarifying question card has insufficient color contrast",
     "product": "Core",
@@ -4609,6 +4582,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2091554,
+    "summary": "[Models] SFF Multilingual - Pass locale to LLM calls where needed (classification / field detection / value generation)",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-10T21:24:56Z",
+    "resolvedAt": "2026-11-24T04:58:43Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2091644,
     "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_security_run_search.js | single tracking bug",
     "product": "Core",
@@ -4708,12 +4690,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2094298,
+    "summary": "clean up Smart Window pref defaults and lazy getters for aiwindow AGENTS.md",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-17T19:21:56Z",
+    "resolvedAt": "2026-11-24T04:59:11Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2094424,
     "summary": "write Smart Window Fluent IDs in full and lint against building them from template strings",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-18T00:21:37Z",
     "resolvedAt": "2026-11-19T04:14:04Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2094735,
+    "summary": "Make the Highlight to Search Copy action behave like the context menu Copy",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-18T18:09:23Z",
+    "resolvedAt": "2026-11-24T04:59:17Z"
   },
   {
     "source": "bugzilla",
@@ -4876,5 +4876,14 @@
     "component": "Machine Learning: Models",
     "filedAt": "2026-11-12T11:41:24Z",
     "resolvedAt": "2026-11-12T14:53:03Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093742,
+    "summary": "[models] searchTheWeb should fallback to search_handoff on failure, rather than error",
+    "product": "Core",
+    "component": "Machine Learning: Models",
+    "filedAt": "2026-11-16T21:37:16Z",
+    "resolvedAt": "2026-11-24T04:59:06Z"
   }
 ]
