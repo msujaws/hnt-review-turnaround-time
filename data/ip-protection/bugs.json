@@ -1027,6 +1027,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092059,
+    "summary": "Recover when a successful IP Protection enrollment doesn't leave the service ready",
+    "product": "Firefox",
+    "component": "IP Protection",
+    "filedAt": "2026-11-12T13:08:33Z",
+    "resolvedAt": "2026-11-24T13:52:24Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2093528,
     "summary": "IP Protection treats the connection as offline when the network link status is unknown",
     "product": "Firefox",
