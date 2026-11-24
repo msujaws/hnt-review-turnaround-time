@@ -46,6 +46,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2004740,
+    "summary": "LoginManager initialization causes fathom rulesets to be created on the parent process during startup",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2025-12-08T16:37:48Z",
+    "resolvedAt": "2026-11-24T04:57:15Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2040812,
     "summary": "Passkey autofill entries not shown on autocomplete=\"webauthn\" form",
     "product": "Toolkit",
@@ -97,15 +106,6 @@
     "component": "Password Manager",
     "filedAt": "2026-08-21T11:06:23Z",
     "resolvedAt": "2026-09-02T16:29:00Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2065558,
-    "summary": "Passwords dropdown - Items remain selected when hovering inbetween items",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-08-21T15:35:25Z",
-    "resolvedAt": "2026-08-27T03:43:42Z"
   },
   {
     "source": "bugzilla",
