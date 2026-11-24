@@ -25,42 +25,6 @@
   },
   {
     "source": "phab",
-    "id": "PHID-DREV-zvlmbbznseatmpqjm7lp",
-    "revisionId": 321690,
-    "author": "dao",
-    "createdAt": "2026-08-26T19:22:00.000Z",
-    "firstReviewAt": "2026-08-26T19:56:32.000Z",
-    "landedAt": "2026-08-26T23:17:49.000Z",
-    "cycleBusinessHours": 1.6333333333333333,
-    "postReviewBusinessHours": 1.0577777777777777,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-kxi56e6soh4f7z3ivixs",
-    "revisionId": 321676,
-    "author": "dao",
-    "createdAt": "2026-08-26T18:49:37.000Z",
-    "firstReviewAt": "2026-08-26T19:59:03.000Z",
-    "landedAt": "2026-08-26T23:17:49.000Z",
-    "cycleBusinessHours": 2.1730555555555555,
-    "postReviewBusinessHours": 1.0158333333333334,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-3hlwcnjjigjumomwkqou",
-    "revisionId": 321470,
-    "author": "dao",
-    "createdAt": "2026-08-26T07:59:46.000Z",
-    "firstReviewAt": "2026-08-26T20:28:51.000Z",
-    "landedAt": "2026-08-26T23:16:00.000Z",
-    "cycleBusinessHours": 8,
-    "postReviewBusinessHours": 0.5191666666666667,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
     "id": "PHID-DREV-4sjmjapwxeyi5u64vuwq",
     "revisionId": 321801,
     "author": "dao",
@@ -81,18 +45,6 @@
     "landedAt": "2026-08-27T13:11:52.000Z",
     "cycleBusinessHours": 1.961111111111111,
     "postReviewBusinessHours": 0.19777777777777777,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-f3qdv32hnsccjmnx3bbb",
-    "revisionId": 320972,
-    "author": "kcochrane",
-    "createdAt": "2026-08-24T16:24:52.000Z",
-    "firstReviewAt": "2026-08-25T22:58:14.000Z",
-    "landedAt": "2026-08-26T10:06:45.000Z",
-    "cycleBusinessHours": 12.585555555555555,
-    "postReviewBusinessHours": 0,
     "reviewRounds": 1
   },
   {
@@ -142,30 +94,6 @@
     "cycleBusinessHours": 69.60638888888889,
     "postReviewBusinessHours": 69.23666666666666,
     "reviewRounds": 4
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-yv6g5p4q773tq3twmm73",
-    "revisionId": 321212,
-    "author": "dao",
-    "createdAt": "2026-08-25T12:17:24.000Z",
-    "firstReviewAt": "2026-08-25T23:36:46.000Z",
-    "landedAt": "2026-08-26T14:14:58.000Z",
-    "cycleBusinessHours": 9.249444444444444,
-    "postReviewBusinessHours": 1.2494444444444446,
-    "reviewRounds": 1
-  },
-  {
-    "source": "phab",
-    "id": "PHID-DREV-qhbaftac2u32edqbd7ar",
-    "revisionId": 321416,
-    "author": "dao",
-    "createdAt": "2026-08-25T22:35:37.000Z",
-    "firstReviewAt": "2026-08-26T11:25:48.000Z",
-    "landedAt": "2026-08-26T13:26:52.000Z",
-    "cycleBusinessHours": 0.4477777777777778,
-    "postReviewBusinessHours": 0.4477777777777778,
-    "reviewRounds": 1
   },
   {
     "source": "phab",
@@ -2578,5 +2506,41 @@
     "reviewRounds": 1,
     "cycleBusinessHours": 37.073611111111106,
     "postReviewBusinessHours": 37.073611111111106
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-yomz3dvo54ltyr7ey3rj",
+    "revisionId": 343490,
+    "author": "dao",
+    "createdAt": "2026-11-17T12:22:47.000Z",
+    "firstReviewAt": "2026-11-23T21:49:44.000Z",
+    "landedAt": "2026-11-24T17:04:10.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 43.06944444444444,
+    "postReviewBusinessHours": 3.2405555555555554
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-pn4uwz2fk4rsjjpgk5d7",
+    "revisionId": 345351,
+    "author": "mstriemer",
+    "createdAt": "2026-11-23T17:49:44.000Z",
+    "firstReviewAt": "2026-11-23T20:07:28.000Z",
+    "landedAt": "2026-11-24T16:59:57.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 7.170277777777779,
+    "postReviewBusinessHours": 4.874722222222222
+  },
+  {
+    "source": "phab",
+    "id": "PHID-DREV-2i525j7ivb43onbuyljt",
+    "revisionId": 345304,
+    "author": "dao",
+    "createdAt": "2026-11-23T15:46:49.000Z",
+    "firstReviewAt": "2026-11-23T15:57:13.000Z",
+    "landedAt": "2026-11-24T15:18:20.000Z",
+    "reviewRounds": 1,
+    "cycleBusinessHours": 7.525277777777777,
+    "postReviewBusinessHours": 7.351944444444444
   }
 ]
