@@ -73,6 +73,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 1810736,
+    "summary": "Media decoding is not compatible with isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2023-01-17T13:47:58Z",
+    "resolvedAt": "2026-11-24T16:44:16Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1902103,
     "summary": "Intermittent org.mozilla.geckoview.test.GeolocationTest#jsContentRequestForLocation | single tracking bug",
     "product": "GeckoView",
@@ -304,24 +313,6 @@
     "component": "General",
     "filedAt": "2026-07-28T15:48:12Z",
     "resolvedAt": "2026-09-21T20:13:28Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061279,
-    "summary": "[UI] Add \"Add a signature\" box",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-08-06T14:58:02Z",
-    "resolvedAt": "2026-08-26T16:11:55Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2061281,
-    "summary": "[Telemetry] Add telemetry for signature box",
-    "product": "GeckoView",
-    "component": "PDF Viewer",
-    "filedAt": "2026-08-06T14:59:10Z",
-    "resolvedAt": "2026-08-27T03:43:12Z"
   },
   {
     "source": "bugzilla",
@@ -1285,6 +1276,15 @@
     "component": "General",
     "filedAt": "2026-11-16T15:46:54Z",
     "resolvedAt": "2026-11-19T16:15:18Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2093781,
+    "summary": "Allow picture-in-picture for a paused video in GeckoView",
+    "product": "GeckoView",
+    "component": "Media",
+    "filedAt": "2026-11-16T23:31:52Z",
+    "resolvedAt": "2026-11-24T04:59:08Z"
   },
   {
     "source": "bugzilla",
