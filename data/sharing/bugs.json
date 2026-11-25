@@ -1,15 +1,6 @@
 [
   {
     "source": "bugzilla",
-    "id": 2052271,
-    "summary": "A11y fixes for the share button in the url bar",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-07-02T16:33:52Z",
-    "resolvedAt": "2026-08-27T09:54:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2058695,
     "summary": "Add Share button to panel (mac)",
     "product": "Firefox",
@@ -43,15 +34,6 @@
     "component": "Sharing",
     "filedAt": "2026-08-19T21:57:31Z",
     "resolvedAt": "2026-08-28T11:36:43Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2066196,
-    "summary": "Hide share with os button on mac sharing panel",
-    "product": "Firefox",
-    "component": "Sharing",
-    "filedAt": "2026-08-24T18:42:18Z",
-    "resolvedAt": "2026-08-27T09:56:14Z"
   },
   {
     "source": "bugzilla",
@@ -106,6 +88,15 @@
     "component": "Sharing",
     "filedAt": "2026-08-31T20:17:46Z",
     "resolvedAt": "2026-09-09T16:34:15Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2073899,
+    "summary": "Share menu items from macOS and More… have no accesskey beside Copy Links and QR code",
+    "product": "Firefox",
+    "component": "Sharing",
+    "filedAt": "2026-09-20T15:16:00Z",
+    "resolvedAt": "2026-11-24T22:07:10Z"
   },
   {
     "source": "bugzilla",
