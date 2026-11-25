@@ -199,15 +199,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2066187,
-    "summary": "[Monitor Agent] Explore whether pinning Mistral makes sense for monitor agent [Update: Pinning Qwen3 for monitor agent]",
-    "product": "Core",
-    "component": "Machine Learning: General",
-    "filedAt": "2026-08-24T18:27:17Z",
-    "resolvedAt": "2026-08-27T21:17:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2066194,
     "summary": "Create reproducible smoke test for testing smart window intent model outputs in Fx CI",
     "product": "Core",
@@ -1576,6 +1567,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2095319,
+    "summary": "llama.cpp WordPiece tokenizer diverges from transformers.js for Hangul, Indic vowel signs and words over 100 characters",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-19T22:41:48Z",
+    "resolvedAt": "2026-11-25T04:04:32Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -1630,12 +1630,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2017819,
+    "summary": "Intermittent TV browser/components/aiwindow/ui/test/browser/browser_smartwindow_tab_switching.js | test_tab_switch_shows_starters_for_empty_conversation - Uncaught exception in test - Starters should be hidden for conversation with messages - threw except",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-02-19T06:57:14Z",
+    "resolvedAt": "2026-11-25T09:48:57Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2019054,
     "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_run_search.js | single tracking bug",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-02-24T19:18:40Z",
     "resolvedAt": "2026-11-23T18:17:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2021476,
+    "summary": "Perma browser/components/aiwindow/ui/test/browser/browser_smartwindow_tab_switching.js | test_switch_between_tabs_with_different_conversations - A promise chain failed to handle a rejection: aiWindowEl.updateInput is not a function | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-05T23:38:27Z",
+    "resolvedAt": "2026-11-25T09:49:07Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2022097,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_smartwindow_prompts.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-10T02:59:46Z",
+    "resolvedAt": "2026-11-25T15:42:33Z"
   },
   {
     "source": "bugzilla",
@@ -1657,12 +1684,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 2027583,
+    "summary": "High frequency browser/components/aiwindow/ui/test/browser/browser_smartwindow_tab_switching.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N) | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-30T01:55:03Z",
+    "resolvedAt": "2026-11-25T09:09:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2027597,
+    "summary": "Frequent browser/components/aiwindow/ui/test/browser/browser_smartwindow_tab_switching.js | test_tab_switch_shows_starters_for_empty_conversation - Starters should be showing: false - false == true",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-03-30T04:41:59Z",
+    "resolvedAt": "2026-11-25T09:49:21Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2028654,
     "summary": "browser_smartwindow_request_response_telemetry.js fails standalone on Windows debug",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-04-01T22:07:48Z",
     "resolvedAt": "2026-11-07T16:34:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2030808,
+    "summary": "Intermittent browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_telemetry.js | single tracking bug",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-04-09T21:05:01Z",
+    "resolvedAt": "2026-11-25T04:02:50Z"
   },
   {
     "source": "bugzilla",
@@ -1681,6 +1735,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-05-21T22:02:33Z",
     "resolvedAt": "2026-11-06T04:42:42Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2042615,
+    "summary": "Intermittent TV Attempting to connect to non-local address! opener is <...> mozilla::net::nsHttpChannel::OnStartRequest] | browser/components/aiwindow/ui/test/browser/browser_smartwindow_tab_switching.js",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-05-27T04:20:04Z",
+    "resolvedAt": "2026-11-25T09:49:33Z"
   },
   {
     "source": "bugzilla",
@@ -1774,6 +1837,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2055099,
+    "summary": "Frequent win asan browser/components/aiwindow/ui/test/browser/browser_aiwindow_smartbar_telemetry.js | This test exceeded the timeout threshold. It should be rewritten or split up. If that's not possible, use requestLongerTimeout(N), but only as",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-07-15T00:40:28Z",
+    "resolvedAt": "2026-11-25T06:08:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2055336,
     "summary": "[Monitor Agent][FE] Add Monitor cancel view",
     "product": "Core",
@@ -1825,15 +1897,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-07-27T13:05:47Z",
     "resolvedAt": "2026-09-26T04:28:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058311,
-    "summary": "SW Organize Tabs v0 - UI Fixes for v0",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-07-27T21:40:21Z",
-    "resolvedAt": "2026-08-27T09:54:33Z"
   },
   {
     "source": "bugzilla",
@@ -1990,15 +2053,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061357,
-    "summary": "Smart Form Fill: Add dialog for user to select context tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T16:20:20Z",
-    "resolvedAt": "2026-08-27T09:54:49Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061358,
     "summary": "Smart Form Fill: Apply styling to tab context dialog",
     "product": "Core",
@@ -2086,6 +2140,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-11T04:05:03Z",
     "resolvedAt": "2026-09-16T20:23:59Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2062607,
+    "summary": "[frontend] Generalize the NL action confirmation card",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-08-11T13:13:37Z",
+    "resolvedAt": "2026-11-25T09:09:50Z"
   },
   {
     "source": "bugzilla",
@@ -3502,6 +3565,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2077652,
+    "summary": "Cleanup - Decouple PUWYLO card loading from conversation starters",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-03T07:19:15Z",
+    "resolvedAt": "2026-11-25T09:09:54Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2078138,
     "summary": "Clicking a Tab group context chip has no functionality",
     "product": "Core",
@@ -4123,6 +4195,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2083846,
+    "summary": "SFF [FR + UK] Expose fluent strings for localization",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-10-19T17:48:21Z",
+    "resolvedAt": "2026-11-25T09:10:09Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2083857,
     "summary": "Do not show the text selection menu for text selected in a textarea",
     "product": "Core",
@@ -4636,6 +4717,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092344,
+    "summary": "Create digest settings card",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-12T23:23:14Z",
+    "resolvedAt": "2026-11-25T09:11:04Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092366,
     "summary": "Update the UITour API to pass the acquisition entry point when launching Smart Window",
     "product": "Core",
@@ -4726,12 +4816,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2094914,
+    "summary": "AITab [FE] - text block line height incorrect",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-19T01:22:31Z",
+    "resolvedAt": "2026-11-25T04:04:23Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2095742,
     "summary": "browser_link_preview.js connects to the real itisatrap.org when run twice in a row",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-20T19:51:21Z",
     "resolvedAt": "2026-11-21T09:50:30Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2096669,
+    "summary": "split large Smart Window modules and clean up test prompt fixtures and manifest prefs for aiwindow AGENTS.md",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-23T21:07:24Z",
+    "resolvedAt": "2026-11-25T15:44:01Z"
   },
   {
     "source": "bugzilla",
