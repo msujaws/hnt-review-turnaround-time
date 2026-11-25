@@ -64,21 +64,21 @@
   },
   {
     "source": "bugzilla",
+    "id": 2056104,
+    "summary": "High frequency unknown test url | Checking for successful init login - 1 == 0 - got 1, expected 0 (operator ==) | single tracking bug",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-07-19T21:30:52Z",
+    "resolvedAt": "2026-11-25T04:03:01Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2058133,
     "summary": "Passwords dropdown - Edit icon briefly remains visible on the previously hovered item while scrolling",
     "product": "Toolkit",
     "component": "Password Manager",
     "filedAt": "2026-07-27T12:56:33Z",
     "resolvedAt": "2026-08-28T09:46:56Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2058409,
-    "summary": "Edit icon does not display a hover highlight in the Passwords autocomplete dropdown",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-28T08:13:27Z",
-    "resolvedAt": "2026-08-27T09:54:36Z"
   },
   {
     "source": "bugzilla",
