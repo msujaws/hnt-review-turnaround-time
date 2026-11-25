@@ -271,15 +271,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2031465,
-    "summary": "White flash on startup caused by abouthome_cache storing  incompatible startup frame",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-13T21:20:31Z",
-    "resolvedAt": "2026-08-27T18:29:18Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2031557,
     "summary": "Perma [tier2] browser/extensions/newtab/test/browser/browser_topsites_contextMenu_options.js | single tracking bug",
     "product": "Firefox",
@@ -304,15 +295,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-04-28T12:37:55Z",
     "resolvedAt": "2026-10-22T18:41:32Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2035622,
-    "summary": "Always show an add shortcut button for New Tab shortcuts",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-04-28T22:05:29Z",
-    "resolvedAt": "2026-08-27T18:27:02Z"
   },
   {
     "source": "bugzilla",
@@ -511,6 +493,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-07-23T16:27:23Z",
     "resolvedAt": "2026-09-10T04:45:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2057302,
+    "summary": "Crossword widget - Add \"See theme articles\" menu item",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-07-23T17:59:01Z",
+    "resolvedAt": "2026-11-25T09:09:44Z"
   },
   {
     "source": "bugzilla",
@@ -766,15 +757,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063525,
-    "summary": "Missing ETP OFF state on the Privacy widget",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-14T08:18:53Z",
-    "resolvedAt": "2026-08-27T09:55:14Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063550,
     "summary": "[Windows] Trackers # is not announced on mouseover in the Privacy Widget",
     "product": "Firefox",
@@ -826,15 +808,6 @@
     "component": "New Tab Page",
     "filedAt": "2026-08-15T01:06:23Z",
     "resolvedAt": "2026-10-22T15:15:46Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2063963,
-    "summary": "The number of blocked trackers in the widget is not always correct after opening a new tab page",
-    "product": "Firefox",
-    "component": "New Tab Page",
-    "filedAt": "2026-08-17T06:39:32Z",
-    "resolvedAt": "2026-08-27T09:55:25Z"
   },
   {
     "source": "bugzilla",
@@ -1627,6 +1600,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-09-14T18:26:34Z",
     "resolvedAt": "2026-09-19T09:10:33Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2072000,
+    "summary": "New Tab \"widget\" cards don't get any border in high-contrast mode",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-09-14T19:28:19Z",
+    "resolvedAt": "2026-11-25T02:40:28Z"
   },
   {
     "source": "bugzilla",
@@ -2926,6 +2908,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2085965,
+    "summary": "Crossword: Use the shared menu footer component",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-26T23:39:22Z",
+    "resolvedAt": "2026-11-25T09:10:20Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2086163,
     "summary": "Intermittent \"waiting for vsync to be disabled\" in newtab browser tests: dead about:newtab windows pile up in the privileged about: process",
     "product": "Firefox",
@@ -3058,6 +3049,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-10-30T21:19:45Z",
     "resolvedAt": "2026-11-05T05:10:57Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2087651,
+    "summary": "Add method to DS Admin to toggle between stage/prod versions of framed widgets",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-10-30T21:22:12Z",
+    "resolvedAt": "2026-11-25T04:03:29Z"
   },
   {
     "source": "bugzilla",
@@ -3457,6 +3457,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2094736,
+    "summary": "Remove the Finance widget",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-18T18:10:58Z",
+    "resolvedAt": "2026-11-25T09:11:28Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2094756,
     "summary": "Use title case for New Tab widget menu and submenu items",
     "product": "Firefox",
@@ -3490,5 +3499,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-22T01:36:05Z",
     "resolvedAt": "2026-11-24T05:00:19Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2096664,
+    "summary": "Add merino.services.allizom.org URL to browser.newtabpage.activity-stream.discoverystream.endpoints in Nightly",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-23T20:57:33Z",
+    "resolvedAt": "2026-11-25T04:05:14Z"
   }
 ]
