@@ -973,6 +973,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2054218,
+    "summary": "Add support for PageExtractor in an initial check-in of ml-driver",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-07-10T22:12:29Z",
+    "resolvedAt": "2026-11-26T04:00:05Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2057035,
     "summary": "Extract Google Docs content in PageExtractor",
     "product": "Core",
@@ -1576,6 +1585,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2097507,
+    "summary": "Intermittent toolkit/components/ml/tests/browser/browser_ml_engine_lifetime.js | test_ml_engine_terminated_does_not_reopen - Uncaught exception in test - Error: Engine was terminated before the request completed.",
+    "product": "Core",
+    "component": "Machine Learning: On Device",
+    "filedAt": "2026-11-25T06:16:28Z",
+    "resolvedAt": "2026-11-25T21:14:53Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1972935,
     "summary": "include url for page prompts instead of sending page content",
     "product": "Core",
@@ -2062,15 +2080,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2061360,
-    "summary": "Smart Form Fill: Add dialog for form fill completion",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-06T16:25:32Z",
-    "resolvedAt": "2026-08-28T16:19:48Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2061361,
     "summary": "Smart Form Fill: Apply styling to form fill review and completion dialog",
     "product": "Core",
@@ -2197,15 +2206,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2063555,
-    "summary": "Recently created Tab groups are not clickable and cannot be reached with keyboard navigation inside the Organize tabs panel",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-14T10:19:23Z",
-    "resolvedAt": "2026-08-28T09:47:15Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2063562,
     "summary": "Restoring a Closed Tab group from the Organize Tabs panel will see some tabs as dupes",
     "product": "Core",
@@ -2221,15 +2221,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-14T11:00:00Z",
     "resolvedAt": "2026-09-12T09:40:38Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064008,
-    "summary": "The View tab groups sub-panel is dismissed after deleting a tab group",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-17T10:02:59Z",
-    "resolvedAt": "2026-08-28T09:47:18Z"
   },
   {
     "source": "bugzilla",
@@ -2278,30 +2269,12 @@
   },
   {
     "source": "bugzilla",
-    "id": 2064442,
-    "summary": "remove copilot from chatbot",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T16:39:54Z",
-    "resolvedAt": "2026-08-28T09:47:24Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2064527,
     "summary": "[Monitor Agent][FE] Add error states to monitor create",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-18T20:47:33Z",
     "resolvedAt": "2026-09-16T04:14:50Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2064553,
-    "summary": "Create a ConversationStore module for Conversation.sys.mjs to persist conversations in their own DB",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-18T22:27:48Z",
-    "resolvedAt": "2026-08-28T09:47:27Z"
   },
   {
     "source": "bugzilla",
@@ -2386,15 +2359,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2065422,
-    "summary": "The View All Groups submenu does not close when moving away and it blocks the Suggested Tab group submenus from showing their tabs",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-21T09:26:36Z",
-    "resolvedAt": "2026-08-28T09:47:33Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2065560,
     "summary": "AITab - Integrate tool calls into the db",
     "product": "Core",
@@ -2419,15 +2383,6 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-08-24T23:07:53Z",
     "resolvedAt": "2026-09-05T21:01:10Z"
-  },
-  {
-    "source": "bugzilla",
-    "id": 2066412,
-    "summary": "Users are unable to open the Smart Bar URL suggestion submenus",
-    "product": "Core",
-    "component": "Machine Learning: Frontend",
-    "filedAt": "2026-08-25T12:05:56Z",
-    "resolvedAt": "2026-08-28T11:37:10Z"
   },
   {
     "source": "bugzilla",
@@ -2689,6 +2644,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-09-01T20:42:15Z",
     "resolvedAt": "2026-09-18T16:40:52Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2068270,
+    "summary": "Smart Form Fill: add test for named vs summary pills in autocomplete-row-item.mjs",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-09-01T21:12:08Z",
+    "resolvedAt": "2026-11-26T04:00:09Z"
   },
   {
     "source": "bugzilla",
@@ -4564,6 +4528,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2089835,
+    "summary": "[French + Monitor Agent][FE] Use complete Fluent messages for the schedule in the chat task confirmation",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-05T23:03:48Z",
+    "resolvedAt": "2026-11-25T21:13:14Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2089939,
     "summary": "Stop loading a pdf.js font file in browser_aitab_heading_font.js",
     "product": "Core",
@@ -4597,6 +4570,15 @@
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-06T18:36:38Z",
     "resolvedAt": "2026-11-18T22:39:02Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2090959,
+    "summary": "introduce AGENTS.md for newer best practices for testing",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-09T14:52:16Z",
+    "resolvedAt": "2026-11-26T04:00:30Z"
   },
   {
     "source": "bugzilla",
@@ -4753,12 +4735,30 @@
   },
   {
     "source": "bugzilla",
+    "id": 2092714,
+    "summary": "Create settings modal for digest settings",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-13T21:12:15Z",
+    "resolvedAt": "2026-11-25T21:13:33Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2092721,
     "summary": "lighten action toolbar buttons and remove icon",
     "product": "Core",
     "component": "Machine Learning: Frontend",
     "filedAt": "2026-11-13T21:25:41Z",
     "resolvedAt": "2026-11-16T20:49:38Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092725,
+    "summary": "Create a toast that confirms a digest was saved",
+    "product": "Core",
+    "component": "Machine Learning: Frontend",
+    "filedAt": "2026-11-13T21:33:58Z",
+    "resolvedAt": "2026-11-26T04:00:45Z"
   },
   {
     "source": "bugzilla",
