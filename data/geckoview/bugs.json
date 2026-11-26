@@ -208,6 +208,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2027894,
+    "summary": "Batch compositor scroll updates over JNI for efficiency",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-03-30T20:39:35Z",
+    "resolvedAt": "2026-11-26T10:00:37Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2029263,
     "summary": "Intermittent org.mozilla.geckoview.test.PanZoomControllerTest#touchEventWithXOrigin | single tracking bug",
     "product": "GeckoView",
@@ -1258,6 +1267,15 @@
     "component": "General",
     "filedAt": "2026-11-12T19:20:04Z",
     "resolvedAt": "2026-11-13T04:54:39Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2092301,
+    "summary": "Run Android lint on GeckoView Example in CI",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2026-11-12T21:44:17Z",
+    "resolvedAt": "2026-11-26T10:00:58Z"
   },
   {
     "source": "bugzilla",
