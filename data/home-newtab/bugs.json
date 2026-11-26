@@ -3169,6 +3169,15 @@
   },
   {
     "source": "bugzilla",
+    "id": 2088957,
+    "summary": "Add ad reporting with Scam, Misleading, and Offensive reasons for sponsored tiles on New Tab",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-04T15:18:33Z",
+    "resolvedAt": "2026-11-25T21:13:07Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 2089587,
     "summary": "Sponsored story report dialog is missing its heading",
     "product": "Firefox",
@@ -3211,6 +3220,15 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-05T16:09:28Z",
     "resolvedAt": "2026-11-07T09:34:46Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2089814,
+    "summary": "Refresh the New Tab sensitive site filter list",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-05T22:17:35Z",
+    "resolvedAt": "2026-11-25T20:42:34Z"
   },
   {
     "source": "bugzilla",
@@ -3508,5 +3526,14 @@
     "component": "New Tab Page",
     "filedAt": "2026-11-23T20:57:33Z",
     "resolvedAt": "2026-11-25T04:05:14Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2097412,
+    "summary": "Implement Editors' Pick tile",
+    "product": "Firefox",
+    "component": "New Tab Page",
+    "filedAt": "2026-11-24T21:27:59Z",
+    "resolvedAt": "2026-11-26T04:01:36Z"
   }
 ]
