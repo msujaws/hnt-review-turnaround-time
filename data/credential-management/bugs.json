@@ -73,15 +73,6 @@
   },
   {
     "source": "bugzilla",
-    "id": 2058133,
-    "summary": "Passwords dropdown - Edit icon briefly remains visible on the previously hovered item while scrolling",
-    "product": "Toolkit",
-    "component": "Password Manager",
-    "filedAt": "2026-07-27T12:56:33Z",
-    "resolvedAt": "2026-08-28T09:46:56Z"
-  },
-  {
-    "source": "bugzilla",
     "id": 2062458,
     "summary": "[macOS 15 AArch64] Permanent toolkit/components/passwordmgr/test/browser/browser_formless_submit_chrome.js | test_reloadButton - Uncaught exception in test - Waiting for a any notification - timed out after 50 tries.",
     "product": "Toolkit",
@@ -358,5 +349,14 @@
     "component": "Password Manager",
     "filedAt": "2026-11-19T16:35:40Z",
     "resolvedAt": "2026-11-20T18:49:34Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 2097138,
+    "summary": "Rust login storage shutdown hangs while a primary password prompt is open",
+    "product": "Toolkit",
+    "component": "Password Manager",
+    "filedAt": "2026-11-24T13:38:47Z",
+    "resolvedAt": "2026-11-25T21:14:29Z"
   }
 ]
