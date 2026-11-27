@@ -28,12 +28,39 @@
   },
   {
     "source": "bugzilla",
+    "id": 1709923,
+    "summary": "[meta] Fix reftests for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2021-05-06T18:34:29Z",
+    "resolvedAt": "2026-11-27T12:46:56Z"
+  },
+  {
+    "source": "bugzilla",
     "id": 1709948,
     "summary": "[meta] Fix mochitests for isolated process",
     "product": "GeckoView",
     "component": "General",
     "filedAt": "2021-05-06T20:54:37Z",
     "resolvedAt": "2026-11-02T17:00:20Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1709960,
+    "summary": "[meta] Fix web platform tests for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2021-05-06T22:48:38Z",
+    "resolvedAt": "2026-11-27T12:47:00Z"
+  },
+  {
+    "source": "bugzilla",
+    "id": 1709961,
+    "summary": "[meta] Fix xpcshell tests for isolated process",
+    "product": "GeckoView",
+    "component": "General",
+    "filedAt": "2021-05-06T22:54:40Z",
+    "resolvedAt": "2026-11-27T12:47:03Z"
   },
   {
     "source": "bugzilla",
